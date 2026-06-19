@@ -214,7 +214,7 @@ body::before {
 }
 
 /* ─── Prose / Chapter content ─── */
-.prose-quantum {
+.prose-content {
   font-family: var(--font-crimson);
   font-size: 1.125rem;
   line-height: 1.85;
@@ -320,7 +320,7 @@ body::before {
   }
 }
 
-.prose-quantum h2 {
+.prose-content h2 {
   font-family: var(--font-playfair);
   font-size: 1.5rem;
   font-weight: 600;
@@ -331,7 +331,7 @@ body::before {
   padding-left: 1rem;
 }
 
-.prose-quantum h3 {
+.prose-content h3 {
   font-family: var(--font-playfair);
   font-size: 1.25rem;
   font-weight: 600;
@@ -340,8 +340,8 @@ body::before {
   margin-bottom: 0.75rem;
 }
 
-.prose-quantum h4,
-.prose-quantum h5 {
+.prose-content h4,
+.prose-content h5 {
   font-family: var(--font-inter);
   font-size: 1rem;
   font-weight: 600;
@@ -350,27 +350,27 @@ body::before {
   margin-bottom: 0.5rem;
 }
 
-.prose-quantum h2[id],
-.prose-quantum h3[id],
-.prose-quantum h4[id] {
+.prose-content h2[id],
+.prose-content h3[id],
+.prose-content h4[id] {
   scroll-margin-top: 96px;
 }
 
-.prose-quantum p {
+.prose-content p {
   margin-bottom: 1.25rem;
   line-height: 1.72;
   text-align: justify;
   text-justify: inter-word;
 }
 
-.prose-quantum .latex-footnote-ref {
+.prose-content .latex-footnote-ref {
   font-size: 0.65em;
   vertical-align: super;
   line-height: 0;
   color: var(--text-footnote);
 }
 
-.prose-quantum .latex-footnotes {
+.prose-content .latex-footnotes {
   margin: -0.5rem 0 1rem;
   display: grid;
   gap: 0.2rem;
@@ -379,57 +379,57 @@ body::before {
   color: var(--text-footnote);
 }
 
-.prose-quantum .latex-footnotes * {
+.prose-content .latex-footnotes * {
   font-size: inherit;
 }
 
-.prose-quantum .latex-footnote-item {
+.prose-content .latex-footnote-item {
   text-align: left;
 }
 
-.prose-quantum .latex-footnote-label {
+.prose-content .latex-footnote-label {
   font-family: inherit;
   color: inherit;
   font-size: inherit;
   font-weight: inherit;
 }
 
-.prose-quantum ul {
+.prose-content ul {
   margin: 1rem 0 1.5rem 1.5rem;
   list-style: disc;
 }
 
-.prose-quantum ul li {
+.prose-content ul li {
   padding-left: 0;
   margin-bottom: 0.5rem;
 }
 
-.prose-quantum ul li::before {
+.prose-content ul li::before {
   content: none;
 }
 
-.prose-quantum strong {
+.prose-content strong {
   color: var(--amber-soft);
   font-weight: 600;
 }
 
-.prose-quantum em {
+.prose-content em {
   color: var(--text-heading);
   font-style: italic;
 }
 
-.prose-quantum .latex-uline {
+.prose-content .latex-uline {
   text-decoration: underline;
   text-decoration-thickness: 2px;
   text-underline-offset: 0.16em;
 }
 
-.prose-quantum .latex-inline-blue-strong {
+.prose-content .latex-inline-blue-strong {
   color: #3b82f6;
   font-weight: 700;
 }
 
-.prose-quantum .latex-figure {
+.prose-content .latex-figure {
   margin: 2rem 0;
   display: flex;
   flex-direction: column;
@@ -437,14 +437,14 @@ body::before {
   text-align: center;
 }
 
-.prose-quantum .latex-figure-zoom-link {
+.prose-content .latex-figure-zoom-link {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   text-decoration: none;
 }
 
-.prose-quantum .latex-figure img {
+.prose-content .latex-figure img {
   width: auto;
   height: auto;
   max-width: min(100%, 10.4cm);
@@ -454,7 +454,7 @@ body::before {
   cursor: zoom-in;
 }
 
-.prose-quantum .latex-figure figcaption {
+.prose-content .latex-figure figcaption {
   margin-top: 0.65rem;
   font-family: var(--font-inter);
   font-size: 0.82rem;
@@ -464,7 +464,7 @@ body::before {
   max-width: 100%;
 }
 
-.prose-quantum .latex-figure-pdf-link {
+.prose-content .latex-figure-pdf-link {
   display: inline-block;
   padding: 0.5rem 0.9rem;
   border: 1px solid var(--accent-border-md);
@@ -474,7 +474,7 @@ body::before {
   background: var(--accent-bg-xs);
 }
 
-.prose-quantum .latex-figure-pdf {
+.prose-content .latex-figure-pdf {
   width: min(75%, 900px);
   max-width: 100%;
   height: 520px;
@@ -484,13 +484,13 @@ body::before {
 }
 
 @media (max-width: 900px) {
-  .prose-quantum .latex-figure img,
-  .prose-quantum .latex-figure-pdf {
+  .prose-content .latex-figure img,
+  .prose-content .latex-figure-pdf {
     max-width: 100%;
   }
 }
 
-.prose-quantum .latex-block {
+.prose-content .latex-block {
   margin: 1.25rem 0;
   padding: 0.9rem 1rem;
   border: 1px solid var(--accent-border-sm);
@@ -498,21 +498,21 @@ body::before {
   background: var(--accent-bg-xs);
 }
 
-.prose-quantum .latex-block > .latex-block-heading {
+.prose-content .latex-block > .latex-block-heading {
   display: block;
   margin-bottom: 0.5rem;
 }
 
-.prose-quantum .latex-block > .latex-block-body {
+.prose-content .latex-block > .latex-block-body {
   display: block;
 }
 
-.prose-quantum details.latex-block summary .latex-block-heading {
+.prose-content details.latex-block summary .latex-block-heading {
   flex: 1;
   min-width: 0;
 }
 
-.prose-quantum .latex-proof {
+.prose-content .latex-proof {
   margin: 1.25rem 0;
   border: 1px solid var(--accent-border-sm);
   border-radius: 8px;
@@ -521,7 +521,7 @@ body::before {
   color: var(--text-secondary);
 }
 
-.prose-quantum .latex-proof-summary {
+.prose-content .latex-proof-summary {
   cursor: pointer;
   list-style: none;
   padding: 0.65rem 0.75rem 0.65rem 1.35rem;
@@ -529,11 +529,11 @@ body::before {
   user-select: none;
 }
 
-.prose-quantum .latex-proof-summary::-webkit-details-marker {
+.prose-content .latex-proof-summary::-webkit-details-marker {
   display: none;
 }
 
-.prose-quantum .latex-proof-summary::before {
+.prose-content .latex-proof-summary::before {
   content: "▶";
   position: absolute;
   left: 0.5rem;
@@ -544,163 +544,163 @@ body::before {
   transition: transform 0.15s ease;
 }
 
-.prose-quantum .latex-proof[open] > .latex-proof-summary::before {
+.prose-content .latex-proof[open] > .latex-proof-summary::before {
   transform: translateY(-50%) rotate(90deg);
 }
 
-.prose-quantum .latex-proof-summary:focus-visible {
+.prose-content .latex-proof-summary:focus-visible {
   outline: 2px solid var(--amber);
   outline-offset: 2px;
   border-radius: 4px;
 }
 
-.prose-quantum .latex-proof-summary em {
+.prose-content .latex-proof-summary em {
   font-style: italic;
   color: var(--text-heading);
 }
 
-.prose-quantum .latex-proof-body {
+.prose-content .latex-proof-body {
   padding: 0 0.75rem 0.65rem 1rem;
   border-top: 1px solid var(--accent-border-sm);
 }
 
-.prose-quantum .latex-proof-qed {
+.prose-content .latex-proof-qed {
   float: right;
   font-family: var(--font-jetbrains);
   color: var(--text-dim);
   margin-left: 0.5rem;
 }
 
-.prose-quantum .latex-proof-body .latex-footnotes {
+.prose-content .latex-proof-body .latex-footnotes {
   margin: 0.75rem 0 0.35rem;
 }
 
 /* Definition / lemma / important — align with other theorem-like cards */
-.prose-quantum .latex-block-definition {
+.prose-content .latex-block-definition {
   border-color: #3b82f666;
   background: #3b82f61a;
 }
 
-.prose-quantum .latex-block-definition strong,
-.prose-quantum .latex-block-definition .latex-inline-blue-strong {
+.prose-content .latex-block-definition strong,
+.prose-content .latex-block-definition .latex-inline-blue-strong {
   color: #1d4ed8;
   font-weight: 700;
 }
 
-.prose-quantum .latex-block-lemma {
+.prose-content .latex-block-lemma {
   border-color: #9333ea66;
   background: #9333ea1a;
 }
 
-.prose-quantum .latex-block-lemma strong,
-.prose-quantum .latex-block-lemma .latex-inline-blue-strong {
+.prose-content .latex-block-lemma strong,
+.prose-content .latex-block-lemma .latex-inline-blue-strong {
   color: #6b21a8;
   font-weight: 700;
 }
 
-.prose-quantum .latex-block-important {
+.prose-content .latex-block-important {
   border-color: #ef444466;
   background: #ef44441a;
 }
 
-.prose-quantum .latex-block-important strong,
-.prose-quantum .latex-block-important .latex-inline-blue-strong {
+.prose-content .latex-block-important strong,
+.prose-content .latex-block-important .latex-inline-blue-strong {
   color: #b91c1c;
   font-weight: 700;
 }
 
-.prose-quantum .latex-block-theorem {
+.prose-content .latex-block-theorem {
   border-color: #f59e0b66;
   background: #f59e0b1a;
 }
 
-.prose-quantum .latex-block-theorem strong,
-.prose-quantum .latex-block-theorem .latex-inline-blue-strong {
+.prose-content .latex-block-theorem strong,
+.prose-content .latex-block-theorem .latex-inline-blue-strong {
   color: #f59e0b;
   font-weight: 700;
 }
 
-.prose-quantum .latex-block-proposition {
+.prose-content .latex-block-proposition {
   border-color: #22c55e66;
   background: #22c55e1a;
 }
 
-.prose-quantum .latex-block-proposition strong,
-.prose-quantum .latex-block-proposition .latex-inline-blue-strong {
+.prose-content .latex-block-proposition strong,
+.prose-content .latex-block-proposition .latex-inline-blue-strong {
   color: #166534;
   font-weight: 700;
 }
 
-.prose-quantum .latex-block-corollary,
-.prose-quantum .latex-block-corollaire {
+.prose-content .latex-block-corollary,
+.prose-content .latex-block-corollaire {
   border-color: #0ea5e966;
   background: #0ea5e91a;
 }
 
-.prose-quantum .latex-block-corollary strong,
-.prose-quantum .latex-block-corollaire strong,
-.prose-quantum .latex-block-corollary .latex-inline-blue-strong,
-.prose-quantum .latex-block-corollaire .latex-inline-blue-strong {
+.prose-content .latex-block-corollary strong,
+.prose-content .latex-block-corollaire strong,
+.prose-content .latex-block-corollary .latex-inline-blue-strong,
+.prose-content .latex-block-corollaire .latex-inline-blue-strong {
   color: #0f766e;
   font-weight: 700;
 }
 
-.prose-quantum .latex-block-remark,
-.prose-quantum .latex-block-exemple,
-.prose-quantum .latex-block-example {
+.prose-content .latex-block-remark,
+.prose-content .latex-block-exemple,
+.prose-content .latex-block-example {
   border-color: #94a3b84d;
   background: #94a3b814;
 }
 
-.prose-quantum .latex-block-plusloin {
+.prose-content .latex-block-plusloin {
   --plusloin-heading-color: rgba(88, 28, 135, 0.92);
   border-color: rgba(107, 33, 168, 0.22);
   background: rgba(107, 33, 168, 0.06);
   color: var(--text-heading);
 }
 
-.prose-quantum .latex-block-plusloin .latex-plusloin-label,
-.prose-quantum .latex-block-plusloin .latex-plusloin-topic {
+.prose-content .latex-block-plusloin .latex-plusloin-label,
+.prose-content .latex-block-plusloin .latex-plusloin-topic {
   color: var(--plusloin-heading-color);
 }
 
-.prose-quantum .latex-block-plusloin .latex-plusloin-label {
+.prose-content .latex-block-plusloin .latex-plusloin-label {
   font-weight: 600;
 }
 
-.prose-quantum .latex-block-plusloin .latex-plusloin-topic {
+.prose-content .latex-block-plusloin .latex-plusloin-topic {
   font-weight: 700;
 }
 
-.prose-quantum .latex-block-remark {
+.prose-content .latex-block-remark {
   color: var(--text-heading);
 }
 
-.prose-quantum .latex-block-remark strong,
-.prose-quantum .latex-block-exemple strong,
-.prose-quantum .latex-block-remark .latex-inline-blue-strong,
-.prose-quantum .latex-block-exemple .latex-inline-blue-strong {
+.prose-content .latex-block-remark strong,
+.prose-content .latex-block-exemple strong,
+.prose-content .latex-block-remark .latex-inline-blue-strong,
+.prose-content .latex-block-exemple .latex-inline-blue-strong {
   color: var(--text-heading);
   font-weight: 700;
 }
 
-.prose-quantum .latex-block-plusloin .latex-inline-blue-strong {
+.prose-content .latex-block-plusloin .latex-inline-blue-strong {
   color: var(--plusloin-heading-color);
   font-weight: 600;
 }
 
-.prose-quantum .latex-block-example strong,
-.prose-quantum .latex-block-example .latex-inline-blue-strong {
+.prose-content .latex-block-example strong,
+.prose-content .latex-block-example .latex-inline-blue-strong {
   color: #cbd5e1;
   font-weight: 700;
 }
 
 /* Collapsible details blocks (indice / solution) */
-.prose-quantum details.latex-block {
+.prose-content details.latex-block {
   cursor: default;
 }
 
-.prose-quantum details.latex-block summary {
+.prose-content details.latex-block summary {
   cursor: pointer;
   list-style: none;
   display: flex;
@@ -709,11 +709,11 @@ body::before {
   user-select: none;
 }
 
-.prose-quantum details.latex-block summary::-webkit-details-marker {
+.prose-content details.latex-block summary::-webkit-details-marker {
   display: none;
 }
 
-.prose-quantum details.latex-block summary::before {
+.prose-content details.latex-block summary::before {
   content: "▶";
   font-size: 0.65rem;
   transition: transform 0.2s ease;
@@ -721,20 +721,20 @@ body::before {
   opacity: 0.7;
 }
 
-.prose-quantum details.latex-block[open] summary::before {
+.prose-content details.latex-block[open] summary::before {
   transform: rotate(90deg);
 }
 
-.prose-quantum .latex-block-collapsible-body {
+.prose-content .latex-block-collapsible-body {
   margin-top: 0.75rem;
 }
 
 /* Exercises : titre seul (pas de cadre), aligné PDF / web */
-.prose-quantum .latex-exo {
+.prose-content .latex-exo {
   margin: 1.25rem 0 1rem;
 }
 
-.prose-quantum .latex-exo[id] {
+.prose-content .latex-exo[id] {
   scroll-margin-top: 5.5rem;
 }
 
@@ -752,7 +752,7 @@ a.exercise-index-card-link:focus-visible {
   outline-offset: 2px;
 }
 
-.prose-quantum .latex-exo-title {
+.prose-content .latex-exo-title {
   margin: 0 0 0.5rem;
   font-family: var(--font-crimson), serif;
   font-size: 1.05rem;
@@ -760,89 +760,89 @@ a.exercise-index-card-link:focus-visible {
   color: var(--text-heading);
 }
 
-.prose-quantum .latex-exo-title strong {
+.prose-content .latex-exo-title strong {
   font-weight: 700;
 }
 
-.prose-quantum .latex-exo-content {
+.prose-content .latex-exo-content {
   margin: 0;
 }
 
 /* Hint / Solution blocks */
-.prose-quantum .latex-block-indice,
-.prose-quantum .latex-block-hint {
+.prose-content .latex-block-indice,
+.prose-content .latex-block-hint {
   border-color: #f59e0b55;
   background: #fef9c314;
 }
 
-.prose-quantum .latex-block-indice strong,
-.prose-quantum .latex-block-hint strong,
-.prose-quantum .latex-block-indice .latex-inline-blue-strong,
-.prose-quantum .latex-block-hint .latex-inline-blue-strong {
+.prose-content .latex-block-indice strong,
+.prose-content .latex-block-hint strong,
+.prose-content .latex-block-indice .latex-inline-blue-strong,
+.prose-content .latex-block-hint .latex-inline-blue-strong {
   color: #b45309;
   font-weight: 700;
 }
 
-.prose-quantum .latex-block-solution {
+.prose-content .latex-block-solution {
   border-color: #22c55e55;
   background: #f0fdf414;
 }
 
-.prose-quantum .latex-block-solution strong,
-.prose-quantum .latex-block-solution .latex-inline-blue-strong {
+.prose-content .latex-block-solution strong,
+.prose-content .latex-block-solution .latex-inline-blue-strong {
   color: #166534;
   font-weight: 700;
 }
 
-.prose-quantum .latex-block-indication {
+.prose-content .latex-block-indication {
   border-color: #f59e0b55;
   background: #fef9c314;
 }
 
-.prose-quantum .latex-block-indication strong,
-.prose-quantum .latex-block-indication .latex-inline-blue-strong {
+.prose-content .latex-block-indication strong,
+.prose-content .latex-block-indication .latex-inline-blue-strong {
   color: #b45309;
   font-weight: 700;
 }
 
-.prose-quantum .latex-exercise-questions {
+.prose-content .latex-exercise-questions {
   display: flex;
   flex-direction: column;
   gap: 1.25rem;
   margin-top: 0.5rem;
 }
 
-.prose-quantum .latex-exercise-question {
+.prose-content .latex-exercise-question {
   border-left: 3px solid var(--border, #e2e8f0);
   padding-left: 0.85rem;
 }
 
-.prose-quantum .latex-exercise-q-heading {
+.prose-content .latex-exercise-q-heading {
   margin-bottom: 0.35rem;
 }
 
-.prose-quantum .latex-exercise-q-stem {
+.prose-content .latex-exercise-q-stem {
   margin-bottom: 0.35rem;
 }
 
-.prose-quantum .latex-block-resume {
+.prose-content .latex-block-resume {
   border-color: #a855f766;
   background: #a855f71a;
 }
 
-.prose-quantum .latex-block-resume strong,
-.prose-quantum .latex-block-resume .latex-inline-blue-strong {
+.prose-content .latex-block-resume strong,
+.prose-content .latex-block-resume .latex-inline-blue-strong {
   color: #d8b4fe;
   font-weight: 700;
 }
 
-.prose-quantum .latex-list {
+.prose-content .latex-list {
   margin: 1rem 0 1.25rem 1.5rem;
   padding-left: 0.5rem;
   list-style: inherit;
 }
 
-.prose-quantum .latex-list li {
+.prose-content .latex-list li {
   margin-bottom: 0.45rem;
 }
 
@@ -852,7 +852,7 @@ a.exercise-index-card-link:focus-visible {
   overflow: visible;
 }
 
-.prose-quantum .latex-equation {
+.prose-content .latex-equation {
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto;
   align-items: center;
@@ -860,11 +860,11 @@ a.exercise-index-card-link:focus-visible {
   margin: 1.5rem 0;
 }
 
-.prose-quantum .latex-equation .latex-equation-math .katex-display {
+.prose-content .latex-equation .latex-equation-math .katex-display {
   margin: 0;
 }
 
-.prose-quantum .latex-equation-number {
+.prose-content .latex-equation-number {
   font-family: var(--font-inter);
   font-size: 0.9rem;
   color: var(--text-dim);
@@ -877,20 +877,20 @@ a.exercise-index-card-link:focus-visible {
     overflow-y: hidden;
   }
 
-  .prose-quantum .latex-block {
+  .prose-content .latex-block {
     overflow-x: auto;
   }
 
-  .prose-quantum .latex-proof {
+  .prose-content .latex-proof {
     overflow-x: auto;
   }
 
-  .prose-quantum .latex-equation {
+  .prose-content .latex-equation {
     grid-template-columns: 1fr;
     row-gap: 0.25rem;
   }
 
-  .prose-quantum .latex-equation-number {
+  .prose-content .latex-equation-number {
     justify-self: end;
   }
 }

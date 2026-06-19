@@ -360,7 +360,7 @@ export function ChapterContent({ lesson }: Props) {
             <div className="lesson-web-layout">
               <div className="lesson-web-main">
                 <div
-                  className="prose-quantum"
+                  className="prose-content"
                   dangerouslySetInnerHTML={{ __html: webContentWithToc.content }}
                 />
               </div>

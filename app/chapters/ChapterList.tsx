@@ -3,12 +3,6 @@ import Link from "next/link";
 import { getWebThemes } from "@/lib/chapters";
 import { useLang } from "@/app/context/LangContext";
 
-function getThemeCategory(slug: string, lang: "fr" | "en"): string {
-  const isMath = slug === "hilbert-spaces";
-  if (lang === "fr") return isMath ? "Thème mathématique" : "Thème physique";
-  return isMath ? "Mathematics" : "Physics";
-}
-
 export function ChapterList() {
   const { t, lang } = useLang();
   const webThemes = getWebThemes();
@@ -25,31 +19,6 @@ export function ChapterList() {
                 : "none",
           }}
         >
-          {theme.partHeadingFr ? (
-            <div
-              style={{
-                marginTop: i > 0 ? "2rem" : 0,
-                paddingTop: i > 0 ? "1.75rem" : 0,
-                borderTop:
-                  i > 0 ? "1px solid var(--border-subtle)" : "none",
-                marginBottom: "1rem",
-              }}
-            >
-              <p
-                style={{
-                  fontFamily: "var(--font-playfair)",
-                  fontSize: "1.05rem",
-                  fontWeight: 600,
-                  color: "var(--text-heading)",
-                  letterSpacing: "0.02em",
-                }}
-              >
-                {lang === "fr"
-                  ? theme.partHeadingFr
-                  : theme.partHeadingEn}
-              </p>
-            </div>
-          ) : null}
           <Link
             href={`/chapters/${theme.slug}`}
             style={{ textDecoration: "none", display: "block" }}
@@ -86,21 +55,6 @@ export function ChapterList() {
                   gap: "0.5rem",
                 }}
               >
-                <span
-                  style={{
-                    border: "1px solid var(--accent-border-sm)",
-                    background: "var(--accent-bg-xs)",
-                    borderRadius: "999px",
-                    padding: "0.12rem 0.55rem",
-                    fontFamily: "var(--font-inter)",
-                    fontSize: "0.65rem",
-                    letterSpacing: "0.02em",
-                    color: "var(--text-dim)",
-                    whiteSpace: "nowrap",
-                  }}
-                >
-                  {getThemeCategory(theme.slug, lang)}
-                </span>
                 <div
                   style={{
                     fontFamily: "var(--font-playfair)",

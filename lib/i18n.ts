@@ -9,15 +9,15 @@ export type UpdateEntry = {
 export const translations = {
   en: {
     book: {
-      title: "Quantum Mechanics",
+      title: "Thermodynamics",
       subtitle: "",
       description:
-        "This book proposes a rigorous formalization of modern quantum mechanics. Going beyond the scope of conventional introductory textbooks, it develops the essential tools of mathematical physics, from Hilbert spaces to advanced spectral theory, including topology and geometry.\n\nThis treatise is intended for readers who seek, beyond computational practice, to understand the logical necessity and foundation of the structures in use. The text addresses interpretational issues directly, with a detailed analysis of the measurement problem and decoherence, while also presenting alternative theories and their experimental constraints.\n\nIntended for master's students, doctoral students, and researchers, it aims at a comprehensive command of the theory, uniting technical rigor with conceptual depth.",
+        "A course in thermodynamics for undergraduates and beyond, from the founding principles to more advanced developments.",
       edition: "First Edition",
     },
     nav: {
       home: "Home",
-      chapters: "Themes",
+      chapters: "Lessons",
       exercises: "Exercises",
       glossary: "Glossary",
       about: "About",
@@ -27,16 +27,16 @@ export const translations = {
       readOnline: "Read Online →",
       aboutBook: "About the Book",
       chapterPrefix: "Ch",
-      themePrefix: "Theme",
+      themePrefix: "Lesson",
       stats: {
-        chapters: "Themes",
+        chapters: "Lessons",
         edition: "Edition",
         format: "Format",
         formatValue: "Web + PDF",
       },
       contentsLabel: "Contents",
-      exploreTitle: "Explore the Themes",
-      readTheme: "Open theme →",
+      exploreTitle: "Explore the Lessons",
+      readTheme: "Open lesson →",
       readLesson: "Read lesson →",
       readChapter: "Read chapter →",
       fullBookDownload: "Download the full edition (coming soon)",
@@ -59,19 +59,19 @@ export const translations = {
       ],
     },
     chapters: {
-      label: "THEMES",
-      title: "All Themes",
+      label: "LESSONS",
+      title: "All Lessons",
       description: "",
     },
     chapter: {
       chapterLabel: "LESSON",
-      themeLabel: "THEME",
+      themeLabel: "LESSON",
       lessonLabel: "LESSON",
       readTime: (t: string) => `${t} read`,
       downloadPdf: "↓ Download PDF",
       breadcrumbHome: "Home",
-      breadcrumbChapters: "Themes",
-      breadcrumbThemes: "Themes",
+      breadcrumbChapters: "Lessons",
+      breadcrumbThemes: "Lessons",
       prev: "← Previous",
       next: "Next →",
       noteTitle: "Note:",
@@ -94,7 +94,7 @@ export const translations = {
       pdfFallbackLink: "click here to download it",
       noLessonTitle: "No lesson available",
       noLessonBody:
-        "This theme is listed in the structure, but lesson content has not been published yet.",
+        "This lesson is listed in the structure, but its content has not been published yet.",
     },
     about: {
       label: "ABOUT THE BOOK",
@@ -119,9 +119,9 @@ export const translations = {
         "This site and the book are under development. Lessons and exercises will be added gradually.",
       aboutProjectOutlineLabel: "Planned content:",
       aboutProjectOutlineBody:
-        "Part I, isolated systems: mathematical formalism (mathematical physics), postulates, basic applications. Part II, interacting systems: entanglement, decoherence, measurement theory. Part III: interpretations of quantum mechanics and alternative theories. Part IV: quantum information, quantum algorithms. Part V: quantum gravity.",
+        "A progressive course in thermodynamics, from the founding principles to more advanced developments.",
       aboutBookBody2:
-        "The text develops quantum mechanics from first principles, assuming a strong background in classical mechanics, electrodynamics, and mathematics. Proofs are given in full whenever they clarify the physics, and many worked examples complement the theoretical exposition.",
+        "The text develops thermodynamics from first principles. Proofs are given in full whenever they clarify the physics, and many worked examples complement the theoretical exposition.",
       translationWarning:
         "Warning: this book is primarily written in French; the English version is automatically translated using Claude Sonnet 4.6.",
     },
@@ -150,7 +150,7 @@ export const translations = {
     footer: {
       navigation: "Navigation",
       home: "Home",
-      allChapters: "All Themes",
+      allChapters: "All Lessons",
       exercises: "Exercises",
       aboutBook: "About the Book",
       author: "Author",
@@ -160,15 +160,15 @@ export const translations = {
   },
   fr: {
     book: {
-      title: "Mécanique Quantique",
+      title: "Thermodynamique",
       subtitle: "",
       description:
-        "Cet ouvrage propose une formalisation rigoureuse de la mécanique quantique moderne. Dépassant le cadre des manuels d'introduction conventionnels, il approfondit les outils essentiels de la physique mathématique, des espaces de Hilbert à la théorie spectrale avancée en passant par la topologie et la géométrie.\n\nCe traité s’adresse à ceux qui cherchent, au-delà de la simple pratique du calcul, à saisir la nécessité logique et le fondement des structures employées. Le texte aborde de front les enjeux de l’interprétation, analysant en détail le problème de la mesure et de la décohérence, tout en présentant les théories alternatives et leurs contraintes expérimentales.\n\nDestiné aux étudiants de second cycle, doctorants et chercheurs, il vise une maîtrise exhaustive de la théorie, unissant rigueur technique et profondeur conceptuelle.",
+        "Un cours de thermodynamique pour le premier cycle universitaire et au-delà, des principes fondateurs jusqu'aux développements plus avancés.",
       edition: "Première Édition",
     },
     nav: {
       home: "Accueil",
-      chapters: "Thèmes",
+      chapters: "Leçons",
       exercises: "Exercices",
       glossary: "Glossaire",
       about: "À propos",
@@ -178,16 +178,16 @@ export const translations = {
       readOnline: "Lire en ligne →",
       aboutBook: "À propos du livre",
       chapterPrefix: "Ch",
-      themePrefix: "Thème",
+      themePrefix: "Leçon",
       stats: {
-        chapters: "Thèmes",
+        chapters: "Leçons",
         edition: "Édition",
         format: "Format",
         formatValue: "Web + PDF",
       },
       contentsLabel: "Sommaire",
-      exploreTitle: "Explorer les thèmes",
-      readTheme: "Ouvrir le thème →",
+      exploreTitle: "Explorer les leçons",
+      readTheme: "Ouvrir la leçon →",
       readLesson: "Lire la leçon →",
       readChapter: "Lire le chapitre →",
       fullBookDownload: "Télécharger l'édition complète (bientôt)",
@@ -210,19 +210,19 @@ export const translations = {
       ],
     },
     chapters: {
-      label: "THÈMES",
-      title: "Tous les thèmes",
+      label: "LEÇONS",
+      title: "Toutes les leçons",
       description: "",
     },
     chapter: {
       chapterLabel: "LEÇON",
-      themeLabel: "THÈME",
+      themeLabel: "LEÇON",
       lessonLabel: "LEÇON",
       readTime: (t: string) => `${t} de lecture`,
       downloadPdf: "↓ Télécharger le PDF",
       breadcrumbHome: "Accueil",
-      breadcrumbChapters: "Thèmes",
-      breadcrumbThemes: "Thèmes",
+      breadcrumbChapters: "Leçons",
+      breadcrumbThemes: "Leçons",
       prev: "← Précédent",
       next: "Suivant →",
       noteTitle: "Note :",
@@ -245,7 +245,7 @@ export const translations = {
       pdfFallbackLink: "cliquez ici pour le télécharger",
       noLessonTitle: "Aucune leçon disponible",
       noLessonBody:
-        "Ce thème est bien présent dans la structure, mais son contenu de leçon n'est pas encore publié.",
+        "Cette leçon est bien présente dans la structure, mais son contenu n'est pas encore publié.",
     },
     about: {
       label: "À PROPOS DU LIVRE",
@@ -270,9 +270,9 @@ export const translations = {
         "Ce site et cet ouvrage sont en cours de développement. Les leçons et les exercices seront publiés progressivement.",
       aboutProjectOutlineLabel: "Contenu prévu :",
       aboutProjectOutlineBody:
-        "Partie I, systèmes isolés : formalisme mathématique (physique mathématique), postulats, applications de base. Partie II, systèmes en interaction : intrication, décohérence, théorie de la mesure. Partie III : interprétations de la mécanique quantique et théories alternatives. Partie IV : information quantique, algorithmique quantique. Partie V : gravitation quantique.",
+        "Un cours progressif de thermodynamique, des principes fondateurs jusqu'aux développements plus avancés.",
       aboutBookBody2:
-        "Le texte développe la mécanique quantique à partir des premiers principes, en supposant une solide formation en mécanique classique, en électrodynamique et en mathématiques. Les preuves sont données en entier lorsqu'elles éclairent la physique, et de nombreux exemples travaillés complètent l'exposition théorique.",
+        "Le texte développe la thermodynamique à partir des premiers principes. Les preuves sont données en entier lorsqu'elles éclairent la physique, et de nombreux exemples travaillés complètent l'exposition théorique.",
       translationWarning:
         "Note : ce livre est principalement rédigé en français ; la version anglaise est traduite automatiquement avec Claude Sonnet 4.6.",
     },
@@ -301,7 +301,7 @@ export const translations = {
     footer: {
       navigation: "Navigation",
       home: "Accueil",
-      allChapters: "Tous les thèmes",
+      allChapters: "Toutes les leçons",
       exercises: "Exercices",
       aboutBook: "À propos du livre",
       author: "Auteur",

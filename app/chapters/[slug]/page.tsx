@@ -27,13 +27,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const keywords = theme.lessons.flatMap((l) => l.topicsEn).slice(0, 15);
   const url = absoluteUrl(`/chapters/${theme.slug}`);
   return {
-    title: `Theme ${theme.number}: ${theme.titleEn}`,
+    title: `Lesson ${theme.number}: ${theme.titleEn}`,
     description: theme.descriptionEn,
     keywords,
     alternates: { canonical: url },
     openGraph: {
       type: "article",
-      title: `Theme ${theme.number}: ${theme.titleEn}`,
+      title: `Lesson ${theme.number}: ${theme.titleEn}`,
       description: theme.descriptionEn,
       url,
     },

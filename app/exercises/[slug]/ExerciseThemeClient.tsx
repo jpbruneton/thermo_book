@@ -36,12 +36,12 @@ export function ExerciseThemeClient({ number, titleFr, titleEn, contentFr, conte
   }, [rendered]);
 
   const title = lang === "fr" ? titleFr : titleEn;
-  const themePrefix = lang === "fr" ? "Thème" : "Theme";
+  const themePrefix = lang === "fr" ? "Leçon" : "Lesson";
   const backLabel = lang === "fr" ? "← Exercices" : "← Exercises";
   const unavailable =
     lang === "fr"
-      ? "Les exercices de ce thème ne sont pas encore disponibles dans cette langue."
-      : "Exercises for this theme are not yet available in this language.";
+      ? "Les exercices de cette leçon ne sont pas encore disponibles dans cette langue."
+      : "Exercises for this lesson are not yet available in this language.";
 
   return (
     <div style={{ position: "relative", zIndex: 1, padding: "5rem 1.5rem" }}>
@@ -88,7 +88,7 @@ export function ExerciseThemeClient({ number, titleFr, titleEn, contentFr, conte
 
         {rendered ? (
           <div
-            className="prose-quantum"
+            className="prose-content"
             dangerouslySetInnerHTML={{ __html: rendered }}
           />
         ) : (

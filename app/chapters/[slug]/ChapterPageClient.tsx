@@ -133,7 +133,8 @@ function ChapterLessonTabButtons({ theme }: { theme: ThemeWithLocalizedLessonCon
     });
   };
 
-  if (theme.lessons.length === 0) return null;
+  // No tab bar when the Leçon has a single body (no inner lessons to switch between).
+  if (theme.lessons.length <= 1) return null;
 
   const normalLessons = theme.lessons
     .map((lesson, index) => ({ lesson, index }))

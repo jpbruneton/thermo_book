@@ -4,11 +4,11 @@ import { absoluteUrl } from "@/lib/siteUrl";
 
 export const metadata: Metadata = {
   title: "Exercises",
-  description: `Practice problems and exercises for ${bookMetaDisplayTitle()} — covering Hilbert spaces, operators, measurement, and more.`,
+  description: `Practice problems and exercises for ${bookMetaDisplayTitle()}.`,
   alternates: { canonical: absoluteUrl("/exercises") },
   openGraph: {
     title: `Exercises | ${bookMeta.title}`,
-    description: `Practice problems for ${bookMeta.title}: Hilbert spaces, operators, measurement theory, and more.`,
+    description: `Practice problems for ${bookMeta.title}.`,
     url: absoluteUrl("/exercises"),
   },
 };

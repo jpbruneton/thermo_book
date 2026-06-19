@@ -4,11 +4,11 @@ import { absoluteUrl } from "@/lib/siteUrl";
 
 export const metadata: Metadata = {
   title: "Glossary",
-  description: `Key terms and concepts from ${bookMeta.title}: Hilbert spaces, operators, Born rule, Dirac notation, wave functions, entanglement, and more.`,
+  description: `Key terms and concepts from ${bookMeta.title}.`,
   alternates: { canonical: absoluteUrl("/glossary") },
   openGraph: {
     title: `Glossary | ${bookMeta.title}`,
-    description: `Key concepts in quantum mechanics: Hilbert spaces, operators, Born rule, Dirac notation, entanglement, and more.`,
+    description: `Key terms and concepts from ${bookMeta.title}.`,
     url: absoluteUrl("/glossary"),
   },
 };

@@ -213,8 +213,8 @@ function GlossaryFilterAndList() {
                     }}
                   >
                     {lang === "fr"
-                      ? `Thème ${occurrence.themeNumber} (${occurrence.themeTitle}) - Leçon n°${occurrence.lessonNumber} : ${occurrence.lessonSubtitle}`
-                      : `Theme ${occurrence.themeNumber} (${occurrence.themeTitle}) - Lesson ${occurrence.lessonNumber}: ${occurrence.lessonSubtitle}`}
+                      ? `Leçon ${occurrence.themeNumber} : ${occurrence.themeTitle}`
+                      : `Lesson ${occurrence.themeNumber}: ${occurrence.themeTitle}`}
                   </Link>
                 ))}
               </div>
