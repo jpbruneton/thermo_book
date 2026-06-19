@@ -44,7 +44,7 @@ export default function NotFound() {
           maxWidth: "400px",
         }}
       >
-        The wavefunction collapsed. This page does not exist in the observable universe.
+        This page has reached equilibrium with the void. It does not exist.
       </p>
       <Link
         href="/"
