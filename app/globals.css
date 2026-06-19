@@ -1,0 +1,947 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400;1,600&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&family=JetBrains+Mono:wght@400;500&family=Inter:wght@300;400;500&display=swap');
+@import url('https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ─── Light mode (default) ─── */
+:root {
+  --font-playfair: 'Playfair Display', serif;
+  --font-crimson: 'Crimson Pro', serif;
+  --font-jetbrains: 'JetBrains Mono', monospace;
+  --font-inter: 'Inter', sans-serif;
+
+  /* Backgrounds */
+  --bg-primary: #f8fafc;
+  --bg-secondary: #f1f5f9;
+  --bg-card: #ffffff;
+  --bg-card-hover: #e2e8f0;
+  --cover-bg: linear-gradient(145deg, #dbeafe 0%, #eff6ff 40%, #e0f2fe 100%);
+
+  /* Text */
+  --text-primary: #334155;
+  --text-heading: #0f172a;
+  --text-bright: #0f172a;
+  --text-secondary: #475569;
+  --text-dim: #94a3b8;
+  /* Footnotes: slightly darker than --text-dim for readability */
+  --text-footnote: #64748b;
+
+  /* Accent → blue */
+  --amber: #2563eb;
+  --amber-soft: #3b82f6;
+
+  /* Accent backgrounds / borders — CSS-variable-friendly */
+  --accent-bg-xs:     rgba(37, 99, 235, 0.03);
+  --accent-bg-sm:     rgba(37, 99, 235, 0.07);
+  --accent-bg-md:     rgba(37, 99, 235, 0.10);
+  --accent-border-sm: rgba(37, 99, 235, 0.12);
+  --accent-border-md: rgba(37, 99, 235, 0.20);
+  --accent-border-lg: rgba(37, 99, 235, 0.30);
+  --accent-border-hover: rgba(37, 99, 235, 0.35);
+  --accent-glow:      rgba(37, 99, 235, 0.06);
+  --accent-shadow:    rgba(37, 99, 235, 0.05);
+
+  /* Borders */
+  --border: rgba(37, 99, 235, 0.15);
+  --border-bright: rgba(37, 99, 235, 0.4);
+  --border-subtle: rgba(0, 0, 0, 0.07);
+
+  /* Nav */
+  --nav-bg: rgba(248, 250, 252, 0.92);
+
+  /* Glow */
+  --glow-text: rgba(37, 99, 235, 0.25);
+  --glow-text-wide: rgba(37, 99, 235, 0.08);
+  --glow-radial: rgba(37, 99, 235, 0.06);
+}
+
+/* ─── Dark mode overrides ─── */
+[data-theme="dark"] {
+  /* Backgrounds */
+  --bg-primary: #0a0b0f;
+  --bg-secondary: #0d1117;
+  --bg-card: #111827;
+  --bg-card-hover: #1a2233;
+  --cover-bg: linear-gradient(145deg, #0f1a2e 0%, #0a0f1a 40%, #0d1525 100%);
+
+  /* Text */
+  --text-primary: #f1f5f9;
+  --text-heading: #f1f5f9;
+  --text-bright: #f8fafc;
+  --text-secondary: #a3b1c4;
+  --text-dim: #475569;
+  /* Footnotes: darker than --text-dim (#475569) */
+  --text-footnote: #334155;
+
+  --amber: #f59e0b;
+  --amber-soft: #fbbf24;
+
+  /* Accent backgrounds / borders */
+  --accent-bg-xs:     rgba(245, 158, 11, 0.03);
+  --accent-bg-sm:     rgba(245, 158, 11, 0.07);
+  --accent-bg-md:     rgba(245, 158, 11, 0.10);
+  --accent-border-sm: rgba(245, 158, 11, 0.12);
+  --accent-border-md: rgba(245, 158, 11, 0.20);
+  --accent-border-lg: rgba(245, 158, 11, 0.30);
+  --accent-border-hover: rgba(245, 158, 11, 0.35);
+  --accent-glow:      rgba(245, 158, 11, 0.06);
+  --accent-shadow:    rgba(245, 158, 11, 0.05);
+
+  /* Borders */
+  --border: rgba(245, 158, 11, 0.15);
+  --border-bright: rgba(245, 158, 11, 0.4);
+  --border-subtle: rgba(255, 255, 255, 0.06);
+
+  /* Nav */
+  --nav-bg: rgba(10, 11, 15, 0.85);
+
+  /* Glow */
+  --glow-text: rgba(245, 158, 11, 0.3);
+  --glow-text-wide: rgba(245, 158, 11, 0.1);
+  --glow-radial: rgba(245, 158, 11, 0.06);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: var(--font-crimson);
+  font-size: 18px;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+  transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+/* Noise texture overlay */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.4;
+}
+
+/* ─── Quantum Wave Background ─── */
+.wave-bg {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.wave-bg svg {
+  position: absolute;
+  width: 200%;
+  height: 100%;
+  opacity: 0.07;
+  animation: waveDrift 12s ease-in-out infinite;
+}
+
+.wave-bg svg path {
+  fill: var(--amber);
+}
+
+.wave-bg svg:nth-child(2) {
+  opacity: 0.04;
+  animation-duration: 18s;
+  animation-direction: reverse;
+  transform: translateY(20px);
+}
+
+@keyframes waveDrift {
+  0%, 100% { transform: translateX(0); }
+  50% { transform: translateX(-10%); }
+}
+
+/* ─── Stagger Animations ─── */
+.stagger-1 { animation-delay: 0.1s; }
+.stagger-2 { animation-delay: 0.2s; }
+.stagger-3 { animation-delay: 0.3s; }
+.stagger-4 { animation-delay: 0.4s; }
+.stagger-5 { animation-delay: 0.5s; }
+.stagger-6 { animation-delay: 0.6s; }
+
+.animate-fade-up {
+  opacity: 0;
+  animation: fadeUp 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(28px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ─── Accent glow ─── */
+.amber-glow {
+  text-shadow:
+    0 0 40px var(--glow-text),
+    0 0 80px var(--glow-text-wide);
+}
+
+.amber-line {
+  position: relative;
+}
+.amber-line::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--amber), transparent);
+}
+
+/* ─── Chapter card hover ─── */
+.chapter-card {
+  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.chapter-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--accent-border-hover) !important;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2), 0 0 30px var(--accent-shadow);
+}
+
+/* ─── Prose / Chapter content ─── */
+.prose-quantum {
+  font-family: var(--font-crimson);
+  font-size: 1.125rem;
+  line-height: 1.85;
+  color: var(--text-primary);
+}
+
+.lesson-toc {
+  padding: 1rem 1.1rem;
+  border: 1px solid var(--accent-border-sm);
+  border-radius: 8px;
+  background: var(--accent-bg-xs);
+}
+
+.lesson-web-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 860px) 300px;
+  align-items: start;
+  justify-content: center;
+  gap: 3.6rem;
+}
+
+.lesson-web-main {
+  min-width: 0;
+}
+
+.lesson-toc-toggle {
+  background: var(--accent-bg-xs);
+  border: 1px solid var(--accent-border-sm);
+  border-radius: 6px;
+  color: var(--amber);
+  font-family: var(--font-inter);
+  font-size: 0.78rem;
+  font-weight: 500;
+  padding: 0.4rem 0.75rem;
+  cursor: pointer;
+}
+
+.lesson-toc-sticky {
+  position: sticky;
+  top: 86px;
+  max-height: calc(100vh - 110px);
+  overflow: auto;
+}
+
+.lesson-toc-title {
+  margin: 0;
+  font-family: var(--font-playfair);
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-heading);
+}
+
+.lesson-toc-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.6rem;
+  margin-bottom: 0.7rem;
+}
+
+.lesson-toc-list {
+  margin: 0;
+  padding-left: 1rem;
+  display: grid;
+  gap: 0.25rem;
+}
+
+.lesson-toc-item {
+  margin: 0;
+}
+
+.lesson-toc-link {
+  font-family: var(--font-inter);
+  font-size: 0.8rem;
+  color: var(--amber);
+  text-decoration: none;
+  opacity: 0.78;
+  transition: opacity 0.2s ease, color 0.2s ease;
+}
+
+.lesson-toc-link:hover {
+  text-decoration: underline;
+  opacity: 1;
+}
+
+.lesson-toc-link-active {
+  opacity: 1;
+  color: var(--text-heading);
+  font-weight: 600;
+}
+
+@media (max-width: 980px) {
+  .lesson-web-layout {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .lesson-toc-sticky {
+    position: static;
+    max-height: none;
+    overflow: visible;
+    margin-bottom: 1.2rem;
+  }
+}
+
+.prose-quantum h2 {
+  font-family: var(--font-playfair);
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--text-heading);
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+  border-left: 3px solid var(--amber);
+  padding-left: 1rem;
+}
+
+.prose-quantum h3 {
+  font-family: var(--font-playfair);
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--text-heading);
+  margin-top: 2rem;
+  margin-bottom: 0.75rem;
+}
+
+.prose-quantum h4,
+.prose-quantum h5 {
+  font-family: var(--font-inter);
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-heading);
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.prose-quantum h2[id],
+.prose-quantum h3[id],
+.prose-quantum h4[id] {
+  scroll-margin-top: 96px;
+}
+
+.prose-quantum p {
+  margin-bottom: 1.25rem;
+  line-height: 1.72;
+  text-align: justify;
+  text-justify: inter-word;
+}
+
+.prose-quantum .latex-footnote-ref {
+  font-size: 0.65em;
+  vertical-align: super;
+  line-height: 0;
+  color: var(--text-footnote);
+}
+
+.prose-quantum .latex-footnotes {
+  margin: -0.5rem 0 1rem;
+  display: grid;
+  gap: 0.2rem;
+  font-size: 0.875rem; /* ~14px on default 16px root */
+  line-height: 1.45;
+  color: var(--text-footnote);
+}
+
+.prose-quantum .latex-footnotes * {
+  font-size: inherit;
+}
+
+.prose-quantum .latex-footnote-item {
+  text-align: left;
+}
+
+.prose-quantum .latex-footnote-label {
+  font-family: inherit;
+  color: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+}
+
+.prose-quantum ul {
+  margin: 1rem 0 1.5rem 1.5rem;
+  list-style: disc;
+}
+
+.prose-quantum ul li {
+  padding-left: 0;
+  margin-bottom: 0.5rem;
+}
+
+.prose-quantum ul li::before {
+  content: none;
+}
+
+.prose-quantum strong {
+  color: var(--amber-soft);
+  font-weight: 600;
+}
+
+.prose-quantum em {
+  color: var(--text-heading);
+  font-style: italic;
+}
+
+.prose-quantum .latex-uline {
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 0.16em;
+}
+
+.prose-quantum .latex-inline-blue-strong {
+  color: #3b82f6;
+  font-weight: 700;
+}
+
+.prose-quantum .latex-figure {
+  margin: 2rem 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.prose-quantum .latex-figure-zoom-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+}
+
+.prose-quantum .latex-figure img {
+  width: auto;
+  height: auto;
+  max-width: min(100%, 10.4cm);
+  max-height: 10.4cm;
+  border-radius: 8px;
+  border: 1px solid var(--accent-border-sm);
+  cursor: zoom-in;
+}
+
+.prose-quantum .latex-figure figcaption {
+  margin-top: 0.65rem;
+  font-family: var(--font-inter);
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+  text-align: left;
+  width: min(75%, 900px);
+  max-width: 100%;
+}
+
+.prose-quantum .latex-figure-pdf-link {
+  display: inline-block;
+  padding: 0.5rem 0.9rem;
+  border: 1px solid var(--accent-border-md);
+  border-radius: 6px;
+  text-decoration: none;
+  color: var(--amber);
+  background: var(--accent-bg-xs);
+}
+
+.prose-quantum .latex-figure-pdf {
+  width: min(75%, 900px);
+  max-width: 100%;
+  height: 520px;
+  border: 1px solid var(--accent-border-sm);
+  border-radius: 8px;
+  background: var(--bg-card);
+}
+
+@media (max-width: 900px) {
+  .prose-quantum .latex-figure img,
+  .prose-quantum .latex-figure-pdf {
+    max-width: 100%;
+  }
+}
+
+.prose-quantum .latex-block {
+  margin: 1.25rem 0;
+  padding: 0.9rem 1rem;
+  border: 1px solid var(--accent-border-sm);
+  border-radius: 8px;
+  background: var(--accent-bg-xs);
+}
+
+.prose-quantum .latex-block > .latex-block-heading {
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.prose-quantum .latex-block > .latex-block-body {
+  display: block;
+}
+
+.prose-quantum details.latex-block summary .latex-block-heading {
+  flex: 1;
+  min-width: 0;
+}
+
+.prose-quantum .latex-proof {
+  margin: 1.25rem 0;
+  border: 1px solid var(--accent-border-sm);
+  border-radius: 8px;
+  background: var(--accent-bg-xs);
+  border-left: 2px solid var(--accent-border-md);
+  color: var(--text-secondary);
+}
+
+.prose-quantum .latex-proof-summary {
+  cursor: pointer;
+  list-style: none;
+  padding: 0.65rem 0.75rem 0.65rem 1.35rem;
+  position: relative;
+  user-select: none;
+}
+
+.prose-quantum .latex-proof-summary::-webkit-details-marker {
+  display: none;
+}
+
+.prose-quantum .latex-proof-summary::before {
+  content: "▶";
+  position: absolute;
+  left: 0.5rem;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 0.55rem;
+  color: var(--amber);
+  transition: transform 0.15s ease;
+}
+
+.prose-quantum .latex-proof[open] > .latex-proof-summary::before {
+  transform: translateY(-50%) rotate(90deg);
+}
+
+.prose-quantum .latex-proof-summary:focus-visible {
+  outline: 2px solid var(--amber);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+.prose-quantum .latex-proof-summary em {
+  font-style: italic;
+  color: var(--text-heading);
+}
+
+.prose-quantum .latex-proof-body {
+  padding: 0 0.75rem 0.65rem 1rem;
+  border-top: 1px solid var(--accent-border-sm);
+}
+
+.prose-quantum .latex-proof-qed {
+  float: right;
+  font-family: var(--font-jetbrains);
+  color: var(--text-dim);
+  margin-left: 0.5rem;
+}
+
+.prose-quantum .latex-proof-body .latex-footnotes {
+  margin: 0.75rem 0 0.35rem;
+}
+
+/* Definition / lemma / important — align with other theorem-like cards */
+.prose-quantum .latex-block-definition {
+  border-color: #3b82f666;
+  background: #3b82f61a;
+}
+
+.prose-quantum .latex-block-definition strong,
+.prose-quantum .latex-block-definition .latex-inline-blue-strong {
+  color: #1d4ed8;
+  font-weight: 700;
+}
+
+.prose-quantum .latex-block-lemma {
+  border-color: #9333ea66;
+  background: #9333ea1a;
+}
+
+.prose-quantum .latex-block-lemma strong,
+.prose-quantum .latex-block-lemma .latex-inline-blue-strong {
+  color: #6b21a8;
+  font-weight: 700;
+}
+
+.prose-quantum .latex-block-important {
+  border-color: #ef444466;
+  background: #ef44441a;
+}
+
+.prose-quantum .latex-block-important strong,
+.prose-quantum .latex-block-important .latex-inline-blue-strong {
+  color: #b91c1c;
+  font-weight: 700;
+}
+
+.prose-quantum .latex-block-theorem {
+  border-color: #f59e0b66;
+  background: #f59e0b1a;
+}
+
+.prose-quantum .latex-block-theorem strong,
+.prose-quantum .latex-block-theorem .latex-inline-blue-strong {
+  color: #f59e0b;
+  font-weight: 700;
+}
+
+.prose-quantum .latex-block-proposition {
+  border-color: #22c55e66;
+  background: #22c55e1a;
+}
+
+.prose-quantum .latex-block-proposition strong,
+.prose-quantum .latex-block-proposition .latex-inline-blue-strong {
+  color: #166534;
+  font-weight: 700;
+}
+
+.prose-quantum .latex-block-corollary,
+.prose-quantum .latex-block-corollaire {
+  border-color: #0ea5e966;
+  background: #0ea5e91a;
+}
+
+.prose-quantum .latex-block-corollary strong,
+.prose-quantum .latex-block-corollaire strong,
+.prose-quantum .latex-block-corollary .latex-inline-blue-strong,
+.prose-quantum .latex-block-corollaire .latex-inline-blue-strong {
+  color: #0f766e;
+  font-weight: 700;
+}
+
+.prose-quantum .latex-block-remark,
+.prose-quantum .latex-block-exemple,
+.prose-quantum .latex-block-example {
+  border-color: #94a3b84d;
+  background: #94a3b814;
+}
+
+.prose-quantum .latex-block-plusloin {
+  --plusloin-heading-color: rgba(88, 28, 135, 0.92);
+  border-color: rgba(107, 33, 168, 0.22);
+  background: rgba(107, 33, 168, 0.06);
+  color: var(--text-heading);
+}
+
+.prose-quantum .latex-block-plusloin .latex-plusloin-label,
+.prose-quantum .latex-block-plusloin .latex-plusloin-topic {
+  color: var(--plusloin-heading-color);
+}
+
+.prose-quantum .latex-block-plusloin .latex-plusloin-label {
+  font-weight: 600;
+}
+
+.prose-quantum .latex-block-plusloin .latex-plusloin-topic {
+  font-weight: 700;
+}
+
+.prose-quantum .latex-block-remark {
+  color: var(--text-heading);
+}
+
+.prose-quantum .latex-block-remark strong,
+.prose-quantum .latex-block-exemple strong,
+.prose-quantum .latex-block-remark .latex-inline-blue-strong,
+.prose-quantum .latex-block-exemple .latex-inline-blue-strong {
+  color: var(--text-heading);
+  font-weight: 700;
+}
+
+.prose-quantum .latex-block-plusloin .latex-inline-blue-strong {
+  color: var(--plusloin-heading-color);
+  font-weight: 600;
+}
+
+.prose-quantum .latex-block-example strong,
+.prose-quantum .latex-block-example .latex-inline-blue-strong {
+  color: #cbd5e1;
+  font-weight: 700;
+}
+
+/* Collapsible details blocks (indice / solution) */
+.prose-quantum details.latex-block {
+  cursor: default;
+}
+
+.prose-quantum details.latex-block summary {
+  cursor: pointer;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  user-select: none;
+}
+
+.prose-quantum details.latex-block summary::-webkit-details-marker {
+  display: none;
+}
+
+.prose-quantum details.latex-block summary::before {
+  content: "▶";
+  font-size: 0.65rem;
+  transition: transform 0.2s ease;
+  flex-shrink: 0;
+  opacity: 0.7;
+}
+
+.prose-quantum details.latex-block[open] summary::before {
+  transform: rotate(90deg);
+}
+
+.prose-quantum .latex-block-collapsible-body {
+  margin-top: 0.75rem;
+}
+
+/* Exercises : titre seul (pas de cadre), aligné PDF / web */
+.prose-quantum .latex-exo {
+  margin: 1.25rem 0 1rem;
+}
+
+.prose-quantum .latex-exo[id] {
+  scroll-margin-top: 5.5rem;
+}
+
+a.exercise-index-card-link {
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+a.exercise-index-card-link:hover {
+  border-color: var(--accent) !important;
+  box-shadow: 0 0 0 1px var(--accent-border-md);
+}
+
+a.exercise-index-card-link:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.prose-quantum .latex-exo-title {
+  margin: 0 0 0.5rem;
+  font-family: var(--font-crimson), serif;
+  font-size: 1.05rem;
+  line-height: 1.45;
+  color: var(--text-heading);
+}
+
+.prose-quantum .latex-exo-title strong {
+  font-weight: 700;
+}
+
+.prose-quantum .latex-exo-content {
+  margin: 0;
+}
+
+/* Hint / Solution blocks */
+.prose-quantum .latex-block-indice,
+.prose-quantum .latex-block-hint {
+  border-color: #f59e0b55;
+  background: #fef9c314;
+}
+
+.prose-quantum .latex-block-indice strong,
+.prose-quantum .latex-block-hint strong,
+.prose-quantum .latex-block-indice .latex-inline-blue-strong,
+.prose-quantum .latex-block-hint .latex-inline-blue-strong {
+  color: #b45309;
+  font-weight: 700;
+}
+
+.prose-quantum .latex-block-solution {
+  border-color: #22c55e55;
+  background: #f0fdf414;
+}
+
+.prose-quantum .latex-block-solution strong,
+.prose-quantum .latex-block-solution .latex-inline-blue-strong {
+  color: #166534;
+  font-weight: 700;
+}
+
+.prose-quantum .latex-block-indication {
+  border-color: #f59e0b55;
+  background: #fef9c314;
+}
+
+.prose-quantum .latex-block-indication strong,
+.prose-quantum .latex-block-indication .latex-inline-blue-strong {
+  color: #b45309;
+  font-weight: 700;
+}
+
+.prose-quantum .latex-exercise-questions {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  margin-top: 0.5rem;
+}
+
+.prose-quantum .latex-exercise-question {
+  border-left: 3px solid var(--border, #e2e8f0);
+  padding-left: 0.85rem;
+}
+
+.prose-quantum .latex-exercise-q-heading {
+  margin-bottom: 0.35rem;
+}
+
+.prose-quantum .latex-exercise-q-stem {
+  margin-bottom: 0.35rem;
+}
+
+.prose-quantum .latex-block-resume {
+  border-color: #a855f766;
+  background: #a855f71a;
+}
+
+.prose-quantum .latex-block-resume strong,
+.prose-quantum .latex-block-resume .latex-inline-blue-strong {
+  color: #d8b4fe;
+  font-weight: 700;
+}
+
+.prose-quantum .latex-list {
+  margin: 1rem 0 1.25rem 1.5rem;
+  padding-left: 0.5rem;
+  list-style: inherit;
+}
+
+.prose-quantum .latex-list li {
+  margin-bottom: 0.45rem;
+}
+
+/* Math display */
+.katex-display {
+  margin: 1.75rem 0;
+  overflow: visible;
+}
+
+.prose-quantum .latex-equation {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  column-gap: 0.75rem;
+  margin: 1.5rem 0;
+}
+
+.prose-quantum .latex-equation .latex-equation-math .katex-display {
+  margin: 0;
+}
+
+.prose-quantum .latex-equation-number {
+  font-family: var(--font-inter);
+  font-size: 0.9rem;
+  color: var(--text-dim);
+  white-space: nowrap;
+}
+
+@media (max-width: 900px) {
+  .katex-display {
+    overflow-x: auto;
+    overflow-y: hidden;
+  }
+
+  .prose-quantum .latex-block {
+    overflow-x: auto;
+  }
+
+  .prose-quantum .latex-proof {
+    overflow-x: auto;
+  }
+
+  .prose-quantum .latex-equation {
+    grid-template-columns: 1fr;
+    row-gap: 0.25rem;
+  }
+
+  .prose-quantum .latex-equation-number {
+    justify-self: end;
+  }
+}
+
+.katex {
+  font-size: 1.05em;
+  line-height: 1.2;
+  overflow: visible;
+  vertical-align: baseline;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.katex-display > .katex {
+  line-height: 1.3;
+  padding-top: 0;
+  padding-bottom: 0;
+  vertical-align: 0;
+}
+
+/* ─── PDF Viewer ─── */
+.pdf-embed {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+/* ─── Scrollbar ─── */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: var(--bg-secondary); }
+::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+
+[data-theme="dark"] ::-webkit-scrollbar-thumb { background: #2d3748; }
+[data-theme="dark"] ::-webkit-scrollbar-thumb:hover { background: #4a5568; }
+
+/* ─── Selection ─── */
+::selection { background: var(--accent-bg-md); color: var(--text-heading); }
+
+/* ─── Home responsive fixes ─── */
+@media (max-width: 980px) {
+  .home-hero-grid {
+    grid-template-columns: 1fr !important;
+    gap: 1.5rem !important;
+  }
+
+  .home-cover-column {
+    display: none !important;
+  }
+
+  .home-main-title {
+    white-space: normal !important;
+  }
+}
