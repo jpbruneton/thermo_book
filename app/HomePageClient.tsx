@@ -83,14 +83,14 @@ export default function HomePageClient() {
               className="home-main-title animate-fade-up stagger-2 amber-glow"
               style={{
                 fontFamily: "var(--font-playfair)",
-                fontSize: "clamp(2.35rem, 5.2vw, 4.1rem)",
+                fontSize: "clamp(1.85rem, 4vw, 3.2rem)",
                 fontWeight: 900,
-                lineHeight: 1.02,
+                lineHeight: 1.15,
                 letterSpacing: "-0.02em",
                 color: "var(--text-bright)",
                 marginTop: "calc(-1cm)",
                 marginBottom: "1cm",
-                whiteSpace: "nowrap",
+                whiteSpace: "pre-line",
               }}
             >
               {book.title}

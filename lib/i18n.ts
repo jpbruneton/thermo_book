@@ -9,7 +9,7 @@ export type UpdateEntry = {
 export const translations = {
   en: {
     book: {
-      title: "Elementary and Advanced Thermodynamics",
+      title: "Elementary and Advanced\nThermodynamics",
       subtitle: "",
       description:
         "The first part is an undergraduate course with many worked exercises, covering the vocabulary, formalism, and fundamental principles of thermodynamics, the study of gases and phase transitions, and heat engines and thermal cycles. The following parts explore more advanced topics: differential geometry in thermodynamics, Maxwell's demon, endoreversibility, climate physics, thermoelectricity, near-equilibrium thermodynamics (Onsager relations, etc.), and quantum thermodynamics.",
@@ -160,7 +160,7 @@ export const translations = {
   },
   fr: {
     book: {
-      title: "Thermodynamique Élémentaire et Avancée",
+      title: "Thermodynamique\nÉlémentaire et Avancée",
       subtitle: "",
       description:
         "La première partie est un cours de niveau Licence 2, accompagné de nombreux exercices corrigés, couvrant le vocabulaire et le formalisme thermodynamique, les principes fondamentaux, l'étude des gaz et des transitions de phase, ainsi que les machines et cycles thermiques. Les parties suivantes explorent des thèmes plus avancés : géométrie différentielle en thermodynamique, démon de Maxwell, endoréversibilité, climatologie, thermoélectricité, thermodynamique hors équilibre (relations d'Onsager, etc.) et thermodynamique quantique.",
