@@ -75,6 +75,8 @@ function makeLecon(params: {
   topicsEn?: string[];
   readingTime?: string;
   content?: string;
+  partHeadingFr?: string;
+  partHeadingEn?: string;
 }): Theme {
   return {
     slug: params.slug,
@@ -84,6 +86,8 @@ function makeLecon(params: {
     titleEn: params.titleEn,
     descriptionFr: params.descriptionFr,
     descriptionEn: params.descriptionEn,
+    partHeadingFr: params.partHeadingFr,
+    partHeadingEn: params.partHeadingEn,
     lessons: [
       {
         slug: `${params.slug}-lecon`,
@@ -112,6 +116,8 @@ export const themes: Theme[] = [
   makeLecon({
     number: 1,
     slug: "introduction",
+    partHeadingFr: "Partie I — Cours élémentaire",
+    partHeadingEn: "Part I — Elementary Course",
     titleFr: "Introduction et notions fondamentales",
     titleEn: "Introduction and Fundamental Concepts",
     descriptionFr: "Histoire, définitions et notions fondamentales de la thermodynamique.",
@@ -336,6 +342,80 @@ export const themes: Theme[] = [
       "TS diagram",
       "Rankine cycle",
     ],
+  }),
+  makeLecon({
+    number: 9,
+    slug: "geometrie-differentielle",
+    partHeadingFr: "Partie II — Thermodynamique avancée",
+    partHeadingEn: "Part II — Advanced Thermodynamics",
+    titleFr: "Géométrie différentielle en thermodynamique",
+    titleEn: "Differential Geometry in Thermodynamics",
+    descriptionFr: "Structures géométriques sous-jacentes à la thermodynamique.",
+    descriptionEn: "The geometric structures underlying thermodynamics.",
+    topicsFr: ["Géométrie de contact", "Variétés thermodynamiques", "Legendre et géométrie", "Structure symplectique"],
+    topicsEn: ["Contact geometry", "Thermodynamic manifolds", "Legendre and geometry", "Symplectic structure"],
+  }),
+  makeLecon({
+    number: 10,
+    slug: "demon-de-maxwell",
+    titleFr: "Le démon de Maxwell",
+    titleEn: "Maxwell's Demon",
+    descriptionFr: "Information, entropie et les limites de la thermodynamique classique.",
+    descriptionEn: "Information, entropy, and the limits of classical thermodynamics.",
+    topicsFr: ["Démon de Maxwell", "Entropie et information", "Principe de Landauer", "Effacement d'information"],
+    topicsEn: ["Maxwell's demon", "Entropy and information", "Landauer's principle", "Information erasure"],
+  }),
+  makeLecon({
+    number: 11,
+    slug: "endoreversibilite",
+    titleFr: "Cycles endoréversibles",
+    titleEn: "Endoreversible Cycles",
+    descriptionFr: "Rendement à puissance maximale et moteurs thermiques réels.",
+    descriptionEn: "Efficiency at maximum power and real heat engines.",
+    topicsFr: ["Endoréversibilité", "Rendement de Curzon-Ahlborn", "Puissance maximale", "Optimisation thermodynamique"],
+    topicsEn: ["Endoreversibility", "Curzon-Ahlborn efficiency", "Maximum power", "Thermodynamic optimization"],
+  }),
+  makeLecon({
+    number: 12,
+    slug: "thermoelectricite",
+    titleFr: "Thermoélectricité",
+    titleEn: "Thermoelectricity",
+    descriptionFr: "Effets thermoélectriques et conversion d'énergie.",
+    descriptionEn: "Thermoelectric effects and energy conversion.",
+    topicsFr: ["Effet Seebeck", "Effet Peltier", "Effet Thomson", "Figure de mérite"],
+    topicsEn: ["Seebeck effect", "Peltier effect", "Thomson effect", "Figure of merit"],
+  }),
+  makeLecon({
+    number: 13,
+    slug: "thermodynamique-hors-equilibre",
+    titleFr: "Thermodynamique hors équilibre",
+    titleEn: "Non-Equilibrium Thermodynamics",
+    descriptionFr: "Phénomènes irréversibles et relations d'Onsager.",
+    descriptionEn: "Irreversible phenomena and Onsager's relations.",
+    topicsFr: ["Thermodynamique linéaire", "Relations d'Onsager", "Réciprocité", "Production d'entropie", "Phénomènes couplés"],
+    topicsEn: ["Linear thermodynamics", "Onsager relations", "Reciprocity", "Entropy production", "Coupled phenomena"],
+  }),
+  makeLecon({
+    number: 14,
+    slug: "climat",
+    titleFr: "Climatologie et thermodynamique",
+    titleEn: "Climate and Thermodynamics",
+    descriptionFr: "Applications thermodynamiques au système climatique terrestre.",
+    descriptionEn: "Thermodynamic applications to Earth's climate system.",
+    topicsFr: ["Bilan radiatif", "Effet de serre", "Moteur atmosphérique", "Entropie climatique"],
+    topicsEn: ["Radiative balance", "Greenhouse effect", "Atmospheric engine", "Climate entropy"],
+  }),
+  makeLecon({
+    number: 15,
+    slug: "thermodynamique-quantique",
+    partHeadingFr: "Partie III — Thermodynamique quantique",
+    partHeadingEn: "Part III — Quantum Thermodynamics",
+    titleFr: "Thermodynamique quantique",
+    titleEn: "Quantum Thermodynamics",
+    descriptionFr: "Travail, chaleur et entropie à l'échelle quantique.",
+    descriptionEn: "Work, heat, and entropy at the quantum scale.",
+    topicsFr: ["Moteurs quantiques", "Fluctuations quantiques", "Relations de Jarzynski", "Thermodynamique de l'information quantique"],
+    topicsEn: ["Quantum engines", "Quantum fluctuations", "Jarzynski relation", "Quantum information thermodynamics"],
   }),
 ];
 

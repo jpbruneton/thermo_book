@@ -10,8 +10,31 @@ export function ChapterList() {
   return (
     <div style={{ display: "flex", flexDirection: "column", gap: "1px" }}>
       {webThemes.map((theme, i) => (
-        <div
-          key={theme.slug}
+        <div key={theme.slug}>
+          {(lang === "fr" ? theme.partHeadingFr : theme.partHeadingEn) && (
+            <div
+              style={{
+                marginTop: i === 0 ? 0 : "3rem",
+                marginBottom: "1.5rem",
+                paddingBottom: "0.75rem",
+                borderBottom: "1px solid var(--accent-border-md)",
+              }}
+            >
+              <span
+                style={{
+                  fontFamily: "var(--font-inter)",
+                  fontSize: "0.72rem",
+                  textTransform: "uppercase",
+                  letterSpacing: "0.15em",
+                  color: "var(--amber)",
+                  fontWeight: 600,
+                }}
+              >
+                {lang === "fr" ? theme.partHeadingFr : theme.partHeadingEn}
+              </span>
+            </div>
+          )}
+          <div
           style={{
             borderBottom:
               i < webThemes.length - 1
@@ -115,6 +138,7 @@ export function ChapterList() {
               </div>
             </div>
           </Link>
+        </div>
         </div>
       ))}
     </div>
