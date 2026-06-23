@@ -41,14 +41,14 @@ export interface Theme {
 }
 
 export const bookMeta = {
-  title: "Thermodynamique",
+  title: "Thermodynamique Élémentaire et Avancée",
   subtitle: "",
   author: "Jean-Philippe Bruneton",
   affiliation: "Université Paris Cité, France",
   year: "2026",
   description:
-    "Un cours de thermodynamique pour le premier cycle universitaire et au-delà : des principes fondamentaux aux développements avancés.",
-  keywords: ["thermodynamique", "thermodynamics", "entropie", "premier principe", "second principe"],
+    "La première partie est un cours de niveau Licence 2 avec de nombreux exercices corrigés, couvrant les principes fondamentaux, l'étude des gaz et des transitions de phase, et les machines thermiques. Les parties suivantes abordent la géométrie différentielle, le démon de Maxwell, l'endoréversibilité, la thermoélectricité et la thermodynamique quantique.",
+  keywords: ["thermodynamique", "thermodynamics", "entropie", "premier principe", "second principe", "Maxwell", "Onsager", "endoréversibilité"],
 };
 
 /** Title plus optional subtitle, for SEO and Open Graph (no trailing colon if subtitle empty). */
