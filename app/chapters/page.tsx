@@ -10,20 +10,20 @@ export default function ChaptersPage() {
       style={{
         position: "relative",
         zIndex: 1,
-        padding: "calc(5rem - 1cm) 1.5rem 5rem",
+        padding: "calc(3rem - 1cm) 1.5rem 4rem",
       }}
     >
       <div style={{ maxWidth: "800px", margin: "0 auto" }}>
         {/* Header */}
-        <div style={{ marginBottom: "calc(4rem - 1cm)" }}>
+        <div style={{ marginBottom: "1.75rem" }}>
           <h1
             style={{
               fontFamily: "var(--font-playfair)",
-              fontSize: "clamp(2.15rem, 4.6vw, 3.1rem)",
+              fontSize: "clamp(1.7rem, 3.6vw, 2.3rem)",
               fontWeight: 700,
               color: "var(--text-heading)",
               lineHeight: 1.15,
-              marginBottom: "1rem",
+              marginBottom: "0.5rem",
             }}
           >
             {t.chapters.title}

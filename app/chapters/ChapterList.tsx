@@ -52,7 +52,7 @@ export function ChapterList() {
                 gridTemplateColumns: "130px 1fr auto",
                 alignItems: "center",
                 gap: "1.5rem",
-                padding: "0.9rem 0",
+                padding: "0.55rem 0",
                 transition: "background 0.2s",
               }}
               onMouseEnter={(e) => {
@@ -60,13 +60,13 @@ export function ChapterList() {
                   "var(--accent-bg-xs)";
                 (e.currentTarget as HTMLDivElement).style.margin = "0 -1rem";
                 (e.currentTarget as HTMLDivElement).style.padding =
-                  "0.9rem 1rem";
+                  "0.55rem 1rem";
                 (e.currentTarget as HTMLDivElement).style.borderRadius = "6px";
               }}
               onMouseLeave={(e) => {
                 (e.currentTarget as HTMLDivElement).style.background = "";
                 (e.currentTarget as HTMLDivElement).style.margin = "";
-                (e.currentTarget as HTMLDivElement).style.padding = "0.9rem 0";
+                (e.currentTarget as HTMLDivElement).style.padding = "0.55rem 0";
                 (e.currentTarget as HTMLDivElement).style.borderRadius = "";
               }}
             >
