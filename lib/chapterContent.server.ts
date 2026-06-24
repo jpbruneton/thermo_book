@@ -167,6 +167,10 @@ function cleanLatexInline(text: string): string {
     return replacement ?? letter;
   });
   result = result.replace(/\\c\{([cC])\}/g, (_m, letter: string) => (letter === "c" ? "ç" : "Ç"));
+  // \oe / \OE ligatures: render as plain "oe" / "OE" on the web (the control
+  // word absorbs a trailing space, e.g. "c\oe ur" -> "coeur").
+  result = result.replace(/\\oe(?![A-Za-z])\s?/g, "oe");
+  result = result.replace(/\\OE(?![A-Za-z])\s?/g, "OE");
 
   result = replaceInlineCommand(result, "emph", (content) => `<span class="latex-inline-blue-strong">${content}</span>`);
   result = replaceInlineCommand(result, "textit", (content) => `<span class="latex-inline-blue-strong">${content}</span>`);
