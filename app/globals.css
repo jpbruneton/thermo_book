@@ -505,6 +505,7 @@ body::before {
 
 .prose-content .latex-block > .latex-block-body {
   display: block;
+  text-align: justify;
 }
 
 .prose-content details.latex-block summary .latex-block-heading {
@@ -727,6 +728,7 @@ body::before {
 
 .prose-content .latex-block-collapsible-body {
   margin-top: 0.75rem;
+  text-align: justify;
 }
 
 /* Exercises : titre seul (pas de cadre), aligné PDF / web */
@@ -844,6 +846,7 @@ a.exercise-index-card-link:focus-visible {
 
 .prose-content .latex-list li {
   margin-bottom: 0.45rem;
+  text-align: justify;
 }
 
 /* Math display */
