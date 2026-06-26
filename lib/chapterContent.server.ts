@@ -177,6 +177,8 @@ function cleanLatexInline(text: string): string {
   result = replaceInlineCommand(result, "textbf", (content) => `<span class="latex-inline-blue-strong">${content}</span>`);
   result = replaceInlineCommand(result, "uline", (content) => `<em>${content}</em>`);
   result = replaceInlineCommand(result, "underline", (content) => `<span class="latex-uline">${content}</span>`);
+  result = replaceInlineCommand(result, "textsuperscript", (content) => `<sup>${content}</sup>`);
+  result = replaceInlineCommand(result, "textsubscript", (content) => `<sub>${content}</sub>`);
   // Convert TeX opening/closing double quotes to typographic quotes.
   result = result.replace(/``/g, "“").replace(/''/g, "”");
   result = result.replace(/\\ldots/g, "...");
