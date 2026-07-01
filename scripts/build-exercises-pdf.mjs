@@ -1,268 +1,175 @@
 /**
- * Compile tous les exercices d'un thème (ordre = legacy exo.tex puis fiches bibliothèque triées)
- * et écrit le PDF dans public/pdfs/exo_theme{N}_{lang}.pdf
+ * Compile la banque d'exercices en un PDF structuré en 3 parties :
+ *   Partie I   — Énoncés (exercices numérotés avec titre)
+ *   Partie II  — Indications (référence au numéro de l'exercice)
+ *   Partie III — Solutions
  *
- * Usage:
- *   node scripts/build-exercises-pdf.mjs <themeNumber> [fr|en]
- *   node scripts/build-exercises-pdf.mjs <themeNumber> fr --sans-solutions
- *   node scripts/build-exercises-pdf.mjs <themeNumber> fr --both
- *   node scripts/build-exercises-pdf.mjs --all [fr|en]   (tous les thèmes non vides ; fr puis en si pas de 2e arg ;
- *     par défaut : PDF avec corrigés + PDF sans corrigés/indications pour chaque paire thème×langue)
- *   node scripts/build-exercises-pdf.mjs --all --sans-solutions   (uniquement les PDF « sans » pour chaque paire)
+ * Usage :
+ *   node scripts/build-exercises-pdf.mjs [fr|en] [--sans-solutions]
  *
- * MiKTeX ailleurs : définir la commande complète, ex. PowerShell
- *   $env:PDFLATEX = "C:\Program Files\MiKTeX\miktex\bin\x64\pdflatex.exe"
- *
- * Dépendances LaTeX typiques (MiKTeX) : babel, amsmath, mathtools, tcolorbox, xparse, braket…
+ * Sortie : public/pdfs/exercises_fr.pdf  (ou _en, ou _fr_sans_solutions)
  */
 
 import { spawnSync } from "node:child_process";
-import {
-  copyFileSync,
-  existsSync,
-  mkdirSync,
-  readFileSync,
-  readdirSync,
-  writeFileSync,
-} from "node:fs";
-import { join } from "node:path";
+import { copyFileSync, existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
+import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 
-const __dirname = fileURLToPath(new URL(".", import.meta.url));
+const __dirname = dirname(fileURLToPath(import.meta.url));
 const repoRoot = join(__dirname, "..");
 
-const MAX_THEME_SCAN = 24;
+const args = process.argv.slice(2);
+const lang = args.includes("en") ? "en" : "fr";
+const sansSolutions = args.includes("--sans-solutions");
 
-function parseArgs(argv) {
-  const raw = argv.slice(2);
-  const allMode = raw.includes("--all");
-  const flags = new Set(raw.filter((a) => a.startsWith("--") && a !== "--all"));
-  const pos = raw.filter((a) => !a.startsWith("--"));
-  const sansOnly = flags.has("--sans-solutions");
-  const both = flags.has("--both");
+const srcFile = join(repoRoot, "content", "tex", `exercises_${lang}.tex`);
+if (!existsSync(srcFile)) { console.error(`❌ Source not found: ${srcFile}`); process.exit(1); }
 
-  if (allMode) {
-    const which = pos[0];
-    let langs;
-    if (which === "en") langs = ["en"];
-    else if (which === "fr") langs = ["fr"];
-    else langs = ["fr", "en"];
-    return { mode: "all", langs, sansOnly, both };
+// ── Parser ─────────────────────────────────────────────────────────────────
+const source = readFileSync(srcFile, "utf-8");
+
+function readBalancedArg(input, openIdx) {
+  if (input[openIdx] !== "{") return null;
+  let depth = 1, c = openIdx + 1, content = "";
+  while (c < input.length && depth > 0) {
+    const ch = input[c], prev = c > 0 ? input[c - 1] : "";
+    if (ch === "{" && prev !== "\\") { depth++; content += ch; c++; continue; }
+    if (ch === "}" && prev !== "\\") { depth--; if (depth > 0) content += ch; c++; continue; }
+    content += ch; c++;
   }
-
-  const themeNumber = Number.parseInt(pos[0], 10);
-  const lang = pos[1] === "en" ? "en" : "fr";
-  return { mode: "single", themeNumber, lang, sansOnly, both };
+  return depth !== 0 ? null : { content, endIndex: c };
 }
 
-function texRoot() {
-  return join(repoRoot, "content", "tex");
-}
-
-function libraryDir(lang) {
-  return join(texRoot(), lang === "fr" ? "exercises_library_fr" : "exercises_library_en");
-}
-
-function listExerciseLibraryFiles(lang) {
-  const dir = libraryDir(lang);
-  if (!existsSync(dir)) return [];
-  return readdirSync(dir)
-    .filter((name) => /^exercices.*\.tex$/i.test(name))
-    .sort((a, b) => a.localeCompare(b, undefined, { numeric: true, sensitivity: "base" }));
-}
-
-function parseThemeNumberFromSource(source) {
-  const m = source.match(/\\theme\s*\{([^}]*)\}/);
-  if (!m) return null;
-  const n = Number.parseInt(m[1].replace(/\s+/g, ""), 10);
-  if (!Number.isFinite(n) || n < 1) return null;
-  return n;
-}
-
-function combineThemeExerciseSources(themeNumber, lang) {
-  const parts = [];
-  const legacyPath = join(texRoot(), `theme${themeNumber}_${lang}`, "exo.tex");
-  if (existsSync(legacyPath)) {
-    parts.push(readFileSync(legacyPath, "utf8"));
+function extractEnv(src, env, from = 0) {
+  const bTag = `\\begin{${env}}`, eTag = `\\end{${env}}`;
+  const bStart = src.indexOf(bTag, from);
+  if (bStart === -1) return null;
+  let depth = 1, c = bStart + bTag.length;
+  while (c < src.length && depth > 0) {
+    const b = src.indexOf(bTag, c), e = src.indexOf(eTag, c);
+    if (e === -1) return null;
+    if (b !== -1 && b < e) { depth++; c = b + bTag.length; }
+    else { depth--; if (depth === 0) return { content: src.slice(bStart + bTag.length, e).trim(), start: bStart, end: e + eTag.length }; c = e + eTag.length; }
   }
-  for (const name of listExerciseLibraryFiles(lang)) {
-    const full = join(libraryDir(lang), name);
-    const source = readFileSync(full, "utf8");
-    if (parseThemeNumberFromSource(source) === themeNumber) {
-      parts.push(source);
-    }
-  }
-  return parts.join("\n\n");
+  return null;
 }
 
-function stripEnvironmentBlocks(source, envName) {
-  const re = new RegExp(`\\\\begin\\{${envName}\\}[\\s\\S]*?\\\\end\\{${envName}\\}`, "g");
-  return source.replace(re, "\n");
+const exercises = [];
+const beginTag = "\\begin{exo}", endTag = "\\end{exo}";
+let cursor = 0, counter = 1;
+
+while (cursor < source.length) {
+  const bStart = source.indexOf(beginTag, cursor);
+  if (bStart === -1) break;
+  const eEnd = source.indexOf(endTag, bStart);
+  if (eEnd === -1) break;
+  const raw = source.slice(bStart, eEnd + endTag.length);
+
+  let c = bStart + beginTag.length, title = "", id = `exo-${counter}`;
+  while (c < raw.length && /[ \t]/.test(raw[c])) c++;
+  if (raw[c] === "[") { const cl = raw.indexOf("]", c + 1); if (cl !== -1) { title = raw.slice(c + 1, cl).trim(); c = cl + 1; } }
+  while (c < raw.length && /[ \t]/.test(raw[c])) c++;
+  if (raw[c] === "{") { const bl = readBalancedArg(raw, c); if (bl?.content.trim()) { id = bl.content.trim(); c = bl.endIndex; } }
+
+  const body = raw.slice(c, raw.lastIndexOf(endTag)).trim();
+  const indicationBlock = extractEnv(body, "indication");
+  const solutionBlock = extractEnv(body, "solution");
+
+  let enonce = body;
+  enonce = enonce.replace(/\\lecon\{[^}]*\}/g, "").replace(/\\keywords\{[^}]*\}/g, "");
+  const ind2 = extractEnv(enonce, "indication");
+  if (ind2) enonce = enonce.slice(0, ind2.start) + enonce.slice(ind2.end);
+  const sol2 = extractEnv(enonce, "solution");
+  if (sol2) enonce = enonce.slice(0, sol2.start) + enonce.slice(sol2.end);
+
+  exercises.push({ number: counter, id, title, enonce: enonce.trim(), indication: indicationBlock?.content ?? null, solution: solutionBlock?.content ?? null });
+  counter++;
+  cursor = eEnd + endTag.length;
 }
 
-/** Environnements à retirer pour les PDF « sans corrigés » : corrigés + aides (indices / indications). */
-const STRIP_FOR_STATEMENTS_ONLY = ["solution", "indice", "indication", "hint"];
+console.log(`Parsed ${exercises.length} exercises from ${srcFile}`);
 
-function stripSolutionsAndHints(source) {
-  let out = source;
-  let prev;
-  do {
-    prev = out;
-    for (const env of STRIP_FOR_STATEMENTS_ONLY) {
-      out = stripEnvironmentBlocks(out, env);
-    }
-  } while (out !== prev);
-  return out.replace(/\n{3,}/g, "\n\n").trim();
-}
+// ── Assemble LaTeX ─────────────────────────────────────────────────────────
+const isFr = lang === "fr";
+const L = {
+  part1: isFr ? "Énoncés" : "Exercises",
+  part2: isFr ? "Indications" : "Hints",
+  part3: isFr ? "Solutions" : "Solutions",
+  exo: isFr ? "Exercice" : "Exercise",
+  title: isFr ? "Exercices de thermodynamique" : "Thermodynamics — Exercises",
+  babel: isFr ? "french" : "english",
+  noHints: isFr ? "Aucune indication pour cette série." : "No hints for this set.",
+  noSols: isFr ? "Aucune solution disponible." : "No solutions available.",
+};
 
-function resolvePdflatex() {
-  const fromEnv = process.env.PDFLATEX || process.env.MIKTEX_PDFLATEX;
-  if (fromEnv && fromEnv.length > 0) return fromEnv;
-  return "pdflatex";
-}
+const part1Tex = exercises.map((e) => {
+  const h = e.title ? `\\subsection*{${L.exo}~${e.number} — ${e.title}}` : `\\subsection*{${L.exo}~${e.number}}`;
+  return `${h}\n${e.enonce}`;
+}).join("\n\n\\bigskip\n\n");
 
-function buildWrapperTex(themeNumber, lang, chapterTitle) {
-  const isFr = lang === "fr";
-  const babelOpt = isFr ? "french" : "english";
-  const headerFile = isFr ? "content/tex/header_fr.tex" : "content/tex/header_en.tex";
-  return `% Auto-generated by scripts/build-exercises-pdf.mjs — do not edit by hand
-\\documentclass[11pt,a4paper]{book}
+const exosWithHints = exercises.filter((e) => e.indication);
+const part2Tex = exosWithHints.length === 0 ? L.noHints : exosWithHints.map((e) => {
+  const h = e.title ? `\\textbf{${L.exo}~${e.number} — ${e.title}}` : `\\textbf{${L.exo}~${e.number}}`;
+  return `${h} : ${e.indication}`;
+}).join("\n\n");
+
+const exosWithSols = exercises.filter((e) => e.solution);
+const part3Tex = sansSolutions ? null : (exosWithSols.length === 0 ? L.noSols : exosWithSols.map((e) => {
+  const h = e.title ? `\\subsection*{${L.exo}~${e.number} — ${e.title}}` : `\\subsection*{${L.exo}~${e.number}}`;
+  return `${h}\n${e.solution}`;
+}).join("\n\n\\bigskip\n\n"));
+
+const headerFile = join(repoRoot, "content", "tex", `header_${lang}.tex`);
+const header = existsSync(headerFile) ? readFileSync(headerFile, "utf-8") : "";
+
+const tex = `\\documentclass[11pt,a4paper]{article}
 \\usepackage[utf8]{inputenc}
 \\usepackage[T1]{fontenc}
-\\usepackage[${babelOpt}]{babel}
+\\usepackage[${L.babel}]{babel}
 \\usepackage{amsmath,amssymb,amsfonts}
-\\usepackage{braket}
-\\newcommand{\\R}{\\mathbb{R}}
-\\newcommand{\\C}{\\mathbb{C}}
-\\newcommand{\\N}{\\mathbb{N}}
 \\usepackage{geometry}
 \\geometry{margin=2.5cm}
+\\usepackage{enumitem}
+\\setlength{\\parskip}{0.4em}
 
-\\input{${headerFile.replace(/\\/g, "/")}}
+${header}
 
 \\begin{document}
 
-\\chapter*{${chapterTitle}}
-\\addcontentsline{toc}{chapter}{${chapterTitle}}
+\\begin{center}
+  {\\Large\\bfseries ${L.title}}
+\\end{center}
+\\vspace{1.5em}
 
-\\input{scripts/latex-tmp/body_frag.tex}
+\\section*{Partie I — ${L.part1}}
+${part1Tex}
+
+\\newpage
+\\section*{Partie II — ${L.part2}}
+${part2Tex}
+
+${part3Tex !== null ? `\\newpage\n\\section*{Partie III — ${L.part3}}\n${part3Tex}` : ""}
 
 \\end{document}
 `;
+
+// ── Compile ────────────────────────────────────────────────────────────────
+const tmpDir = join(repoRoot, "scripts", "latex-tmp");
+mkdirSync(tmpDir, { recursive: true });
+const suffix = sansSolutions ? "_sans_solutions" : "";
+const texOut = join(tmpDir, `exercises_${lang}${suffix}.tex`);
+writeFileSync(texOut, tex, "utf-8");
+console.log(`Wrote ${texOut}`);
+
+const pdflatex = process.env.PDFLATEX ?? "pdflatex";
+for (let pass = 1; pass <= 2; pass++) {
+  const r = spawnSync(pdflatex, ["-interaction=nonstopmode", "-output-directory", tmpDir, texOut], { cwd: repoRoot, encoding: "utf-8" });
+  if (r.status !== 0) { console.error(`pdflatex pass ${pass} failed:\n${(r.stdout ?? "").slice(-2000)}`); process.exit(1); }
+  console.log(`  pdflatex pass ${pass} OK`);
 }
 
-function runPdflatex(jobname, wrapperPath, latexOutDir) {
-  mkdirSync(latexOutDir, { recursive: true });
-  const pdflatex = resolvePdflatex();
-  const commonArgs = [
-    "-interaction=nonstopmode",
-    "-halt-on-error",
-    `-output-directory=${latexOutDir}`,
-    `-jobname=${jobname}`,
-    wrapperPath,
-  ];
-  const r1 = spawnSync(pdflatex, commonArgs, { cwd: repoRoot, stdio: "inherit", env: process.env });
-  if (r1.status !== 0) {
-    console.error(`Échec de ${pdflatex} (code ${r1.status ?? r1.error})`);
-    process.exit(1);
-  }
-}
-
-/**
- * pdflatex écrit d'abord dans latex-tmp pour éviter l'erreur Windows
- * « I can't write on file `exo_theme…pdf' » quand le PDF dans public/pdfs est ouvert
- * (Cursor, navigateur, lecteur PDF). La copie finale peut encore échouer si le fichier
- * reste verrouillé : il faut alors fermer le PDF cible.
- */
-function publishPdf(jobname, latexOutDir, publicPdfDir) {
-  const src = join(latexOutDir, `${jobname}.pdf`);
-  const dest = join(publicPdfDir, `${jobname}.pdf`);
-  mkdirSync(publicPdfDir, { recursive: true });
-  try {
-    copyFileSync(src, dest);
-  } catch (err) {
-    const msg = err instanceof Error ? err.message : String(err);
-    console.error(
-      `Impossible d'écrire ${dest}. Fermez ce PDF (aperçu dans l'éditeur, navigateur ou lecteur), puis relancez.`,
-    );
-    console.error(msg);
-    process.exit(1);
-  }
-}
-
-function buildThemeLanguage(themeNumber, lang, sansOnly, bothPdf, tmpDir, publicPdfDir) {
-  const merged = combineThemeExerciseSources(themeNumber, lang);
-  if (!merged.trim()) {
-    return false;
-  }
-
-  const chapterTitle =
-    lang === "fr" ? `Exercices — Thème ${themeNumber}` : `Exercises — Theme ${themeNumber}`;
-
-  const buildOne = (bodyText, jobnameSuffix) => {
-    writeFileSync(join(tmpDir, "body_frag.tex"), bodyText, "utf8");
-    const wrapperPath = join(tmpDir, `wrapper_theme${themeNumber}_${lang}${jobnameSuffix}.tex`);
-    writeFileSync(wrapperPath, buildWrapperTex(themeNumber, lang, chapterTitle), "utf8");
-    const jobname = `exo_theme${themeNumber}_${lang}${jobnameSuffix}`;
-    console.log(`Compilation (${jobname}) dans scripts/latex-tmp …`);
-    runPdflatex(jobname, wrapperPath, tmpDir);
-    console.log(`Copie → public/pdfs/${jobname}.pdf …`);
-    publishPdf(jobname, tmpDir, publicPdfDir);
-    console.log(`OK: public/pdfs/${jobname}.pdf`);
-  };
-
-  if (sansOnly) {
-    buildOne(stripSolutionsAndHints(merged), "_sans_solutions");
-    return true;
-  }
-
-  buildOne(merged, "");
-
-  if (bothPdf) {
-    buildOne(stripSolutionsAndHints(merged), "_sans_solutions");
-  }
-  return true;
-}
-
-function main() {
-  const parsed = parseArgs(process.argv);
-  const tmpDir = join(repoRoot, "scripts", "latex-tmp");
-  mkdirSync(tmpDir, { recursive: true });
-  const publicPdfDir = join(repoRoot, "public", "pdfs");
-
-  if (parsed.mode === "all") {
-    let built = 0;
-    const bothPdf = parsed.sansOnly ? false : true;
-    for (let themeNumber = 1; themeNumber <= MAX_THEME_SCAN; themeNumber += 1) {
-      for (const lang of parsed.langs) {
-        if (buildThemeLanguage(themeNumber, lang, parsed.sansOnly, bothPdf, tmpDir, publicPdfDir)) {
-          built += 1;
-        }
-      }
-    }
-    if (built === 0) {
-      console.error("Aucun thème avec du contenu TeX trouvé pour les langues demandées.");
-      process.exit(1);
-    }
-    console.log(`Terminé : ${built} compilation(s).`);
-    return;
-  }
-
-  const { themeNumber, lang, sansOnly, both: bothPdf } = parsed;
-  if (!Number.isFinite(themeNumber) || themeNumber < 1) {
-    console.error(
-      "Usage: node scripts/build-exercises-pdf.mjs <themeNumber> [fr|en] [--sans-solutions | --both]",
-    );
-    console.error(
-      "   ou: node scripts/build-exercises-pdf.mjs --all [fr|en] [--sans-solutions]  (--all → avec + sans corrigés par défaut)",
-    );
-    process.exit(1);
-  }
-
-  if (!buildThemeLanguage(themeNumber, lang, sansOnly, bothPdf, tmpDir, publicPdfDir)) {
-    console.error(`Aucun fichier TeX trouvé pour le thème ${themeNumber} (${lang}).`);
-    process.exit(1);
-  }
-}
-
-main();
+const pdfSrc = join(tmpDir, `exercises_${lang}${suffix}.pdf`);
+const pdfDest = join(repoRoot, "public", "pdfs", `exercises_${lang}${suffix}.pdf`);
+mkdirSync(dirname(pdfDest), { recursive: true });
+copyFileSync(pdfSrc, pdfDest);
+console.log(`✓ PDF written to ${pdfDest}`);
