@@ -27,7 +27,7 @@ export function ExercisesClient({ cardsFr, cardsEn }: Props) {
         kwLabel: "Mots-clés",
         leconPrefix: "Leçon",
         exosOnLecon: "Exercices sur la leçon",
-        back: "← Retour aux leçons",
+        back: "← Retour aux exercices",
         exoCount: (n: number) => `${n} exercice${n > 1 ? "s" : ""}`,
       }
     : {
@@ -40,7 +40,7 @@ export function ExercisesClient({ cardsFr, cardsEn }: Props) {
         kwLabel: "Keywords",
         leconPrefix: "Lesson",
         exosOnLecon: "Exercises on lesson",
-        back: "← Back to lessons",
+        back: "← Back to exercises",
         exoCount: (n: number) => `${n} exercise${n > 1 ? "s" : ""}`,
       };
 
