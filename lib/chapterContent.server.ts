@@ -993,6 +993,7 @@ function normalizeLatexBlocks(
     { env: "example", title: "Example" },
     { env: "resume", title: isEnglish ? "Summary" : "Résumé" },
     { env: "important", title: "Important" },
+    { env: "aretenir", title: isEnglish ? "Key point" : "À retenir" },
     { env: "exo", title: isEnglish ? "Exercise" : "Exercice" },
     { env: "indice", title: isEnglish ? "Hint" : "Indice", collapsible: true },
     { env: "indication", title: isEnglish ? "Hint" : "Indication", collapsible: true },
