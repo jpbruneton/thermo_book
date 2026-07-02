@@ -611,18 +611,18 @@ body::before {
 }
 
 .prose-content .latex-block-aretenir {
-  border-color: #3b82f666;
-  background: #eff6ff;
+  border-color: #ef444466;
+  background: #ef44441a;
 }
 
 .prose-content .latex-block-aretenir .latex-block-heading {
-  background: #dbeafe;
-  border-bottom: 1px solid #3b82f633;
+  background: #fee2e2;
+  border-bottom: 1px solid #ef444433;
 }
 
 .prose-content .latex-block-aretenir strong,
 .prose-content .latex-block-aretenir .latex-inline-blue-strong {
-  color: #1d4ed8;
+  color: #b91c1c;
   font-weight: 700;
 }
 
