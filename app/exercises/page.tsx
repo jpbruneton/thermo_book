@@ -12,6 +12,9 @@ export interface ExerciseCard {
   leconTitleFr: string;
   leconTitleEn: string;
   keywords: string[];
+  enonceTex: string;
+  indicationTex: string | null;
+  solutionTex: string | null;
 }
 
 function buildCards(lang: "fr" | "en"): ExerciseCard[] {
@@ -29,6 +32,9 @@ function buildCards(lang: "fr" | "en"): ExerciseCard[] {
     leconTitleFr: lessonTitle(e.lecon).fr,
     leconTitleEn: lessonTitle(e.lecon).en,
     keywords: e.keywords,
+    enonceTex: e.enonceTex,
+    indicationTex: e.indicationTex,
+    solutionTex: e.solutionTex,
   }));
 }
 

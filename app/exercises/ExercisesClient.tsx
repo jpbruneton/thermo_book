@@ -3,6 +3,7 @@
 import { useMemo, useState } from "react";
 import { useLang } from "@/app/context/LangContext";
 import { exerciseMatchesQuery } from "@/lib/exerciseIndexUtils";
+import { processLatex } from "@/lib/latex";
 import type { ExerciseCard } from "./page";
 
 interface Props {
@@ -251,33 +252,83 @@ function SelectedLeconView({
   );
 }
 
-function ExoCard({ card, exoPrefix, kwLabel, leconPrefix, lang }: {
+function ExoCard({ card, exoPrefix, kwLabel, lang }: {
   card: ExerciseCard;
   exoPrefix: string;
   kwLabel: string;
   leconPrefix: string;
   lang: string;
 }) {
-  const leconTitle = lang === "fr" ? card.leconTitleFr : card.leconTitleEn;
-  void leconTitle;
+  const [open, setOpen] = useState(false);
+
+  const enonceHtml = useMemo(() => open && card.enonceTex ? processLatex(card.enonceTex) : "", [open, card.enonceTex]);
+  const solutionHtml = useMemo(() => open && card.solutionTex ? processLatex(card.solutionTex) : "", [open, card.solutionTex]);
+  const indicationHtml = useMemo(() => open && card.indicationTex ? processLatex(card.indicationTex) : "", [open, card.indicationTex]);
+
+  const solutionLabel = lang === "fr" ? "Correction" : "Solution";
+  const indicationLabel = lang === "fr" ? "Indication" : "Hint";
+
   return (
     <div
       id={card.id}
-      style={{ border: "1px solid var(--border)", borderRadius: "6px", padding: "0.85rem 1.1rem", background: "var(--bg-primary)" }}
+      style={{ border: "1px solid var(--border)", borderRadius: "8px", background: "var(--bg-primary)", overflow: "hidden" }}
     >
-      <div style={{ fontFamily: "var(--font-crimson)", fontSize: "0.97rem", color: "var(--text-heading)", lineHeight: 1.5 }}>
-        <span style={{ color: "var(--amber)", fontWeight: 600 }}>{exoPrefix} {card.number}</span>
-        {card.titleHtml ? (
-          <>
-            <span style={{ color: "var(--text-secondary)", margin: "0 0.35rem" }}>—</span>
-            <span style={{ fontWeight: 600 }} dangerouslySetInnerHTML={{ __html: card.titleHtml }} />
-          </>
-        ) : null}
-      </div>
-      {card.keywords.length > 0 && (
-        <div style={{ fontFamily: "var(--font-crimson)", fontSize: "0.85rem", color: "var(--text-secondary)", marginTop: "0.35rem" }}>
-          <span style={{ fontWeight: 600 }}>{kwLabel} : </span>
-          {card.keywords.join(" · ")}
+      <button
+        onClick={() => setOpen((o) => !o)}
+        style={{
+          width: "100%",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "space-between",
+          padding: "0.85rem 1.1rem",
+          background: "none",
+          border: "none",
+          cursor: "pointer",
+          textAlign: "left",
+          gap: "1rem",
+        }}
+      >
+        <div>
+          <div style={{ fontFamily: "var(--font-crimson)", fontSize: "0.97rem", color: "var(--text-heading)", lineHeight: 1.5 }}>
+            <span style={{ color: "var(--amber)", fontWeight: 600 }}>{exoPrefix} {card.number}</span>
+            {card.titleHtml ? (
+              <>
+                <span style={{ color: "var(--text-secondary)", margin: "0 0.35rem" }}>—</span>
+                <span style={{ fontWeight: 600 }} dangerouslySetInnerHTML={{ __html: card.titleHtml }} />
+              </>
+            ) : null}
+          </div>
+          {card.keywords.length > 0 && (
+            <div style={{ fontFamily: "var(--font-crimson)", fontSize: "0.85rem", color: "var(--text-secondary)", marginTop: "0.25rem" }}>
+              <span style={{ fontWeight: 600 }}>{kwLabel} : </span>
+              {card.keywords.join(" · ")}
+            </div>
+          )}
+        </div>
+        <span style={{ color: "var(--amber)", fontSize: "1rem", flexShrink: 0 }}>{open ? "▲" : "▼"}</span>
+      </button>
+
+      {open && (
+        <div style={{ padding: "0 1.1rem 1.25rem", borderTop: "1px solid var(--border)" }}>
+          {enonceHtml && (
+            <div className="prose-content" style={{ marginTop: "1rem" }} dangerouslySetInnerHTML={{ __html: enonceHtml }} />
+          )}
+          {indicationHtml && (
+            <div style={{ marginTop: "1.25rem" }}>
+              <div style={{ fontFamily: "var(--font-inter)", fontSize: "0.72rem", letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--text-secondary)", fontWeight: 600, marginBottom: "0.5rem" }}>
+                {indicationLabel}
+              </div>
+              <div className="prose-content" dangerouslySetInnerHTML={{ __html: indicationHtml }} />
+            </div>
+          )}
+          {solutionHtml && (
+            <div style={{ marginTop: "1.25rem" }}>
+              <div style={{ fontFamily: "var(--font-inter)", fontSize: "0.72rem", letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--amber)", fontWeight: 600, marginBottom: "0.5rem" }}>
+                {solutionLabel}
+              </div>
+              <div className="prose-content" dangerouslySetInnerHTML={{ __html: solutionHtml }} />
+            </div>
+          )}
         </div>
       )}
     </div>
