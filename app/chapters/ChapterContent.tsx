@@ -284,71 +284,43 @@ export function ChapterContent({ lesson, hideHeader = false }: Props) {
           >
             {lang === "fr" ? lesson.descriptionFr : lesson.descriptionEn}
           </p>
-          <div style={{ display: "flex", flexWrap: "wrap", gap: "0.5rem", marginBottom: "0.5rem" }}>
-            {(lang === "fr" ? lesson.topicsFr : lesson.topicsEn).map((topic) => (
-              <Link
-                key={topic}
-                href={`/glossary?q=${encodeURIComponent(topic)}`}
-                style={{
-                  background: "var(--accent-bg-sm)",
-                  border: "1px solid var(--accent-border-sm)",
-                  borderRadius: "100px",
-                  padding: "0.2rem 0.75rem",
-                  fontFamily: "var(--font-inter)",
-                  fontSize: "0.74rem",
-                  color: "var(--amber)",
-                  textDecoration: "none",
-                }}
-              >
-                {topic}
-              </Link>
-            ))}
-          </div>
         </div>
       )}
 
-      {/* Tab switcher */}
-      <div
-        style={{
-          maxWidth: "800px",
-          margin: "0 auto",
-          padding: "1.5rem 1.5rem 0",
-          display: "flex",
-          gap: "0",
-          borderBottom: "1px solid var(--border-subtle)",
-        }}
-      >
-        {(["web"] as const).map((tabKey) => (
-          <button
-            key={tabKey}
-            onClick={() => setTab(tabKey)}
-            style={{
-              background: "none",
-              border: "none",
-              padding: "0.75rem 1.25rem",
-              fontFamily: "var(--font-inter)",
-              fontSize: "0.82rem",
-              fontWeight: 500,
-              letterSpacing: "0.05em",
-              textTransform: "uppercase",
-              color: tab === tabKey ? "var(--amber)" : "var(--text-dim)",
-              cursor: "pointer",
-              borderBottom:
-                tab === tabKey
-                  ? "2px solid var(--amber)"
-                  : "2px solid transparent",
-              marginBottom: "-1px",
-              transition: "color 0.2s",
-            }}
-          >
-            {tabKey === "web"
-              ? t.chapter.tabOnline
-              : tabKey === "refs"
-                ? t.chapter.tabReferences
-                : t.chapter.tabPdf}
-          </button>
-        ))}
-      </div>
+      {/* Keywords bubbles — always visible */}
+      {(lang === "fr" ? lesson.topicsFr : lesson.topicsEn).length > 0 && (
+        <div
+          style={{
+            maxWidth: "800px",
+            margin: "0 auto",
+            padding: hideHeader ? "2rem 1.5rem 0" : "0.75rem 1.5rem 0",
+            display: "flex",
+            flexWrap: "wrap",
+            gap: "0.5rem",
+          }}
+        >
+          {(lang === "fr" ? lesson.topicsFr : lesson.topicsEn).map((topic) => (
+            <Link
+              key={topic}
+              href={`/glossary?q=${encodeURIComponent(topic)}`}
+              style={{
+                background: "var(--accent-bg-sm)",
+                border: "1px solid var(--accent-border-sm)",
+                borderRadius: "100px",
+                padding: "0.2rem 0.75rem",
+                fontFamily: "var(--font-inter)",
+                fontSize: "0.74rem",
+                color: "var(--amber)",
+                textDecoration: "none",
+              }}
+            >
+              {topic}
+            </Link>
+          ))}
+        </div>
+      )}
+
+      <div style={{ maxWidth: "800px", margin: "0 auto", padding: "1.5rem 1.5rem 0", borderBottom: "1px solid var(--border-subtle)" }} />
 
       {/* ─── Web Content ─── */}
       {tab === "web" && (
