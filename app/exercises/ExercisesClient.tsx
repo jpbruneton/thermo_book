@@ -188,7 +188,7 @@ function LessonCard({
         alignItems: "flex-start",
         padding: "1.6rem 1.4rem",
         border: `1px solid ${hovered ? "var(--amber)" : "var(--border)"}`,
-        borderRadius: "10px",
+        borderRadius: "3px",
         background: hovered ? "var(--bg-secondary)" : "var(--bg-primary)",
         cursor: "pointer",
         textAlign: "left",
@@ -272,7 +272,7 @@ function ExoCard({ card, exoPrefix, kwLabel, lang }: {
   return (
     <div
       id={card.id}
-      style={{ border: "1px solid var(--border)", borderRadius: "8px", background: "var(--bg-primary)", overflow: "hidden" }}
+      style={{ border: "1px solid var(--border)", borderRadius: "3px", background: "var(--bg-primary)", overflow: "hidden" }}
     >
       <button
         onClick={() => setOpen((o) => !o)}

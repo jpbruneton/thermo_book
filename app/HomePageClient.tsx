@@ -149,12 +149,13 @@ export default function HomePageClient() {
                 style={{
                   background: "var(--amber)",
                   color: "var(--bg-primary)",
-                  padding: "0.85rem 2rem",
-                  borderRadius: "6px",
+                  padding: "0.9rem 2.2rem",
+                  borderRadius: "2px",
                   fontFamily: "var(--font-inter)",
-                  fontSize: "0.875rem",
+                  fontSize: "0.8rem",
                   fontWeight: 600,
-                  letterSpacing: "0.03em",
+                  letterSpacing: "0.1em",
+                  textTransform: "uppercase",
                   textDecoration: "none",
                   display: "inline-block",
                   transition: "opacity 0.2s",
@@ -167,11 +168,13 @@ export default function HomePageClient() {
                 style={{
                   border: "1px solid var(--accent-border-lg)",
                   color: "var(--amber)",
-                  padding: "0.85rem 2rem",
-                  borderRadius: "6px",
+                  padding: "0.9rem 2.2rem",
+                  borderRadius: "2px",
                   fontFamily: "var(--font-inter)",
-                  fontSize: "0.875rem",
+                  fontSize: "0.8rem",
                   fontWeight: 500,
+                  letterSpacing: "0.1em",
+                  textTransform: "uppercase",
                   textDecoration: "none",
                   display: "inline-block",
                 }}
@@ -221,11 +224,11 @@ export default function HomePageClient() {
                 marginTop: "0.5cm",
                 width: "100%",
                 aspectRatio: "3/4",
-                borderRadius: "8px",
+                borderRadius: "3px",
                 overflow: "hidden",
                 background: "var(--bg-card)",
                 boxShadow:
-                  "0 40px 100px rgba(0,0,0,0.3), 0 0 0 1px var(--accent-border-md), inset 0 0 60px var(--accent-glow)",
+                  "0 40px 100px rgba(40, 20, 5, 0.28), 0 0 0 1px var(--accent-border-md), inset 0 0 60px var(--accent-glow)",
               }}
             >
               <Image

@@ -1,110 +1,119 @@
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400;1,600&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&family=JetBrains+Mono:wght@400;500&family=Inter:wght@300;400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;0,9..144,900;1,9..144,400;1,9..144,600&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&family=JetBrains+Mono:wght@400;500&family=Inter:wght@300;400;500;600&display=swap');
 @import url('https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* ─── Light mode (default) ─── */
+/* ─── Light mode (default) — warm paper & ember ─── */
 :root {
-  --font-playfair: 'Playfair Display', serif;
+  --font-playfair: 'Fraunces', serif;
   --font-crimson: 'Crimson Pro', serif;
   --font-jetbrains: 'JetBrains Mono', monospace;
   --font-inter: 'Inter', sans-serif;
 
-  /* Backgrounds */
-  --bg-primary: #f8fafc;
-  --bg-secondary: #f1f5f9;
-  --bg-card: #ffffff;
-  --bg-card-hover: #e2e8f0;
-  --cover-bg: linear-gradient(145deg, #dbeafe 0%, #eff6ff 40%, #e0f2fe 100%);
+  /* Backgrounds — warm paper instead of cold slate */
+  --bg-primary: #faf7f1;
+  --bg-secondary: #f3eee4;
+  --bg-card: #fffdf8;
+  --bg-card-hover: #f0e9dc;
+  --cover-bg: linear-gradient(145deg, #f6e8d8 0%, #faf3e8 40%, #f3e4d0 100%);
 
-  /* Text */
-  --text-primary: #334155;
-  --text-heading: #0f172a;
-  --text-bright: #0f172a;
-  --text-secondary: #475569;
-  --text-dim: #94a3b8;
+  /* Text — warm ink */
+  --text-primary: #3b342b;
+  --text-heading: #1c1712;
+  --text-bright: #1c1712;
+  --text-secondary: #5c5346;
+  --text-dim: #a29684;
   /* Footnotes: slightly darker than --text-dim for readability */
-  --text-footnote: #64748b;
+  --text-footnote: #7d7261;
 
-  /* Accent → blue */
-  --amber: #2563eb;
-  --amber-soft: #3b82f6;
+  /* Accent → ember / vermilion (heat!) */
+  --amber: #b03a1a;
+  --amber-soft: #cf5a2e;
 
   /* Accent backgrounds / borders — CSS-variable-friendly */
-  --accent-bg-xs:     rgba(37, 99, 235, 0.03);
-  --accent-bg-sm:     rgba(37, 99, 235, 0.07);
-  --accent-bg-md:     rgba(37, 99, 235, 0.10);
-  --accent-border-sm: rgba(37, 99, 235, 0.12);
-  --accent-border-md: rgba(37, 99, 235, 0.20);
-  --accent-border-lg: rgba(37, 99, 235, 0.30);
-  --accent-border-hover: rgba(37, 99, 235, 0.35);
-  --accent-glow:      rgba(37, 99, 235, 0.06);
-  --accent-shadow:    rgba(37, 99, 235, 0.05);
+  --accent-bg-xs:     rgba(176, 58, 26, 0.03);
+  --accent-bg-sm:     rgba(176, 58, 26, 0.07);
+  --accent-bg-md:     rgba(176, 58, 26, 0.10);
+  --accent-border-sm: rgba(176, 58, 26, 0.12);
+  --accent-border-md: rgba(176, 58, 26, 0.20);
+  --accent-border-lg: rgba(176, 58, 26, 0.30);
+  --accent-border-hover: rgba(176, 58, 26, 0.35);
+  --accent-glow:      rgba(176, 58, 26, 0.06);
+  --accent-shadow:    rgba(176, 58, 26, 0.05);
 
   /* Borders */
-  --border: rgba(37, 99, 235, 0.15);
-  --border-bright: rgba(37, 99, 235, 0.4);
-  --border-subtle: rgba(0, 0, 0, 0.07);
+  --border: rgba(176, 58, 26, 0.15);
+  --border-bright: rgba(176, 58, 26, 0.4);
+  --border-subtle: rgba(60, 40, 20, 0.08);
 
   /* Nav */
-  --nav-bg: rgba(248, 250, 252, 0.92);
+  --nav-bg: rgba(250, 247, 241, 0.92);
 
   /* Glow */
-  --glow-text: rgba(37, 99, 235, 0.25);
-  --glow-text-wide: rgba(37, 99, 235, 0.08);
-  --glow-radial: rgba(37, 99, 235, 0.06);
+  --glow-text: rgba(176, 58, 26, 0.18);
+  --glow-text-wide: rgba(176, 58, 26, 0.06);
+  --glow-radial: rgba(176, 58, 26, 0.05);
 }
 
-/* ─── Dark mode overrides ─── */
+/* ─── Dark mode overrides — warm charcoal & ember ─── */
 [data-theme="dark"] {
   /* Backgrounds */
-  --bg-primary: #0a0b0f;
-  --bg-secondary: #0d1117;
-  --bg-card: #111827;
-  --bg-card-hover: #1a2233;
-  --cover-bg: linear-gradient(145deg, #0f1a2e 0%, #0a0f1a 40%, #0d1525 100%);
+  --bg-primary: #0f0d0a;
+  --bg-secondary: #14110d;
+  --bg-card: #1a1612;
+  --bg-card-hover: #241e17;
+  --cover-bg: linear-gradient(145deg, #2a1c10 0%, #1a120a 40%, #241809 100%);
 
   /* Text */
-  --text-primary: #f1f5f9;
-  --text-heading: #f1f5f9;
-  --text-bright: #f8fafc;
-  --text-secondary: #a3b1c4;
-  --text-dim: #475569;
-  /* Footnotes: darker than --text-dim (#475569) */
-  --text-footnote: #334155;
+  --text-primary: #ece5da;
+  --text-heading: #f5efe6;
+  --text-bright: #faf6ee;
+  --text-secondary: #b3a897;
+  --text-dim: #5d5347;
+  /* Footnotes: darker than --text-dim */
+  --text-footnote: #433b31;
 
-  --amber: #f59e0b;
-  --amber-soft: #fbbf24;
+  --amber: #f0862e;
+  --amber-soft: #f7a95c;
 
   /* Accent backgrounds / borders */
-  --accent-bg-xs:     rgba(245, 158, 11, 0.03);
-  --accent-bg-sm:     rgba(245, 158, 11, 0.07);
-  --accent-bg-md:     rgba(245, 158, 11, 0.10);
-  --accent-border-sm: rgba(245, 158, 11, 0.12);
-  --accent-border-md: rgba(245, 158, 11, 0.20);
-  --accent-border-lg: rgba(245, 158, 11, 0.30);
-  --accent-border-hover: rgba(245, 158, 11, 0.35);
-  --accent-glow:      rgba(245, 158, 11, 0.06);
-  --accent-shadow:    rgba(245, 158, 11, 0.05);
+  --accent-bg-xs:     rgba(240, 134, 46, 0.03);
+  --accent-bg-sm:     rgba(240, 134, 46, 0.07);
+  --accent-bg-md:     rgba(240, 134, 46, 0.10);
+  --accent-border-sm: rgba(240, 134, 46, 0.12);
+  --accent-border-md: rgba(240, 134, 46, 0.20);
+  --accent-border-lg: rgba(240, 134, 46, 0.30);
+  --accent-border-hover: rgba(240, 134, 46, 0.35);
+  --accent-glow:      rgba(240, 134, 46, 0.06);
+  --accent-shadow:    rgba(240, 134, 46, 0.05);
 
   /* Borders */
-  --border: rgba(245, 158, 11, 0.15);
-  --border-bright: rgba(245, 158, 11, 0.4);
-  --border-subtle: rgba(255, 255, 255, 0.06);
+  --border: rgba(240, 134, 46, 0.15);
+  --border-bright: rgba(240, 134, 46, 0.4);
+  --border-subtle: rgba(255, 245, 230, 0.06);
 
   /* Nav */
-  --nav-bg: rgba(10, 11, 15, 0.85);
+  --nav-bg: rgba(15, 13, 10, 0.85);
 
   /* Glow */
-  --glow-text: rgba(245, 158, 11, 0.3);
-  --glow-text-wide: rgba(245, 158, 11, 0.1);
-  --glow-radial: rgba(245, 158, 11, 0.06);
+  --glow-text: rgba(240, 134, 46, 0.3);
+  --glow-text-wide: rgba(240, 134, 46, 0.1);
+  --glow-radial: rgba(240, 134, 46, 0.06);
 }
 
 * {
   box-sizing: border-box;
+}
+
+::selection {
+  background: rgba(176, 58, 26, 0.18);
+  color: var(--text-heading);
+}
+
+[data-theme="dark"] ::selection {
+  background: rgba(240, 134, 46, 0.25);
 }
 
 html {
@@ -202,15 +211,36 @@ body::before {
   background: linear-gradient(90deg, transparent, var(--amber), transparent);
 }
 
-/* ─── Chapter card hover ─── */
+/* ─── Chapter card hover — sharper, editorial ─── */
 .chapter-card {
-  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+  border-radius: 3px !important;
+  position: relative;
+  transition: border-color 0.25s ease, background 0.25s ease, box-shadow 0.25s ease;
+}
+
+.chapter-card::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--amber);
+  transition: width 0.3s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .chapter-card:hover {
-  transform: translateY(-4px);
   border-color: var(--accent-border-hover) !important;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2), 0 0 30px var(--accent-shadow);
+  background: var(--bg-card-hover) !important;
+  box-shadow: 0 12px 40px rgba(30, 20, 10, 0.10);
+}
+
+.chapter-card:hover::after {
+  width: 100%;
+}
+
+[data-theme="dark"] .chapter-card:hover {
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.35);
 }
 
 /* ─── Prose / Chapter content ─── */
@@ -322,13 +352,22 @@ body::before {
 
 .prose-content h2 {
   font-family: var(--font-playfair);
-  font-size: 1.5rem;
+  font-size: 1.55rem;
   font-weight: 600;
   color: var(--text-heading);
-  margin-top: 2.5rem;
+  margin-top: 2.75rem;
   margin-bottom: 1rem;
-  border-left: 3px solid var(--amber);
-  padding-left: 1rem;
+  letter-spacing: -0.01em;
+}
+
+.prose-content h2::before {
+  content: '';
+  display: block;
+  width: 2.4rem;
+  height: 3px;
+  background: linear-gradient(90deg, var(--amber), var(--amber-soft));
+  border-radius: 2px;
+  margin-bottom: 0.65rem;
 }
 
 .prose-content h3 {

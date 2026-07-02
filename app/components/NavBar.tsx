@@ -79,6 +79,25 @@ export function NavBar() {
           .nav-desktop { display: none !important; }
           .nav-mobile-btn { display: flex !important; }
         }
+        .nav-link {
+          position: relative;
+        }
+        .nav-link::after {
+          content: '';
+          position: absolute;
+          left: 0;
+          bottom: -4px;
+          width: 100%;
+          height: 1.5px;
+          background: var(--amber);
+          transform: scaleX(0);
+          transform-origin: left;
+          transition: transform 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+        .nav-link:hover::after,
+        .nav-link-active::after {
+          transform: scaleX(1);
+        }
       `}</style>
       <nav
         style={{
@@ -113,6 +132,26 @@ export function NavBar() {
               minWidth: 0,
             }}
           >
+            {/* Monogram — dU = TdS − PdV */}
+            <Link
+              href="/"
+              aria-label="Home"
+              style={{
+                fontFamily: "var(--font-playfair)",
+                fontStyle: "italic",
+                fontWeight: 600,
+                fontSize: "1.25rem",
+                color: "var(--amber)",
+                textDecoration: "none",
+                letterSpacing: "0.01em",
+                lineHeight: 1,
+                marginRight: "0.25rem",
+                flexShrink: 0,
+              }}
+            >
+              T dS
+            </Link>
+
             {/* Language toggle: left of Home */}
             <LangToggle />
 
@@ -120,11 +159,12 @@ export function NavBar() {
               <Link
                 key={link.href}
                 href={link.href}
+                className={`nav-link${pathname === link.href ? " nav-link-active" : ""}`}
                 style={{
                   fontFamily: "var(--font-inter)",
-                  fontSize: "0.875rem",
-                  fontWeight: 400,
-                  letterSpacing: "0.05em",
+                  fontSize: "0.8rem",
+                  fontWeight: 500,
+                  letterSpacing: "0.09em",
                   textTransform: "uppercase",
                   color:
                     pathname === link.href
