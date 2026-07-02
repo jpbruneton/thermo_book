@@ -13,6 +13,7 @@ interface Props {
 export function ExercisesClient({ cardsFr, cardsEn }: Props) {
   const { lang } = useLang();
   const [query, setQuery] = useState("");
+  const [selectedLecon, setSelectedLecon] = useState<number | null>(null);
 
   const t = lang === "fr"
     ? {
@@ -24,6 +25,9 @@ export function ExercisesClient({ cardsFr, cardsEn }: Props) {
         exoPrefix: "Exercice",
         kwLabel: "Mots-clés",
         leconPrefix: "Leçon",
+        exosOnLecon: "Exercices sur la leçon",
+        back: "← Retour aux leçons",
+        exoCount: (n: number) => `${n} exercice${n > 1 ? "s" : ""}`,
       }
     : {
         title: "Solved Exercises",
@@ -34,6 +38,9 @@ export function ExercisesClient({ cardsFr, cardsEn }: Props) {
         exoPrefix: "Exercise",
         kwLabel: "Keywords",
         leconPrefix: "Lesson",
+        exosOnLecon: "Exercises on lesson",
+        back: "← Back to lessons",
+        exoCount: (n: number) => `${n} exercise${n > 1 ? "s" : ""}`,
       };
 
   const cards = lang === "fr" ? cardsFr : cardsEn;
@@ -45,19 +52,23 @@ export function ExercisesClient({ cardsFr, cardsEn }: Props) {
 
   const groups = useMemo(() => {
     const map = new Map<number, ExerciseCard[]>();
-    for (const c of filtered) {
+    for (const c of cards) {
       const list = map.get(c.lecon);
       if (list) list.push(c);
       else map.set(c.lecon, [c]);
     }
     return Array.from(map.entries()).sort(([a], [b]) => a - b);
-  }, [filtered]);
+  }, [cards]);
 
   const searching = query.trim().length > 0;
 
+  const selectedGroup = selectedLecon !== null
+    ? groups.find(([lecon]) => lecon === selectedLecon)
+    : null;
+
   return (
     <div style={{ position: "relative", zIndex: 1, padding: "4rem 1.5rem 5rem" }}>
-      <div style={{ maxWidth: "800px", margin: "0 auto" }}>
+      <div style={{ maxWidth: "900px", margin: "0 auto" }}>
 
         <h1 style={{ fontFamily: "var(--font-playfair)", fontSize: "clamp(1.8rem, 4vw, 2.8rem)", fontWeight: 700, color: "var(--text-heading)", marginBottom: "0.6rem" }}>
           {t.title}
@@ -73,48 +84,168 @@ export function ExercisesClient({ cardsFr, cardsEn }: Props) {
           id="exo-search"
           type="search"
           value={query}
-          onChange={(e) => setQuery(e.target.value)}
+          onChange={(e) => { setQuery(e.target.value); setSelectedLecon(null); }}
           placeholder={t.searchPlaceholder}
           autoComplete="off"
           style={{ width: "100%", maxWidth: "500px", padding: "0.6rem 1rem", borderRadius: "6px", border: "1px solid var(--border)", background: "var(--bg-secondary)", color: "var(--text-heading)", fontFamily: "var(--font-crimson)", fontSize: "1rem", marginBottom: "2.5rem" }}
         />
 
-        {filtered.length === 0 && (
-          <p style={{ fontFamily: "var(--font-crimson)", color: "var(--text-secondary)", fontStyle: "italic" }}>
-            {t.noMatch}
-          </p>
-        )}
-
         {searching ? (
-          <div style={{ display: "flex", flexDirection: "column", gap: "0.6rem" }}>
-            {filtered.map((card) => (
-              <ExoCard key={card.id} card={card} exoPrefix={t.exoPrefix} kwLabel={t.kwLabel} leconPrefix={t.leconPrefix} lang={lang} />
-            ))}
-          </div>
+          <>
+            {filtered.length === 0 && (
+              <p style={{ fontFamily: "var(--font-crimson)", color: "var(--text-secondary)", fontStyle: "italic" }}>
+                {t.noMatch}
+              </p>
+            )}
+            <div style={{ display: "flex", flexDirection: "column", gap: "0.6rem" }}>
+              {filtered.map((card) => (
+                <ExoCard key={card.id} card={card} exoPrefix={t.exoPrefix} kwLabel={t.kwLabel} leconPrefix={t.leconPrefix} lang={lang} />
+              ))}
+            </div>
+          </>
+        ) : selectedLecon !== null && selectedGroup ? (
+          <SelectedLeconView
+            lecon={selectedLecon}
+            groupCards={selectedGroup[1]}
+            lang={lang}
+            t={t}
+            onBack={() => setSelectedLecon(null)}
+          />
         ) : (
-          <div style={{ display: "flex", flexDirection: "column", gap: "2.5rem" }}>
-            {groups.map(([lecon, groupCards]) => {
-              const leconTitle = lang === "fr" ? groupCards[0].leconTitleFr : groupCards[0].leconTitleEn;
-              return (
-                <section key={lecon}>
-                  <div style={{ borderBottom: "1px solid var(--border)", paddingBottom: "0.5rem", marginBottom: "1rem" }}>
-                    <span style={{ fontFamily: "var(--font-inter)", fontSize: "0.75rem", letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--amber)", fontWeight: 600 }}>
-                      {t.leconPrefix} {lecon}
-                    </span>
-                    <h2 style={{ fontFamily: "var(--font-playfair)", fontSize: "1.15rem", fontWeight: 600, color: "var(--text-heading)", margin: "0.2rem 0 0" }}>
-                      {leconTitle}
-                    </h2>
-                  </div>
-                  <div style={{ display: "flex", flexDirection: "column", gap: "0.6rem" }}>
-                    {groupCards.map((card) => (
-                      <ExoCard key={card.id} card={card} exoPrefix={t.exoPrefix} kwLabel={t.kwLabel} leconPrefix={t.leconPrefix} lang={lang} />
-                    ))}
-                  </div>
-                </section>
-              );
-            })}
-          </div>
+          <LessonGrid
+            groups={groups}
+            lang={lang}
+            t={t}
+            onSelect={setSelectedLecon}
+          />
         )}
+      </div>
+    </div>
+  );
+}
+
+function LessonGrid({
+  groups,
+  lang,
+  t,
+  onSelect,
+}: {
+  groups: [number, ExerciseCard[]][];
+  lang: string;
+  t: { exosOnLecon: string; leconPrefix: string; exoCount: (n: number) => string };
+  onSelect: (lecon: number) => void;
+}) {
+  return (
+    <div
+      style={{
+        display: "grid",
+        gridTemplateColumns: "repeat(3, 1fr)",
+        gap: "1.25rem",
+      }}
+    >
+      {groups.map(([lecon, groupCards]) => {
+        const leconTitle = lang === "fr" ? groupCards[0].leconTitleFr : groupCards[0].leconTitleEn;
+        return (
+          <LessonCard
+            key={lecon}
+            lecon={lecon}
+            leconTitle={leconTitle}
+            count={groupCards.length}
+            t={t}
+            onSelect={onSelect}
+          />
+        );
+      })}
+    </div>
+  );
+}
+
+function LessonCard({
+  lecon,
+  leconTitle,
+  count,
+  t,
+  onSelect,
+}: {
+  lecon: number;
+  leconTitle: string;
+  count: number;
+  t: { exosOnLecon: string; exoCount: (n: number) => string };
+  onSelect: (lecon: number) => void;
+}) {
+  const [hovered, setHovered] = useState(false);
+
+  return (
+    <button
+      onClick={() => onSelect(lecon)}
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "flex-start",
+        padding: "1.6rem 1.4rem",
+        border: `1px solid ${hovered ? "var(--amber)" : "var(--border)"}`,
+        borderRadius: "10px",
+        background: hovered ? "var(--bg-secondary)" : "var(--bg-primary)",
+        cursor: "pointer",
+        textAlign: "left",
+        transition: "border-color 0.18s, background 0.18s, box-shadow 0.18s",
+        boxShadow: hovered ? "0 4px 16px rgba(0,0,0,0.08)" : "none",
+        width: "100%",
+        minHeight: "130px",
+      }}
+    >
+      <span style={{ fontFamily: "var(--font-inter)", fontSize: "0.7rem", letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--amber)", fontWeight: 700, marginBottom: "0.55rem" }}>
+        {t.exosOnLecon} n°{lecon}
+      </span>
+      <span style={{ fontFamily: "var(--font-playfair)", fontSize: "0.97rem", fontWeight: 600, color: "var(--text-heading)", lineHeight: 1.45, flex: 1 }}>
+        {leconTitle}
+      </span>
+      <span style={{ fontFamily: "var(--font-crimson)", fontSize: "0.85rem", color: "var(--text-secondary)", marginTop: "0.85rem" }}>
+        {t.exoCount(count)}
+      </span>
+    </button>
+  );
+}
+
+function SelectedLeconView({
+  lecon,
+  groupCards,
+  lang,
+  t,
+  onBack,
+}: {
+  lecon: number;
+  groupCards: ExerciseCard[];
+  lang: string;
+  t: { exosOnLecon: string; exoPrefix: string; kwLabel: string; leconPrefix: string; back: string };
+  onBack: () => void;
+}) {
+  const leconTitle = lang === "fr" ? groupCards[0].leconTitleFr : groupCards[0].leconTitleEn;
+
+  return (
+    <div>
+      <button
+        onClick={onBack}
+        style={{ background: "none", border: "none", cursor: "pointer", fontFamily: "var(--font-inter)", fontSize: "0.88rem", color: "var(--amber)", marginBottom: "1.75rem", padding: 0, display: "inline-flex", alignItems: "center", gap: "0.3rem" }}
+      >
+        {t.back}
+      </button>
+
+      <div style={{ borderBottom: "1px solid var(--border)", paddingBottom: "0.6rem", marginBottom: "1.25rem" }}>
+        <span style={{ fontFamily: "var(--font-inter)", fontSize: "0.72rem", letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--amber)", fontWeight: 700 }}>
+          {t.exosOnLecon} n°{lecon}
+        </span>
+        <h2 style={{ fontFamily: "var(--font-playfair)", fontSize: "1.2rem", fontWeight: 600, color: "var(--text-heading)", margin: "0.2rem 0 0" }}>
+          {leconTitle}
+        </h2>
+      </div>
+
+      <div style={{ display: "flex", flexDirection: "column", gap: "0.6rem" }}>
+        {groupCards.map((card) => (
+          <ExoCard key={card.id} card={card} exoPrefix={t.exoPrefix} kwLabel={t.kwLabel} leconPrefix={t.leconPrefix} lang={lang} />
+        ))}
       </div>
     </div>
   );
@@ -128,6 +259,7 @@ function ExoCard({ card, exoPrefix, kwLabel, leconPrefix, lang }: {
   lang: string;
 }) {
   const leconTitle = lang === "fr" ? card.leconTitleFr : card.leconTitleEn;
+  void leconTitle;
   return (
     <div
       id={card.id}
