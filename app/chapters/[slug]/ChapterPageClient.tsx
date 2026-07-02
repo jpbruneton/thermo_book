@@ -276,7 +276,7 @@ function ChapterContentAndPrevNext({ theme, prev, next }: Props) {
   return (
     <>
       {activeLesson ? (
-        <ChapterContent lesson={activeLesson} />
+        <ChapterContent lesson={activeLesson} hideHeader={theme.lessons.length <= 1} />
       ) : (
         <div
           style={{

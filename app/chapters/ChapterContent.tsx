@@ -6,6 +6,7 @@ import { useLang } from "@/app/context/LangContext";
 
 interface Props {
   lesson: LessonWithLocalizedContent;
+  hideHeader?: boolean;
 }
 
 interface LessonWithLocalizedContent extends Lesson {
@@ -85,7 +86,7 @@ function slugify(value: string): string {
   return normalized || "section";
 }
 
-export function ChapterContent({ lesson }: Props) {
+export function ChapterContent({ lesson, hideHeader = false }: Props) {
   const [tab, setTab] = useState<"web" | "refs" | "pdf">("web");
   const [activeTocId, setActiveTocId] = useState("");
   const [tocVisible, setTocVisible] = useState(true);
@@ -253,56 +254,58 @@ export function ChapterContent({ lesson }: Props) {
 
   return (
     <>
-      <div
-        style={{
-          maxWidth: "800px",
-          margin: "0 auto",
-          padding: "2rem 1.5rem 0",
-        }}
-      >
-        <h2
+      {!hideHeader && (
+        <div
           style={{
-            fontFamily: "var(--font-playfair)",
-            fontSize: "1.45rem",
-            color: "var(--text-heading)",
-            marginBottom: "0.65rem",
-            lineHeight: 1.3,
+            maxWidth: "800px",
+            margin: "0 auto",
+            padding: "2rem 1.5rem 0",
           }}
         >
-          {lessonHeading}
-        </h2>
-        <p
-          style={{
-            fontFamily: "var(--font-crimson)",
-            fontSize: "1rem",
-            color: "var(--text-secondary)",
-            lineHeight: 1.7,
-            marginBottom: "1rem",
-          }}
-        >
-          {lang === "fr" ? lesson.descriptionFr : lesson.descriptionEn}
-        </p>
-        <div style={{ display: "flex", flexWrap: "wrap", gap: "0.5rem", marginBottom: "0.5rem" }}>
-          {(lang === "fr" ? lesson.topicsFr : lesson.topicsEn).map((topic) => (
-            <Link
-              key={topic}
-              href={`/glossary?q=${encodeURIComponent(topic)}`}
-              style={{
-                background: "var(--accent-bg-sm)",
-                border: "1px solid var(--accent-border-sm)",
-                borderRadius: "100px",
-                padding: "0.2rem 0.75rem",
-                fontFamily: "var(--font-inter)",
-                fontSize: "0.74rem",
-                color: "var(--amber)",
-                textDecoration: "none",
-              }}
-            >
-              {topic}
-            </Link>
-          ))}
+          <h2
+            style={{
+              fontFamily: "var(--font-playfair)",
+              fontSize: "1.45rem",
+              color: "var(--text-heading)",
+              marginBottom: "0.65rem",
+              lineHeight: 1.3,
+            }}
+          >
+            {lessonHeading}
+          </h2>
+          <p
+            style={{
+              fontFamily: "var(--font-crimson)",
+              fontSize: "1rem",
+              color: "var(--text-secondary)",
+              lineHeight: 1.7,
+              marginBottom: "1rem",
+            }}
+          >
+            {lang === "fr" ? lesson.descriptionFr : lesson.descriptionEn}
+          </p>
+          <div style={{ display: "flex", flexWrap: "wrap", gap: "0.5rem", marginBottom: "0.5rem" }}>
+            {(lang === "fr" ? lesson.topicsFr : lesson.topicsEn).map((topic) => (
+              <Link
+                key={topic}
+                href={`/glossary?q=${encodeURIComponent(topic)}`}
+                style={{
+                  background: "var(--accent-bg-sm)",
+                  border: "1px solid var(--accent-border-sm)",
+                  borderRadius: "100px",
+                  padding: "0.2rem 0.75rem",
+                  fontFamily: "var(--font-inter)",
+                  fontSize: "0.74rem",
+                  color: "var(--amber)",
+                  textDecoration: "none",
+                }}
+              >
+                {topic}
+              </Link>
+            ))}
+          </div>
         </div>
-      </div>
+      )}
 
       {/* Tab switcher */}
       <div
