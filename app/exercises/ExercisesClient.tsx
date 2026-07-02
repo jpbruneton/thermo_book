@@ -261,12 +261,12 @@ function ExoCard({ card, exoPrefix, kwLabel, lang }: {
 }) {
   const [open, setOpen] = useState(false);
 
-  const enonceHtml = useMemo(() => open && card.enonceTex ? processLatex(card.enonceTex) : "", [open, card.enonceTex]);
-  const solutionHtml = useMemo(() => open && card.solutionTex ? processLatex(card.solutionTex) : "", [open, card.solutionTex]);
-  const indicationHtml = useMemo(() => open && card.indicationTex ? processLatex(card.indicationTex) : "", [open, card.indicationTex]);
+  const renderedEnonce = useMemo(() => open && card.enonceHtml ? processLatex(card.enonceHtml) : "", [open, card.enonceHtml]);
+  const renderedIndication = useMemo(() => open && card.indicationHtml ? processLatex(card.indicationHtml) : "", [open, card.indicationHtml]);
+  const renderedSolution = useMemo(() => open && card.solutionHtml ? processLatex(card.solutionHtml) : "", [open, card.solutionHtml]);
 
-  const solutionLabel = lang === "fr" ? "Correction" : "Solution";
-  const indicationLabel = lang === "fr" ? "Indication" : "Hint";
+  const openLabel = lang === "fr" ? "Ouvrir" : "Open";
+  const closeLabel = lang === "fr" ? "Fermer" : "Close";
 
   return (
     <div
@@ -305,29 +305,21 @@ function ExoCard({ card, exoPrefix, kwLabel, lang }: {
             </div>
           )}
         </div>
-        <span style={{ color: "var(--amber)", fontSize: "1rem", flexShrink: 0 }}>{open ? "▲" : "▼"}</span>
+        <span style={{ color: "var(--amber)", fontSize: "0.8rem", fontFamily: "var(--font-inter)", fontWeight: 600, flexShrink: 0, whiteSpace: "nowrap" }}>
+          {open ? closeLabel : openLabel} {open ? "▲" : "▼"}
+        </span>
       </button>
 
       {open && (
         <div style={{ padding: "0 1.1rem 1.25rem", borderTop: "1px solid var(--border)" }}>
-          {enonceHtml && (
-            <div className="prose-content" style={{ marginTop: "1rem" }} dangerouslySetInnerHTML={{ __html: enonceHtml }} />
+          {renderedEnonce && (
+            <div className="prose-content" style={{ marginTop: "1rem" }} dangerouslySetInnerHTML={{ __html: renderedEnonce }} />
           )}
-          {indicationHtml && (
-            <div style={{ marginTop: "1.25rem" }}>
-              <div style={{ fontFamily: "var(--font-inter)", fontSize: "0.72rem", letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--text-secondary)", fontWeight: 600, marginBottom: "0.5rem" }}>
-                {indicationLabel}
-              </div>
-              <div className="prose-content" dangerouslySetInnerHTML={{ __html: indicationHtml }} />
-            </div>
+          {renderedIndication && (
+            <div className="prose-content" style={{ marginTop: "0.5rem" }} dangerouslySetInnerHTML={{ __html: renderedIndication }} />
           )}
-          {solutionHtml && (
-            <div style={{ marginTop: "1.25rem" }}>
-              <div style={{ fontFamily: "var(--font-inter)", fontSize: "0.72rem", letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--amber)", fontWeight: 600, marginBottom: "0.5rem" }}>
-                {solutionLabel}
-              </div>
-              <div className="prose-content" dangerouslySetInnerHTML={{ __html: solutionHtml }} />
-            </div>
+          {renderedSolution && (
+            <div className="prose-content" style={{ marginTop: "0.5rem" }} dangerouslySetInnerHTML={{ __html: renderedSolution }} />
           )}
         </div>
       )}

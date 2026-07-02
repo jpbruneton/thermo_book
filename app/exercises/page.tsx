@@ -1,5 +1,5 @@
 import { getWebThemes } from "@/lib/chapters";
-import { exerciseTitleToPlainHtml } from "@/lib/chapterContent.server";
+import { exerciseTitleToPlainHtml, getTexWebHtmlFromSource } from "@/lib/chapterContent.server";
 import { loadExercises } from "@/lib/exercisesLibrary.server";
 import { ExercisesClient } from "./ExercisesClient";
 
@@ -12,9 +12,9 @@ export interface ExerciseCard {
   leconTitleFr: string;
   leconTitleEn: string;
   keywords: string[];
-  enonceTex: string;
-  indicationTex: string | null;
-  solutionTex: string | null;
+  enonceHtml: string;
+  indicationHtml: string | null;
+  solutionHtml: string | null;
 }
 
 function buildCards(lang: "fr" | "en"): ExerciseCard[] {
@@ -32,9 +32,13 @@ function buildCards(lang: "fr" | "en"): ExerciseCard[] {
     leconTitleFr: lessonTitle(e.lecon).fr,
     leconTitleEn: lessonTitle(e.lecon).en,
     keywords: e.keywords,
-    enonceTex: e.enonceTex,
-    indicationTex: e.indicationTex,
-    solutionTex: e.solutionTex,
+    enonceHtml: getTexWebHtmlFromSource(e.enonceTex, lang, []),
+    indicationHtml: e.indicationTex
+      ? getTexWebHtmlFromSource(`\\begin{indication}\n${e.indicationTex}\n\\end{indication}`, lang, [])
+      : null,
+    solutionHtml: e.solutionTex
+      ? getTexWebHtmlFromSource(`\\begin{solution}\n${e.solutionTex}\n\\end{solution}`, lang, [])
+      : null,
   }));
 }
 
