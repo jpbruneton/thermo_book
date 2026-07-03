@@ -3,6 +3,8 @@ import { getWebThemes } from "@/lib/chapters";
 import { getSiteUrl } from "@/lib/siteUrl";
 import { getEnglishTexFilePath, getLessonWebContent } from "@/lib/chapterContent.server";
 import { hasExercises } from "@/lib/exercisesLibrary.server";
+import { getAllExercisesPdfHref, getExerciseThemePdfLinks } from "@/lib/exercisePdfDownloads.server";
+import { getQuizLessons } from "@/lib/quizzes";
 import { sectionHref, SUPPORTED_LANGS, type Lang } from "@/lib/i18n";
 
 const SITE_URL = getSiteUrl();
@@ -38,7 +40,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const webThemes = getWebThemes();
 
   const sectionsConfig: Array<{
-    section: "chapters" | "about" | "glossary" | "exercises";
+    section: "chapters" | "about" | "glossary" | "exercises" | "quiz";
     priority: number;
     changeFrequency: MetadataRoute.Sitemap[number]["changeFrequency"];
     includeLang: (lang: Lang) => boolean;
@@ -46,6 +48,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { section: "chapters", priority: 0.9, changeFrequency: "monthly", includeLang: () => true },
     { section: "about", priority: 0.6, changeFrequency: "yearly", includeLang: () => true },
     { section: "glossary", priority: 0.5, changeFrequency: "monthly", includeLang: () => true },
+    { section: "quiz", priority: 0.7, changeFrequency: "monthly", includeLang: () => true },
     {
       section: "exercises",
       priority: 0.75,
@@ -109,5 +112,53 @@ export default function sitemap(): MetadataRoute.Sitemap {
     });
   });
 
-  return [...staticRoutes, ...themeRoutes];
+  // One quiz URL per lesson number per language (quiz content itself is not
+  // translated per-lesson, but the page shell and lesson title are).
+  const quizRoutes: MetadataRoute.Sitemap = getQuizLessons().flatMap((lecon) => {
+    const urlsByLang: Partial<Record<Lang, string>> = {};
+    for (const lang of SUPPORTED_LANGS) {
+      urlsByLang[lang] = `${SITE_URL}${sectionHref(lang, "quiz", String(lecon))}`;
+    }
+    return SUPPORTED_LANGS.map((lang) => ({
+      url: urlsByLang[lang]!,
+      lastModified: new Date(),
+      changeFrequency: "monthly" as const,
+      priority: 0.65,
+      alternates: hreflangFor(urlsByLang),
+    }));
+  });
+
+  // Exercise PDF downloads: the merged all-themes booklet plus any per-theme
+  // PDF that has actually been built (checked on disk), fr and en.
+  const exercisePdfRoutes: MetadataRoute.Sitemap = [];
+  for (const lang of ["fr", "en"] as const) {
+    const href = getAllExercisesPdfHref(lang);
+    if (href) {
+      exercisePdfRoutes.push({
+        url: `${SITE_URL}${href}`,
+        lastModified: new Date(),
+        changeFrequency: "monthly",
+        priority: 0.55,
+      });
+    }
+  }
+  for (const theme of webThemes) {
+    const links = getExerciseThemePdfLinks(theme.number);
+    for (const href of [
+      links.frAvecSolutions,
+      links.frSansSolutions,
+      links.enAvecSolutions,
+      links.enSansSolutions,
+    ]) {
+      if (!href) continue;
+      exercisePdfRoutes.push({
+        url: `${SITE_URL}${href}`,
+        lastModified: new Date(),
+        changeFrequency: "monthly",
+        priority: 0.5,
+      });
+    }
+  }
+
+  return [...staticRoutes, ...themeRoutes, ...quizRoutes, ...exercisePdfRoutes];
 }
