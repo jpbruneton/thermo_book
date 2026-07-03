@@ -3,10 +3,11 @@ export interface QuizQuestion {
   /** Lesson number (1..10), matches lib/chapters.ts theme numbers. */
   lecon: number;
   question: string;
-  choices: [string, string, string, string];
+  /** Either 4 QCM choices, or 2 choices ["Vrai", "Faux"] for a true/false question. */
+  choices: string[];
   /** Explanation shown when the corresponding choice is clicked (index-aligned with choices). */
-  explanations: [string, string, string, string];
-  correctIndex: 0 | 1 | 2 | 3;
+  explanations: string[];
+  correctIndex: number;
 }
 
 export const quizQuestions: QuizQuestion[] = [
@@ -705,6 +706,118 @@ export const quizQuestions: QuizQuestion[] = [
       "Faux : ce n'est pas la bonne façon d'écrire l'inégalité, qui porte sur δQ/T et non sur T dS le long du cycle réel.",
     ],
     correctIndex: 1,
+  },
+
+  // ─── Vrai / Faux ───
+  {
+    id: "l1-vf1",
+    lecon: 1,
+    question: "Un moteur thermique cyclique peut fonctionner en n'étant en contact qu'avec une seule source de chaleur.",
+    choices: ["Vrai", "Faux"],
+    explanations: [
+      "Faux : c'est précisément ce qu'interdit l'énoncé de Kelvin du second principe — un moteur monotherme cyclique ne peut fournir de travail.",
+      "Exact : un moteur cyclique a besoin d'au moins deux sources à des températures différentes pour fonctionner.",
+    ],
+    correctIndex: 1,
+  },
+  {
+    id: "l2-vf1",
+    lecon: 2,
+    question: "L'expérience de Rumford (forage des canons) a renforcé la théorie du calorique.",
+    choices: ["Vrai", "Faux"],
+    explanations: [
+      "Faux : c'est l'inverse — la production de chaleur apparemment inépuisable par frottement a porté un coup sérieux au calorique, censé être un fluide conservé et donc épuisable.",
+      "Exact : si la chaleur était un fluide conservé contenu dans le métal, le forage continu ne pourrait pas en produire indéfiniment.",
+    ],
+    correctIndex: 1,
+  },
+  {
+    id: "l3-vf1",
+    lecon: 3,
+    question: "Un système thermodynamique à l'équilibre est nécessairement homogène (mêmes paramètres intensifs en tout point).",
+    choices: ["Vrai", "Faux"],
+    explanations: [
+      "Faux : un verre d'eau posé sur une table est à l'équilibre, pourtant sa pression augmente avec la profondeur (loi de Pascal) — l'équilibre signifie l'absence de flux, pas l'uniformité spatiale.",
+      "Exact : l'exemple classique du verre d'eau le montre — l'équilibre n'implique pas l'homogénéité.",
+    ],
+    correctIndex: 1,
+  },
+  {
+    id: "l4-vf1",
+    lecon: 4,
+    question: "Le travail δW et la chaleur δQ échangés par un système sont, comme l'énergie interne U, des différentielles exactes.",
+    choices: ["Vrai", "Faux"],
+    explanations: [
+      "Faux : contrairement à U, ni δQ ni δW ne sont des différentielles exactes — leur intégrale sur une transformation dépend du chemin suivi, pas seulement des états initial et final.",
+      "Exact : δQ et δW sont des différentielles inexactes, ce qui est justement la raison pour laquelle on utilise le symbole δ plutôt que d.",
+    ],
+    correctIndex: 1,
+  },
+  {
+    id: "l5-vf1",
+    lecon: 5,
+    question: "L'entropie totale d'un système isolé peut diminuer au cours d'une transformation spontanée.",
+    choices: ["Vrai", "Faux"],
+    explanations: [
+      "Faux : c'est l'énoncé même du second principe qui l'interdit — l'entropie d'un système isolé ne peut que croître ou rester constante.",
+      "Exact : dS = dS_c ≥ 0 pour un système isolé ; l'entropie ne peut jamais y diminuer spontanément.",
+    ],
+    correctIndex: 1,
+  },
+  {
+    id: "l6-vf1",
+    lecon: 6,
+    question: "Pour un corps pur, les trois paramètres intensifs T, P et μ peuvent varier de façon totalement indépendante les uns des autres.",
+    choices: ["Vrai", "Faux"],
+    explanations: [
+      "Faux : la relation de Gibbs-Duhem, S dT - V dP + N dμ = 0, les lie entre eux — il n'y a que deux degrés de liberté intensifs indépendants, pas trois.",
+      "Exact : Gibbs-Duhem impose une contrainte entre T, P et μ ; connaître deux de leurs variations détermine la troisième.",
+    ],
+    correctIndex: 1,
+  },
+  {
+    id: "l7-vf1",
+    lecon: 7,
+    question: "En thermodynamique, une dérivée partielle comme ∂V/∂T a toujours une valeur unique, quelles que soient les variables tenues constantes.",
+    choices: ["Vrai", "Faux"],
+    explanations: [
+      "Faux : puisque les variables thermodynamiques ne sont en général pas indépendantes, ∂V/∂T à pression constante et ∂V/∂T à entropie constante donnent des valeurs numériquement différentes.",
+      "Exact : il faut toujours préciser quelles variables sont fixées, sous peine d'obtenir un résultat ambigu ou faux.",
+    ],
+    correctIndex: 1,
+  },
+  {
+    id: "l8-vf1",
+    lecon: 8,
+    question: "Pour un gaz parfait, la capacité thermique à pression constante C_P est toujours strictement supérieure à C_V.",
+    choices: ["Vrai", "Faux"],
+    explanations: [
+      "Exact : la relation de Mayer donne C_P - C_V = nR, une quantité strictement positive puisque R > 0, quelle que soit l'atomicité du gaz.",
+      "Faux : au contraire, C_P - C_V = nR > 0 est toujours vérifié pour un gaz parfait — c'est la relation de Mayer.",
+    ],
+    correctIndex: 0,
+  },
+  {
+    id: "l9-vf1",
+    lecon: 9,
+    question: "Au point critique d'un fluide, on peut encore distinguer clairement la phase liquide de la phase gazeuse.",
+    choices: ["Vrai", "Faux"],
+    explanations: [
+      "Faux : au point critique, les volumes molaires du liquide et du gaz deviennent égaux — les deux phases deviennent indiscernables, c'est même la définition du point critique.",
+      "Exact : au-delà (et au niveau) du point critique, on parle de fluide supercritique, un état où liquide et gaz ne peuvent plus être distingués.",
+    ],
+    correctIndex: 1,
+  },
+  {
+    id: "l10-vf1",
+    lecon: 10,
+    question: "L'efficacité d'une pompe à chaleur peut dépasser 1, contrairement au rendement d'un moteur thermique qui est toujours inférieur ou égal à 1.",
+    choices: ["Vrai", "Faux"],
+    explanations: [
+      "Exact : l'efficacité d'une pompe à chaleur vaut |Q_c|/W et peut largement dépasser 1 — c'est même tout l'intérêt du chauffage par pompe à chaleur. Le rendement d'un moteur, lui, est borné par 1 (conservation de l'énergie).",
+      "Faux : rendement (moteur, ≤ 1) et efficacité (pompe à chaleur, réfrigérateur) sont deux grandeurs différentes ; l'efficacité peut dépasser 1.",
+    ],
+    correctIndex: 0,
   },
 ];
 
