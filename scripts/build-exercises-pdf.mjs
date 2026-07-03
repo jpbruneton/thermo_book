@@ -65,7 +65,7 @@ while (cursor < source.length) {
   if (eEnd === -1) break;
   const raw = source.slice(bStart, eEnd + endTag.length);
 
-  let c = bStart + beginTag.length, title = "", id = `exo-${counter}`;
+  let c = beginTag.length, title = "", id = `exo-${counter}`;
   while (c < raw.length && /[ \t]/.test(raw[c])) c++;
   if (raw[c] === "[") { const cl = raw.indexOf("]", c + 1); if (cl !== -1) { title = raw.slice(c + 1, cl).trim(); c = cl + 1; } }
   while (c < raw.length && /[ \t]/.test(raw[c])) c++;
@@ -130,6 +130,8 @@ const tex = `\\documentclass[11pt,a4paper]{article}
 \\usepackage{geometry}
 \\geometry{margin=2.5cm}
 \\usepackage{enumitem}
+\\usepackage{graphicx}
+\\graphicspath{{public/figs/}}
 \\setlength{\\parskip}{0.4em}
 
 ${header}
