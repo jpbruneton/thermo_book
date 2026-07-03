@@ -90,8 +90,9 @@ export function ExercisesClient({ cardsFr, cardsEn, allPdfHrefFr, allPdfHrefEn }
             download
             style={{
               display: "inline-block",
-              background: "var(--amber)",
-              color: "#0a0b0f",
+              background: "var(--accent-bg-sm)",
+              border: "1px solid var(--accent-border-lg)",
+              color: "var(--amber)",
               padding: "0.6rem 1.3rem",
               borderRadius: "4px",
               fontFamily: "var(--font-inter)",
