@@ -464,7 +464,7 @@ body::before {
 }
 
 .prose-content .latex-inline-blue-strong {
-  color: #3b82f6;
+  color: var(--amber-soft);
   font-weight: 700;
 }
 
