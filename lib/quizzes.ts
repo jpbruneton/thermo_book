@@ -407,7 +407,7 @@ export const quizQuestions: QuizQuestion[] = [
   {
     id: "l5-q4",
     lecon: 5,
-    question: "On plonge de l'eau à 20°C dans un four maintenu à 80°C. Pour calculer la variation d'entropie de l'EAU, il faut :",
+    question: "On plonge de l'eau à 20°C dans un four maintenu à 80°C. Pour calculer la variation d'entropie de l'eau, il faut :",
     choices: [
       "Diviser la chaleur reçue par la température du four : ΔS_eau = Q/T_four, puisque c'est le four qui impose la température.",
       "Intégrer dS = m c dT/T le long de la montée en température de l'eau, ce qui donne m c ln(T_f/T_i).",
@@ -423,7 +423,7 @@ export const quizQuestions: QuizQuestion[] = [
   {
     id: "l5-q5",
     lecon: 5,
-    question: "L'entropie d'un système NON isolé peut-elle décroître au cours d'une transformation ?",
+    question: "L'entropie d'un système non isolé peut-elle décroître au cours d'une transformation ?",
     choices: [
       "Non : l'entropie de tout système, isolé ou non, ne peut jamais décroître — c'est l'énoncé universel du second principe.",
       "Oui, si un opérateur extérieur apporte de l'énergie de la bonne façon (ranger une pièce, démêler des câbles, un organisme vivant).",
@@ -448,7 +448,7 @@ export const quizQuestions: QuizQuestion[] = [
     explanations: [
       "Faux : Q et W dépendent du chemin — seules les fonctions d'état (U, S...) ont la même variation.",
       "Exact : ΔS = ∫δQ_rev/T = ∫δQ_irr/T + S_créée avec S_créée > 0, donc les chaleurs échangées diffèrent nécessairement. Les indices « rev » et « irr » comptent !",
-      "Faux : chaleur ET travail dépendent tous deux du chemin ; seule leur somme ΔU = Q + W est fixée.",
+      "Faux : chaleur et travail dépendent tous deux du chemin ; seule leur somme ΔU = Q + W est fixée.",
     ],
     correctIndex: 1,
   },
@@ -572,7 +572,7 @@ export const quizQuestions: QuizQuestion[] = [
       "Toute transformation adiabatique d'un gaz parfait, qu'elle soit brutale ou infiniment lente, dès lors que Q = 0.",
       "Tout fluide subissant une compression rapide, y compris les gaz réels et les liquides faiblement compressibles.",
       "Toute transformation réversible d'un gaz parfait, y compris les isothermes et les isobares quasi-statiques.",
-      "Une transformation adiabatique ET réversible d'un gaz parfait (à γ constant).",
+      "Une transformation adiabatique et réversible d'un gaz parfait (à γ constant).",
     ],
     explanations: [
       "Faux : c'est le piège — la détente de Joule est adiabatique mais irréversible, et elle ne suit pas Laplace (T y reste constante alors que V change).",
@@ -605,7 +605,7 @@ export const quizQuestions: QuizQuestion[] = [
       "Parce que certaines dérivées partielles divergent si l'on ne fixe pas les bonnes variables, ce qui rendrait le calcul impossible.",
     ],
     explanations: [
-      "Exact : ∂V/∂T à P fixé et ∂V/∂T à S fixé donnent des valeurs différentes pour le même gaz (nR/P contre -3nR/2P pour un GP monoatomique). Les indices ne sont PAS optionnels.",
+      "Exact : ∂V/∂T à P fixé et ∂V/∂T à S fixé donnent des valeurs différentes pour le même gaz (nR/P contre -3nR/2P pour un GP monoatomique). Les indices ne sont pas optionnels.",
       "Faux : le résultat numérique change réellement — ce n'est pas une simple convention.",
       "Faux : la question n'est pas la divergence mais l'ambiguïté : sans indices, l'expression peut désigner plusieurs quantités distinctes.",
     ],
@@ -727,7 +727,7 @@ export const quizQuestions: QuizQuestion[] = [
       "La moyenne de C_P et C_V, car volume et pression jouent ici un rôle symétrique dans la transformation",
     ],
     explanations: [
-      "Faux : c'est le piège — le volume de la PIÈCE est constant, mais pas celui du GAZ, qui se dilate et s'échappe. Or c'est le gaz qui subit la transformation.",
+      "Faux : c'est le piège — le volume de la pièce est constant, mais pas celui du gaz, qui se dilate et s'échappe. Or c'est le gaz qui subit la transformation.",
       "Exact : le gaz se dilate à pression atmosphérique constante, donc c'est bien C_P (pour l'air, c_p ≈ 1000 J/K/kg).",
       "Faux : il n'y a aucune raison de moyenner — la transformation est isobare pour le gaz, point final.",
     ],
