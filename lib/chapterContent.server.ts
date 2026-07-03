@@ -1097,6 +1097,13 @@ function normalizeLatexBlocks(
     /\\begin\{eqnarray\*?\}([\s\S]*?)\\end\{eqnarray\*?\}/g,
     (_m, body: string) => `\n\n$$\n\\begin{aligned}\n${body.trim()}\n\\end{aligned}\n$$\n\n`
   );
+  // \begin{empheq}[box=\fbox]{align*}...\end{empheq} (fancy boxed align from the
+  // Overleaf header) is not a real KaTeX environment; render its content as a
+  // plain aligned block instead of the PDF-only fbox styling.
+  result = result.replace(
+    /\\begin\{empheq\}(?:\[[^\]]*\])?\{[^}]*\}([\s\S]*?)\\end\{empheq\}/g,
+    (_m, body: string) => `\n\n$$\n\\begin{aligned}\n${body.trim()}\n\\end{aligned}\n$$\n\n`
+  );
   // Guard against matching inside an already-well-formed $$...$$ block (the two
   // regexes above already produce those): only touch a genuinely single-$-wrapped block.
   result = result.replace(/(?<!\$)\$(\s*\\begin\{aligned\}[\s\S]*?\\end\{aligned\}\s*)\$(?!\$)/g, "\n\n$$\n$1\n$$\n\n");
