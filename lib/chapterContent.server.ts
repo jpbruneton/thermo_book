@@ -1095,7 +1095,16 @@ function normalizeLatexBlocks(
   );
   result = result.replace(
     /\\begin\{eqnarray\*?\}([\s\S]*?)\\end\{eqnarray\*?\}/g,
-    (_m, body: string) => `\n\n$$\n\\begin{aligned}\n${body.trim()}\n\\end{aligned}\n$$\n\n`
+    (_m, body: string) => {
+      // eqnarray's classic 3-column "lhs &op& rhs" idiom misaligns badly once
+      // converted to a 2-column "aligned" environment (the "=" ends up in its
+      // own oddly-spaced column). Collapse "&op&" into a single leading "&op".
+      const collapsedOperators = body.replace(
+        /&\s*(\\(?:leq|geq|neq|approx|propto|Leftrightarrow|Rightarrow|sim|equiv|ll|gg)|[=<>])\s*&/g,
+        " &$1 "
+      );
+      return `\n\n$$\n\\begin{aligned}\n${collapsedOperators.trim()}\n\\end{aligned}\n$$\n\n`;
+    }
   );
   // \begin{empheq}[box=\fbox]{align*}...\end{empheq} (fancy boxed align from the
   // Overleaf header) is not a real KaTeX environment; render its content as a
