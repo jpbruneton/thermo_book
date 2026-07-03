@@ -100,12 +100,27 @@ const L = {
   babel: isFr ? "french" : "english",
   noHints: isFr ? "Aucune indication pour cette série." : "No hints for this set.",
   noSols: isFr ? "Aucune solution disponible." : "No solutions available.",
+  toc: isFr ? "Table des matières" : "Table of Contents",
 };
 
-const part1Tex = exercises.map((e) => {
-  const h = e.title ? `\\subsection*{${L.exo}~${e.number} — ${e.title}}` : `\\subsection*{${L.exo}~${e.number}}`;
-  return `${h}\n${e.enonce}`;
-}).join("\n\n\\bigskip\n\n");
+// Plain-text form of a heading for \addcontentsline: drops math delimiters and LaTeX
+// commands, then escapes characters (^, _, &, #, %, ~) that are only valid in math mode
+// or need escaping in text mode — otherwise they break the typeset TOC page.
+function tocSafe(text) {
+  let result = text.replace(/\$([^$]*)\$/g, "$1");
+  result = result.replace(/\\[a-zA-Z]+\*?/g, "").replace(/[{}\\]/g, "");
+  result = result.replace(/[_#&%~]/g, "\\$&");
+  result = result.replace(/\^/g, "\\textasciicircum{}");
+  return result.replace(/\s+/g, " ").trim();
+}
+
+function exoHeading(e) {
+  const label = e.title ? `${L.exo}~${e.number} — ${e.title}` : `${L.exo}~${e.number}`;
+  const tocLabel = e.title ? `${L.exo} ${e.number} — ${tocSafe(e.title)}` : `${L.exo} ${e.number}`;
+  return `\\subsection*{${label}}\n\\addcontentsline{toc}{subsection}{${tocLabel}}`;
+}
+
+const part1Tex = exercises.map((e) => `${exoHeading(e)}\n${e.enonce}`).join("\n\n\\bigskip\n\n");
 
 const exosWithHints = exercises.filter((e) => e.indication);
 const part2Tex = exosWithHints.length === 0 ? L.noHints : exosWithHints.map((e) => {
@@ -114,10 +129,7 @@ const part2Tex = exosWithHints.length === 0 ? L.noHints : exosWithHints.map((e) 
 }).join("\n\n");
 
 const exosWithSols = exercises.filter((e) => e.solution);
-const part3Tex = sansSolutions ? null : (exosWithSols.length === 0 ? L.noSols : exosWithSols.map((e) => {
-  const h = e.title ? `\\subsection*{${L.exo}~${e.number} — ${e.title}}` : `\\subsection*{${L.exo}~${e.number}}`;
-  return `${h}\n${e.solution}`;
-}).join("\n\n\\bigskip\n\n"));
+const part3Tex = sansSolutions ? null : (exosWithSols.length === 0 ? L.noSols : exosWithSols.map((e) => `${exoHeading(e)}\n${e.solution}`).join("\n\n\\bigskip\n\n"));
 
 const headerFile = join(repoRoot, "content", "tex", `header_${lang}.tex`);
 const header = existsSync(headerFile) ? readFileSync(headerFile, "utf-8") : "";
@@ -133,6 +145,9 @@ const tex = `\\documentclass[11pt,a4paper]{article}
 \\usepackage{graphicx}
 \\graphicspath{{public/figs/}}
 \\setlength{\\parskip}{0.4em}
+\\setcounter{tocdepth}{2}
+\\usepackage{hyperref}
+\\hypersetup{hidelinks}
 
 ${header}
 
@@ -143,14 +158,19 @@ ${header}
 \\end{center}
 \\vspace{1.5em}
 
+\\tableofcontents
+\\newpage
+
 \\section*{Partie I — ${L.part1}}
+\\addcontentsline{toc}{section}{Partie I — ${L.part1}}
 ${part1Tex}
 
 \\newpage
 \\section*{Partie II — ${L.part2}}
+\\addcontentsline{toc}{section}{Partie II — ${L.part2}}
 ${part2Tex}
 
-${part3Tex !== null ? `\\newpage\n\\section*{Partie III — ${L.part3}}\n${part3Tex}` : ""}
+${part3Tex !== null ? `\\newpage\n\\section*{Partie III — ${L.part3}}\n\\addcontentsline{toc}{section}{Partie III — ${L.part3}}\n${part3Tex}` : ""}
 
 \\end{document}
 `;
@@ -164,7 +184,9 @@ writeFileSync(texOut, tex, "utf-8");
 console.log(`Wrote ${texOut}`);
 
 const pdflatex = process.env.PDFLATEX ?? "pdflatex";
-for (let pass = 1; pass <= 2; pass++) {
+// 3 passes: pass 1 writes the .toc, pass 2 renders it (shifting later page numbers),
+// pass 3 re-resolves those page numbers now that the .toc itself takes up pages.
+for (let pass = 1; pass <= 3; pass++) {
   const r = spawnSync(pdflatex, ["-interaction=nonstopmode", "-output-directory", tmpDir, texOut], { cwd: repoRoot, encoding: "utf-8" });
   if (r.status !== 0) { console.error(`pdflatex pass ${pass} failed:\n${(r.stdout ?? "").slice(-2000)}`); process.exit(1); }
   console.log(`  pdflatex pass ${pass} OK`);
