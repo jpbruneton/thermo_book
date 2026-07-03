@@ -1,0 +1,14 @@
+{
+  "name": "Thermodynamique Élémentaire et Avancée",
+  "short_name": "Learn Thermo",
+  "description": "Cours gratuit de thermodynamique en ligne, des principes fondamentaux aux développements avancés.",
+  "start_url": "/",
+  "display": "browser",
+  "background_color": "#faf7f1",
+  "theme_color": "#b03a1a",
+  "icons": [
+    { "src": "/icon.svg", "sizes": "any", "type": "image/svg+xml" },
+    { "src": "/icon.png", "sizes": "32x32", "type": "image/png" },
+    { "src": "/apple-icon.png", "sizes": "180x180", "type": "image/png" }
+  ]
+}

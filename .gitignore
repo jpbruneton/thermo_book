@@ -38,3 +38,6 @@ next-env.d.ts
 
 # local LaTeX source (not deployed)
 thermosource/
+
+.vercel
+.env*

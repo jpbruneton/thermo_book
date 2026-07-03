@@ -1,10 +1,10 @@
 import { notFound } from "next/navigation";
-import { getWebTheme, getWebThemes } from "@/lib/chapters";
+import { getWebTheme, getWebThemes, bookMeta } from "@/lib/chapters";
 import { ChapterPageClient } from "./ChapterPageClient";
 import type { Metadata } from "next";
 import { getEnglishTexFilePath, getLessonReferences, getLessonWebContent } from "@/lib/chapterContent.server";
 import { processLatex } from "@/lib/latex";
-import { absoluteUrl } from "@/lib/siteUrl";
+import { absoluteUrl, getSiteUrl } from "@/lib/siteUrl";
 import { sectionHref, type Lang } from "@/lib/i18n";
 
 interface Props {
@@ -47,6 +47,40 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
+function themeJsonLd(theme: NonNullable<ReturnType<typeof getWebTheme>>, lang: Lang) {
+  const isFr = lang === "fr";
+  const title = isFr ? theme.titleFr : theme.titleEn;
+  const description = isFr ? theme.descriptionFr : theme.descriptionEn;
+  const label = isFr ? "Leçon" : "Lesson";
+  const url = absoluteUrl(sectionHref(lang, "chapters", theme.slug));
+  const chaptersUrl = absoluteUrl(sectionHref(lang, "chapters"));
+
+  const breadcrumb = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: isFr ? "Accueil" : "Home", item: getSiteUrl() },
+      { "@type": "ListItem", position: 2, name: isFr ? "Leçons" : "Lessons", item: chaptersUrl },
+      { "@type": "ListItem", position: 3, name: `${label} ${theme.number}: ${title}`, item: url },
+    ],
+  };
+
+  const course = {
+    "@context": "https://schema.org",
+    "@type": "Course",
+    name: `${label} ${theme.number}: ${title}`,
+    description,
+    url,
+    inLanguage: lang,
+    provider: {
+      "@type": "Organization",
+      name: bookMeta.affiliation,
+    },
+  };
+
+  return [breadcrumb, course];
+}
+
 export default function ChapterPage({ params }: Props) {
   const theme = getWebTheme(params.slug);
   if (!theme) notFound();
@@ -79,10 +113,19 @@ export default function ChapterPage({ params }: Props) {
     currentIndex < webThemes.length - 1 ? webThemes[currentIndex + 1] : null;
 
   return (
-    <ChapterPageClient
-      theme={themeWithDynamicContent}
-      prev={prev}
-      next={next}
-    />
+    <>
+      {themeJsonLd(theme, params.lang).map((block, index) => (
+        <script
+          key={index}
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(block) }}
+        />
+      ))}
+      <ChapterPageClient
+        theme={themeWithDynamicContent}
+        prev={prev}
+        next={next}
+      />
+    </>
   );
 }
