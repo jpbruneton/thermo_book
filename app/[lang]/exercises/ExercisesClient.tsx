@@ -9,9 +9,11 @@ import type { ExerciseCard } from "./page";
 interface Props {
   cardsFr: ExerciseCard[];
   cardsEn: ExerciseCard[];
+  allPdfHrefFr: string | null;
+  allPdfHrefEn: string | null;
 }
 
-export function ExercisesClient({ cardsFr, cardsEn }: Props) {
+export function ExercisesClient({ cardsFr, cardsEn, allPdfHrefFr, allPdfHrefEn }: Props) {
   const { lang } = useLang();
   const [query, setQuery] = useState("");
   const [selectedLecon, setSelectedLecon] = useState<number | null>(null);
@@ -29,6 +31,7 @@ export function ExercisesClient({ cardsFr, cardsEn }: Props) {
         exosOnLecon: "Exercices sur la leçon",
         back: "← Retour aux exercices",
         exoCount: (n: number) => `${n} exercice${n > 1 ? "s" : ""}`,
+        downloadAll: "↓ Tout télécharger (PDF)",
       }
     : {
         title: "Solved Exercises",
@@ -42,9 +45,11 @@ export function ExercisesClient({ cardsFr, cardsEn }: Props) {
         exosOnLecon: "Exercises on lesson",
         back: "← Back to exercises",
         exoCount: (n: number) => `${n} exercise${n > 1 ? "s" : ""}`,
+        downloadAll: "↓ Download all (PDF)",
       };
 
   const cards = lang === "fr" ? cardsFr : cardsEn;
+  const allPdfHref = lang === "fr" ? allPdfHrefFr : allPdfHrefEn;
 
   const filtered = useMemo(
     () => cards.filter((c) => exerciseMatchesQuery(c, query)),
@@ -75,9 +80,30 @@ export function ExercisesClient({ cardsFr, cardsEn }: Props) {
         <h1 style={{ fontFamily: "var(--font-playfair)", fontSize: "clamp(1.8rem, 4vw, 2.8rem)", fontWeight: 700, color: "var(--text-heading)", marginBottom: "0.6rem" }}>
           {t.title}
         </h1>
-        <p style={{ fontFamily: "var(--font-crimson)", fontSize: "1.05rem", color: "var(--text-secondary)", lineHeight: 1.75, marginBottom: "2rem" }}>
+        <p style={{ fontFamily: "var(--font-crimson)", fontSize: "1.05rem", color: "var(--text-secondary)", lineHeight: 1.75, marginBottom: "1.25rem" }}>
           {t.subtitle}
         </p>
+
+        {allPdfHref && (
+          <a
+            href={allPdfHref}
+            download
+            style={{
+              display: "inline-block",
+              background: "var(--amber)",
+              color: "#0a0b0f",
+              padding: "0.6rem 1.3rem",
+              borderRadius: "4px",
+              fontFamily: "var(--font-inter)",
+              fontSize: "0.85rem",
+              fontWeight: 600,
+              textDecoration: "none",
+              marginBottom: "2rem",
+            }}
+          >
+            {t.downloadAll}
+          </a>
+        )}
 
         <label htmlFor="exo-search" style={{ display: "block", fontFamily: "var(--font-inter)", fontSize: "0.78rem", letterSpacing: "0.08em", textTransform: "uppercase", color: "var(--text-secondary)", marginBottom: "0.45rem" }}>
           {t.searchLabel}

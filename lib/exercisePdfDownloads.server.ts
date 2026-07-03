@@ -22,6 +22,11 @@ function hrefIfExists(relativeUnderPublic: string): string | null {
   return `/${relativeUnderPublic}`;
 }
 
+/** Href for the full exercise bank PDF (all themes, statements + solutions), or null if not built yet. */
+export function getAllExercisesPdfHref(lang: "fr" | "en"): string | null {
+  return hrefIfExists(`pdfs/exercises_${lang}.pdf`);
+}
+
 export function getExerciseThemePdfLinks(themeNumber: number): ExerciseThemePdfLinks {
   const fr = `pdfs/exo_theme${themeNumber}_fr.pdf`;
   const frSans = `pdfs/exo_theme${themeNumber}_fr_sans_solutions.pdf`;

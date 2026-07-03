@@ -1,6 +1,7 @@
 import { getWebThemes } from "@/lib/chapters";
 import { exerciseTitleToPlainHtml, getTexWebHtmlFromSource } from "@/lib/chapterContent.server";
 import { loadExercises } from "@/lib/exercisesLibrary.server";
+import { getAllExercisesPdfHref } from "@/lib/exercisePdfDownloads.server";
 import { ExercisesClient } from "./ExercisesClient";
 
 export interface ExerciseCard {
@@ -45,5 +46,12 @@ function buildCards(lang: "fr" | "en"): ExerciseCard[] {
 export default function ExercisesPage() {
   const cardsFr = buildCards("fr");
   const cardsEn = buildCards("en");
-  return <ExercisesClient cardsFr={cardsFr} cardsEn={cardsEn} />;
+  return (
+    <ExercisesClient
+      cardsFr={cardsFr}
+      cardsEn={cardsEn}
+      allPdfHrefFr={getAllExercisesPdfHref("fr")}
+      allPdfHrefEn={getAllExercisesPdfHref("en")}
+    />
+  );
 }
