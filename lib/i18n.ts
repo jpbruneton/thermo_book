@@ -170,6 +170,10 @@ export const translations = {
         "The text develops thermodynamics from first principles. Proofs are given in full whenever they clarify the physics, and many worked examples complement the theoretical exposition.",
       translationWarning:
         "Warning: this book is primarily written in French; the English version is automatically translated using Claude Sonnet 4.6.",
+      sameAuthorTitle: "By the Same Author",
+      sameAuthorBody:
+        "Quantum Mechanics — A Modern Introduction, a companion course on quantum mechanics.",
+      sameAuthorLink: "Read it at quantumlectures.org",
     },
     updates: {
       label: "UPDATES",
@@ -322,6 +326,10 @@ export const translations = {
         "Le texte développe la thermodynamique à partir des premiers principes. Les preuves sont données en entier lorsqu'elles éclairent la physique, et de nombreux exemples travaillés complètent l'exposition théorique.",
       translationWarning:
         "Note : ce livre est principalement rédigé en français ; la version anglaise est traduite automatiquement avec Claude Sonnet 4.6.",
+      sameAuthorTitle: "Du même auteur",
+      sameAuthorBody:
+        "Mécanique Quantique — Une Introduction Moderne, un cours compagnon sur la mécanique quantique.",
+      sameAuthorLink: "À lire sur quantumlectures.org",
     },
     updates: {
       label: "ACTUALITÉS",
