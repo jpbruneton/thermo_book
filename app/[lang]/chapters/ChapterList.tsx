@@ -43,7 +43,7 @@ export function ChapterList() {
           }}
         >
           <Link
-            href={`/chapters/${theme.slug}`}
+            href={`/${lang}/chapters/${theme.slug}`}
             style={{ textDecoration: "none", display: "block" }}
           >
             <div

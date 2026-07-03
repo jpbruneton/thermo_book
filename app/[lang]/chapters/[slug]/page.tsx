@@ -2,19 +2,13 @@ import { notFound } from "next/navigation";
 import { getWebTheme, getWebThemes } from "@/lib/chapters";
 import { ChapterPageClient } from "./ChapterPageClient";
 import type { Metadata } from "next";
-import { getLessonReferences, getLessonWebContent } from "@/lib/chapterContent.server";
+import { getEnglishTexFilePath, getLessonReferences, getLessonWebContent } from "@/lib/chapterContent.server";
 import { processLatex } from "@/lib/latex";
 import { absoluteUrl } from "@/lib/siteUrl";
+import type { Lang } from "@/lib/i18n";
 
 interface Props {
-  params: { slug: string };
-}
-
-function getEnglishTexFilePath(frTexFile: string): string {
-  const lessonMapped = frTexFile.replace(/_fr\/lecon(\d+)\.tex$/, "_en/lesson$1.tex");
-  if (lessonMapped !== frTexFile) return lessonMapped;
-  const ficheMapped = frTexFile.replace(/_fr\/(fiche\d+)\.tex$/, "_en/$1.tex");
-  return ficheMapped;
+  params: { slug: string; lang: Lang };
 }
 
 export async function generateStaticParams() {
@@ -24,17 +18,30 @@ export async function generateStaticParams() {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const theme = getWebTheme(params.slug);
   if (!theme) return {};
-  const keywords = theme.lessons.flatMap((l) => l.topicsEn).slice(0, 15);
-  const url = absoluteUrl(`/chapters/${theme.slug}`);
+  const { lang } = params;
+  const isFr = lang === "fr";
+  const title = isFr ? theme.titleFr : theme.titleEn;
+  const description = isFr ? theme.descriptionFr : theme.descriptionEn;
+  const label = isFr ? "Leçon" : "Lesson";
+  const keywords = theme.lessons
+    .flatMap((l) => (isFr ? l.topicsFr : l.topicsEn))
+    .slice(0, 15);
+  const url = absoluteUrl(`/${lang}/chapters/${theme.slug}`);
   return {
-    title: `Lesson ${theme.number}: ${theme.titleEn}`,
-    description: theme.descriptionEn,
+    title: `${label} ${theme.number}: ${title}`,
+    description,
     keywords,
-    alternates: { canonical: url },
+    alternates: {
+      canonical: url,
+      languages: {
+        fr: absoluteUrl(`/fr/chapters/${theme.slug}`),
+        en: absoluteUrl(`/en/chapters/${theme.slug}`),
+      },
+    },
     openGraph: {
       type: "article",
-      title: `Lesson ${theme.number}: ${theme.titleEn}`,
-      description: theme.descriptionEn,
+      title: `${label} ${theme.number}: ${title}`,
+      description,
       url,
     },
   };

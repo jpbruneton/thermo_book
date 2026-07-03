@@ -113,7 +113,7 @@ function QuizLessonCardView({
   const title = lang === "fr" ? card.titleFr : card.titleEn;
 
   return (
-    <Link href={`/quiz/${card.lecon}`} style={{ textDecoration: "none" }}>
+    <Link href={`/${lang}/quiz/${card.lecon}`} style={{ textDecoration: "none" }}>
       <div
         onMouseEnter={() => setHovered(true)}
         onMouseLeave={() => setHovered(false)}

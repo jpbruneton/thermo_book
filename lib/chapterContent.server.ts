@@ -1414,6 +1414,13 @@ function parseReferencesTex(source: string): LessonReference[] {
   return refs;
 }
 
+/** Maps a French lesson tex path to its (possibly nonexistent) English counterpart. */
+export function getEnglishTexFilePath(frTexFile: string): string {
+  const lessonMapped = frTexFile.replace(/_fr\/lecon(\d+)\.tex$/, "_en/lesson$1.tex");
+  if (lessonMapped !== frTexFile) return lessonMapped;
+  return frTexFile.replace(/_fr\/(fiche\d+)\.tex$/, "_en/$1.tex");
+}
+
 export function getLessonWebContent(
   texFile: string,
   paragraphCount: number,

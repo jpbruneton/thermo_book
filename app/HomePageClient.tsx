@@ -145,7 +145,7 @@ export default function HomePageClient() {
               }}
             >
               <Link
-                href="/chapters"
+                href={`/${lang}/chapters`}
                 style={{
                   background: "var(--amber)",
                   color: "var(--bg-primary)",
@@ -164,7 +164,7 @@ export default function HomePageClient() {
                 {t.home.readOnline}
               </Link>
               <Link
-                href="/about"
+                href={`/${lang}/about`}
                 style={{
                   border: "1px solid var(--accent-border-lg)",
                   color: "var(--amber)",
@@ -313,7 +313,7 @@ export default function HomePageClient() {
             {webThemes.map((theme) => (
               <Link
                 key={theme.slug}
-                href={`/chapters/${theme.slug}`}
+                href={`/${lang}/chapters/${theme.slug}`}
                 style={{ textDecoration: "none" }}
               >
                 <div

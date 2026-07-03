@@ -1,5 +1,11 @@
 export type Lang = "en" | "fr";
 
+export const SUPPORTED_LANGS: readonly Lang[] = ["en", "fr"];
+
+export function isLang(value: string): value is Lang {
+  return (SUPPORTED_LANGS as readonly string[]).includes(value);
+}
+
 export type UpdateEntry = {
   date: string;
   title: string;

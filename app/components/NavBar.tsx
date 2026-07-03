@@ -1,37 +1,43 @@
 "use client";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { useTheme } from "@/app/context/ThemeContext";
 import { useLang } from "@/app/context/LangContext";
 import { useState } from "react";
 
 export function NavBar() {
   const pathname = usePathname();
+  const router = useRouter();
   const { theme, toggleTheme } = useTheme();
   const { lang, setLang, t } = useLang();
   const [menuOpen, setMenuOpen] = useState(false);
 
   const desktopLinks = [
     { href: "/", label: t.nav.home },
-    { href: "/chapters", label: t.nav.chapters },
-    { href: "/exercises", label: t.nav.exercises },
-    { href: "/quiz", label: t.nav.quiz },
-    { href: "/glossary", label: t.nav.glossary },
-    { href: "/about", label: t.nav.about },
+    { href: `/${lang}/chapters`, label: t.nav.chapters },
+    { href: `/${lang}/exercises`, label: t.nav.exercises },
+    { href: `/${lang}/quiz`, label: t.nav.quiz },
+    { href: `/${lang}/glossary`, label: t.nav.glossary },
+    { href: `/${lang}/about`, label: t.nav.about },
   ];
 
-  const mobileLinks = [
-    { href: "/", label: t.nav.home },
-    { href: "/chapters", label: t.nav.chapters },
-    { href: "/exercises", label: t.nav.exercises },
-    { href: "/quiz", label: t.nav.quiz },
-    { href: "/glossary", label: t.nav.glossary },
-    { href: "/about", label: t.nav.about },
-  ];
+  const mobileLinks = desktopLinks;
 
   const langLabels: Record<"en" | "fr", string> = {
     fr: "Français",
     en: "English",
+  };
+
+  const isPrefixedRoute = /^\/(en|fr)(\/|$)/.test(pathname);
+
+  const switchLang = (l: "en" | "fr") => {
+    if (isPrefixedRoute) {
+      const swapped = pathname.replace(/^\/(en|fr)(\/|$)/, `/${l}$2`);
+      setLang(l);
+      router.push(swapped);
+      return;
+    }
+    setLang(l);
   };
 
   const LangToggle = ({ small }: { small?: boolean }) => (
@@ -53,7 +59,7 @@ export function NavBar() {
         <button
           key={l}
           type="button"
-          onClick={() => setLang(l)}
+          onClick={() => switchLang(l)}
           style={{
             background: lang === l ? "var(--amber)" : "transparent",
             color: lang === l ? (theme === "dark" ? "#0a0b0f" : "#ffffff") : "var(--text-secondary)",

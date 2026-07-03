@@ -99,7 +99,7 @@ export function QuizRunner({ lecon, titleFr, titleEn, questions }: Props) {
   const headerBlock = (
     <div style={{ marginBottom: "2rem" }}>
       <Link
-        href="/quiz"
+        href={`/${lang}/quiz`}
         style={{
           fontFamily: "var(--font-inter)",
           fontSize: "0.85rem",
@@ -244,7 +244,7 @@ export function QuizRunner({ lecon, titleFr, titleEn, questions }: Props) {
               {t.restart}
             </button>
             <Link
-              href="/quiz"
+              href={`/${lang}/quiz`}
               style={{
                 border: "1px solid var(--accent-border-lg)",
                 color: "var(--amber)",

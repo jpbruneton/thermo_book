@@ -302,7 +302,7 @@ export function ChapterContent({ lesson, hideHeader = false }: Props) {
           {(lang === "fr" ? lesson.topicsFr : lesson.topicsEn).map((topic) => (
             <Link
               key={topic}
-              href={`/glossary?q=${encodeURIComponent(topic)}`}
+              href={`/${lang}/glossary?q=${encodeURIComponent(topic)}`}
               style={{
                 background: "var(--accent-bg-sm)",
                 border: "1px solid var(--accent-border-sm)",

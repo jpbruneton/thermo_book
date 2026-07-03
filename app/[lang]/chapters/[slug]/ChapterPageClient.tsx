@@ -70,7 +70,7 @@ function ChapterThemeHeadingBlock({ theme }: { theme: ThemeWithLocalizedLessonCo
           {t.chapter.breadcrumbHome}
         </Link>
         <span>/</span>
-        <Link href="/chapters" style={{ color: "var(--text-dim)", textDecoration: "none" }}>
+        <Link href={`/${lang}/chapters`} style={{ color: "var(--text-dim)", textDecoration: "none" }}>
           {t.chapter.breadcrumbThemes}
         </Link>
         <span>/</span>
@@ -369,7 +369,7 @@ function ChapterContentAndPrevNext({ theme, prev, next }: Props) {
             </div>
           </button>
         ) : prev ? (
-          <Link href={`/chapters/${prev.slug}`} style={{ textDecoration: "none" }}>
+          <Link href={`/${lang}/chapters/${prev.slug}`} style={{ textDecoration: "none" }}>
             <div
               className="chapter-card"
               style={{
@@ -457,7 +457,7 @@ function ChapterContentAndPrevNext({ theme, prev, next }: Props) {
             </div>
           </button>
         ) : next ? (
-          <Link href={`/chapters/${next.slug}`} style={{ textDecoration: "none" }}>
+          <Link href={`/${lang}/chapters/${next.slug}`} style={{ textDecoration: "none" }}>
             <div
               className="chapter-card"
               style={{

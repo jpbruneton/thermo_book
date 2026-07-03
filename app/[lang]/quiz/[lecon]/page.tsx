@@ -12,20 +12,31 @@ export function generateStaticParams() {
 export async function generateMetadata({
   params,
 }: {
-  params: Promise<{ lecon: string }>;
+  params: Promise<{ lecon: string; lang: "en" | "fr" }>;
 }): Promise<Metadata> {
-  const { lecon: leconParam } = await params;
+  const { lecon: leconParam, lang } = await params;
   const lecon = Number(leconParam);
   const lessons = getWebThemes();
   const lesson = lessons.find((t) => t.number === lecon);
-  const title = lesson ? lesson.titleFr : `Leçon ${lecon}`;
+  const isFr = lang === "fr";
+  const title = lesson ? (isFr ? lesson.titleFr : lesson.titleEn) : (isFr ? `Leçon ${lecon}` : `Lesson ${lecon}`);
+  const description = isFr
+    ? `Quiz de cours sur la leçon ${lecon} : ${title}.`
+    : `Course quiz on lesson ${lecon}: ${title}.`;
+  const url = absoluteUrl(`/${lang}/quiz/${lecon}`);
   return {
     title: `Quiz — ${title}`,
-    description: `Quiz de cours sur la leçon ${lecon} : ${title}.`,
-    alternates: { canonical: absoluteUrl(`/quiz/${lecon}`) },
+    description,
+    alternates: {
+      canonical: url,
+      languages: {
+        fr: absoluteUrl(`/fr/quiz/${lecon}`),
+        en: absoluteUrl(`/en/quiz/${lecon}`),
+      },
+    },
     openGraph: {
       title: `Quiz — ${title} | ${bookMeta.title}`,
-      url: absoluteUrl(`/quiz/${lecon}`),
+      url,
     },
   };
 }
@@ -33,7 +44,7 @@ export async function generateMetadata({
 export default async function QuizLeconPage({
   params,
 }: {
-  params: Promise<{ lecon: string }>;
+  params: Promise<{ lecon: string; lang: "en" | "fr" }>;
 }) {
   const { lecon: leconParam } = await params;
   const lecon = Number(leconParam);
