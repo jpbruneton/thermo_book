@@ -144,27 +144,7 @@ export function NavBar() {
               minWidth: 0,
             }}
           >
-            {/* Monogram — dU = TdS − PdV */}
-            <Link
-              href="/"
-              aria-label="Home"
-              style={{
-                fontFamily: "var(--font-playfair)",
-                fontStyle: "italic",
-                fontWeight: 600,
-                fontSize: "1.25rem",
-                color: "var(--amber)",
-                textDecoration: "none",
-                letterSpacing: "0.01em",
-                lineHeight: 1,
-                marginRight: "0.25rem",
-                flexShrink: 0,
-              }}
-            >
-              T dS
-            </Link>
-
-            {/* Language toggle: left of Home */}
+            {/* Language toggle */}
             <LangToggle />
 
             {desktopLinks.map((link) => (
