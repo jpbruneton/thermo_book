@@ -4,9 +4,8 @@ import { usePathname, useRouter } from "next/navigation";
 import { useTheme } from "@/app/context/ThemeContext";
 import { useLang } from "@/app/context/LangContext";
 import { sectionFromSlug, sectionHref } from "@/lib/i18n";
+import { DonateButton } from "@/app/components/DonateButton";
 import { useState } from "react";
-
-const DONATE_URL = "https://buymeacoffee.com/physics.lessons";
 
 export function NavBar() {
   const pathname = usePathname();
@@ -44,34 +43,6 @@ export function NavBar() {
     }
     setLang(l);
   };
-
-  const DonateButton = ({ small }: { small?: boolean }) => (
-    <a
-      href={DONATE_URL}
-      target="_blank"
-      rel="noopener noreferrer nofollow"
-      style={{
-        display: "inline-flex",
-        alignItems: "center",
-        gap: "0.35rem",
-        background: "var(--amber)",
-        color: theme === "dark" ? "#0a0b0f" : "#ffffff",
-        border: "none",
-        borderRadius: "4px",
-        padding: small ? "0.45rem 0.75rem" : "0.35rem 0.75rem",
-        fontFamily: "var(--font-inter)",
-        fontSize: small ? "0.8rem" : "0.75rem",
-        fontWeight: 600,
-        textDecoration: "none",
-        letterSpacing: "0.02em",
-        whiteSpace: "nowrap",
-        flexShrink: 0,
-      }}
-    >
-      <span aria-hidden="true">☕</span>
-      {t.nav.donate}
-    </a>
-  );
 
   const LangToggle = ({ small }: { small?: boolean }) => (
     <div
@@ -239,7 +210,7 @@ export function NavBar() {
 
             <div style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
               {/* Donate */}
-              <DonateButton small />
+              <DonateButton />
 
               {/* Theme toggle */}
               <button
