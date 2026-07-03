@@ -2,6 +2,7 @@ import "server-only";
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
 import type { LessonReference } from "@/lib/chapters";
+import { processLatex } from "@/lib/latex";
 
 function stripComment(line: string): string {
   const protectedPercent = "__ESCAPED_PERCENT__";
@@ -1444,7 +1445,7 @@ export function getLessonWebContent(
 
 /** Plain HTML for exercise titles in search cards (no block-level TeX). */
 export function exerciseTitleToPlainHtml(texTitle: string): string {
-  return cleanLatexInline(texTitle);
+  return processLatex(cleanLatexInline(texTitle));
 }
 
 export function getTexWebHtmlFromSource(
