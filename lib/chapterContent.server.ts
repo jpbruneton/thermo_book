@@ -979,6 +979,9 @@ function normalizeLatexBlocks(
   result = result.replace(/\\end\{exercice\}/g, "\\end{exo}");
   result = result.replace(/\\begin\{exercise\}/g, "\\begin{exo}");
   result = result.replace(/\\end\{exercise\}/g, "\\end{exo}");
+  // fancydef (Overleaf header) is a styling alias for definition.
+  result = result.replace(/\\begin\{fancydef\}/g, "\\begin{definition}");
+  result = result.replace(/\\end\{fancydef\}/g, "\\end{definition}");
 
   // Render theorem-like environments as styled blocks.
   const blockKinds: Array<{ env: string; title: string; collapsible?: boolean }> = [
