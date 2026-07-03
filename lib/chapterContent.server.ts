@@ -1083,11 +1083,20 @@ function normalizeLatexBlocks(
     equationRenderIndex += 1;
     return `\n\n<div class="latex-equation"><div class="latex-equation-math">$$\n${body.trim()}\n$$</div><span class="latex-equation-number">(${equationRenderIndex})</span></div>\n\n`;
   });
-  result = result.replace(/\\begin\{(equation\*|align\*?|gather\*?|multline\*?)\}/g, "\n\n$$\n");
-  result = result.replace(/\\end\{(equation\*|align\*?|gather\*?|multline\*?)\}/g, "\n$$\n\n");
-  result = result.replace(/\\begin\{eqnarray\*?\}/g, "\n\n$$\n\\begin{aligned}\n");
-  result = result.replace(/\\end\{eqnarray\*?\}/g, "\n\\end{aligned}\n$$\n\n");
-  result = result.replace(/\$(\s*\\begin\{aligned\}[\s\S]*?\\end\{aligned\}\s*)\$/g, "\n\n$$\n$1\n$$\n\n");
+  // Capture begin/end as one unit (not two separate replaces) so no blank line
+  // gets inserted mid-block — a blank line there would split the block across
+  // multiple <p> tags before processLatex() ever sees the $$ delimiters.
+  result = result.replace(
+    /\\begin\{(equation\*|align\*?|gather\*?|multline\*?)\}([\s\S]*?)\\end\{\1\}/g,
+    (_m, _env: string, body: string) => `\n\n$$\n${body.trim()}\n$$\n\n`
+  );
+  result = result.replace(
+    /\\begin\{eqnarray\*?\}([\s\S]*?)\\end\{eqnarray\*?\}/g,
+    (_m, body: string) => `\n\n$$\n\\begin{aligned}\n${body.trim()}\n\\end{aligned}\n$$\n\n`
+  );
+  // Guard against matching inside an already-well-formed $$...$$ block (the two
+  // regexes above already produce those): only touch a genuinely single-$-wrapped block.
+  result = result.replace(/(?<!\$)\$(\s*\\begin\{aligned\}[\s\S]*?\\end\{aligned\}\s*)\$(?!\$)/g, "\n\n$$\n$1\n$$\n\n");
   result = result.replace(/(?:^|\n)\s*\$\s*\n([\s\S]*?)\n\s*\$\s*(?=\n|$)/g, (_m, block: string) => {
     return `\n\n$$\n${block.trim()}\n$$\n\n`;
   });
@@ -1124,6 +1133,8 @@ function normalizeLatexBlocks(
   result = result.replace(/\\medskip\b/g, "");
   result = result.replace(/\\newpage\b/g, "");
   result = result.replace(/\\noindent\b/g, "");
+  // \newcommand{\threestars}{\begin{center}$ {\ast}\,{\ast}\,{\ast} $\end{center}} (section separator)
+  result = result.replace(/\\threestars\b/g, '\n\n<div class="latex-threestars" style="text-align:center;">∗ ∗ ∗</div>\n\n');
   return result;
 }
 
@@ -1174,6 +1185,7 @@ function renderParagraph(paragraph: string, footnoteCounter: { value: number }):
   if (cleaned.startsWith("<figure")) return withFootnotes(cleaned);
   if (cleaned.startsWith("<h2") || cleaned.startsWith("<h3") || cleaned.startsWith("<h4") || cleaned.startsWith("<h5")) return withFootnotes(cleaned);
   if (cleaned.startsWith("<div class=\"latex-vspace\"")) return withFootnotes(cleaned);
+  if (cleaned.startsWith("<div class=\"latex-threestars\"")) return withFootnotes(cleaned);
   if (
     cleaned.startsWith("<ul") ||
     cleaned.startsWith("<ol") ||

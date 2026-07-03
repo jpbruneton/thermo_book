@@ -17,7 +17,7 @@ export function QuizHomeClient({ cards }: Props) {
     ? {
         title: "Quiz — Contrôle de cours",
         subtitle:
-          "Des questions de cours, purement textuelles, pour tester votre compréhension leçon par leçon. Quatre réponses possibles, une seule correcte : en cas d'erreur, une explication rapide vous indique pourquoi.",
+          "Des questions de cours, purement textuelles, pour tester votre compréhension leçon par leçon.",
         leconPrefix: "Leçon",
         startQuiz: "Commencer le quiz →",
         questionCount: (n: number) => `${n} question${n > 1 ? "s" : ""}`,
@@ -26,7 +26,7 @@ export function QuizHomeClient({ cards }: Props) {
     : {
         title: "Quiz — Course Check",
         subtitle:
-          "Purely textual course questions to test your understanding lesson by lesson. Four possible answers, only one correct: if you pick a wrong one, a short explanation tells you why.",
+          "Purely textual course questions to test your understanding lesson by lesson.",
         leconPrefix: "Lesson",
         startQuiz: "Start the quiz →",
         questionCount: (n: number) => `${n} question${n > 1 ? "s" : ""}`,

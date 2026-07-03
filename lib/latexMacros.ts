@@ -37,7 +37,7 @@ export const KATEX_MACROS: Record<string, string> = {
   // Differential helpers
   "\\dr": "\\frac{\\partial #1}{\\partial #2}",
   "\\drp": "\\left(\\frac{\\partial #1}{\\partial #2}\\right)_{#3}",
-  "\\drsp": "\\left(\\frac{\\partial^2 #1}{\\partial #2^2}\\right)_{#3}",
+  "\\drsp": "\\left(\\frac{\\partial^2 #1}{\\partial^2 #2}\\right)_{#3}",
 
   // Norm / gradient
   "\\bignorm": "\\left\\lVert#1\\right\\rVert",
