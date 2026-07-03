@@ -67,6 +67,7 @@ export const translations = {
       quiz: "Quiz",
       glossary: "Glossary",
       about: "About",
+      donate: "Donate",
     },
     home: {
       badge: "Free Online Edition",
@@ -219,6 +220,7 @@ export const translations = {
       quiz: "Quiz",
       glossary: "Glossaire",
       about: "À propos",
+      donate: "Don",
     },
     home: {
       badge: "Édition gratuite en ligne",

@@ -6,6 +6,8 @@ import { useLang } from "@/app/context/LangContext";
 import { sectionFromSlug, sectionHref } from "@/lib/i18n";
 import { useState } from "react";
 
+const DONATE_URL = "https://buymeacoffee.com/physics.lessons";
+
 export function NavBar() {
   const pathname = usePathname();
   const router = useRouter();
@@ -42,6 +44,34 @@ export function NavBar() {
     }
     setLang(l);
   };
+
+  const DonateButton = ({ small }: { small?: boolean }) => (
+    <a
+      href={DONATE_URL}
+      target="_blank"
+      rel="noopener noreferrer nofollow"
+      style={{
+        display: "inline-flex",
+        alignItems: "center",
+        gap: "0.35rem",
+        background: "var(--amber)",
+        color: theme === "dark" ? "#0a0b0f" : "#ffffff",
+        border: "none",
+        borderRadius: "4px",
+        padding: small ? "0.45rem 0.75rem" : "0.35rem 0.75rem",
+        fontFamily: "var(--font-inter)",
+        fontSize: small ? "0.8rem" : "0.75rem",
+        fontWeight: 600,
+        textDecoration: "none",
+        letterSpacing: "0.02em",
+        whiteSpace: "nowrap",
+        flexShrink: 0,
+      }}
+    >
+      <span aria-hidden="true">☕</span>
+      {t.nav.donate}
+    </a>
+  );
 
   const LangToggle = ({ small }: { small?: boolean }) => (
     <div
@@ -208,6 +238,9 @@ export function NavBar() {
             <LangToggle small />
 
             <div style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
+              {/* Donate */}
+              <DonateButton small />
+
               {/* Theme toggle */}
               <button
                 onClick={toggleTheme}
@@ -258,7 +291,8 @@ export function NavBar() {
           </div>
 
           {/* Desktop theme toggle */}
-          <div className="nav-desktop" style={{ alignItems: "center", flexShrink: 0 }}>
+          <div className="nav-desktop" style={{ alignItems: "center", gap: "0.75rem", flexShrink: 0 }}>
+            <DonateButton />
             <button
               onClick={toggleTheme}
               aria-label={theme === "dark" ? "Switch to light mode" : "Switch to dark mode"}
