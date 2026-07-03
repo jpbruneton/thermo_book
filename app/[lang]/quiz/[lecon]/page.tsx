@@ -2,6 +2,7 @@ import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { getWebThemes, bookMeta } from "@/lib/chapters";
 import { absoluteUrl } from "@/lib/siteUrl";
+import { sectionHref } from "@/lib/i18n";
 import { getQuizLessons, getQuizQuestionsByLecon } from "@/lib/quizzes";
 import { QuizRunner } from "./QuizRunner";
 
@@ -23,15 +24,15 @@ export async function generateMetadata({
   const description = isFr
     ? `Quiz de cours sur la leçon ${lecon} : ${title}.`
     : `Course quiz on lesson ${lecon}: ${title}.`;
-  const url = absoluteUrl(`/${lang}/quiz/${lecon}`);
+  const url = absoluteUrl(sectionHref(lang, "quiz", String(lecon)));
   return {
     title: `Quiz — ${title}`,
     description,
     alternates: {
       canonical: url,
       languages: {
-        fr: absoluteUrl(`/fr/quiz/${lecon}`),
-        en: absoluteUrl(`/en/quiz/${lecon}`),
+        fr: absoluteUrl(sectionHref("fr", "quiz", String(lecon))),
+        en: absoluteUrl(sectionHref("en", "quiz", String(lecon))),
       },
     },
     openGraph: {

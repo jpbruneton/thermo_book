@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { bookMeta, bookMetaDisplayTitle } from "@/lib/chapters";
 import { absoluteUrl } from "@/lib/siteUrl";
-import type { Lang } from "@/lib/i18n";
+import { sectionHref, type Lang } from "@/lib/i18n";
 
 export async function generateMetadata({
   params,
@@ -17,15 +17,15 @@ export async function generateMetadata({
   const ogDescription = isFr
     ? `${bookMetaDisplayTitle()} par ${bookMeta.author}, ${bookMeta.affiliation}.`
     : `${bookMetaDisplayTitle()} by ${bookMeta.author}, ${bookMeta.affiliation}.`;
-  const url = absoluteUrl(`/${lang}/about`);
+  const url = absoluteUrl(sectionHref(lang, "about"));
   return {
     title,
     description,
     alternates: {
       canonical: url,
       languages: {
-        fr: absoluteUrl("/fr/about"),
-        en: absoluteUrl("/en/about"),
+        fr: absoluteUrl(sectionHref("fr", "about")),
+        en: absoluteUrl(sectionHref("en", "about")),
       },
     },
     openGraph: {

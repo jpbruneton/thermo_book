@@ -1,4 +1,5 @@
 import { redirect } from "next/navigation";
+import { isLang, sectionHref } from "@/lib/i18n";
 
 export function generateStaticParams() {
   return [];
@@ -9,5 +10,5 @@ export default function ExerciseSlugPage({
 }: {
   params: { lang: string };
 }) {
-  redirect(`/${params.lang}/exercises`);
+  redirect(isLang(params.lang) ? sectionHref(params.lang, "exercises") : "/");
 }

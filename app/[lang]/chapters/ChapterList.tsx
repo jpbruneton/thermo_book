@@ -2,6 +2,7 @@
 import Link from "next/link";
 import { getWebThemes } from "@/lib/chapters";
 import { useLang } from "@/app/context/LangContext";
+import { sectionHref } from "@/lib/i18n";
 
 export function ChapterList() {
   const { t, lang } = useLang();
@@ -43,7 +44,7 @@ export function ChapterList() {
           }}
         >
           <Link
-            href={`/${lang}/chapters/${theme.slug}`}
+            href={sectionHref(lang, "chapters", theme.slug)}
             style={{ textDecoration: "none", display: "block" }}
           >
             <div

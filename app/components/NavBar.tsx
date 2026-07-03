@@ -3,6 +3,7 @@ import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { useTheme } from "@/app/context/ThemeContext";
 import { useLang } from "@/app/context/LangContext";
+import { sectionFromSlug, sectionHref } from "@/lib/i18n";
 import { useState } from "react";
 
 export function NavBar() {
@@ -14,11 +15,11 @@ export function NavBar() {
 
   const desktopLinks = [
     { href: "/", label: t.nav.home },
-    { href: `/${lang}/chapters`, label: t.nav.chapters },
-    { href: `/${lang}/exercises`, label: t.nav.exercises },
-    { href: `/${lang}/quiz`, label: t.nav.quiz },
-    { href: `/${lang}/glossary`, label: t.nav.glossary },
-    { href: `/${lang}/about`, label: t.nav.about },
+    { href: sectionHref(lang, "chapters"), label: t.nav.chapters },
+    { href: sectionHref(lang, "exercises"), label: t.nav.exercises },
+    { href: sectionHref(lang, "quiz"), label: t.nav.quiz },
+    { href: sectionHref(lang, "glossary"), label: t.nav.glossary },
+    { href: sectionHref(lang, "about"), label: t.nav.about },
   ];
 
   const mobileLinks = desktopLinks;
@@ -28,11 +29,13 @@ export function NavBar() {
     en: "English",
   };
 
-  const isPrefixedRoute = /^\/(en|fr)(\/|$)/.test(pathname);
+  const pathMatch = /^\/(en|fr)\/([^/]+)(\/.*)?$/.exec(pathname);
 
   const switchLang = (l: "en" | "fr") => {
-    if (isPrefixedRoute) {
-      const swapped = pathname.replace(/^\/(en|fr)(\/|$)/, `/${l}$2`);
+    if (pathMatch) {
+      const [, currentLang, sectionSlug, rest] = pathMatch;
+      const section = sectionFromSlug(currentLang as "en" | "fr", sectionSlug);
+      const swapped = section ? sectionHref(l, section) + (rest ?? "") : `/${l}`;
       setLang(l);
       router.push(swapped);
       return;

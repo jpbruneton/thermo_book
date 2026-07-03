@@ -3,6 +3,7 @@ import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
 import type { Lesson } from "@/lib/chapters";
 import { useLang } from "@/app/context/LangContext";
+import { sectionHref } from "@/lib/i18n";
 
 interface Props {
   lesson: LessonWithLocalizedContent;
@@ -302,7 +303,7 @@ export function ChapterContent({ lesson, hideHeader = false }: Props) {
           {(lang === "fr" ? lesson.topicsFr : lesson.topicsEn).map((topic) => (
             <Link
               key={topic}
-              href={`/${lang}/glossary?q=${encodeURIComponent(topic)}`}
+              href={`${sectionHref(lang, "glossary")}?q=${encodeURIComponent(topic)}`}
               style={{
                 background: "var(--accent-bg-sm)",
                 border: "1px solid var(--accent-border-sm)",

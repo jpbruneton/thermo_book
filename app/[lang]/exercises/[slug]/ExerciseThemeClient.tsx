@@ -3,6 +3,7 @@
 import { useEffect, useMemo } from "react";
 import Link from "next/link";
 import { useLang } from "@/app/context/LangContext";
+import { sectionHref } from "@/lib/i18n";
 import { processLatex } from "@/lib/latex";
 
 interface Props {
@@ -48,7 +49,7 @@ export function ExerciseThemeClient({ number, titleFr, titleEn, contentFr, conte
       <div style={{ maxWidth: "860px", margin: "0 auto" }}>
         <div style={{ marginBottom: "2rem" }}>
           <Link
-            href={`/${lang}/exercises`}
+            href={sectionHref(lang, "exercises")}
             style={{
               fontFamily: "var(--font-crimson)",
               fontSize: "0.95rem",

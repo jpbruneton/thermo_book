@@ -5,6 +5,7 @@ import { Suspense, useMemo } from "react";
 import { useSearchParams } from "next/navigation";
 import { getWebThemes } from "@/lib/chapters";
 import { useLang } from "@/app/context/LangContext";
+import { sectionHref } from "@/lib/i18n";
 
 interface GlossaryOccurrence {
   themeSlug: string;
@@ -116,7 +117,7 @@ function GlossaryFilterAndList() {
     <>
       <div style={{ display: "flex", flexWrap: "wrap", gap: "0.5rem", marginBottom: "1.75rem" }}>
         <Link
-          href={`/${lang}/glossary`}
+          href={sectionHref(lang, "glossary")}
           style={{
             background: !selectedKeyword ? "var(--accent-bg-md)" : "var(--accent-bg-xs)",
             border: "1px solid var(--accent-border-sm)",
@@ -137,7 +138,7 @@ function GlossaryFilterAndList() {
           return (
             <Link
               key={item.keyword}
-              href={`/${lang}/glossary?q=${encodeURIComponent(item.keyword)}`}
+              href={`${sectionHref(lang, "glossary")}?q=${encodeURIComponent(item.keyword)}`}
               style={{
                 background: isActive ? "var(--accent-bg-md)" : "var(--accent-bg-xs)",
                 border: "1px solid var(--accent-border-sm)",
@@ -203,7 +204,7 @@ function GlossaryFilterAndList() {
                 {item.occurrences.map((occurrence, index) => (
                   <Link
                     key={`${occurrence.themeSlug}-${occurrence.lessonNumber}-${index}`}
-                    href={`/${lang}/chapters/${occurrence.themeSlug}?lesson=${occurrence.lessonNumber}`}
+                    href={`${sectionHref(lang, "chapters", occurrence.themeSlug)}?lesson=${occurrence.lessonNumber}`}
                     style={{
                       display: "block",
                       color: "var(--text-secondary)",

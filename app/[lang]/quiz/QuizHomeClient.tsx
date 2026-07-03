@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { useLang } from "@/app/context/LangContext";
+import { sectionHref, type Lang } from "@/lib/i18n";
 import type { QuizLessonCard } from "./page";
 
 interface Props {
@@ -104,7 +105,7 @@ function QuizLessonCardView({
   questionCount,
 }: {
   card: QuizLessonCard;
-  lang: string;
+  lang: Lang;
   leconPrefix: string;
   startQuiz: string;
   questionCount: (n: number) => string;
@@ -113,7 +114,7 @@ function QuizLessonCardView({
   const title = lang === "fr" ? card.titleFr : card.titleEn;
 
   return (
-    <Link href={`/${lang}/quiz/${card.lecon}`} style={{ textDecoration: "none" }}>
+    <Link href={sectionHref(lang, "quiz", String(card.lecon))} style={{ textDecoration: "none" }}>
       <div
         onMouseEnter={() => setHovered(true)}
         onMouseLeave={() => setHovered(false)}

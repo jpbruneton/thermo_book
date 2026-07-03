@@ -5,7 +5,7 @@ import type { Metadata } from "next";
 import { getEnglishTexFilePath, getLessonReferences, getLessonWebContent } from "@/lib/chapterContent.server";
 import { processLatex } from "@/lib/latex";
 import { absoluteUrl } from "@/lib/siteUrl";
-import type { Lang } from "@/lib/i18n";
+import { sectionHref, type Lang } from "@/lib/i18n";
 
 interface Props {
   params: { slug: string; lang: Lang };
@@ -26,7 +26,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const keywords = theme.lessons
     .flatMap((l) => (isFr ? l.topicsFr : l.topicsEn))
     .slice(0, 15);
-  const url = absoluteUrl(`/${lang}/chapters/${theme.slug}`);
+  const url = absoluteUrl(sectionHref(lang, "chapters", theme.slug));
   return {
     title: `${label} ${theme.number}: ${title}`,
     description,
@@ -34,8 +34,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     alternates: {
       canonical: url,
       languages: {
-        fr: absoluteUrl(`/fr/chapters/${theme.slug}`),
-        en: absoluteUrl(`/en/chapters/${theme.slug}`),
+        fr: absoluteUrl(sectionHref("fr", "chapters", theme.slug)),
+        en: absoluteUrl(sectionHref("en", "chapters", theme.slug)),
       },
     },
     openGraph: {

@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { bookMeta, bookMetaDisplayTitle } from "@/lib/chapters";
 import { absoluteUrl } from "@/lib/siteUrl";
-import type { Lang } from "@/lib/i18n";
+import { sectionHref, type Lang } from "@/lib/i18n";
 
 // This metadata applies to /[lang]/chapters (the listing page).
 // Individual /[lang]/chapters/[slug] pages override it via their own generateMetadata.
@@ -16,15 +16,15 @@ export async function generateMetadata({
   const description = isFr
     ? `Parcourir toutes les leçons de ${bookMetaDisplayTitle()}.`
     : `Browse all lessons of ${bookMetaDisplayTitle()}.`;
-  const url = absoluteUrl(`/${lang}/chapters`);
+  const url = absoluteUrl(sectionHref(lang, "chapters"));
   return {
     title,
     description,
     alternates: {
       canonical: url,
       languages: {
-        fr: absoluteUrl("/fr/chapters"),
-        en: absoluteUrl("/en/chapters"),
+        fr: absoluteUrl(sectionHref("fr", "chapters")),
+        en: absoluteUrl(sectionHref("en", "chapters")),
       },
     },
     openGraph: {

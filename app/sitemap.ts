@@ -3,7 +3,7 @@ import { getWebThemes } from "@/lib/chapters";
 import { absoluteUrl, getSiteUrl } from "@/lib/siteUrl";
 import { getEnglishTexFilePath, getLessonWebContent } from "@/lib/chapterContent.server";
 import { hasExercises } from "@/lib/exercisesLibrary.server";
-import { SUPPORTED_LANGS } from "@/lib/i18n";
+import { sectionHref, SUPPORTED_LANGS } from "@/lib/i18n";
 
 const SITE_URL = getSiteUrl();
 
@@ -29,19 +29,19 @@ export default function sitemap(): MetadataRoute.Sitemap {
   for (const lang of SUPPORTED_LANGS) {
     staticRoutes.push(
       {
-        url: `${SITE_URL}/${lang}/chapters`,
+        url: `${SITE_URL}${sectionHref(lang, "chapters")}`,
         lastModified: new Date(),
         changeFrequency: "monthly",
         priority: 0.9,
       },
       {
-        url: `${SITE_URL}/${lang}/about`,
+        url: `${SITE_URL}${sectionHref(lang, "about")}`,
         lastModified: new Date(),
         changeFrequency: "yearly",
         priority: 0.6,
       },
       {
-        url: `${SITE_URL}/${lang}/glossary`,
+        url: `${SITE_URL}${sectionHref(lang, "glossary")}`,
         lastModified: new Date(),
         changeFrequency: "monthly",
         priority: 0.5,
@@ -49,7 +49,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     );
     if (lang === "fr" || englishExercisesAvailable) {
       staticRoutes.push({
-        url: `${SITE_URL}/${lang}/exercises`,
+        url: `${SITE_URL}${sectionHref(lang, "exercises")}`,
         lastModified: new Date(),
         changeFrequency: "weekly",
         priority: 0.75,
@@ -64,10 +64,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
     const hasEnglish = themeHasEnglishContent(theme);
     return SUPPORTED_LANGS.flatMap((lang) => {
       if (lang === "en" && !hasEnglish) return [];
+      const themeUrl = `${SITE_URL}${sectionHref(lang, "chapters", theme.slug)}`;
       if (theme.lessons.length === 0) {
         return [
           {
-            url: `${SITE_URL}/${lang}/chapters/${theme.slug}`,
+            url: themeUrl,
             lastModified: new Date(),
             changeFrequency: "weekly" as const,
             priority: 0.8,
@@ -75,10 +76,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
         ];
       }
       return theme.lessons.map((_, lessonIndex) => ({
-        url:
-          lessonIndex === 0
-            ? `${SITE_URL}/${lang}/chapters/${theme.slug}`
-            : `${SITE_URL}/${lang}/chapters/${theme.slug}?lesson=${String(lessonIndex + 1)}`,
+        url: lessonIndex === 0 ? themeUrl : `${themeUrl}?lesson=${String(lessonIndex + 1)}`,
         lastModified: new Date(),
         changeFrequency: "weekly" as const,
         priority: 0.85,

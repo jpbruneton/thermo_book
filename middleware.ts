@@ -7,12 +7,12 @@ const legacy = legacyExerciseSlugRedirects as Record<string, string>;
 export function middleware(request: NextRequest) {
   const pathname = request.nextUrl.pathname;
 
-  const exercisesMatch = /^\/(?:(en|fr)\/)?exercises\/(.+)$/.exec(pathname);
+  const exercisesMatch = /^\/(?:(en|fr)\/)?(exercises|exercices)\/(.+)$/.exec(pathname);
   if (!exercisesMatch) {
     return NextResponse.next();
   }
 
-  const [, lang, rest] = exercisesMatch;
+  const [, lang, section, rest] = exercisesMatch;
   const cleanRest = rest.replace(/\/$/, "");
   if (cleanRest.includes("/")) {
     return NextResponse.next();
@@ -21,7 +21,7 @@ export function middleware(request: NextRequest) {
   const to = legacy[cleanRest];
   if (to) {
     const url = request.nextUrl.clone();
-    url.pathname = lang ? `/${lang}/exercises/${to}` : `/exercises/${to}`;
+    url.pathname = lang ? `/${lang}/${section}/${to}` : `/${section}/${to}`;
     return NextResponse.redirect(url, 308);
   }
 
@@ -29,5 +29,5 @@ export function middleware(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ["/exercises/:path*", "/en/exercises/:path*", "/fr/exercises/:path*"],
+  matcher: ["/exercises/:path*", "/en/exercises/:path*", "/fr/exercises/:path*", "/fr/exercices/:path*"],
 };

@@ -6,6 +6,45 @@ export function isLang(value: string): value is Lang {
   return (SUPPORTED_LANGS as readonly string[]).includes(value);
 }
 
+export const SECTIONS = ["chapters", "exercises", "quiz", "glossary", "about"] as const;
+export type Section = (typeof SECTIONS)[number];
+
+/**
+ * Public URL word for each section, per language (e.g. /fr/chapitres vs /en/chapters).
+ * The internal route folders (app/[lang]/chapters, .../exercises, etc.) always use the
+ * English word; `next.config.js` rewrites the French public words to those internal paths.
+ */
+export const sectionSlugs: Record<Lang, Record<Section, string>> = {
+  en: {
+    chapters: "chapters",
+    exercises: "exercises",
+    quiz: "quiz",
+    glossary: "glossary",
+    about: "about",
+  },
+  fr: {
+    chapters: "chapitres",
+    exercises: "exercices",
+    quiz: "quiz",
+    glossary: "glossaire",
+    about: "a-propos",
+  },
+};
+
+/** Builds the public href for a section, e.g. sectionHref("fr", "chapters", "introduction") -> "/fr/chapitres/introduction". */
+export function sectionHref(lang: Lang, section: Section, ...rest: string[]): string {
+  const base = `/${lang}/${sectionSlugs[lang][section]}`;
+  return rest.length > 0 ? `${base}/${rest.join("/")}` : base;
+}
+
+/** Reverse lookup: given a lang and a public URL segment, which section does it refer to (if any)? */
+export function sectionFromSlug(lang: Lang, slug: string): Section | null {
+  const entry = (Object.entries(sectionSlugs[lang]) as [Section, string][]).find(
+    ([, value]) => value === slug
+  );
+  return entry ? entry[0] : null;
+}
+
 export type UpdateEntry = {
   date: string;
   title: string;

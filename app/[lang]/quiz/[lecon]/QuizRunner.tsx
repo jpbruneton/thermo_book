@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useMemo, useState } from "react";
 import { useLang } from "@/app/context/LangContext";
+import { sectionHref } from "@/lib/i18n";
 import type { QuizQuestion } from "@/lib/quizzes";
 
 interface Props {
@@ -99,7 +100,7 @@ export function QuizRunner({ lecon, titleFr, titleEn, questions }: Props) {
   const headerBlock = (
     <div style={{ marginBottom: "2rem" }}>
       <Link
-        href={`/${lang}/quiz`}
+        href={sectionHref(lang, "quiz")}
         style={{
           fontFamily: "var(--font-inter)",
           fontSize: "0.85rem",
@@ -244,7 +245,7 @@ export function QuizRunner({ lecon, titleFr, titleEn, questions }: Props) {
               {t.restart}
             </button>
             <Link
-              href={`/${lang}/quiz`}
+              href={sectionHref(lang, "quiz")}
               style={{
                 border: "1px solid var(--accent-border-lg)",
                 color: "var(--amber)",

@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { bookMeta, bookMetaDisplayTitle } from "@/lib/chapters";
 import { absoluteUrl } from "@/lib/siteUrl";
-import type { Lang } from "@/lib/i18n";
+import { sectionHref, type Lang } from "@/lib/i18n";
 
 export async function generateMetadata({
   params,
@@ -14,15 +14,15 @@ export async function generateMetadata({
   const description = isFr
     ? `Exercices et problèmes d'application pour ${bookMetaDisplayTitle()}.`
     : `Practice problems and exercises for ${bookMetaDisplayTitle()}.`;
-  const url = absoluteUrl(`/${lang}/exercises`);
+  const url = absoluteUrl(sectionHref(lang, "exercises"));
   return {
     title,
     description,
     alternates: {
       canonical: url,
       languages: {
-        fr: absoluteUrl("/fr/exercises"),
-        en: absoluteUrl("/en/exercises"),
+        fr: absoluteUrl(sectionHref("fr", "exercises")),
+        en: absoluteUrl(sectionHref("en", "exercises")),
       },
     },
     openGraph: {

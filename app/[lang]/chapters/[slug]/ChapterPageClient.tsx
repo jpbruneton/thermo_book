@@ -6,6 +6,7 @@ import { Suspense, useMemo, useTransition } from "react";
 import type { Theme } from "@/lib/chapters";
 import { ChapterContent } from "../ChapterContent";
 import { useLang } from "@/app/context/LangContext";
+import { sectionHref } from "@/lib/i18n";
 
 type LocalizedLesson = Theme["lessons"][number] & {
   contentFr: string;
@@ -70,7 +71,7 @@ function ChapterThemeHeadingBlock({ theme }: { theme: ThemeWithLocalizedLessonCo
           {t.chapter.breadcrumbHome}
         </Link>
         <span>/</span>
-        <Link href={`/${lang}/chapters`} style={{ color: "var(--text-dim)", textDecoration: "none" }}>
+        <Link href={sectionHref(lang, "chapters")} style={{ color: "var(--text-dim)", textDecoration: "none" }}>
           {t.chapter.breadcrumbThemes}
         </Link>
         <span>/</span>
@@ -369,7 +370,7 @@ function ChapterContentAndPrevNext({ theme, prev, next }: Props) {
             </div>
           </button>
         ) : prev ? (
-          <Link href={`/${lang}/chapters/${prev.slug}`} style={{ textDecoration: "none" }}>
+          <Link href={sectionHref(lang, "chapters", prev.slug)} style={{ textDecoration: "none" }}>
             <div
               className="chapter-card"
               style={{
@@ -457,7 +458,7 @@ function ChapterContentAndPrevNext({ theme, prev, next }: Props) {
             </div>
           </button>
         ) : next ? (
-          <Link href={`/${lang}/chapters/${next.slug}`} style={{ textDecoration: "none" }}>
+          <Link href={sectionHref(lang, "chapters", next.slug)} style={{ textDecoration: "none" }}>
             <div
               className="chapter-card"
               style={{
