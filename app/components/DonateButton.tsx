@@ -1,27 +1,37 @@
-"use client";
-import { useEffect, useRef } from "react";
-
-/** Official Buy Me a Coffee button widget (generated on buymeacoffee.com), self-inserted next to its <script> tag. */
+/**
+ * Hand-built equivalent of the Buy Me a Coffee widget button (bg #FFDD00, black outline/text,
+ * Cookie font, coffee emoji, "Buy me a coffee" text — same params as the buymeacoffee.com embed).
+ *
+ * The official <script data-name="bmc-button"> embed renders via `document.writeln`, which only
+ * works for scripts parsed synchronously in the initial HTML — browsers silently ignore it for
+ * scripts inserted after the page has loaded (as happens in any React/Next.js app), so it never
+ * appears here. This renders the same look directly as JSX instead.
+ */
 export function DonateButton() {
-  const containerRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const container = containerRef.current;
-    if (!container || container.querySelector("script")) return;
-
-    const script = document.createElement("script");
-    script.src = "https://cdnjs.buymeacoffee.com/1.0.0/button.prod.min.js";
-    script.setAttribute("data-name", "bmc-button");
-    script.setAttribute("data-slug", "physics.lessons");
-    script.setAttribute("data-color", "#FFDD00");
-    script.setAttribute("data-emoji", "☕");
-    script.setAttribute("data-font", "Cookie");
-    script.setAttribute("data-text", "Buy me a coffee");
-    script.setAttribute("data-outline-color", "#000000");
-    script.setAttribute("data-font-color", "#000000");
-    script.setAttribute("data-coffee-color", "#ffffff");
-    container.appendChild(script);
-  }, []);
-
-  return <div ref={containerRef} style={{ display: "flex", alignItems: "center" }} />;
+  return (
+    <a
+      href="https://www.buymeacoffee.com/physics.lessons"
+      target="_blank"
+      rel="noopener noreferrer nofollow"
+      style={{
+        display: "inline-flex",
+        alignItems: "center",
+        gap: "0.4rem",
+        background: "#FFDD00",
+        color: "#000000",
+        border: "1px solid #000000",
+        borderRadius: "8px",
+        padding: "0.4rem 0.9rem",
+        fontFamily: "'Cookie', cursive",
+        fontSize: "1.15rem",
+        lineHeight: 1,
+        textDecoration: "none",
+        whiteSpace: "nowrap",
+        flexShrink: 0,
+      }}
+    >
+      <span aria-hidden="true">☕</span>
+      Buy me a coffee
+    </a>
+  );
 }
