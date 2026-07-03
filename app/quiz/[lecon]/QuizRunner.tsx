@@ -358,7 +358,7 @@ export function QuizRunner({ lecon, titleFr, titleEn, questions }: Props) {
                         color: "var(--amber)",
                       }}
                     >
-                      {q.choices.length === 2 ? (ci === 0 ? "V" : "F") : String.fromCharCode(65 + ci)}
+                      {q.choices[0] === "Vrai" ? (ci === 0 ? "V" : "F") : String.fromCharCode(65 + ci)}
                     </span>
                     <span>{choice}</span>
                   </button>
