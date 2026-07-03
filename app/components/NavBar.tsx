@@ -30,6 +30,11 @@ export function NavBar() {
     en: "English",
   };
 
+  const langLabelsShort: Record<"en" | "fr", string> = {
+    fr: "FR",
+    en: "EN",
+  };
+
   const pathMatch = /^\/(en|fr)\/([^/]+)(\/.*)?$/.exec(pathname);
 
   const switchLang = (l: "en" | "fr") => {
@@ -76,7 +81,7 @@ export function NavBar() {
             whiteSpace: "nowrap",
           }}
         >
-          {langLabels[l]}
+          {small ? langLabelsShort[l] : langLabels[l]}
         </button>
       ))}
     </div>
