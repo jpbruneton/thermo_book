@@ -156,14 +156,16 @@ export const themes: Theme[] = [
     titleFr: "Historique de la thermodynamique",
     titleEn: "A History of Thermodynamics",
     descriptionFr:
-      "De l'éolipyle de Héron à Carnot, Mayer et Clausius : naissance de la thermodynamique et de l'entropie.",
+      "De l'éolipyle de Héron à Carnot, Mayer et Clausius : naissance de la thermodynamique, de la calorimétrie et de l'entropie.",
     descriptionEn:
-      "From Hero's aeolipile to Carnot, Mayer, and Clausius: the birth of thermodynamics and entropy.",
+      "From Hero's aeolipile to Carnot, Mayer, and Clausius: the birth of thermodynamics, calorimetry, and entropy.",
     readingTime: "11 min",
     topicsFr: [
       "Histoire de la thermodynamique",
       "Éolipyle de Héron",
       "Théorie du calorique",
+      "Joseph Black",
+      "Calorimétrie",
       "Carnot",
       "Mayer",
       "Clausius",
@@ -176,6 +178,8 @@ export const themes: Theme[] = [
       "History of thermodynamics",
       "Hero's aeolipile",
       "Caloric theory",
+      "Joseph Black",
+      "Calorimetry",
       "Carnot",
       "Mayer",
       "Clausius",
