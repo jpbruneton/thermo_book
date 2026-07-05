@@ -307,21 +307,28 @@ function ChapterContentAndPrevNext({ theme, prev, next }: Props) {
   const previousOnClick = previousLesson ? () => navigateToLesson(activeLessonIndex - 1) : undefined;
   const nextOnClick = nextLesson ? () => navigateToLesson(activeLessonIndex + 1) : undefined;
 
+  const compactNavRow = (
+    <LessonNavRow
+      previousLabel={previousLabel}
+      previousTitle={previousTitle}
+      previousHref={previousHref}
+      previousOnClick={previousOnClick}
+      nextLabel={nextLabel}
+      nextTitle={nextTitle}
+      nextHref={nextHref}
+      nextOnClick={nextOnClick}
+      compact
+    />
+  );
+
   return (
     <>
-      <LessonNavRow
-        previousLabel={previousLabel}
-        previousTitle={previousTitle}
-        previousHref={previousHref}
-        previousOnClick={previousOnClick}
-        nextLabel={nextLabel}
-        nextTitle={nextTitle}
-        nextHref={nextHref}
-        nextOnClick={nextOnClick}
-        compact
-      />
       {activeLesson ? (
-        <ChapterContent lesson={activeLesson} hideHeader={theme.lessons.length <= 1} />
+        <ChapterContent
+          lesson={activeLesson}
+          hideHeader={theme.lessons.length <= 1}
+          topNav={compactNavRow}
+        />
       ) : (
         <div
           style={{

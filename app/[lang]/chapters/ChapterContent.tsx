@@ -1,5 +1,6 @@
 "use client";
 import Link from "next/link";
+import type { ReactNode } from "react";
 import { useEffect, useMemo, useState } from "react";
 import type { Lesson } from "@/lib/chapters";
 import { useLang } from "@/app/context/LangContext";
@@ -8,6 +9,8 @@ import { sectionHref } from "@/lib/i18n";
 interface Props {
   lesson: LessonWithLocalizedContent;
   hideHeader?: boolean;
+  /** Rendered after the keyword bubbles, just above the lesson's first section. */
+  topNav?: ReactNode;
 }
 
 interface LessonWithLocalizedContent extends Lesson {
@@ -87,7 +90,7 @@ function slugify(value: string): string {
   return normalized || "section";
 }
 
-export function ChapterContent({ lesson, hideHeader = false }: Props) {
+export function ChapterContent({ lesson, hideHeader = false, topNav }: Props) {
   const [tab, setTab] = useState<"web" | "refs" | "pdf">("web");
   const [activeTocId, setActiveTocId] = useState("");
   const [tocVisible, setTocVisible] = useState(true);
@@ -320,6 +323,8 @@ export function ChapterContent({ lesson, hideHeader = false }: Props) {
           ))}
         </div>
       )}
+
+      {topNav}
 
       <div style={{ maxWidth: "800px", margin: "0 auto", padding: "1.5rem 1.5rem 0", borderBottom: "1px solid var(--border-subtle)" }} />
 
