@@ -124,6 +124,72 @@ export const quizQuestions: QuizQuestion[] = [
     ],
     correctIndex: 1,
   },
+  {
+    id: "l2-q4",
+    lecon: 2,
+    question: "Dans la relation Q = m c ΔT mise en évidence par Joseph Black, que représente le coefficient c ?",
+    choices: [
+      "La quantité totale de chaleur échangée par le corps, exprimée en joules.",
+      "La quantité de chaleur qu'il faut fournir à une unité de masse du corps pour élever sa température d'un degré.",
+      "La température d'équilibre finale atteinte par le corps après l'échange de chaleur.",
+      "Le rapport entre le travail fourni au corps et la chaleur qu'il reçoit.",
+    ],
+    explanations: [
+      "Faux : c'est Q elle-même qui est la chaleur totale échangée, pas c — Q dépend en plus de la masse et de l'écart de température.",
+      "Exact : c'est la capacité thermique massique (ou chaleur spécifique), le coefficient propre à chaque matériau que Black met en évidence.",
+      "Faux : cette température se calcule à partir d'un bilan de chaleur, mais n'est pas ce que désigne c.",
+      "Faux : cette relation n'a rien à voir avec c ; c ne fait intervenir que la chaleur et la température.",
+    ],
+    correctIndex: 1,
+  },
+  {
+    id: "l2-q5",
+    lecon: 2,
+    question: "Quelle est, en unités modernes, la valeur de l'équivalent mécanique de la calorie établi par les expériences de Joule ?",
+    choices: ["Environ 1 J par calorie", "Environ 4,18 J par calorie", "Environ 100 J par calorie", "Environ 0,24 J par calorie"],
+    explanations: [
+      "Faux : ce serait le cas si la calorie et le joule mesuraient déjà la même chose sans conversion.",
+      "Exact : 1 cal ≈ 4,18 J — c'est la valeur, mesurée avec une précision croissante entre 1843 et 1849, qui a établi l'équivalence entre chaleur et travail.",
+      "Faux : cette valeur est bien trop grande d'un facteur ~24 par rapport à la mesure de Joule.",
+      "Faux : c'est à peu près l'inverse (1/4,18 ≈ 0,24) — l'équivalent mécanique de la calorie, pas son inverse.",
+    ],
+    correctIndex: 1,
+  },
+  {
+    id: "l2-q6",
+    lecon: 2,
+    question: "Un emballage alimentaire indique « 250 kcal ». À combien de kilojoules cela correspond-il approximativement ?",
+    choices: ["≈ 250 kJ", "≈ 1046 kJ", "≈ 60 kJ", "≈ 4184 kJ"],
+    explanations: [
+      "Faux : cela reviendrait à confondre kcal et kJ, comme si 1 cal = 1 J.",
+      "Exact : 250 kcal × 4,18 kJ/kcal ≈ 1046 kJ.",
+      "Faux : c'est trop faible — cela correspondrait à moins de 15 kcal.",
+      "Faux : c'est l'énergie que donnerait 1000 kcal, pas 250 kcal.",
+    ],
+    correctIndex: 1,
+  },
+  {
+    id: "l2-vf2",
+    lecon: 2,
+    question: "La « Calorie » (ou kcal) affichée sur les emballages alimentaires est rigoureusement la même unité que la calorie (cal) utilisée en physique.",
+    choices: ["Vrai", "Faux"],
+    explanations: [
+      "Faux : la Calorie alimentaire (Cal, ou kcal) vaut 1000 fois la calorie de physicien (cal) — une confusion classique et une source d'erreur fréquente d'un facteur 1000.",
+      "Exact : 1 Cal (alimentaire) = 1 kcal = 1000 cal. Un aliment « à 200 kcal » libère donc environ 200 000 cal, soit environ 836 kJ.",
+    ],
+    correctIndex: 1,
+  },
+  {
+    id: "l2-vf3",
+    lecon: 2,
+    question: "La calorimétrie est la science de la mesure des quantités de chaleur échangées entre systèmes.",
+    choices: ["Vrai", "Faux"],
+    explanations: [
+      "Exact : Black en fait, avec la mesure quantitative de la capacité thermique et de la chaleur latente, une science quantitative dans les années 1760 ; elle a ensuite été affinée par Lavoisier et Laplace avec le calorimètre à glace.",
+      "Faux : c'est bien la bonne définition, ce n'est pas un piège.",
+    ],
+    correctIndex: 0,
+  },
 
   // ─── Leçon 3 : Notions fondamentales ───
   {
