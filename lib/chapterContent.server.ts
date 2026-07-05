@@ -6,9 +6,15 @@ import { processLatex } from "@/lib/latex";
 
 function stripComment(line: string): string {
   const protectedPercent = "__ESCAPED_PERCENT__";
-  const escaped = line.replace(/\\%/g, protectedPercent);
-  const withoutComment = escaped.replace(/%.*$/, "");
-  return withoutComment.replace(new RegExp(protectedPercent, "g"), "\\%");
+  const protectedUrlPercent = "__URL_PERCENT__";
+  let working = line.replace(/\\%/g, protectedPercent);
+  // Percent-encoded URLs (e.g. \url{...H%C3%A9ron...}) use raw, unescaped
+  // '%' characters that must survive comment stripping intact.
+  working = working.replace(/\\url\{[^{}]*\}/g, (match) => match.replace(/%/g, protectedUrlPercent));
+  const withoutComment = working.replace(/%.*$/, "");
+  return withoutComment
+    .replace(new RegExp(protectedUrlPercent, "g"), "%")
+    .replace(new RegExp(protectedPercent, "g"), "\\%");
 }
 
 function readBalancedBracesAt(input: string, startIndex: number): { content: string; endIndex: number } | null {
