@@ -318,6 +318,7 @@ function ChapterContentAndPrevNext({ theme, prev, next }: Props) {
       nextHref={nextHref}
       nextOnClick={nextOnClick}
       compact
+      bare
     />
   );
 
@@ -453,6 +454,10 @@ interface LessonNavRowProps {
   nextHref?: string;
   nextOnClick?: () => void;
   compact?: boolean;
+  /** Skip the outer maxWidth/.lesson-web-layout wrapper — used when the
+   * caller already places this inside the .lesson-web-main column itself
+   * (e.g. the compact top-of-lesson nav, aligned with the TOC's top edge). */
+  bare?: boolean;
 }
 
 function LessonNavRow({
@@ -465,8 +470,40 @@ function LessonNavRow({
   nextHref,
   nextOnClick,
   compact,
+  bare,
 }: LessonNavRowProps) {
   if (!previousTitle && !nextTitle) return null;
+
+  const grid = (
+    <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: compact ? "0.6rem" : "1rem" }}>
+      {previousTitle ? (
+        <NavCard
+          label={previousLabel}
+          title={previousTitle}
+          align="left"
+          href={previousHref}
+          onClick={previousOnClick}
+          compact={compact}
+        />
+      ) : (
+        <div />
+      )}
+      {nextTitle ? (
+        <NavCard
+          label={nextLabel}
+          title={nextTitle}
+          align="right"
+          href={nextHref}
+          onClick={nextOnClick}
+          compact={compact}
+        />
+      ) : (
+        <div />
+      )}
+    </div>
+  );
+
+  if (bare) return grid;
 
   return (
     <div
@@ -480,35 +517,7 @@ function LessonNavRow({
           this row's left edge aligns with the lesson text above/below it,
           instead of being centered against the full width incl. the TOC. */}
       <div className="lesson-web-layout">
-        <div
-          className="lesson-web-main"
-          style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: compact ? "0.6rem" : "1rem" }}
-        >
-          {previousTitle ? (
-            <NavCard
-              label={previousLabel}
-              title={previousTitle}
-              align="left"
-              href={previousHref}
-              onClick={previousOnClick}
-              compact={compact}
-            />
-          ) : (
-            <div />
-          )}
-          {nextTitle ? (
-            <NavCard
-              label={nextLabel}
-              title={nextTitle}
-              align="right"
-              href={nextHref}
-              onClick={nextOnClick}
-              compact={compact}
-            />
-          ) : (
-            <div />
-          )}
-        </div>
+        <div className="lesson-web-main">{grid}</div>
         <div />
       </div>
     </div>

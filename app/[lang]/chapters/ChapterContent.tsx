@@ -324,8 +324,6 @@ export function ChapterContent({ lesson, hideHeader = false, topNav }: Props) {
         </div>
       )}
 
-      {topNav}
-
       <div style={{ maxWidth: "800px", margin: "0 auto", padding: "1.5rem 1.5rem 0", borderBottom: "1px solid var(--border-subtle)" }} />
 
       {/* ─── Web Content ─── */}
@@ -340,6 +338,10 @@ export function ChapterContent({ lesson, hideHeader = false, topNav }: Props) {
           {hasLessonContent ? (
             <div className="lesson-web-layout">
               <div className="lesson-web-main">
+                {/* Sits at the very top of this column, level with the TOC's
+                    top edge on the right (both are direct children of the
+                    same .lesson-web-layout row). */}
+                {topNav && <div style={{ marginBottom: "1.5rem" }}>{topNav}</div>}
                 <div
                   className="prose-content"
                   dangerouslySetInnerHTML={{ __html: webContentWithToc.content }}
