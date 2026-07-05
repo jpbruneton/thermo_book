@@ -180,6 +180,9 @@ function cleanLatexInline(text: string): string {
   result = replaceInlineCommand(result, "underline", (content) => `<span class="latex-uline">${content}</span>`);
   result = replaceInlineCommand(result, "textsuperscript", (content) => `<sup>${content}</sup>`);
   result = replaceInlineCommand(result, "textsubscript", (content) => `<sub>${content}</sub>`);
+  // \, is a thin space in plain text (e.g. "0\,°C"); leave math ($...$) alone
+  // since KaTeX interprets \, as its own spacing command there.
+  result = replaceOutsideMath(result, (segment) => segment.replace(/\\,/g, nbsp));
   // Convert TeX opening/closing double quotes to typographic quotes.
   result = result.replace(/``/g, "“").replace(/''/g, "”");
   result = result.replace(/\\ldots/g, "...");
@@ -198,6 +201,16 @@ function cleanLatexInline(text: string): string {
   result = result.replace(/\s+\?/g, `${nbsp}?`);
   result = result.replace(/\s+!/g, `${nbsp}!`);
   result = result.replace(/~+/g, " ");
+  // \url{...}: links in the body/footnotes, not just the figure-source line.
+  // Run last so the URL's own "~" (a plain word-joiner elsewhere in this
+  // function) is preserved, and unescape "\#" (required by LaTeX inside
+  // \url so "#" isn't read as a fragment/parameter marker by TeX) for the href.
+  result = replaceInlineCommand(result, "url", (content) => {
+    const rawUrl = content.replace(/\\#/g, "#").trim();
+    const safeHref = escapeHtmlAttribute(rawUrl);
+    const displayUrl = escapeHtmlText(rawUrl);
+    return `<a href="${safeHref}" target="_blank" rel="noreferrer">${displayUrl}</a>`;
+  });
   return result.trim();
 }
 
@@ -274,6 +287,22 @@ function extractFootnotesFromParagraph(input: string): { text: string; footnotes
 function normalizeFigurePath(path: string): string {
   const withoutPrefix = path.replace(/^\.?\/*/, "").replace(/^figs\//, "");
   return `/figs/${withoutPrefix}`;
+}
+
+function replaceOutsideMath(input: string, transform: (segment: string) => string): string {
+  const mathRegex = /\$\$[\s\S]*?\$\$|\$[^$]*\$/g;
+  let result = "";
+  let lastIndex = 0;
+  let match: RegExpExecArray | null;
+
+  while ((match = mathRegex.exec(input)) !== null) {
+    result += transform(input.slice(lastIndex, match.index));
+    result += match[0];
+    lastIndex = match.index + match[0].length;
+  }
+  result += transform(input.slice(lastIndex));
+
+  return result;
 }
 
 function escapeHtmlAttribute(value: string): string {
