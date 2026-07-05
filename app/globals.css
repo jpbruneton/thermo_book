@@ -498,7 +498,7 @@ body::before {
   font-family: var(--font-inter);
   font-size: 0.82rem;
   color: var(--text-secondary);
-  text-align: left;
+  text-align: center;
   width: min(75%, 900px);
   max-width: 100%;
 }
