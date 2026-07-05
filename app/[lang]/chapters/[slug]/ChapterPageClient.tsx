@@ -274,8 +274,52 @@ function ChapterContentAndPrevNext({ theme, prev, next }: Props) {
       ? theme.lessons[activeLessonIndex + 1]
       : null;
 
+  const previousLabel = t.chapter.prev;
+  const nextLabel = t.chapter.next;
+  const previousTitle = previousLesson
+    ? previousLesson.kind === "fiche"
+      ? lang === "fr"
+        ? `Fiche n°${previousLesson.number} : ${previousLesson.subtitleFr}`
+        : `Sheet ${previousLesson.number}: ${previousLesson.subtitleEn}`
+      : lang === "fr"
+        ? `Leçon n°${previousLesson.number} : ${previousLesson.subtitleFr}`
+        : `Lesson ${previousLesson.number}: ${previousLesson.subtitleEn}`
+    : prev
+      ? lang === "fr"
+        ? prev.titleFr
+        : prev.titleEn
+      : null;
+  const nextTitle = nextLesson
+    ? nextLesson.kind === "fiche"
+      ? lang === "fr"
+        ? `Fiche n°${nextLesson.number} : ${nextLesson.subtitleFr}`
+        : `Sheet ${nextLesson.number}: ${nextLesson.subtitleEn}`
+      : lang === "fr"
+        ? `Leçon n°${nextLesson.number} : ${nextLesson.subtitleFr}`
+        : `Lesson ${nextLesson.number}: ${nextLesson.subtitleEn}`
+    : next
+      ? lang === "fr"
+        ? next.titleFr
+        : next.titleEn
+      : null;
+  const previousHref = !previousLesson && prev ? sectionHref(lang, "chapters", prev.slug) : undefined;
+  const nextHref = !nextLesson && next ? sectionHref(lang, "chapters", next.slug) : undefined;
+  const previousOnClick = previousLesson ? () => navigateToLesson(activeLessonIndex - 1) : undefined;
+  const nextOnClick = nextLesson ? () => navigateToLesson(activeLessonIndex + 1) : undefined;
+
   return (
     <>
+      <LessonNavRow
+        previousLabel={previousLabel}
+        previousTitle={previousTitle}
+        previousHref={previousHref}
+        previousOnClick={previousOnClick}
+        nextLabel={nextLabel}
+        nextTitle={nextTitle}
+        nextHref={nextHref}
+        nextOnClick={nextOnClick}
+        compact
+      />
       {activeLesson ? (
         <ChapterContent lesson={activeLesson} hideHeader={theme.lessons.length <= 1} />
       ) : (
@@ -309,194 +353,158 @@ function ChapterContentAndPrevNext({ theme, prev, next }: Props) {
         </div>
       )}
 
+      <LessonNavRow
+        previousLabel={previousLabel}
+        previousTitle={previousTitle}
+        previousHref={previousHref}
+        previousOnClick={previousOnClick}
+        nextLabel={nextLabel}
+        nextTitle={nextTitle}
+        nextHref={nextHref}
+        nextOnClick={nextOnClick}
+      />
+    </>
+  );
+}
+
+interface NavCardProps {
+  label: string;
+  title: string;
+  align: "left" | "right";
+  href?: string;
+  onClick?: () => void;
+  compact?: boolean;
+}
+
+function NavCard({ label, title, align, href, onClick, compact }: NavCardProps) {
+  const card = (
+    <div
+      className="chapter-card"
+      style={{
+        background: "var(--bg-card)",
+        border: "1px solid var(--accent-border-sm)",
+        borderRadius: compact ? "6px" : "8px",
+        padding: compact ? "0.5rem 0.9rem" : "1.25rem 1.5rem",
+        textAlign: align,
+      }}
+    >
       <div
         style={{
-          maxWidth: "800px",
-          margin: "0 auto",
-          padding: "3rem 1.5rem 5rem",
-          display: "grid",
-          gridTemplateColumns: "1fr 1fr",
-          gap: "1rem",
+          fontFamily: "var(--font-inter)",
+          fontSize: compact ? "0.62rem" : "0.7rem",
+          textTransform: "uppercase",
+          letterSpacing: "0.08em",
+          color: "var(--text-dim)",
+          marginBottom: compact ? "0.15rem" : "0.4rem",
         }}
       >
-        {previousLesson ? (
-          <button
-            type="button"
-            onClick={() => navigateToLesson(activeLessonIndex - 1)}
-            style={{
-              textAlign: "left",
-              border: "none",
-              background: "none",
-              padding: 0,
-              cursor: "pointer",
-            }}
-          >
-            <div
-              className="chapter-card"
-              style={{
-                background: "var(--bg-card)",
-                border: "1px solid var(--accent-border-sm)",
-                borderRadius: "8px",
-                padding: "1.25rem 1.5rem",
-              }}
-            >
-              <div
-                style={{
-                  fontFamily: "var(--font-inter)",
-                  fontSize: "0.7rem",
-                  textTransform: "uppercase",
-                  letterSpacing: "0.08em",
-                  color: "var(--text-dim)",
-                  marginBottom: "0.4rem",
-                }}
-              >
-                {t.chapter.prev}
-              </div>
-              <div
-                style={{
-                  fontFamily: "var(--font-playfair)",
-                  fontSize: "0.95rem",
-                  color: "var(--text-heading)",
-                }}
-              >
-                {previousLesson.kind === "fiche"
-                  ? lang === "fr"
-                    ? `Fiche n°${previousLesson.number} : ${previousLesson.subtitleFr}`
-                    : `Sheet ${previousLesson.number}: ${previousLesson.subtitleEn}`
-                  : lang === "fr"
-                    ? `Leçon n°${previousLesson.number} : ${previousLesson.subtitleFr}`
-                    : `Lesson ${previousLesson.number}: ${previousLesson.subtitleEn}`}
-              </div>
-            </div>
-          </button>
-        ) : prev ? (
-          <Link href={sectionHref(lang, "chapters", prev.slug)} style={{ textDecoration: "none" }}>
-            <div
-              className="chapter-card"
-              style={{
-                background: "var(--bg-card)",
-                border: "1px solid var(--accent-border-sm)",
-                borderRadius: "8px",
-                padding: "1.25rem 1.5rem",
-              }}
-            >
-              <div
-                style={{
-                  fontFamily: "var(--font-inter)",
-                  fontSize: "0.7rem",
-                  textTransform: "uppercase",
-                  letterSpacing: "0.08em",
-                  color: "var(--text-dim)",
-                  marginBottom: "0.4rem",
-                }}
-              >
-                {t.chapter.prev}
-              </div>
-              <div
-                style={{
-                  fontFamily: "var(--font-playfair)",
-                  fontSize: "0.95rem",
-                  color: "var(--text-heading)",
-                }}
-              >
-                {lang === "fr" ? prev.titleFr : prev.titleEn}
-              </div>
-            </div>
-          </Link>
-        ) : (
-          <div />
-        )}
-        {nextLesson ? (
-          <button
-            type="button"
-            onClick={() => navigateToLesson(activeLessonIndex + 1)}
-            style={{
-              textAlign: "left",
-              border: "none",
-              background: "none",
-              padding: 0,
-              cursor: "pointer",
-            }}
-          >
-            <div
-              className="chapter-card"
-              style={{
-                background: "var(--bg-card)",
-                border: "1px solid var(--accent-border-sm)",
-                borderRadius: "8px",
-                padding: "1.25rem 1.5rem",
-                textAlign: "right",
-              }}
-            >
-              <div
-                style={{
-                  fontFamily: "var(--font-inter)",
-                  fontSize: "0.7rem",
-                  textTransform: "uppercase",
-                  letterSpacing: "0.08em",
-                  color: "var(--text-dim)",
-                  marginBottom: "0.4rem",
-                }}
-              >
-                {t.chapter.next}
-              </div>
-              <div
-                style={{
-                  fontFamily: "var(--font-playfair)",
-                  fontSize: "0.95rem",
-                  color: "var(--text-heading)",
-                }}
-              >
-                {nextLesson.kind === "fiche"
-                  ? lang === "fr"
-                    ? `Fiche n°${nextLesson.number} : ${nextLesson.subtitleFr}`
-                    : `Sheet ${nextLesson.number}: ${nextLesson.subtitleEn}`
-                  : lang === "fr"
-                    ? `Leçon n°${nextLesson.number} : ${nextLesson.subtitleFr}`
-                    : `Lesson ${nextLesson.number}: ${nextLesson.subtitleEn}`}
-              </div>
-            </div>
-          </button>
-        ) : next ? (
-          <Link href={sectionHref(lang, "chapters", next.slug)} style={{ textDecoration: "none" }}>
-            <div
-              className="chapter-card"
-              style={{
-                background: "var(--bg-card)",
-                border: "1px solid var(--accent-border-sm)",
-                borderRadius: "8px",
-                padding: "1.25rem 1.5rem",
-                textAlign: "right",
-              }}
-            >
-              <div
-                style={{
-                  fontFamily: "var(--font-inter)",
-                  fontSize: "0.7rem",
-                  textTransform: "uppercase",
-                  letterSpacing: "0.08em",
-                  color: "var(--text-dim)",
-                  marginBottom: "0.4rem",
-                }}
-              >
-                {t.chapter.next}
-              </div>
-              <div
-                style={{
-                  fontFamily: "var(--font-playfair)",
-                  fontSize: "0.95rem",
-                  color: "var(--text-heading)",
-                }}
-              >
-                {lang === "fr" ? next.titleFr : next.titleEn}
-              </div>
-            </div>
-          </Link>
-        ) : (
-          <div />
-        )}
+        {label}
       </div>
-    </>
+      <div
+        style={{
+          fontFamily: "var(--font-playfair)",
+          fontSize: compact ? "0.8rem" : "0.95rem",
+          color: "var(--text-heading)",
+          overflow: compact ? "hidden" : undefined,
+          textOverflow: compact ? "ellipsis" : undefined,
+          whiteSpace: compact ? "nowrap" : undefined,
+        }}
+      >
+        {title}
+      </div>
+    </div>
+  );
+
+  if (onClick) {
+    return (
+      <button
+        type="button"
+        onClick={onClick}
+        style={{ textAlign: "left", border: "none", background: "none", padding: 0, cursor: "pointer", width: "100%" }}
+      >
+        {card}
+      </button>
+    );
+  }
+  if (href) {
+    return (
+      <Link href={href} style={{ textDecoration: "none" }}>
+        {card}
+      </Link>
+    );
+  }
+  return <div />;
+}
+
+interface LessonNavRowProps {
+  previousLabel: string;
+  previousTitle: string | null;
+  previousHref?: string;
+  previousOnClick?: () => void;
+  nextLabel: string;
+  nextTitle: string | null;
+  nextHref?: string;
+  nextOnClick?: () => void;
+  compact?: boolean;
+}
+
+function LessonNavRow({
+  previousLabel,
+  previousTitle,
+  previousHref,
+  previousOnClick,
+  nextLabel,
+  nextTitle,
+  nextHref,
+  nextOnClick,
+  compact,
+}: LessonNavRowProps) {
+  if (!previousTitle && !nextTitle) return null;
+
+  return (
+    <div
+      style={{
+        maxWidth: "1320px",
+        margin: "0 auto",
+        padding: compact ? "1.25rem 1.5rem 0" : "3rem 1.5rem 5rem",
+      }}
+    >
+      {/* Reuses the .lesson-web-layout grid (text column + TOC column) so
+          this row's left edge aligns with the lesson text above/below it,
+          instead of being centered against the full width incl. the TOC. */}
+      <div className="lesson-web-layout">
+        <div
+          className="lesson-web-main"
+          style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: compact ? "0.6rem" : "1rem" }}
+        >
+          {previousTitle ? (
+            <NavCard
+              label={previousLabel}
+              title={previousTitle}
+              align="left"
+              href={previousHref}
+              onClick={previousOnClick}
+              compact={compact}
+            />
+          ) : (
+            <div />
+          )}
+          {nextTitle ? (
+            <NavCard
+              label={nextLabel}
+              title={nextTitle}
+              align="right"
+              href={nextHref}
+              onClick={nextOnClick}
+              compact={compact}
+            />
+          ) : (
+            <div />
+          )}
+        </div>
+        <div />
+      </div>
+    </div>
   );
 }
 
