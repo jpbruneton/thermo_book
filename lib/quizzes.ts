@@ -190,6 +190,36 @@ export const quizQuestions: QuizQuestion[] = [
     ],
     correctIndex: 0,
   },
+  {
+    id: "l2-q7",
+    lecon: 2,
+    question:
+      "Un glaçon à 0°C fond entièrement puis l'eau obtenue est réchauffée jusqu'à 20°C. Comment calculer correctement la chaleur totale reçue ?",
+    choices: [
+      "Q = mcΔT, avec ΔT = 20°C et c la capacité thermique massique de l'eau liquide.",
+      "Q = 0, puisque la température finale est simplement supérieure à la température de fusion.",
+      "Il faut d'abord ajouter la chaleur latente de fusion (à 0°C, sans changement de température), puis seulement ensuite appliquer Q = mcΔT pour l'échauffement de l'eau liquide de 0°C à 20°C.",
+      "Q = mcΔT avec ΔT = 20°C, mais en prenant la capacité thermique massique de la glace plutôt que celle de l'eau liquide.",
+    ],
+    explanations: [
+      "Faux : ce calcul oublie la chaleur latente de fusion, absorbée à 0°C sans que la température ne change — c'est justement la seconde découverte de Black, distincte de la capacité thermique.",
+      "Faux : fondre de la glace en eau, puis réchauffer cette eau, nécessite bien un net apport de chaleur.",
+      "Exact : la chaleur latente (fusion à température constante) et la relation Q = mcΔT (échauffement à phase constante) se cumulent, mais s'appliquent chacune à une étape distincte du processus.",
+      "Faux : une fois la glace fondue, c'est bien la capacité thermique de l'eau liquide qui s'applique à l'échauffement de 0°C à 20°C, pas celle de la glace.",
+    ],
+    correctIndex: 2,
+  },
+  {
+    id: "l2-vf4",
+    lecon: 2,
+    question: "Lorsque de l'eau liquide gèle (passage à l'état solide), elle libère de la chaleur vers l'extérieur.",
+    choices: ["Vrai", "Faux"],
+    explanations: [
+      "Exact : la solidification est l'inverse de la fusion — l'eau restitue exactement la chaleur latente qu'il avait fallu lui fournir pour fondre la même quantité de glace, ce qui explique par exemple pourquoi l'eau d'un lac qui gèle en hiver réchauffe légèrement l'air environnant.",
+      "Faux : c'est un phénomène exothermique, symétrique de la fusion (endothermique) — c'est bien la même chaleur latente, échangée en sens inverse.",
+    ],
+    correctIndex: 0,
+  },
 
   // ─── Leçon 3 : Notions fondamentales ───
   {
