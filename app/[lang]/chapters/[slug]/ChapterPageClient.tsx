@@ -27,7 +27,7 @@ interface Props {
 
 const headerBoxStyle: CSSProperties = {
   borderBottom: "1px solid var(--border)",
-  padding: "4rem 1.5rem 3rem",
+  padding: "2.5rem 1.5rem 1.5rem",
   background: "var(--bg-secondary)",
   transition: "background 0.25s ease",
 };
@@ -61,7 +61,7 @@ function ChapterThemeHeadingBlock({ theme }: { theme: ThemeWithLocalizedLessonCo
           display: "flex",
           alignItems: "center",
           gap: "0.5rem",
-          marginBottom: "2rem",
+          marginBottom: "1rem",
           fontFamily: "var(--font-inter)",
           fontSize: "0.8rem",
           color: "var(--text-dim)",
@@ -87,7 +87,7 @@ function ChapterThemeHeadingBlock({ theme }: { theme: ThemeWithLocalizedLessonCo
           fontSize: "clamp(2rem, 5vw, 3rem)",
           fontWeight: 700,
           color: "var(--text-heading)",
-          marginBottom: "0.5rem",
+          marginBottom: "0.4rem",
           lineHeight: 1.2,
         }}
       >
@@ -99,7 +99,7 @@ function ChapterThemeHeadingBlock({ theme }: { theme: ThemeWithLocalizedLessonCo
           fontStyle: "italic",
           fontSize: "1.2rem",
           color: "var(--amber-soft)",
-          marginBottom: "1.5rem",
+          marginBottom: 0,
         }}
       >
         {lang === "fr" ? theme.descriptionFr : theme.descriptionEn}
@@ -147,7 +147,7 @@ function ChapterLessonTabButtons({ theme }: { theme: ThemeWithLocalizedLessonCon
   return (
     <div
       style={{
-        marginTop: "1.75rem",
+        marginTop: "1rem",
         display: "flex",
         flexDirection: "column",
         gap: "0.6rem",

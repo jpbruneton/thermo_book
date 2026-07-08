@@ -263,7 +263,7 @@ export function ChapterContent({ lesson, hideHeader = false, topNav }: Props) {
           style={{
             maxWidth: "800px",
             margin: "0 auto",
-            padding: "2rem 1.5rem 0",
+            padding: "1.25rem 1.5rem 0",
           }}
         >
           <h2
@@ -271,7 +271,7 @@ export function ChapterContent({ lesson, hideHeader = false, topNav }: Props) {
               fontFamily: "var(--font-playfair)",
               fontSize: "1.45rem",
               color: "var(--text-heading)",
-              marginBottom: "0.65rem",
+              marginBottom: "0.5rem",
               lineHeight: 1.3,
             }}
           >
@@ -283,7 +283,7 @@ export function ChapterContent({ lesson, hideHeader = false, topNav }: Props) {
               fontSize: "1rem",
               color: "var(--text-secondary)",
               lineHeight: 1.7,
-              marginBottom: "1rem",
+              marginBottom: "0.5rem",
             }}
           >
             {lang === "fr" ? lesson.descriptionFr : lesson.descriptionEn}
@@ -297,7 +297,7 @@ export function ChapterContent({ lesson, hideHeader = false, topNav }: Props) {
           style={{
             maxWidth: "800px",
             margin: "0 auto",
-            padding: hideHeader ? "2rem 1.5rem 0" : "0.75rem 1.5rem 0",
+            padding: hideHeader ? "1rem 1.5rem 0" : "0.5rem 1.5rem 0",
             display: "flex",
             flexWrap: "wrap",
             gap: "0.5rem",
@@ -324,7 +324,7 @@ export function ChapterContent({ lesson, hideHeader = false, topNav }: Props) {
         </div>
       )}
 
-      <div style={{ maxWidth: "800px", margin: "0 auto", padding: "1.5rem 1.5rem 0", borderBottom: "1px solid var(--border-subtle)" }} />
+      <div style={{ maxWidth: "800px", margin: "0 auto", padding: "1rem 1.5rem 0", borderBottom: "1px solid var(--border-subtle)" }} />
 
       {/* ─── Web Content ─── */}
       {tab === "web" && (
