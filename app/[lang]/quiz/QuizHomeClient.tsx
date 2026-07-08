@@ -15,9 +15,7 @@ export function QuizHomeClient({ cards }: Props) {
 
   const t = lang === "fr"
     ? {
-        title: "Quiz — Contrôle de cours",
-        subtitle:
-          "Des questions de cours, purement textuelles, pour tester votre compréhension leçon par leçon.",
+        title: "Quiz : questions de cours",
         leconPrefix: "Leçon",
         startQuiz: "Commencer le quiz →",
         questionCount: (n: number) => `${n} question${n > 1 ? "s" : ""}`,
@@ -25,8 +23,6 @@ export function QuizHomeClient({ cards }: Props) {
       }
     : {
         title: "Quiz — Course Check",
-        subtitle:
-          "Purely textual course questions to test your understanding lesson by lesson.",
         leconPrefix: "Lesson",
         startQuiz: "Start the quiz →",
         questionCount: (n: number) => `${n} question${n > 1 ? "s" : ""}`,
@@ -47,18 +43,6 @@ export function QuizHomeClient({ cards }: Props) {
         >
           {t.title}
         </h1>
-        <p
-          style={{
-            fontFamily: "var(--font-crimson)",
-            fontSize: "1.05rem",
-            color: "var(--text-secondary)",
-            lineHeight: 1.75,
-            marginBottom: "1rem",
-            maxWidth: "700px",
-          }}
-        >
-          {t.subtitle}
-        </p>
         {lang === "en" && (
           <p
             style={{

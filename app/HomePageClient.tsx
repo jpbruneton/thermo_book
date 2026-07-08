@@ -38,6 +38,7 @@ export default function HomePageClient() {
     <div style={{ position: "relative", zIndex: 1 }}>
       {/* ─── Hero ─── */}
       <section
+        className="home-hero-section"
         style={{
           position: "relative",
           minHeight: "100vh",
@@ -79,7 +80,7 @@ export default function HomePageClient() {
           }}
         >
           {/* Left: Text */}
-          <div style={{ marginTop: "calc(-0.5cm)" }}>
+          <div className="home-hero-text" style={{ marginTop: "calc(-0.5cm)" }}>
             <h1
               className="home-main-title animate-fade-up stagger-2 amber-glow"
               style={{

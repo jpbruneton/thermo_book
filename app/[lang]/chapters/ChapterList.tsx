@@ -48,6 +48,7 @@ export function ChapterList() {
             style={{ textDecoration: "none", display: "block" }}
           >
             <div
+              className="chapter-list-row"
               style={{
                 display: "grid",
                 gridTemplateColumns: "130px 1fr auto",
@@ -72,6 +73,7 @@ export function ChapterList() {
               }}
             >
               <div
+                className="chapter-list-number"
                 style={{
                   display: "flex",
                   flexDirection: "column",

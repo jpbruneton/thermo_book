@@ -316,7 +316,7 @@ export function QuizRunner({ lecon, titleFr, titleEn, questions }: Props) {
               const isActive = s.activeChoice === ci;
               let borderColor = "var(--border)";
               let bg = "var(--bg-primary)";
-              if (locked && isCorrect) {
+              if (isActive && isCorrect) {
                 borderColor = "#3a8f4a";
                 bg = "rgba(58, 143, 74, 0.08)";
               } else if (isActive && !isCorrect) {
