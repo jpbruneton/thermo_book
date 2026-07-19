@@ -8,9 +8,11 @@ function stripComment(line: string): string {
   const protectedPercent = "__ESCAPED_PERCENT__";
   const protectedUrlPercent = "__URL_PERCENT__";
   let working = line.replace(/\\%/g, protectedPercent);
-  // Percent-encoded URLs (e.g. \url{...H%C3%A9ron...}) use raw, unescaped
-  // '%' characters that must survive comment stripping intact.
+  // Percent-encoded URLs (e.g. \url{...H%C3%A9ron...} or the first argument
+  // of \href{...}{...}) use raw, unescaped '%' characters that must survive
+  // comment stripping intact.
   working = working.replace(/\\url\{[^{}]*\}/g, (match) => match.replace(/%/g, protectedUrlPercent));
+  working = working.replace(/\\href\{[^{}]*\}/g, (match) => match.replace(/%/g, protectedUrlPercent));
   const withoutComment = working.replace(/%.*$/, "");
   return withoutComment
     .replace(new RegExp(protectedUrlPercent, "g"), "%")
@@ -78,6 +80,47 @@ function replaceInlineCommand(
 
     output += render(block.content);
     index = block.endIndex;
+  }
+
+  return output;
+}
+
+function replaceHref(input: string): string {
+  const marker = "\\href";
+  let output = "";
+  let index = 0;
+
+  while (index < input.length) {
+    const start = input.indexOf(marker, index);
+    if (start === -1) {
+      output += input.slice(index);
+      break;
+    }
+
+    output += input.slice(index, start);
+    let cursor = start + marker.length;
+    while (cursor < input.length && /\s/.test(input[cursor])) cursor += 1;
+
+    const urlBlock = readBalancedBracesAt(input, cursor);
+    if (!urlBlock) {
+      output += marker;
+      index = cursor;
+      continue;
+    }
+
+    cursor = urlBlock.endIndex;
+    while (cursor < input.length && /\s/.test(input[cursor])) cursor += 1;
+    const textBlock = readBalancedBracesAt(input, cursor);
+    if (!textBlock) {
+      output += marker;
+      index = urlBlock.endIndex;
+      continue;
+    }
+
+    const rawUrl = urlBlock.content.replace(/\\#/g, "#").trim();
+    const safeHref = escapeHtmlAttribute(rawUrl);
+    output += `<a href="${safeHref}" target="_blank" rel="noreferrer">${textBlock.content}</a>`;
+    index = textBlock.endIndex;
   }
 
   return output;
@@ -207,6 +250,9 @@ function cleanLatexInline(text: string): string {
   result = result.replace(/\s+\?/g, `${nbsp}?`);
   result = result.replace(/\s+!/g, `${nbsp}!`);
   result = result.replace(/~+/g, " ");
+  // \href{url}{text}: links in the body/footnotes, not just the figure-source
+  // line. Run alongside \url below, after the punctuation/typography passes.
+  result = replaceHref(result);
   // \url{...}: links in the body/footnotes, not just the figure-source line.
   // Run last so the URL's own "~" (a plain word-joiner elsewhere in this
   // function) is preserved, and unescape "\#" (required by LaTeX inside
