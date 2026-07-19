@@ -117,7 +117,7 @@ function replaceHref(input: string): string {
       continue;
     }
 
-    const rawUrl = urlBlock.content.replace(/\\#/g, "#").trim();
+    const rawUrl = unescapeLatexUrl(urlBlock.content).trim();
     const safeHref = escapeHtmlAttribute(rawUrl);
     output += `<a href="${safeHref}" target="_blank" rel="noreferrer">${textBlock.content}</a>`;
     index = textBlock.endIndex;
@@ -255,10 +255,10 @@ function cleanLatexInline(text: string): string {
   result = replaceHref(result);
   // \url{...}: links in the body/footnotes, not just the figure-source line.
   // Run last so the URL's own "~" (a plain word-joiner elsewhere in this
-  // function) is preserved, and unescape "\#" (required by LaTeX inside
-  // \url so "#" isn't read as a fragment/parameter marker by TeX) for the href.
+  // function) is preserved, and unescape "\#"/"\%"/"\_" (required by LaTeX
+  // inside \url so these aren't read as special characters by TeX) for the href.
   result = replaceInlineCommand(result, "url", (content) => {
-    const rawUrl = content.replace(/\\#/g, "#").trim();
+    const rawUrl = unescapeLatexUrl(content).trim();
     const safeHref = escapeHtmlAttribute(rawUrl);
     const displayUrl = escapeHtmlText(rawUrl);
     return `<a href="${safeHref}" target="_blank" rel="noreferrer">${displayUrl}</a>`;
@@ -1400,8 +1400,16 @@ function cleanReferenceLabel(text: string): string {
   return cleanLatexInline(text).replace(/<[^>]*>/g, "").replace(/\s+/g, " ").trim();
 }
 
+// Undo the LaTeX escaping ("\%", "\_", "\#") authors must use for URLs passed
+// through an ordinary macro (e.g. \refentry), where TeX tokenizes the
+// argument with standard catcodes before any \href/\url verbatim handling
+// can apply.
+function unescapeLatexUrl(url: string): string {
+  return url.replace(/\\([%_#])/g, "$1");
+}
+
 function normalizeReferenceUrl(url: string): string {
-  const trimmed = url.trim();
+  const trimmed = unescapeLatexUrl(url).trim();
   if (/^https?:\/\//i.test(trimmed)) return trimmed;
   if (/^www\./i.test(trimmed)) return `https://${trimmed}`;
   if (/^[A-Za-z0-9.-]+\.[A-Za-z]{2,}(?:\/.*)?$/.test(trimmed)) return `https://${trimmed}`;
@@ -1444,7 +1452,9 @@ function parseReferencesTex(source: string): LessonReference[] {
     if (!line) continue;
 
     if (
-      /(?:^1\..*anglais|\\(?:sub)?section\*?\{[^{}]*(?:anglais|english)[^{}]*\})/i.test(line)
+      /(?:^1\..*anglais|\\reflang\{\s*(?:en|english|anglais)\s*\}|\\(?:sub)?section\*?\{[^{}]*(?:anglais|english)[^{}]*\})/i.test(
+        line
+      )
     ) {
       pushStructuredRefIfComplete();
       currentLanguage = "en";
@@ -1452,7 +1462,9 @@ function parseReferencesTex(source: string): LessonReference[] {
     }
 
     if (
-      /(?:^2\..*fran|\\(?:sub)?section\*?\{[^{}]*(?:fran|french)[^{}]*\})/i.test(line)
+      /(?:^2\..*fran|\\reflang\{\s*(?:fr|fran[cç]ais|french)\s*\}|\\(?:sub)?section\*?\{[^{}]*(?:fran|french)[^{}]*\})/i.test(
+        line
+      )
     ) {
       pushStructuredRefIfComplete();
       currentLanguage = "fr";
