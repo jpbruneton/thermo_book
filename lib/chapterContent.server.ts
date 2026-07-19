@@ -558,6 +558,7 @@ function collectReferenceMap(input: string): Record<string, string> {
   let corollaireIndex = 0;
   let exempleIndex = 0;
   let remarkIndex = 0;
+  let proprieteIndex = 0;
 
   const envStack: Array<{ env: string; refText: string }> = [];
   let index = 0;
@@ -636,6 +637,9 @@ function collectReferenceMap(input: string): Record<string, string> {
       } else if (env === "remark") {
         remarkIndex += 1;
         refText = `Remarque ${remarkIndex}`;
+      } else if (env === "propriete" || env === "property") {
+        proprieteIndex += 1;
+        refText = `Propriété ${proprieteIndex}`;
       }
 
       // Support custom theorem box syntax:
@@ -1024,6 +1028,8 @@ function normalizeLatexBlocks(
     { env: "theorem", title: isEnglish ? "Theorem" : "Théorème" },
     { env: "proposition", title: "Proposition" },
     { env: "lemma", title: "Lemma" },
+    { env: "propriete", title: isEnglish ? "Property" : "Propriété" },
+    { env: "property", title: isEnglish ? "Property" : "Propriété" },
     { env: "corollaire", title: isEnglish ? "Corollary" : "Corollaire" },
     { env: "corollary", title: isEnglish ? "Corollary" : "Corollaire" },
     { env: "remark", title: isEnglish ? "Remark" : "Remarque" },
@@ -1044,6 +1050,8 @@ function normalizeLatexBlocks(
     theorem: 0,
     proposition: 0,
     lemma: 0,
+    propriete: 0,
+    property: 0,
     corollaire: 0,
     corollary: 0,
     exemple: 0,

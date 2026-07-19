@@ -687,6 +687,20 @@ body::before {
   font-weight: 700;
 }
 
+.prose-content .latex-block-propriete,
+.prose-content .latex-block-property {
+  border-color: #ca8a0466;
+  background: #ca8a041a;
+}
+
+.prose-content .latex-block-propriete strong,
+.prose-content .latex-block-property strong,
+.prose-content .latex-block-propriete .latex-inline-blue-strong,
+.prose-content .latex-block-property .latex-inline-blue-strong {
+  color: #a16207;
+  font-weight: 700;
+}
+
 .prose-content .latex-block-corollary,
 .prose-content .latex-block-corollaire {
   border-color: #0ea5e966;
