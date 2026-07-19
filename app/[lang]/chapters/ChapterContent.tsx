@@ -98,6 +98,14 @@ export function ChapterContent({ lesson, hideHeader = false, topNav }: Props) {
   const { t, lang } = useLang();
   const englishReferences = lesson.references.filter((reference) => reference.language === "en");
   const frenchReferences = lesson.references.filter((reference) => reference.language === "fr");
+  const currentReferences =
+    (lang === "fr" ? frenchReferences : englishReferences).length > 0
+      ? lang === "fr"
+        ? frenchReferences
+        : englishReferences
+      : lang === "fr"
+        ? englishReferences
+        : frenchReferences;
   const lessonContent = lang === "en" ? lesson.contentEn : lesson.contentFr;
   const pdfRelativePath = useMemo(() => getLessonPdfRelativePath(lesson, lang), [lesson, lang]);
   const pdfFileLabel = pdfRelativePath.includes("/")
@@ -399,6 +407,46 @@ export function ChapterContent({ lesson, hideHeader = false, topNav }: Props) {
             >
               {t.chapter.contentUnavailable}
             </p>
+          )}
+
+          {currentReferences.length > 0 && (
+            <div
+              style={{
+                maxWidth: "800px",
+                margin: "2.5rem auto 0",
+              }}
+            >
+              <h3
+                style={{
+                  fontFamily: "var(--font-playfair)",
+                  fontSize: "1.2rem",
+                  color: "var(--text-heading)",
+                  marginBottom: "0.75rem",
+                }}
+              >
+                {lang === "fr" ? "Références" : "References"}
+              </h3>
+              <ol
+                style={{
+                  paddingLeft: "1.3rem",
+                  display: "flex",
+                  flexDirection: "column",
+                  gap: "0.5rem",
+                  fontFamily: "var(--font-crimson)",
+                  fontSize: "0.95rem",
+                  color: "var(--text-secondary)",
+                  lineHeight: 1.6,
+                }}
+              >
+                {currentReferences.map((reference) => (
+                  <li key={reference.key}>
+                    <a href={reference.url} target="_blank" rel="noreferrer" style={{ color: "var(--amber)" }}>
+                      {reference.label}
+                    </a>
+                  </li>
+                ))}
+              </ol>
+            </div>
           )}
         </div>
       )}
