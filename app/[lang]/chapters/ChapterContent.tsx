@@ -354,6 +354,29 @@ export function ChapterContent({ lesson, hideHeader = false, topNav }: Props) {
                   className="prose-content"
                   dangerouslySetInnerHTML={{ __html: webContentWithToc.content }}
                 />
+                {currentReferences.length > 0 && (
+                  <ol
+                    style={{
+                      listStyleType: "decimal",
+                      paddingLeft: "1.3rem",
+                      display: "flex",
+                      flexDirection: "column",
+                      gap: "0.5rem",
+                      fontFamily: "var(--font-crimson)",
+                      fontSize: "0.95rem",
+                      color: "var(--text-secondary)",
+                      lineHeight: 1.6,
+                    }}
+                  >
+                    {currentReferences.map((reference) => (
+                      <li key={reference.key}>
+                        <a href={reference.url} target="_blank" rel="noreferrer" style={{ color: "var(--amber)" }}>
+                          {reference.label}
+                        </a>
+                      </li>
+                    ))}
+                  </ol>
+                )}
               </div>
               {webContentWithToc.toc.length > 0 && (
                 <aside className="lesson-toc lesson-toc-sticky">
@@ -407,46 +430,6 @@ export function ChapterContent({ lesson, hideHeader = false, topNav }: Props) {
             >
               {t.chapter.contentUnavailable}
             </p>
-          )}
-
-          {currentReferences.length > 0 && (
-            <div
-              style={{
-                maxWidth: "800px",
-                margin: "2.5rem auto 0",
-              }}
-            >
-              <h3
-                style={{
-                  fontFamily: "var(--font-playfair)",
-                  fontSize: "1.2rem",
-                  color: "var(--text-heading)",
-                  marginBottom: "0.75rem",
-                }}
-              >
-                {lang === "fr" ? "Références" : "References"}
-              </h3>
-              <ol
-                style={{
-                  paddingLeft: "1.3rem",
-                  display: "flex",
-                  flexDirection: "column",
-                  gap: "0.5rem",
-                  fontFamily: "var(--font-crimson)",
-                  fontSize: "0.95rem",
-                  color: "var(--text-secondary)",
-                  lineHeight: 1.6,
-                }}
-              >
-                {currentReferences.map((reference) => (
-                  <li key={reference.key}>
-                    <a href={reference.url} target="_blank" rel="noreferrer" style={{ color: "var(--amber)" }}>
-                      {reference.label}
-                    </a>
-                  </li>
-                ))}
-              </ol>
-            </div>
           )}
         </div>
       )}
