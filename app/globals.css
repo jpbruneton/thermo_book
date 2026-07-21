@@ -617,13 +617,13 @@ body::before {
 
 /* Definition / lemma / important — align with other theorem-like cards */
 .prose-content .latex-block-definition {
-  border-color: #3b82f666;
-  background: #3b82f61a;
+  border-color: #5b7a8c66;
+  background: #5b7a8c1a;
 }
 
 .prose-content .latex-block-definition strong,
 .prose-content .latex-block-definition .latex-inline-blue-strong {
-  color: #1d4ed8;
+  color: #3e5866;
   font-weight: 700;
 }
 
@@ -666,13 +666,13 @@ body::before {
 }
 
 .prose-content .latex-block-theorem {
-  border-color: #f59e0b66;
-  background: #f59e0b1a;
+  border-color: #6b8f7166;
+  background: #6b8f711a;
 }
 
 .prose-content .latex-block-theorem strong,
 .prose-content .latex-block-theorem .latex-inline-blue-strong {
-  color: #f59e0b;
+  color: #3f6b4d;
   font-weight: 700;
 }
 
@@ -689,15 +689,15 @@ body::before {
 
 .prose-content .latex-block-propriete,
 .prose-content .latex-block-property {
-  border-color: #ca8a0466;
-  background: #ca8a041a;
+  border-color: #8a7a5c66;
+  background: #8a7a5c1a;
 }
 
 .prose-content .latex-block-propriete strong,
 .prose-content .latex-block-property strong,
 .prose-content .latex-block-propriete .latex-inline-blue-strong,
 .prose-content .latex-block-property .latex-inline-blue-strong {
-  color: #a16207;
+  color: #6b5d43;
   font-weight: 700;
 }
 
