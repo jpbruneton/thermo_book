@@ -205,7 +205,7 @@ export const translations = {
       authorLinkGitHub: "GitHub",
       aboutProjectTitle: "About the Project",
       aboutProjectLead:
-        "This site and the book are under development. Lessons and exercises will be added gradually.",
+        "This site and the book are under development. Lessons and exercises will be added gradually. The book is written in French by the author; content offered in other languages is produced through automated (AI) translation.",
       aboutProjectOutlineLabel: "Planned content:",
       aboutProjectOutlineBody:
         "A progressive course in thermodynamics, from the founding principles to more advanced developments.",
@@ -361,7 +361,7 @@ export const translations = {
       authorLinkGitHub: "GitHub",
       aboutProjectTitle: "À propos du projet",
       aboutProjectLead:
-        "Ce site et cet ouvrage sont en cours de développement. Les leçons et les exercices seront publiés progressivement.",
+        "Ce site et cet ouvrage sont en cours de développement. Les leçons et les exercices seront publiés progressivement. Le livre est rédigé en français par l'auteur ; les contenus proposés dans les autres langues sont produits par traduction automatique (IA).",
       aboutProjectOutlineLabel: "Contenu prévu :",
       aboutProjectOutlineBody:
         "Un cours progressif de thermodynamique, des principes fondateurs jusqu'aux développements plus avancés.",
