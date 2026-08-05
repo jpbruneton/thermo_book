@@ -7,7 +7,7 @@ import { Providers } from "./providers";
 import { VercelInstrumentation } from "./components/VercelInstrumentation";
 import { bookMeta, bookMetaDisplayTitle } from "@/lib/chapters";
 import { getSiteUrl } from "@/lib/siteUrl";
-import { isLang } from "@/lib/i18n";
+import { isLang, type Lang } from "@/lib/i18n";
 
 const SITE_URL = getSiteUrl();
 
@@ -38,7 +38,7 @@ const websiteJsonLd = {
   inLanguage: ["en", "fr"],
 };
 
-function resolveHtmlLang(): "en" | "fr" {
+function resolveHtmlLang(): Lang {
   const siteLang = headers().get("x-site-lang");
   if (siteLang && isLang(siteLang)) {
     return siteLang;
@@ -97,7 +97,7 @@ export default function RootLayout({
   const htmlLang = resolveHtmlLang();
 
   return (
-    <html lang={htmlLang} suppressHydrationWarning>
+    <html lang={htmlLang} dir={htmlLang === "ar" ? "rtl" : "ltr"} suppressHydrationWarning>
       <head>
         <script
           type="application/ld+json"

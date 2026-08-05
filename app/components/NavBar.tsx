@@ -3,11 +3,11 @@ import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { useTheme } from "@/app/context/ThemeContext";
 import { useLang } from "@/app/context/LangContext";
-import { sectionFromSlug, sectionHref } from "@/lib/i18n";
+import { sectionFromSlug, sectionHref, type Lang } from "@/lib/i18n";
 import { DonateButton } from "@/app/components/DonateButton";
 import { useEffect, useRef, useState } from "react";
 
-const MORE_LANGUAGES: { code: string; flag: string; nativeName: string }[] = [
+const MORE_LANGUAGES: { code: Exclude<Lang, "fr" | "en">; flag: string; nativeName: string }[] = [
   { code: "de", flag: "🇩🇪", nativeName: "Deutsch" },
   { code: "es", flag: "🇪🇸", nativeName: "Español" },
   { code: "pt", flag: "🇵🇹", nativeName: "Português" },
@@ -22,9 +22,9 @@ const MORE_LANGUAGES: { code: string; flag: string; nativeName: string }[] = [
   { code: "ar", flag: "🇸🇦", nativeName: "العربية" },
 ];
 
-function MoreLanguagesMenu({ lang, small }: { lang: "en" | "fr"; small?: boolean }) {
+function MoreLanguagesMenu({ lang, small }: { lang: Lang; small?: boolean }) {
+  const router = useRouter();
   const [open, setOpen] = useState(false);
-  const [toast, setToast] = useState<string | null>(null);
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -38,17 +38,7 @@ function MoreLanguagesMenu({ lang, small }: { lang: "en" | "fr"; small?: boolean
     return () => document.removeEventListener("mousedown", onClickAway);
   }, [open]);
 
-  useEffect(() => {
-    if (!toast) return;
-    const timer = setTimeout(() => setToast(null), 2500);
-    return () => clearTimeout(timer);
-  }, [toast]);
-
   const moreLabel = lang === "fr" ? "Plus…" : "More…";
-  const notReadyText = (nativeName: string) =>
-    lang === "fr"
-      ? `${nativeName} : pas encore traduit.`
-      : `${nativeName}: not yet translated.`;
 
   return (
     <div ref={containerRef} style={{ position: "relative", flexShrink: 0 }}>
@@ -99,8 +89,8 @@ function MoreLanguagesMenu({ lang, small }: { lang: "en" | "fr"; small?: boolean
               key={code}
               type="button"
               onClick={() => {
-                setToast(notReadyText(nativeName));
                 setOpen(false);
+                router.push(`/${code}`);
               }}
               style={{
                 display: "flex",
@@ -123,29 +113,6 @@ function MoreLanguagesMenu({ lang, small }: { lang: "en" | "fr"; small?: boolean
               <span dir="auto">{nativeName}</span>
             </button>
           ))}
-        </div>
-      )}
-
-      {toast && (
-        <div
-          role="status"
-          style={{
-            position: "absolute",
-            top: "calc(100% + 0.4rem)",
-            left: 0,
-            zIndex: 70,
-            background: "var(--bg-card)",
-            border: "1px solid var(--accent-border-lg, var(--border))",
-            borderRadius: "6px",
-            boxShadow: "0 8px 24px rgba(0,0,0,0.18)",
-            padding: "0.55rem 0.85rem",
-            fontFamily: "var(--font-inter)",
-            fontSize: "0.8rem",
-            color: "var(--text-heading)",
-            whiteSpace: "nowrap",
-          }}
-        >
-          {toast}
         </div>
       )}
     </div>

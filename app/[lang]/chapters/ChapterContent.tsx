@@ -107,7 +107,8 @@ export function ChapterContent({ lesson, hideHeader = false, topNav }: Props) {
         ? englishReferences
         : frenchReferences;
   const lessonContent = lang === "en" ? lesson.contentEn : lesson.contentFr;
-  const pdfRelativePath = useMemo(() => getLessonPdfRelativePath(lesson, lang), [lesson, lang]);
+  const pdfLang = lang === "fr" ? "fr" : "en";
+  const pdfRelativePath = useMemo(() => getLessonPdfRelativePath(lesson, pdfLang), [lesson, pdfLang]);
   const pdfFileLabel = pdfRelativePath.includes("/")
     ? pdfRelativePath.slice(pdfRelativePath.lastIndexOf("/") + 1)
     : pdfRelativePath;

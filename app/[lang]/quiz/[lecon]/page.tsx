@@ -52,7 +52,7 @@ export function generateStaticParams() {
 export async function generateMetadata({
   params,
 }: {
-  params: Promise<{ lecon: string; lang: "en" | "fr" }>;
+  params: Promise<{ lecon: string; lang: Lang }>;
 }): Promise<Metadata> {
   const { lecon: leconParam, lang } = await params;
   const lecon = Number(leconParam);
@@ -84,7 +84,7 @@ export async function generateMetadata({
 export default async function QuizLeconPage({
   params,
 }: {
-  params: Promise<{ lecon: string; lang: "en" | "fr" }>;
+  params: Promise<{ lecon: string; lang: Lang }>;
 }) {
   const { lecon: leconParam, lang } = await params;
   const lecon = Number(leconParam);

@@ -1,18 +1,18 @@
 "use client";
 import { createContext, useContext, useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
-import { isLang, type Lang, translations } from "@/lib/i18n";
+import { getTranslations, isLang, type Lang, type Translations } from "@/lib/i18n";
 
 interface LangContextValue {
   lang: Lang;
   setLang: (lang: Lang) => void;
-  t: typeof translations.en;
+  t: Translations;
 }
 
 const LangContext = createContext<LangContextValue>({
   lang: "en",
   setLang: () => {},
-  t: translations.en,
+  t: getTranslations("en"),
 });
 
 /** Lang segment at the start of the path, if the current route is under /en or /fr. */
@@ -32,8 +32,8 @@ export function LangProvider({ children }: { children: React.ReactNode }) {
       localStorage.setItem("lang", urlLang);
       return;
     }
-    const stored = localStorage.getItem("lang") as Lang | null;
-    if (stored === "en" || stored === "fr") {
+    const stored = localStorage.getItem("lang");
+    if (stored && isLang(stored)) {
       setLangState(stored);
     }
   }, [urlLang]);
@@ -42,6 +42,7 @@ export function LangProvider({ children }: { children: React.ReactNode }) {
 
   useEffect(() => {
     document.documentElement.lang = activeLang;
+    document.documentElement.dir = activeLang === "ar" ? "rtl" : "ltr";
   }, [activeLang]);
 
   const setLang = (newLang: Lang) => {
@@ -50,7 +51,7 @@ export function LangProvider({ children }: { children: React.ReactNode }) {
   };
 
   return (
-    <LangContext.Provider value={{ lang: activeLang, setLang, t: translations[activeLang] as typeof translations.en }}>
+    <LangContext.Provider value={{ lang: activeLang, setLang, t: getTranslations(activeLang) }}>
       {children}
     </LangContext.Provider>
   );

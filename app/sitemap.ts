@@ -5,7 +5,7 @@ import { getEnglishTexFilePath, getLessonWebContent } from "@/lib/chapterContent
 import { hasExercises } from "@/lib/exercisesLibrary.server";
 import { getAllExercisesPdfHref, getExerciseThemePdfLinks } from "@/lib/exercisePdfDownloads.server";
 import { getQuizLessons } from "@/lib/quizzes";
-import { sectionHref, SUPPORTED_LANGS, type Lang } from "@/lib/i18n";
+import { sectionHref, SUPPORTED_LANGS, TRANSLATED_SECTION_LANGS, type Lang } from "@/lib/i18n";
 
 const SITE_URL = getSiteUrl();
 
@@ -27,12 +27,20 @@ function hreflangFor(urlsByLang: Partial<Record<Lang, string>>): { languages: Re
 }
 
 export default function sitemap(): MetadataRoute.Sitemap {
+  // The homepage itself is translated for every supported language (chrome + hero +
+  // lesson-card list), unlike individual sections below — so it gets the full hreflang set.
+  const homeUrlsByLang: Partial<Record<Lang, string>> = {};
+  for (const lang of SUPPORTED_LANGS) {
+    homeUrlsByLang[lang] = `${SITE_URL}/${lang}`;
+  }
+
   const staticRoutes: MetadataRoute.Sitemap = [
     {
       url: SITE_URL,
       lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 1,
+      alternates: hreflangFor(homeUrlsByLang),
     },
   ];
 
@@ -59,10 +67,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   for (const { section, priority, changeFrequency, includeLang } of sectionsConfig) {
     const urlsByLang: Partial<Record<Lang, string>> = {};
-    for (const lang of SUPPORTED_LANGS) {
+    for (const lang of TRANSLATED_SECTION_LANGS) {
       if (includeLang(lang)) urlsByLang[lang] = `${SITE_URL}${sectionHref(lang, section)}`;
     }
-    for (const lang of SUPPORTED_LANGS) {
+    for (const lang of TRANSLATED_SECTION_LANGS) {
       const url = urlsByLang[lang];
       if (!url) continue;
       staticRoutes.push({
@@ -80,7 +88,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   // for themes with no English lesson content yet, to avoid indexing thin gate pages.
   const themeRoutes: MetadataRoute.Sitemap = webThemes.flatMap((theme) => {
     const hasEnglish = themeHasEnglishContent(theme);
-    const langs = SUPPORTED_LANGS.filter((lang) => lang === "fr" || hasEnglish);
+    const langs = TRANSLATED_SECTION_LANGS.filter((lang) => lang === "fr" || hasEnglish);
 
     if (theme.lessons.length === 0) {
       const urlsByLang: Partial<Record<Lang, string>> = {};
@@ -116,10 +124,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
   // translated per-lesson, but the page shell and lesson title are).
   const quizRoutes: MetadataRoute.Sitemap = getQuizLessons().flatMap((lecon) => {
     const urlsByLang: Partial<Record<Lang, string>> = {};
-    for (const lang of SUPPORTED_LANGS) {
+    for (const lang of TRANSLATED_SECTION_LANGS) {
       urlsByLang[lang] = `${SITE_URL}${sectionHref(lang, "quiz", String(lecon))}`;
     }
-    return SUPPORTED_LANGS.map((lang) => ({
+    return TRANSLATED_SECTION_LANGS.map((lang) => ({
       url: urlsByLang[lang]!,
       lastModified: new Date(),
       changeFrequency: "monthly" as const,

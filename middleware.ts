@@ -1,11 +1,14 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 import legacyExerciseSlugRedirects from "@/lib/legacyExerciseSlugRedirects.json";
+import { SUPPORTED_LANGS } from "@/lib/i18n";
 
 const legacy = legacyExerciseSlugRedirects as Record<string, string>;
 
+const siteLangRegex = new RegExp(`^/(${SUPPORTED_LANGS.join("|")})(?:/|$)`);
+
 function withSiteLangHeader(response: NextResponse, pathname: string): NextResponse {
-  const match = /^\/(en|fr)(?:\/|$)/.exec(pathname);
+  const match = siteLangRegex.exec(pathname);
   response.headers.set("x-site-lang", match ? match[1] : "fr");
   return response;
 }
