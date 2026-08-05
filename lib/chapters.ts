@@ -133,7 +133,6 @@ export const themes: Theme[] = [
       "Source chaude",
       "Source froide",
       "Rendement de Carnot",
-      "Carnot, Kelvin, Clausius",
       "Universalité de la thermodynamique",
     ],
     topicsEn: [
@@ -144,7 +143,6 @@ export const themes: Theme[] = [
       "Hot reservoir",
       "Cold reservoir",
       "Carnot efficiency",
-      "Carnot, Kelvin, Clausius",
       "Universality of thermodynamics",
     ],
   }),
