@@ -501,6 +501,34 @@ const partialTranslations: Record<Exclude<Lang, "fr" | "en">, DeepPartial<Transl
       author: "Autor",
       copyright: (year: string, author: string) => `© ${year} ${author}. Alle Rechte vorbehalten.`,
     },
+    about: {
+      label: "ÜBER DAS BUCH",
+      aboutBookTitle: "Über dieses Buch",
+      bookDetails: "Angaben zum Buch",
+      detailLabels: { author: "Autor", affiliation: "Institution", edition: "Ausgabe", year: "Jahr" },
+      authorTitle: "Über den Autor",
+      authorBioSuffix: "ist Physiker an der ",
+      authorBioRest:
+        "Seine Forschungsinteressen umfassen die Gesetze der Gravitation, die Quantenmechanik und ihre Grundlagen sowie symbolische Regression als Aufgabe des maschinellen Lernens. Dieses Buch ist aus Vorlesungsskripten entstanden, die über viele Jahre der Lehre auf Master- und fortgeschrittenem Bachelor-Niveau erarbeitet wurden.",
+      authorLinksHeading: "Profile",
+      authorLinkLinkedIn: "LinkedIn",
+      authorLinkGoogleScholar: "Google Scholar",
+      authorLinkGitHub: "GitHub",
+      aboutProjectTitle: "Über das Projekt",
+      aboutProjectLead:
+        "Diese Website und das Buch befinden sich in Entwicklung. Lektionen und Übungen werden nach und nach hinzugefügt. Das Buch wird vom Autor auf Französisch verfasst; die Inhalte in den anderen Sprachen werden durch automatisierte (KI-)Übersetzung erstellt.",
+      aboutProjectOutlineLabel: "Geplante Inhalte:",
+      aboutProjectOutlineBody:
+        "Ein aufbauender Kurs zur Thermodynamik, von den Grundprinzipien bis zu fortgeschritteneren Entwicklungen.",
+      aboutBookBody2:
+        "Der Text entwickelt die Thermodynamik ausgehend von den ersten Prinzipien. Beweise werden vollständig angegeben, wann immer sie die Physik verdeutlichen, und zahlreiche durchgerechnete Beispiele ergänzen die theoretische Darstellung.",
+      translationWarning:
+        "Hinweis: Dieses Buch ist ursprünglich auf Französisch verfasst; diese Fassung wird automatisch mit Claude Sonnet 4.6 übersetzt.",
+      sameAuthorTitle: "Vom selben Autor",
+      sameAuthorBody:
+        "Quantenmechanik — Eine moderne Einführung, ein begleitender Kurs zur Quantenmechanik.",
+      sameAuthorLink: "Zu lesen auf quantumlectures.org",
+    },
   },
   es: {
     book: {
@@ -557,6 +585,34 @@ const partialTranslations: Record<Exclude<Lang, "fr" | "en">, DeepPartial<Transl
       aboutBook: "Acerca del libro",
       author: "Autor",
       copyright: (year: string, author: string) => `© ${year} ${author}. Todos los derechos reservados.`,
+    },
+    about: {
+      label: "SOBRE EL LIBRO",
+      aboutBookTitle: "Sobre este libro",
+      bookDetails: "Detalles del libro",
+      detailLabels: { author: "Autor", affiliation: "Afiliación", edition: "Edición", year: "Año" },
+      authorTitle: "Sobre el autor",
+      authorBioSuffix: "es físico en la ",
+      authorBioRest:
+        "Sus intereses de investigación incluyen las leyes de la gravitación, la mecánica cuántica y sus fundamentos, así como la regresión simbólica como tarea de aprendizaje automático. Este libro surgió de notas de clase desarrolladas a lo largo de muchos años de docencia a nivel de posgrado y grado avanzado.",
+      authorLinksHeading: "Perfiles",
+      authorLinkLinkedIn: "LinkedIn",
+      authorLinkGoogleScholar: "Google Scholar",
+      authorLinkGitHub: "GitHub",
+      aboutProjectTitle: "Sobre el proyecto",
+      aboutProjectLead:
+        "Este sitio y el libro están en desarrollo. Las lecciones y los ejercicios se irán publicando progresivamente. El libro está escrito en francés por el autor; los contenidos ofrecidos en otros idiomas se producen mediante traducción automática (IA).",
+      aboutProjectOutlineLabel: "Contenido previsto:",
+      aboutProjectOutlineBody:
+        "Un curso progresivo de termodinámica, desde los principios fundacionales hasta desarrollos más avanzados.",
+      aboutBookBody2:
+        "El texto desarrolla la termodinámica desde los primeros principios. Las demostraciones se presentan en su totalidad cuando aclaran la física, y numerosos ejemplos resueltos complementan la exposición teórica.",
+      translationWarning:
+        "Aviso: este libro está escrito originalmente en francés; esta versión se traduce automáticamente con Claude Sonnet 4.6.",
+      sameAuthorTitle: "Del mismo autor",
+      sameAuthorBody:
+        "Mecánica Cuántica — Una Introducción Moderna, un curso complementario sobre mecánica cuántica.",
+      sameAuthorLink: "Leerlo en quantumlectures.org",
     },
   },
   pt: {
@@ -615,6 +671,34 @@ const partialTranslations: Record<Exclude<Lang, "fr" | "en">, DeepPartial<Transl
       author: "Autor",
       copyright: (year: string, author: string) => `© ${year} ${author}. Todos os direitos reservados.`,
     },
+    about: {
+      label: "SOBRE O LIVRO",
+      aboutBookTitle: "Sobre este livro",
+      bookDetails: "Detalhes do livro",
+      detailLabels: { author: "Autor", affiliation: "Afiliação", edition: "Edição", year: "Ano" },
+      authorTitle: "Sobre o autor",
+      authorBioSuffix: "é físico na ",
+      authorBioRest:
+        "Seus interesses de pesquisa incluem as leis da gravitação, a mecânica quântica e seus fundamentos, e a regressão simbólica como tarefa de aprendizado de máquina. Este livro nasceu de notas de aula desenvolvidas ao longo de muitos anos de ensino em nível de pós-graduação e graduação avançada.",
+      authorLinksHeading: "Perfis",
+      authorLinkLinkedIn: "LinkedIn",
+      authorLinkGoogleScholar: "Google Scholar",
+      authorLinkGitHub: "GitHub",
+      aboutProjectTitle: "Sobre o projeto",
+      aboutProjectLead:
+        "Este site e o livro estão em desenvolvimento. As lições e os exercícios serão publicados progressivamente. O livro é escrito em francês pelo autor; os conteúdos oferecidos em outros idiomas são produzidos por tradução automática (IA).",
+      aboutProjectOutlineLabel: "Conteúdo previsto:",
+      aboutProjectOutlineBody:
+        "Um curso progressivo de termodinâmica, dos princípios fundadores a desenvolvimentos mais avançados.",
+      aboutBookBody2:
+        "O texto desenvolve a termodinâmica a partir dos primeiros princípios. As provas são apresentadas integralmente sempre que esclarecem a física, e numerosos exemplos resolvidos complementam a exposição teórica.",
+      translationWarning:
+        "Aviso: este livro é originalmente escrito em francês; esta versão é traduzida automaticamente com Claude Sonnet 4.6.",
+      sameAuthorTitle: "Do mesmo autor",
+      sameAuthorBody:
+        "Mecânica Quântica — Uma Introdução Moderna, um curso complementar sobre mecânica quântica.",
+      sameAuthorLink: "Leia em quantumlectures.org",
+    },
   },
   it: {
     book: {
@@ -671,6 +755,34 @@ const partialTranslations: Record<Exclude<Lang, "fr" | "en">, DeepPartial<Transl
       aboutBook: "Il libro",
       author: "Autore",
       copyright: (year: string, author: string) => `© ${year} ${author}. Tutti i diritti riservati.`,
+    },
+    about: {
+      label: "SUL LIBRO",
+      aboutBookTitle: "Su questo libro",
+      bookDetails: "Dettagli del libro",
+      detailLabels: { author: "Autore", affiliation: "Affiliazione", edition: "Edizione", year: "Anno" },
+      authorTitle: "Sull'autore",
+      authorBioSuffix: "è fisico presso ",
+      authorBioRest:
+        "I suoi interessi di ricerca includono le leggi della gravitazione, la meccanica quantistica e i suoi fondamenti, e la regressione simbolica come compito di apprendimento automatico. Questo libro è nato da appunti di lezione sviluppati nel corso di molti anni di insegnamento a livello di laurea magistrale e triennale avanzato.",
+      authorLinksHeading: "Profili",
+      authorLinkLinkedIn: "LinkedIn",
+      authorLinkGoogleScholar: "Google Scholar",
+      authorLinkGitHub: "GitHub",
+      aboutProjectTitle: "Sul progetto",
+      aboutProjectLead:
+        "Questo sito e il libro sono in fase di sviluppo. Lezioni ed esercizi saranno pubblicati progressivamente. Il libro è scritto in francese dall'autore; i contenuti proposti nelle altre lingue sono prodotti tramite traduzione automatica (IA).",
+      aboutProjectOutlineLabel: "Contenuti previsti:",
+      aboutProjectOutlineBody:
+        "Un corso progressivo di termodinamica, dai principi fondanti agli sviluppi più avanzati.",
+      aboutBookBody2:
+        "Il testo sviluppa la termodinamica a partire dai primi principi. Le dimostrazioni sono fornite per intero ogniqualvolta chiariscono la fisica, e numerosi esempi svolti completano l'esposizione teorica.",
+      translationWarning:
+        "Avviso: questo libro è scritto originariamente in francese; questa versione è tradotta automaticamente con Claude Sonnet 4.6.",
+      sameAuthorTitle: "Dello stesso autore",
+      sameAuthorBody:
+        "Meccanica Quantistica — Un'Introduzione Moderna, un corso complementare sulla meccanica quantistica.",
+      sameAuthorLink: "Leggilo su quantumlectures.org",
     },
   },
   pl: {
@@ -729,6 +841,34 @@ const partialTranslations: Record<Exclude<Lang, "fr" | "en">, DeepPartial<Transl
       author: "Autor",
       copyright: (year: string, author: string) => `© ${year} ${author}. Wszelkie prawa zastrzeżone.`,
     },
+    about: {
+      label: "O KSIĄŻCE",
+      aboutBookTitle: "O tej książce",
+      bookDetails: "Szczegóły książki",
+      detailLabels: { author: "Autor", affiliation: "Afiliacja", edition: "Wydanie", year: "Rok" },
+      authorTitle: "O autorze",
+      authorBioSuffix: "jest fizykiem na ",
+      authorBioRest:
+        "Jego zainteresowania badawcze obejmują prawa grawitacji, mechanikę kwantową i jej podstawy oraz regresję symboliczną jako zadanie uczenia maszynowego. Ta książka powstała z notatek wykładowych opracowywanych przez wiele lat nauczania na poziomie magisterskim i zaawansowanym licencjackim.",
+      authorLinksHeading: "Profile",
+      authorLinkLinkedIn: "LinkedIn",
+      authorLinkGoogleScholar: "Google Scholar",
+      authorLinkGitHub: "GitHub",
+      aboutProjectTitle: "O projekcie",
+      aboutProjectLead:
+        "Ta strona i książka są w trakcie tworzenia. Lekcje i ćwiczenia będą dodawane stopniowo. Książka jest napisana po francusku przez autora; treści oferowane w innych językach powstają w wyniku automatycznego (AI) tłumaczenia.",
+      aboutProjectOutlineLabel: "Planowana zawartość:",
+      aboutProjectOutlineBody:
+        "Stopniowy kurs termodynamiki, od podstawowych zasad po bardziej zaawansowane zagadnienia.",
+      aboutBookBody2:
+        "Tekst rozwija termodynamikę od podstawowych zasad. Dowody podane są w pełni, gdy tylko wyjaśniają fizykę, a liczne rozwiązane przykłady uzupełniają wykład teoretyczny.",
+      translationWarning:
+        "Uwaga: ta książka została pierwotnie napisana w języku francuskim; ta wersja jest tłumaczona automatycznie za pomocą Claude Sonnet 4.6.",
+      sameAuthorTitle: "Tego samego autora",
+      sameAuthorBody:
+        "Mechanika kwantowa — nowoczesne wprowadzenie, kurs towarzyszący dotyczący mechaniki kwantowej.",
+      sameAuthorLink: "Przeczytaj na quantumlectures.org",
+    },
   },
   ru: {
     book: {
@@ -785,6 +925,34 @@ const partialTranslations: Record<Exclude<Lang, "fr" | "en">, DeepPartial<Transl
       aboutBook: "О книге",
       author: "Автор",
       copyright: (year: string, author: string) => `© ${year} ${author}. Все права защищены.`,
+    },
+    about: {
+      label: "О КНИГЕ",
+      aboutBookTitle: "Об этой книге",
+      bookDetails: "Сведения о книге",
+      detailLabels: { author: "Автор", affiliation: "Организация", edition: "Издание", year: "Год" },
+      authorTitle: "Об авторе",
+      authorBioSuffix: "физик в ",
+      authorBioRest:
+        "Его научные интересы включают законы гравитации, квантовую механику и её основания, а также символьную регрессию как задачу машинного обучения. Эта книга выросла из конспектов лекций, разработанных за многие годы преподавания на уровне магистратуры и продвинутого бакалавриата.",
+      authorLinksHeading: "Профили",
+      authorLinkLinkedIn: "LinkedIn",
+      authorLinkGoogleScholar: "Google Scholar",
+      authorLinkGitHub: "GitHub",
+      aboutProjectTitle: "О проекте",
+      aboutProjectLead:
+        "Этот сайт и книга находятся в разработке. Уроки и упражнения будут добавляться постепенно. Книга написана автором на французском языке; материалы на других языках подготовлены с помощью автоматического (ИИ) перевода.",
+      aboutProjectOutlineLabel: "Запланированное содержание:",
+      aboutProjectOutlineBody:
+        "Последовательный курс термодинамики — от основополагающих принципов до более сложных разделов.",
+      aboutBookBody2:
+        "Текст излагает термодинамику, начиная с первых принципов. Доказательства приводятся полностью всякий раз, когда они проясняют физику, а многочисленные разобранные примеры дополняют теоретическое изложение.",
+      translationWarning:
+        "Примечание: эта книга изначально написана на французском языке; данная версия переведена автоматически с помощью Claude Sonnet 4.6.",
+      sameAuthorTitle: "От того же автора",
+      sameAuthorBody:
+        "Квантовая механика — современное введение, сопутствующий курс по квантовой механике.",
+      sameAuthorLink: "Читать на quantumlectures.org",
     },
   },
   zh: {
@@ -843,6 +1011,32 @@ const partialTranslations: Record<Exclude<Lang, "fr" | "en">, DeepPartial<Transl
       author: "作者",
       copyright: (year: string, author: string) => `© ${year} ${author}。保留所有权利。`,
     },
+    about: {
+      label: "关于本书",
+      aboutBookTitle: "关于本书",
+      bookDetails: "书籍详情",
+      detailLabels: { author: "作者", affiliation: "所属机构", edition: "版本", year: "年份" },
+      authorTitle: "关于作者",
+      authorBioSuffix: "是一位物理学家，任职于",
+      authorBioRest:
+        "他的研究兴趣包括引力定律、量子力学及其基础，以及作为机器学习任务的符号回归。本书源自他多年在硕士及高年级本科教学中积累的讲义。",
+      authorLinksHeading: "个人主页",
+      authorLinkLinkedIn: "LinkedIn",
+      authorLinkGoogleScholar: "谷歌学术",
+      authorLinkGitHub: "GitHub",
+      aboutProjectTitle: "关于本项目",
+      aboutProjectLead:
+        "本网站和本书仍在建设中，课程和练习将陆续发布。本书由作者以法语撰写；其他语言版本的内容均通过自动化（人工智能）翻译生成。",
+      aboutProjectOutlineLabel: "计划内容：",
+      aboutProjectOutlineBody: "一门循序渐进的热力学课程，从基本原理到更深入的进阶内容。",
+      aboutBookBody2:
+        "正文从基本原理出发展开热力学论述。凡有助于澄清物理内涵之处均给出完整证明，并辅以大量已解答的例题来补充理论阐述。",
+      translationWarning:
+        "提示：本书最初以法语撰写；此版本由 Claude Sonnet 4.6 自动翻译生成。",
+      sameAuthorTitle: "同一作者的其他作品",
+      sameAuthorBody: "《量子力学——现代导论》，一门关于量子力学的配套课程。",
+      sameAuthorLink: "在 quantumlectures.org 阅读",
+    },
   },
   ja: {
     book: {
@@ -899,6 +1093,33 @@ const partialTranslations: Record<Exclude<Lang, "fr" | "en">, DeepPartial<Transl
       aboutBook: "本書について",
       author: "著者",
       copyright: (year: string, author: string) => `© ${year} ${author}. 無断複写・転載を禁じます。`,
+    },
+    about: {
+      label: "本書について",
+      aboutBookTitle: "本書について",
+      bookDetails: "書誌情報",
+      detailLabels: { author: "著者", affiliation: "所属", edition: "版", year: "年" },
+      authorTitle: "著者について",
+      authorBioSuffix: "の所属先は ",
+      authorBioRest:
+        "同氏は物理学者であり、研究関心は重力の法則、量子力学とその基礎、そして機械学習の課題としてのシンボリック回帰に及びます。本書は、大学院および学部上級レベルで長年にわたり行われてきた講義ノートをもとに生まれました。",
+      authorLinksHeading: "プロフィール",
+      authorLinkLinkedIn: "LinkedIn",
+      authorLinkGoogleScholar: "Google Scholar",
+      authorLinkGitHub: "GitHub",
+      aboutProjectTitle: "プロジェクトについて",
+      aboutProjectLead:
+        "このサイトと本書は現在開発中です。レッスンと演習は順次追加されていきます。本書は著者によってフランス語で執筆されており、他の言語で提供されるコンテンツは自動（AI）翻訳によるものです。",
+      aboutProjectOutlineLabel: "予定されている内容：",
+      aboutProjectOutlineBody:
+        "基礎原理から、より高度な発展的内容までを扱う、段階的な熱力学のコースです。",
+      aboutBookBody2:
+        "本文は第一原理から熱力学を展開します。物理的な理解を助ける場合には証明を省略せずに示し、多数の解答付き例題が理論的な説明を補完します。",
+      translationWarning:
+        "注記：本書はもともとフランス語で書かれています。このバージョンは Claude Sonnet 4.6 によって自動的に翻訳されています。",
+      sameAuthorTitle: "同じ著者による他の著作",
+      sameAuthorBody: "『量子力学——現代的入門』、量子力学に関する姉妹コースです。",
+      sameAuthorLink: "quantumlectures.org で読む",
     },
   },
   ko: {
@@ -957,6 +1178,32 @@ const partialTranslations: Record<Exclude<Lang, "fr" | "en">, DeepPartial<Transl
       author: "저자",
       copyright: (year: string, author: string) => `© ${year} ${author}. 모든 권리 보유.`,
     },
+    about: {
+      label: "책 소개",
+      aboutBookTitle: "이 책에 대하여",
+      bookDetails: "책 정보",
+      detailLabels: { author: "저자", affiliation: "소속", edition: "판", year: "연도" },
+      authorTitle: "저자 소개",
+      authorBioSuffix: "의 소속: ",
+      authorBioRest:
+        "물리학자로 재직 중이며, 연구 관심 분야는 중력 법칙, 양자역학과 그 기초, 그리고 머신러닝 과제로서의 기호 회귀를 포함합니다. 이 책은 대학원 및 학부 고학년 수준에서 다년간 강의하며 축적된 강의 노트에서 출발했습니다.",
+      authorLinksHeading: "프로필",
+      authorLinkLinkedIn: "LinkedIn",
+      authorLinkGoogleScholar: "Google Scholar",
+      authorLinkGitHub: "GitHub",
+      aboutProjectTitle: "프로젝트 소개",
+      aboutProjectLead:
+        "이 사이트와 책은 현재 개발 중입니다. 강의와 연습문제는 점차적으로 추가될 예정입니다. 이 책은 저자가 프랑스어로 집필했으며, 다른 언어로 제공되는 콘텐츠는 자동(AI) 번역을 통해 제작됩니다.",
+      aboutProjectOutlineLabel: "예정된 콘텐츠:",
+      aboutProjectOutlineBody: "기초 원리에서부터 더 심화된 내용까지 다루는 단계적인 열역학 강의입니다.",
+      aboutBookBody2:
+        "본문은 제1원리에서 출발하여 열역학을 전개합니다. 물리적 이해에 도움이 될 때는 증명을 온전히 제시하며, 다수의 풀이 예제가 이론적 설명을 보완합니다.",
+      translationWarning:
+        "안내: 이 책은 원래 프랑스어로 작성되었습니다. 이 버전은 Claude Sonnet 4.6을 통해 자동으로 번역되었습니다.",
+      sameAuthorTitle: "동일 저자의 다른 저서",
+      sameAuthorBody: "《양자역학 — 현대적 입문》, 양자역학에 관한 자매 강의입니다.",
+      sameAuthorLink: "quantumlectures.org 에서 읽기",
+    },
   },
   hi: {
     book: {
@@ -1013,6 +1260,33 @@ const partialTranslations: Record<Exclude<Lang, "fr" | "en">, DeepPartial<Transl
       aboutBook: "पुस्तक के बारे में",
       author: "लेखक",
       copyright: (year: string, author: string) => `© ${year} ${author}. सर्वाधिकार सुरक्षित।`,
+    },
+    about: {
+      label: "पुस्तक के बारे में",
+      aboutBookTitle: "इस पुस्तक के बारे में",
+      bookDetails: "पुस्तक विवरण",
+      detailLabels: { author: "लेखक", affiliation: "संबद्धता", edition: "संस्करण", year: "वर्ष" },
+      authorTitle: "लेखक के बारे में",
+      authorBioSuffix: "— संबद्धता: ",
+      authorBioRest:
+        "एक भौतिक विज्ञानी हैं। उनकी शोध रुचियों में गुरुत्वाकर्षण के नियम, क्वांटम यांत्रिकी और उसकी नींव, तथा मशीन लर्निंग कार्य के रूप में सांकेतिक समाश्रयण शामिल हैं। यह पुस्तक स्नातकोत्तर एवं उन्नत स्नातक स्तर पर वर्षों के अध्यापन के दौरान तैयार किए गए व्याख्यान नोट्स से विकसित हुई है।",
+      authorLinksHeading: "प्रोफ़ाइल",
+      authorLinkLinkedIn: "LinkedIn",
+      authorLinkGoogleScholar: "Google Scholar",
+      authorLinkGitHub: "GitHub",
+      aboutProjectTitle: "परियोजना के बारे में",
+      aboutProjectLead:
+        "यह साइट और पुस्तक विकासाधीन हैं। पाठ और अभ्यास धीरे-धीरे जोड़े जाएंगे। यह पुस्तक लेखक द्वारा फ़्रेंच में लिखी गई है; अन्य भाषाओं में उपलब्ध सामग्री स्वचालित (AI) अनुवाद द्वारा तैयार की जाती है।",
+      aboutProjectOutlineLabel: "नियोजित सामग्री:",
+      aboutProjectOutlineBody:
+        "मूल सिद्धांतों से लेकर अधिक उन्नत विकासों तक, ऊष्मागतिकी का एक क्रमिक पाठ्यक्रम।",
+      aboutBookBody2:
+        "यह पाठ मूल सिद्धांतों से ऊष्मागतिकी को विकसित करता है। जहाँ भी भौतिकी को स्पष्ट करने के लिए आवश्यक हो, प्रमाण पूर्ण रूप से दिए गए हैं, और कई हल किए गए उदाहरण सैद्धांतिक विवरण को पूरक करते हैं।",
+      translationWarning:
+        "सूचना: यह पुस्तक मूल रूप से फ़्रेंच में लिखी गई है; यह संस्करण Claude Sonnet 4.6 द्वारा स्वचालित रूप से अनूदित है।",
+      sameAuthorTitle: "इसी लेखक की अन्य पुस्तक",
+      sameAuthorBody: "क्वांटम यांत्रिकी — एक आधुनिक परिचय, क्वांटम यांत्रिकी पर एक साथी पाठ्यक्रम।",
+      sameAuthorLink: "quantumlectures.org पर पढ़ें",
     },
   },
   vi: {
@@ -1071,6 +1345,34 @@ const partialTranslations: Record<Exclude<Lang, "fr" | "en">, DeepPartial<Transl
       author: "Tác giả",
       copyright: (year: string, author: string) => `© ${year} ${author}. Bảo lưu mọi quyền.`,
     },
+    about: {
+      label: "GIỚI THIỆU SÁCH",
+      aboutBookTitle: "Về cuốn sách này",
+      bookDetails: "Thông tin sách",
+      detailLabels: { author: "Tác giả", affiliation: "Đơn vị công tác", edition: "Ấn bản", year: "Năm" },
+      authorTitle: "Về tác giả",
+      authorBioSuffix: "là nhà vật lý tại ",
+      authorBioRest:
+        "Các mối quan tâm nghiên cứu của ông bao gồm các định luật hấp dẫn, cơ học lượng tử và nền tảng của nó, cũng như hồi quy ký hiệu (symbolic regression) như một bài toán học máy. Cuốn sách này được phát triển từ các ghi chú bài giảng được xây dựng qua nhiều năm giảng dạy ở bậc sau đại học và đại học nâng cao.",
+      authorLinksHeading: "Hồ sơ",
+      authorLinkLinkedIn: "LinkedIn",
+      authorLinkGoogleScholar: "Google Scholar",
+      authorLinkGitHub: "GitHub",
+      aboutProjectTitle: "Về dự án",
+      aboutProjectLead:
+        "Trang web này và cuốn sách đang trong quá trình phát triển. Các bài học và bài tập sẽ được bổ sung dần dần. Cuốn sách được tác giả viết bằng tiếng Pháp; nội dung được cung cấp bằng các ngôn ngữ khác được tạo ra thông qua dịch thuật tự động (AI).",
+      aboutProjectOutlineLabel: "Nội dung dự kiến:",
+      aboutProjectOutlineBody:
+        "Một khóa học nhiệt động lực học theo trình tự, từ các nguyên lý nền tảng đến những phát triển nâng cao hơn.",
+      aboutBookBody2:
+        "Văn bản trình bày nhiệt động lực học xuất phát từ các nguyên lý đầu tiên. Các chứng minh được trình bày đầy đủ bất cứ khi nào chúng làm rõ vật lý, và nhiều ví dụ có lời giải bổ sung cho phần trình bày lý thuyết.",
+      translationWarning:
+        "Lưu ý: cuốn sách này ban đầu được viết bằng tiếng Pháp; phiên bản này được dịch tự động bằng Claude Sonnet 4.6.",
+      sameAuthorTitle: "Cùng tác giả",
+      sameAuthorBody:
+        "Cơ học lượng tử — Một dẫn nhập hiện đại, một khóa học đồng hành về cơ học lượng tử.",
+      sameAuthorLink: "Đọc tại quantumlectures.org",
+    },
   },
   ar: {
     book: {
@@ -1127,6 +1429,33 @@ const partialTranslations: Record<Exclude<Lang, "fr" | "en">, DeepPartial<Transl
       aboutBook: "عن الكتاب",
       author: "المؤلف",
       copyright: (year: string, author: string) => `© ${year} ${author}. جميع الحقوق محفوظة.`,
+    },
+    about: {
+      label: "عن الكتاب",
+      aboutBookTitle: "عن هذا الكتاب",
+      bookDetails: "تفاصيل الكتاب",
+      detailLabels: { author: "المؤلف", affiliation: "الانتماء المؤسسي", edition: "الطبعة", year: "السنة" },
+      authorTitle: "عن المؤلف",
+      authorBioSuffix: "فيزيائي في ",
+      authorBioRest:
+        "تشمل اهتماماته البحثية قوانين الجاذبية، وميكانيكا الكم وأسسها، والانحدار الرمزي بوصفه مهمة من مهام التعلم الآلي. نشأ هذا الكتاب من مذكرات محاضرات طُوّرت على مدى سنوات عديدة من التدريس على مستوى الدراسات العليا والمرحلة الجامعية المتقدمة.",
+      authorLinksHeading: "الملفات الشخصية",
+      authorLinkLinkedIn: "LinkedIn",
+      authorLinkGoogleScholar: "Google Scholar",
+      authorLinkGitHub: "GitHub",
+      aboutProjectTitle: "عن المشروع",
+      aboutProjectLead:
+        "هذا الموقع وهذا الكتاب قيد التطوير. سيتم إضافة الدروس والتمارين تدريجياً. الكتاب مكتوب باللغة الفرنسية بقلم المؤلف؛ أما المحتويات المتاحة باللغات الأخرى فهي مُنتَجة عبر الترجمة الآلية (بالذكاء الاصطناعي).",
+      aboutProjectOutlineLabel: "المحتوى المخطط له:",
+      aboutProjectOutlineBody:
+        "مقرر تدريجي في الديناميكا الحرارية، من المبادئ التأسيسية إلى التطورات الأكثر تقدماً.",
+      aboutBookBody2:
+        "يطوّر النص الديناميكا الحرارية انطلاقاً من المبادئ الأولى. تُقدَّم البراهين كاملة كلما أوضحت الجانب الفيزيائي، وتُكمّل العديد من الأمثلة المحلولة العرض النظري.",
+      translationWarning:
+        "تنبيه: هذا الكتاب مكتوب أصلاً باللغة الفرنسية؛ وتُترجم هذه النسخة تلقائياً باستخدام Claude Sonnet 4.6.",
+      sameAuthorTitle: "من نفس المؤلف",
+      sameAuthorBody: "ميكانيكا الكم — مقدمة حديثة، مقرر مصاحب حول ميكانيكا الكم.",
+      sameAuthorLink: "اقرأه على quantumlectures.org",
     },
   },
 };

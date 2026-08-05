@@ -12,47 +12,58 @@ ce qui varie entre langues, c'est la profondeur du contenu réellement traduit
 |------|------------|--------------|-------|
 | fr   | Français   | ✅ en prod   | Langue source, contenu de référence, toutes sections |
 | en   | Anglais    | 🚧 partiel   | Chrome UI + traduction du contenu en cours, leçon par leçon |
-| de   | Allemand   | 🏠 accueil traduit | Chrome (nav/pied de page) + page d'accueil traduits (2026-08-05) ; sections (leçons, exercices, quiz, glossaire, à propos) en repli anglais |
-| es   | Espagnol   | 🏠 accueil traduit | Idem de |
-| pt   | Portugais  | 🏠 accueil traduit | Idem de |
-| it   | Italien    | 🏠 accueil traduit | Idem de |
-| pl   | Polonais   | 🏠 accueil traduit | Idem de |
-| ru   | Russe      | 🏠 accueil traduit | Idem de |
-| zh   | Chinois    | 🏠 accueil traduit | Idem de |
-| ja   | Japonais   | 🏠 accueil traduit | Idem de |
-| ko   | Coréen     | 🏠 accueil traduit | Idem de |
-| hi   | Hindi      | 🏠 accueil traduit | Idem de |
-| vi   | Vietnamien | 🏠 accueil traduit | Idem de |
-| ar   | Arabe      | 🏠 accueil traduit | Idem de + RTL (`dir="rtl"` sur `<html>`, mise en page en miroir automatique via flex/grid) |
+| de   | Allemand   | 🏠 accueil + à propos | Chrome (nav/pied de page), page d'accueil et page « à propos » traduits ; leçons/exercices/quiz/glossaire affichent « page non disponible » |
+| es   | Espagnol   | 🏠 accueil + à propos | Idem de |
+| pt   | Portugais  | 🏠 accueil + à propos | Idem de |
+| it   | Italien    | 🏠 accueil + à propos | Idem de |
+| pl   | Polonais   | 🏠 accueil + à propos | Idem de |
+| ru   | Russe      | 🏠 accueil + à propos | Idem de |
+| zh   | Chinois    | 🏠 accueil + à propos | Idem de |
+| ja   | Japonais   | 🏠 accueil + à propos | Idem de |
+| ko   | Coréen     | 🏠 accueil + à propos | Idem de |
+| hi   | Hindi      | 🏠 accueil + à propos | Idem de |
+| vi   | Vietnamien | 🏠 accueil + à propos | Idem de |
+| ar   | Arabe      | 🏠 accueil + à propos | Idem de + RTL (`dir="rtl"` sur `<html>`, mise en page en miroir automatique via flex/grid) |
 
 Légende : ✅ en prod (toutes sections) · 🚧 en cours (plusieurs sections) ·
-🏠 accueil traduit (chrome + page d'accueil seulement, reste en repli anglais)
-· 📋 planifié / pas commencé.
+🏠 accueil + à propos traduits (reste des sections affiche un état « page non
+disponible », jamais de repli silencieux vers fr/en) · 📋 planifié / pas
+commencé.
 
-## Comment ça marche (depuis le 2026-08-05)
+## Comment ça marche
 
 - `lib/i18n.ts` : `translations.fr` et `translations.en` restent les objets
   complets (source de vérité pour le type `Translations`). Chaque langue
-  au-delà de fr/en est un objet **partiel** (`partialTranslations`, seulement
-  `nav`/`book`/`home`/`footer` pour l'instant) fusionné en profondeur
-  (`getTranslations(lang)`) par-dessus l'anglais complet — toute section non
-  traduite (`chapters`, `chapter`, `about`, `updates`) retombe automatiquement
-  sur l'anglais plutôt que de planter ou d'afficher une chaîne vide.
+  au-delà de fr/en est un objet **partiel** (`partialTranslations` : `nav`,
+  `book`, `home`, `footer`, `about`) fusionné en profondeur
+  (`getTranslations(lang)`) par-dessus l'anglais complet.
+- **Pas de repli silencieux.** Les sections non traduites (leçons, exercices,
+  quiz, glossaire) n'affichent jamais de contenu anglais ou français sous
+  couvert d'une autre langue : `app/components/SectionUnavailable.tsx` affiche
+  un état explicite « cette page n'est pas encore disponible dans cette
+  langue », déclenché quand la langue courante n'est pas dans
+  `TRANSLATED_SECTION_LANGS` (`["fr", "en"]`). Voir `app/[lang]/chapters/page.tsx`,
+  `[slug]/page.tsx`, `glossary/page.tsx` pour le pattern (garde en tête de
+  composant). La page « à propos » n'a plus cette garde : son contenu est
+  désormais traduit pour les 14 langues.
 - `SUPPORTED_LANGS` (14 codes) pilote le routage (`isLang`, `generateStaticParams`
   de `app/[lang]/layout.tsx`, le header `x-site-lang` dans `middleware.ts`) —
-  toutes ces routes existent et rendent quelque chose.
-- `TRANSLATED_SECTION_LANGS` (`["fr", "en"]` seulement) pilote `app/sitemap.ts`
-  pour les sections par-section (leçons, exercices, quiz, glossaire, à propos) :
-  on n'indexe pas de pages de contenu de repli anglais sous un code langue
-  comme s'il s'agissait d'un contenu réellement localisé. La page d'accueil
-  (`app/[lang]/page.tsx`), elle, a un hreflang complet sur les 14 langues
-  puisqu'elle est vraiment traduite.
-- `app/[lang]/page.tsx` est la nouvelle route d'accueil par langue (`/de`,
-  `/es`, etc.) ; la racine `/` (`app/page.tsx`) reste la page d'accueil
-  historique, pilotée par l'état client (`LangContext`), inchangée.
-- Le menu « More… » de `app/components/NavBar.tsx` navigue désormais
-  directement vers `/xx` au clic (plus de toast « pas encore traduit »),
-  puisque l'accueil y est réellement disponible.
+  toutes ces routes existent et rendent quelque chose (contenu réel ou état
+  « non disponible »), jamais une 404.
+- `TRANSLATED_SECTION_LANGS` (`["fr", "en"]`) pilote aussi `app/sitemap.ts`
+  pour les sections par-section : on n'indexe pas de pages « non disponible »
+  comme s'il s'agissait d'un contenu localisé. La page d'accueil et la page
+  « à propos », elles, ont un hreflang complet sur les 14 langues puisqu'elles
+  sont vraiment traduites.
+- `app/[lang]/page.tsx` est la route d'accueil par langue (`/de`, `/es`,
+  etc.) ; la racine `/` (`app/page.tsx`) reste la page d'accueil historique,
+  pilotée par l'état client (`LangContext`), inchangée.
+- Le menu « More… » de `app/components/NavBar.tsx` navigue directement vers
+  `/xx` au clic, puisque l'accueil y est réellement disponible.
+- La page « à propos » explique elle-même que le livre est écrit en français
+  par l'auteur, et que le contenu dans les autres langues est produit par
+  traduction automatique (IA) — voir `about.aboutProjectLead` et
+  `about.translationWarning` (affiché pour toute langue ≠ fr).
 
 ## Prochaine étape : traduire les leçons/exercices/quiz
 
@@ -61,8 +72,9 @@ Le prompt de traduction et la convention de fichiers restent dans
 [`scripts/translate-lesson.mjs`](../scripts/translate-lesson.mjs). Une fois
 une leçon traduite dans `content/tex/chpN_<code>/lesson1.tex`, `lib/chapters.ts`
 et `lib/chapterContent.server.ts` (aujourd'hui câblés sur `Fr`/`En` uniquement)
-devront être généralisés en `Record<Lang, ...>` pour que la section
-« Leçons » sorte du repli anglais.
+devront être généralisés en `Record<Lang, ...>`, et la garde
+`TRANSLATED_SECTION_LANGS` retirée/étendue pour cette langue et cette section
+(suivre le pattern déjà utilisé pour « à propos »).
 
 Pour zh/ko/ja/ar en particulier : la typographie de `cleanLatexInline` (espaces
 insécables autour de `: ; ? !`, guillemets `«»`) est calée sur le français et

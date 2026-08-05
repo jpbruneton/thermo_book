@@ -1,8 +1,6 @@
 "use client";
 import { bookMeta } from "@/lib/chapters";
 import { useLang } from "@/app/context/LangContext";
-import { SectionUnavailable } from "@/app/components/SectionUnavailable";
-import { TRANSLATED_SECTION_LANGS } from "@/lib/i18n";
 
 const AUTHOR_EXTERNAL_LINKS = [
   {
@@ -21,11 +19,6 @@ const AUTHOR_EXTERNAL_LINKS = [
 
 export default function AboutPage() {
   const { t, lang } = useLang();
-
-  if (!TRANSLATED_SECTION_LANGS.includes(lang)) {
-    return <SectionUnavailable />;
-  }
-
   const at = t.about;
   const book = t.book;
   const detailItems = [
@@ -91,7 +84,7 @@ export default function AboutPage() {
         {/* Description */}
         <div style={sectionStyle}>
           <h2 style={h2Style}>{at.aboutBookTitle}</h2>
-          {lang === "en" ? (
+          {lang !== "fr" ? (
             <p style={{ ...bodyStyle, fontWeight: 700, color: "var(--text-heading)" }}>
               {at.translationWarning}
             </p>
