@@ -3,7 +3,7 @@ import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { useTheme } from "@/app/context/ThemeContext";
 import { useLang } from "@/app/context/LangContext";
-import { sectionFromSlug, sectionHref, type Lang } from "@/lib/i18n";
+import { sectionFromSlug, sectionHref, SUPPORTED_LANGS, type Lang } from "@/lib/i18n";
 import { DonateButton } from "@/app/components/DonateButton";
 import { useEffect, useRef, useState } from "react";
 
@@ -147,12 +147,20 @@ export function NavBar() {
     en: "EN",
   };
 
-  const pathMatch = /^\/(en|fr)\/([^/]+)(\/.*)?$/.exec(pathname);
+  // Matches /{anyLang} or /{anyLang}/{section}[/...rest] — not just /en or /fr,
+  // so switching language while browsing under /de, /zh, etc. still works.
+  const pathMatch = new RegExp(`^/(${SUPPORTED_LANGS.join("|")})(?:/([^/]+))?(/.*)?$`).exec(pathname);
 
   const switchLang = (l: "en" | "fr") => {
     if (pathMatch) {
       const [, currentLang, sectionSlug, rest] = pathMatch;
-      const section = sectionFromSlug(currentLang as "en" | "fr", sectionSlug);
+      if (!sectionSlug) {
+        // Bare /{lang} homepage — go to the same homepage in the new language.
+        setLang(l);
+        router.push(`/${l}`);
+        return;
+      }
+      const section = sectionFromSlug(currentLang as Lang, sectionSlug);
       const swapped = section ? sectionHref(l, section) + (rest ?? "") : `/${l}`;
       setLang(l);
       router.push(swapped);
