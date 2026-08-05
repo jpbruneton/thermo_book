@@ -1,6 +1,8 @@
 "use client";
 import { bookMeta } from "@/lib/chapters";
 import { useLang } from "@/app/context/LangContext";
+import { SectionUnavailable } from "@/app/components/SectionUnavailable";
+import { TRANSLATED_SECTION_LANGS } from "@/lib/i18n";
 
 const AUTHOR_EXTERNAL_LINKS = [
   {
@@ -19,6 +21,11 @@ const AUTHOR_EXTERNAL_LINKS = [
 
 export default function AboutPage() {
   const { t, lang } = useLang();
+
+  if (!TRANSLATED_SECTION_LANGS.includes(lang)) {
+    return <SectionUnavailable />;
+  }
+
   const at = t.about;
   const book = t.book;
   const detailItems = [

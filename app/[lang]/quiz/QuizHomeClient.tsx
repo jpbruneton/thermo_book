@@ -4,6 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { useLang } from "@/app/context/LangContext";
 import { sectionHref, type Lang } from "@/lib/i18n";
+import { SectionUnavailable } from "@/app/components/SectionUnavailable";
 import type { QuizLessonCard } from "./page";
 
 interface Props {
@@ -12,6 +13,10 @@ interface Props {
 
 export function QuizHomeClient({ cards }: Props) {
   const { lang } = useLang();
+
+  if (lang !== "fr" && lang !== "en") {
+    return <SectionUnavailable />;
+  }
 
   const t = lang === "fr"
     ? {

@@ -50,8 +50,8 @@ export function ExercisesClient({ cardsFr, cardsEn, allPdfHrefFr, allPdfHrefEn }
         downloadAll: "↓ Download all (PDF)",
       };
 
-  const cards = lang === "fr" ? cardsFr : cardsEn;
-  const allPdfHref = lang === "fr" ? allPdfHrefFr : allPdfHrefEn;
+  const cards = lang === "fr" ? cardsFr : lang === "en" ? cardsEn : [];
+  const allPdfHref = lang === "fr" ? allPdfHrefFr : lang === "en" ? allPdfHrefEn : null;
 
   const filtered = useMemo(
     () => cards.filter((c) => exerciseMatchesQuery(c, query)),

@@ -5,7 +5,8 @@ import type { Metadata } from "next";
 import { getEnglishTexFilePath, getLessonReferences, getLessonWebContent } from "@/lib/chapterContent.server";
 import { processLatex } from "@/lib/latex";
 import { absoluteUrl, getSiteUrl } from "@/lib/siteUrl";
-import { sectionHref, type Lang } from "@/lib/i18n";
+import { sectionHref, TRANSLATED_SECTION_LANGS, type Lang } from "@/lib/i18n";
+import { SectionUnavailable } from "@/app/components/SectionUnavailable";
 
 interface Props {
   params: { slug: string; lang: Lang };
@@ -84,6 +85,10 @@ function themeJsonLd(theme: NonNullable<ReturnType<typeof getWebTheme>>, lang: L
 export default function ChapterPage({ params }: Props) {
   const theme = getWebTheme(params.slug);
   if (!theme) notFound();
+
+  if (!TRANSLATED_SECTION_LANGS.includes(params.lang)) {
+    return <SectionUnavailable />;
+  }
 
   const themeWithDynamicContent = {
     ...theme,

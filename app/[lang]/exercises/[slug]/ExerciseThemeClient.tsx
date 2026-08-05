@@ -17,7 +17,7 @@ interface Props {
 export function ExerciseThemeClient({ number, titleFr, titleEn, contentFr, contentEn }: Props) {
   const { lang } = useLang();
 
-  const rawContent = lang === "fr" ? contentFr : contentEn;
+  const rawContent = lang === "fr" ? contentFr : lang === "en" ? contentEn : "";
   const rendered = useMemo(() => (rawContent ? processLatex(rawContent) : ""), [rawContent]);
 
   useEffect(() => {

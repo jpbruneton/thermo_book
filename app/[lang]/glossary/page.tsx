@@ -5,7 +5,8 @@ import { Suspense, useMemo } from "react";
 import { useSearchParams } from "next/navigation";
 import { getWebThemes } from "@/lib/chapters";
 import { useLang } from "@/app/context/LangContext";
-import { sectionHref } from "@/lib/i18n";
+import { sectionHref, TRANSLATED_SECTION_LANGS } from "@/lib/i18n";
+import { SectionUnavailable } from "@/app/components/SectionUnavailable";
 
 interface GlossaryOccurrence {
   themeSlug: string;
@@ -228,6 +229,12 @@ function GlossaryFilterAndList() {
 }
 
 export default function GlossaryPage() {
+  const { lang } = useLang();
+
+  if (!TRANSLATED_SECTION_LANGS.includes(lang)) {
+    return <SectionUnavailable />;
+  }
+
   return (
     <main
       style={{
