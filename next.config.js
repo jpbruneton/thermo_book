@@ -1,13 +1,48 @@
 /** @type {import('next').NextConfig} */
 const legacyExerciseSlugRedirects = require("./lib/legacyExerciseSlugRedirects.json");
 
-// Public French URL words. English words match the internal folder names 1:1, so
-// only French needs a rewrite; keep this in sync with lib/i18n.ts `sectionSlugs`.
-const FR_SECTION_SLUGS = {
-  chapters: "chapitres",
-  exercises: "exercices",
-  glossary: "glossaire",
-  about: "a-propos",
+// Public localized URL words, per language. English words match the internal
+// folder names 1:1, so English (and non-Latin-alphabet languages, which keep
+// English words for URL-safety) need no entry here. Keep in sync with
+// lib/i18n.ts `sectionSlugs`. "quiz" is the same word in every language
+// listed here, so it's omitted (no rewrite needed).
+const LOCALIZED_SECTION_SLUGS = {
+  fr: {
+    chapters: "chapitres",
+    exercises: "exercices",
+    glossary: "glossaire",
+    about: "a-propos",
+  },
+  de: {
+    chapters: "lektionen",
+    exercises: "uebungen",
+    glossary: "glossar",
+    about: "ueber-das-buch",
+  },
+  es: {
+    chapters: "lecciones",
+    exercises: "ejercicios",
+    glossary: "glosario",
+    about: "sobre-el-libro",
+  },
+  pt: {
+    chapters: "licoes",
+    exercises: "exercicios",
+    glossary: "glossario",
+    about: "sobre-o-livro",
+  },
+  it: {
+    chapters: "lezioni",
+    exercises: "esercizi",
+    glossary: "glossario",
+    about: "il-libro",
+  },
+  pl: {
+    chapters: "lekcje",
+    exercises: "cwiczenia",
+    glossary: "slowniczek",
+    about: "o-ksiazce",
+  },
 };
 
 const nextConfig = {
@@ -26,16 +61,18 @@ const nextConfig = {
       { source: "/glossary", destination: "/fr/glossaire", permanent: true },
       { source: "/about", destination: "/fr/a-propos", permanent: true },
     ];
-    // Canonicalize the internal English-named /fr/* paths (still reachable since the
-    // route folders are literally named in English) to their public French URL.
-    for (const [section, frSlug] of Object.entries(FR_SECTION_SLUGS)) {
-      out.push({ source: `/fr/${section}`, destination: `/fr/${frSlug}`, permanent: true });
-      out.push({ source: `/fr/${section}/:path*`, destination: `/fr/${frSlug}/:path*`, permanent: true });
+    // Canonicalize the internal English-named /{lang}/* paths (still reachable since
+    // the route folders are literally named in English) to their public localized URL.
+    for (const [lang, slugs] of Object.entries(LOCALIZED_SECTION_SLUGS)) {
+      for (const [section, localSlug] of Object.entries(slugs)) {
+        out.push({ source: `/${lang}/${section}`, destination: `/${lang}/${localSlug}`, permanent: true });
+        out.push({ source: `/${lang}/${section}/:path*`, destination: `/${lang}/${localSlug}/:path*`, permanent: true });
+      }
     }
     for (const [from, to] of Object.entries(legacyExerciseSlugRedirects)) {
       out.push({
-        source: `/fr/${FR_SECTION_SLUGS.exercises}/${from}`,
-        destination: `/fr/${FR_SECTION_SLUGS.exercises}/${to}`,
+        source: `/fr/${LOCALIZED_SECTION_SLUGS.fr.exercises}/${from}`,
+        destination: `/fr/${LOCALIZED_SECTION_SLUGS.fr.exercises}/${to}`,
         permanent: true,
       });
       out.push({
@@ -47,11 +84,13 @@ const nextConfig = {
     return out;
   },
   async rewrites() {
-    // Map the public French section words to the internal (English-named) route folders.
+    // Map each language's public section words to the internal (English-named) route folders.
     const out = [];
-    for (const [section, frSlug] of Object.entries(FR_SECTION_SLUGS)) {
-      out.push({ source: `/fr/${frSlug}`, destination: `/fr/${section}` });
-      out.push({ source: `/fr/${frSlug}/:path*`, destination: `/fr/${section}/:path*` });
+    for (const [lang, slugs] of Object.entries(LOCALIZED_SECTION_SLUGS)) {
+      for (const [section, localSlug] of Object.entries(slugs)) {
+        out.push({ source: `/${lang}/${localSlug}`, destination: `/${lang}/${section}` });
+        out.push({ source: `/${lang}/${localSlug}/:path*`, destination: `/${lang}/${section}/:path*` });
+      }
     }
     return out;
   },

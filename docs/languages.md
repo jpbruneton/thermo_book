@@ -64,6 +64,16 @@ commencé.
   par l'auteur, et que le contenu dans les autres langues est produit par
   traduction automatique (IA) — voir `about.aboutProjectLead` et
   `about.translationWarning` (affiché pour toute langue ≠ fr).
+- **Slugs d'URL localisés** (`lib/i18n.ts` `sectionSlugs` + `next.config.js`
+  `LOCALIZED_SECTION_SLUGS`, à garder synchronisés) : pour les langues à
+  alphabet latin (fr, de, es, pt, it, pl), les mots de section dans l'URL sont
+  traduits — ex. `/de/uebungen`, `/es/ejercicios`, `/it/lezioni`. Les anciennes
+  URL anglaises (`/de/exercises`, etc.) redirigent en 308 vers la version
+  localisée. Pour les langues à écriture non latine (ru, zh, ja, ko, hi, vi,
+  ar), le slug reste en anglais délibérément : une URL cyrillique/CJK/
+  devanagari/arabe finit percent-encodée dès qu'elle est copiée-collée ou
+  partagée, ce qui a l'air cassé — seul le slug reste en ASCII, le contenu et
+  la navigation sont bien traduits.
 
 ## Prochaine étape : traduire les leçons/exercices/quiz
 

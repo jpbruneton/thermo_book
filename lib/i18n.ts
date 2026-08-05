@@ -47,9 +47,12 @@ const IDENTITY_SECTION_SLUGS: Record<Section, string> = {
 /**
  * Public URL word for each section, per language (e.g. /fr/chapitres vs /en/chapters).
  * The internal route folders (app/[lang]/chapters, .../exercises, etc.) always use the
- * English word; `next.config.js` rewrites the French public words to those internal paths.
- * Languages other than fr reuse the English word directly — no rewrite needed since it
- * already matches the internal folder name.
+ * English word; `next.config.js` rewrites each language's public words to those internal
+ * paths (keep the two files in sync). Languages with a non-Latin alphabet (ru, zh, ja, ko,
+ * hi, vi, ar) deliberately reuse the English word instead of a localized one: URLs in
+ * Cyrillic/CJK/Devanagari/Arabic script get percent-encoded the moment they're copied or
+ * shared (chat, social, email), which reads as broken — the content itself is translated,
+ * only the slug stays in ASCII.
  */
 export const sectionSlugs: Record<Lang, Record<Section, string>> = {
   en: IDENTITY_SECTION_SLUGS,
@@ -60,11 +63,41 @@ export const sectionSlugs: Record<Lang, Record<Section, string>> = {
     glossary: "glossaire",
     about: "a-propos",
   },
-  de: IDENTITY_SECTION_SLUGS,
-  es: IDENTITY_SECTION_SLUGS,
-  pt: IDENTITY_SECTION_SLUGS,
-  it: IDENTITY_SECTION_SLUGS,
-  pl: IDENTITY_SECTION_SLUGS,
+  de: {
+    chapters: "lektionen",
+    exercises: "uebungen",
+    quiz: "quiz",
+    glossary: "glossar",
+    about: "ueber-das-buch",
+  },
+  es: {
+    chapters: "lecciones",
+    exercises: "ejercicios",
+    quiz: "quiz",
+    glossary: "glosario",
+    about: "sobre-el-libro",
+  },
+  pt: {
+    chapters: "licoes",
+    exercises: "exercicios",
+    quiz: "quiz",
+    glossary: "glossario",
+    about: "sobre-o-livro",
+  },
+  it: {
+    chapters: "lezioni",
+    exercises: "esercizi",
+    quiz: "quiz",
+    glossary: "glossario",
+    about: "il-libro",
+  },
+  pl: {
+    chapters: "lekcje",
+    exercises: "cwiczenia",
+    quiz: "quiz",
+    glossary: "slowniczek",
+    about: "o-ksiazce",
+  },
   ru: IDENTITY_SECTION_SLUGS,
   zh: IDENTITY_SECTION_SLUGS,
   ja: IDENTITY_SECTION_SLUGS,
