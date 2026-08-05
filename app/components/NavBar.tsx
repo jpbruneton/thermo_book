@@ -269,9 +269,11 @@ export function NavBar() {
               minWidth: 0,
             }}
           >
-            {/* Language toggle */}
-            <LangToggle />
-            <MoreLanguagesMenu lang={lang} />
+            {/* Language toggle + more-languages menu, stacked and flush */}
+            <div style={{ display: "flex", flexDirection: "column", gap: "0.3rem" }}>
+              <LangToggle />
+              <MoreLanguagesMenu lang={lang} />
+            </div>
 
             {desktopLinks.map((link) => (
               <Link
