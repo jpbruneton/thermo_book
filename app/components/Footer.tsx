@@ -35,7 +35,10 @@ export function Footer() {
               marginBottom: "0.5rem",
             }}
           >
-            <span style={{ color: "var(--amber)" }}>Ψ</span> {book.title}
+            <span style={{ color: "var(--amber)", fontFamily: "'Cookie', cursive", fontSize: "1.3em" }}>
+              T dS
+            </span>{" "}
+            {book.title}
           </p>
           <p
             style={{
