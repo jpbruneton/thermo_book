@@ -8,9 +8,11 @@
     "start": "next start",
     "lint": "next lint",
     "build:exo-pdf": "node scripts/build-exercises-pdf.mjs",
-    "submit:indexnow": "node scripts/submit-indexnow.mjs"
+    "submit:indexnow": "node scripts/submit-indexnow.mjs",
+    "translate:lesson": "node --env-file=.env.local scripts/translate-lesson.mjs"
   },
   "dependencies": {
+    "@anthropic-ai/sdk": "^0.115.0",
     "@vercel/analytics": "^1.6.1",
     "@vercel/speed-insights": "^2.0.0",
     "clsx": "^2.1.1",

@@ -25,6 +25,7 @@ export function ExercisesClient({ cardsFr, cardsEn, allPdfHrefFr, allPdfHrefEn }
         searchPlaceholder: "Rechercher (titre, mots-clés)…",
         searchLabel: "Recherche",
         noMatch: "Aucun exercice ne correspond à cette recherche.",
+        notAvailable: "Les exercices ne sont pas encore disponibles dans cette langue.",
         exoPrefix: "Exercice",
         kwLabel: "Mots-clés",
         leconPrefix: "Leçon",
@@ -39,6 +40,7 @@ export function ExercisesClient({ cardsFr, cardsEn, allPdfHrefFr, allPdfHrefEn }
         searchPlaceholder: "Search (title, keywords)…",
         searchLabel: "Search",
         noMatch: "No exercises match this search.",
+        notAvailable: "Exercises are not available yet in this language.",
         exoPrefix: "Exercise",
         kwLabel: "Keywords",
         leconPrefix: "Lesson",
@@ -119,7 +121,11 @@ export function ExercisesClient({ cardsFr, cardsEn, allPdfHrefFr, allPdfHrefEn }
           style={{ width: "100%", maxWidth: "500px", padding: "0.6rem 1rem", borderRadius: "6px", border: "1px solid var(--border)", background: "var(--bg-secondary)", color: "var(--text-heading)", fontFamily: "var(--font-crimson)", fontSize: "1rem", marginBottom: "2.5rem" }}
         />
 
-        {searching ? (
+        {cards.length === 0 ? (
+          <p style={{ fontFamily: "var(--font-crimson)", color: "var(--text-secondary)", fontStyle: "italic" }}>
+            {t.notAvailable}
+          </p>
+        ) : searching ? (
           <>
             {filtered.length === 0 && (
               <p style={{ fontFamily: "var(--font-crimson)", color: "var(--text-secondary)", fontStyle: "italic" }}>
