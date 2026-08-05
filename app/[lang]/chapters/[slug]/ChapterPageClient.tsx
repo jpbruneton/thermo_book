@@ -4,15 +4,14 @@ import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import type { CSSProperties } from "react";
 import { Suspense, useMemo, useTransition } from "react";
 import type { Theme } from "@/lib/chapters";
+import { getThemeTitle, getThemeDescription } from "@/lib/chapters";
 import { ChapterContent } from "../ChapterContent";
 import { useLang } from "@/app/context/LangContext";
 import { sectionHref } from "@/lib/i18n";
 
 type LocalizedLesson = Theme["lessons"][number] & {
-  contentFr: string;
-  contentEn: string;
-  renderedFr: string;
-  renderedEn: string;
+  contentLang: string;
+  renderedLang: string;
 };
 
 type ThemeWithLocalizedLessonContent = Omit<Theme, "lessons"> & {
@@ -91,7 +90,7 @@ function ChapterThemeHeadingBlock({ theme }: { theme: ThemeWithLocalizedLessonCo
           lineHeight: 1.2,
         }}
       >
-        {lang === "fr" ? theme.titleFr : theme.titleEn}
+        {getThemeTitle(theme, lang)}
       </h1>
       <p
         style={{
@@ -102,7 +101,7 @@ function ChapterThemeHeadingBlock({ theme }: { theme: ThemeWithLocalizedLessonCo
           marginBottom: 0,
         }}
       >
-        {lang === "fr" ? theme.descriptionFr : theme.descriptionEn}
+        {getThemeDescription(theme, lang)}
       </p>
     </>
   );
@@ -285,9 +284,7 @@ function ChapterContentAndPrevNext({ theme, prev, next }: Props) {
         ? `Leçon n°${previousLesson.number} : ${previousLesson.subtitleFr}`
         : `Lesson ${previousLesson.number}: ${previousLesson.subtitleEn}`
     : prev
-      ? lang === "fr"
-        ? prev.titleFr
-        : prev.titleEn
+      ? getThemeTitle(prev, lang)
       : null;
   const nextTitle = nextLesson
     ? nextLesson.kind === "fiche"
@@ -298,9 +295,7 @@ function ChapterContentAndPrevNext({ theme, prev, next }: Props) {
         ? `Leçon n°${nextLesson.number} : ${nextLesson.subtitleFr}`
         : `Lesson ${nextLesson.number}: ${nextLesson.subtitleEn}`
     : next
-      ? lang === "fr"
-        ? next.titleFr
-        : next.titleEn
+      ? getThemeTitle(next, lang)
       : null;
   const previousHref = !previousLesson && prev ? sectionHref(lang, "chapters", prev.slug) : undefined;
   const nextHref = !nextLesson && next ? sectionHref(lang, "chapters", next.slug) : undefined;

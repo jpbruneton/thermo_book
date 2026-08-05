@@ -1,6 +1,6 @@
 "use client";
 import Link from "next/link";
-import { getWebThemes } from "@/lib/chapters";
+import { getWebThemes, getThemeTitle, getThemeDescription, getThemePartHeading } from "@/lib/chapters";
 import { useLang } from "@/app/context/LangContext";
 import { sectionHref } from "@/lib/i18n";
 
@@ -12,7 +12,7 @@ export function ChapterList() {
     <div style={{ display: "flex", flexDirection: "column", gap: "1px" }}>
       {webThemes.map((theme, i) => (
         <div key={theme.slug}>
-          {(lang === "fr" ? theme.partHeadingFr : theme.partHeadingEn) && (
+          {getThemePartHeading(theme, lang) && (
             <div
               style={{
                 marginTop: i === 0 ? 0 : "3rem",
@@ -31,7 +31,7 @@ export function ChapterList() {
                   fontWeight: 600,
                 }}
               >
-                {lang === "fr" ? theme.partHeadingFr : theme.partHeadingEn}
+                {getThemePartHeading(theme, lang)}
               </span>
             </div>
           )}
@@ -104,7 +104,7 @@ export function ChapterList() {
                     marginBottom: "0.25rem",
                   }}
                 >
-                  {lang === "fr" ? theme.titleFr : theme.titleEn}
+                  {getThemeTitle(theme, lang)}
                 </h2>
                 <p
                   style={{
@@ -115,7 +115,7 @@ export function ChapterList() {
                     marginBottom: 0,
                   }}
                 >
-                  {lang === "fr" ? theme.descriptionFr : theme.descriptionEn}
+                  {getThemeDescription(theme, lang)}
                 </p>
               </div>
 

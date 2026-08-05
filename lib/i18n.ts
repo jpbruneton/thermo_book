@@ -210,7 +210,7 @@ export const translations = {
       refsFrenchTitle: "French references",
       refsSectionEmpty: "No link added in this section yet.",
       contentUnavailable:
-        "English lesson content is not available yet for this lesson.",
+        "This lesson's content is not available yet in this language.",
       downloadBtn: "↓ Download",
       pdfFallback: "If the PDF doesn't display,",
       pdfFallbackLink: "click here to download it",
@@ -494,6 +494,11 @@ const partialTranslations: Record<Exclude<Lang, "fr" | "en">, DeepPartial<Transl
       glossary: "Glossar",
       about: "Über das Buch",
     },
+    chapters: {
+      label: "LEKTIONEN",
+      title: "Alle Lektionen",
+      description: "",
+    },
     home: {
       badge: "Kostenlose Online-Ausgabe",
       readOnline: "Online lesen →",
@@ -578,6 +583,11 @@ const partialTranslations: Record<Exclude<Lang, "fr" | "en">, DeepPartial<Transl
       quiz: "Quiz",
       glossary: "Glosario",
       about: "Acerca del libro",
+    },
+    chapters: {
+      label: "LECCIONES",
+      title: "Todas las lecciones",
+      description: "",
     },
     home: {
       badge: "Edición gratuita en línea",
@@ -664,6 +674,11 @@ const partialTranslations: Record<Exclude<Lang, "fr" | "en">, DeepPartial<Transl
       glossary: "Glossário",
       about: "Sobre o livro",
     },
+    chapters: {
+      label: "LIÇÕES",
+      title: "Todas as lições",
+      description: "",
+    },
     home: {
       badge: "Edição gratuita on-line",
       readOnline: "Ler on-line →",
@@ -748,6 +763,11 @@ const partialTranslations: Record<Exclude<Lang, "fr" | "en">, DeepPartial<Transl
       quiz: "Quiz",
       glossary: "Glossario",
       about: "Il libro",
+    },
+    chapters: {
+      label: "LEZIONI",
+      title: "Tutte le lezioni",
+      description: "",
     },
     home: {
       badge: "Edizione online gratuita",
@@ -834,6 +854,11 @@ const partialTranslations: Record<Exclude<Lang, "fr" | "en">, DeepPartial<Transl
       glossary: "Słowniczek",
       about: "O książce",
     },
+    chapters: {
+      label: "LEKCJE",
+      title: "Wszystkie lekcje",
+      description: "",
+    },
     home: {
       badge: "Bezpłatne wydanie online",
       readOnline: "Czytaj online →",
@@ -918,6 +943,11 @@ const partialTranslations: Record<Exclude<Lang, "fr" | "en">, DeepPartial<Transl
       quiz: "Тест",
       glossary: "Глоссарий",
       about: "О книге",
+    },
+    chapters: {
+      label: "УРОКИ",
+      title: "Все уроки",
+      description: "",
     },
     home: {
       badge: "Бесплатное онлайн-издание",
@@ -1004,6 +1034,11 @@ const partialTranslations: Record<Exclude<Lang, "fr" | "en">, DeepPartial<Transl
       glossary: "词汇表",
       about: "关于本书",
     },
+    chapters: {
+      label: "课程",
+      title: "所有课程",
+      description: "",
+    },
     home: {
       badge: "免费在线版",
       readOnline: "在线阅读 →",
@@ -1086,6 +1121,11 @@ const partialTranslations: Record<Exclude<Lang, "fr" | "en">, DeepPartial<Transl
       quiz: "クイズ",
       glossary: "用語集",
       about: "本書について",
+    },
+    chapters: {
+      label: "レッスン",
+      title: "すべてのレッスン",
+      description: "",
     },
     home: {
       badge: "無料オンライン版",
@@ -1171,6 +1211,11 @@ const partialTranslations: Record<Exclude<Lang, "fr" | "en">, DeepPartial<Transl
       glossary: "용어집",
       about: "책 소개",
     },
+    chapters: {
+      label: "강의",
+      title: "모든 강의",
+      description: "",
+    },
     home: {
       badge: "무료 온라인판",
       readOnline: "온라인으로 읽기 →",
@@ -1253,6 +1298,11 @@ const partialTranslations: Record<Exclude<Lang, "fr" | "en">, DeepPartial<Transl
       quiz: "क्विज़",
       glossary: "शब्दावली",
       about: "पुस्तक के बारे में",
+    },
+    chapters: {
+      label: "पाठ",
+      title: "सभी पाठ",
+      description: "",
     },
     home: {
       badge: "निःशुल्क ऑनलाइन संस्करण",
@@ -1338,6 +1388,11 @@ const partialTranslations: Record<Exclude<Lang, "fr" | "en">, DeepPartial<Transl
       glossary: "Bảng thuật ngữ",
       about: "Giới thiệu",
     },
+    chapters: {
+      label: "BÀI HỌC",
+      title: "Tất cả bài học",
+      description: "",
+    },
     home: {
       badge: "Ấn bản trực tuyến miễn phí",
       readOnline: "Đọc trực tuyến →",
@@ -1422,6 +1477,11 @@ const partialTranslations: Record<Exclude<Lang, "fr" | "en">, DeepPartial<Transl
       quiz: "اختبار",
       glossary: "المسرد",
       about: "عن الكتاب",
+    },
+    chapters: {
+      label: "الدروس",
+      title: "جميع الدروس",
+      description: "",
     },
     home: {
       badge: "نسخة إلكترونية مجانية",

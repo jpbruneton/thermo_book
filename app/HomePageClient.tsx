@@ -1,9 +1,9 @@
 "use client";
 import Link from "next/link";
 import Image from "next/image";
-import { getWebThemes, bookMeta } from "@/lib/chapters";
+import { getWebThemes, getThemeTitle, getThemeDescription, bookMeta } from "@/lib/chapters";
 import { useLang } from "@/app/context/LangContext";
-import { sectionHref, TRANSLATED_SECTION_LANGS } from "@/lib/i18n";
+import { sectionHref } from "@/lib/i18n";
 
 function WaveBackground() {
   return (
@@ -33,7 +33,6 @@ export default function HomePageClient() {
   const { t, lang } = useLang();
   const book = t.book;
   const webThemes = getWebThemes();
-  const hasTranslatedLessons = TRANSLATED_SECTION_LANGS.includes(lang);
 
   return (
     <div style={{ position: "relative", zIndex: 1 }}>
@@ -360,11 +359,7 @@ export default function HomePageClient() {
                       lineHeight: 1.3,
                     }}
                   >
-                    {hasTranslatedLessons
-                      ? lang === "fr"
-                        ? theme.titleFr
-                        : theme.titleEn
-                      : "Not yet available"}
+                    {getThemeTitle(theme, lang)}
                   </h3>
                   <p
                     style={{
@@ -375,11 +370,7 @@ export default function HomePageClient() {
                       marginBottom: "0.875rem",
                     }}
                   >
-                    {hasTranslatedLessons
-                      ? lang === "fr"
-                        ? theme.descriptionFr
-                        : theme.descriptionEn
-                      : ""}
+                    {getThemeDescription(theme, lang)}
                   </p>
                   <div
                     style={{

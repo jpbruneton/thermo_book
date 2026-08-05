@@ -1,15 +1,9 @@
 "use client";
 import { ChapterList } from "./ChapterList";
 import { useLang } from "@/app/context/LangContext";
-import { SectionUnavailable } from "@/app/components/SectionUnavailable";
-import { TRANSLATED_SECTION_LANGS } from "@/lib/i18n";
 
 export default function ChaptersPage() {
-  const { t, lang } = useLang();
-
-  if (!TRANSLATED_SECTION_LANGS.includes(lang)) {
-    return <SectionUnavailable />;
-  }
+  const { t } = useLang();
 
   return (
     <div

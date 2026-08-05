@@ -1,3 +1,6 @@
+import type { Lang } from "./i18n";
+import { chapterTranslations } from "./chapterTranslations";
+
 export interface LessonReference {
   key: string;
   label: string;
@@ -513,4 +516,29 @@ export function getTotalLessonsCount(): number {
     (count, theme) => count + theme.lessons.length,
     0
   );
+}
+
+/**
+ * Theme title/description/part-heading for any supported language. fr/en use the
+ * theme's own fields directly; every other language reads from chapterTranslations
+ * (translated title + description, even for themes whose lesson content isn't
+ * translated yet), falling back to English only if that specific theme is somehow
+ * missing from the dictionary.
+ */
+export function getThemeTitle(theme: Theme, lang: Lang): string {
+  if (lang === "fr") return theme.titleFr;
+  if (lang === "en") return theme.titleEn;
+  return chapterTranslations[lang]?.[theme.slug]?.title ?? theme.titleEn;
+}
+
+export function getThemeDescription(theme: Theme, lang: Lang): string {
+  if (lang === "fr") return theme.descriptionFr;
+  if (lang === "en") return theme.descriptionEn;
+  return chapterTranslations[lang]?.[theme.slug]?.description ?? theme.descriptionEn;
+}
+
+export function getThemePartHeading(theme: Theme, lang: Lang): string | undefined {
+  if (lang === "fr") return theme.partHeadingFr;
+  if (lang === "en") return theme.partHeadingEn;
+  return chapterTranslations[lang]?.[theme.slug]?.partHeading ?? theme.partHeadingEn;
 }

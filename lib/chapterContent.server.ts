@@ -3,6 +3,7 @@ import { readFileSync } from "node:fs";
 import { join } from "node:path";
 import type { LessonReference } from "@/lib/chapters";
 import { processLatex } from "@/lib/latex";
+import type { Lang } from "@/lib/i18n";
 
 function stripComment(line: string): string {
   const protectedPercent = "__ESCAPED_PERCENT__";
@@ -1549,9 +1550,20 @@ function parseReferencesTex(source: string): LessonReference[] {
 
 /** Maps a French lesson tex path to its (possibly nonexistent) English counterpart. */
 export function getEnglishTexFilePath(frTexFile: string): string {
-  const lessonMapped = frTexFile.replace(/_fr\/lecon(\d+)\.tex$/, "_en/lesson$1.tex");
+  return getTexFilePathForLang(frTexFile, "en");
+}
+
+/**
+ * Maps a French lesson tex path to its (possibly nonexistent) counterpart in any
+ * supported language — content/tex/chpN_fr/lecon1.tex -> content/tex/chpN_<lang>/lesson1.tex
+ * (fr itself is returned unchanged). See docs/translation-prompt.md for the
+ * translation pipeline that produces these files.
+ */
+export function getTexFilePathForLang(frTexFile: string, lang: Lang): string {
+  if (lang === "fr") return frTexFile;
+  const lessonMapped = frTexFile.replace(/_fr\/lecon(\d+)\.tex$/, `_${lang}/lesson$1.tex`);
   if (lessonMapped !== frTexFile) return lessonMapped;
-  return frTexFile.replace(/_fr\/(fiche\d+)\.tex$/, "_en/$1.tex");
+  return frTexFile.replace(/_fr\/(fiche\d+)\.tex$/, `_${lang}/$1.tex`);
 }
 
 export function getLessonWebContent(
@@ -1565,7 +1577,10 @@ export function getLessonWebContent(
   try {
     const source = readFileSync(texPath, "utf-8");
     const citationMaps = buildCitationNumberMaps(references);
-    const contentLanguage: ContentLanguage = /_en\//.test(texFile) ? "en" : "fr";
+    // Block labels ("Theorem", "Proof", ...) only have French/English wording (see
+    // ContentLanguage below); every language other than fr uses the English set —
+    // less jarring mixed into non-French prose than French labels would be.
+    const contentLanguage: ContentLanguage = /_fr\//.test(texFile) ? "fr" : "en";
     const paragraphs = parseTexParagraphs(source, citationMaps, contentLanguage);
     const limitedParagraphs = paragraphCount > 0 ? paragraphs.slice(0, paragraphCount) : paragraphs;
     if (limitedParagraphs.length === 0) return "";
