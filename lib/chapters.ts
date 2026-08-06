@@ -542,3 +542,10 @@ export function getThemePartHeading(theme: Theme, lang: Lang): string | undefine
   if (lang === "en") return theme.partHeadingEn;
   return chapterTranslations[lang]?.[theme.slug]?.partHeading ?? theme.partHeadingEn;
 }
+
+/** Keyword bubbles for a lesson, translated per theme slug (see getThemeTitle). */
+export function getThemeTopics(themeSlug: string, lesson: Lesson, lang: Lang): string[] {
+  if (lang === "fr") return lesson.topicsFr;
+  if (lang === "en") return lesson.topicsEn;
+  return chapterTranslations[lang]?.[themeSlug]?.topics ?? lesson.topicsEn;
+}

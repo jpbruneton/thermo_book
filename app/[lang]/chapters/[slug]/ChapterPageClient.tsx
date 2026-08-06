@@ -12,6 +12,7 @@ import { sectionHref } from "@/lib/i18n";
 type LocalizedLesson = Theme["lessons"][number] & {
   contentLang: string;
   renderedLang: string;
+  topicsLang: string[];
 };
 
 type ThemeWithLocalizedLessonContent = Omit<Theme, "lessons"> & {

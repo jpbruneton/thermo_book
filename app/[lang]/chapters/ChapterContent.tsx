@@ -16,6 +16,7 @@ interface Props {
 interface LessonWithLocalizedContent extends Lesson {
   contentLang: string;
   renderedLang: string;
+  topicsLang: string[];
 }
 
 interface TocEntry {
@@ -296,7 +297,7 @@ export function ChapterContent({ lesson, hideHeader = false, topNav }: Props) {
       )}
 
       {/* Keywords bubbles — always visible */}
-      {(lang === "fr" ? lesson.topicsFr : lesson.topicsEn).length > 0 && (
+      {lesson.topicsLang.length > 0 && (
         <div
           style={{
             maxWidth: "800px",
@@ -307,7 +308,7 @@ export function ChapterContent({ lesson, hideHeader = false, topNav }: Props) {
             gap: "0.5rem",
           }}
         >
-          {(lang === "fr" ? lesson.topicsFr : lesson.topicsEn).map((topic) => (
+          {lesson.topicsLang.map((topic) => (
             <Link
               key={topic}
               href={`${sectionHref(lang, "glossary")}?q=${encodeURIComponent(topic)}`}

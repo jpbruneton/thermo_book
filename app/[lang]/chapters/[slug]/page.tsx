@@ -1,5 +1,5 @@
 import { notFound } from "next/navigation";
-import { getWebTheme, getWebThemes, getThemeTitle, getThemeDescription, bookMeta } from "@/lib/chapters";
+import { getWebTheme, getWebThemes, getThemeTitle, getThemeDescription, getThemeTopics, bookMeta } from "@/lib/chapters";
 import { ChapterPageClient } from "./ChapterPageClient";
 import type { Metadata } from "next";
 import { getLessonReferences, getLessonWebContent, getTexFilePathForLang } from "@/lib/chapterContent.server";
@@ -24,7 +24,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const description = getThemeDescription(theme, lang);
   const label = isFr ? "Leçon" : "Lesson";
   const keywords = theme.lessons
-    .flatMap((l) => (isFr ? l.topicsFr : l.topicsEn))
+    .flatMap((l) => getThemeTopics(theme.slug, l, lang))
     .slice(0, 15);
   const url = absoluteUrl(sectionHref(lang, "chapters", theme.slug));
   const languages: Record<string, string> = {};
@@ -96,6 +96,7 @@ export default function ChapterPage({ params }: Props) {
         content: langContent,
         contentLang: langContent,
         renderedLang,
+        topicsLang: getThemeTopics(theme.slug, lesson, params.lang),
         references: resolvedReferences,
       };
     }),

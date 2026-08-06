@@ -45,9 +45,11 @@ pages sans contenu affichent un état explicite) · 📋 planifié / pas commenc
   `lib/chapters.ts` expose `getThemeTitle(theme, lang)`,
   `getThemeDescription(theme, lang)`, `getThemePartHeading(theme, lang)` —
   toujours utiliser ces fonctions plutôt qu'un `lang === "fr" ? titleFr :
-  titleEn` codé en dur. Les mots-clés (`topicsFr`/`topicsEn`) et les libellés
-  au niveau de la leçon individuelle (fiches, sous-titres) restent en repli
-  anglais pour l'instant — hors périmètre de cette passe.
+  titleEn` codé en dur. Les mots-clés des bulles sous chaque leçon sont aussi
+  traduits (`chapterTranslations[lang][slug].topics`, exposés via
+  `getThemeTopics(themeSlug, lesson, lang)`). Les libellés au niveau de la
+  leçon individuelle (fiches, sous-titres) restent en repli anglais pour
+  l'instant — hors périmètre de cette passe.
 - **Contenu de leçon** : `lib/chapterContent.server.ts` expose
   `getTexFilePathForLang(frTexFile, lang)`, qui mappe
   `content/tex/chpN_fr/leconM.tex` vers `content/tex/chpN_<lang>/lessonM.tex`
