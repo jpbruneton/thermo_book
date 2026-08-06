@@ -42,6 +42,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 1,
       alternates: hreflangFor(homeUrlsByLang),
     },
+    ...SUPPORTED_LANGS.map((lang) => ({
+      url: homeUrlsByLang[lang]!,
+      lastModified: new Date(),
+      changeFrequency: "monthly" as const,
+      priority: 0.95,
+      alternates: hreflangFor(homeUrlsByLang),
+    })),
   ];
 
   const englishExercisesAvailable = hasExercises("en");
