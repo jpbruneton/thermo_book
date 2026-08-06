@@ -4,12 +4,10 @@
 
 A free, rigorous course on thermodynamics, from the foundational principles
 to advanced and modern applications. Written for undergraduates and graduate
-students, and freely readable in the browser (French and English), with
-KaTeX-rendered mathematics and downloadable per-chapter PDFs.
+students, and freely readable in the browser (French, English + 12 langages).
 
 Each lesson is paired with a library of worked exercises — statements,
-hints, and full solutions — also available as a single downloadable PDF per
-theme.
+hints, and full solutions.
 
 ## Contents so far
 
