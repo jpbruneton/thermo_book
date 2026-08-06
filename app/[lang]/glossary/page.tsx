@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { Suspense, useMemo } from "react";
 import { useSearchParams } from "next/navigation";
-import { getWebThemes, getThemeTitle, getThemeTopics } from "@/lib/chapters";
+import { getWebThemes, getThemeTitle, getThemeTopics, getThemeUrlSlug } from "@/lib/chapters";
 import { useLang } from "@/app/context/LangContext";
 import { sectionHref } from "@/lib/i18n";
 
@@ -76,7 +76,7 @@ function GlossaryFilterAndList() {
             });
           }
           map.get(normalized)?.occurrences.push({
-            themeSlug: theme.slug,
+            themeSlug: getThemeUrlSlug(theme, lang),
             themeNumber: theme.number,
             themeTitle: getThemeTitle(theme, lang),
             lessonNumber: lesson.number,

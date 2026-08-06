@@ -1,6 +1,6 @@
 "use client";
 import Link from "next/link";
-import { getWebThemes, getThemeTitle, getThemeDescription, getThemePartHeading } from "@/lib/chapters";
+import { getWebThemes, getThemeTitle, getThemeDescription, getThemePartHeading, getThemeUrlSlug } from "@/lib/chapters";
 import { useLang } from "@/app/context/LangContext";
 import { sectionHref } from "@/lib/i18n";
 
@@ -44,7 +44,7 @@ export function ChapterList() {
           }}
         >
           <Link
-            href={sectionHref(lang, "chapters", theme.slug)}
+            href={sectionHref(lang, "chapters", getThemeUrlSlug(theme, lang))}
             style={{ textDecoration: "none", display: "block" }}
           >
             <div

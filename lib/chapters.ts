@@ -511,6 +511,50 @@ export function getWebTheme(slug: string): Theme | undefined {
   return getWebThemes().find((theme) => theme.slug === slug);
 }
 
+/**
+ * Languages whose public lesson slug is derived from the translated title.
+ * Other languages deliberately use the English title so URLs remain readable
+ * ASCII instead of being percent-encoded when shared.
+ */
+const LATIN_SCRIPT_THEME_SLUG_LANGS: ReadonlySet<Lang> = new Set<Lang>([
+  "fr", "en", "de", "es", "pt", "it", "pl", "vi",
+]);
+
+function slugifyThemeTitle(value: string): string {
+  return value
+    .replace(/[łŁ]/g, (letter) => (letter === "Ł" ? "L" : "l"))
+    .replace(/[đĐ]/g, (letter) => (letter === "Đ" ? "D" : "d"))
+    .replace(/[ß]/g, "ss")
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/[’']/g, "")
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "");
+}
+
+/** Public, language-aware URL segment for a theme. */
+export function getThemeUrlSlug(theme: Theme, lang: Lang): string {
+  // Existing French slugs are already localized and remain stable.
+  if (lang === "fr") return theme.slug;
+  const title = LATIN_SCRIPT_THEME_SLUG_LANGS.has(lang)
+    ? getThemeTitle(theme, lang)
+    : theme.titleEn;
+  return slugifyThemeTitle(title);
+}
+
+/**
+ * Resolves a public localized slug. The internal French slug is accepted as a
+ * legacy alias so existing links can be redirected to the canonical URL.
+ */
+export function getWebThemeFromUrlSlug(slug: string, lang: Lang): Theme | undefined {
+  const webThemes = getWebThemes();
+  return (
+    webThemes.find((theme) => getThemeUrlSlug(theme, lang) === slug) ??
+    webThemes.find((theme) => theme.slug === slug)
+  );
+}
+
 export function getTotalLessonsCount(): number {
   return getWebThemes().reduce(
     (count, theme) => count + theme.lessons.length,

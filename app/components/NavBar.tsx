@@ -4,6 +4,7 @@ import { usePathname, useRouter } from "next/navigation";
 import { useTheme } from "@/app/context/ThemeContext";
 import { useLang } from "@/app/context/LangContext";
 import { sectionFromSlug, sectionHref, SUPPORTED_LANGS, type Lang } from "@/lib/i18n";
+import { getThemeUrlSlug, getWebThemeFromUrlSlug } from "@/lib/chapters";
 import { DonateButton } from "@/app/components/DonateButton";
 import { useEffect, useRef, useState } from "react";
 
@@ -22,8 +23,15 @@ const MORE_LANGUAGES: { code: Exclude<Lang, "fr" | "en">; flag: string; nativeNa
   { code: "ar", flag: "🇸🇦", nativeName: "العربية" },
 ];
 
-function MoreLanguagesMenu({ lang, small }: { lang: Lang; small?: boolean }) {
-  const router = useRouter();
+function MoreLanguagesMenu({
+  lang,
+  onSelect,
+  small,
+}: {
+  lang: Lang;
+  onSelect: (lang: Lang) => void;
+  small?: boolean;
+}) {
   const [open, setOpen] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
 
@@ -90,7 +98,7 @@ function MoreLanguagesMenu({ lang, small }: { lang: Lang; small?: boolean }) {
               type="button"
               onClick={() => {
                 setOpen(false);
-                router.push(`/${code}`);
+                onSelect(code);
               }}
               style={{
                 display: "flex",
@@ -151,7 +159,7 @@ export function NavBar() {
   // so switching language while browsing under /de, /zh, etc. still works.
   const pathMatch = new RegExp(`^/(${SUPPORTED_LANGS.join("|")})(?:/([^/]+))?(/.*)?$`).exec(pathname);
 
-  const switchLang = (l: "en" | "fr") => {
+  const switchLang = (l: Lang) => {
     if (pathMatch) {
       const [, currentLang, sectionSlug, rest] = pathMatch;
       if (!sectionSlug) {
@@ -161,7 +169,21 @@ export function NavBar() {
         return;
       }
       const section = sectionFromSlug(currentLang as Lang, sectionSlug);
-      const swapped = section ? sectionHref(l, section) + (rest ?? "") : `/${l}`;
+      let localizedRest = rest ?? "";
+      if (section === "chapters" && rest) {
+        const [currentThemeSlug, ...remainingSegments] = rest.slice(1).split("/");
+        const theme = getWebThemeFromUrlSlug(currentThemeSlug, currentLang as Lang);
+        if (theme) {
+          localizedRest = `/${getThemeUrlSlug(theme, l)}`;
+          if (remainingSegments.length > 0) localizedRest += `/${remainingSegments.join("/")}`;
+        }
+      }
+      const queryAndHash = typeof window === "undefined"
+        ? ""
+        : `${window.location.search}${window.location.hash}`;
+      const swapped = section
+        ? sectionHref(l, section) + localizedRest + queryAndHash
+        : `/${l}`;
       setLang(l);
       router.push(swapped);
       return;
@@ -272,7 +294,7 @@ export function NavBar() {
             {/* Language toggle + more-languages menu, stacked and flush */}
             <div style={{ display: "flex", flexDirection: "column", gap: "0.3rem" }}>
               <LangToggle />
-              <MoreLanguagesMenu lang={lang} />
+              <MoreLanguagesMenu lang={lang} onSelect={switchLang} />
             </div>
 
             {desktopLinks.map((link) => (
@@ -316,7 +338,7 @@ export function NavBar() {
             {/* Lang toggle visible on mobile bar */}
             <div style={{ display: "flex", alignItems: "center", gap: "0.5rem", minWidth: 0 }}>
               <LangToggle small />
-              <MoreLanguagesMenu lang={lang} small />
+              <MoreLanguagesMenu lang={lang} onSelect={switchLang} small />
             </div>
 
             <div style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>

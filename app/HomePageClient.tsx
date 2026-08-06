@@ -1,7 +1,7 @@
 "use client";
 import Link from "next/link";
 import Image from "next/image";
-import { getWebThemes, getThemeTitle, getThemeDescription, bookMeta } from "@/lib/chapters";
+import { getWebThemes, getThemeTitle, getThemeDescription, getThemeUrlSlug, bookMeta } from "@/lib/chapters";
 import { useLang } from "@/app/context/LangContext";
 import { sectionHref } from "@/lib/i18n";
 
@@ -315,7 +315,7 @@ export default function HomePageClient() {
             {webThemes.map((theme) => (
               <Link
                 key={theme.slug}
-                href={sectionHref(lang, "chapters", theme.slug)}
+                href={sectionHref(lang, "chapters", getThemeUrlSlug(theme, lang))}
                 style={{ textDecoration: "none" }}
               >
                 <div

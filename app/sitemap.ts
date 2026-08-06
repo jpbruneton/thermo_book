@@ -1,19 +1,12 @@
 import { MetadataRoute } from "next";
-import { getWebThemes } from "@/lib/chapters";
+import { getWebThemes, getThemeUrlSlug } from "@/lib/chapters";
 import { getSiteUrl } from "@/lib/siteUrl";
-import { getEnglishTexFilePath, getLessonWebContent } from "@/lib/chapterContent.server";
 import { hasExercises } from "@/lib/exercisesLibrary.server";
 import { getAllExercisesPdfHref, getExerciseThemePdfLinks } from "@/lib/exercisePdfDownloads.server";
 import { getQuizLessons } from "@/lib/quizzes";
 import { sectionHref, SUPPORTED_LANGS, TRANSLATED_SECTION_LANGS, type Lang } from "@/lib/i18n";
 
 const SITE_URL = getSiteUrl();
-
-function themeHasEnglishContent(theme: ReturnType<typeof getWebThemes>[number]): boolean {
-  return theme.lessons.some(
-    (lesson) => getLessonWebContent(getEnglishTexFilePath(lesson.texFile), -1, []).length > 0
-  );
-}
 
 /** Builds the `alternates.languages` hreflang map for a set of per-lang URLs of the same page. */
 function hreflangFor(urlsByLang: Partial<Record<Lang, string>>): { languages: Record<string, string> } {
@@ -94,16 +87,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
   }
 
   // One URL per lesson per language: first lesson uses bare /{lang}/chapters/[slug];
-  // others use ?lesson=N (1-based index in theme.lessons). English entries are skipped
-  // for themes with no English lesson content yet, to avoid indexing thin gate pages.
+  // others use ?lesson=N (1-based index in theme.lessons). Every supported language
+  // gets a localized canonical URL even when the lesson body is not translated yet.
   const themeRoutes: MetadataRoute.Sitemap = webThemes.flatMap((theme) => {
-    const hasEnglish = themeHasEnglishContent(theme);
-    const langs = TRANSLATED_SECTION_LANGS.filter((lang) => lang === "fr" || hasEnglish);
+    const langs = SUPPORTED_LANGS;
 
     if (theme.lessons.length === 0) {
       const urlsByLang: Partial<Record<Lang, string>> = {};
       for (const lang of langs) {
-        urlsByLang[lang] = `${SITE_URL}${sectionHref(lang, "chapters", theme.slug)}`;
+        urlsByLang[lang] = `${SITE_URL}${sectionHref(lang, "chapters", getThemeUrlSlug(theme, lang))}`;
       }
       return langs.map((lang) => ({
         url: urlsByLang[lang]!,
@@ -117,7 +109,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     return theme.lessons.flatMap((_, lessonIndex) => {
       const urlsByLang: Partial<Record<Lang, string>> = {};
       for (const lang of langs) {
-        const themeUrl = `${SITE_URL}${sectionHref(lang, "chapters", theme.slug)}`;
+        const themeUrl = `${SITE_URL}${sectionHref(lang, "chapters", getThemeUrlSlug(theme, lang))}`;
         urlsByLang[lang] = lessonIndex === 0 ? themeUrl : `${themeUrl}?lesson=${String(lessonIndex + 1)}`;
       }
       return langs.map((lang) => ({

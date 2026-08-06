@@ -4,7 +4,7 @@ import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import type { CSSProperties } from "react";
 import { Suspense, useMemo, useTransition } from "react";
 import type { Theme } from "@/lib/chapters";
-import { getThemeTitle, getThemeDescription } from "@/lib/chapters";
+import { getThemeTitle, getThemeDescription, getThemeUrlSlug } from "@/lib/chapters";
 import { ChapterContent } from "../ChapterContent";
 import { useLang } from "@/app/context/LangContext";
 import { sectionHref } from "@/lib/i18n";
@@ -298,8 +298,12 @@ function ChapterContentAndPrevNext({ theme, prev, next }: Props) {
     : next
       ? getThemeTitle(next, lang)
       : null;
-  const previousHref = !previousLesson && prev ? sectionHref(lang, "chapters", prev.slug) : undefined;
-  const nextHref = !nextLesson && next ? sectionHref(lang, "chapters", next.slug) : undefined;
+  const previousHref = !previousLesson && prev
+    ? sectionHref(lang, "chapters", getThemeUrlSlug(prev, lang))
+    : undefined;
+  const nextHref = !nextLesson && next
+    ? sectionHref(lang, "chapters", getThemeUrlSlug(next, lang))
+    : undefined;
   const previousOnClick = previousLesson ? () => navigateToLesson(activeLessonIndex - 1) : undefined;
   const nextOnClick = nextLesson ? () => navigateToLesson(activeLessonIndex + 1) : undefined;
 
