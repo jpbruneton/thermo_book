@@ -104,6 +104,65 @@ Autres choix à conserver de manière cohérente :
   d'énergie, unité W). Le BIPM distingue explicitement le joule pour le
   travail, l'énergie et la chaleur, et le watt pour la puissance.
 
+### Exceptions issues de l'audit des titres et du glossaire
+
+Les termes suivants ne doivent pas être traduits littéralement. Les noms
+propres distinguent deux potentiels différents et `COP` doit rester visible :
+
+| Code | énergie libre de Helmholtz | énergie libre de Gibbs | coefficient de performance | construction de Maxwell | égalité de Jarzynski |
+|------|----------------------------|-------------------------|----------------------------|--------------------------|-----------------------|
+| en | Helmholtz free energy | Gibbs free energy | coefficient of performance (COP) | Maxwell construction | Jarzynski equality |
+| de | Helmholtz-Energie | Gibbs-Energie | Leistungszahl (COP) | Maxwell-Konstruktion | Jarzynski-Gleichung |
+| es | energía libre de Helmholtz | energía libre de Gibbs | coeficiente de rendimiento (COP) | construcción de Maxwell | igualdad de Jarzynski |
+| pt | energia livre de Helmholtz | energia livre de Gibbs | coeficiente de desempenho (COP) | construção de Maxwell | igualdade de Jarzynski |
+| zh | 亥姆霍兹自由能 | 吉布斯自由能 | 性能系数 (COP) | 麦克斯韦等面积法则 | 贾辛斯基等式 |
+| ko | 헬름홀츠 자유 에너지 | 깁스 자유 에너지 | 성능계수 (COP) | 맥스웰 등면적 법칙 | 야르진스키 등식 |
+| ja | ヘルムホルツ自由エネルギー | ギブズ自由エネルギー | 成績係数 (COP) | マクスウェルの等面積則 | ヤルジンスキー等式 |
+| it | energia libera di Helmholtz | energia libera di Gibbs | coefficiente di prestazione (COP) | costruzione di Maxwell | uguaglianza di Jarzynski |
+| ru | энергия Гельмгольца | энергия Гиббса | холодильный коэффициент (COP) | построение Максвелла | равенство Ярзинского |
+| hi | हेल्महोल्ट्ज़ मुक्त ऊर्जा | गिब्स मुक्त ऊर्जा | प्रदर्शन गुणांक (COP) | मैक्सवेल समान-क्षेत्र नियम | यार्ज़िंस्की समता |
+| vi | năng lượng tự do Helmholtz | năng lượng tự do Gibbs | hệ số hiệu quả (COP) | quy tắc diện tích bằng nhau Maxwell | đẳng thức Jarzynski |
+| pl | energia swobodna Helmholtza | energia swobodna Gibbsa | współczynnik efektywności (COP) | konstrukcja Maxwella | równość Jarzynskiego |
+| ar | طاقة هلمهولتز الحرة | طاقة غيبس الحرة | معامل الأداء (COP) | قاعدة ماكسويل للمساحتين المتساويتين | مساواة يارزينسكي |
+
+Règles contextuelles supplémentaires :
+
+- `enthalpie libre` est le nom français historique de l'énergie libre de Gibbs ;
+  ne pas produire les calques `free enthalpy`, `自由焓`, `自由エンタルピー`,
+  `자유 엔탈피` ou leurs équivalents ;
+- la construction de Maxwell est la règle des aires égales, pas la règle du
+  levier ; cette dernière est une autre règle des diagrammes de phases ;
+- `cycles moteurs` et `cycles récepteurs` deviennent respectivement des cycles
+  de puissance et de réfrigération dans les langues où le calque de
+  « récepteur » n'est pas idiomatique (`power/refrigeration cycles`, `ciclos de
+  potencia/refrigeración`, `ciclos de potência/refrigeração`, `动力循环/制冷循环`,
+  `動力サイクル/冷凍サイクル`) ;
+- `création d'entropie` se traduit par le terme scientifique correspondant à
+  `entropy production`, notamment `producción de entropía` (es) et `produção de
+  entropia` (pt), et non par un calque de « création » ;
+- `endoréversible` signifie réversible à l'intérieur du système. En arabe,
+  employer `عكوس داخليا` / `العكوسية الداخلية`, jamais `اللاعكوسية الداخلية`
+  qui exprime le contraire ;
+- `thermodynamique hors équilibre` signifie `الديناميكا الحرارية خارج التوازن`
+  en arabe, et non « proche de l'équilibre », qui constitue un domaine plus
+  restreint ;
+- en arabe scientifique, employer `المسعرية` pour la calorimétrie,
+  `التقلبات الكمومية` pour les fluctuations quantiques, `الظواهر المقترنة`
+  pour les phénomènes couplés, `معامل الجدارة` pour la figure de mérite et
+  `الكمونات الديناميكية الحرارية` pour les potentiels thermodynamiques ;
+- la réciprocité d'Onsager se traduit par `पारस्परिकता` en hindi ; ne pas
+  employer `व्युत्क्रमता`, qui renvoie plutôt à l'inversion ou à la
+  réversibilité ;
+- pour le réservoir thermique générique, éviter les mots désignant seulement
+  un réservoir matériel : employer notamment `热库` (zh), `熱浴` (ja), `열원`
+  (ko), `Nguồn nhiệt` (vi) et `الخزان الحراري` (ar) ;
+- dans le contexte climatique, traduire `moteur atmosphérique` comme
+  `atmospheric heat engine` et son équivalent explicite, afin d'éviter le sens
+  historique anglais d'`atmospheric engine` ;
+- le nom consacré est l'égalité de Jarzynski, au singulier. L'article original
+  porte sur une égalité hors équilibre reliant une différence d'énergie libre
+  à une moyenne de travaux.
+
 ## Portée actuelle
 
 Ce prompt et le script couvrent uniquement les **leçons** (`leconN.tex`). La

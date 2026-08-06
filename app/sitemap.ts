@@ -51,26 +51,29 @@ export default function sitemap(): MetadataRoute.Sitemap {
     section: "chapters" | "about" | "glossary" | "exercises" | "quiz";
     priority: number;
     changeFrequency: MetadataRoute.Sitemap[number]["changeFrequency"];
+    /** Which languages have real, indexable content for this section. */
+    langs: readonly Lang[];
     includeLang: (lang: Lang) => boolean;
   }> = [
-    { section: "chapters", priority: 0.9, changeFrequency: "monthly", includeLang: () => true },
-    { section: "about", priority: 0.6, changeFrequency: "yearly", includeLang: () => true },
-    { section: "glossary", priority: 0.5, changeFrequency: "monthly", includeLang: () => true },
-    { section: "quiz", priority: 0.7, changeFrequency: "monthly", includeLang: () => true },
+    { section: "chapters", priority: 0.9, changeFrequency: "monthly", langs: SUPPORTED_LANGS, includeLang: () => true },
+    { section: "about", priority: 0.6, changeFrequency: "yearly", langs: SUPPORTED_LANGS, includeLang: () => true },
+    { section: "glossary", priority: 0.5, changeFrequency: "monthly", langs: SUPPORTED_LANGS, includeLang: () => true },
+    { section: "quiz", priority: 0.7, changeFrequency: "monthly", langs: TRANSLATED_SECTION_LANGS, includeLang: () => true },
     {
       section: "exercises",
       priority: 0.75,
       changeFrequency: "weekly",
+      langs: TRANSLATED_SECTION_LANGS,
       includeLang: (lang) => lang === "fr" || englishExercisesAvailable,
     },
   ];
 
-  for (const { section, priority, changeFrequency, includeLang } of sectionsConfig) {
+  for (const { section, priority, changeFrequency, langs, includeLang } of sectionsConfig) {
     const urlsByLang: Partial<Record<Lang, string>> = {};
-    for (const lang of TRANSLATED_SECTION_LANGS) {
+    for (const lang of langs) {
       if (includeLang(lang)) urlsByLang[lang] = `${SITE_URL}${sectionHref(lang, section)}`;
     }
-    for (const lang of TRANSLATED_SECTION_LANGS) {
+    for (const lang of langs) {
       const url = urlsByLang[lang];
       if (!url) continue;
       staticRoutes.push({

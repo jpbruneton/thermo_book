@@ -3,17 +3,15 @@
 import Link from "next/link";
 import { Suspense, useMemo } from "react";
 import { useSearchParams } from "next/navigation";
-import { getWebThemes } from "@/lib/chapters";
+import { getWebThemes, getThemeTitle, getThemeTopics } from "@/lib/chapters";
 import { useLang } from "@/app/context/LangContext";
-import { sectionHref, TRANSLATED_SECTION_LANGS } from "@/lib/i18n";
-import { SectionUnavailable } from "@/app/components/SectionUnavailable";
+import { sectionHref } from "@/lib/i18n";
 
 interface GlossaryOccurrence {
   themeSlug: string;
   themeNumber: number;
   themeTitle: string;
   lessonNumber: number;
-  lessonSubtitle: string;
 }
 
 interface GlossaryItem {
@@ -26,12 +24,7 @@ function normalizeKeyword(value: string): string {
 }
 
 function GlossaryIntro() {
-  const { lang } = useLang();
-  const title = lang === "fr" ? "Glossaire des mots-clés" : "Keyword Glossary";
-  const subtitle =
-    lang === "fr"
-      ? "Cliquez sur un mot-clé pour voir toutes les leçons qui l'utilisent."
-      : "Click a keyword to see every lesson that uses it.";
+  const { t } = useLang();
 
   return (
     <div style={{ maxWidth: "850px" }}>
@@ -43,7 +36,7 @@ function GlossaryIntro() {
           marginBottom: "0.6rem",
         }}
       >
-        {title}
+        {t.glossary.title}
       </h1>
       <p
         style={{
@@ -54,14 +47,14 @@ function GlossaryIntro() {
           marginBottom: "1.2rem",
         }}
       >
-        {subtitle}
+        {t.glossary.subtitle}
       </p>
     </div>
   );
 }
 
 function GlossaryFilterAndList() {
-  const { lang } = useLang();
+  const { lang, t } = useLang();
   const searchParams = useSearchParams();
   const selectedKeywordRaw = searchParams.get("q") || "";
   const selectedKeyword = selectedKeywordRaw.trim();
@@ -73,7 +66,7 @@ function GlossaryFilterAndList() {
 
     for (const theme of themes) {
       for (const lesson of theme.lessons) {
-        const topics = lang === "fr" ? lesson.topicsFr : lesson.topicsEn;
+        const topics = getThemeTopics(theme.slug, lesson, lang);
         for (const topic of topics) {
           const normalized = normalizeKeyword(topic);
           if (!map.has(normalized)) {
@@ -85,18 +78,15 @@ function GlossaryFilterAndList() {
           map.get(normalized)?.occurrences.push({
             themeSlug: theme.slug,
             themeNumber: theme.number,
-            themeTitle: lang === "fr" ? theme.titleFr : theme.titleEn,
+            themeTitle: getThemeTitle(theme, lang),
             lessonNumber: lesson.number,
-            lessonSubtitle: lang === "fr" ? lesson.subtitleFr : lesson.subtitleEn,
           });
         }
       }
     }
 
     return Array.from(map.values()).sort((a, b) =>
-      a.keyword.localeCompare(b.keyword, lang === "fr" ? "fr" : "en", {
-        sensitivity: "base",
-      })
+      a.keyword.localeCompare(b.keyword, lang, { sensitivity: "base" })
     );
   }, [lang]);
 
@@ -106,13 +96,6 @@ function GlossaryFilterAndList() {
       (item) => normalizeKeyword(item.keyword) === selectedKeywordNormalized
     );
   }, [glossaryItems, selectedKeywordNormalized]);
-
-  const allKeywordsLabel = lang === "fr" ? "Tous les mots-clés" : "All keywords";
-  const relatedLessonsLabel = lang === "fr" ? "Leçons associées" : "Related lessons";
-  const noResultLabel =
-    lang === "fr"
-      ? "Aucun mot-clé trouvé pour ce filtre."
-      : "No keyword found for this filter.";
 
   return (
     <>
@@ -130,7 +113,7 @@ function GlossaryFilterAndList() {
             textDecoration: "none",
           }}
         >
-          {allKeywordsLabel}
+          {t.glossary.allKeywords}
         </Link>
         {glossaryItems.map((item) => {
           const isActive =
@@ -165,7 +148,7 @@ function GlossaryFilterAndList() {
             color: "var(--text-secondary)",
           }}
         >
-          {noResultLabel}
+          {t.glossary.noResult}
         </p>
       ) : (
         <div style={{ display: "grid", gap: "1rem" }}>
@@ -199,7 +182,7 @@ function GlossaryFilterAndList() {
                   marginBottom: "0.6rem",
                 }}
               >
-                {relatedLessonsLabel}
+                {t.glossary.relatedLessons}
               </p>
               <div style={{ display: "grid", gap: "0.5rem" }}>
                 {item.occurrences.map((occurrence, index) => (
@@ -214,9 +197,7 @@ function GlossaryFilterAndList() {
                       fontSize: "1rem",
                     }}
                   >
-                    {lang === "fr"
-                      ? `Leçon ${occurrence.themeNumber} : ${occurrence.themeTitle}`
-                      : `Lesson ${occurrence.themeNumber}: ${occurrence.themeTitle}`}
+                    {t.glossary.lessonEntry(occurrence.themeNumber, occurrence.themeTitle)}
                   </Link>
                 ))}
               </div>
@@ -229,12 +210,6 @@ function GlossaryFilterAndList() {
 }
 
 export default function GlossaryPage() {
-  const { lang } = useLang();
-
-  if (!TRANSLATED_SECTION_LANGS.includes(lang)) {
-    return <SectionUnavailable />;
-  }
-
   return (
     <main
       style={{

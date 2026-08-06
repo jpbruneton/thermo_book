@@ -283,6 +283,14 @@ export const translations = {
       copyright: (year: string, author: string) =>
         `© ${year} ${author}. All rights reserved.`,
     },
+    glossary: {
+      title: "Keyword Glossary",
+      subtitle: "Click a keyword to see every lesson that uses it.",
+      allKeywords: "All keywords",
+      relatedLessons: "Related lessons",
+      noResult: "No keyword found for this filter.",
+      lessonEntry: (n: number, title: string) => `Lesson ${n}: ${title}`,
+    },
   },
   fr: {
     book: {
@@ -439,6 +447,14 @@ export const translations = {
       copyright: (year: string, author: string) =>
         `© ${year} ${author}. Tous droits réservés.`,
     },
+    glossary: {
+      title: "Glossaire des mots-clés",
+      subtitle: "Cliquez sur un mot-clé pour voir toutes les leçons qui l'utilisent.",
+      allKeywords: "Tous les mots-clés",
+      relatedLessons: "Leçons associées",
+      noResult: "Aucun mot-clé trouvé pour ce filtre.",
+      lessonEntry: (n: number, title: string) => `Leçon ${n} : ${title}`,
+    },
   },
 };
 
@@ -539,6 +555,14 @@ const partialTranslations: Record<Exclude<Lang, "fr" | "en">, DeepPartial<Transl
       author: "Autor",
       copyright: (year: string, author: string) => `© ${year} ${author}. Alle Rechte vorbehalten.`,
     },
+    glossary: {
+      title: "Glossar der Schlüsselwörter",
+      subtitle: "Klicken Sie auf ein Schlüsselwort, um alle Lektionen zu sehen, die es verwenden.",
+      allKeywords: "Alle Schlüsselwörter",
+      relatedLessons: "Zugehörige Lektionen",
+      noResult: "Kein Schlüsselwort für diesen Filter gefunden.",
+      lessonEntry: (n: number, title: string) => `Lektion ${n}: ${title}`,
+    },
     about: {
       label: "ÜBER DAS BUCH",
       aboutBookTitle: "Über dieses Buch",
@@ -628,6 +652,14 @@ const partialTranslations: Record<Exclude<Lang, "fr" | "en">, DeepPartial<Transl
       aboutBook: "Acerca del libro",
       author: "Autor",
       copyright: (year: string, author: string) => `© ${year} ${author}. Todos los derechos reservados.`,
+    },
+    glossary: {
+      title: "Glosario de palabras clave",
+      subtitle: "Haga clic en una palabra clave para ver todas las lecciones que la usan.",
+      allKeywords: "Todas las palabras clave",
+      relatedLessons: "Lecciones relacionadas",
+      noResult: "No se encontró ninguna palabra clave para este filtro.",
+      lessonEntry: (n: number, title: string) => `Lección ${n}: ${title}`,
     },
     about: {
       label: "SOBRE EL LIBRO",
@@ -719,6 +751,14 @@ const partialTranslations: Record<Exclude<Lang, "fr" | "en">, DeepPartial<Transl
       author: "Autor",
       copyright: (year: string, author: string) => `© ${year} ${author}. Todos os direitos reservados.`,
     },
+    glossary: {
+      title: "Glossário de palavras-chave",
+      subtitle: "Clique em uma palavra-chave para ver todas as lições que a utilizam.",
+      allKeywords: "Todas as palavras-chave",
+      relatedLessons: "Lições relacionadas",
+      noResult: "Nenhuma palavra-chave encontrada para este filtro.",
+      lessonEntry: (n: number, title: string) => `Lição ${n}: ${title}`,
+    },
     about: {
       label: "SOBRE O LIVRO",
       aboutBookTitle: "Sobre este livro",
@@ -808,6 +848,14 @@ const partialTranslations: Record<Exclude<Lang, "fr" | "en">, DeepPartial<Transl
       aboutBook: "Il libro",
       author: "Autore",
       copyright: (year: string, author: string) => `© ${year} ${author}. Tutti i diritti riservati.`,
+    },
+    glossary: {
+      title: "Glossario delle parole chiave",
+      subtitle: "Clicca su una parola chiave per vedere tutte le lezioni che la usano.",
+      allKeywords: "Tutte le parole chiave",
+      relatedLessons: "Lezioni correlate",
+      noResult: "Nessuna parola chiave trovata per questo filtro.",
+      lessonEntry: (n: number, title: string) => `Lezione ${n}: ${title}`,
     },
     about: {
       label: "SUL LIBRO",
@@ -899,6 +947,14 @@ const partialTranslations: Record<Exclude<Lang, "fr" | "en">, DeepPartial<Transl
       author: "Autor",
       copyright: (year: string, author: string) => `© ${year} ${author}. Wszelkie prawa zastrzeżone.`,
     },
+    glossary: {
+      title: "Słowniczek słów kluczowych",
+      subtitle: "Kliknij słowo kluczowe, aby zobaczyć wszystkie lekcje, które go używają.",
+      allKeywords: "Wszystkie słowa kluczowe",
+      relatedLessons: "Powiązane lekcje",
+      noResult: "Nie znaleziono słowa kluczowego dla tego filtra.",
+      lessonEntry: (n: number, title: string) => `Lekcja ${n}: ${title}`,
+    },
     about: {
       label: "O KSIĄŻCE",
       aboutBookTitle: "O tej książce",
@@ -988,6 +1044,14 @@ const partialTranslations: Record<Exclude<Lang, "fr" | "en">, DeepPartial<Transl
       aboutBook: "О книге",
       author: "Автор",
       copyright: (year: string, author: string) => `© ${year} ${author}. Все права защищены.`,
+    },
+    glossary: {
+      title: "Глоссарий ключевых слов",
+      subtitle: "Нажмите на ключевое слово, чтобы увидеть все уроки, где оно используется.",
+      allKeywords: "Все ключевые слова",
+      relatedLessons: "Связанные уроки",
+      noResult: "По этому фильтру ключевых слов не найдено.",
+      lessonEntry: (n: number, title: string) => `Урок ${n}: ${title}`,
     },
     about: {
       label: "О КНИГЕ",
@@ -1079,6 +1143,14 @@ const partialTranslations: Record<Exclude<Lang, "fr" | "en">, DeepPartial<Transl
       author: "作者",
       copyright: (year: string, author: string) => `© ${year} ${author}。保留所有权利。`,
     },
+    glossary: {
+      title: "关键词词汇表",
+      subtitle: "点击关键词查看所有使用它的课程。",
+      allKeywords: "所有关键词",
+      relatedLessons: "相关课程",
+      noResult: "未找到符合该筛选条件的关键词。",
+      lessonEntry: (n: number, title: string) => `第${n}课：${title}`,
+    },
     about: {
       label: "关于本书",
       aboutBookTitle: "关于本书",
@@ -1166,6 +1238,14 @@ const partialTranslations: Record<Exclude<Lang, "fr" | "en">, DeepPartial<Transl
       aboutBook: "本書について",
       author: "著者",
       copyright: (year: string, author: string) => `© ${year} ${author}. 無断複写・転載を禁じます。`,
+    },
+    glossary: {
+      title: "キーワード用語集",
+      subtitle: "キーワードをクリックすると、それを使用しているすべてのレッスンが表示されます。",
+      allKeywords: "すべてのキーワード",
+      relatedLessons: "関連レッスン",
+      noResult: "このフィルターに一致するキーワードは見つかりませんでした。",
+      lessonEntry: (n: number, title: string) => `レッスン${n}：${title}`,
     },
     about: {
       label: "本書について",
@@ -1256,6 +1336,14 @@ const partialTranslations: Record<Exclude<Lang, "fr" | "en">, DeepPartial<Transl
       author: "저자",
       copyright: (year: string, author: string) => `© ${year} ${author}. 모든 권리 보유.`,
     },
+    glossary: {
+      title: "키워드 용어집",
+      subtitle: "키워드를 클릭하면 이를 사용하는 모든 강의를 볼 수 있습니다.",
+      allKeywords: "모든 키워드",
+      relatedLessons: "관련 강의",
+      noResult: "이 필터에 해당하는 키워드를 찾을 수 없습니다.",
+      lessonEntry: (n: number, title: string) => `${n}강: ${title}`,
+    },
     about: {
       label: "책 소개",
       aboutBookTitle: "이 책에 대하여",
@@ -1343,6 +1431,14 @@ const partialTranslations: Record<Exclude<Lang, "fr" | "en">, DeepPartial<Transl
       aboutBook: "पुस्तक के बारे में",
       author: "लेखक",
       copyright: (year: string, author: string) => `© ${year} ${author}. सर्वाधिकार सुरक्षित।`,
+    },
+    glossary: {
+      title: "मुख्य शब्दों की शब्दावली",
+      subtitle: "किसी मुख्य शब्द पर क्लिक करें ताकि उसका उपयोग करने वाले सभी पाठ देख सकें।",
+      allKeywords: "सभी मुख्य शब्द",
+      relatedLessons: "संबंधित पाठ",
+      noResult: "इस फ़िल्टर के लिए कोई मुख्य शब्द नहीं मिला।",
+      lessonEntry: (n: number, title: string) => `पाठ ${n}: ${title}`,
     },
     about: {
       label: "पुस्तक के बारे में",
@@ -1433,6 +1529,14 @@ const partialTranslations: Record<Exclude<Lang, "fr" | "en">, DeepPartial<Transl
       author: "Tác giả",
       copyright: (year: string, author: string) => `© ${year} ${author}. Bảo lưu mọi quyền.`,
     },
+    glossary: {
+      title: "Bảng chú giải từ khóa",
+      subtitle: "Nhấp vào một từ khóa để xem tất cả các bài học sử dụng nó.",
+      allKeywords: "Tất cả từ khóa",
+      relatedLessons: "Bài học liên quan",
+      noResult: "Không tìm thấy từ khóa nào cho bộ lọc này.",
+      lessonEntry: (n: number, title: string) => `Bài ${n}: ${title}`,
+    },
     about: {
       label: "GIỚI THIỆU SÁCH",
       aboutBookTitle: "Về cuốn sách này",
@@ -1522,6 +1626,14 @@ const partialTranslations: Record<Exclude<Lang, "fr" | "en">, DeepPartial<Transl
       aboutBook: "عن الكتاب",
       author: "المؤلف",
       copyright: (year: string, author: string) => `© ${year} ${author}. جميع الحقوق محفوظة.`,
+    },
+    glossary: {
+      title: "قاموس الكلمات المفتاحية",
+      subtitle: "انقر على كلمة مفتاحية لعرض جميع الدروس التي تستخدمها.",
+      allKeywords: "جميع الكلمات المفتاحية",
+      relatedLessons: "الدروس ذات الصلة",
+      noResult: "لم يتم العثور على أي كلمة مفتاحية لهذا الفلتر.",
+      lessonEntry: (n: number, title: string) => `الدرس ${n}: ${title}`,
     },
     about: {
       label: "عن الكتاب",

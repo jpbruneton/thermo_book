@@ -12,7 +12,7 @@ ce qui varie entre langues, c'est la profondeur du contenu réellement traduit
 |------|------------|--------------|-------|
 | fr   | Français   | ✅ en prod   | Langue source, contenu de référence, toutes sections |
 | en   | Anglais    | 🚧 partiel   | Chrome UI + traduction du contenu en cours, leçon par leçon |
-| de   | Allemand   | 🚧 partiel   | Accueil, à propos, liste des leçons (titres/descriptions) et leçon 1 traduits ; leçons 2+ affichent « contenu non disponible » ; exercices/quiz/glossaire encore non traduits |
+| de   | Allemand   | 🚧 partiel   | Accueil, à propos, liste des leçons (titres/descriptions/mots-clés), glossaire et leçon 1 traduits ; leçons 2+ affichent « contenu non disponible » ; exercices/quiz encore non traduits |
 | es   | Espagnol   | 🚧 partiel   | Idem de |
 | pt   | Portugais  | 🚧 partiel   | Idem de |
 | it   | Italien    | 🚧 partiel   | Idem de |
@@ -65,21 +65,27 @@ pages sans contenu affichent un état explicite) · 📋 planifié / pas commenc
   (voir `docs/translation-prompt.md` + `scripts/translate-lesson.mjs`), rien
   d'autre à changer.
 - **Pas de repli silencieux.** Les sections encore sans aucun contenu traduit
-  (exercices, quiz, glossaire) n'affichent jamais de contenu anglais ou
-  français sous couvert d'une autre langue : `app/components/SectionUnavailable.tsx`
-  affiche un état explicite, déclenché quand la langue courante n'est pas
-  dans `TRANSLATED_SECTION_LANGS` (`["fr", "en"]`). Voir `glossary/page.tsx`
-  pour le pattern (garde en tête de composant). Les leçons et la page « à
-  propos » n'ont plus cette garde de page entière : leur contenu est résolu
-  finement par langue (leçon par leçon, ou entièrement traduit pour « à
-  propos »).
+  (exercices, quiz) n'affichent jamais de contenu anglais ou français sous
+  couvert d'une autre langue : `app/components/SectionUnavailable.tsx` affiche
+  un état explicite, déclenché quand la langue courante n'est pas dans
+  `TRANSLATED_SECTION_LANGS` (`["fr", "en"]`). Les leçons, la page « à
+  propos » et le glossaire n'ont plus cette garde de page entière : leur
+  contenu est résolu finement par langue.
+- **Glossaire** : `app/[lang]/glossary/page.tsx` construit la liste des
+  mots-clés à partir de `getThemeTopics(themeSlug, lesson, lang)` (même
+  source que les bulles sous chaque leçon), et les libellés d'interface
+  (titre, sous-titre, "Tous les mots-clés", etc.) viennent de `t.glossary.*`
+  dans `lib/i18n.ts`, traduits pour les 14 langues — plus de ternaire
+  `lang === "fr" ? ... : ...` codé en dur dans ce fichier.
 - `SUPPORTED_LANGS` (14 codes) pilote le routage (`isLang`, `generateStaticParams`
   de `app/[lang]/layout.tsx`, le header `x-site-lang` dans `middleware.ts`) —
   toutes ces routes existent et rendent quelque chose (contenu réel ou état
   « non disponible »), jamais une 404.
 - `TRANSLATED_SECTION_LANGS` (`["fr", "en"]`) pilote `app/sitemap.ts` pour les
-  sections encore binaires (exercices, quiz, glossaire) : on n'indexe pas de
-  pages « non disponible » comme s'il s'agissait d'un contenu localisé.
+  sections encore binaires (exercices, quiz) : on n'indexe pas de pages « non
+  disponible » comme s'il s'agissait d'un contenu localisé. Chapitres, à
+  propos et glossaire sont indexés pour les 14 langues (`SUPPORTED_LANGS`)
+  puisqu'ils ont un contenu réel partout.
 - `app/[lang]/page.tsx` est la route d'accueil par langue (`/de`, `/es`,
   etc.) ; la racine `/` (`app/page.tsx`) reste la page d'accueil historique,
   pilotée par l'état client (`LangContext`), inchangée.
@@ -100,7 +106,7 @@ pages sans contenu affichent un état explicite) · 📋 planifié / pas commenc
   partagée, ce qui a l'air cassé — seul le slug reste en ASCII, le contenu et
   la navigation sont bien traduits.
 
-## Prochaine étape : traduire davantage de leçons, puis exercices/quiz/glossaire
+## Prochaine étape : traduire davantage de leçons, puis exercices/quiz
 
 Le prompt de traduction et la convention de fichiers restent dans
 [`translation-prompt.md`](translation-prompt.md) et le script
@@ -109,11 +115,11 @@ leçon supplémentaire ne demande **aucun changement de code** — juste dépose
 `content/tex/chpN_<code>/lessonM.tex` au bon endroit ; la page de détail la
 détecte automatiquement.
 
-Pour les exercices, le quiz et le glossaire, suivre le pattern déjà en place
-pour les leçons : généraliser `lib/exercisesLibrary.server.ts` /
-`lib/quizzes.ts` en `Record<Lang, ...>` ou équivalent par-langue, puis retirer
-la garde `TRANSLATED_SECTION_LANGS` pour cette section une fois le contenu
-réel disponible.
+Pour les exercices et le quiz, suivre le pattern déjà en place pour les
+leçons : généraliser `lib/exercisesLibrary.server.ts` / `lib/quizzes.ts` en
+`Record<Lang, ...>` ou équivalent par-langue, puis retirer la garde
+`TRANSLATED_SECTION_LANGS` pour cette section une fois le contenu réel
+disponible.
 
 Pour zh/ko/ja/ar en particulier : la typographie de `cleanLatexInline` (espaces
 insécables autour de `: ; ? !`, guillemets `«»`) est calée sur le français et

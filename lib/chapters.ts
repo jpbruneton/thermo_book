@@ -320,9 +320,9 @@ export const themes: Theme[] = [
       "Calcul différentiel multivarié",
       "Transformée de Legendre",
       "Potentiels thermodynamiques",
-      "Énergie libre",
+      "Énergie libre de Helmholtz",
       "Enthalpie",
-      "Enthalpie libre",
+      "Énergie libre de Gibbs",
     ],
     topicsEn: [
       "Multivariate differential calculus",
@@ -373,7 +373,7 @@ export const themes: Theme[] = [
       "Instabilité",
       "Gaz de Van der Waals",
       "Isothermes",
-      "Règle du palier de Maxwell",
+      "Construction de Maxwell",
       "Courbe de saturation",
     ],
     topicsEn: [
@@ -402,7 +402,7 @@ export const themes: Theme[] = [
       "Inégalité de Clausius",
       "Cycle de Carnot",
       "Rendement",
-      "Efficacité",
+      "Coefficient de performance (COP)",
       "Diagramme TS",
       "Cycle de Rankine",
     ],
@@ -477,8 +477,8 @@ export const themes: Theme[] = [
     titleEn: "Climate and Thermodynamics",
     descriptionFr: "Applications thermodynamiques au système climatique terrestre.",
     descriptionEn: "Thermodynamic applications to Earth's climate system.",
-    topicsFr: ["Bilan radiatif", "Effet de serre", "Moteur atmosphérique", "Entropie climatique"],
-    topicsEn: ["Radiative balance", "Greenhouse effect", "Atmospheric engine", "Climate entropy"],
+    topicsFr: ["Bilan radiatif", "Effet de serre", "Moteur thermique atmosphérique", "Entropie climatique"],
+    topicsEn: ["Radiative balance", "Greenhouse effect", "Atmospheric heat engine", "Climate entropy"],
   }),
   makeLecon({
     number: 15,
@@ -489,8 +489,8 @@ export const themes: Theme[] = [
     titleEn: "Quantum Thermodynamics",
     descriptionFr: "Travail, chaleur et entropie à l'échelle quantique.",
     descriptionEn: "Work, heat, and entropy at the quantum scale.",
-    topicsFr: ["Moteurs quantiques", "Fluctuations quantiques", "Relations de Jarzynski", "Thermodynamique de l'information quantique"],
-    topicsEn: ["Quantum engines", "Quantum fluctuations", "Jarzynski relation", "Quantum information thermodynamics"],
+    topicsFr: ["Moteurs quantiques", "Fluctuations quantiques", "Égalité de Jarzynski", "Thermodynamique de l'information quantique"],
+    topicsEn: ["Quantum engines", "Quantum fluctuations", "Jarzynski equality", "Quantum information thermodynamics"],
   }),
 ];
 
