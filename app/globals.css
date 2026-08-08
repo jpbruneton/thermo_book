@@ -1053,3 +1053,288 @@ a.exercise-index-card-link:focus-visible {
     display: none !important;
   }
 }
+
+/* ─── Exercise index and crawlable detail pages ─── */
+.exercise-card-detail-link {
+  display: inline-flex;
+  margin: 0 1.1rem 0.85rem;
+  font-family: var(--font-inter);
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--amber);
+  text-decoration: none;
+}
+
+.exercise-card-detail-link:hover {
+  text-decoration: underline;
+}
+
+.exercise-detail-page {
+  position: relative;
+  z-index: 1;
+  padding: 3rem 1.5rem 5rem;
+}
+
+.exercise-detail-inner {
+  width: min(100%, 800px);
+  margin: 0 auto;
+}
+
+.exercise-breadcrumb {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  align-items: center;
+  margin-bottom: 2rem;
+  font-family: var(--font-inter);
+  font-size: 0.78rem;
+  color: var(--text-dim);
+}
+
+.exercise-breadcrumb a {
+  color: var(--text-dim);
+  text-decoration: none;
+}
+
+.exercise-breadcrumb a:hover {
+  color: var(--amber);
+}
+
+.exercise-detail-header {
+  padding-bottom: 2rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.exercise-detail-kicker {
+  margin: 0 0 0.65rem;
+  font-family: var(--font-inter);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+  color: var(--amber);
+}
+
+.exercise-detail-header h1 {
+  margin: 0;
+  font-family: var(--font-playfair);
+  font-size: clamp(2rem, 5vw, 3rem);
+  line-height: 1.16;
+  color: var(--text-heading);
+}
+
+.exercise-detail-context {
+  margin: 0.8rem 0 0;
+  font-family: var(--font-crimson);
+  font-size: 1.05rem;
+  color: var(--text-secondary);
+}
+
+.exercise-draft-notice {
+  margin: 1.2rem 0 0;
+  padding: 0.75rem 0.9rem;
+  border-left: 3px solid var(--amber);
+  background: var(--accent-bg-xs);
+  font-family: var(--font-inter);
+  font-size: 0.78rem;
+  color: var(--text-secondary);
+}
+
+.exercise-keywords {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  margin: 1.1rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.exercise-keywords li {
+  padding: 0.28rem 0.68rem;
+  border: 1px solid var(--accent-border-sm);
+  border-radius: 999px;
+  background: var(--accent-bg-xs);
+  font-family: var(--font-inter);
+  font-size: 0.72rem;
+  color: var(--amber-soft);
+}
+
+.exercise-detail-section {
+  margin-top: 2.5rem;
+}
+
+.exercise-detail-section > h2:not(.visually-hidden) {
+  margin: 0 0 1rem;
+  font-family: var(--font-playfair);
+  font-size: 1.55rem;
+  color: var(--text-heading);
+}
+
+.exercise-detail-section > h2:not(.visually-hidden)::after {
+  content: "";
+  display: block;
+  width: 2.4rem;
+  height: 3px;
+  margin-top: 0.55rem;
+  border-radius: 2px;
+  background: linear-gradient(90deg, var(--amber), var(--amber-soft));
+}
+
+.visually-hidden {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+.exercise-related-lesson {
+  display: grid;
+  gap: 0.35rem;
+  margin-top: 3rem;
+  padding: 1.1rem 1.2rem;
+  border: 1px solid var(--accent-border-sm);
+  border-radius: 8px;
+  background: var(--accent-bg-xs);
+}
+
+.exercise-related-lesson span {
+  font-family: var(--font-inter);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+}
+
+.exercise-related-lesson a,
+.exercise-related-lesson strong {
+  font-family: var(--font-playfair);
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--amber);
+  text-decoration: none;
+}
+
+.exercise-prev-next {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.exercise-prev-next a {
+  display: grid;
+  gap: 0.3rem;
+  padding: 1rem;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  color: var(--text-heading);
+  text-decoration: none;
+  font-family: var(--font-playfair);
+}
+
+.exercise-prev-next a:last-child {
+  text-align: right;
+}
+
+.exercise-prev-next a span {
+  font-family: var(--font-inter);
+  font-size: 0.7rem;
+  color: var(--amber);
+}
+
+.lesson-related-exercises {
+  width: min(calc(100% - 3rem), 800px);
+  margin: 3rem auto 0;
+  padding: 1.4rem;
+  border: 1px solid var(--accent-border-sm);
+  border-radius: 8px;
+  background: var(--accent-bg-xs);
+}
+
+.lesson-related-exercises > p {
+  margin: 0 0 0.3rem;
+  font-family: var(--font-inter);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--amber);
+}
+
+.lesson-related-exercises h2 {
+  margin: 0 0 1rem;
+  font-family: var(--font-playfair);
+  font-size: 1.35rem;
+  color: var(--text-heading);
+}
+
+.lesson-related-exercises ul {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.55rem 1rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.lesson-related-exercises li a {
+  display: grid;
+  gap: 0.12rem;
+  padding: 0.55rem 0;
+  border-bottom: 1px solid var(--border-subtle);
+  font-family: var(--font-playfair);
+  color: var(--text-heading);
+  text-decoration: none;
+}
+
+.lesson-related-exercises li a:hover {
+  color: var(--amber);
+}
+
+.lesson-related-exercises li span {
+  font-family: var(--font-inter);
+  font-size: 0.68rem;
+  color: var(--text-dim);
+}
+
+.lesson-related-exercises-all {
+  display: inline-block;
+  margin-top: 1rem;
+  font-family: var(--font-inter);
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--amber);
+  text-decoration: none;
+}
+
+@media (max-width: 760px) {
+  .exercise-lesson-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .exercise-detail-page {
+    padding: 2rem 1rem 4rem;
+  }
+
+  .exercise-prev-next {
+    grid-template-columns: 1fr;
+  }
+
+  .exercise-prev-next a:last-child {
+    text-align: left;
+  }
+
+  .lesson-related-exercises {
+    width: calc(100% - 2rem);
+  }
+
+  .lesson-related-exercises ul {
+    grid-template-columns: 1fr;
+  }
+}

@@ -2,10 +2,11 @@ import { notFound, permanentRedirect } from "next/navigation";
 import { getWebThemeFromUrlSlug, getWebThemes, getThemeTitle, getThemeDescription, getThemeTopics, getThemeUrlSlug, bookMeta } from "@/lib/chapters";
 import { ChapterPageClient } from "./ChapterPageClient";
 import type { Metadata } from "next";
-import { getLessonReferences, getLessonWebContent, getTexFilePathForLang } from "@/lib/chapterContent.server";
+import { getLessonReferences, getLessonWebContent, getTexFilePathForLang, hasLessonWebContent } from "@/lib/chapterContent.server";
 import { processLatex } from "@/lib/latex";
 import { absoluteUrl, getSiteUrl } from "@/lib/siteUrl";
 import { sectionHref, SUPPORTED_LANGS, type Lang } from "@/lib/i18n";
+import { exerciseTitleToPlainText, loadExercises } from "@/lib/exercisesLibrary.server";
 
 interface Props {
   params: { slug: string; lang: Lang };
@@ -29,9 +30,16 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     .slice(0, 15);
   const url = absoluteUrl(sectionHref(lang, "chapters", getThemeUrlSlug(theme, lang)));
   const languages: Record<string, string> = {};
-  for (const l of SUPPORTED_LANGS) {
-    languages[l] = absoluteUrl(sectionHref(l, "chapters", getThemeUrlSlug(theme, l)));
+  const availableLangs = SUPPORTED_LANGS.filter((candidateLang) =>
+    theme.lessons.some((lesson) => hasLessonWebContent(lesson.texFile, candidateLang))
+  );
+  for (const availableLang of availableLangs) {
+    languages[availableLang] = absoluteUrl(
+      sectionHref(availableLang, "chapters", getThemeUrlSlug(theme, availableLang))
+    );
   }
+  if (languages.fr) languages["x-default"] = languages.fr;
+  const contentAvailable = availableLangs.includes(lang);
   return {
     title: `${label} ${theme.number}: ${title}`,
     description,
@@ -40,6 +48,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       canonical: url,
       languages,
     },
+    robots: contentAvailable ? undefined : { index: false, follow: true },
     openGraph: {
       type: "article",
       title: `${label} ${theme.number}: ${title}`,
@@ -49,7 +58,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-function themeJsonLd(theme: NonNullable<ReturnType<typeof getWebThemeFromUrlSlug>>, lang: Lang) {
+function themeJsonLd(
+  theme: NonNullable<ReturnType<typeof getWebThemeFromUrlSlug>>,
+  lang: Lang,
+  contentAvailable: boolean
+) {
   const isFr = lang === "fr";
   const title = getThemeTitle(theme, lang);
   const description = getThemeDescription(theme, lang);
@@ -67,20 +80,31 @@ function themeJsonLd(theme: NonNullable<ReturnType<typeof getWebThemeFromUrlSlug
     ],
   };
 
-  const course = {
+  const learningResource = {
     "@context": "https://schema.org",
-    "@type": "Course",
+    "@type": "LearningResource",
     name: `${label} ${theme.number}: ${title}`,
     description,
     url,
     inLanguage: lang,
-    provider: {
+    learningResourceType: isFr ? "Cours universitaire" : "University lesson",
+    educationalLevel: isFr ? "Enseignement supérieur — Licence" : "Undergraduate",
+    author: {
+      "@type": "Person",
+      name: bookMeta.author,
+    },
+    publisher: {
       "@type": "Organization",
       name: bookMeta.affiliation,
     },
+    isPartOf: {
+      "@type": "Book",
+      name: bookMeta.title,
+      url: getSiteUrl(),
+    },
   };
 
-  return [breadcrumb, course];
+  return contentAvailable ? [breadcrumb, learningResource] : [breadcrumb];
 }
 
 export default function ChapterPage({ params, searchParams }: Props) {
@@ -111,16 +135,29 @@ export default function ChapterPage({ params, searchParams }: Props) {
       };
     }),
   };
+  const contentAvailable = theme.lessons.some((lesson) =>
+    hasLessonWebContent(lesson.texFile, params.lang)
+  );
 
   const webThemes = getWebThemes();
   const currentIndex = webThemes.findIndex((item) => item.slug === theme.slug);
   const prev = currentIndex > 0 ? webThemes[currentIndex - 1] : null;
   const next =
     currentIndex < webThemes.length - 1 ? webThemes[currentIndex + 1] : null;
+  const isPrimaryExerciseLesson = webThemes.find((item) => item.number === theme.number)?.slug === theme.slug;
+  const relatedExercises = params.lang === "fr" && isPrimaryExerciseLesson
+    ? loadExercises("fr")
+        .filter((exercise) => exercise.lecon === theme.number)
+        .map((exercise) => ({
+          id: exercise.id,
+          number: exercise.number,
+          title: exerciseTitleToPlainText(exercise.titleTex),
+        }))
+    : [];
 
   return (
     <>
-      {themeJsonLd(theme, params.lang).map((block, index) => (
+      {themeJsonLd(theme, params.lang, contentAvailable).map((block, index) => (
         <script
           key={index}
           type="application/ld+json"
@@ -131,6 +168,7 @@ export default function ChapterPage({ params, searchParams }: Props) {
         theme={themeWithDynamicContent}
         prev={prev}
         next={next}
+        relatedExercises={relatedExercises}
       />
     </>
   );

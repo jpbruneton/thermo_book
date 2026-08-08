@@ -23,6 +23,7 @@ interface Props {
   theme: ThemeWithLocalizedLessonContent;
   prev: Theme | null;
   next: Theme | null;
+  relatedExercises: Array<{ id: string; number: number; title: string }>;
 }
 
 const headerBoxStyle: CSSProperties = {
@@ -235,7 +236,7 @@ function ChapterLessonTabButtons({ theme }: { theme: ThemeWithLocalizedLessonCon
   );
 }
 
-function ChapterContentAndPrevNext({ theme, prev, next }: Props) {
+function ChapterContentAndPrevNext({ theme, prev, next, relatedExercises }: Props) {
   const { t, lang } = useLang();
   const pathname = usePathname();
   const router = useRouter();
@@ -359,6 +360,26 @@ function ChapterContentAndPrevNext({ theme, prev, next }: Props) {
             {t.chapter.noLessonBody}
           </p>
         </div>
+      )}
+
+      {lang === "fr" && relatedExercises.length > 0 && (
+        <aside className="lesson-related-exercises" aria-labelledby="lesson-exercises-title">
+          <p>Mettre ce cours en pratique</p>
+          <h2 id="lesson-exercises-title">Exercices corrigés associés</h2>
+          <ul>
+            {relatedExercises.map((exercise) => (
+              <li key={exercise.id}>
+                <Link href={sectionHref("fr", "exercises", exercise.id)}>
+                  <span>Exercice {exercise.number}</span>
+                  {exercise.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+          <Link className="lesson-related-exercises-all" href={sectionHref("fr", "exercises")}>
+            Voir tous les exercices →
+          </Link>
+        </aside>
       )}
 
       <LessonNavRow
@@ -524,7 +545,7 @@ function LessonNavRow({
   );
 }
 
-function ChapterPageView({ theme, prev, next }: Props) {
+function ChapterPageView({ theme, prev, next, relatedExercises }: Props) {
   return (
     <div style={{ position: "relative", zIndex: 1 }}>
       <div style={headerBoxStyle}>
@@ -537,7 +558,12 @@ function ChapterPageView({ theme, prev, next }: Props) {
       </div>
 
       <Suspense fallback={null}>
-        <ChapterContentAndPrevNext theme={theme} prev={prev} next={next} />
+        <ChapterContentAndPrevNext
+          theme={theme}
+          prev={prev}
+          next={next}
+          relatedExercises={relatedExercises}
+        />
       </Suspense>
     </div>
   );

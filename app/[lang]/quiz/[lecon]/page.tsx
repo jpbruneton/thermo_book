@@ -64,16 +64,18 @@ export async function generateMetadata({
     ? `Quiz de cours sur la leçon ${lecon} : ${title}.`
     : `Course quiz on lesson ${lecon}: ${title}.`;
   const url = absoluteUrl(sectionHref(lang, "quiz", String(lecon)));
+  const frenchUrl = absoluteUrl(sectionHref("fr", "quiz", String(lecon)));
   return {
     title: `Quiz — ${title}`,
     description,
     alternates: {
       canonical: url,
       languages: {
-        fr: absoluteUrl(sectionHref("fr", "quiz", String(lecon))),
-        en: absoluteUrl(sectionHref("en", "quiz", String(lecon))),
+        fr: frenchUrl,
+        "x-default": frenchUrl,
       },
     },
+    robots: isFr ? undefined : { index: false, follow: true },
     openGraph: {
       title: `Quiz — ${title} | ${bookMeta.title}`,
       url,

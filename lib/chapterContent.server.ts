@@ -1,5 +1,5 @@
 import "server-only";
-import { readFileSync } from "node:fs";
+import { existsSync, readFileSync } from "node:fs";
 import { join } from "node:path";
 import type { LessonReference } from "@/lib/chapters";
 import { processLatex } from "@/lib/latex";
@@ -1564,6 +1564,18 @@ export function getTexFilePathForLang(frTexFile: string, lang: Lang): string {
   const lessonMapped = frTexFile.replace(/_fr\/lecon(\d+)\.tex$/, `_${lang}/lesson$1.tex`);
   if (lessonMapped !== frTexFile) return lessonMapped;
   return frTexFile.replace(/_fr\/(fiche\d+)\.tex$/, `_${lang}/$1.tex`);
+}
+
+/** True only when the requested language has an authored lesson body on disk. */
+export function hasLessonWebContent(frTexFile: string, lang: Lang): boolean {
+  const localizedFile = getTexFilePathForLang(frTexFile, lang);
+  const localizedPath = getTexPathByFileName(localizedFile);
+  if (!localizedPath || !existsSync(localizedPath)) return false;
+  try {
+    return readFileSync(localizedPath, "utf-8").trim().length > 0;
+  } catch {
+    return false;
+  }
 }
 
 export function getLessonWebContent(

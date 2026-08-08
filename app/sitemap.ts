@@ -1,7 +1,8 @@
 import { MetadataRoute } from "next";
 import { getWebThemes, getThemeUrlSlug } from "@/lib/chapters";
 import { getSiteUrl } from "@/lib/siteUrl";
-import { hasExercises } from "@/lib/exercisesLibrary.server";
+import { hasExercises, loadExercises } from "@/lib/exercisesLibrary.server";
+import { hasLessonWebContent } from "@/lib/chapterContent.server";
 import { getAllExercisesPdfHref, getExerciseThemePdfLinks } from "@/lib/exercisePdfDownloads.server";
 import { getQuizLessons } from "@/lib/quizzes";
 import { sectionHref, SUPPORTED_LANGS, TRANSLATED_SECTION_LANGS, type Lang } from "@/lib/i18n";
@@ -58,7 +59,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { section: "chapters", priority: 0.9, changeFrequency: "monthly", langs: SUPPORTED_LANGS, includeLang: () => true },
     { section: "about", priority: 0.6, changeFrequency: "yearly", langs: SUPPORTED_LANGS, includeLang: () => true },
     { section: "glossary", priority: 0.5, changeFrequency: "monthly", langs: SUPPORTED_LANGS, includeLang: () => true },
-    { section: "quiz", priority: 0.7, changeFrequency: "monthly", langs: TRANSLATED_SECTION_LANGS, includeLang: () => true },
+    { section: "quiz", priority: 0.7, changeFrequency: "monthly", langs: ["fr"], includeLang: () => true },
     {
       section: "exercises",
       priority: 0.75,
@@ -86,27 +87,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
     }
   }
 
-  // One URL per lesson per language: first lesson uses bare /{lang}/chapters/[slug];
-  // others use ?lesson=N (1-based index in theme.lessons). Every supported language
-  // gets a localized canonical URL even when the lesson body is not translated yet.
+  // One URL per authored lesson translation. Thin "not available yet" shells remain
+  // navigable for users, but are deliberately absent from the sitemap and hreflang.
   const themeRoutes: MetadataRoute.Sitemap = webThemes.flatMap((theme) => {
-    const langs = SUPPORTED_LANGS;
+    if (theme.lessons.length === 0) return [];
 
-    if (theme.lessons.length === 0) {
-      const urlsByLang: Partial<Record<Lang, string>> = {};
-      for (const lang of langs) {
-        urlsByLang[lang] = `${SITE_URL}${sectionHref(lang, "chapters", getThemeUrlSlug(theme, lang))}`;
-      }
-      return langs.map((lang) => ({
-        url: urlsByLang[lang]!,
-        lastModified: new Date(),
-        changeFrequency: "weekly" as const,
-        priority: 0.8,
-        alternates: hreflangFor(urlsByLang),
-      }));
-    }
-
-    return theme.lessons.flatMap((_, lessonIndex) => {
+    return theme.lessons.flatMap((lesson, lessonIndex) => {
+      const langs = SUPPORTED_LANGS.filter((lang) =>
+        hasLessonWebContent(lesson.texFile, lang)
+      );
       const urlsByLang: Partial<Record<Lang, string>> = {};
       for (const lang of langs) {
         const themeUrl = `${SITE_URL}${sectionHref(lang, "chapters", getThemeUrlSlug(theme, lang))}`;
@@ -122,14 +111,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
     });
   });
 
-  // One quiz URL per lesson number per language (quiz content itself is not
-  // translated per-lesson, but the page shell and lesson title are).
+  // Quiz questions are authored in French only. English and other unavailable
+  // shells are not advertised as indexable educational content.
   const quizRoutes: MetadataRoute.Sitemap = getQuizLessons().flatMap((lecon) => {
     const urlsByLang: Partial<Record<Lang, string>> = {};
-    for (const lang of TRANSLATED_SECTION_LANGS) {
+    for (const lang of ["fr"] as const) {
       urlsByLang[lang] = `${SITE_URL}${sectionHref(lang, "quiz", String(lecon))}`;
     }
-    return TRANSLATED_SECTION_LANGS.map((lang) => ({
+    return (["fr"] as const).map((lang) => ({
       url: urlsByLang[lang]!,
       lastModified: new Date(),
       changeFrequency: "monthly" as const,
@@ -137,6 +126,17 @@ export default function sitemap(): MetadataRoute.Sitemap {
       alternates: hreflangFor(urlsByLang),
     }));
   });
+
+  // Stable, intent-specific landing pages for every French worked exercise.
+  const exerciseDetailRoutes: MetadataRoute.Sitemap = loadExercises("fr")
+    .filter((exercise) => exercise.seoReady)
+    .map((exercise) => ({
+      url: `${SITE_URL}${sectionHref("fr", "exercises", exercise.id)}`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.72,
+      alternates: { languages: { fr: `${SITE_URL}${sectionHref("fr", "exercises", exercise.id)}` } },
+    }));
 
   // Exercise PDF downloads: the merged all-themes booklet plus any per-theme
   // PDF that has actually been built (checked on disk), fr and en.
@@ -170,5 +170,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
     }
   }
 
-  return [...staticRoutes, ...themeRoutes, ...quizRoutes, ...exercisePdfRoutes];
+  return [
+    ...staticRoutes,
+    ...themeRoutes,
+    ...quizRoutes,
+    ...exerciseDetailRoutes,
+    ...exercisePdfRoutes,
+  ];
 }

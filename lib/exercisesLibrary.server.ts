@@ -15,6 +15,8 @@ export interface ExerciseEntry {
   keywords: string[];
   /** Exercise body (without indication/solution blocks). */
   enonceTex: string;
+  /** Explicit editorial approval for indexing; false unless \seoready{true} is present. */
+  seoReady: boolean;
   /** Indication block body, or null. */
   indicationTex: string | null;
   /** Solution block body, or null. */
@@ -116,6 +118,11 @@ function parseExoBlock(rawBlock: string, counter: number): ExerciseEntry {
   const kwRaw = extractCmd(body, "keywords");
   const keywords = kwRaw ? kwRaw.split(",").map((k) => k.trim()).filter(Boolean) : [];
 
+  // Draft-safe by default: a new exercise is never added to search surfaces
+  // until the author explicitly opts it in from the TeX source.
+  const seoReadyRaw = extractCmd(body, "seoready");
+  const seoReady = /^(true|yes|1|ready|published)$/i.test(seoReadyRaw ?? "");
+
   const indicationBlock = extractEnv(body, "indication");
   const indicationTex = indicationBlock ? indicationBlock.content : null;
 
@@ -126,13 +133,14 @@ function parseExoBlock(rawBlock: string, counter: number): ExerciseEntry {
   let enonceTex = body;
   enonceTex = enonceTex.replace(/\\lecon\{[^}]*\}/g, "");
   enonceTex = enonceTex.replace(/\\keywords\{[^}]*\}/g, "");
+  enonceTex = enonceTex.replace(/\\seoready\{[^}]*\}/g, "");
   const indBlock2 = extractEnv(enonceTex, "indication");
   if (indBlock2) enonceTex = enonceTex.slice(0, indBlock2.start) + enonceTex.slice(indBlock2.end);
   const solBlock2 = extractEnv(enonceTex, "solution");
   if (solBlock2) enonceTex = enonceTex.slice(0, solBlock2.start) + enonceTex.slice(solBlock2.end);
   enonceTex = enonceTex.trim();
 
-  return { number: counter, id, titleTex, lecon, keywords, enonceTex, indicationTex, solutionTex };
+  return { number: counter, id, titleTex, lecon, keywords, enonceTex, seoReady, indicationTex, solutionTex };
 }
 
 /** Load and parse all exercises from the single-file bank. */
@@ -162,4 +170,39 @@ export function loadExercises(lang: "fr" | "en"): ExerciseEntry[] {
 
 export function hasExercises(lang: "fr" | "en"): boolean {
   return existsSync(exercisesFilePath(lang)) && loadExercises(lang).length > 0;
+}
+
+/** Finds an exercise by its stable public identifier. */
+export function getExerciseById(lang: "fr" | "en", id: string): ExerciseEntry | undefined {
+  return loadExercises(lang).find((exercise) => exercise.id === id);
+}
+
+/**
+ * Produces a compact human-readable title for metadata and structured data.
+ * Exercise headings contain only light inline TeX, so preserving the symbols is
+ * preferable to exposing raw dollar delimiters and commands in search results.
+ */
+export function exerciseTitleToPlainText(titleTex: string): string {
+  const superscript: Record<string, string> = {
+    "0": "⁰", "1": "¹", "2": "²", "3": "³", "4": "⁴",
+    "5": "⁵", "6": "⁶", "7": "⁷", "8": "⁸", "9": "⁹",
+    "+": "⁺", "-": "⁻",
+  };
+  const subscript: Record<string, string> = {
+    "0": "₀", "1": "₁", "2": "₂", "3": "₃", "4": "₄",
+    "5": "₅", "6": "₆", "7": "₇", "8": "₈", "9": "₉",
+    "+": "₊", "-": "₋",
+  };
+  const mapScript = (value: string, table: Record<string, string>) =>
+    value.split("").map((character) => table[character] ?? character).join("");
+
+  return titleTex
+    .replace(/\\text\{([^{}]*)\}/g, "$1")
+    .replace(/\^\{?([0-9+-]+)\}?/g, (_match, value: string) => mapScript(value, superscript))
+    .replace(/_\{?([0-9+-]+)\}?/g, (_match, value: string) => mapScript(value, subscript))
+    .replace(/\\ln\b/g, "ln")
+    .replace(/\\([a-zA-Z]+)\b/g, "$1")
+    .replace(/[$\{\}]/g, "")
+    .replace(/\s+/g, " ")
+    .trim();
 }

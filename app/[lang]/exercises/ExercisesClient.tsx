@@ -1,9 +1,11 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import Link from "next/link";
 import { useLang } from "@/app/context/LangContext";
 import { exerciseMatchesQuery } from "@/lib/exerciseIndexUtils";
 import { processLatex } from "@/lib/latex";
+import { sectionHref, type Lang } from "@/lib/i18n";
 import type { ExerciseCard } from "./page";
 
 interface Props {
@@ -166,12 +168,13 @@ function LessonGrid({
   onSelect,
 }: {
   groups: [number, ExerciseCard[]][];
-  lang: string;
+  lang: Lang;
   t: { exosOnLecon: string; leconPrefix: string; exoCount: (n: number) => string };
   onSelect: (lecon: number) => void;
 }) {
   return (
     <div
+      className="exercise-lesson-grid"
       style={{
         display: "grid",
         gridTemplateColumns: "repeat(3, 1fr)",
@@ -253,7 +256,7 @@ function SelectedLeconView({
 }: {
   lecon: number;
   groupCards: ExerciseCard[];
-  lang: string;
+  lang: Lang;
   t: { exosOnLecon: string; exoPrefix: string; kwLabel: string; leconPrefix: string; back: string };
   onBack: () => void;
 }) {
@@ -291,7 +294,7 @@ function ExoCard({ card, exoPrefix, kwLabel, lang }: {
   exoPrefix: string;
   kwLabel: string;
   leconPrefix: string;
-  lang: string;
+  lang: Lang;
 }) {
   const [open, setOpen] = useState(false);
 
@@ -343,6 +346,15 @@ function ExoCard({ card, exoPrefix, kwLabel, lang }: {
           {open ? closeLabel : openLabel} {open ? "▲" : "▼"}
         </span>
       </button>
+
+      {lang === "fr" && (
+        <Link
+          className="exercise-card-detail-link"
+          href={sectionHref("fr", "exercises", card.id)}
+        >
+          Voir l’énoncé et la solution sur une page dédiée →
+        </Link>
+      )}
 
       {open && (
         <div style={{ padding: "0 1.1rem 1.25rem", borderTop: "1px solid var(--border)" }}>

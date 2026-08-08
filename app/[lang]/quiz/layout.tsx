@@ -18,16 +18,18 @@ export async function generateMetadata({
     ? `Testez vos connaissances de cours sur ${bookMeta.title}.`
     : `Test your knowledge of ${bookMeta.title}.`;
   const url = absoluteUrl(sectionHref(lang, "quiz"));
+  const frenchUrl = absoluteUrl(sectionHref("fr", "quiz"));
   return {
     title,
     description,
     alternates: {
       canonical: url,
       languages: {
-        fr: absoluteUrl(sectionHref("fr", "quiz")),
-        en: absoluteUrl(sectionHref("en", "quiz")),
+        fr: frenchUrl,
+        "x-default": frenchUrl,
       },
     },
+    robots: isFr ? undefined : { index: false, follow: true },
     openGraph: {
       title: `${title} | ${bookMeta.title}`,
       description: ogDescription,

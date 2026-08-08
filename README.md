@@ -9,6 +9,11 @@ students, and freely readable in the browser (French, English + 12 langages).
 Each lesson is paired with a library of worked exercises — statements,
 hints, and full solutions.
 
+Exercise detail pages are draft-safe: they stay out of search indexes and the
+sitemap until the exercise source explicitly contains `\seoready{true}`. Add
+that command inside an exercise block only after its statement and solution
+have completed editorial review.
+
 ## Contents so far
 
 **Part I — Foundations (undergraduate level)**
