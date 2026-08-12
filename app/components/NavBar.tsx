@@ -21,7 +21,15 @@ const MORE_LANGUAGES: { code: Exclude<Lang, "fr" | "en">; flag: string; nativeNa
   { code: "hi", flag: "🇮🇳", nativeName: "हिन्दी" },
   { code: "vi", flag: "🇻🇳", nativeName: "Tiếng Việt" },
   { code: "ar", flag: "🇸🇦", nativeName: "العربية" },
+  { code: "id", flag: "🇮🇩", nativeName: "Bahasa Indonesia" },
+  { code: "tr", flag: "🇹🇷", nativeName: "Türkçe" },
 ];
+
+const MORE_LABELS: Partial<Record<Lang, string>> = {
+  fr: "Plus…",
+  id: "Lainnya…",
+  tr: "Daha fazla…",
+};
 
 function MoreLanguagesMenu({
   lang,
@@ -46,7 +54,7 @@ function MoreLanguagesMenu({
     return () => document.removeEventListener("mousedown", onClickAway);
   }, [open]);
 
-  const moreLabel = lang === "fr" ? "Plus…" : "More…";
+  const moreLabel = MORE_LABELS[lang] ?? "More…";
 
   return (
     <div ref={containerRef} style={{ position: "relative", flexShrink: 0 }}>

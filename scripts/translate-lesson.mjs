@@ -41,6 +41,8 @@ const LANGUAGES = {
   vi: "Vietnamese",
   pl: "Polish",
   ar: "Arabic",
+  id: "Indonesian",
+  tr: "Turkish",
 };
 
 function buildSystemPrompt(languageName) {

@@ -12,11 +12,13 @@ export type Lang =
   | "ko"
   | "hi"
   | "vi"
-  | "ar";
+  | "ar"
+  | "id"
+  | "tr";
 
 /** Every routable language code — /{lang}/... resolves for all of these. */
 export const SUPPORTED_LANGS: readonly Lang[] = [
-  "fr", "en", "de", "es", "pt", "it", "pl", "ru", "zh", "ja", "ko", "hi", "vi", "ar",
+  "fr", "en", "de", "es", "pt", "it", "pl", "ru", "zh", "ja", "ko", "hi", "vi", "ar", "id", "tr",
 ];
 
 /**
@@ -105,6 +107,20 @@ export const sectionSlugs: Record<Lang, Record<Section, string>> = {
   hi: IDENTITY_SECTION_SLUGS,
   vi: IDENTITY_SECTION_SLUGS,
   ar: IDENTITY_SECTION_SLUGS,
+  id: {
+    chapters: "pelajaran",
+    exercises: "latihan",
+    quiz: "kuis",
+    glossary: "glosarium",
+    about: "tentang-buku",
+  },
+  tr: {
+    chapters: "dersler",
+    exercises: "alistirmalar",
+    quiz: "quiz",
+    glossary: "sozluk",
+    about: "kitap-hakkinda",
+  },
 };
 
 /** Builds the public href for a section, e.g. sectionHref("fr", "chapters", "introduction") -> "/fr/chapitres/introduction". */
@@ -1661,6 +1677,202 @@ const partialTranslations: Record<Exclude<Lang, "fr" | "en">, DeepPartial<Transl
       sameAuthorTitle: "من نفس المؤلف",
       sameAuthorBody: "ميكانيكا الكم — مقدمة حديثة، مقرر مصاحب حول ميكانيكا الكم.",
       sameAuthorLink: "اقرأه على quantumlectures.org",
+    },
+  },
+  id: {
+    book: {
+      title: "Termodinamika Dasar dan Lanjut",
+      subtitle: "",
+      description:
+        "Bagian pertama adalah kuliah tingkat sarjana dengan banyak latihan beserta penyelesaiannya. Bagian ini mencakup kosakata, formalisme, dan prinsip-prinsip dasar termodinamika, kajian gas dan transisi fase, serta mesin kalor dan siklus termal. Bagian-bagian berikutnya membahas topik yang lebih lanjut: geometri diferensial dalam termodinamika, demon Maxwell, endoreversibilitas, fisika iklim, termoelektrisitas, termodinamika dekat kesetimbangan (hubungan Onsager, dan lain-lain), serta termodinamika kuantum.",
+      edition: "Edisi Pertama",
+    },
+    nav: {
+      home: "Beranda",
+      chapters: "Pelajaran",
+      exercises: "Latihan",
+      quiz: "Kuis",
+      glossary: "Glosarium",
+      about: "Tentang Buku",
+    },
+    chapters: {
+      label: "PELAJARAN",
+      title: "Semua Pelajaran",
+      description: "",
+    },
+    home: {
+      badge: "Edisi Daring Gratis",
+      readOnline: "Baca Daring →",
+      aboutBook: "Tentang Buku",
+      chapterPrefix: "Bab",
+      themePrefix: "Pelajaran",
+      stats: { chapters: "Pelajaran", edition: "Edisi", format: "Format", formatValue: "Web + PDF" },
+      contentsLabel: "Daftar Isi",
+      exploreTitle: "Jelajahi Pelajaran",
+      readTheme: "Buka pelajaran →",
+      readLesson: "Baca pelajaran →",
+      readChapter: "Baca bab →",
+      fullBookDownload: "Unduh edisi lengkap (segera hadir)",
+      features: [
+        {
+          icon: "∫",
+          title: "Penyajian Matematika Lengkap",
+          body: "Semua persamaan ditampilkan dengan KaTeX — matematika setajam kualitas LaTeX langsung di peramban Anda.",
+        },
+        {
+          icon: "⬇",
+          title: "Unduhan PDF",
+          body: "Setiap bab tersedia sebagai PDF yang dapat diunduh untuk belajar secara luring.",
+        },
+        {
+          icon: "◎",
+          title: "Akses Gratis dan Terbuka",
+          body: "Teks lengkap tersedia gratis secara daring. Tanpa paywall dan tanpa perlu mendaftar.",
+        },
+      ],
+    },
+    footer: {
+      navigation: "Navigasi",
+      home: "Beranda",
+      allChapters: "Semua Pelajaran",
+      exercises: "Latihan",
+      aboutBook: "Tentang Buku",
+      author: "Penulis",
+      copyright: (year: string, author: string) => `© ${year} ${author}. Hak cipta dilindungi.`,
+    },
+    glossary: {
+      title: "Glosarium Kata Kunci",
+      subtitle: "Klik kata kunci untuk melihat semua pelajaran yang menggunakannya.",
+      allKeywords: "Semua kata kunci",
+      relatedLessons: "Pelajaran terkait",
+      noResult: "Tidak ada kata kunci yang ditemukan untuk filter ini.",
+      lessonEntry: (n: number, title: string) => `Pelajaran ${n}: ${title}`,
+    },
+    about: {
+      label: "TENTANG BUKU",
+      aboutBookTitle: "Tentang Buku Ini",
+      bookDetails: "Detail Buku",
+      detailLabels: { author: "Penulis", affiliation: "Afiliasi", edition: "Edisi", year: "Tahun" },
+      authorTitle: "Tentang Penulis",
+      authorBioSuffix: "adalah fisikawan di ",
+      authorBioRest:
+        "Minat penelitiannya meliputi hukum-hukum gravitasi, mekanika kuantum beserta landasannya, dan regresi simbolik sebagai tugas pembelajaran mesin. Buku ini berkembang dari catatan kuliah yang disusun selama bertahun-tahun mengajar pada tingkat pascasarjana dan sarjana lanjut.",
+      authorLinksHeading: "Profil",
+      authorLinkLinkedIn: "LinkedIn",
+      authorLinkGoogleScholar: "Google Scholar",
+      authorLinkGitHub: "GitHub",
+      aboutProjectTitle: "Tentang Proyek",
+      aboutProjectLead:
+        "Situs dan buku ini sedang dikembangkan. Pelajaran dan latihan akan ditambahkan secara bertahap. Buku ini ditulis dalam bahasa Prancis oleh penulis; konten dalam bahasa lain dihasilkan melalui penerjemahan otomatis (AI).",
+      aboutProjectOutlineLabel: "Konten yang direncanakan:",
+      aboutProjectOutlineBody:
+        "Kuliah termodinamika yang disusun bertahap, dari prinsip-prinsip dasar hingga perkembangan yang lebih lanjut.",
+      aboutBookBody2:
+        "Buku ini mengembangkan termodinamika dari prinsip-prinsip pertama. Pembuktian diberikan secara lengkap setiap kali dapat memperjelas fisikanya, dan banyak contoh dengan penyelesaian melengkapi uraian teoretis.",
+      translationWarning:
+        "Peringatan: buku ini pada awalnya ditulis dalam bahasa Prancis; versi ini diterjemahkan secara otomatis dengan bantuan kecerdasan buatan.",
+      sameAuthorTitle: "Dari Penulis yang Sama",
+      sameAuthorBody:
+        "Mekanika Kuantum — Pengantar Modern, kuliah pendamping mengenai mekanika kuantum.",
+      sameAuthorLink: "Baca di quantumlectures.org",
+    },
+  },
+  tr: {
+    book: {
+      title: "Temel ve İleri\nTermodinamik",
+      subtitle: "",
+      description:
+        "Birinci bölüm, çok sayıda çözümlü alıştırma içeren bir lisans dersidir. Termodinamiğin kavramlarını, biçimsel yapısını ve temel ilkelerini; gazları ve faz geçişlerini; ısı makinelerini ve termal çevrimleri kapsar. Sonraki bölümlerde daha ileri konular ele alınır: termodinamikte diferansiyel geometri, Maxwell'in cini, endoreversibilite, iklim fiziği, termoelektrik, dengeye yakın termodinamik (Onsager bağıntıları vb.) ve kuantum termodinamiği.",
+      edition: "Birinci Baskı",
+    },
+    nav: {
+      home: "Ana Sayfa",
+      chapters: "Dersler",
+      exercises: "Alıştırmalar",
+      quiz: "Test",
+      glossary: "Sözlük",
+      about: "Kitap Hakkında",
+    },
+    chapters: {
+      label: "DERSLER",
+      title: "Tüm Dersler",
+      description: "",
+    },
+    home: {
+      badge: "Ücretsiz Çevrimiçi Baskı",
+      readOnline: "Çevrimiçi Oku →",
+      aboutBook: "Kitap Hakkında",
+      chapterPrefix: "Böl.",
+      themePrefix: "Ders",
+      stats: { chapters: "Dersler", edition: "Baskı", format: "Biçim", formatValue: "Web + PDF" },
+      contentsLabel: "İçindekiler",
+      exploreTitle: "Dersleri Keşfedin",
+      readTheme: "Dersi aç →",
+      readLesson: "Dersi oku →",
+      readChapter: "Bölümü oku →",
+      fullBookDownload: "Tam baskıyı indir (yakında)",
+      features: [
+        {
+          icon: "∫",
+          title: "Eksiksiz Matematiksel Gösterim",
+          body: "Tüm denklemler KaTeX ile görüntülenir — tarayıcınızda net, LaTeX kalitesinde matematik.",
+        },
+        {
+          icon: "⬇",
+          title: "PDF İndirmeleri",
+          body: "Her bölüm, çevrimdışı çalışma için indirilebilir PDF olarak sunulur.",
+        },
+        {
+          icon: "◎",
+          title: "Ücretsiz ve Açık Erişim",
+          body: "Metnin tamamına çevrimiçi ve ücretsiz erişebilirsiniz. Ödeme duvarı ve kayıt zorunluluğu yoktur.",
+        },
+      ],
+    },
+    footer: {
+      navigation: "Gezinme",
+      home: "Ana Sayfa",
+      allChapters: "Tüm Dersler",
+      exercises: "Alıştırmalar",
+      aboutBook: "Kitap Hakkında",
+      author: "Yazar",
+      copyright: (year: string, author: string) => `© ${year} ${author}. Tüm hakları saklıdır.`,
+    },
+    glossary: {
+      title: "Anahtar Kavramlar Sözlüğü",
+      subtitle: "Bir anahtar kavrama tıklayarak kullanıldığı tüm dersleri görün.",
+      allKeywords: "Tüm anahtar kavramlar",
+      relatedLessons: "İlgili dersler",
+      noResult: "Bu filtreye uygun anahtar kavram bulunamadı.",
+      lessonEntry: (n: number, title: string) => `Ders ${n}: ${title}`,
+    },
+    about: {
+      label: "KİTAP HAKKINDA",
+      aboutBookTitle: "Bu Kitap Hakkında",
+      bookDetails: "Kitap Bilgileri",
+      detailLabels: { author: "Yazar", affiliation: "Kurum", edition: "Baskı", year: "Yıl" },
+      authorTitle: "Yazar Hakkında",
+      authorBioSuffix: "şu kurumda fizikçidir: ",
+      authorBioRest:
+        "Araştırma alanları kütleçekim yasalarını, kuantum mekaniğini ve temellerini, ayrıca bir makine öğrenmesi görevi olarak sembolik regresyonu kapsar. Bu kitap, lisansüstü ve ileri lisans düzeyinde uzun yıllar boyunca geliştirilen ders notlarından doğmuştur.",
+      authorLinksHeading: "Profiller",
+      authorLinkLinkedIn: "LinkedIn",
+      authorLinkGoogleScholar: "Google Scholar",
+      authorLinkGitHub: "GitHub",
+      aboutProjectTitle: "Proje Hakkında",
+      aboutProjectLead:
+        "Bu site ve kitap geliştirme aşamasındadır. Dersler ve alıştırmalar zaman içinde eklenecektir. Kitap yazar tarafından Fransızca kaleme alınmakta; diğer dillerde sunulan içerikler otomatik (yapay zekâ destekli) çeviriyle üretilmektedir.",
+      aboutProjectOutlineLabel: "Planlanan içerik:",
+      aboutProjectOutlineBody:
+        "Temel ilkelerden daha ileri gelişmelere uzanan aşamalı bir termodinamik dersi.",
+      aboutBookBody2:
+        "Metin, termodinamiği temel ilkelerden başlayarak geliştirir. Fiziği açıklığa kavuşturduğu durumlarda kanıtlar eksiksiz verilir; çok sayıda çözümlü örnek de kuramsal anlatımı tamamlar.",
+      translationWarning:
+        "Uyarı: Bu kitap aslında Fransızca yazılmıştır; bu sürüm yapay zekâ yardımıyla otomatik olarak çevrilmiştir.",
+      sameAuthorTitle: "Aynı Yazardan",
+      sameAuthorBody:
+        "Kuantum Mekaniği — Modern Bir Giriş, kuantum mekaniği üzerine tamamlayıcı bir ders.",
+      sameAuthorLink: "quantumlectures.org adresinde okuyun",
     },
   },
 };

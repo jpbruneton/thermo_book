@@ -4,8 +4,8 @@ const legacyExerciseSlugRedirects = require("./lib/legacyExerciseSlugRedirects.j
 // Public localized URL words, per language. English words match the internal
 // folder names 1:1, so English (and non-Latin-alphabet languages, which keep
 // English words for URL-safety) need no entry here. Keep in sync with
-// lib/i18n.ts `sectionSlugs`. "quiz" is the same word in every language
-// listed here, so it's omitted (no rewrite needed).
+// lib/i18n.ts `sectionSlugs`. Sections whose public word is unchanged are
+// omitted for that language (no rewrite needed).
 const LOCALIZED_SECTION_SLUGS = {
   fr: {
     chapters: "chapitres",
@@ -42,6 +42,19 @@ const LOCALIZED_SECTION_SLUGS = {
     exercises: "cwiczenia",
     glossary: "slowniczek",
     about: "o-ksiazce",
+  },
+  id: {
+    chapters: "pelajaran",
+    exercises: "latihan",
+    quiz: "kuis",
+    glossary: "glosarium",
+    about: "tentang-buku",
+  },
+  tr: {
+    chapters: "dersler",
+    exercises: "alistirmalar",
+    glossary: "sozluk",
+    about: "kitap-hakkinda",
   },
 };
 

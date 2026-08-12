@@ -2,7 +2,7 @@
 
 Liste de référence des langues envisagées pour la diffusion du site.
 L'architecture i18n (`Lang` dans [`lib/i18n.ts`](../lib/i18n.ts)) supporte
-désormais les 14 codes ci-dessous comme routes valides (`/xx` et `/xx/...`) ;
+désormais les 16 codes ci-dessous comme routes valides (`/xx` et `/xx/...`) ;
 ce qui varie entre langues, c'est la profondeur du contenu réellement traduit
 — voir la colonne Statut. Statut à mettre à jour au fur et à mesure.
 
@@ -24,6 +24,8 @@ ce qui varie entre langues, c'est la profondeur du contenu réellement traduit
 | hi   | Hindi      | 🚧 partiel   | Idem de |
 | vi   | Vietnamien | 🚧 partiel   | Idem de |
 | ar   | Arabe      | 🚧 partiel   | Idem de + RTL (`dir="rtl"` sur `<html>`, mise en page en miroir automatique via flex/grid) |
+| id   | Indonésien | 🚧 partiel   | Accueil, à propos, liste des leçons (titres/descriptions/mots-clés), glossaire et leçons 1 et 2 traduits ; leçons 3+ affichent « contenu non disponible » ; exercices/quiz encore non traduits |
+| tr   | Turc       | 🚧 partiel   | Idem id |
 
 Légende : ✅ en prod (toutes sections) · 🚧 partiel (au moins une section a du
 contenu réel dans cette langue ; jamais de repli silencieux vers fr/en — les
@@ -40,7 +42,7 @@ pages sans contenu affichent un état explicite) · 📋 planifié / pas commenc
   retombent sur l'anglais, ce qui est acceptable car ce ne sont que des
   libellés d'interface, jamais du contenu de leçon.
 - **Titres/descriptions de leçon** : `lib/chapterTranslations.ts` contient les
-  titres et descriptions des 17 thèmes pour les 12 langues au-delà de fr/en
+  titres et descriptions des 17 thèmes pour les 14 langues au-delà de fr/en
   (indépendant du fait que le contenu de la leçon elle-même existe ou non).
   `lib/chapters.ts` expose `getThemeTitle(theme, lang)`,
   `getThemeDescription(theme, lang)`, `getThemePartHeading(theme, lang)` —
@@ -75,16 +77,16 @@ pages sans contenu affichent un état explicite) · 📋 planifié / pas commenc
   mots-clés à partir de `getThemeTopics(themeSlug, lesson, lang)` (même
   source que les bulles sous chaque leçon), et les libellés d'interface
   (titre, sous-titre, "Tous les mots-clés", etc.) viennent de `t.glossary.*`
-  dans `lib/i18n.ts`, traduits pour les 14 langues — plus de ternaire
+  dans `lib/i18n.ts`, traduits pour les 16 langues — plus de ternaire
   `lang === "fr" ? ... : ...` codé en dur dans ce fichier.
-- `SUPPORTED_LANGS` (14 codes) pilote le routage (`isLang`, `generateStaticParams`
+- `SUPPORTED_LANGS` (16 codes) pilote le routage (`isLang`, `generateStaticParams`
   de `app/[lang]/layout.tsx`, le header `x-site-lang` dans `middleware.ts`) —
   toutes ces routes existent et rendent quelque chose (contenu réel ou état
   « non disponible »), jamais une 404.
 - `TRANSLATED_SECTION_LANGS` (`["fr", "en"]`) pilote `app/sitemap.ts` pour les
   sections encore binaires (exercices, quiz) : on n'indexe pas de pages « non
   disponible » comme s'il s'agissait d'un contenu localisé. Chapitres, à
-  propos et glossaire sont indexés pour les 14 langues (`SUPPORTED_LANGS`)
+  propos et glossaire sont indexés pour les 16 langues (`SUPPORTED_LANGS`)
   puisqu'ils ont un contenu réel partout.
 - `app/[lang]/page.tsx` est la route d'accueil par langue (`/de`, `/es`,
   etc.) ; la racine `/` (`app/page.tsx`) reste la page d'accueil historique,
@@ -97,8 +99,8 @@ pages sans contenu affichent un état explicite) · 📋 planifié / pas commenc
   `about.translationWarning` (affiché pour toute langue ≠ fr).
 - **Slugs d'URL localisés** (`lib/i18n.ts` `sectionSlugs` + `next.config.js`
   `LOCALIZED_SECTION_SLUGS`, à garder synchronisés) : pour les langues à
-  alphabet latin (fr, de, es, pt, it, pl), les mots de section dans l'URL sont
-  traduits — ex. `/de/uebungen`, `/es/ejercicios`, `/it/lezioni`. Les anciennes
+  alphabet latin (fr, de, es, pt, it, pl, id, tr), les mots de section dans l'URL sont
+  traduits — ex. `/de/uebungen`, `/id/latihan`, `/tr/dersler`. Les anciennes
   URL anglaises (`/de/exercises`, etc.) redirigent en 308 vers la version
   localisée. Pour les langues à écriture non latine (ru, zh, ja, ko, hi, vi,
   ar), le slug reste en anglais délibérément : une URL cyrillique/CJK/

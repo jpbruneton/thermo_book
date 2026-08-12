@@ -61,6 +61,8 @@ Output only the translated LaTeX source, with no explanation or preamble.
 | vi   | Vietnamese |
 | pl   | Polish     |
 | ar   | Arabic     |
+| id   | Indonesian |
+| tr   | Turkish    |
 
 ## Terminologie thermodynamique contrôlée
 
@@ -84,6 +86,8 @@ grandeur physique d'unité joule, jamais l'emploi, la main-d'œuvre ou une tâch
 | vi | công / công cơ học (pas `công việc`) | nhiệt ; nhiệt lượng pour une quantité $Q$ | hiệu suất | công suất |
 | pl | praca / praca mechaniczna | ciepło | sprawność (pas `wydajność`) | moc |
 | ar | شغل / شغل ميكانيكي (pas `عمل`) | حرارة | كفاءة | قدرة |
+| id | kerja / kerja mekanis (pas `pekerjaan`) | kalor | efisiensi | daya |
+| tr | iş / mekanik iş | ısı | verim | güç |
 
 Autres choix à conserver de manière cohérente :
 
@@ -92,14 +96,16 @@ Autres choix à conserver de manière cohérente :
   térmico` (pt), `热机` (zh), `열기관` (ko), `熱機関` (ja), `macchina
   termica` ou `motore termico` (it), `тепловая машина` ou `тепловой
   двигатель` (ru), `ऊष्मा इंजन` (hi), `động cơ nhiệt` (vi), `silnik
-  cieplny` ou `maszyna cieplna` (pl), `محرك حراري` (ar) ;
+  cieplny` ou `maszyna cieplna` (pl), `محرك حراري` (ar), `mesin kalor` (id),
+  `ısı makinesi` (tr) ;
 - `source chaude/froide` désigne un réservoir thermique : préférer `hot/cold
   reservoir` en anglais, `heißes/kaltes Wärmereservoir` en allemand et
   `foco caliente/frío` en espagnol plutôt qu'un calque général de « source » ;
 - `gaz parfait` : `ideal gas` (en), `ideales Gas` (de), `gas ideal` (es),
   `gás ideal` (pt), `理想气体` (zh), `이상기체` (ko), `理想気体` (ja),
   `gas perfetto` (it), `идеальный газ` (ru), `आदर्श गैस` (hi), `khí lý
-  tưởng` (vi), `gaz doskonały` (pl), `غاز مثالي` (ar) ;
+  tưởng` (vi), `gaz doskonały` (pl), `غاز مثالي` (ar), `gas ideal` (id),
+  `ideal gaz` (tr) ;
 - ne jamais confondre `travail` (énergie, unité J) et `puissance` (débit
   d'énergie, unité W). Le BIPM distingue explicitement le joule pour le
   travail, l'énergie et la chaleur, et le watt pour la puissance.

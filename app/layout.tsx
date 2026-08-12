@@ -7,7 +7,7 @@ import { Providers } from "./providers";
 import { VercelInstrumentation } from "./components/VercelInstrumentation";
 import { bookMeta, bookMetaDisplayTitle } from "@/lib/chapters";
 import { getSiteUrl } from "@/lib/siteUrl";
-import { isLang, type Lang } from "@/lib/i18n";
+import { isLang, SUPPORTED_LANGS, type Lang } from "@/lib/i18n";
 
 const SITE_URL = getSiteUrl();
 
@@ -25,7 +25,7 @@ const bookJsonLd = {
     },
   },
   datePublished: bookMeta.year,
-  inLanguage: ["en", "fr"],
+  inLanguage: [...SUPPORTED_LANGS],
   url: SITE_URL,
   image: `${SITE_URL}/figs/front.png`,
 };
@@ -35,7 +35,7 @@ const websiteJsonLd = {
   "@type": "WebSite",
   name: bookMetaDisplayTitle(),
   url: SITE_URL,
-  inLanguage: ["en", "fr"],
+  inLanguage: [...SUPPORTED_LANGS],
 };
 
 function resolveHtmlLang(): Lang {
