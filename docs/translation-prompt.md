@@ -171,7 +171,10 @@ Règles contextuelles supplémentaires :
 
 ## Portée actuelle
 
-Ce prompt et le script couvrent uniquement les **leçons** (`leconN.tex`). La
-traduction des **exercices** (`exercises_fr.tex`) et des **quiz**
-(`lib/quizzes.ts`) suit un processus différent, pas encore défini — voir la
-conversation du 2026-08-05.
+Ce prompt et le script couvrent uniquement les **leçons** (`leconN.tex`). Les
+exercices sont rédigés chapitre par chapitre dans
+`content/exos_fr/exo_chpN.tex`. Une traduction conserve le même nom de fichier
+dans le dossier de sa langue, par exemple
+`content/exos_fr/exo_chp2.tex` → `content/exos_en/exo_chp2.tex`. Leur processus
+de traduction, ainsi que celui des **quiz** (`lib/quizzes.ts`), reste distinct du
+script de traduction des leçons et n'est pas encore automatisé.

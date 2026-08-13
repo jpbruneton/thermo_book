@@ -1,0 +1,295 @@
+% Banque d'exercices — chapitre 5
+% Le chapitre est déterminé par le nom de ce fichier.
+
+\begin{exo}[Entropie du gaz parfait : les formules à tout faire]{entropie-gaz-parfait}
+\keywords{entropie, gaz parfait, fonction d'état, chemin réversible, isentropique, loi de Laplace}
+
+On considère $n$ moles de gaz parfait de capacité thermique molaire $C_v$ constante, passant d'un état d'équilibre $(T_I, V_I)$ à un état d'équilibre $(T_F, V_F)$ par une transformation \emph{quelconque}.
+
+\begin{enumerate}
+\item En imaginant un chemin réversible reliant les deux états, montrer que
+\[
+\Delta S = nC_v\ln\frac{T_F}{T_I} + nR\ln\frac{V_F}{V_I}.
+\]
+Pourquoi cette formule vaut-elle aussi pour une transformation irréversible entre ces deux états ?
+\item En déduire l'expression de $\Delta S$ dans les variables $(T,P)$. On rappelle la relation de Mayer $C_p = C_v + R$.
+\item Quelle est la courbe $\Delta S = 0$ dans les variables $(T,V)$ ? Retrouver la loi de Laplace et justifier le nom d'\emph{isentropique} donné à l'adiabatique réversible.
+\item Applications numériques pour $n = 1$ mol de gaz monoatomique ($C_v = \frac{3}{2}R$) : (a) détente isotherme doublant le volume ; (b) chauffage isochore de 300 K à 600 K ; (c) les deux successivement.
+\end{enumerate}
+
+\begin{indication}
+Le long d'un chemin réversible, $\mathrm{d}S = \delta Q_{\text{rev}}/T$ avec $\delta Q_{\text{rev}} = \mathrm{d}U + P\,\mathrm{d}V$. Séparer les variables grâce à l'équation d'état. $S$ est une fonction d'état : sa variation ne dépend pas du chemin.
+\end{indication}
+
+\begin{solution}
+\textbf{Question 1.} Sur un chemin réversible, $\delta Q_{\text{rev}} = \mathrm{d}U - \delta W = nC_v\,\mathrm{d}T + P\,\mathrm{d}V$, donc
+\[
+\mathrm{d}S = \frac{\delta Q_{\text{rev}}}{T} = nC_v\frac{\mathrm{d}T}{T} + nR\frac{\mathrm{d}V}{V},
+\]
+qui s'intègre en $\Delta S = nC_v\ln(T_F/T_I) + nR\ln(V_F/V_I)$. Comme $S$ est une fonction d'état, $\Delta S = S_F - S_I$ ne dépend que des états extrêmes : la formule vaut pour \emph{toute} transformation les reliant, même irréversible. C'est l'astuce fondamentale du cours : on calcule sur un chemin réversible virtuel.
+
+\textbf{Question 2.} $V = nRT/P$ donne $\ln(V_F/V_I) = \ln(T_F/T_I) - \ln(P_F/P_I)$, d'où
+\[
+\Delta S = n(C_v + R)\ln\frac{T_F}{T_I} - nR\ln\frac{P_F}{P_I} = nC_p\ln\frac{T_F}{T_I} - nR\ln\frac{P_F}{P_I}.
+\]
+
+\textbf{Question 3.} $\Delta S = 0$ équivaut à $C_v\ln(T_F/T_I) = -R\ln(V_F/V_I)$, soit $T_FV_F^{\gamma-1} = T_IV_I^{\gamma-1}$ en utilisant $R/C_v = \gamma - 1$ : c'est la loi de Laplace. Une adiabatique réversible vérifie $\mathrm{d}S = \delta Q_{\text{rev}}/T = 0$ : elle conserve l'entropie, d'où le nom d'isentropique.
+
+\textbf{Question 4.} (a) $\Delta S = R\ln 2 \approx 5{,}8$ J/K. (b) $\Delta S = \tfrac{3}{2}R\ln 2 \approx 8{,}6$ J/K. (c) Les entropies s'ajoutent (fonction d'état) : $\Delta S = \tfrac{5}{2}R\ln 2 \approx 14{,}4$ J/K.
+\end{solution}
+\end{exo}
+
+\begin{exo}[Chauffage d'une masse d'eau : un, deux, puis $N$ thermostats]{chauffage-eau-thermostats}
+\keywords{bilan d'entropie, thermostat, source de chaleur, entropie de l'univers, réversibilité, chauffage}
+
+On néglige la dilatation de l'eau : la chaleur reçue de façon réversible s'écrit $\delta Q_{\text{rev}} = mc\,\mathrm{d}T$, avec $c = 4180$ J·kg$^{-1}$·K$^{-1}$ supposée constante. Une masse $m = 1{,}0$ kg d'eau est initialement à $T_1 = 273$ K.
+
+\begin{enumerate}
+\item L'eau est mise en contact avec un thermostat à $T_2 = 373$ K. Quelle est la température finale de l'eau ? Calculer les variations d'entropie de l'eau, du thermostat, et de l'univers $\{$eau + thermostat$\}$. Commenter les signes.
+\item On recommence en deux étapes : contact avec un thermostat à $T_3 = 323$ K jusqu'à l'équilibre, puis avec le thermostat à $T_2 = 373$ K. Mêmes questions. Comparer à la question 1.
+\item Que deviennent ces résultats si on multiplie « à l'infini » le nombre de thermostats intermédiaires ? Commenter.
+\end{enumerate}
+
+\begin{indication}
+Pour l'eau, $\Delta S_{\text{eau}} = mc\ln(T_f/T_i)$ (chemin réversible virtuel). Un thermostat reste à température constante $T_S$ : $\Delta S_{\text{thermostat}} = Q_{\text{thermostat}}/T_S$, où $Q_{\text{thermostat}} = -Q_{\text{eau}}$.
+\end{indication}
+
+\begin{solution}
+\textbf{Question 1.} L'eau finit à $T_2 = 373$ K. Elle reçoit $Q = mc(T_2 - T_1) = 418$ kJ.
+\[
+\Delta S_{\text{eau}} = mc\ln\frac{373}{273} \approx +1305\ \text{J/K}, \qquad
+\Delta S_{\text{th}} = -\frac{418\,000}{373} \approx -1121\ \text{J/K},
+\]
+d'où $\Delta S_{\text{univ}} \approx +184$ J/K. L'eau gagne de l'entropie, le thermostat en perd, et le bilan global est strictement positif : le contact brutal entre corps à températures différentes est irréversible.
+
+\textbf{Question 2.} L'entropie de l'eau est inchangée (fonction d'état, mêmes états extrêmes) : $\Delta S_{\text{eau}} \approx +1305$ J/K. Chaque thermostat fournit $mc\times50$ K $= 209$ kJ :
+\[
+\Delta S_{\text{th},323} = -\frac{209\,000}{323} \approx -647\ \text{J/K}, \qquad
+\Delta S_{\text{th},373} = -\frac{209\,000}{373} \approx -560\ \text{J/K},
+\]
+d'où $\Delta S_{\text{univ}} \approx 1305 - 647 - 560 \approx +98$ J/K. L'étape intermédiaire a presque divisé par deux l'entropie créée : chaque contact se fait entre températures moins éloignées.
+
+\textbf{Question 3.} Avec $N$ thermostats régulièrement espacés, la somme $-\sum_k mc\,\Delta T/T_k$ tend vers l'intégrale $-mc\int_{T_1}^{T_2}\mathrm{d}T/T = -mc\ln(T_2/T_1)$ : l'entropie perdue par les sources compense exactement celle gagnée par l'eau, et $\Delta S_{\text{univ}} \to 0$ (comme $1/N$). À la limite, le chauffage devient réversible — mais il exige une infinité de thermostats et un temps infini. C'est exactement la transformation réversible idéalisée du cours.
+\end{solution}
+\end{exo}
+
+\begin{exo}[Solide contre thermostat : la fonction $x - 1 - \ln x$]{bilan-entropique-solide-thermostat}
+\keywords{bilan entropique, création d'entropie, thermostat, solide, irréversibilité, second principe}
+
+Un solide de capacité thermique totale $C$ (indépendante de la température), initialement à la température $T_0$, est mis en contact prolongé avec un thermostat de température $T_S$ invariable. On ne précise pas si $T_0$ est supérieure ou inférieure à $T_S$.
+
+\begin{enumerate}
+\item Exprimer la variation d'entropie du solide, puis celle du thermostat, entre l'état initial et l'état final.
+\item Montrer que la variation d'entropie de l'univers $\{$solide + thermostat$\}$ s'écrit
+\[
+\Delta S_{\text{univ}} = C\,f(x), \qquad f(x) = x - 1 - \ln x, \qquad x = \frac{T_0}{T_S}.
+\]
+\item Étudier le signe de $f$. Que se passe-t-il pour $x = 1$ ? Conclure : le sens du transfert de chaleur importe-t-il ?
+\item Application numérique pour $C = 500$ J/K : $T_0 = 350$ K contre $T_S = 300$ K, puis $T_0 = 250$ K contre $T_S = 300$ K.
+\end{enumerate}
+
+\begin{indication}
+Le solide finit à $T_S$. Pour le signe de $f$, calculer $f'(x) = 1 - 1/x$ et remarquer que $f(1) = 0$ est un minimum.
+\end{indication}
+
+\begin{solution}
+\textbf{Question 1.} Le solide passe de $T_0$ à $T_S$ : $\Delta S_{\text{sol}} = C\ln(T_S/T_0) = -C\ln x$. Il reçoit $Q = C(T_S - T_0)$, donc le thermostat reçoit $-Q$ à température fixe $T_S$ :
+\[
+\Delta S_{\text{th}} = -\frac{C(T_S - T_0)}{T_S} = C(x - 1).
+\]
+
+\textbf{Question 2.} $\Delta S_{\text{univ}} = \Delta S_{\text{sol}} + \Delta S_{\text{th}} = C(x - 1 - \ln x) = C\,f(x)$.
+
+\textbf{Question 3.} $f'(x) = 1 - 1/x$ s'annule en $x = 1$, négatif avant, positif après : $f$ atteint son minimum $f(1) = 0$ en $x=1$ et est strictement positive partout ailleurs. L'entropie de l'univers augmente donc dès que $T_0 \neq T_S$, \emph{que le solide soit plus chaud ou plus froid} que le thermostat : dans les deux cas, la chaleur traverse une différence finie de température, et c'est cela qui est irréversible. Elle n'est nulle que pour $T_0 = T_S$ (aucun transfert).
+
+\textbf{Question 4.} $T_0 = 350$ K : $x = 7/6$, $f \approx 0{,}0125$, $\Delta S_{\text{univ}} \approx +6{,}3$ J/K. $T_0 = 250$ K : $x = 5/6$, $f \approx 0{,}0157$, $\Delta S_{\text{univ}} \approx +7{,}8$ J/K. Positif dans les deux sens, comme prévu.
+\end{solution}
+\end{exo}
+
+\begin{exo}[Production d'entropie lors d'une détente irréversible]{entropie-detente-irreversible}
+\keywords{second principe, entropie, irréversibilité, détente, pression extérieure constante, gaz parfait}
+
+$n$ moles de gaz parfait monoatomique sont initialement à $(T_0, P_0, V_0)$ dans un cylindre à piston. Le piston est maintenu bloqué par une goupille. On retire la goupille : le gaz se détend brusquement contre une pression extérieure constante $P_{ext} = P_0/2$ jusqu'à l'équilibre mécanique. Les parois sont adiabatiques.
+
+\begin{enumerate}
+  \item Calculer $W$, $Q$, $\Delta U$ et la température finale $T_f$.
+  \item Calculer la variation d'entropie $\Delta S$ du gaz lors de cette transformation.
+  \item Vérifier que $\Delta S > 0$ et interpréter.
+\end{enumerate}
+
+\begin{indication}
+Le travail reçu est $W = -P_{ext}(V_f - V_0)$. À l'équilibre final, $P_f = P_{ext}$. Utiliser $\Delta U = nC_v \Delta T$ pour trouver $T_f$, puis calculer $\Delta S$ en choisissant un chemin réversible entre les mêmes états initial et final.
+\end{indication}
+
+\begin{solution}
+\textbf{1.} À l'équilibre : $P_f = P_{ext} = P_0/2$, donc $V_f = nRT_f/P_f$.
+Parois adiabatiques : $Q = 0$.
+$$W = -P_{ext}(V_f - V_0) = -\frac{P_0}{2}(V_f - V_0).$$
+Premier principe : $\Delta U = W$, soit $nC_v(T_f - T_0) = -\frac{P_0}{2}(V_f - V_0)$.
+En utilisant $V_0 = nRT_0/P_0$ et $V_f = 2nRT_f/P_0$ :
+$$nC_v(T_f - T_0) = -\frac{P_0}{2}\!\left(\frac{2nRT_f}{P_0} - \frac{nRT_0}{P_0}\right) = -nR\!\left(T_f - \frac{T_0}{2}\right).$$
+Avec $C_v = \frac{3}{2}R$ : $\frac{3}{2}(T_f - T_0) = -(T_f - T_0/2)$, soit $T_f = \frac{4}{5}T_0$.
+
+\textbf{2.} Pour calculer $\Delta S$, on choisit un chemin réversible reliant $(T_0, V_0)$ à $(T_f, V_f = 2nRT_f/P_0)$ :
+$$\Delta S = nC_v \ln\frac{T_f}{T_0} + nR\ln\frac{V_f}{V_0} = n\cdot\frac{3}{2}R\ln\frac{4}{5} + nR\ln\frac{8}{5}.$$
+Numériquement : $\Delta S \approx n R(-0{,}335 + 0{,}470) \approx 0{,}135\,nR > 0$.
+
+\textbf{3.} $\Delta S > 0$ confirme l'irréversibilité de la détente brusque : le système isolé thermiquement voit son entropie augmenter, conformément au second principe.
+\end{solution}
+
+\end{exo}
+
+\begin{exo}[Détente de Joule et l'astuce fondamentale]{detente-joule-astuce}
+\keywords{détente de Joule, chemin réversible virtuel, création d'entropie, fonction d'état, entropie de l'univers}
+
+$n$ moles de gaz parfait monoatomique, initialement à $(T_I, V_0)$ dans un récipient rigide et calorifugé, subissent une détente de Joule--Gay-Lussac vers le volume total $2V_0$ (l'autre compartiment est vide).
+
+\begin{enumerate}
+\item Rappeler pourquoi $W = Q = 0$ et $T_F = T_I$. Calculer $\Delta S$ du gaz. N'y a-t-il pas contradiction entre $Q = 0$ et $\Delta S \neq 0$ ?
+\item On imagine maintenant un premier chemin réversible : une détente adiabatique réversible de $V_0$ à $2V_0$ (piston manipulé lentement). Calculer la température $T'$ atteinte et vérifier que $\Delta S = 0$ sur cette étape.
+\item Quelle seconde transformation réversible faut-il pour amener le gaz dans le même état final que la détente de Joule ? Calculer sa variation d'entropie et vérifier que le total redonne le $\Delta S$ de la question 1.
+\item Comparer la variation d'entropie de l'univers dans les deux scénarios (détente de Joule ; chemin réversible en deux étapes). Comment deux transformations peuvent-elles donner le même $\Delta S$ au système alors que l'une est irréversible et l'autre non ?
+\end{enumerate}
+
+\begin{indication}
+Utiliser les formules de l'exercice \textit{entropie-gaz-parfait} et la loi de Laplace. Pour la question 4, le chauffage réversible de la seconde étape exige une suite de thermostats qui cèdent chacun $\delta Q$ à la température du gaz.
+\end{indication}
+
+\begin{solution}
+\textbf{Question 1.} Pas de paroi à pousser ($W=0$), parois calorifugées ($Q=0$), donc $\Delta U = 0$ et $T_F = T_I$ pour un gaz parfait. Pourtant
+\[
+\Delta S = nC_v\ln\frac{T_F}{T_I} + nR\ln\frac{2V_0}{V_0} = nR\ln 2 > 0.
+\]
+Aucune contradiction : $\mathrm{d}S = \delta Q/T$ ne vaut que pour un chemin \emph{réversible}. Ici le système est isolé et la transformation irréversible : $\Delta S = S_c > 0$ est de l'entropie entièrement \emph{créée}, pas échangée.
+
+\textbf{Question 2.} Loi de Laplace : $T' = T_I\,2^{-(\gamma-1)} = T_I\,2^{-2/3} \approx 0{,}63\,T_I$. Et
+\[
+\Delta S = nC_v\ln\frac{T'}{T_I} + nR\ln 2 = \tfrac{3}{2}nR\left(-\tfrac{2}{3}\ln 2\right) + nR\ln 2 = 0 :
+\]
+l'adiabatique réversible est isentropique.
+
+\textbf{Question 3.} Il faut ramener le gaz de $T'$ à $T_I$ à volume constant $2V_0$ : un chauffage isochore réversible. Sa variation d'entropie vaut
+\[
+\Delta S = nC_v\ln\frac{T_I}{T'} = \tfrac{3}{2}nR\cdot\tfrac{2}{3}\ln 2 = nR\ln 2.
+\]
+Total du chemin en deux étapes : $0 + nR\ln 2 = nR\ln 2$. \checkmark\ C'est l'astuce fondamentale : $S$ est une fonction d'état, tout chemin réversible reliant les mêmes états donne le bon $\Delta S$.
+
+\textbf{Question 4.} Dans le chemin réversible, les thermostats qui chauffent le gaz cèdent à chaque instant $\delta Q$ à la température $T$ du gaz : $\Delta S_{\text{ext}} = -\int\delta Q/T = -nR\ln 2$, et $\Delta S_{\text{univ}} = 0$. Dans la détente de Joule, rien n'est échangé : $\Delta S_{\text{univ}} = nR\ln 2 > 0$. La variation d'entropie \emph{du système} est la même (fonction d'état), mais la création d'entropie, elle, dépend du chemin : nulle sur le chemin réversible, maximale dans la détente libre.
+\end{solution}
+\end{exo}
+
+\begin{exo}[Retour sur la compression brutale : bilans d'entropie]{compression-brutale-entropie}
+\keywords{création d'entropie, compression adiabatique, irréversibilité, isentropique, hélium, bilan entropique}
+
+On reprend l'exercice \textit{Compression adiabatique : progressive ou brutale} de la leçon 4 : $n = 0{,}50$ mol d'hélium ($\gamma = 5/3$) dans un cylindre calorifugé, initialement à $T_0 = 300$ K, $P_0 = 1{,}0$ bar, $V_0 = 12{,}5$ L. On rappelle les résultats :
+\begin{itemize}
+\item compression réversible jusqu'à $P_1 = 1{,}5P_0$ : $T_1 \approx 353$ K ;
+\item compression brutale jusqu'à $P_1$ : $T_2 = 360$ K, $V_2 = 0{,}8\,V_0$ ;
+\item puis retrait brutal de la surcharge : $T_3 = 312$ K, $V_3 = 1{,}04\,V_0$.
+\end{itemize}
+
+\begin{enumerate}
+\item Sans calcul : que vaut $\Delta S$ du gaz pour la compression réversible ? Le vérifier avec la formule de l'entropie du gaz parfait.
+\item Calculer $\Delta S$ pour la compression brutale. Pourquoi peut-on affirmer que ce résultat mesure directement l'entropie créée $S_c$ ?
+\item Calculer $\Delta S$ pour le retour brutal, puis pour l'aller-retour complet. Vérifier la cohérence en calculant directement $\Delta S$ entre l'état initial et l'état final $(T_3, V_3)$.
+\item Commenter : que reste-t-il de l'aller-retour dans l'état du gaz ?
+\end{enumerate}
+
+\begin{indication}
+Parois calorifugées : $Q = 0$ dans tous les cas, donc $\Delta S = S_c$. Utiliser $\Delta S = nC_v\ln(T_f/T_i) + nR\ln(V_f/V_i)$ avec $nC_v = \frac{3}{2}nR \approx 6{,}24$ J/K et $nR \approx 4{,}16$ J/K. Les rapports de volumes sont exacts : $V_2/V_0 = 0{,}8$, $V_3/V_2 = 1{,}3$, $V_3/V_0 = 1{,}04$.
+\end{indication}
+
+\begin{solution}
+\textbf{Question 1.} Adiabatique ($\delta Q = 0$) et réversible : $\mathrm{d}S = \delta Q_{\text{rev}}/T = 0$, donc $\Delta S = 0$. Vérification : la loi de Laplace donne précisément $T_1V_1^{\gamma-1} = T_0V_0^{\gamma-1}$, ce qui annule $nC_v\ln(T_1/T_0) + nR\ln(V_1/V_0)$. \checkmark
+
+\textbf{Question 2.} Avec $T_2/T_0 = 1{,}2$ et $V_2/V_0 = 0{,}8$ :
+\[
+\Delta S = 6{,}24\ln 1{,}2 + 4{,}16\ln 0{,}8 \approx 1{,}14 - 0{,}93 \approx +0{,}21\ \text{J/K}.
+\]
+Le gaz n'a rien échangé ($Q = 0$), donc le terme d'échange $\int\delta Q/T$ est nul : tout ce $\Delta S$ est de la création, $S_c \approx 0{,}21$ J/K $> 0$, signature de la brutalité de la compression.
+
+\textbf{Question 3.} Retour ($T_3/T_2 = 312/360$, $V_3/V_2 = 1{,}3$) :
+\[
+\Delta S = 6{,}24\ln\frac{312}{360} + 4{,}16\ln 1{,}3 \approx -0{,}89 + 1{,}09 \approx +0{,}20\ \text{J/K}.
+\]
+Aller-retour : $\Delta S_{\text{total}} \approx 0{,}21 + 0{,}20 = 0{,}41$ J/K. Vérification directe entre $(T_0, V_0)$ et $(T_3 = 1{,}04\,T_0,\ V_3 = 1{,}04\,V_0)$ :
+\[
+\Delta S = (6{,}24 + 4{,}16)\ln 1{,}04 \approx 10{,}4 \times 0{,}0392 \approx +0{,}41\ \text{J/K}. \checkmark
+\]
+
+\textbf{Question 4.} Les manipulations extérieures forment un cycle (on pose puis on retire la même masse), mais le gaz, lui, ne revient pas : il est plus chaud, plus dilaté, et son entropie a augmenté de $0{,}41$ J/K. Chaque étape brutale a créé de l'entropie, et cette création ne peut jamais être annulée : c'est la flèche du temps thermodynamique, quantifiée.
+\end{solution}
+\end{exo}
+
+\begin{exo}[Compression monotherme : réversible ou brutale]{compression-monotherme-entropie}
+\keywords{transformation monotherme, thermostat, travail dégradé, création d'entropie, compression isotherme, bilan entropique}
+
+On reprend le cylindre de l'exercice précédent ($n = 0{,}50$ mol d'hélium, $T_0 = 300$ K, $P_0 = 1{,}0$ bar, $V_0 = 12{,}5$ L, surcharge portant la pression à $P_1 = 1{,}5P_0$), mais cette fois les parois sont \emph{diathermanes} et le cylindre baigne dans un thermostat à $T_0$.
+
+\begin{enumerate}
+\item Montrer que l'état final est le même que la surcharge soit posée progressivement ou brutalement : $(P_1,\ T_0,\ V_4 = V_0/1{,}5 \approx 8{,}3$ L$)$. En déduire $\Delta S_{\text{gaz}}$, identique dans les deux cas.
+\item Cas réversible (surcharge posée grain par grain) : comment s'appelle cette transformation ? Calculer $W_{\text{rev}}$, $Q_{\text{rev}}$, $\Delta S_{\text{thermostat}}$ et $\Delta S_{\text{univ}}$.
+\item Cas brutal : pourquoi la transformation n'est-elle pas isotherme, mais seulement monotherme ? Calculer $W_{\text{irr}}$, $Q_{\text{irr}}$, $\Delta S_{\text{thermostat}}$ et $\Delta S_{\text{univ}}$.
+\item Montrer que $S_c = (W_{\text{irr}} - W_{\text{rev}})/T_0$ et interpréter : où est passé le travail excédentaire ?
+\end{enumerate}
+
+\begin{indication}
+Dans le cas brutal, $W_{\text{irr}} = -P_1(V_4 - V_0)$ car la pression extérieure vaut $P_1$ dès le début. Dans les deux cas $\Delta U = 0$ (mêmes températures extrêmes), donc $Q = -W$. Le thermostat reçoit $-Q$ à température $T_0$.
+\end{indication}
+
+\begin{solution}
+\textbf{Question 1.} L'équilibre final est fixé par le thermostat ($T = T_0$) et l'équilibre mécanique ($P = P_1$) : mêmes conditions dans les deux cas, donc même état final, avec $V_4 = nRT_0/P_1 = V_0/1{,}5$. L'entropie étant une fonction d'état :
+\[
+\Delta S_{\text{gaz}} = nR\ln\frac{V_4}{V_0} = -nR\ln 1{,}5 \approx -1{,}69\ \text{J/K},
+\]
+identique dans les deux cas.
+
+\textbf{Question 2.} Quasi-statique à température constamment égale à $T_0$ : c'est une compression \emph{isotherme réversible}.
+\[
+W_{\text{rev}} = nRT_0\ln 1{,}5 \approx +506\ \text{J}, \qquad Q_{\text{rev}} = -W_{\text{rev}} \approx -506\ \text{J}.
+\]
+Le thermostat reçoit $+506$ J à $T_0$ : $\Delta S_{\text{th}} = +506/300 \approx +1{,}69$ J/K, et $\Delta S_{\text{univ}} = -1{,}69 + 1{,}69 = 0$ : réversible, comme annoncé.
+
+\textbf{Question 3.} Pendant la transformation brutale, le gaz est hors équilibre : sa température n'est même pas définie. Seuls les états initial et final sont à $T_0$ : la transformation est \emph{monotherme} (même thermostat), pas isotherme.
+\[
+W_{\text{irr}} = -P_1(V_4 - V_0) = P_1\,\frac{V_0}{3} = \frac{nRT_0}{2} \approx +624\ \text{J}, \qquad Q_{\text{irr}} \approx -624\ \text{J}.
+\]
+$\Delta S_{\text{th}} = +624/300 \approx +2{,}08$ J/K et $\Delta S_{\text{univ}} \approx -1{,}69 + 2{,}08 \approx +0{,}39$ J/K $> 0$ : irréversible.
+
+\textbf{Question 4.} $\Delta S_{\text{gaz}}$ étant identique dans les deux cas, la différence des bilans vient du thermostat :
+\[
+S_c = \Delta S_{\text{univ}} = \frac{-Q_{\text{irr}} - (-Q_{\text{rev}})}{T_0} = \frac{W_{\text{irr}} - W_{\text{rev}}}{T_0} = \frac{624 - 506}{300} \approx +0{,}39\ \text{J/K}. \checkmark
+\]
+L'opérateur a fourni $118$ J de plus que nécessaire ; ce travail excédentaire a été intégralement dégradé en chaleur rejetée au thermostat. La création d'entropie mesure exactement le travail gaspillé par unité de température : comprimer brutalement coûte plus cher.
+\end{solution}
+\end{exo}
+
+\begin{exo}[Machine monotherme : l'énoncé de Kelvin]{machine-monotherme-kelvin}
+\keywords{énoncé de Kelvin, cycle monotherme, second principe, moteur perpétuel, source unique, bilan entropique}
+
+Un système décrit un cycle au cours duquel il reçoit un travail $W$ de l'extérieur et une chaleur $Q$ d'un thermostat unique de température $T_S$. L'ensemble $\{$système + thermostat$\}$ est isolé thermiquement.
+
+\begin{enumerate}
+\item Écrire le bilan d'énergie du système sur un cycle. Que vaut $\Delta S_{\text{système}}$ sur un cycle, et pourquoi ?
+\item Écrire le bilan entropique de l'ensemble et en déduire le signe de $Q$, puis celui de $W$.
+\item Conclure : une machine cyclique peut-elle fournir du travail avec une seule source de chaleur ? Dans quel cas limite a-t-on $W = 0$ ?
+\item Un inventeur propose un navire qui se propulserait en prélevant de la chaleur à l'océan (réservoir d'énergie thermique gigantesque), sans autre source. Pourquoi ce « moteur miracle », qui ne viole pourtant pas le premier principe, est-il impossible ?
+\end{enumerate}
+
+\begin{indication}
+Sur un cycle, toutes les fonctions d'état reviennent à leur valeur initiale. L'entropie du thermostat varie de $-Q/T_S$, et l'entropie créée est positive ou nulle.
+\end{indication}
+
+\begin{solution}
+\textbf{Question 1.} Sur un cycle, $U$ revient à sa valeur initiale : $\Delta U = 0 = W + Q$, donc $W = -Q$. De même $S$ est une fonction d'état : $\Delta S_{\text{système}} = 0$.
+
+\textbf{Question 2.} Le thermostat cède $Q$ à température fixe : $\Delta S_{\text{th}} = -Q/T_S$. Le bilan de l'ensemble isolé s'écrit
+\[
+\Delta S_{\text{univ}} = 0 - \frac{Q}{T_S} = S_c \geq 0 \implies Q \leq 0 \implies W = -Q \geq 0.
+\]
+
+\textbf{Question 3.} $W \geq 0$ : sur un cycle monotherme, le système ne peut que \emph{recevoir} du travail (et rejeter de la chaleur), jamais en fournir. C'est l'énoncé historique de Kelvin du second principe : il n'existe pas de moteur cyclique à source unique. Le cas limite $W = 0$ correspond au cycle réversible ($S_c = 0$, donc $Q = 0$) : il ne se passe rien. Pour produire du travail, il faut au moins deux sources à températures différentes — ce sera l'objet de la leçon sur les machines thermiques.
+
+\textbf{Question 4.} Énergétiquement, rien n'interdit de convertir la chaleur de l'océan en travail : le premier principe est sauf. Mais le navire fonctionnerait en cycle avec l'océan pour seule source : la question 2 donne $W \geq 0$, il ne peut pas fournir de travail de propulsion. Il faudrait une seconde source plus froide vers laquelle rejeter une partie de la chaleur — c'est toute la différence entre énergie et énergie \emph{utilisable}, que l'entropie quantifie.
+\end{solution}
+\end{exo}

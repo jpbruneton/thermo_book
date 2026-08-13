@@ -1,0 +1,234 @@
+% Banque d'exercices — chapitre 7
+% Le chapitre est déterminé par le nom de ce fichier.
+
+\begin{exo}[Les indices ne sont pas optionnels]{derivees-partielles-indices}
+\keywords{dérivées partielles, variables fixées, indices, isobare, isentropique, gaz parfait}
+
+On veut savoir comment varie le volume de $N$ particules de gaz parfait monoatomique lorsque sa température augmente. La question est incomplète tant qu'on ne précise pas ce qui est maintenu constant.
+
+\begin{enumerate}
+\item Calculer $\left(\dfrac{\partial V}{\partial T}\right)_{P,N}$ (chauffage isobare).
+\item Calculer $\left(\dfrac{\partial V}{\partial T}\right)_{S,N}$ (évolution isentropique). On pourra travailler en différentielles : que devient le premier principe quand $\mathrm{d}S = \mathrm{d}N = 0$ ?
+\item Comparer les deux résultats (signes !) et interpréter physiquement.
+\item Montrer que le rapport des deux dérivées vaut $-(\gamma - 1)$ et vérifier la cohérence avec la loi de Laplace $TV^{\gamma-1} = \text{cste}$.
+\end{enumerate}
+
+\begin{indication}
+Question 1 : isoler $V$ dans $PV = Nk_BT$. Question 2 : $\mathrm{d}U = T\,\mathrm{d}S - P\,\mathrm{d}V = -P\,\mathrm{d}V$ et $\mathrm{d}U = \frac{3}{2}Nk_B\,\mathrm{d}T$.
+\end{indication}
+
+\begin{solution}
+\textbf{Question 1.} À $P$ et $N$ fixés, $V = Nk_BT/P$ donc $\left(\dfrac{\partial V}{\partial T}\right)_{P,N} = \dfrac{Nk_B}{P} > 0$.
+
+\textbf{Question 2.} À $S$ et $N$ fixés, le premier principe donne $\mathrm{d}U = -P\,\mathrm{d}V$, et par ailleurs $\mathrm{d}U = \tfrac{3}{2}Nk_B\,\mathrm{d}T$. Donc
+\[
+\left(\frac{\partial V}{\partial T}\right)_{S,N} = -\frac{3Nk_B}{2P} < 0.
+\]
+
+\textbf{Question 3.} La même question — « comment $V$ varie-t-il avec $T$ ? » — a deux réponses de signes opposés. À pression constante, chauffer dilate le gaz. À entropie constante (adiabatique réversible), le seul moyen d'augmenter $T$ est de \emph{comprimer} le gaz : $V$ diminue quand $T$ monte. Sans l'indice précisant la variable fixée, l'expression $\partial V/\partial T$ n'a tout simplement pas de sens.
+
+\textbf{Question 4.} En différenciant la loi de Laplace $TV^{\gamma-1} = \text{cste}$ :
+\[
+V^{\gamma-1}\,\mathrm{d}T + (\gamma-1)TV^{\gamma-2}\,\mathrm{d}V = 0 \implies \left(\frac{\partial V}{\partial T}\right)_{S,N} = -\frac{V}{(\gamma-1)T} = -\frac{Nk_B}{(\gamma-1)P},
+\]
+qui redonne bien $-\tfrac{3}{2}Nk_B/P$ pour $\gamma = 5/3$. \checkmark\ Le rapport des deux dérivées vaut donc
+\[
+\frac{\left(\partial V/\partial T\right)_{P,N}}{\left(\partial V/\partial T\right)_{S,N}} = \frac{Nk_B/P}{-Nk_B/[(\gamma-1)P]} = -(\gamma-1) = -\frac{2}{3} \quad (\gamma = 5/3).
+\]
+\end{solution}
+\end{exo}
+
+\begin{exo}[Relations de réciprocité et relation circulaire]{reciprocite-circulaire}
+\keywords{relation circulaire, réciprocité, calcul différentiel, variables liées, gaz parfait}
+
+Trois variables $x, y, z$ sont liées par une contrainte $\varphi(x,y,z) = 0$, de sorte que chacune peut s'écrire en fonction des deux autres : $x = x(y,z)$, $y = y(x,z)$, etc.
+
+\begin{enumerate}
+\item Écrire $\mathrm{d}x$ en fonction de $\mathrm{d}y$ et $\mathrm{d}z$, puis $\mathrm{d}y$ en fonction de $\mathrm{d}x$ et $\mathrm{d}z$, et substituer la seconde dans la première.
+\item En choisissant judicieusement $\mathrm{d}z = 0$ puis $\mathrm{d}x = 0$, démontrer la relation de réciprocité
+\[
+\left(\frac{\partial x}{\partial y}\right)_z = \frac{1}{\left(\dfrac{\partial y}{\partial x}\right)_z}
+\]
+puis la relation circulaire
+\[
+\left(\frac{\partial x}{\partial y}\right)_z\left(\frac{\partial y}{\partial z}\right)_x\left(\frac{\partial z}{\partial x}\right)_y = -1.
+\]
+\item Vérifier explicitement la relation circulaire pour les variables $(P, V, T)$ d'un gaz parfait.
+\item Pourquoi le $-1$ (et non $+1$) est-il contre-intuitif mais correct ?
+\end{enumerate}
+
+\begin{indication}
+La substitution donne $\mathrm{d}x = \left(\frac{\partial x}{\partial y}\right)_z\left(\frac{\partial y}{\partial x}\right)_z\mathrm{d}x + \left[\left(\frac{\partial x}{\partial y}\right)_z\left(\frac{\partial y}{\partial z}\right)_x + \left(\frac{\partial x}{\partial z}\right)_y\right]\mathrm{d}z$, valable pour $\mathrm{d}x$ et $\mathrm{d}z$ arbitraires : identifier les coefficients.
+\end{indication}
+
+\begin{solution}
+\textbf{Questions 1--2.}
+\[
+\mathrm{d}x = \left(\frac{\partial x}{\partial y}\right)_z\mathrm{d}y + \left(\frac{\partial x}{\partial z}\right)_y\mathrm{d}z, \qquad
+\mathrm{d}y = \left(\frac{\partial y}{\partial x}\right)_z\mathrm{d}x + \left(\frac{\partial y}{\partial z}\right)_x\mathrm{d}z.
+\]
+En substituant et en regroupant, l'identité doit valoir pour tout couple $(\mathrm{d}x, \mathrm{d}z)$ indépendant. Le coefficient de $\mathrm{d}x$ donne $1 = \left(\frac{\partial x}{\partial y}\right)_z\left(\frac{\partial y}{\partial x}\right)_z$ : c'est la réciprocité. Le coefficient de $\mathrm{d}z$ donne
+\[
+\left(\frac{\partial x}{\partial y}\right)_z\left(\frac{\partial y}{\partial z}\right)_x + \left(\frac{\partial x}{\partial z}\right)_y = 0,
+\]
+qui devient, en divisant par $\left(\frac{\partial x}{\partial z}\right)_y$ et en utilisant la réciprocité, la relation circulaire annoncée.
+
+\textbf{Question 3.} Pour $PV = nRT$ :
+\[
+\left(\frac{\partial P}{\partial V}\right)_T = -\frac{nRT}{V^2}, \qquad
+\left(\frac{\partial V}{\partial T}\right)_P = \frac{nR}{P}, \qquad
+\left(\frac{\partial T}{\partial P}\right)_V = \frac{V}{nR}.
+\]
+Produit : $-\dfrac{nRT}{V^2}\cdot\dfrac{nR}{P}\cdot\dfrac{V}{nR} = -\dfrac{nRT}{PV} = -1$. \checkmark
+
+\textbf{Question 4.} On serait tenté de « simplifier les $\partial$ » comme des fractions, ce qui donnerait $+1$. Mais chaque dérivée est prise à une variable fixée \emph{différente} : ce ne sont pas les mêmes objets, et le produit vaut $-1$. C'est l'illustration la plus frappante du fait que les indices changent la valeur des dérivées partielles.
+\end{solution}
+\end{exo}
+
+\begin{exo}[Construire l'enthalpie et l'enthalpie libre]{legendre-enthalpie}
+\keywords{transformée de Legendre, enthalpie, enthalpie libre, fonction de Gibbs, variables naturelles, relations de Maxwell}
+
+On part du premier principe pour un système ouvert en transformation réversible : $\mathrm{d}U = T\,\mathrm{d}S - P\,\mathrm{d}V + \mu\,\mathrm{d}N$.
+
+\begin{enumerate}
+\item On cherche une fonction d'état $H$ dont les variables naturelles soient $(S, P, N)$. Montrer que $H = U + PV$ convient, écrire $\mathrm{d}H$, et en déduire les trois équations d'état associées.
+\item Écrire la relation de Maxwell issue des dérivées croisées de $H$ par rapport à $S$ et $P$.
+\item Construire de même la fonction $G$ de variables naturelles $(T, P, N)$ et écrire $\mathrm{d}G$. Pourquoi $G$ est-elle le potentiel adapté à la chimie ?
+\item Pour un gaz parfait monoatomique, exprimer $H$ en fonction de $T$ et $N$ uniquement. En déduire $\left(\partial H/\partial T\right)_{P,N}$ et faire le lien avec la chaleur reçue lors d'une transformation isobare.
+\end{enumerate}
+
+\begin{indication}
+Transformée de Legendre : pour échanger une variable extensive contre sa conjuguée intensive, ajouter ou retrancher le produit des deux. Pour la question 4, $H = U + PV = \frac{3}{2}Nk_BT + Nk_BT$.
+\end{indication}
+
+\begin{solution}
+\textbf{Question 1.} $\mathrm{d}H = \mathrm{d}U + P\,\mathrm{d}V + V\,\mathrm{d}P = T\,\mathrm{d}S + V\,\mathrm{d}P + \mu\,\mathrm{d}N$ : les variables naturelles sont bien $(S,P,N)$, et par identification
+\[
+T = \left(\frac{\partial H}{\partial S}\right)_{P,N}, \qquad V = \left(\frac{\partial H}{\partial P}\right)_{S,N}, \qquad \mu = \left(\frac{\partial H}{\partial N}\right)_{S,P}.
+\]
+
+\textbf{Question 2.} Schwarz sur les deux premières : $\left(\dfrac{\partial T}{\partial P}\right)_{S,N} = \left(\dfrac{\partial V}{\partial S}\right)_{P,N}$.
+
+\textbf{Question 3.} Il faut de plus échanger $S$ contre $T$ : $G = H - TS = U + PV - TS$, d'où
+\[
+\mathrm{d}G = -S\,\mathrm{d}T + V\,\mathrm{d}P + \mu\,\mathrm{d}N.
+\]
+À $T$ et $P$ constants (conditions usuelles d'une paillasse de chimie), $\mathrm{d}G = \mu\,\mathrm{d}N$ : la variation de $G$ ne contient que la chimie, c'est-à-dire les variations des nombres de particules pondérées par les potentiels chimiques.
+
+\textbf{Question 4.} $H = U + PV = \tfrac{3}{2}Nk_BT + Nk_BT = \tfrac{5}{2}Nk_BT$ : comme $U$, l'enthalpie du gaz parfait ne dépend que de $T$ (et de $N$). Donc $\left(\partial H/\partial T\right)_{P,N} = \tfrac{5}{2}Nk_B = C_P$. Et pour une transformation isobare d'un système fermé, $\mathrm{d}H = T\,\mathrm{d}S + V\,\mathrm{d}P = \delta Q$ : la variation d'enthalpie \emph{est} la chaleur reçue — on retrouve l'expérience de la résistance sous piston de la leçon 4, où $Q = \tfrac{5}{2}R\,\Delta T$ par mole.
+\end{solution}
+\end{exo}
+
+\begin{exo}[Relation de Maxwell à partir de l'énergie libre de Helmholtz]{maxwell-helmholtz}
+\keywords{relation de Maxwell, énergie libre, potentiel thermodynamique, dérivées secondes, gaz parfait}
+
+L'énergie libre de Helmholtz $F$ est définie par $F = U - TS$. Sa différentielle est :
+$$\mathrm{d}F = -S\,\mathrm{d}T - P\,\mathrm{d}V.$$
+
+\begin{enumerate}
+  \item Identifier les dérivées partielles de $F$ par rapport à $T$ et $V$.
+  \item En utilisant la symétrie des dérivées secondes croisées, établir la relation de Maxwell associée à $F$.
+  \item Vérifier cette relation pour un gaz parfait ($P = nRT/V$).
+  \item Interpréter physiquement la grandeur $\left(\partial P/\partial T\right)_V$.
+\end{enumerate}
+
+\begin{indication}
+Si $\mathrm{d}F = A\,\mathrm{d}T + B\,\mathrm{d}V$, alors $\left(\partial A/\partial V\right)_T = \left(\partial B/\partial T\right)_V$ (théorème de Schwarz).
+\end{indication}
+
+\begin{solution}
+\textbf{1.} Par identification : $\left(\partial F/\partial T\right)_V = -S$ et $\left(\partial F/\partial V\right)_T = -P$.
+
+\textbf{2.} Schwarz appliqué à $F$ :
+$$\frac{\partial^2 F}{\partial V\,\partial T} = \frac{\partial^2 F}{\partial T\,\partial V} \implies \left(\frac{\partial S}{\partial V}\right)_T = \left(\frac{\partial P}{\partial T}\right)_V.$$
+
+\textbf{3.} Pour un gaz parfait : $\left(\partial P/\partial T\right)_V = nR/V$. Et $S = nC_v\ln T + nR\ln V + \text{cste}$, donc $\left(\partial S/\partial V\right)_T = nR/V$. Les deux membres sont bien égaux. \checkmark
+
+\textbf{4.} $\left(\partial P/\partial T\right)_V$ mesure comment la pression augmente avec la température à volume constant — c'est directement lié au coefficient d'expansion thermique et à la compressibilité du fluide.
+\end{solution}
+
+\end{exo}
+
+\begin{exo}[Le piège du potentiel chimique du gaz parfait]{potentiel-chimique-gp}
+\keywords{potentiel chimique, relation d'Euler, enthalpie libre, dérivée partielle, variables naturelles, erreur classique}
+
+Un étudiant raisonne ainsi : « puisque $\mu = \left(\partial U/\partial N\right)_{S,V}$ et que $U = \frac{3}{2}Nk_BT$ pour le gaz parfait monoatomique, alors $\mu = \frac{3}{2}k_BT$. »
+
+\begin{enumerate}
+\item À partir de la relation d'Euler $U = TS - PV + \mu N$, montrer que $G = U - TS + PV = \mu N$ : pour un corps pur, $\mu$ est l'enthalpie libre par particule.
+\item En déduire l'expression correcte de $\mu$ pour le gaz parfait monoatomique, en fonction de $T$, $S$, $N$ et $k_B$. Comparer au résultat de l'exercice \textit{Sackur-Tétrode}.
+\item Où est l'erreur dans le raisonnement de l'étudiant ? Écrire le terme qu'il a oublié.
+\item Le résultat correct peut-il coïncider avec $\frac{3}{2}k_BT$ ? Commenter le signe de $\mu$ pour un gaz parfait usuel.
+\end{enumerate}
+
+\begin{indication}
+Dans la dérivée $\left(\partial U/\partial N\right)_{S,V}$, ce sont $S$ et $V$ qui sont fixés — pas $T$. Or $T = T(S,V,N)$ varie quand on ajoute des particules à $S,V$ fixés.
+\end{indication}
+
+\begin{solution}
+\textbf{Question 1.} L'extensivité (théorème d'Euler) donne $U = TS - PV + \mu N$, donc $G = U - TS + PV = \mu N$ directement : $\mu = G/N = g$, l'enthalpie libre par particule.
+
+\textbf{Question 2.} Pour le gaz parfait monoatomique, $U = \tfrac{3}{2}Nk_BT$ et $PV = Nk_BT$ :
+\[
+\mu = \frac{U - TS + PV}{N} = \frac{5}{2}k_BT - T\,\frac{S}{N},
+\]
+exactement le résultat obtenu en dérivant Sackur-Tétrode. \checkmark
+
+\textbf{Question 3.} En écrivant $\partial(\tfrac{3}{2}Nk_BT)/\partial N = \tfrac{3}{2}k_BT$, l'étudiant suppose $T$ indépendante de $N$. Mais dans les variables naturelles $(S,V,N)$ de $U$, la température est une fonction $T(S,V,N)$ : ajouter des particules à entropie et volume fixés change la température. Le calcul correct s'écrit
+\[
+\mu = \left(\frac{\partial U}{\partial N}\right)_{S,V} = \frac{3}{2}k_BT + \frac{3}{2}Nk_B\left(\frac{\partial T}{\partial N}\right)_{S,V},
+\]
+et le second terme n'est pas nul.
+
+\textbf{Question 4.} Il faudrait $S/N = k_B$, ce qui n'est jamais le cas pour un gaz usuel : l'entropie par particule vaut typiquement plusieurs dizaines de $k_B$ (via Sackur-Tétrode). Du coup $\mu = \tfrac{5}{2}k_BT - T S/N < 0$ : le potentiel chimique du gaz parfait est négatif — ajouter une particule à $U$ et $V$ fixés \emph{augmente} l'entropie, donc l'équilibre accepte volontiers de nouvelles particules.
+\end{solution}
+\end{exo}
+
+\begin{exo}[Toute la thermodynamique à partir de F]{energie-libre-berthelot}
+\keywords{énergie libre, gaz réel, équation d'état, entropie, capacité thermique, relation de Maxwell, gaz de Berthelot}
+
+L'énergie libre molaire d'un gaz réel (gaz de Berthelot) s'écrit
+\[
+F(T,V) = -RT\ln\!\left(\frac{V-b}{b}\right) - \varphi(T) - \frac{a}{VT},
+\]
+où $a$ et $b$ sont des constantes positives et $\varphi(T)$ une fonction de la température seule.
+
+\begin{enumerate}
+\item Justifier la forme différentielle $\mathrm{d}F = -S\,\mathrm{d}T - P\,\mathrm{d}V$ (nombre de moles fixé).
+\item En déduire l'équation d'état $P(T,V)$ de ce gaz.
+\item Déterminer $S(T,V)$, puis montrer que $U = T\varphi'(T) - \varphi(T) - \dfrac{2a}{VT}$.
+\item Calculer $C_V = \left(\partial U/\partial T\right)_V$. Sachant que $C_V$ tend vers une constante $C$ quand $V \to \infty$, déterminer la forme générale de $\varphi(T)$. On donne $\int_0^T\ln\theta\,\mathrm{d}\theta = T(\ln T - 1)$.
+\item Vérifier la relation de Maxwell $\left(\partial S/\partial V\right)_T = \left(\partial P/\partial T\right)_V$ sur les expressions obtenues.
+\item Que devient ce gaz dans la limite $a \to 0$ ? Interpréter les rôles respectifs de $a$ et $b$.
+\end{enumerate}
+
+\begin{indication}
+$F = U - TS$ et le premier principe donnent $\mathrm{d}F = -S\,\mathrm{d}T - P\,\mathrm{d}V$, d'où $P = -\left(\partial F/\partial V\right)_T$ et $S = -\left(\partial F/\partial T\right)_V$, puis $U = F + TS$.
+\end{indication}
+
+\begin{solution}
+\textbf{Question 1.} $\mathrm{d}F = \mathrm{d}U - T\,\mathrm{d}S - S\,\mathrm{d}T$, et pour une transformation réversible d'un système fermé $\mathrm{d}U = T\,\mathrm{d}S - P\,\mathrm{d}V$, donc $\mathrm{d}F = -S\,\mathrm{d}T - P\,\mathrm{d}V$.
+
+\textbf{Question 2.}
+\[
+P = -\left(\frac{\partial F}{\partial V}\right)_T = \frac{RT}{V-b} - \frac{a}{TV^2}.
+\]
+C'est une variante de van der Waals où le terme attractif décroît avec la température.
+
+\textbf{Question 3.}
+\[
+S = -\left(\frac{\partial F}{\partial T}\right)_V = R\ln\!\left(\frac{V-b}{b}\right) + \varphi'(T) - \frac{a}{VT^2},
+\]
+puis $U = F + TS = T\varphi'(T) - \varphi(T) - \dfrac{2a}{VT}$ (les logarithmes se compensent).
+
+\textbf{Question 4.} $C_V = \left(\partial U/\partial T\right)_V = T\varphi''(T) + \dfrac{2a}{VT^2}$. Quand $V\to\infty$, $C_V \to T\varphi''(T) = C$, donc $\varphi''(T) = C/T$, soit $\varphi'(T) = C\ln T + K_1$ et, avec l'intégrale donnée,
+\[
+\varphi(T) = CT\ln T + (K_1 - C)\,T + K_2,
+\]
+que l'on peut réécrire $\varphi(T) = CT\ln T + K_1'T + K_2$ en renommant la constante.
+
+\textbf{Question 5.} $\left(\dfrac{\partial S}{\partial V}\right)_T = \dfrac{R}{V-b} + \dfrac{a}{V^2T^2}$ et $\left(\dfrac{\partial P}{\partial T}\right)_V = \dfrac{R}{V-b} + \dfrac{a}{TV^2}\cdot\dfrac{1}{T} = \dfrac{R}{V-b} + \dfrac{a}{V^2T^2}$. Égalité. \checkmark
+
+\textbf{Question 6.} Pour $a \to 0$ : $P = RT/(V-b)$, $U = T\varphi' - \varphi$ ne dépend plus que de $T$ : on retrouve un gaz parfait à covolume près. Le paramètre $b$ (covolume) traduit le volume propre des molécules, tandis que $a$ traduit leur attraction mutuelle — c'est lui qui fait dépendre $U$ du volume, signature d'un gaz réel.
+\end{solution}
+\end{exo}

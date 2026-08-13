@@ -11,7 +11,7 @@
  */
 
 import { spawnSync } from "node:child_process";
-import { copyFileSync, existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
+import { copyFileSync, existsSync, mkdirSync, readFileSync, readdirSync, writeFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -22,11 +22,24 @@ const args = process.argv.slice(2);
 const lang = args.includes("en") ? "en" : "fr";
 const sansSolutions = args.includes("--sans-solutions");
 
-const srcFile = join(repoRoot, "content", "tex", `exercises_${lang}.tex`);
-if (!existsSync(srcFile)) { console.error(`❌ Source not found: ${srcFile}`); process.exit(1); }
+const srcDir = join(repoRoot, "content", `exos_${lang}`);
+const srcFiles = existsSync(srcDir)
+  ? readdirSync(srcDir)
+      .map((name) => {
+        const match = /^exo_chp(\d+)\.tex$/i.exec(name);
+        return match ? { chapter: Number.parseInt(match[1], 10), path: join(srcDir, name) } : null;
+      })
+      .filter(Boolean)
+      .sort((a, b) => a.chapter - b.chapter)
+  : [];
+
+if (srcFiles.length === 0) {
+  console.error(`No exercise chapter files found in ${srcDir}`);
+  process.exit(1);
+}
 
 // ── Parser ─────────────────────────────────────────────────────────────────
-const source = readFileSync(srcFile, "utf-8");
+const source = srcFiles.map(({ path }) => readFileSync(path, "utf-8")).join("\n\n");
 
 function readBalancedArg(input, openIdx) {
   if (input[openIdx] !== "{") return null;
@@ -87,7 +100,7 @@ while (cursor < source.length) {
   cursor = eEnd + endTag.length;
 }
 
-console.log(`Parsed ${exercises.length} exercises from ${srcFile}`);
+console.log(`Parsed ${exercises.length} exercises from ${srcFiles.length} chapter files in ${srcDir}`);
 
 // ── Assemble LaTeX ─────────────────────────────────────────────────────────
 const isFr = lang === "fr";

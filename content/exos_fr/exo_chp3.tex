@@ -1,0 +1,29 @@
+% Banque d'exercices — chapitre 3
+% Le chapitre est déterminé par le nom de ce fichier.
+
+\begin{exo}[Équilibre thermique de deux blocs]{equilibre-thermique}
+\keywords{équilibre thermique, température, chaleur, capacité thermique}
+
+Deux blocs métalliques, $A$ de masse $m_A = 1\,\text{kg}$ et de capacité thermique massique $c_A = 500\,\text{J·kg}^{-1}\text{K}^{-1}$, initialement à $T_A = 400\,\text{K}$, et $B$ de masse $m_B = 2\,\text{kg}$ et $c_B = 300\,\text{J·kg}^{-1}\text{K}^{-1}$, initialement à $T_B = 300\,\text{K}$, sont mis en contact par une paroi rigide, diathermane (elle laisse passer la chaleur) et imperméable. L'ensemble $\{A, B\}$ est par ailleurs isolé de l'extérieur par des parois rigides, adiabatiques et imperméables.
+
+\begin{enumerate}
+  \item Sans calcul, justifier que l'énergie interne totale $U_A + U_B$ est conservée au cours de cette évolution. Quel paramètre intensif, une fois égalisé entre $A$ et $B$, caractérise l'état d'équilibre final ?
+  \item En déduire la température d'équilibre $T_{eq}$.
+  \item Sans calculer l'entropie (notion introduite à la leçon 5), pourquoi peut-on déjà affirmer que cette évolution est irréversible, c'est-à-dire qu'on n'observera jamais les deux blocs s'écarter spontanément de $T_{eq}$ pour retrouver $T_A$ et $T_B$ ?
+\end{enumerate}
+
+\begin{indication}
+La paroi entre $A$ et $B$ est rigide (pas de travail échangé) et diathermane (la chaleur peut passer) ; l'extérieur, lui, est totalement isolé du système $\{A,B\}$. Pour la question 2, écrire $\mathrm{d}U = mc\,\mathrm{d}T$ pour chaque bloc à volume constant.
+\end{indication}
+
+\begin{solution}
+\textbf{1.} La paroi séparant $A$ de $B$ est rigide (aucun travail mécanique n'est échangé, ni entre $A$ et $B$, ni avec l'extérieur) et le système global $\{A,B\}$ est isolé (parois extérieures adiabatiques et imperméables) : aucune énergie ne peut ni entrer ni sortir de $\{A,B\}$, donc $U_A + U_B$ est conservée. L'équilibre final est atteint lorsque le paramètre intensif associé à la paroi diathermane -- la température -- s'est égalisé entre les deux blocs : c'est l'analogue, pour deux sous-systèmes en contact, du principe zéro.
+
+\textbf{2.} Chaque bloc étant solide (volume constant), $\mathrm{d}U = mc\,\mathrm{d}T$, donc la conservation de l'énergie s'écrit $m_A c_A (T_{eq} - T_A) + m_B c_B (T_{eq} - T_B) = 0$, soit
+$$T_{eq} = \frac{m_A c_A T_A + m_B c_B T_B}{m_A c_A + m_B c_B} = \frac{500 \times 400 + 600 \times 300}{500 + 600} = \frac{380000}{1100} \approx 345{,}5\,\text{K}.$$
+On remarque que $T_{eq}$ est une moyenne de $T_A$ et $T_B$ pondérée par les capacités thermiques $m_Ac_A$ et $m_Bc_B$ : le bloc de plus grande capacité thermique (ici $B$) « impose » davantage sa température initiale au système.
+
+\textbf{3.} De la chaleur est spontanément passée du bloc chaud ($A$, à $400$ K) vers le bloc froid ($B$, à $300$ K) jusqu'à égalisation des températures. Le processus inverse -- les deux blocs à $T_{eq} = 345{,}5$ K s'écartant spontanément l'un de l'autre pour retrouver $400$ K et $300$ K -- ne violerait pourtant pas la conservation de l'énergie (le bilan $U_A+U_B$ resterait identique) : rien dans le premier principe seul ne l'interdit. C'est précisément parce que l'expérience quotidienne montre que la chaleur ne remonte jamais spontanément du froid vers le chaud (Clausius) que ce retour en arrière est en réalité impossible. La leçon 5 permettra de quantifier précisément cette irréversibilité à l'aide de l'entropie, et de retrouver ce résultat par le calcul plutôt que par la seule expérience commune.
+\end{solution}
+
+\end{exo}

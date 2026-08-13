@@ -1,0 +1,171 @@
+% Banque d'exercices — chapitre 9
+% Le chapitre est déterminé par le nom de ce fichier.
+
+\begin{exo}[Équation de Clausius-Clapeyron et point d'ébullition en altitude]{clausius-clapeyron}
+\keywords{transition de phase, Clausius-Clapeyron, changement d'état, pression de vapeur saturante, chaleur latente}
+
+L'eau bout à $100\,°\text{C}$ sous la pression atmosphérique $P_0 = 1{,}013 \times 10^5\,\text{Pa}$. Sa chaleur latente de vaporisation est $L = 2{,}26 \times 10^6\,\text{J·kg}^{-1}$.
+
+L'équation de Clausius-Clapeyron donne la pente de la courbe de coexistence liquide-vapeur :
+$$\frac{\mathrm{d}P}{\mathrm{d}T} = \frac{L}{T\,\Delta v}$$
+où $\Delta v = v_g - v_l$ est la variation de volume massique. En supposant que la vapeur est un gaz parfait et que $v_l \ll v_g$ :
+$$\frac{\mathrm{d}P}{\mathrm{d}T} \approx \frac{LP}{rT^2}$$
+où $r = R/M = 461\,\text{J·kg}^{-1}\text{K}^{-1}$ est la constante spécifique de la vapeur d'eau.
+
+\begin{enumerate}
+  \item Montrer que $P(T) \approx P_0 \exp\!\left[-\dfrac{L}{r}\!\left(\dfrac{1}{T} - \dfrac{1}{T_0}\right)\right]$ avec $T_0 = 373\,\text{K}$.
+  \item Au sommet du Mont-Blanc ($P \approx 0{,}54\,P_0$), à quelle température l'eau bout-elle ?
+\end{enumerate}
+
+\begin{indication}
+Séparer les variables dans l'équation différentielle et intégrer entre $T_0$ et $T$. Pour la question 2, inverser la formule pour trouver $T$.
+\end{indication}
+
+\begin{solution}
+\textbf{1.} Séparation des variables : $\dfrac{\mathrm{d}P}{P} = \dfrac{L}{r}\dfrac{\mathrm{d}T}{T^2}$.
+
+En intégrant entre $T_0$ (où $P = P_0$) et $T$ :
+$$\ln\frac{P}{P_0} = -\frac{L}{r}\!\left(\frac{1}{T} - \frac{1}{T_0}\right) \implies P = P_0\exp\!\left[-\frac{L}{r}\!\left(\frac{1}{T}-\frac{1}{T_0}\right)\right].$$
+
+\textbf{2.} On cherche $T$ tel que $P = 0{,}54\,P_0$ :
+$$\ln(0{,}54) = -\frac{L}{r}\!\left(\frac{1}{T}-\frac{1}{T_0}\right) \implies \frac{1}{T} = \frac{1}{T_0} - \frac{r\ln(0{,}54)}{L}.$$
+$$\frac{1}{T} = \frac{1}{373} + \frac{461 \times 0{,}616}{2{,}26\times10^6} \approx 2{,}681\times10^{-3} + 1{,}256\times10^{-4} \approx 2{,}806\times10^{-3}\,\text{K}^{-1}.$$
+$$T \approx 356\,\text{K} \approx 83\,°\text{C}.$$
+L'eau bout donc à environ $83\,°\text{C}$ au sommet du Mont-Blanc — ce qui rend la cuisson des aliments notablement plus longue.
+\end{solution}
+
+\end{exo}
+
+\begin{exo}[Point triple de l'eau]{point-triple-eau}
+\keywords{point triple, coexistence, sublimation, vaporisation, eau, diagramme des phases}
+
+Au point triple de l'eau : $T_{tr} = 273{,}16$ K et $P_{tr} = 611$ Pa. On donne les volumes massiques : $v_l = 1{,}0\times10^{-3}$ m$^3$·kg$^{-1}$, $v_g = 206$ m$^3$·kg$^{-1}$, $v_s = 1{,}09\times10^{-3}$ m$^3$·kg$^{-1}$. Chaleurs latentes massiques : $L_{sub} = 2{,}83\times10^6$ J·kg$^{-1}$ (solide $\to$ gaz), $L_{vap} = 2{,}26\times10^6$ J·kg$^{-1}$ (liquide $\to$ gaz).
+
+\begin{enumerate}
+\item Vérifier la relation de Clapeyron entre les pentes des courbes de sublimation et de vaporisation au point triple : $L_{sub}/(T_{tr}\Delta v_{sg}) \approx L_{vap}/(T_{tr}\Delta v_{lg})$ (à $\Delta v$ près).
+\item Calculer la chaleur latente de fusion $L_{fus} = L_{sub} - L_{vap}$ et la pente de la courbe fusion à $T_{tr}$.
+\item Pourquoi le point triple fixe-t-il historiquement l'échelle Kelvin ?
+\item Peut-on faire coexister les trois phases à $P \neq P_{tr}$ ? Justifier.
+\end{enumerate}
+
+\begin{indication}
+$\Delta v_{sg} = v_g - v_s$, $\Delta v_{lg} = v_g - v_l$. Au point triple, les trois phases sont en équilibre chimique : $\mu_s = \mu_l = \mu_g$.
+\end{indication}
+
+\begin{solution}
+\textbf{Question 1.} $\Delta v_{sg} \approx 205$ m$^3$·kg$^{-1}$, $\Delta v_{lg} \approx 205$ m$^3$·kg$^{-1}$ (car $v_l \approx v_s \ll v_g$). Pentes : $L_{sub}/(T_{tr}\Delta v_{sg}) \approx 2{,}83\times10^6/(273\times205) \approx 50$ Pa·K$^{-1}$ et $L_{vap}/(T_{tr}\Delta v_{lg}) \approx 40$ Pa·K$^{-1}$ — même ordre de grandeur ; l'écart vient de $v_l \neq v_s$ (pente fusion non nulle).
+
+\textbf{Question 2.} $L_{fus} = 0{,}57\times10^6$ J·kg$^{-1}$. Pente fusion : $L_{fus}/(T_{tr}(v_l-v_s)) \approx 0{,}57\times10^6/(273\times(-9\times10^{-5})) \approx -2{,}3\times10^7$ Pa·K$^{-1}$ (pente négative : glace moins dense que l'eau).
+
+\textbf{Question 3.} $T_{tr}$ est une propriété universelle de l'eau pure ; la définition moderne du kelvin s'appuie sur un ensemble de points fixes, dont le point triple de l'eau (273,16 K exactement).
+
+\textbf{Question 4.} Non : à $T_{tr}$ fixe, trois phases coexistent seulement à la pression unique $P_{tr}$ (variété d'équilibre de dimension 0 en $(P,T)$ pour un corps pur).
+\end{solution}
+\end{exo}
+
+\begin{exo}[Gaz de van der Waals : palier de Maxwell]{van-der-waals-maxwell}
+\keywords{van der Waals, Maxwell, palier, courbe de saturation, titre vapeur, transition liquide-gaz}
+
+Une mole de CO$_2$ obéit à $P = RT/(v-b) - a/v^2$ avec $R = 8{,}314$ J·mol$^{-1}$·K$^{-1}$, $a = 0{,}364$ Pa·m$^6$·mol$^{-2}$, $b = 4{,}27\times10^{-5}$ m$^3$·mol$^{-1}$. À $T = 280$ K (sous la température critique), l'isotherme présente une zone instable ($\partial P/\partial v > 0$).
+
+\begin{enumerate}
+\item Calculer la température critique $T_c = 8a/(27Rb)$ et montrer que $T = 280$ K $< T_c$.
+\item On remplace la portion instable par un palier isotherme à $P_{sat}$. Énoncer la règle des paliers de Maxwell (égalité des aires).
+\item Numériquement, on trouve $P_{sat} \approx 3{,}4$ MPa avec $v_l \approx 4{,}5\times10^{-5}$ m$^3$·mol$^{-1}$ et $v_g \approx 1{,}2\times10^{-3}$ m$^3$·mol$^{-1}$. Un système de volume molaire $v_M = 3\times10^{-4}$ m$^3$·mol$^{-1}$ est sur le palier : calculer le titre molaire en vapeur $x_v = (v_M - v_l)/(v_g - v_l)$.
+\item Interpréter le palier sur le diagramme $(P,v)$.
+\end{enumerate}
+
+\begin{indication}
+$T_c = 8a/(27Rb)$. Règle des moments : $x_v = (v_M - v_l)/(v_g - v_l)$. Aire Maxwell : $\int_{v_l}^{v_g}(P_{sat} - P(v))\,\mathrm{d}v = 0$.
+\end{indication}
+
+\begin{solution}
+\textbf{Question 1.} $T_c = 8\times0{,}364/(27\times8{,}314\times4{,}27\times10^{-5}) \approx 304$ K. Donc 280 K $< T_c$ : isotherme sous-critique avec loop instable.
+
+\textbf{Question 2.} Maxwell : $\int_{v_l}^{v_g} P(v)\,\mathrm{d}v = P_{sat}(v_g - v_l)$ — l'aire sous la courbe métastable égale celle du rectangle sous le palier.
+
+\textbf{Question 3.} $x_v = (3\times10^{-4} - 4{,}5\times10^{-5})/(1{,}2\times10^{-3} - 4{,}5\times10^{-5}) \approx 0{,}22$ : environ 22\,\% en vapeur, 78\,\% liquide.
+
+\textbf{Question 4.} À gauche du palier : liquide ; à droite : gaz ; sur le palier : mélange diphasique à $P_{sat}(T)$ constant — construction graphique de la transition de phase dans le modèle VdW.
+\end{solution}
+\end{exo}
+
+\begin{exo}[Au voisinage du point critique]{opalescence-critique}
+\keywords{point critique, compressibilité, opalescence, van der Waals, transition de phase}
+
+Au voisinage du point critique $(T_c, P_c)$ d'un fluide, la compressibilité isotherme diverge :
+\[
+\chi_T \sim \frac{\kappa}{|T - T_c|},
+\]
+et le volume molaire tend vers $v_c = 3b$ pour un gaz de van der Waals.
+
+\begin{enumerate}
+\item Rappeler pourquoi $\chi_T > 0$ correspond à une phase stable et $\chi_T < 0$ à une instabilité.
+\item Pour $T - T_c = 1$ K, avec $\kappa \sim 10^{-5}$ m$^3$·J$^{-1}$, estimer $\chi_T$ et commenter (opalescence critique : fluctuations gigantesques).
+\item Au point critique strict, que devient la distinction liquide/gaz ? Relier au fluide supercritique du cours.
+\end{enumerate}
+
+\begin{indication}
+Instabilité VdW : zone où $\partial P/\partial v > 0$. Opalescence : $\chi_T$ énorme $\Rightarrow$ fluctuations de densité visibles.
+\end{indication}
+
+\begin{solution}
+\textbf{Question 1.} Stabilité isotherme : $\left(\partial P/\partial V\right)_T < 0$ équivaut à $\chi_T > 0$. Si $\chi_T < 0$, une fluctuation de volume s'amplifie : phase instable.
+
+\textbf{Question 2.} $\chi_T \sim 10^{-5}/1 = 10^{-5}$ m$^3$·J$^{-1}$ — énorme comparé au liquide ordinaire ($\sim10^{-10}$ Pa$^{-1}$ en volume molaire). Les fluctuations de densité éclairent le milieu (opalescence).
+
+\textbf{Question 3.} À $(T_c, P_c)$, les phases liquide et gaz coïncident : plus de frontière nette. Au-delà, fluide supercritique — une seule phase indifférenciée, comme dans le cours (diagramme $P,T$).
+\end{solution}
+\end{exo}
+
+\begin{exo}[Surfusion et surchauffe : métastabilité]{surfusion-surchauffe}
+\keywords{surfusion, surchauffe, métastabilité, transition de phase, instabilité locale}
+
+\begin{enumerate}
+\item Rappeler la différence entre stabilité \emph{locale} et \emph{globale} d'un état d'équilibre, en vous appuyant sur le graphe $S(U)$ du cours.
+\item L'eau liquide peut rester liquide jusqu'à $T \approx -40\,°\text{C}$ (surfusion) si le récipient est parfaitement lisse. Pourquoi une perturbation mécanique déclenche-t-elle la solidification brutale ?
+\item De même, l'eau peut être surchauffée au-delà de 100\,$°$C sans bouillir. Quel risque présente l'ouverture brusque d'un micro-ondes dans ce cas ?
+\item Relier ces phénomènes à l'enveloppe concave de $S(U)$ et au palier de Maxwell.
+\end{enumerate}
+
+\begin{indication}
+Localement stable mais au-dessous de l'enveloppe concave : le système n'a pas encore trouvé le minimum global diphasique.
+\end{indication}
+
+\begin{solution}
+\textbf{Question 1.} Localement stable : petites fluctuations reviennent (minimum local de potentiel). Globalement stable : minimum le plus bas compatible avec les contraintes — pour $U$ fixé isolé, maximum de $S$ (enveloppe concave).
+
+\textbf{Question 2.} En surfusion, le liquide est métastable : une gerçure ou vibration fournit des germes de glace ; le système bascule vers l'état global stable (glace + liquide sur le palier), libérant la chaleur latente brutalement.
+
+\textbf{Question 3.} Surchauffe : le liquide dépasse $T_{sat}$ sans nucléation de vapeur. Une perturbation (cuillère, ouverture du four) déclenche l'ébullition explosive — projections brûlantes (accidents domestiques).
+
+\textbf{Question 4.} Les portions métastables VdW correspondent à des points sous l'enveloppe concave de $S$ ; le palier / segment BF remplace l'instabilité globale. Surfusion/surchauffe = rester sur une branche métastable avant bascule.
+\end{solution}
+\end{exo}
+
+\begin{exo}[Phases extrêmes : glace et diamant sous pression]{phases-haute-pression}
+\keywords{diagramme des phases, haute pression, glace, diamant, graphite, transition de phase}
+
+Le diagramme simplifié de l'eau comporte, outre la glace $I_h$ ordinaire, des phases $III$, $VI$ et $VII$ stables au-delà de quelques GPa. Le carbone présente une transition graphite $\to$ diamant vers $P \approx 5$ GPa à température ambiante.
+
+\begin{enumerate}
+\item À $T = 300$ K, le graphite est stable à $P < 5$ GPa et le diamant au-delà. Quelle transition de phase se produit lors d'une compression isotherme de 0 à 10 GPa ?
+\item La glace $VII$ (coordonnée cubique centrée) est stable au-delà de $\sim 2$ GPa. Pour une planète « océan » avec $P$ croissant avec la profondeur ($\approx 10$ MPa/km dans l'eau), à quelle profondeur l'eau ordinaire cède-t-elle place à des glaces denses ?
+\item Ordre de grandeur : si $\Delta v < 0$ pour graphite $\to$ diamant, le signe de $\mathrm{d}P/\mathrm{d}T$ le long de la coexistence est-il positif ou négatif (Clausius-Clapeyron) ?
+\item Pourquoi un « diamant géant » (planète carbonée) n'est-il pas décrit par le seul modèle de van der Waals ?
+\end{enumerate}
+
+\begin{indication}
+Clausius-Clapeyron : $\mathrm{d}P/\mathrm{d}T = L/(T\Delta v)$. VdW = fluide ; transitions solide-solid ou solid-liquid à haute $P$ demandent d'autres modèles.
+\end{indication}
+
+\begin{solution}
+\textbf{Question 1.} Traversée de la frontière graphite/diamant vers $\sim 5$ GPa : transition de phase solide-solide (réarrangement cristallin), libération de chaleur latente de transition.
+
+\textbf{Question 2.} 2 GPa $\approx 200$ km de profondeur océanique (ordre de grandeur) : au c\oe ur de géantes glace/eau, phases $VI$-$VII$ plutôt que glace $I_h$ — contexte astro/géo.
+
+\textbf{Question 3.} Graphite $\to$ diamant : $v_{dia} < v_{graph}$, donc $\Delta v < 0$. Or la frontière graphite/diamant observée expérimentalement a une pente $\mathrm{d}P/\mathrm{d}T > 0$ (c'est pourquoi la synthèse industrielle du diamant demande \emph{à la fois} une pression et une température élevées). D'après Clausius-Clapeyron, $\mathrm{d}P/\mathrm{d}T = L/(T\Delta v)$ : avec $\Delta v < 0$ et $\mathrm{d}P/\mathrm{d}T > 0$, il faut nécessairement $L < 0$ pour cette transition, c'est-à-dire que le passage graphite $\to$ diamant \emph{libère} de la chaleur (le diamant, cristal plus rigide et plus ordonné, a une entropie molaire plus faible que le graphite : $\Delta s < 0$, cohérent avec $\Delta v < 0$ pour donner $\mathrm{d}P/\mathrm{d}T = \Delta s/\Delta v > 0$).
+
+\textbf{Question 4.} VdW décrit un fluide avec instabilité liquide-gaz ; les transitions cristallines (diamant, glaces polymorphes) impliquent l'ordre à longue portée et des interactions spécifiques — hors champ du VdW, mais lisibles sur un diagramme $(P,T)$ expérimental.
+\end{solution}
+\end{exo}

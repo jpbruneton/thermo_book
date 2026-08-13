@@ -1,0 +1,281 @@
+% Banque d'exercices — chapitre 6
+% Le chapitre est déterminé par le nom de ce fichier.
+
+\begin{exo}[Sackur-Tétrode : tout vérifier]{sackur-tetrode-verifications}
+\keywords{Sackur-Tétrode, relation fondamentale, équations d'état, potentiel chimique, relation d'Euler, troisième principe}
+
+On rappelle la relation fondamentale du gaz parfait monoatomique établie en cours (formule de Sackur-Tétrode) :
+\[
+S(U,V,N) = Nk_B\ln\!\left[\left(\frac{U}{N}\right)^{3/2}\frac{V}{N}\right] + \frac{5}{2}Nk_B + \alpha N,
+\]
+où $\alpha$ est une constante.
+
+\begin{enumerate}
+\item Vérifier que $S$ est une fonction homogène de degré 1 de $(U,V,N)$. Pourquoi est-ce indispensable ?
+\item Calculer $\left(\partial S/\partial U\right)_{V,N}$ et retrouver l'équation d'état $U = \frac{3}{2}Nk_BT$.
+\item Calculer $\left(\partial S/\partial V\right)_{U,N}$ et retrouver $PV = Nk_BT$.
+\item Calculer le potentiel chimique $\mu$ et montrer que $\mu = -T\,\dfrac{S}{N} + \dfrac{5}{2}k_BT$.
+\item Vérifier explicitement la relation d'Euler $U = TS - PV + \mu N$.
+\item Comment se comporte $S$ lorsque $T \to 0$ à $V, N$ fixés ? Commenter vis-à-vis du troisième principe.
+\end{enumerate}
+
+\begin{indication}
+Développer le logarithme : $S = Nk_B\left[\frac{3}{2}\ln U + \ln V - \frac{5}{2}\ln N\right] + \frac{5}{2}Nk_B + \alpha N$ avant de dériver. En représentation entropie, $\frac{1}{T} = \left(\partial S/\partial U\right)_{V,N}$, $\frac{P}{T} = \left(\partial S/\partial V\right)_{U,N}$, $\frac{\mu}{T} = -\left(\partial S/\partial N\right)_{U,V}$.
+\end{indication}
+
+\begin{solution}
+\textbf{Question 1.} En remplaçant $(U,V,N)$ par $(\lambda U,\lambda V,\lambda N)$, les rapports $U/N$ et $V/N$ sont inchangés et le préfacteur $N$ sort un $\lambda$ : $S(\lambda U,\lambda V,\lambda N) = \lambda S(U,V,N)$. C'est l'extensivité de l'entropie, exigée par le second principe pour des variables extensives $U, V, N$.
+
+\textbf{Question 2.} $\left(\dfrac{\partial S}{\partial U}\right)_{V,N} = \dfrac{3Nk_B}{2U} = \dfrac{1}{T}$, d'où $U = \dfrac{3}{2}Nk_BT$.
+
+\textbf{Question 3.} $\left(\dfrac{\partial S}{\partial V}\right)_{U,N} = \dfrac{Nk_B}{V} = \dfrac{P}{T}$, d'où $PV = Nk_BT$.
+
+\textbf{Question 4.} En dérivant la forme développée $S = Nk_B\!\left[\tfrac{3}{2}\ln U + \ln V - \tfrac{5}{2}\ln N\right] + \tfrac{5}{2}Nk_B + \alpha N$ par rapport à $N$ à $U,V$ fixés, le seul terme demandant une attention particulière est $-\tfrac{5}{2}Nk_B\ln N$, dont la dérivée (règle du produit) vaut $-\tfrac{5}{2}k_B\ln N - \tfrac{5}{2}k_B$ :
+\[
+\left(\frac{\partial S}{\partial N}\right)_{U,V} = \underbrace{k_B\!\left[\tfrac{3}{2}\ln U + \ln V - \tfrac{5}{2}\ln N\right] + \alpha}_{\text{dérivée des termes en } N \text{ et } \alpha N} \;\underbrace{-\,\tfrac{5}{2}k_B}_{\text{du produit } N\ln N} \;+\; \underbrace{\tfrac{5}{2}k_B}_{\text{dérivée de } \frac{5}{2}Nk_B}.
+\]
+Les deux derniers termes s'annulent, et le premier groupe est exactement $S/N - \tfrac{5}{2}k_B - \alpha$ (en comparant à l'expression de $S/N$) augmenté de $\alpha$, si bien que
+\[
+\left(\frac{\partial S}{\partial N}\right)_{U,V} = \frac{S}{N} - \frac{5}{2}k_B,
+\]
+donc $\mu = -T\left(\partial S/\partial N\right)_{U,V} = -T\,\dfrac{S}{N} + \dfrac{5}{2}k_BT$.
+
+\textbf{Question 5.} $TS - PV + \mu N = TS - Nk_BT + \left(-TS + \tfrac{5}{2}Nk_BT\right) = \tfrac{3}{2}Nk_BT = U$. \checkmark
+
+\textbf{Question 6.} À $V,N$ fixés, $U \propto T$ donc $S \sim \tfrac{3}{2}Nk_B\ln T \to -\infty$ quand $T\to0$, au lieu de tendre vers $0$ comme l'exige le troisième principe. La formule de Sackur-Tétrode est une approximation semi-classique : aux très basses températures, la mécanique quantique prend le relais et change le comportement de $S$.
+\end{solution}
+\end{exo}
+
+\begin{exo}[Trois relations fondamentales candidates : une seule est plausible]{relations-fondamentales-plausibles}
+\keywords{relation fondamentale, extensivité, fonction homogène, température positive, troisième principe, équations d'état, adiabatique}
+
+Parmi les trois relations fondamentales suivantes ($a > 0$, $b > 0$, $k_B$ constante de Boltzmann), une seule est plausible :
+\[
+\text{(1)}\ S = k_B\ln\!\left(\frac{aN}{U}\right), \qquad
+\text{(2)}\ S = a\,\frac{UV}{N} - b\,\frac{N^3}{UV}, \qquad
+\text{(3)}\ U = a\,\frac{S^3}{NV}.
+\]
+
+\begin{enumerate}
+\item Éliminer les deux candidates défaillantes en examinant : l'extensivité, le signe de la température, et le troisième principe.
+\item Pour la relation plausible, expliciter les trois équations d'état et vérifier que $T$, $P$ et $\mu$ sont bien intensifs.
+\item Vérifier que $T \geq 0$ toujours. Que dit ce résultat sur le graphe de $U$ en fonction de $S$ ?
+\item Trouver une relation ne reliant que $P, V, T, N$.
+\item Déterminer l'équation des adiabatiques réversibles dans le diagramme $(V,P)$.
+\end{enumerate}
+
+\begin{indication}
+Extensivité : la relation doit être homogène de degré 1 dans ses variables extensives. Troisième principe : $S \to 0$ quand $T \to 0$. Pour la question 4, éliminer $S$ entre les expressions de $T$ et $P$.
+\end{indication}
+
+\begin{solution}
+\textbf{Question 1.} La candidate (1) n'est pas extensive (un logarithme ne peut pas être homogène de degré 1) ; de plus $\left(\partial S/\partial U\right) = -k_B/U < 0$ donnerait une température négative. La candidate (2) est bien homogène de degré 1 (chacun des deux termes l'est), mais $1/T = aV/N + bN^3/(U^2V) \to \infty$ quand $U \to 0$ : le zéro absolu y correspond à $U \to 0$, où $S \to -\infty$ au lieu de $0$ — le troisième principe est violé. Reste la candidate (3) : homogène de degré 1 ($\lambda^3/\lambda^2 = \lambda$), et $S = 0$ quand $T = 0$ comme on va le voir.
+
+\textbf{Question 2.} En représentation énergie $U = aS^3/(NV)$ :
+\[
+T = \left(\frac{\partial U}{\partial S}\right)_{V,N} = \frac{3aS^2}{NV}, \qquad
+P = -\left(\frac{\partial U}{\partial V}\right)_{S,N} = \frac{aS^3}{NV^2} = \frac{U}{V}, \qquad
+\mu = \left(\frac{\partial U}{\partial N}\right)_{S,V} = -\frac{aS^3}{N^2V} = -\frac{U}{N}.
+\]
+Sous l'échelle $\lambda$ : $S^2/(NV) \to \lambda^2/\lambda^2$, $S^3/(NV^2) \to \lambda^3/\lambda^3$, $S^3/(N^2V) \to \lambda^3/\lambda^3$ : les trois sont invariants, donc intensifs. \checkmark
+
+\textbf{Question 3.} $T = 3aS^2/(NV) \geq 0$ pour tout $S$, et $T = 0$ uniquement en $S = 0$ : le troisième principe est satisfait. $U \propto S^3$ est croissante et convexe en $S$ (pour $S>0$) : c'est la condition de stabilité vue en cours.
+
+\textbf{Question 4.} De $T = 3aS^2/(NV)$ on tire $S = \sqrt{TNV/(3a)}$, que l'on injecte dans $P$ :
+\[
+P = \frac{a}{NV^2}\left(\frac{TNV}{3a}\right)^{3/2} \implies P^2 = \frac{NT^3}{27\,aV} \iff 27\,a\,P^2V = NT^3.
+\]
+C'est l'analogue de $PV = Nk_BT$ pour ce système.
+
+\textbf{Question 5.} Adiabatique réversible = isentropique : $S$ et $N$ fixés, donc $U \propto 1/V$ et
+\[
+P = \frac{aS^3}{N}\,\frac{1}{V^2} \implies PV^2 = \text{cste}.
+\]
+\end{solution}
+\end{exo}
+
+\begin{exo}[Deux systèmes exotiques]{systemes-exotiques}
+\keywords{relation fondamentale, représentation entropie, détente isentropique, équation d'état, intégration des équations d'état}
+
+\textbf{A.} Un système satisfait la relation fondamentale molaire
+\[
+u = \frac{A}{v^2}\,e^{s/R},
+\]
+avec $A > 0$ constante et $R$ la constante des gaz parfaits ($u$, $v$, $s$ : énergie, volume et entropie molaires). L'état initial est décrit par $(T_0, P_0)$.
+
+\begin{enumerate}
+\item Exprimer $T$ et $P$ en fonction de $u$ et $v$, et en déduire l'équation d'état reliant $P$, $v$ et $T$.
+\item On fait subir au système une détente isentropique jusqu'à ce que la pression soit divisée par deux. Exprimer la température finale en fonction de $T_0$ uniquement.
+\end{enumerate}
+
+\textbf{B.} Un autre système vérifie les deux équations d'état $U = PV$ et $P = BT^2$ ($B > 0$, nombre de moles fixé).
+
+\begin{enumerate}
+\item[3.] Déterminer sa relation fondamentale $S(U,V)$ à une constante près.
+\item[4.] Vérifier que les deux équations d'état s'en déduisent bien.
+\end{enumerate}
+
+\begin{indication}
+\textbf{A :} $T = \left(\partial u/\partial s\right)_v$ et $P = -\left(\partial u/\partial v\right)_s$ ; sur une isentropique, $s$ est fixé et tout s'exprime en fonction de $v$. \textbf{B :} éliminer $T$ pour exprimer $1/T = \left(\partial S/\partial U\right)_V$ en fonction de $(U,V)$, intégrer, puis fixer la fonction d'intégration avec $\left(\partial S/\partial V\right)_U = P/T$.
+\end{indication}
+
+\begin{solution}
+\textbf{Question 1.} $T = \left(\dfrac{\partial u}{\partial s}\right)_v = \dfrac{u}{R}$ et $P = -\left(\dfrac{\partial u}{\partial v}\right)_s = \dfrac{2u}{v}$. En éliminant $u = RT$ : $Pv = 2RT$ — un « gaz parfait » de constante double.
+
+\textbf{Question 2.} À $s$ fixé, $u \propto v^{-2}$, donc $P = 2u/v \propto v^{-3}$ et $T = u/R \propto v^{-2}$. Diviser $P$ par deux impose $v_f = 2^{1/3}v_0$, d'où
+\[
+T_f = T_0\left(\frac{v_0}{v_f}\right)^{2} = 2^{-2/3}\,T_0 \approx 0{,}63\,T_0.
+\]
+
+\textbf{Question 3.} $U = PV = BT^2V$ donne $T = \sqrt{U/(BV)}$, donc
+\[
+\left(\frac{\partial S}{\partial U}\right)_V = \frac{1}{T} = \sqrt{\frac{BV}{U}} \implies S = 2\sqrt{BUV} + f(V).
+\]
+Puis $\left(\partial S/\partial V\right)_U = \sqrt{BU/V} + f'(V)$ doit valoir $P/T = BT = \sqrt{BU/V}$ : donc $f' = 0$ et
+\[
+S(U,V) = 2\sqrt{BUV} + \text{cste}.
+\]
+
+\textbf{Question 4.} $1/T = \partial S/\partial U = \sqrt{BV/U}$ redonne $U = BVT^2$ ; et $P/T = \partial S/\partial V = \sqrt{BU/V}$ redonne $P = T\sqrt{BU/V} = BT^2$ en utilisant la première. On a bien $U = BVT^2 = (BT^2)V = PV$. \checkmark\ Au passage, $S$ est homogène de degré 1 en $(U,V)$ et concave, comme il se doit.
+\end{solution}
+\end{exo}
+
+\begin{exo}[Le gaz de photons dans l'Univers]{gaz-de-photons}
+\keywords{gaz de photons, rayonnement, fond diffus cosmologique, relation fondamentale, détente adiabatique, fonction homogène, potentiel chimique nul}
+
+Aux premiers instants de l'Univers, la matière est un plasma chaud de noyaux, d'électrons et de photons. Vers $T_i \approx 3000$ K, les premiers atomes se forment et les photons deviennent libres : on considère qu'à cet instant le gaz de photons est à l'équilibre à $T_i$, puis qu'il subit une détente adiabatique réversible au fil de l'expansion de l'Univers. On admet sa relation fondamentale :
+\[
+S(U,V) = \frac{4}{3}\,a\,V^{1/4}U^{3/4},
+\]
+avec $a$ une constante dimensionnée positive. On remarque que $S$ ne dépend pas de $N$ : le nombre de photons n'est pas conservé.
+
+\begin{enumerate}
+\item Rappeler la définition d'une fonction homogène de degré 1 et montrer que $S$ en est une.
+\item Représenter l'allure de $S$ en fonction de $U$ à $V$ fixé. Concavité ? Commenter.
+\item Déterminer $T$, $P$ et $\mu$ dans les variables naturelles $(U,V)$ de $S$. Montrer en particulier que $U = a^4VT^4$ et $P = \dfrac{U}{3V}$, et commenter la valeur de $\mu$.
+\item Écrire le premier principe pour ce gaz et le spécialiser à une détente adiabatique réversible. En déduire une relation entre $U$ et $V$ le long de cette transformation.
+\item En déduire que $VT^3 = \text{cste}$ le long de la détente.
+\item Retrouver ce résultat directement à partir de l'entropie exprimée en variables $(T,V)$.
+\item Le gaz de photons est observé aujourd'hui à $T_f \approx 3$ K (fond diffus cosmologique). De combien le volume de l'Univers a-t-il augmenté depuis l'émission ?
+\end{enumerate}
+
+\begin{indication}
+Représentation entropie : $1/T = \left(\partial S/\partial U\right)_V$, $P/T = \left(\partial S/\partial V\right)_U$, $\mu/T = -\partial S/\partial N$. Pour la question 4, adiabatique réversible signifie $\mathrm{d}S = 0$, donc $\mathrm{d}U = -P\,\mathrm{d}V$ : séparer les variables.
+\end{indication}
+
+\begin{solution}
+\textbf{Question 1.} $f$ est homogène de degré 1 si $f(\lambda x, \lambda y) = \lambda f(x,y)$ pour tout $\lambda$. Ici $S(\lambda U, \lambda V) = \frac{4}{3}a\,\lambda^{1/4}V^{1/4}\lambda^{3/4}U^{3/4} = \lambda S(U,V)$ : l'entropie est bien extensive.
+
+\textbf{Question 2.} $S \propto U^{3/4}$ : fonction croissante ($T > 0$) et concave ($\partial^2 S/\partial U^2 < 0$) : l'équilibre du gaz de photons est stable, conformément au second principe.
+
+\textbf{Question 3.}
+\[
+\frac{1}{T} = \left(\frac{\partial S}{\partial U}\right)_V = a\left(\frac{V}{U}\right)^{1/4} \implies U = a^4VT^4 ;
+\qquad
+\frac{P}{T} = \left(\frac{\partial S}{\partial V}\right)_U = \frac{a}{3}\left(\frac{U}{V}\right)^{3/4} \implies P = \frac{U}{3V},
+\]
+(en utilisant $(U/V)^{3/4} = a^3T^3$). Enfin $S$ ne dépend pas de $N$ : $\mu = -T\,\partial S/\partial N = 0$. Le potentiel chimique des photons est nul — il ne coûte rien d'en créer, et leur nombre s'ajuste librement à l'équilibre.
+
+\textbf{Question 4.} $\mathrm{d}U = T\,\mathrm{d}S - P\,\mathrm{d}V$ (le terme $\mu\,\mathrm{d}N$ est absent). Détente adiabatique réversible : $\mathrm{d}S = 0$, donc
+\[
+\mathrm{d}U = -P\,\mathrm{d}V = -\frac{U}{3V}\,\mathrm{d}V \implies \frac{\mathrm{d}U}{U} = -\frac{1}{3}\frac{\mathrm{d}V}{V} \implies UV^{1/3} = \text{cste}.
+\]
+
+\textbf{Question 5.} En substituant $U = a^4VT^4$ : $a^4VT^4\,V^{1/3} = \text{cste}$, soit $T^4V^{4/3} = \text{cste}$, c'est-à-dire $TV^{1/3} = \text{cste}$, ou encore $VT^3 = \text{cste}$.
+
+\textbf{Question 6.} $\mathrm{d}S = 0$ signifie $S = \text{cste}$. Or $S = \frac{4}{3}aV^{1/4}(a^4VT^4)^{3/4} = \frac{4}{3}a^4VT^3$ : la constance de $S$ équivaut directement à $VT^3 = \text{cste}$. \checkmark
+
+\textbf{Question 7.} $V_f/V_i = (T_i/T_f)^3 = (3000/3)^3 = 10^9$ : le volume a été multiplié par un milliard (soit un facteur 1000 sur les distances). Le rayonnement émis à 3000 K, refroidi par l'expansion, est exactement le fond diffus cosmologique mesuré aujourd'hui à 2,7 K.
+\end{solution}
+\end{exo}
+
+\begin{exo}[Gaz parfait bidimensionnel]{gaz-parfait-2d}
+\keywords{gaz parfait, basse dimension, équation d'état, relation fondamentale, adiabatique, électrons 2D}
+
+On considère $N$ particules monoatomiques confinées dans un plan de surface $A$ (gaz parfait 2D). L'énergie ne dépend que de la température et vaut $U = N k_B T$ (deux degrés de liberté par particule). L'équation d'état est $PA = N k_B T$.
+
+\begin{enumerate}
+\item Montrer que $S(U,A,N) = Nk_B\ln\!\left(\dfrac{U}{N}\dfrac{A}{N}\right) + \alpha N$ à une constante près, en utilisant $1/T = \left(\partial S/\partial U\right)_{A,N}$ et $P/T = \left(\partial S/\partial A\right)_{U,N}$.
+\item Vérifier que $S$ est homogène de degré 1 et calculer $\mu$.
+\item Le gaz subit une détente adiabatique réversible. Montrer que $TA^{\gamma-1} = \text{cste}$ avec $\gamma = 2$ en 2D.
+\item Comparer à un gaz 3D monoatomique ($\gamma = 5/3$). Pourquoi un gaz d'électrons 2D en métal (couche de surface) est-il qualifié de « basse dimension » en thermodynamique ?
+\end{enumerate}
+
+\begin{indication}
+Même méthode que Sackur-Tétrode mais avec $A$ à la place de $V$ et $U = Nk_BT$. Sur l'adiabatique : $\mathrm{d}S = 0$ donne $\mathrm{d}U = -P\,\mathrm{d}A$.
+\end{indication}
+
+\begin{solution}
+\textbf{Question 1.} $1/T = k_B/U_{\text{m}} = Nk_B/U$ donne $U = Nk_BT$. Puis $P/T = Nk_B/A$ donne $PA = Nk_BT$. Intégration : $S = Nk_B\ln(U/A) + \text{cste}$ en variables extensives, soit $S = Nk_B\ln[(U/N)(A/N)] + \alpha N$.
+
+\textbf{Question 2.} $S(\lambda U, \lambda A, \lambda N) = \lambda S(U,A,N)$ : extensivité OK. En dérivant $S = Nk_B\ln[(U/N)(A/N)] + \alpha N$ par rapport à $N$ (même calcul qu'à l'exercice de Sackur-Tétrode, avec ici un terme $-2Nk_B\ln N$ au lieu de $-\tfrac{5}{2}Nk_B\ln N$) :
+\[
+\left(\frac{\partial S}{\partial N}\right)_{U,A} = k_B\ln\!\left[\left(\frac{U}{N}\right)\!\left(\frac{A}{N}\right)\right] - 2k_B + \alpha = \frac{S}{N} - 2k_B,
+\]
+donc $\mu = -T\left(\partial S/\partial N\right)_{U,A} = -T\,\dfrac{S}{N} + 2k_BT$ -- un terme proportionnel à $T$, et non une simple constante.
+
+\textbf{Question 3.} Adiabatique : $\mathrm{d}U = -P\,\mathrm{d}A = -(Nk_BT/A)\,\mathrm{d}A$. Avec $\mathrm{d}U = Nk_B\,\mathrm{d}T$ : $\mathrm{d}T/T + \mathrm{d}A/A = 0$, donc $TA = \text{cste}$, soit $TA^{\gamma-1} = \text{cste}$ avec $\gamma = C_P/C_V = 2k_B/k_B = 2$.
+
+\textbf{Question 4.} En 3D, $\gamma = 5/3 < 2$ : l'exposant adiabatique $\gamma - 1$ vaut $1$ en 2D contre seulement $2/3$ en 3D. Comme $T \propto (\text{surface ou volume})^{-(\gamma-1)}$ le long d'une adiabatique, une même compression relative échauffe donc \emph{davantage} le gaz 2D que le gaz 3D : la température y est plus sensible aux variations de surface, car il y a moins de degrés de liberté pour absorber l'énergie mécanique reçue. Les électrons 2D ont par ailleurs une densité d'états constante en énergie (contrairement à la densité en $\sqrt{E}$ du cas 3D), d'où des lois thermodynamiques qualitativement différentes du gaz 3D — phénomène clé en matière condensée, accessible ici via le seul formalisme général de la relation fondamentale.
+\end{solution}
+\end{exo}
+
+\begin{exo}[Transition du second ordre : potentiel de Landau]{landau-transition-second-ordre}
+\keywords{Landau, transition de phase, second ordre, potentiel thermodynamique, superfluide, supraconducteur}
+
+Au voisinage de $T_c$, un système est décrit par un paramètre d'ordre $\psi$ (fraction superfluide ou gap supraconducteur) et l'enthalpie libre molaire
+\[
+g(T,\psi) = g_0(T) + a(T - T_c)\psi^2 + b\psi^4,
+\]
+avec $a, b > 0$ et $g_0$ indépendant de $\psi$.
+
+\begin{enumerate}
+\item À $T$ fixé, minimiser $g$ par rapport à $\psi$. Montrer que $\psi = 0$ pour $T > T_c$ et $\psi^2 = \dfrac{a(T_c - T)}{2b}$ pour $T < T_c$.
+\item Calculer la chaleur spécifique $c = -T\,\partial^2 g_0/\partial T^2$ côté normal ($\psi = 0$) et montrer qu'une discontinuité de $c$ apparaît à $T_c$ si $g_0$ est régulier (transition du second ordre).
+\item Interpréter $\psi$ pour un superfluide ($^4$He sous 2,17 K) ou un supraconducteur (sous $T_c$).
+\end{enumerate}
+
+\begin{indication}
+$\partial g/\partial\psi = 2a(T-T_c)\psi + 4b\psi^3$. Pour $T < T_c$, la solution $\psi = 0$ est un maximum local.
+\end{indication}
+
+\begin{solution}
+\textbf{Question 1.} $\partial g/\partial\psi = 2\psi[a(T-T_c) + 2b\psi^2]$. Pour $T > T_c$, le seul minimum est $\psi = 0$. Pour $T < T_c$, $\psi = 0$ est instable et le minimum est $\psi^2 = a(T_c-T)/(2b) > 0$ : brisure spontanée de symétrie.
+
+\textbf{Question 2.} Pour $T > T_c$, $g = g_0(T)$. Pour $T < T_c$, substituer $\psi^2$ et développer : le terme $-a^2(T_c-T)^2/(4b)$ s'ajoute à $g_0$, modifiant $\partial^2 g/\partial T^2$ à $T_c$ : $c$ peut sauter (second ordre) sans chaleur latente (continuité de $S$).
+
+\textbf{Question 3.} $\psi$ mesure la fraction superfluide ou l'amplitude du condensat de Cooper. Au-dessus de $T_c$, le comportement est normal ($\psi = 0$) ; en dessous, une phase cohérente macroscopique apparaît — modèle phénoménologique L2-compatible sans entrer dans la théorie BCS.
+\end{solution}
+\end{exo}
+
+\begin{exo}[Ferromagnétisme : susceptibilité de Curie-Weiss]{curie-weiss-ferromagnetisme}
+\keywords{Curie-Weiss, ferromagnétisme, susceptibilité, transition de phase, aimantation}
+
+Un métal ferromagnétique obéit, au-dessus de sa température de Curie $T_c$, à la loi de Curie-Weiss :
+\[
+\chi = \frac{C}{T - T_c}, \qquad M = \chi H,
+\]
+où $M$ est l'aimantation, $H$ le champ magnétique appliqué, $C$ une constante et $\chi$ la susceptibilité.
+
+\begin{enumerate}
+\item Montrer que $\chi \to +\infty$ quand $T \to T_c^+$ : signe d'une transition de phase.
+\item On admet que l'énergie magnétique molaire vaut $u = -\mu_0 M H/2$ à champ fixé (approximation linéaire). Exprimer la contribution magnétique à l'entropie molaire $s_M = -\partial u/\partial T|_H$.
+\item Au voisinage de $T_c$, pourquoi le modèle de Curie-Weiss est-il insuffisant ? Relier à l'exercice sur le potentiel de Landau.
+\end{enumerate}
+
+\begin{indication}
+$\chi$ diverge : la réponse à un champ infinitésimal devient infinie. Pour $s_M$, dériver $u = -\mu_0 \chi H^2/2$.
+\end{indication}
+
+\begin{solution}
+\textbf{Question 1.} Quand $T \to T_c^+$, le dénominateur $T - T_c \to 0^+$ : $\chi \to +\infty$. Un infinitésimal $H$ produit une aimantation macroscopique : transition paramagnétique $\to$ ferromagnétique.
+
+\textbf{Question 2.} $u = -\dfrac{\mu_0 H^2}{2}\dfrac{C}{T-T_c}$, donc
+\[
+s_M = -\left(\frac{\partial u}{\partial T}\right)_H = -\frac{\mu_0 H^2 C}{2(T-T_c)^2} < 0
+\]
+au-dessus de $T_c$ (contribution magnétique à l'entropie décroît quand $T$ approche $T_c$).
+
+\textbf{Question 3.} Curie-Weiss ne décrit que $T > T_c$ ; en dessous, $M(H)$ n'est plus linéaire. Landau avec $\psi = M$ donne une description unifiée au voisinage de $T_c$ (exposants critiques, second ordre).
+\end{solution}
+\end{exo}

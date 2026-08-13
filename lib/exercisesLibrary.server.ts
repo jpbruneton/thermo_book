@@ -1,5 +1,5 @@
 import "server-only";
-import { existsSync, readFileSync } from "node:fs";
+import { existsSync, readFileSync, readdirSync } from "node:fs";
 import { join } from "node:path";
 
 export interface ExerciseEntry {
@@ -23,8 +23,31 @@ export interface ExerciseEntry {
   solutionTex: string | null;
 }
 
-function exercisesFilePath(lang: "fr" | "en"): string {
-  return join(process.cwd(), "content", "tex", `exercises_${lang}.tex`);
+interface ExerciseSourceFile {
+  chapter: number;
+  path: string;
+}
+
+function exercisesDirectory(lang: "fr" | "en"): string {
+  return join(process.cwd(), "content", `exos_${lang}`);
+}
+
+/** Return chapter files in numeric order (exo_chp2 before exo_chp10). */
+function exerciseSourceFiles(lang: "fr" | "en"): ExerciseSourceFile[] {
+  const directory = exercisesDirectory(lang);
+  if (!existsSync(directory)) return [];
+
+  return readdirSync(directory)
+    .map((name) => {
+      const match = /^exo_chp(\d+)\.tex$/i.exec(name);
+      if (!match) return null;
+      return {
+        chapter: Number.parseInt(match[1], 10),
+        path: join(directory, name),
+      };
+    })
+    .filter((source): source is ExerciseSourceFile => source !== null)
+    .sort((a, b) => a.chapter - b.chapter);
 }
 
 /** Extract the content of a balanced brace group starting at openBraceIndex. */
@@ -84,7 +107,7 @@ function extractEnv(source: string, env: string, startFrom = 0): { content: stri
 }
 
 /** Parse one raw \begin{exo}...\end{exo} block. */
-function parseExoBlock(rawBlock: string, counter: number): ExerciseEntry {
+function parseExoBlock(rawBlock: string, counter: number, chapter: number): ExerciseEntry {
   const beginExo = "\\begin{exo}";
   const endExo = "\\end{exo}";
   const startIdx = rawBlock.indexOf(beginExo);
@@ -112,8 +135,9 @@ function parseExoBlock(rawBlock: string, counter: number): ExerciseEntry {
   const endIdx = rawBlock.lastIndexOf(endExo);
   const body = rawBlock.slice(cursor, endIdx !== -1 ? endIdx : undefined).trim();
 
-  const leconRaw = extractCmd(body, "lecon");
-  const lecon = leconRaw ? (parseInt(leconRaw, 10) || 0) : 0;
+  // The chapter filename is the source of truth. Existing \lecon metadata is
+  // still accepted in authored files, but is no longer required for grouping.
+  const lecon = chapter;
 
   const kwRaw = extractCmd(body, "keywords");
   const keywords = kwRaw ? kwRaw.split(",").map((k) => k.trim()).filter(Boolean) : [];
@@ -143,33 +167,34 @@ function parseExoBlock(rawBlock: string, counter: number): ExerciseEntry {
   return { number: counter, id, titleTex, lecon, keywords, enonceTex, seoReady, indicationTex, solutionTex };
 }
 
-/** Load and parse all exercises from the single-file bank. */
+/** Load and parse every chapter file from content/exos_<lang>/exo_chpN.tex. */
 export function loadExercises(lang: "fr" | "en"): ExerciseEntry[] {
-  const path = exercisesFilePath(lang);
-  if (!existsSync(path)) return [];
-  const source = readFileSync(path, "utf-8");
-
   const results: ExerciseEntry[] = [];
   const beginTag = "\\begin{exo}";
   const endTag = "\\end{exo}";
-  let cursor = 0;
   let counter = 1;
 
-  while (cursor < source.length) {
-    const bStart = source.indexOf(beginTag, cursor);
-    if (bStart === -1) break;
-    const eEnd = source.indexOf(endTag, bStart);
-    if (eEnd === -1) break;
-    const rawBlock = source.slice(bStart, eEnd + endTag.length);
-    results.push(parseExoBlock(rawBlock, counter));
-    counter++;
-    cursor = eEnd + endTag.length;
+  for (const sourceFile of exerciseSourceFiles(lang)) {
+    const source = readFileSync(sourceFile.path, "utf-8");
+    let cursor = 0;
+
+    while (cursor < source.length) {
+      const bStart = source.indexOf(beginTag, cursor);
+      if (bStart === -1) break;
+      const eEnd = source.indexOf(endTag, bStart);
+      if (eEnd === -1) break;
+      const rawBlock = source.slice(bStart, eEnd + endTag.length);
+      results.push(parseExoBlock(rawBlock, counter, sourceFile.chapter));
+      counter++;
+      cursor = eEnd + endTag.length;
+    }
   }
+
   return results;
 }
 
 export function hasExercises(lang: "fr" | "en"): boolean {
-  return existsSync(exercisesFilePath(lang)) && loadExercises(lang).length > 0;
+  return exerciseSourceFiles(lang).length > 0 && loadExercises(lang).length > 0;
 }
 
 /** Finds an exercise by its stable public identifier. */

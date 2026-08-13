@@ -1,0 +1,128 @@
+% Banque d'exercices — chapitre 10
+% Le chapitre est déterminé par le nom de ce fichier.
+
+\begin{exo}[Cycle de Stirling et régénérateur]{stirling-regenerateur}
+\keywords{machines thermiques, cycle de Stirling, régénérateur, rendement de Carnot, isotherme, isochore}
+
+Le cycle de Stirling idéal est composé de quatre étapes pour $n$ moles de gaz parfait entre une source chaude à $T_c$ et une source froide à $T_f$ ($T_c > T_f$), avec $V_1 < V_2$ :
+\begin{enumerate}[label=\arabic*.]
+  \item $A\to B$ : détente isotherme à $T_c$ de $V_1$ à $V_2$.
+  \item $B\to C$ : refroidissement isochore à $V_2$ de $T_c$ à $T_f$ (chaleur $Q_{BC}$ cédée au régénérateur).
+  \item $C\to D$ : compression isotherme à $T_f$ de $V_2$ à $V_1$.
+  \item $D\to A$ : réchauffement isochore à $V_1$ de $T_f$ à $T_c$ (chaleur reprise du régénérateur).
+\end{enumerate}
+
+\begin{enumerate}
+  \item Calculer $Q_{AB}$, $Q_{BC}$, $Q_{CD}$, $Q_{DA}$ et les travaux associés.
+  \item Montrer que $Q_{BC} + Q_{DA} = 0$ : le régénérateur restitue exactement la chaleur stockée.
+  \item En déduire le rendement $\eta$ du cycle. Comparer au rendement de Carnot.
+\end{enumerate}
+
+\begin{indication}
+Sur les isothermes, $\Delta U = 0$ donc $Q = -W$. Sur les isochores, $W = 0$ donc $Q = \Delta U = nC_v\Delta T$.
+\end{indication}
+
+\begin{solution}
+\textbf{1.}
+$$Q_{AB} = nRT_c\ln\frac{V_2}{V_1} > 0, \quad W_{AB} = -nRT_c\ln\frac{V_2}{V_1}.$$
+$$Q_{BC} = nC_v(T_f - T_c) < 0, \quad W_{BC} = 0.$$
+$$Q_{CD} = nRT_f\ln\frac{V_1}{V_2} < 0, \quad W_{CD} = -nRT_f\ln\frac{V_1}{V_2}.$$
+$$Q_{DA} = nC_v(T_c - T_f) > 0, \quad W_{DA} = 0.$$
+
+\textbf{2.} $Q_{BC} + Q_{DA} = nC_v(T_f - T_c) + nC_v(T_c - T_f) = 0$. Le régénérateur absorbe la chaleur lors de $B\to C$ et la restitue intégralement lors de $D\to A$.
+
+\textbf{3.} Chaleur totale absorbée de la source chaude : $Q_c = Q_{AB} = nRT_c\ln(V_2/V_1)$.
+Travail total produit :
+$$W_{total} = nR(T_c - T_f)\ln\frac{V_2}{V_1}.$$
+Rendement :
+$$\eta = \frac{|W_{total}|}{Q_c} = \frac{nR(T_c-T_f)\ln(V_2/V_1)}{nRT_c\ln(V_2/V_1)} = 1 - \frac{T_f}{T_c} = \eta_{\text{Carnot}}.$$
+Grâce au régénérateur, le cycle de Stirling atteint le rendement de Carnot — ce qui en fait l'un des cycles moteurs idéaux les plus élégants.
+\end{solution}
+
+\end{exo}
+
+\begin{exo}[Cycle de Carnot complet d'un gaz parfait]{carnot-cycle-complet}
+\keywords{cycle de Carnot, machine thermique, gaz parfait, rendement, isotherme, adiabatique}
+
+De l'air ($\gamma = 1{,}40$) parcourt le cycle de Carnot réversible ABCD entre une source chaude $T_c = 500$ K et une source froide $T_f = 300$ K. On donne $n = 1{,}0$ mol et, sur l'isotherme chaude BC, $V_B = 5{,}0$ L et $V_C = 17$ L. Les transformations AB et CD sont adiabatiques réversibles ; BC et DA sont isothermes réversibles.
+
+\begin{enumerate}
+\item Calculer $Q_{BC}$ (chaleur reçue de la source chaude) et $Q_{DA}$ (chaleur cédée à la source froide).
+\item En utilisant les adiabatiques, montrer que $V_D/V_A = V_C/V_B$ et calculer $V_A$ sachant que $V_D = 24$ L.
+\item Calculer le travail net $W$ par cycle et le rendement $\eta$. Comparer à $\eta_C = 1 - T_f/T_c$.
+\item Montrer que $\eta$ ne dépend que de $T_c$ et $T_f$, pas du gaz de travail.
+\end{enumerate}
+
+\begin{indication}
+Isotherme : $Q = nRT\ln(V_{\text{final}}/V_{\text{initial}})$ pour une expansion. Adiabatique : $TV^{\gamma-1} = \text{cste}$, d'où $V_A/V_D = V_C/V_B$.
+\end{indication}
+
+\begin{solution}
+\textbf{Question 1.} Expansion isotherme à $T_c$ ($B \to C$) : $Q_{BC} = nRT_c\ln(V_C/V_B) = 8{,}314\times500\times\ln(17/5) \approx +5{,}09$ kJ (chaleur absorbée). Compression isotherme à $T_f$ (de $D$ vers $A$) : $Q_{DA} = nRT_f\ln(V_A/V_D) < 0$ ; on calcule $V_A$ à la question 2.
+
+\textbf{Question 2.} Sur AB : $T_f V_A^{\gamma-1} = T_c V_B^{\gamma-1}$, soit $(V_A/V_B)^{\gamma-1} = T_c/T_f$. Sur CD : $T_c V_C^{\gamma-1} = T_f V_D^{\gamma-1}$, soit $(V_D/V_C)^{\gamma-1} = T_c/T_f$. Les deux membres de droite étant identiques, $V_A/V_B = V_D/V_C$, c'est-à-dire $V_A/V_D = V_B/V_C$ (attention à ne pas inverser ce rapport). Donc
+\[
+V_A = V_D\,\frac{V_B}{V_C} = 24\times\frac{5}{17} \approx 7{,}06\ \text{L},
+\]
+une valeur cohérente avec le sens de parcours du cycle : $V_A$ doit être compris entre $V_B = 5$ L (après la compression adiabatique $A\to B$, donc $V_A > V_B$) et $V_D = 24$ L (avant la compression isotherme $D\to A$, donc $V_A < V_D$). Alors $Q_{DA} = nRT_f\ln(V_A/V_D) = 8{,}314\times300\times\ln(5/17) \approx -3{,}05$ kJ.
+
+\textbf{Question 3.} Premier principe sur le cycle : le travail net \emph{fourni} par le gaz vaut $|W| = Q_{BC} - |Q_{DA}| \approx 5{,}09 - 3{,}05 = 2{,}04$ kJ. $\eta = |W|/Q_{BC} \approx 0{,}40 = 40\,\% = 1 - T_f/T_c$. \checkmark
+
+\textbf{Question 4.} Les chaleurs sur les isothermes valent $Q = nR T \ln r$ ; leur rapport $Q_{DA}/Q_{BC} = -T_f/T_c$ indépendamment de $r$, $n$ et $\gamma$. D'où $\eta = 1 + Q_{DA}/Q_{BC} = 1 - T_f/T_c$ : universalité du rendement de Carnot.
+\end{solution}
+\end{exo}
+
+\begin{exo}[Cycle de Rankine simplifié]{cycle-rankine}
+\keywords{Rankine, machine à vapeur, cycle ditherme, rendement, changement de phase}
+
+Un cycle de Rankine idéal pour la vapeur d'eau comprend : (1) compression liquide adiabatique $1\to2$ ; (2) chauffage isobare $2\to3$ jusqu'à la vaporisation complète ; (3) détente adiabatique réversible dans une turbine $3\to4$ ; (4) condensation isobare à $T_f$ $4\to1$.
+
+\begin{enumerate}
+\item Pourquoi la compression du liquide (étape $1\to2$) consomme-t-elle peu de travail comparé à la détente vapeur ($3\to4$) ?
+\item On donne $h_2 = 420$ kJ·kg$^{-1}$, $h_3 = 3200$ kJ·kg$^{-1}$, $h_4 = 2200$ kJ·kg$^{-1}$, $h_1 = 200$ kJ·kg$^{-1}$ (enthalpies massiques). Calculer le travail net $w = (h_3-h_4) - (h_2-h_1)$ et le rendement $\eta = w/(h_3-h_2)$.
+\item Comparer qualitativement $\eta$ au rendement de Carnot entre $T_c \approx 600$ K (vapeur) et $T_f \approx 300$ K.
+\end{enumerate}
+
+\begin{indication}
+Liquide incompressible : $w_{pompe} = v_l(P_2-P_1)$ très petit. Turbine : $w_T = h_3-h_4$.
+\end{indication}
+
+\begin{solution}
+\textbf{Question 1.} Le liquide a un volume spécifique $v_l \ll v_g$ : la pompe comprime un liquide quasi-incompressible, $w \approx v_l\Delta P$ est faible. La turbine détend de la vapeur à grand volume : $w_T = h_3-h_4$ est large.
+
+\textbf{Question 2.} $w = (3200-2200) - (420-200) = 1000 - 220 = 780$ kJ·kg$^{-1}$. $\eta = 780/(3200-420) = 780/2780 \approx 28\,\%$.
+
+\textbf{Question 3.} Carnot : $\eta_C = 1 - 300/600 = 50\,\%$. Rankine $\approx 28\,\%$ : inférieur car la détente adiabatique s'écarte de l'isotherme (brouillard diphasique en $4$), et la pompe/condensation dissipent de l'irréversibilité réelle — cycle réaliste des centrales à charbon/nucléaire.
+\end{solution}
+\end{exo}
+
+\begin{exo}[Équilibre stellaire et durée de vie]{equilibre-stellaire}
+\keywords{étoile, équilibre stellaire, Stefan-Boltzmann, pression de radiation, durée de vie, astrophysique}
+
+Une étoile de masse $M$, rayon $R$ et température centrale $T_c$ est modélisée grossièrement ainsi. La pression de radiation vaut $P_{rad} = \tfrac{1}{3}a T^4$ avec $a = 7{,}57\times10^{-16}$ J·m$^{-3}$·K$^{-4}$. La pression thermique du gaz vaut $P_{gas} = n k_B T$. On admet $P_{rad} \approx P_{gas}$ au centre pour une étoile massive.
+
+\begin{enumerate}
+\item Écrire la condition d'équilibre hydrostatique $\dfrac{\mathrm{d}P}{\mathrm{d}r} = -\rho \dfrac{GM(r)}{r^2}$ et son ordre de grandeur au centre ($P/R \sim \rho GM/R^2$).
+\item Le Soleil ($R = 7\times10^8$ m, $M = 2\times10^{30}$ kg, $T_c \approx 1{,}5\times10^7$ K) rayonne comme un corps noir de surface $T_s = 5800$ K. Calculer sa luminosité $L = 4\pi R^2 \sigma T_s^4$.
+\item La réserve d'énergie nucléaire est $\varepsilon \approx 0{,}007\,Mc^2$ (fraction convertie en énergie). Estimer la durée de vie $\tau \approx \varepsilon/L$ (temps si toute cette énergie partait au débit $L$).
+\item Pourquoi les étoiles très massives ($M \gg M_\odot$) vivent-elles moins longtemps malgré un réservoir plus grand ?
+\end{enumerate}
+
+\begin{indication}
+$\sigma = 5{,}67\times10^{-8}$ W·m$^{-2}$·K$^{-4}$. $L$ fortement sensible à $T_s$ ($T^4$). Massives : $L \propto M^{3{,}5}$ environ (loi empirique).
+\end{indication}
+
+\begin{solution}
+\textbf{Question 1.} L'équilibre hydrostatique oppose la gravité à la poussée thermique : $\mathrm{d}P/\mathrm{d}r \sim -GM\rho/r^2$. Au centre, $\Delta P/R \sim GM\rho/R^2$ : plus la pression centrale est haute, plus l'étoile résiste à la gravité.
+
+\textbf{Question 2.} $L = 4\pi R^2 \sigma T_s^4 = 4\pi (7\times10^8)^2 \times 5{,}67\times10^{-8} \times (5800)^4 \approx 3{,}8\times10^{26}$ W, proche de la constante solaire observée.
+
+\textbf{Question 3.} $\varepsilon \approx 0{,}007 \times 2\times10^{30} \times (3\times10^8)^2 \approx 1{,}3\times10^{45}$ J. Alors
+\[
+\tau \approx \frac{\varepsilon}{L} \approx \frac{1{,}3\times10^{45}}{3{,}9\times10^{26}} \approx 3{,}2\times10^{18}\ \text{s} \approx 1\times10^{11}\ \text{ans}.
+\]
+C'est environ dix fois trop long comparé à la durée de vie réellement observée du Soleil ($\sim 10^{10}$ ans) : l'estimation suppose implicitement que \emph{toute} la masse de l'étoile participe à la fusion, alors qu'en réalité seul le cœur -- là où $T$ et $\rho$ sont suffisants pour la fusion, soit grossièrement $10\,\%$ de la masse totale -- brûle de l'hydrogène pendant la séquence principale. En corrigeant par ce facteur, $\tau \approx 0{,}1\,\varepsilon/L \approx 3\times10^{17}$ s $\approx 10^{10}$ ans, cohérent avec l'âge de la séquence principale solaire.
+
+\textbf{Question 4.} $L \propto M^{3{,}5}$ : doubler la masse multiplie la luminosité par $\sim 11$, épuisant le combustible bien plus vite. Les géantes bleues vivent quelques millions d'années seulement.
+\end{solution}
+\end{exo}
