@@ -1248,8 +1248,8 @@ a.exercise-index-card-link:focus-visible {
 }
 
 .lesson-related-exercises {
-  width: min(calc(100% - 3rem), 800px);
-  margin: 3rem auto 0;
+  width: 100%;
+  margin: 3rem 0 0;
   padding: 1.4rem;
   border: 1px solid var(--accent-border-sm);
   border-radius: 8px;
@@ -1329,10 +1329,6 @@ a.exercise-index-card-link:focus-visible {
 
   .exercise-prev-next a:last-child {
     text-align: left;
-  }
-
-  .lesson-related-exercises {
-    width: calc(100% - 2rem);
   }
 
   .lesson-related-exercises ul {

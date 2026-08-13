@@ -363,23 +363,33 @@ function ChapterContentAndPrevNext({ theme, prev, next, relatedExercises }: Prop
       )}
 
       {lang === "fr" && relatedExercises.length > 0 && (
-        <aside className="lesson-related-exercises" aria-labelledby="lesson-exercises-title">
-          <p>Mettre ce cours en pratique</p>
-          <h2 id="lesson-exercises-title">Exercices corrigés associés</h2>
-          <ul>
-            {relatedExercises.map((exercise) => (
-              <li key={exercise.id}>
-                <Link href={sectionHref("fr", "exercises", exercise.id)}>
-                  <span>Exercice {exercise.number}</span>
-                  {exercise.title}
+        <div style={{ maxWidth: "1320px", margin: "0 auto", padding: "0 1.5rem" }}>
+          {/* Reuses the .lesson-web-layout grid so the box's left/right edges
+              align with the lesson text column instead of the full page width,
+              and never extends under the TOC column. */}
+          <div className="lesson-web-layout">
+            <div className="lesson-web-main">
+              <aside className="lesson-related-exercises" aria-labelledby="lesson-exercises-title">
+                <p>Mettre ce cours en pratique</p>
+                <h2 id="lesson-exercises-title">Exercices corrigés associés</h2>
+                <ul>
+                  {relatedExercises.map((exercise) => (
+                    <li key={exercise.id}>
+                      <Link href={sectionHref("fr", "exercises", exercise.id)}>
+                        <span>Exercice {exercise.number}</span>
+                        {exercise.title}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+                <Link className="lesson-related-exercises-all" href={sectionHref("fr", "exercises")}>
+                  Voir tous les exercices →
                 </Link>
-              </li>
-            ))}
-          </ul>
-          <Link className="lesson-related-exercises-all" href={sectionHref("fr", "exercises")}>
-            Voir tous les exercices →
-          </Link>
-        </aside>
+              </aside>
+            </div>
+            <div />
+          </div>
+        </div>
       )}
 
       <LessonNavRow
