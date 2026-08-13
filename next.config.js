@@ -60,6 +60,14 @@ const LOCALIZED_SECTION_SLUGS = {
 
 const nextConfig = {
   output: "standalone",
+  experimental: {
+    // Localized section rewrites can make an otherwise static exercise page run
+    // through a server function on Vercel. Keep the authored TeX bank available
+    // to that function as well as to the build-time prerenderer.
+    outputFileTracingIncludes: {
+      "*": ["./content/exos_fr/**/*.tex", "./content/exos_en/**/*.tex"],
+    },
+  },
   async redirects() {
     const out = [
       { source: "/blog", destination: "/", permanent: true },
