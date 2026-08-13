@@ -7,10 +7,16 @@
  * scripts inserted after the page has loaded (as happens in any React/Next.js app), so it never
  * appears here. This renders the same look directly as JSX instead.
  */
-export function DonateButton({ compact = false }: { compact?: boolean }) {
+import type { Lang } from "@/lib/i18n";
+
+export function DonateButton({ compact = false, lang }: { compact?: boolean; lang: Lang }) {
+  const href = lang === "fr"
+    ? "https://www.buymeacoffee.com/physics.lessons"
+    : "https://buymeacoffee.com/physics.lessons?l=en";
+
   return (
     <a
-      href="https://www.buymeacoffee.com/physics.lessons"
+      href={href}
       target="_blank"
       rel="noopener noreferrer nofollow"
       aria-label={compact ? "Buy me a coffee" : undefined}

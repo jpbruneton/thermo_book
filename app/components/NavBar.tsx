@@ -357,7 +357,7 @@ export function NavBar() {
 
             <div style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
               {/* Donate */}
-              <DonateButton compact />
+              <DonateButton compact lang={lang} />
 
               {/* Theme toggle */}
               <button
@@ -410,7 +410,7 @@ export function NavBar() {
 
           {/* Desktop theme toggle */}
           <div className="nav-desktop" style={{ alignItems: "center", gap: "0.75rem", flexShrink: 0 }}>
-            <DonateButton />
+            <DonateButton lang={lang} />
             <button
               onClick={toggleTheme}
               aria-label={theme === "dark" ? "Switch to light mode" : "Switch to dark mode"}
