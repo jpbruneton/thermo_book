@@ -4,6 +4,8 @@ import { loadExercises } from "@/lib/exercisesLibrary.server";
 import { getAllExercisesPdfHref } from "@/lib/exercisePdfDownloads.server";
 import { ExercisesClient } from "./ExercisesClient";
 
+const SHOW_ALL_EXERCISES_PDF_DOWNLOAD = false;
+
 export interface ExerciseCard {
   number: number;
   id: string;
@@ -50,8 +52,8 @@ export default function ExercisesPage() {
     <ExercisesClient
       cardsFr={cardsFr}
       cardsEn={cardsEn}
-      allPdfHrefFr={getAllExercisesPdfHref("fr")}
-      allPdfHrefEn={getAllExercisesPdfHref("en")}
+      allPdfHrefFr={SHOW_ALL_EXERCISES_PDF_DOWNLOAD ? getAllExercisesPdfHref("fr") : null}
+      allPdfHrefEn={SHOW_ALL_EXERCISES_PDF_DOWNLOAD ? getAllExercisesPdfHref("en") : null}
     />
   );
 }
