@@ -54,7 +54,7 @@
   /* Glow */
   --glow-text: rgba(176, 58, 26, 0.18);
   --glow-text-wide: rgba(176, 58, 26, 0.06);
-  --glow-radial: rgba(176, 58, 26, 0.05);
+  --glow-radial: rgba(176, 58, 26, 0.025);
 }
 
 /* ─── Dark mode overrides — warm charcoal & ember ─── */
@@ -617,8 +617,8 @@ body::before {
 
 /* Definition / lemma / important — align with other theorem-like cards */
 .prose-content .latex-block-definition {
-  border-color: #5b7a8c66;
-  background: #5b7a8c1a;
+  border-color: #4c6a7d80;
+  background: #4c6a7d26;
 }
 
 .prose-content .latex-block-definition strong,
@@ -718,8 +718,8 @@ body::before {
 .prose-content .latex-block-remark,
 .prose-content .latex-block-exemple,
 .prose-content .latex-block-example {
-  border-color: #94a3b84d;
-  background: #94a3b814;
+  border-color: #9ca3af66;
+  background: #9ca3af1f;
 }
 
 .prose-content .latex-block-plusloin {
@@ -1255,6 +1255,7 @@ a.exercise-index-card-link:focus-visible {
   border: 1px solid var(--accent-border-sm);
   border-radius: 8px;
   background: var(--accent-bg-xs);
+  text-align: left;
 }
 
 .lesson-related-exercises > p {
@@ -1306,6 +1307,7 @@ a.exercise-index-card-link:focus-visible {
 .lesson-related-exercises-all {
   display: inline-block;
   margin-top: 1rem;
+  text-align: left;
   font-family: var(--font-inter);
   font-size: 0.78rem;
   font-weight: 600;
