@@ -63,7 +63,6 @@ export function ExercisesClient({ cardsFr, cardsEn, allPdfHrefFr, allPdfHrefEn }
   const groups = useMemo(() => {
     const map = new Map<number, ExerciseCard[]>();
     for (const c of cards) {
-      if (c.lecon < 3) continue;
       const list = map.get(c.lecon);
       if (list) list.push(c);
       else map.set(c.lecon, [c]);
