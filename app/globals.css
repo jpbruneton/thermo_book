@@ -1040,6 +1040,10 @@ a.exercise-index-card-link:focus-visible {
   .home-main-title {
     margin-top: 0 !important;
   }
+
+  .home-hero-description {
+    text-align: left !important;
+  }
 }
 
 /* ─── Mobile: hide the "01, 02, ..." lesson numbers in the leçons list ─── */
