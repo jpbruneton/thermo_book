@@ -258,6 +258,8 @@ export const translations = {
       aboutProjectOutlineLabel: "Planned content:",
       aboutProjectOutlineBody:
         "A progressive course in thermodynamics, from the founding principles to more advanced developments.",
+      aboutProjectStatusBody:
+        "Current status: lessons 1 to 3 finalized in all languages.",
       aboutBookBody2:
         "The text develops thermodynamics from first principles. Proofs are given in full whenever they clarify the physics, and many worked examples complement the theoretical exposition.",
       translationWarning:
@@ -422,6 +424,8 @@ export const translations = {
       aboutProjectOutlineLabel: "Contenu prévu :",
       aboutProjectOutlineBody:
         "Un cours progressif de thermodynamique, des principes fondateurs jusqu'aux développements plus avancés.",
+      aboutProjectStatusBody:
+        "Statut actuel : leçons 1 à 3 finalisées dans toutes les langues.",
       aboutBookBody2:
         "Le texte développe la thermodynamique à partir des premiers principes. Les preuves sont données en entier lorsqu'elles éclairent la physique, et de nombreux exemples travaillés complètent l'exposition théorique.",
       translationWarning:
@@ -598,6 +602,8 @@ const partialTranslations: Record<Exclude<Lang, "fr" | "en">, DeepPartial<Transl
       aboutProjectOutlineLabel: "Geplante Inhalte:",
       aboutProjectOutlineBody:
         "Ein aufbauender Kurs zur Thermodynamik, von den Grundprinzipien bis zu fortgeschritteneren Entwicklungen.",
+      aboutProjectStatusBody:
+        "Aktueller Stand: Lektionen 1 bis 3 in allen Sprachen fertiggestellt.",
       aboutBookBody2:
         "Der Text entwickelt die Thermodynamik ausgehend von den ersten Prinzipien. Beweise werden vollständig angegeben, wann immer sie die Physik verdeutlichen, und zahlreiche durchgerechnete Beispiele ergänzen die theoretische Darstellung.",
       translationWarning:
@@ -696,6 +702,8 @@ const partialTranslations: Record<Exclude<Lang, "fr" | "en">, DeepPartial<Transl
       aboutProjectOutlineLabel: "Contenido previsto:",
       aboutProjectOutlineBody:
         "Un curso progresivo de termodinámica, desde los principios fundacionales hasta desarrollos más avanzados.",
+      aboutProjectStatusBody:
+        "Estado actual: lecciones 1 a 3 finalizadas en todos los idiomas.",
       aboutBookBody2:
         "El texto desarrolla la termodinámica desde los primeros principios. Las demostraciones se presentan en su totalidad cuando aclaran la física, y numerosos ejemplos resueltos complementan la exposición teórica.",
       translationWarning:
@@ -794,6 +802,8 @@ const partialTranslations: Record<Exclude<Lang, "fr" | "en">, DeepPartial<Transl
       aboutProjectOutlineLabel: "Conteúdo previsto:",
       aboutProjectOutlineBody:
         "Um curso progressivo de termodinâmica, dos princípios fundadores a desenvolvimentos mais avançados.",
+      aboutProjectStatusBody:
+        "Estado atual: lições 1 a 3 finalizadas em todos os idiomas.",
       aboutBookBody2:
         "O texto desenvolve a termodinâmica a partir dos primeiros princípios. As provas são apresentadas integralmente sempre que esclarecem a física, e numerosos exemplos resolvidos complementam a exposição teórica.",
       translationWarning:
@@ -892,6 +902,8 @@ const partialTranslations: Record<Exclude<Lang, "fr" | "en">, DeepPartial<Transl
       aboutProjectOutlineLabel: "Contenuti previsti:",
       aboutProjectOutlineBody:
         "Un corso progressivo di termodinamica, dai principi fondanti agli sviluppi più avanzati.",
+      aboutProjectStatusBody:
+        "Stato attuale: lezioni da 1 a 3 completate in tutte le lingue.",
       aboutBookBody2:
         "Il testo sviluppa la termodinamica a partire dai primi principi. Le dimostrazioni sono fornite per intero ogniqualvolta chiariscono la fisica, e numerosi esempi svolti completano l'esposizione teorica.",
       translationWarning:
@@ -990,6 +1002,8 @@ const partialTranslations: Record<Exclude<Lang, "fr" | "en">, DeepPartial<Transl
       aboutProjectOutlineLabel: "Planowana zawartość:",
       aboutProjectOutlineBody:
         "Stopniowy kurs termodynamiki, od podstawowych zasad po bardziej zaawansowane zagadnienia.",
+      aboutProjectStatusBody:
+        "Aktualny stan: lekcje 1–3 ukończone we wszystkich językach.",
       aboutBookBody2:
         "Tekst rozwija termodynamikę od podstawowych zasad. Dowody podane są w pełni, gdy tylko wyjaśniają fizykę, a liczne rozwiązane przykłady uzupełniają wykład teoretyczny.",
       translationWarning:
@@ -1088,6 +1102,8 @@ const partialTranslations: Record<Exclude<Lang, "fr" | "en">, DeepPartial<Transl
       aboutProjectOutlineLabel: "Запланированное содержание:",
       aboutProjectOutlineBody:
         "Последовательный курс термодинамики — от основополагающих принципов до более сложных разделов.",
+      aboutProjectStatusBody:
+        "Текущий статус: уроки 1–3 завершены на всех языках.",
       aboutBookBody2:
         "Текст излагает термодинамику, начиная с первых принципов. Доказательства приводятся полностью всякий раз, когда они проясняют физику, а многочисленные разобранные примеры дополняют теоретическое изложение.",
       translationWarning:
@@ -1185,6 +1201,7 @@ const partialTranslations: Record<Exclude<Lang, "fr" | "en">, DeepPartial<Transl
         "本网站和本书仍在建设中，课程和练习将陆续发布。本书由作者以法语撰写；其他语言版本的内容均通过自动化（人工智能）翻译生成。",
       aboutProjectOutlineLabel: "计划内容：",
       aboutProjectOutlineBody: "一门循序渐进的热力学课程，从基本原理到更深入的进阶内容。",
+      aboutProjectStatusBody: "当前状态：第1至3课已在所有语言中完成。",
       aboutBookBody2:
         "正文从基本原理出发展开热力学论述。凡有助于澄清物理内涵之处均给出完整证明，并辅以大量已解答的例题来补充理论阐述。",
       translationWarning:
@@ -1282,6 +1299,8 @@ const partialTranslations: Record<Exclude<Lang, "fr" | "en">, DeepPartial<Transl
       aboutProjectOutlineLabel: "予定されている内容：",
       aboutProjectOutlineBody:
         "基礎原理から、より高度な発展的内容までを扱う、段階的な熱力学のコースです。",
+      aboutProjectStatusBody:
+        "現在の状況：レッスン1〜3はすべての言語で完成しています。",
       aboutBookBody2:
         "本文は第一原理から熱力学を展開します。物理的な理解を助ける場合には証明を省略せずに示し、多数の解答付き例題が理論的な説明を補完します。",
       translationWarning:
@@ -1378,6 +1397,7 @@ const partialTranslations: Record<Exclude<Lang, "fr" | "en">, DeepPartial<Transl
         "이 사이트와 책은 현재 개발 중입니다. 강의와 연습문제는 점차적으로 추가될 예정입니다. 이 책은 저자가 프랑스어로 집필했으며, 다른 언어로 제공되는 콘텐츠는 자동(AI) 번역을 통해 제작됩니다.",
       aboutProjectOutlineLabel: "예정된 콘텐츠:",
       aboutProjectOutlineBody: "기초 원리에서부터 더 심화된 내용까지 다루는 단계적인 열역학 강의입니다.",
+      aboutProjectStatusBody: "현재 상태: 1강부터 3강까지 모든 언어로 완성되었습니다.",
       aboutBookBody2:
         "본문은 제1원리에서 출발하여 열역학을 전개합니다. 물리적 이해에 도움이 될 때는 증명을 온전히 제시하며, 다수의 풀이 예제가 이론적 설명을 보완합니다.",
       translationWarning:
@@ -1475,6 +1495,8 @@ const partialTranslations: Record<Exclude<Lang, "fr" | "en">, DeepPartial<Transl
       aboutProjectOutlineLabel: "नियोजित सामग्री:",
       aboutProjectOutlineBody:
         "मूल सिद्धांतों से लेकर अधिक उन्नत विकासों तक, ऊष्मागतिकी का एक क्रमिक पाठ्यक्रम।",
+      aboutProjectStatusBody:
+        "वर्तमान स्थिति: पाठ 1 से 3 सभी भाषाओं में पूर्ण हो चुके हैं।",
       aboutBookBody2:
         "यह पाठ मूल सिद्धांतों से ऊष्मागतिकी को विकसित करता है। जहाँ भी भौतिकी को स्पष्ट करने के लिए आवश्यक हो, प्रमाण पूर्ण रूप से दिए गए हैं, और कई हल किए गए उदाहरण सैद्धांतिक विवरण को पूरक करते हैं।",
       translationWarning:
@@ -1572,6 +1594,8 @@ const partialTranslations: Record<Exclude<Lang, "fr" | "en">, DeepPartial<Transl
       aboutProjectOutlineLabel: "Nội dung dự kiến:",
       aboutProjectOutlineBody:
         "Một khóa học nhiệt động lực học theo trình tự, từ các nguyên lý nền tảng đến những phát triển nâng cao hơn.",
+      aboutProjectStatusBody:
+        "Tình trạng hiện tại: các bài 1 đến 3 đã hoàn thiện ở tất cả các ngôn ngữ.",
       aboutBookBody2:
         "Văn bản trình bày nhiệt động lực học xuất phát từ các nguyên lý đầu tiên. Các chứng minh được trình bày đầy đủ bất cứ khi nào chúng làm rõ vật lý, và nhiều ví dụ có lời giải bổ sung cho phần trình bày lý thuyết.",
       translationWarning:
@@ -1670,6 +1694,8 @@ const partialTranslations: Record<Exclude<Lang, "fr" | "en">, DeepPartial<Transl
       aboutProjectOutlineLabel: "المحتوى المخطط له:",
       aboutProjectOutlineBody:
         "مقرر تدريجي في الديناميكا الحرارية، من المبادئ التأسيسية إلى التطورات الأكثر تقدماً.",
+      aboutProjectStatusBody:
+        "الوضع الحالي: الدروس من 1 إلى 3 مكتملة بجميع اللغات.",
       aboutBookBody2:
         "يطوّر النص الديناميكا الحرارية انطلاقاً من المبادئ الأولى. تُقدَّم البراهين كاملة كلما أوضحت الجانب الفيزيائي، وتُكمّل العديد من الأمثلة المحلولة العرض النظري.",
       translationWarning:
@@ -1767,6 +1793,8 @@ const partialTranslations: Record<Exclude<Lang, "fr" | "en">, DeepPartial<Transl
       aboutProjectOutlineLabel: "Konten yang direncanakan:",
       aboutProjectOutlineBody:
         "Kuliah termodinamika yang disusun bertahap, dari prinsip-prinsip dasar hingga perkembangan yang lebih lanjut.",
+      aboutProjectStatusBody:
+        "Status saat ini: pelajaran 1 sampai 3 telah selesai dalam semua bahasa.",
       aboutBookBody2:
         "Buku ini mengembangkan termodinamika dari prinsip-prinsip pertama. Pembuktian diberikan secara lengkap setiap kali dapat memperjelas fisikanya, dan banyak contoh dengan penyelesaian melengkapi uraian teoretis.",
       translationWarning:
@@ -1865,6 +1893,8 @@ const partialTranslations: Record<Exclude<Lang, "fr" | "en">, DeepPartial<Transl
       aboutProjectOutlineLabel: "Planlanan içerik:",
       aboutProjectOutlineBody:
         "Temel ilkelerden daha ileri gelişmelere uzanan aşamalı bir termodinamik dersi.",
+      aboutProjectStatusBody:
+        "Güncel durum: 1'den 3'e kadar olan dersler tüm dillerde tamamlandı.",
       aboutBookBody2:
         "Metin, termodinamiği temel ilkelerden başlayarak geliştirir. Fiziği açıklığa kavuşturduğu durumlarda kanıtlar eksiksiz verilir; çok sayıda çözümlü örnek de kuramsal anlatımı tamamlar.",
       translationWarning:

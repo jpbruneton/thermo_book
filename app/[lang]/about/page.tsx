@@ -75,9 +75,12 @@ export default function AboutPage() {
         <div style={sectionStyle}>
           <h2 style={h2Style}>{at.aboutProjectTitle}</h2>
           <p style={{ ...bodyStyle, textAlign: "justify" }}>{at.aboutProjectLead}</p>
-          <p style={{ ...bodyStyle, marginBottom: 0, textAlign: "justify" }}>
+          <p style={{ ...bodyStyle, textAlign: "justify" }}>
             <strong style={{ fontWeight: 700 }}>{at.aboutProjectOutlineLabel}</strong>{" "}
             {at.aboutProjectOutlineBody}
+          </p>
+          <p style={{ ...bodyStyle, marginBottom: 0, textAlign: "justify" }}>
+            {at.aboutProjectStatusBody}
           </p>
         </div>
 

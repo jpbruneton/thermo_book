@@ -369,9 +369,8 @@ function ChapterContentAndPrevNext({ theme, prev, next, relatedExercises }: Prop
               and never extends under the TOC column. */}
           <div className="lesson-web-layout">
             <div className="lesson-web-main">
-              <aside className="lesson-related-exercises" aria-labelledby="lesson-exercises-title">
+              <aside className="lesson-related-exercises" aria-label="Mettre ce cours en pratique">
                 <p>Mettre ce cours en pratique</p>
-                <h2 id="lesson-exercises-title">Exercices corrigés associés</h2>
                 <ul>
                   {relatedExercises.map((exercise) => (
                     <li key={exercise.id}>
