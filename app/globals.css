@@ -689,15 +689,15 @@ body::before {
 
 .prose-content .latex-block-propriete,
 .prose-content .latex-block-property {
-  border-color: #8a7a5c66;
-  background: #8a7a5c1a;
+  border-color: #c9a53e66;
+  background: #c9a53e1a;
 }
 
 .prose-content .latex-block-propriete strong,
 .prose-content .latex-block-property strong,
 .prose-content .latex-block-propriete .latex-inline-blue-strong,
 .prose-content .latex-block-property .latex-inline-blue-strong {
-  color: #6b5d43;
+  color: #8a6d1f;
   font-weight: 700;
 }
 
