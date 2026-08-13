@@ -3,7 +3,7 @@ import { existsSync, readFileSync } from "node:fs";
 import { join } from "node:path";
 import type { LessonReference } from "@/lib/chapters";
 import { processLatex } from "@/lib/latex";
-import type { Lang } from "@/lib/i18n";
+import { isLang, type Lang } from "@/lib/i18n";
 
 function stripComment(line: string): string {
   const protectedPercent = "__ESCAPED_PERCENT__";
@@ -382,7 +382,7 @@ function latexToPlainTextForAlt(value: string): string {
     .trim();
 }
 
-function extractFigureSourceHtml(figureBlock: string, isEnglish: boolean): string {
+function extractFigureSourceHtml(figureBlock: string, lang: Lang): string {
   const beginTag = "\\begin{figuresource}";
   const endTag = "\\end{figuresource}";
   const start = figureBlock.indexOf(beginTag);
@@ -391,7 +391,7 @@ function extractFigureSourceHtml(figureBlock: string, isEnglish: boolean): strin
   if (end === -1) return "";
   const inner = figureBlock.slice(start + beginTag.length, end).trim();
   const urlMatch = inner.match(/\\url\{([^}]*)\}/);
-  const prefix = isEnglish ? "Figure taken from " : "Figure tirée de ";
+  const prefix = blockLabelsByLang[lang].figureTakenFrom;
   if (urlMatch) {
     const rawUrl = urlMatch[1];
     const safeHref = escapeHtmlAttribute(rawUrl);
@@ -403,7 +403,8 @@ function extractFigureSourceHtml(figureBlock: string, isEnglish: boolean): strin
   return `<br /><span class="latex-figure-source"><small><em>${prefix}</em>${plain}</small></span>`;
 }
 
-function extractFigureHtml(figureBlock: string, figureNumber: number, isEnglish: boolean): string {
+function extractFigureHtml(figureBlock: string, figureNumber: number, lang: Lang): string {
+  const labels = blockLabelsByLang[lang];
   const includeGraphicsMatch = figureBlock.match(/\\includegraphics(?:\[[^\]]*\])?\{([^}]+)\}/);
   if (!includeGraphicsMatch) return "";
 
@@ -424,13 +425,13 @@ function extractFigureHtml(figureBlock: string, figureNumber: number, isEnglish:
   const altText = escapeHtmlAttribute(altTextRaw);
 
   const captionWithNumber = caption
-    ? `Figure ${figureNumber}. ${caption}`
-    : `Figure ${figureNumber}`;
-  const sourceHtml = extractFigureSourceHtml(figureBlock, isEnglish);
+    ? `${labels.figure} ${figureNumber}. ${caption}`
+    : `${labels.figure} ${figureNumber}`;
+  const sourceHtml = extractFigureSourceHtml(figureBlock, lang);
   const figCaption = `<figcaption>${captionWithNumber}${sourceHtml}</figcaption>`;
   const isPdfFigure = imagePath.toLowerCase().endsWith(".pdf");
   if (isPdfFigure) {
-    return `<figure class="latex-figure"><object class="latex-figure-pdf" data="${imagePath}" type="application/pdf"><a class="latex-figure-pdf-link" href="${imagePath}" target="_blank" rel="noreferrer">Ouvrir la figure PDF</a></object>${figCaption}</figure>`;
+    return `<figure class="latex-figure"><object class="latex-figure-pdf" data="${imagePath}" type="application/pdf"><a class="latex-figure-pdf-link" href="${imagePath}" target="_blank" rel="noreferrer">${labels.openFigurePdf}</a></object>${figCaption}</figure>`;
   }
 
   return `<figure class="latex-figure"><a class="latex-figure-zoom-link" href="${imagePath}" target="_blank" rel="noreferrer"><img src="${imagePath}" alt="${altText}" loading="lazy" /></a>${figCaption}</figure>`;
@@ -824,7 +825,163 @@ interface CitationNumberMaps {
   fr: Record<string, number>;
 }
 
-type ContentLanguage = "en" | "fr";
+type ContentLanguage = Lang;
+
+/** Per-language wording for theorem-like block headings, hint/proof labels, and figure chrome. */
+interface BlockLabels {
+  definition: string;
+  theorem: string;
+  proposition: string;
+  lemma: string;
+  property: string;
+  corollary: string;
+  remark: string;
+  toGoFurther: string;
+  example: string;
+  summary: string;
+  important: string;
+  keyPoint: string;
+  exercise: string;
+  hint: string;
+  indication: string;
+  solution: string;
+  proof: string;
+  question: string;
+  figureTakenFrom: string;
+  figure: string;
+  openFigurePdf: string;
+}
+
+const blockLabelsByLang: Record<Lang, BlockLabels> = {
+  fr: {
+    definition: "Définition", theorem: "Théorème", proposition: "Proposition", lemma: "Lemme",
+    property: "Propriété", corollary: "Corollaire", remark: "Remarque", toGoFurther: "Pour aller plus loin",
+    example: "Exemple", summary: "Résumé", important: "Important", keyPoint: "À retenir",
+    exercise: "Exercice", hint: "Indice", indication: "Indication", solution: "Solution",
+    proof: "Démonstration", question: "Question", figureTakenFrom: "Figure tirée de ", figure: "Figure",
+    openFigurePdf: "Ouvrir la figure PDF",
+  },
+  en: {
+    definition: "Definition", theorem: "Theorem", proposition: "Proposition", lemma: "Lemma",
+    property: "Property", corollary: "Corollary", remark: "Remark", toGoFurther: "To go further",
+    example: "Example", summary: "Summary", important: "Important", keyPoint: "Key point",
+    exercise: "Exercise", hint: "Hint", indication: "Hint", solution: "Solution",
+    proof: "Proof", question: "Question", figureTakenFrom: "Figure taken from ", figure: "Figure",
+    openFigurePdf: "Open the PDF figure",
+  },
+  de: {
+    definition: "Definition", theorem: "Satz", proposition: "Proposition", lemma: "Lemma",
+    property: "Eigenschaft", corollary: "Korollar", remark: "Bemerkung", toGoFurther: "Vertiefung",
+    example: "Beispiel", summary: "Zusammenfassung", important: "Wichtig", keyPoint: "Wichtig zu merken",
+    exercise: "Übung", hint: "Hinweis", indication: "Hinweis", solution: "Lösung",
+    proof: "Beweis", question: "Frage", figureTakenFrom: "Abbildung entnommen aus ", figure: "Abbildung",
+    openFigurePdf: "PDF-Abbildung öffnen",
+  },
+  es: {
+    definition: "Definición", theorem: "Teorema", proposition: "Proposición", lemma: "Lema",
+    property: "Propiedad", corollary: "Corolario", remark: "Observación", toGoFurther: "Para ir más lejos",
+    example: "Ejemplo", summary: "Resumen", important: "Importante", keyPoint: "Para recordar",
+    exercise: "Ejercicio", hint: "Pista", indication: "Pista", solution: "Solución",
+    proof: "Demostración", question: "Pregunta", figureTakenFrom: "Figura tomada de ", figure: "Figura",
+    openFigurePdf: "Abrir la figura en PDF",
+  },
+  pt: {
+    definition: "Definição", theorem: "Teorema", proposition: "Proposição", lemma: "Lema",
+    property: "Propriedade", corollary: "Corolário", remark: "Observação", toGoFurther: "Para ir mais longe",
+    example: "Exemplo", summary: "Resumo", important: "Importante", keyPoint: "Para lembrar",
+    exercise: "Exercício", hint: "Dica", indication: "Dica", solution: "Solução",
+    proof: "Demonstração", question: "Questão", figureTakenFrom: "Figura retirada de ", figure: "Figura",
+    openFigurePdf: "Abrir a figura em PDF",
+  },
+  it: {
+    definition: "Definizione", theorem: "Teorema", proposition: "Proposizione", lemma: "Lemma",
+    property: "Proprietà", corollary: "Corollario", remark: "Osservazione", toGoFurther: "Per approfondire",
+    example: "Esempio", summary: "Riepilogo", important: "Importante", keyPoint: "Da ricordare",
+    exercise: "Esercizio", hint: "Suggerimento", indication: "Suggerimento", solution: "Soluzione",
+    proof: "Dimostrazione", question: "Domanda", figureTakenFrom: "Figura tratta da ", figure: "Figura",
+    openFigurePdf: "Apri la figura PDF",
+  },
+  pl: {
+    definition: "Definicja", theorem: "Twierdzenie", proposition: "Propozycja", lemma: "Lemat",
+    property: "Własność", corollary: "Wniosek", remark: "Uwaga", toGoFurther: "Aby pójść dalej",
+    example: "Przykład", summary: "Podsumowanie", important: "Ważne", keyPoint: "Do zapamiętania",
+    exercise: "Ćwiczenie", hint: "Wskazówka", indication: "Wskazówka", solution: "Rozwiązanie",
+    proof: "Dowód", question: "Pytanie", figureTakenFrom: "Rysunek zaczerpnięty z ", figure: "Rysunek",
+    openFigurePdf: "Otwórz rysunek PDF",
+  },
+  ru: {
+    definition: "Определение", theorem: "Теорема", proposition: "Утверждение", lemma: "Лемма",
+    property: "Свойство", corollary: "Следствие", remark: "Замечание", toGoFurther: "Углубление темы",
+    example: "Пример", summary: "Резюме", important: "Важно", keyPoint: "Запомнить",
+    exercise: "Упражнение", hint: "Подсказка", indication: "Подсказка", solution: "Решение",
+    proof: "Доказательство", question: "Вопрос", figureTakenFrom: "Рисунок взят из ", figure: "Рисунок",
+    openFigurePdf: "Открыть рисунок в PDF",
+  },
+  zh: {
+    definition: "定义", theorem: "定理", proposition: "命题", lemma: "引理",
+    property: "性质", corollary: "推论", remark: "注记", toGoFurther: "深入探讨",
+    example: "例", summary: "小结", important: "重点", keyPoint: "要点",
+    exercise: "练习", hint: "提示", indication: "提示", solution: "解答",
+    proof: "证明", question: "问题", figureTakenFrom: "图片来自 ", figure: "图",
+    openFigurePdf: "打开PDF图片",
+  },
+  ja: {
+    definition: "定義", theorem: "定理", proposition: "命題", lemma: "補題",
+    property: "性質", corollary: "系", remark: "注記", toGoFurther: "さらに深く",
+    example: "例", summary: "まとめ", important: "重要", keyPoint: "要点",
+    exercise: "演習", hint: "ヒント", indication: "ヒント", solution: "解答",
+    proof: "証明", question: "問題", figureTakenFrom: "図の出典: ", figure: "図",
+    openFigurePdf: "PDF図を開く",
+  },
+  ko: {
+    definition: "정의", theorem: "정리", proposition: "명제", lemma: "보조정리",
+    property: "성질", corollary: "따름정리", remark: "비고", toGoFurther: "더 알아보기",
+    example: "예제", summary: "요약", important: "중요", keyPoint: "핵심 정리",
+    exercise: "연습문제", hint: "힌트", indication: "힌트", solution: "풀이",
+    proof: "증명", question: "질문", figureTakenFrom: "그림 출처: ", figure: "그림",
+    openFigurePdf: "PDF 그림 열기",
+  },
+  hi: {
+    definition: "परिभाषा", theorem: "प्रमेय", proposition: "प्रस्ताव", lemma: "उपप्रमेय",
+    property: "गुणधर्म", corollary: "उपफल", remark: "टिप्पणी", toGoFurther: "आगे जानने के लिए",
+    example: "उदाहरण", summary: "सारांश", important: "महत्वपूर्ण", keyPoint: "याद रखने योग्य",
+    exercise: "अभ्यास", hint: "संकेत", indication: "संकेत", solution: "हल",
+    proof: "प्रमाण", question: "प्रश्न", figureTakenFrom: "चित्र स्रोत: ", figure: "चित्र",
+    openFigurePdf: "PDF चित्र खोलें",
+  },
+  vi: {
+    definition: "Định nghĩa", theorem: "Định lý", proposition: "Mệnh đề", lemma: "Bổ đề",
+    property: "Tính chất", corollary: "Hệ quả", remark: "Nhận xét", toGoFurther: "Tìm hiểu thêm",
+    example: "Ví dụ", summary: "Tóm tắt", important: "Quan trọng", keyPoint: "Cần ghi nhớ",
+    exercise: "Bài tập", hint: "Gợi ý", indication: "Gợi ý", solution: "Lời giải",
+    proof: "Chứng minh", question: "Câu hỏi", figureTakenFrom: "Hình lấy từ ", figure: "Hình",
+    openFigurePdf: "Mở hình PDF",
+  },
+  ar: {
+    definition: "تعريف", theorem: "مبرهنة", proposition: "قضية", lemma: "لِمّا",
+    property: "خاصية", corollary: "نتيجة", remark: "ملاحظة", toGoFurther: "للتعمق أكثر",
+    example: "مثال", summary: "ملخص", important: "مهم", keyPoint: "للتذكر",
+    exercise: "تمرين", hint: "تلميح", indication: "تلميح", solution: "الحل",
+    proof: "برهان", question: "سؤال", figureTakenFrom: "الشكل مأخوذ من ", figure: "الشكل",
+    openFigurePdf: "فتح الشكل بصيغة PDF",
+  },
+  id: {
+    definition: "Definisi", theorem: "Teorema", proposition: "Proposisi", lemma: "Lemma",
+    property: "Sifat", corollary: "Korolari", remark: "Catatan", toGoFurther: "Untuk memperdalam",
+    example: "Contoh", summary: "Ringkasan", important: "Penting", keyPoint: "Perlu diingat",
+    exercise: "Latihan", hint: "Petunjuk", indication: "Petunjuk", solution: "Solusi",
+    proof: "Bukti", question: "Pertanyaan", figureTakenFrom: "Gambar diambil dari ", figure: "Gambar",
+    openFigurePdf: "Buka gambar PDF",
+  },
+  tr: {
+    definition: "Tanım", theorem: "Teorem", proposition: "Önerme", lemma: "Yardımcı Teorem",
+    property: "Özellik", corollary: "Sonuç", remark: "Not", toGoFurther: "Daha ileri gitmek için",
+    example: "Örnek", summary: "Özet", important: "Önemli", keyPoint: "Akılda tutulması gereken",
+    exercise: "Alıştırma", hint: "İpucu", indication: "İpucu", solution: "Çözüm",
+    proof: "İspat", question: "Soru", figureTakenFrom: "Şekil kaynağı: ", figure: "Şekil",
+    openFigurePdf: "PDF şeklini aç",
+  },
+};
 
 function buildCitationNumberMaps(references: LessonReference[]): CitationNumberMaps {
   const maps: CitationNumberMaps = { en: {}, fr: {} };
@@ -909,7 +1066,7 @@ function peelTrailingEnvironmentBlock(
   return { rest, inner };
 }
 
-function transformQuestionsInner(body: string, isEnglish: boolean): string {
+function transformQuestionsInner(body: string, lang: Lang): string {
   const trimmed = body.trim();
   if (!/\\question\b/.test(trimmed)) {
     return `\n\n${trimmed}\n\n`;
@@ -919,7 +1076,7 @@ function transformQuestionsInner(body: string, isEnglish: boolean): string {
     .slice(1)
     .map((c) => c.trim())
     .filter((c) => c.length > 0);
-  const qWord = isEnglish ? "Question" : "Question";
+  const qWord = blockLabelsByLang[lang].question;
   let out = `\n\n<div class="latex-exercise-questions">`;
   for (let i = 0; i < chunks.length; i += 1) {
     let chunk = chunks[i];
@@ -957,7 +1114,7 @@ function transformQuestionsInner(body: string, isEnglish: boolean): string {
   return out;
 }
 
-function transformQuestionsEnvironments(input: string, isEnglish: boolean): string {
+function transformQuestionsEnvironments(input: string, lang: Lang): string {
   const beginTag = "\\begin{questions}";
   const endTag = "\\end{questions}";
   let result = "";
@@ -996,7 +1153,7 @@ function transformQuestionsEnvironments(input: string, isEnglish: boolean): stri
       break;
     }
     const inner = input.slice(start + beginTag.length, closedAt);
-    result += transformQuestionsInner(inner, isEnglish);
+    result += transformQuestionsInner(inner, lang);
     cursor = closedAt + endTag.length;
   }
   return result;
@@ -1011,7 +1168,8 @@ function normalizeLatexBlocks(
   let figureRenderIndex = 0;
   let equationRenderIndex = 0;
   const references = collectReferenceMap(result);
-  const isEnglish = contentLanguage === "en";
+  const lang: Lang = contentLanguage;
+  const labels = blockLabelsByLang[lang];
 
   // Be tolerant to over-escaped LaTeX sequences from copy/paste paths.
   result = result.replace(/\\\\([A-Za-z]+)/g, "\\$1");
@@ -1025,7 +1183,7 @@ function normalizeLatexBlocks(
   // Render LaTeX figures as HTML figures, instead of showing raw environment tags.
   result = result.replace(/\\begin\{figure\*?\}[\s\S]*?\\end\{figure\*?\}/g, (block) => {
     figureRenderIndex += 1;
-    return `\n\n${extractFigureHtml(block, figureRenderIndex, isEnglish)}\n\n`;
+    return `\n\n${extractFigureHtml(block, figureRenderIndex, lang)}\n\n`;
   });
 
   // Ignore mdframed wrappers while preserving their inner content.
@@ -1037,13 +1195,8 @@ function normalizeLatexBlocks(
   result = stripLatexCommandsWithSimpleArg(result, "theme");
 
   // Support command-style theorem blocks such as \proposition{...}.
-  result = replaceCommandBlock(result, "proposition", "latex-block-proposition", "Proposition");
-  result = replaceCommandBlock(
-    result,
-    "coro",
-    "latex-block-corollary",
-    isEnglish ? "Corollary" : "Corollaire"
-  );
+  result = replaceCommandBlock(result, "proposition", "latex-block-proposition", labels.proposition);
+  result = replaceCommandBlock(result, "coro", "latex-block-corollary", labels.corollary);
 
   // Render section-like commands as headings in document order.
   result = replaceSectionCommands(result);
@@ -1051,14 +1204,14 @@ function normalizeLatexBlocks(
   // Render proof environments as collapsible details blocks.
   result = result.replace(/\\begin\{proof\}(?:\[([^\]]+)\])?/g, (_m, label: string) => {
     const suffix = label ? ` (${cleanLatexInline(label)})` : "";
-    return `\n\n<details class="latex-proof"><summary class="latex-proof-summary"><em>${isEnglish ? "Proof" : "Démonstration"}${suffix}.</em></summary><div class="latex-proof-body">`;
+    return `\n\n<details class="latex-proof"><summary class="latex-proof-summary"><em>${labels.proof}${suffix}.</em></summary><div class="latex-proof-body">`;
   });
   result = result.replace(
     /\\end\{proof\}/g,
     ` <span class="latex-proof-qed" aria-hidden="true">□</span></div></details>\n\n`
   );
 
-  result = transformQuestionsEnvironments(result, isEnglish);
+  result = transformQuestionsEnvironments(result, lang);
 
   // Un seul compteur / style « léger » pour exercice, exercise et exo.
   result = result.replace(/\\begin\{exercice\}/g, "\\begin{exo}");
@@ -1071,26 +1224,26 @@ function normalizeLatexBlocks(
 
   // Render theorem-like environments as styled blocks.
   const blockKinds: Array<{ env: string; title: string; collapsible?: boolean }> = [
-    { env: "definition", title: "Definition" },
-    { env: "theorem", title: isEnglish ? "Theorem" : "Théorème" },
-    { env: "proposition", title: "Proposition" },
-    { env: "lemma", title: "Lemma" },
-    { env: "propriete", title: isEnglish ? "Property" : "Propriété" },
-    { env: "property", title: isEnglish ? "Property" : "Propriété" },
-    { env: "corollaire", title: isEnglish ? "Corollary" : "Corollaire" },
-    { env: "corollary", title: isEnglish ? "Corollary" : "Corollaire" },
-    { env: "remark", title: isEnglish ? "Remark" : "Remarque" },
-    { env: "plusloin", title: isEnglish ? "To go further" : "Pour aller plus loin" },
-    { env: "exemple", title: isEnglish ? "Example" : "Exemple" },
-    { env: "example", title: "Example" },
-    { env: "resume", title: isEnglish ? "Summary" : "Résumé" },
-    { env: "important", title: "Important" },
-    { env: "aretenir", title: isEnglish ? "Key point" : "À retenir" },
-    { env: "exo", title: isEnglish ? "Exercise" : "Exercice" },
-    { env: "indice", title: isEnglish ? "Hint" : "Indice", collapsible: true },
-    { env: "indication", title: isEnglish ? "Hint" : "Indication", collapsible: true },
-    { env: "hint", title: isEnglish ? "Hint" : "Indice", collapsible: true },
-    { env: "solution", title: isEnglish ? "Solution" : "Solution", collapsible: true },
+    { env: "definition", title: labels.definition },
+    { env: "theorem", title: labels.theorem },
+    { env: "proposition", title: labels.proposition },
+    { env: "lemma", title: labels.lemma },
+    { env: "propriete", title: labels.property },
+    { env: "property", title: labels.property },
+    { env: "corollaire", title: labels.corollary },
+    { env: "corollary", title: labels.corollary },
+    { env: "remark", title: labels.remark },
+    { env: "plusloin", title: labels.toGoFurther },
+    { env: "exemple", title: labels.example },
+    { env: "example", title: labels.example },
+    { env: "resume", title: labels.summary },
+    { env: "important", title: labels.important },
+    { env: "aretenir", title: labels.keyPoint },
+    { env: "exo", title: labels.exercise },
+    { env: "indice", title: labels.hint, collapsible: true },
+    { env: "indication", title: labels.indication, collapsible: true },
+    { env: "hint", title: labels.hint, collapsible: true },
+    { env: "solution", title: labels.solution, collapsible: true },
   ];
   const blockCounters: Record<string, number> = {
     definition: 0,
@@ -1130,7 +1283,7 @@ function normalizeLatexBlocks(
         numberedTitle = `${blockKind.title} ${blockCounters[blockKind.env]}`;
       }
       if (blockKind.env === "plusloin") {
-        const label = isEnglish ? "To go further" : "Pour aller plus loin";
+        const label = labels.toGoFurther;
         const topicHtml = displayLabel
           ? `<strong class="latex-plusloin-topic"> (${cleanLatexInline(displayLabel)})</strong>`
           : "";
@@ -1578,6 +1731,13 @@ export function hasLessonWebContent(frTexFile: string, lang: Lang): boolean {
   }
 }
 
+/** Extracts the language code from a lesson tex path (content/tex/chpN_<lang>/...), defaulting to "en". */
+function detectLangFromTexFile(texFile: string): Lang {
+  const match = texFile.match(/_([a-z]{2})\//);
+  const code = match?.[1];
+  return code && isLang(code) ? code : "en";
+}
+
 export function getLessonWebContent(
   texFile: string,
   paragraphCount: number,
@@ -1589,10 +1749,7 @@ export function getLessonWebContent(
   try {
     const source = readFileSync(texPath, "utf-8");
     const citationMaps = buildCitationNumberMaps(references);
-    // Block labels ("Theorem", "Proof", ...) only have French/English wording (see
-    // ContentLanguage below); every language other than fr uses the English set —
-    // less jarring mixed into non-French prose than French labels would be.
-    const contentLanguage: ContentLanguage = /_fr\//.test(texFile) ? "fr" : "en";
+    const contentLanguage: ContentLanguage = detectLangFromTexFile(texFile);
     const paragraphs = parseTexParagraphs(source, citationMaps, contentLanguage);
     const limitedParagraphs = paragraphCount > 0 ? paragraphs.slice(0, paragraphCount) : paragraphs;
     if (limitedParagraphs.length === 0) return "";
@@ -1609,12 +1766,11 @@ export function exerciseTitleToPlainHtml(texTitle: string): string {
 
 export function getTexWebHtmlFromSource(
   source: string,
-  contentLanguage: "en" | "fr",
+  contentLanguage: Lang,
   references: LessonReference[]
 ): string {
-  const lang: ContentLanguage = contentLanguage === "en" ? "en" : "fr";
   const citationMaps = buildCitationNumberMaps(references);
-  const paragraphs = parseTexParagraphs(source, citationMaps, lang);
+  const paragraphs = parseTexParagraphs(source, citationMaps, contentLanguage);
   if (paragraphs.length === 0) return "";
   return paragraphsToHtml(paragraphs);
 }

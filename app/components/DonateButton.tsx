@@ -7,21 +7,25 @@
  * scripts inserted after the page has loaded (as happens in any React/Next.js app), so it never
  * appears here. This renders the same look directly as JSX instead.
  */
-export function DonateButton() {
+export function DonateButton({ compact = false }: { compact?: boolean }) {
   return (
     <a
       href="https://www.buymeacoffee.com/physics.lessons"
       target="_blank"
       rel="noopener noreferrer nofollow"
+      aria-label={compact ? "Buy me a coffee" : undefined}
       style={{
         display: "inline-flex",
         alignItems: "center",
+        justifyContent: "center",
         gap: "0.4rem",
         background: "#FFDD00",
         color: "#000000",
         border: "1px solid #000000",
         borderRadius: "8px",
-        padding: "0.4rem 0.9rem",
+        width: compact ? "34px" : undefined,
+        height: compact ? "34px" : undefined,
+        padding: compact ? 0 : "0.4rem 0.9rem",
         fontFamily: "'Cookie', cursive",
         fontSize: "1.15rem",
         lineHeight: 1,
@@ -31,7 +35,7 @@ export function DonateButton() {
       }}
     >
       <span aria-hidden="true">☕</span>
-      Buy me a coffee
+      {!compact && "Buy me a coffee"}
     </a>
   );
 }

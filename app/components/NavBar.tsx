@@ -62,12 +62,14 @@ function MoreLanguagesMenu({
         type="button"
         onClick={() => setOpen((o) => !o)}
         aria-expanded={open}
+        aria-label={small ? moreLabel : undefined}
         style={{
           background: "transparent",
           color: "var(--text-secondary)",
           border: "1px solid var(--border)",
           borderRadius: "4px",
-          padding: small ? "0.45rem 0.75rem" : "0.35rem 0.65rem",
+          padding: small ? "0.45rem 0" : "0.35rem 0.65rem",
+          width: small ? "42px" : undefined,
           cursor: "pointer",
           fontFamily: "var(--font-inter)",
           fontSize: small ? "0.8rem" : "0.75rem",
@@ -76,10 +78,13 @@ function MoreLanguagesMenu({
           whiteSpace: "nowrap",
           display: "flex",
           alignItems: "center",
+          justifyContent: "center",
           gap: "0.3rem",
+          lineHeight: 1,
         }}
       >
-        {moreLabel} <span style={{ fontSize: "0.65em" }}>{open ? "▲" : "▼"}</span>
+        {small ? "+" : moreLabel}
+        {!small && <span style={{ fontSize: "0.65em" }}>{open ? "▲" : "▼"}</span>}
       </button>
 
       {open && (
@@ -223,6 +228,7 @@ export function NavBar() {
             background: lang === l ? "var(--amber)" : "transparent",
             color: lang === l ? (theme === "dark" ? "#0a0b0f" : "#ffffff") : "var(--text-secondary)",
             border: "none",
+            width: small ? "42px" : undefined,
             padding: small ? "0.45rem 0.75rem" : "0.35rem 0.65rem",
             cursor: "pointer",
             letterSpacing: "0.02em",
@@ -351,7 +357,7 @@ export function NavBar() {
 
             <div style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
               {/* Donate */}
-              <DonateButton />
+              <DonateButton compact />
 
               {/* Theme toggle */}
               <button

@@ -194,15 +194,14 @@ export const themes: Theme[] = [
     titleFr: "Notions fondamentales",
     titleEn: "Fundamental Concepts",
     descriptionFr:
-      "Équilibre, principe zéro, parois, variables et fonctions d'état, transformations quasi-statiques.",
+      "Équilibre, parois, variables et fonctions d'état, transformations thermodynamique.",
     descriptionEn:
-      "Equilibrium, the zeroth law, walls, state variables and functions, and quasi-static transformations.",
+      "Equilibrium, walls, state variables and functions, and thermodynamic transformations.",
     readingTime: "17 min",
     topicsFr: [
-      "Équilibre",
-      "Principe zéro",
       "Système thermodynamique",
       "Parois",
+      "Équilibre",
       "Variables d'état",
       "Fonctions d'état",
       "Transformations quasi-statiques",
@@ -211,10 +210,9 @@ export const themes: Theme[] = [
       "Intensivité",
     ],
     topicsEn: [
-      "Equilibrium",
-      "Zeroth law",
       "Thermodynamic system",
       "Walls",
+      "Equilibrium",
       "State variables",
       "State functions",
       "Quasi-static transformations",

@@ -20,6 +20,19 @@ interface QuestionState {
   activeChoice: number | null;
 }
 
+/** Renders the lightweight underscore notation used in quiz copy as real subscripts. */
+function QuizText({ text }: { text: string }) {
+  const parts = text.split(/(_[0-9A-Za-zÀ-ÖØ-öø-ÿ]+)/g);
+
+  return (
+    <>
+      {parts.map((part, index) =>
+        part.startsWith("_") ? <sub key={index}>{part.slice(1)}</sub> : part
+      )}
+    </>
+  );
+}
+
 export function QuizRunner({ lecon, titleFr, titleEn, questions }: Props) {
   const { lang } = useLang();
   const [index, setIndex] = useState(0);
@@ -218,7 +231,7 @@ export function QuizRunner({ lecon, titleFr, titleEn, questions }: Props) {
                     {ok ? "✓" : "✗"}
                   </span>
                   <span style={{ fontFamily: "var(--font-crimson)", fontSize: "0.95rem", color: "var(--text-heading)" }}>
-                    {q.question}
+                    <QuizText text={q.question} />
                   </span>
                 </div>
               );
@@ -307,7 +320,7 @@ export function QuizRunner({ lecon, titleFr, titleEn, questions }: Props) {
               marginBottom: "1.5rem",
             }}
           >
-            {q.question}
+            <QuizText text={q.question} />
           </p>
 
           <div style={{ display: "flex", flexDirection: "column", gap: "0.65rem" }}>
@@ -361,7 +374,7 @@ export function QuizRunner({ lecon, titleFr, titleEn, questions }: Props) {
                     >
                       {q.choices[0] === "Vrai" ? (ci === 0 ? "V" : "F") : String.fromCharCode(65 + ci)}
                     </span>
-                    <span>{choice}</span>
+                    <span><QuizText text={choice} /></span>
                   </button>
                   {isActive && (
                     <p
@@ -374,7 +387,7 @@ export function QuizRunner({ lecon, titleFr, titleEn, questions }: Props) {
                         lineHeight: 1.5,
                       }}
                     >
-                      {q.explanations[ci]}
+                      <QuizText text={q.explanations[ci]} />
                     </p>
                   )}
                 </div>

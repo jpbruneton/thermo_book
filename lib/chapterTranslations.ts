@@ -59,12 +59,11 @@ export const chapterTranslations: Record<Exclude<Lang, "fr" | "en">, ThemeTransl
     "notions-fondamentales": {
       title: "Grundlegende Begriffe",
       description:
-        "Gleichgewicht, nullter Hauptsatz, Wände, Zustandsgrößen und -funktionen, quasistatische Zustandsänderungen.",
+        "Gleichgewicht, Wände, Zustandsgrößen und -funktionen, thermodynamische Zustandsänderungen.",
       topics: [
-        "Gleichgewicht",
-        "Nullter Hauptsatz",
         "Thermodynamisches System",
         "Wände",
+        "Gleichgewicht",
         "Zustandsgrößen",
         "Zustandsfunktionen",
         "Quasistatische Zustandsänderungen",
@@ -243,12 +242,11 @@ export const chapterTranslations: Record<Exclude<Lang, "fr" | "en">, ThemeTransl
     },
     "notions-fondamentales": {
       title: "Nociones fundamentales",
-      description: "Equilibrio, principio cero, paredes, variables y funciones de estado, transformaciones cuasiestáticas.",
+      description: "Equilibrio, paredes, variables y funciones de estado, transformaciones termodinámicas.",
       topics: [
-        "Equilibrio",
-        "Principio cero",
         "Sistema termodinámico",
         "Paredes",
+        "Equilibrio",
         "Variables de estado",
         "Funciones de estado",
         "Transformaciones cuasiestáticas",
@@ -420,12 +418,11 @@ export const chapterTranslations: Record<Exclude<Lang, "fr" | "en">, ThemeTransl
     },
     "notions-fondamentales": {
       title: "Noções fundamentais",
-      description: "Equilíbrio, princípio zero, paredes, variáveis e funções de estado, transformações quase-estáticas.",
+      description: "Equilíbrio, paredes, variáveis e funções de estado, transformações termodinâmicas.",
       topics: [
-        "Equilíbrio",
-        "Princípio zero",
         "Sistema termodinâmico",
         "Paredes",
+        "Equilíbrio",
         "Variáveis de estado",
         "Funções de estado",
         "Transformações quase-estáticas",
@@ -597,12 +594,11 @@ export const chapterTranslations: Record<Exclude<Lang, "fr" | "en">, ThemeTransl
     },
     "notions-fondamentales": {
       title: "Nozioni fondamentali",
-      description: "Equilibrio, principio zero, pareti, variabili e funzioni di stato, trasformazioni quasi-statiche.",
+      description: "Equilibrio, pareti, variabili e funzioni di stato, trasformazioni termodinamiche.",
       topics: [
-        "Equilibrio",
-        "Principio zero",
         "Sistema termodinamico",
         "Pareti",
+        "Equilibrio",
         "Variabili di stato",
         "Funzioni di stato",
         "Trasformazioni quasi-statiche",
@@ -774,12 +770,11 @@ export const chapterTranslations: Record<Exclude<Lang, "fr" | "en">, ThemeTransl
     },
     "notions-fondamentales": {
       title: "Pojęcia podstawowe",
-      description: "Równowaga, zasada zerowa, ścianki, zmienne i funkcje stanu, przemiany quasi-statyczne.",
+      description: "Równowaga, ścianki, zmienne i funkcje stanu, przemiany termodynamiczne.",
       topics: [
-        "Równowaga",
-        "Zasada zerowa",
         "Układ termodynamiczny",
         "Ścianki",
+        "Równowaga",
         "Zmienne stanu",
         "Funkcje stanu",
         "Przemiany quasi-statyczne",
@@ -951,12 +946,11 @@ export const chapterTranslations: Record<Exclude<Lang, "fr" | "en">, ThemeTransl
     },
     "notions-fondamentales": {
       title: "Основные понятия",
-      description: "Равновесие, нулевое начало, стенки, переменные и функции состояния, квазистатические процессы.",
+      description: "Равновесие, стенки, переменные и функции состояния, термодинамические процессы.",
       topics: [
-        "Равновесие",
-        "Нулевое начало",
         "Термодинамическая система",
         "Стенки",
+        "Равновесие",
         "Переменные состояния",
         "Функции состояния",
         "Квазистатические процессы",
@@ -1104,8 +1098,8 @@ export const chapterTranslations: Record<Exclude<Lang, "fr" | "en">, ThemeTransl
     },
     "notions-fondamentales": {
       title: "基本概念",
-      description: "平衡态、第零定律、壁、状态变量与状态函数、准静态过程。",
-      topics: ["平衡态", "第零定律", "热力学系统", "壁", "状态变量", "状态函数", "准静态过程", "热库", "广延性", "强度性"],
+      description: "平衡态、壁、状态变量与状态函数、热力学过程。",
+      topics: ["热力学系统", "壁", "平衡态", "状态变量", "状态函数", "准静态过程", "热库", "广延性", "强度性"],
     },
     "premier-principe": {
       title: "能量守恒：热力学第一定律",
@@ -1218,8 +1212,8 @@ export const chapterTranslations: Record<Exclude<Lang, "fr" | "en">, ThemeTransl
     },
     "notions-fondamentales": {
       title: "基礎概念",
-      description: "平衡、熱力学第零法則、壁、状態変数と状態関数、準静的過程。",
-      topics: ["平衡", "熱力学第零法則", "熱力学系", "壁", "状態変数", "状態関数", "準静的過程", "熱浴", "示量性", "示強性"],
+      description: "平衡、壁、状態変数と状態関数、熱力学的過程。",
+      topics: ["熱力学系", "壁", "平衡", "状態変数", "状態関数", "準静的過程", "熱浴", "示量性", "示強性"],
     },
     "premier-principe": {
       title: "エネルギー保存：熱力学第一法則",
@@ -1332,8 +1326,8 @@ export const chapterTranslations: Record<Exclude<Lang, "fr" | "en">, ThemeTransl
     },
     "notions-fondamentales": {
       title: "기본 개념",
-      description: "평형, 열역학 제0법칙, 벽, 상태변수와 상태함수, 준정적 과정.",
-      topics: ["평형", "열역학 제0법칙", "열역학계", "벽", "상태변수", "상태함수", "준정적 과정", "열원", "시량성", "시강성"],
+      description: "평형, 벽, 상태변수와 상태함수, 열역학적 과정.",
+      topics: ["열역학계", "벽", "평형", "상태변수", "상태함수", "준정적 과정", "열원", "시량성", "시강성"],
     },
     "premier-principe": {
       title: "에너지 보존: 열역학 제1법칙",
@@ -1455,12 +1449,11 @@ export const chapterTranslations: Record<Exclude<Lang, "fr" | "en">, ThemeTransl
     },
     "notions-fondamentales": {
       title: "मूल अवधारणाएँ",
-      description: "साम्यावस्था, शून्यवाँ नियम, दीवारें, अवस्था चर एवं फलन, अर्ध-स्थैतिक प्रक्रियाएँ।",
+      description: "साम्यावस्था, दीवारें, अवस्था चर एवं फलन, ऊष्मागतिक प्रक्रियाएँ।",
       topics: [
-        "साम्यावस्था",
-        "शून्यवाँ नियम",
         "ऊष्मागतिक निकाय",
         "दीवारें",
+        "साम्यावस्था",
         "अवस्था चर",
         "अवस्था फलन",
         "अर्ध-स्थैतिक प्रक्रियाएँ",
@@ -1610,12 +1603,11 @@ export const chapterTranslations: Record<Exclude<Lang, "fr" | "en">, ThemeTransl
     },
     "notions-fondamentales": {
       title: "Các khái niệm cơ bản",
-      description: "Cân bằng, định luật số không, vách ngăn, biến số và hàm trạng thái, quá trình tựa tĩnh.",
+      description: "Cân bằng, vách ngăn, biến số và hàm trạng thái, quá trình nhiệt động lực học.",
       topics: [
-        "Cân bằng",
-        "Định luật số không",
         "Hệ nhiệt động",
         "Vách ngăn",
+        "Cân bằng",
         "Biến trạng thái",
         "Hàm trạng thái",
         "Quá trình tựa tĩnh",
@@ -1763,12 +1755,11 @@ export const chapterTranslations: Record<Exclude<Lang, "fr" | "en">, ThemeTransl
     },
     "notions-fondamentales": {
       title: "المفاهيم الأساسية",
-      description: "التوازن، المبدأ الصفري، الجدران، متغيرات ودوال الحالة، التحولات شبه الساكنة.",
+      description: "التوازن، الجدران، متغيرات ودوال الحالة، التحولات الديناميكية الحرارية.",
       topics: [
-        "التوازن",
-        "المبدأ الصفري",
         "النظام الحراري الديناميكي",
         "الجدران",
+        "التوازن",
         "متغيرات الحالة",
         "دوال الحالة",
         "التحولات شبه الساكنة",
@@ -1919,12 +1910,11 @@ export const chapterTranslations: Record<Exclude<Lang, "fr" | "en">, ThemeTransl
     "notions-fondamentales": {
       title: "Konsep Dasar",
       description:
-        "Kesetimbangan, hukum nol, dinding, variabel dan fungsi keadaan, serta transformasi kuasistatik.",
+        "Kesetimbangan, dinding, variabel dan fungsi keadaan, serta transformasi termodinamika.",
       topics: [
-        "Kesetimbangan",
-        "Hukum nol",
         "Sistem termodinamika",
         "Dinding",
+        "Kesetimbangan",
         "Variabel keadaan",
         "Fungsi keadaan",
         "Transformasi kuasistatik",
@@ -2103,12 +2093,11 @@ export const chapterTranslations: Record<Exclude<Lang, "fr" | "en">, ThemeTransl
     },
     "notions-fondamentales": {
       title: "Temel Kavramlar",
-      description: "Denge, sıfırıncı yasa, duvarlar, hâl değişkenleri ve fonksiyonları, yarı-statik dönüşümler.",
+      description: "Denge, duvarlar, hâl değişkenleri ve fonksiyonları, termodinamik dönüşümler.",
       topics: [
-        "Denge",
-        "Sıfırıncı yasa",
         "Termodinamik sistem",
         "Duvarlar",
+        "Denge",
         "Hâl değişkenleri",
         "Hâl fonksiyonları",
         "Yarı-statik dönüşümler",
