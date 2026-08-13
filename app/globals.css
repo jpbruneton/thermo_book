@@ -650,13 +650,12 @@ body::before {
 }
 
 .prose-content .latex-block-aretenir {
-  border-color: #ef444466;
-  background: #ef44441a;
+  border-color: #ef44444d;
+  background: #ef444412;
 }
 
 .prose-content .latex-block-aretenir .latex-block-heading {
-  background: #fee2e2;
-  border-bottom: 1px solid #ef444433;
+  background: transparent;
 }
 
 .prose-content .latex-block-aretenir strong,
