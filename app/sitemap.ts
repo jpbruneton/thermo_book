@@ -1,11 +1,11 @@
 import { MetadataRoute } from "next";
 import { getWebThemes, getThemeUrlSlug } from "@/lib/chapters";
 import { getSiteUrl } from "@/lib/siteUrl";
-import { hasExercises, loadExercises } from "@/lib/exercisesLibrary.server";
+import { getExerciseById, getExerciseUrlSlug, hasExercises, loadExercises } from "@/lib/exercisesLibrary.server";
 import { hasLessonWebContent } from "@/lib/chapterContent.server";
 import { getAllExercisesPdfHref, getExerciseThemePdfLinks } from "@/lib/exercisePdfDownloads.server";
 import { getQuizLessons } from "@/lib/quizzes";
-import { sectionHref, SUPPORTED_LANGS, TRANSLATED_SECTION_LANGS, type Lang } from "@/lib/i18n";
+import { sectionHref, SUPPORTED_LANGS, type Lang } from "@/lib/i18n";
 
 const SITE_URL = getSiteUrl();
 
@@ -45,7 +45,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     })),
   ];
 
-  const englishExercisesAvailable = hasExercises("en");
   const webThemes = getWebThemes();
 
   const sectionsConfig: Array<{
@@ -64,8 +63,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
       section: "exercises",
       priority: 0.75,
       changeFrequency: "weekly",
-      langs: TRANSLATED_SECTION_LANGS,
-      includeLang: (lang) => lang === "fr" || englishExercisesAvailable,
+      langs: SUPPORTED_LANGS,
+      includeLang: (lang) => hasExercises(lang),
     },
   ];
 
@@ -127,16 +126,31 @@ export default function sitemap(): MetadataRoute.Sitemap {
     }));
   });
 
-  // Stable, intent-specific landing pages for every French worked exercise.
-  const exerciseDetailRoutes: MetadataRoute.Sitemap = loadExercises("fr")
-    .filter((exercise) => exercise.seoReady)
-    .map((exercise) => ({
-      url: `${SITE_URL}${sectionHref("fr", "exercises", exercise.id)}`,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.72,
-      alternates: { languages: { fr: `${SITE_URL}${sectionHref("fr", "exercises", exercise.id)}` } },
-    }));
+  // Stable, intent-specific landing pages for every approved worked exercise,
+  // with one localized URL for each language that contains the same exercise id.
+  const exerciseDetailRoutes: MetadataRoute.Sitemap = SUPPORTED_LANGS.flatMap((lang) =>
+    loadExercises(lang)
+      .filter((exercise) => exercise.seoReady)
+      .map((exercise) => {
+        const urlsByLang: Partial<Record<Lang, string>> = {};
+        for (const availableLang of SUPPORTED_LANGS) {
+          const candidate = getExerciseById(availableLang, exercise.id);
+          if (!candidate?.seoReady) continue;
+          urlsByLang[availableLang] = `${SITE_URL}${sectionHref(
+            availableLang,
+            "exercises",
+            getExerciseUrlSlug(availableLang, candidate)
+          )}`;
+        }
+        return {
+          url: `${SITE_URL}${sectionHref(lang, "exercises", getExerciseUrlSlug(lang, exercise))}`,
+          lastModified: new Date(),
+          changeFrequency: "monthly" as const,
+          priority: 0.72,
+          alternates: hreflangFor(urlsByLang),
+        };
+      })
+  );
 
   // Exercise PDF downloads: the merged all-themes booklet plus any per-theme
   // PDF that has actually been built (checked on disk), fr and en.

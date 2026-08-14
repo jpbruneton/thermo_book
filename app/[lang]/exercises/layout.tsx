@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
-import { bookMeta, bookMetaDisplayTitle } from "@/lib/chapters";
+import { bookMeta } from "@/lib/chapters";
 import { absoluteUrl } from "@/lib/siteUrl";
-import { sectionHref, type Lang } from "@/lib/i18n";
+import { sectionHref, SUPPORTED_LANGS, type Lang } from "@/lib/i18n";
 import { hasExercises } from "@/lib/exercisesLibrary.server";
+import { getExerciseTranslations } from "@/lib/exerciseTranslations";
 
 export async function generateMetadata({
   params,
@@ -10,17 +11,18 @@ export async function generateMetadata({
   params: { lang: Lang };
 }): Promise<Metadata> {
   const { lang } = params;
-  const isFr = lang === "fr";
-  const title = isFr ? "Exercices" : "Exercises";
-  const description = isFr
-    ? "Banque de 63 exercices de thermodynamique avec énoncés, indications et solutions, classés par leçon et par notion."
-    : `Practice problems and exercises for ${bookMetaDisplayTitle()}.`;
+  const t = getExerciseTranslations(lang);
+  const title = t.hubTitle;
+  const description = t.hubDescription;
   const url = absoluteUrl(sectionHref(lang, "exercises"));
   const languages: Record<string, string> = {};
-  if (hasExercises("fr")) languages.fr = absoluteUrl(sectionHref("fr", "exercises"));
-  if (hasExercises("en")) languages.en = absoluteUrl(sectionHref("en", "exercises"));
+  for (const availableLang of SUPPORTED_LANGS) {
+    if (hasExercises(availableLang)) {
+      languages[availableLang] = absoluteUrl(sectionHref(availableLang, "exercises"));
+    }
+  }
   if (languages.fr) languages["x-default"] = languages.fr;
-  const contentAvailable = (lang === "fr" || lang === "en") && hasExercises(lang);
+  const contentAvailable = hasExercises(lang);
   return {
     title,
     description,

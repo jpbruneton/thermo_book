@@ -1,6 +1,7 @@
 import "server-only";
 import { existsSync, readFileSync, readdirSync } from "node:fs";
 import { join } from "node:path";
+import type { Lang } from "@/lib/i18n";
 
 export interface ExerciseEntry {
   /** Sequential number in the file (1, 2, …). */
@@ -28,12 +29,12 @@ interface ExerciseSourceFile {
   path: string;
 }
 
-function exercisesDirectory(lang: "fr" | "en"): string {
+function exercisesDirectory(lang: Lang): string {
   return join(process.cwd(), "content", `exos_${lang}`);
 }
 
 /** Return chapter files in numeric order (exo_chp2 before exo_chp10). */
-function exerciseSourceFiles(lang: "fr" | "en"): ExerciseSourceFile[] {
+function exerciseSourceFiles(lang: Lang): ExerciseSourceFile[] {
   const directory = exercisesDirectory(lang);
   if (!existsSync(directory)) return [];
 
@@ -168,7 +169,7 @@ function parseExoBlock(rawBlock: string, counter: number, chapter: number): Exer
 }
 
 /** Load and parse every chapter file from content/exos_<lang>/exo_chpN.tex. */
-export function loadExercises(lang: "fr" | "en"): ExerciseEntry[] {
+export function loadExercises(lang: Lang): ExerciseEntry[] {
   const results: ExerciseEntry[] = [];
   const beginTag = "\\begin{exo}";
   const endTag = "\\end{exo}";
@@ -193,13 +194,50 @@ export function loadExercises(lang: "fr" | "en"): ExerciseEntry[] {
   return results;
 }
 
-export function hasExercises(lang: "fr" | "en"): boolean {
+export function hasExercises(lang: Lang): boolean {
   return exerciseSourceFiles(lang).length > 0 && loadExercises(lang).length > 0;
 }
 
 /** Finds an exercise by its stable public identifier. */
-export function getExerciseById(lang: "fr" | "en", id: string): ExerciseEntry | undefined {
+export function getExerciseById(lang: Lang, id: string): ExerciseEntry | undefined {
   return loadExercises(lang).find((exercise) => exercise.id === id);
+}
+
+/**
+ * Public exercise slugs are localized when the language uses a Latin alphabet.
+ * For other writing systems we keep the stable ASCII source id: native-script
+ * URLs are percent-encoded when shared, while the language prefix and page
+ * content remain fully localized.
+ */
+const SOURCE_ID_SLUG_LANGS = new Set<Lang>(["fr", "ru", "zh", "ja", "ko", "hi", "ar"]);
+
+function asciiSlug(value: string): string {
+  return value
+    .replace(/[äÄ]/g, "ae")
+    .replace(/[öÖ]/g, "oe")
+    .replace(/[üÜ]/g, "ue")
+    .replace(/ß/g, "ss")
+    .replace(/[łŁ]/g, "l")
+    .replace(/[đĐ]/g, "d")
+    .replace(/[ıİ]/g, "i")
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "")
+    .replace(/-{2,}/g, "-");
+}
+
+export function getExerciseUrlSlug(lang: Lang, exercise: ExerciseEntry): string {
+  if (SOURCE_ID_SLUG_LANGS.has(lang)) return exercise.id;
+  return asciiSlug(exerciseTitleToPlainText(exercise.titleTex)) || exercise.id;
+}
+
+/** Accept the localized public slug as well as the stable legacy id. */
+export function getExerciseByUrlSlug(lang: Lang, slug: string): ExerciseEntry | undefined {
+  return loadExercises(lang).find(
+    (exercise) => exercise.id === slug || getExerciseUrlSlug(lang, exercise) === slug
+  );
 }
 
 /**

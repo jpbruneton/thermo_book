@@ -126,3 +126,79 @@ C'est environ dix fois trop long comparé à la durée de vie réellement observ
 \textbf{Question 4.} $L \propto M^{3{,}5}$ : doubler la masse multiplie la luminosité par $\sim 11$, épuisant le combustible bien plus vite. Les géantes bleues vivent quelques millions d'années seulement.
 \end{solution}
 \end{exo}
+
+
+\begin{exo}[Carnot (1824) : rendement universel par l'absurde]{carnot-raisonnement-historique}
+\keywords{Carnot, rendement, machine réversible, second principe, calorique, histoire, impossibilité}
+
+Carnot se demande si le rendement d'une machine thermique dépend du fluide de travail ou de la construction mécanique. Il considère deux machines $M_1$ et $M_2$ réversibles fonctionnant entre les mêmes sources chaude ($T_c$) et froide ($T_f$), de rendements respectifs $\eta_1 > \eta_2$. On admet l'\emph{énoncé de Clausius} du second principe : il est impossible qu'un système échange spontanément de la chaleur d'une source froide vers une source chaude sans qu'aucun travail ne soit fourni de l'extérieur.
+
+\begin{enumerate}
+\item $M_1$ fonctionne en moteur : elle prélève $Q_c$ à la source chaude et en rejette $Q_f^{(1)} = Q_c(1-\eta_1)$ à la source froide. Quel travail $W_1$ produit-elle par cycle ?
+\item On utilise la \emph{totalité} de ce travail $W_1$ pour actionner $M_2$ en sens inverse (cycle récepteur, comme une pompe à chaleur). Exprimer, en fonction de $W_1$ et $\eta_2$, la chaleur $Q_c^{(2)}$ que $M_2$ rejette alors à la source chaude et la chaleur $Q_f^{(2)}$ qu'elle prélève à la source froide.
+\item Vérifier que le travail net échangé avec l'extérieur par l'ensemble $\{M_1 + M_2\text{ en sens inverse}\}$ est nul, puis calculer le bilan net de chaleur reçu par la source chaude et par la source froide. Que constate-t-on ?
+\item Conclure sur l'existence de $\eta_1 > \eta_2$ pour deux machines réversibles entre mêmes sources. Que dit-on aujourd'hui de ce raisonnement, alors que Carnot croyait au calorique ?
+\end{enumerate}
+
+\begin{indication}
+Réversibilité : faire tourner $M_2$ en sens inverse échange $Q$ et $W$ avec des signes opposés par rapport à son fonctionnement en moteur, mais les mêmes relations $Q_c^{(2)} = W^{(2)}/\eta_2$ restent valables en valeur absolue. Pour la question 3, faire le bilan sur chaque source séparément et comparer au signe attendu par l'énoncé de Clausius.
+\end{indication}
+
+\begin{solution}
+\textbf{Question 1.} $W_1 = \eta_1 Q_c$ et $Q_f^{(1)} = Q_c - W_1 = Q_c(1-\eta_1)$.
+
+\textbf{Question 2.} Fonctionnant en sens inverse et consommant un travail $W_1$, $M_2$ vérifie toujours $W_1 = \eta_2\, Q_c^{(2)}$ (même relation qu'en moteur, mais $Q_c^{(2)}$ est maintenant \emph{rejetée} à la source chaude), d'où $Q_c^{(2)} = W_1/\eta_2$. Le premier principe sur son cycle donne $Q_f^{(2)} = Q_c^{(2)} - W_1 = W_1\left(\dfrac{1}{\eta_2} - 1\right) = \dfrac{W_1(1-\eta_2)}{\eta_2}$.
+
+\textbf{Question 3.} L'ensemble reçoit $W_1$ de l'extérieur pour actionner $M_2$, mais $M_1$ restitue ce même $W_1$ à l'extérieur : le bilan de travail net est donc nul, et le dispositif combiné n'échange que de la chaleur avec ses deux sources. Le bilan à la source chaude est
+\[
+Q_c^{(2)} - Q_c = \frac{W_1}{\eta_2} - Q_c = \frac{\eta_1 Q_c}{\eta_2} - Q_c = Q_c\,\frac{\eta_1-\eta_2}{\eta_2} > 0 :
+\]
+la source chaude reçoit un flux net de chaleur (elle en reçoit plus de $M_2$ qu'elle n'en cède à $M_1$). Par conservation de l'énergie (travail net nul), la source froide doit céder exactement ce même flux :
+\[
+Q_f^{(1)} - Q_f^{(2)} = Q_c(1-\eta_1) - \frac{W_1(1-\eta_2)}{\eta_2} = Q_c(1-\eta_1) - \eta_1 Q_c\frac{1-\eta_2}{\eta_2} = -Q_c\,\frac{\eta_1-\eta_2}{\eta_2} < 0.
+\]
+Sans aucun travail net échangé avec l'extérieur, ce dispositif fait donc passer spontanément une chaleur $Q_c(\eta_1-\eta_2)/\eta_2 > 0$ de la source froide vers la source chaude.
+
+\textbf{Question 4.} C'est très exactement ce que l'énoncé de Clausius interdit. Comme $M_1$ et $M_2$ sont toutes deux réversibles, on peut échanger leurs rôles et refaire le même raisonnement en sens inverse : l'hypothèse $\eta_1 > \eta_2$ (et de même $\eta_2 > \eta_1$) est donc impossible, si bien que $\eta_1 = \eta_2$. Toutes les machines \emph{réversibles} fonctionnant entre les mêmes températures $T_c$ et $T_f$ ont donc nécessairement le même rendement, quels que soient le fluide de travail et les détails de construction. Ce raisonnement par l'absurde, purement logique, reste entièrement valable aujourd'hui : Carnot avait raison sur la structure de l'argument, bien qu'il croyait encore le calorique conservé (une substance matérielle qui se contenterait de « tomber » du chaud vers le froid comme l'eau d'une cascade, sans que la chaleur puisse se convertir en travail). Seule l'expression numérique $\eta_C = 1 - T_f/T_c$ lui manquait, faute d'une définition rigoureuse de la température absolue -- ce que Kelvin fournira vingt ans plus tard (cf. leçon 10).
+\end{solution}
+\end{exo}
+
+
+\begin{exo}[Clausius (1850) : réconcilier Carnot et la conservation de l'énergie]{clausius-entropie-argument}
+\keywords{Clausius, entropie, second principe, Carnot, conservation de l'énergie, histoire}
+
+Le premier principe autorise a priori un moteur cyclique monotherme convertissant intégralement une chaleur $Q$ en travail ($W = Q$, rendement 100\%). Carnot, lui, affirme qu'aucune machine ne peut avoir un rendement supérieur au cycle réversible entre deux sources $T_c > T_f$. On se propose de retrouver, comme Clausius, une conséquence quantitative de ce résultat.
+
+On modélise le fluide moteur par un gaz parfait de coefficient $\gamma$ parcourant un cycle de Carnot réversible : une détente isotherme à $T_c$ ($A \to B$, volumes $V_A \to V_B$), une détente adiabatique ($B \to C$, la température passant de $T_c$ à $T_f$), une compression isotherme à $T_f$ ($C \to D$, volumes $V_C \to V_D$), puis une compression adiabatique ($D \to A$, ramenant le gaz à $T_c$).
+
+\begin{enumerate}
+\item Écrire le bilan énergétique de ce moteur : exprimer le travail $W$ produit par cycle en fonction de la chaleur $Q_c$ reçue à $T_c$ et de la chaleur $Q_f$ rejetée à $T_f$ (comptées positivement), et en déduire $\eta_C = W/Q_c$ en fonction de $Q_c$ et $Q_f$.
+\item Exprimer $Q_c$ (reçue sur $A\to B$) et $Q_f$ (rejetée sur $C \to D$) à l'aide de $n$, $R$, $T_c$, $T_f$ et des volumes $V_A, V_B, V_C, V_D$.
+\item En appliquant la loi de Laplace $TV^{\gamma-1} = \text{cste}$ sur chacune des deux branches adiabatiques $B \to C$ et $D \to A$, montrer que $V_B/V_A = V_C/V_D$.
+\item On définit $q = Q/T$ pour chaque échange réversible (en comptant algébriquement $+Q_c/T_c$ pour la chaleur reçue et $-Q_f/T_f$ pour la chaleur rejetée). En utilisant les questions précédentes, montrer que $\oint \delta q = Q_c/T_c - Q_f/T_f = 0$ sur ce cycle réversible.
+\item Un moteur réel de rendement $\eta < \eta_C$ rejette, pour la même chaleur $Q_c$ reçue, une chaleur $Q_f' > Q_f$ au froid (où $Q_f$ est la valeur réversible de la question précédente). Que vaut alors $Q_c/T_c - Q_f'/T_f$ ? Interpréter le signe obtenu à la lumière de l'inégalité de Clausius $\oint \delta Q/T \leq 0$.
+\item En quel sens Clausius a-t-il « comblé » la lacune de Carnot tout en conservant son résultat sur le rendement maximal ?
+\end{enumerate}
+
+\begin{indication}
+Sur une isotherme réversible à température $T$ pour un gaz parfait : $Q = nRT\ln(V_{\text{final}}/V_{\text{initial}})$. Sur une adiabatique réversible, $\delta Q = 0$ et $TV^{\gamma - 1}$ est constant. Pour la question 5, comparer $Q_f'/T_f$ à $Q_f/T_f$ sachant que $Q_c$ est inchangée.
+\end{indication}
+
+\begin{solution}
+\textbf{Question 1.} Sur un cycle, $\Delta U = 0 = Q_c - Q_f - W$, donc $W = Q_c - Q_f$ et $\eta_C = W/Q_c = 1 - Q_f/Q_c$.
+
+\textbf{Question 2.} Sur l'isotherme $A \to B$ à $T_c$ : $Q_c = nRT_c \ln(V_B/V_A)$ (positif car $V_B > V_A$, le gaz se détend). Sur l'isotherme $C \to D$ à $T_f$, le gaz est comprimé ($V_D < V_C$) et \emph{rejette} la chaleur $Q_f = nRT_f \ln(V_C/V_D) > 0$.
+
+\textbf{Question 3.} Sur $B \to C$ (adiabatique, $T_c \to T_f$) : $T_c V_B^{\gamma-1} = T_f V_C^{\gamma-1}$, soit $(V_B/V_C)^{\gamma - 1} = T_f/T_c$. Sur $D \to A$ (adiabatique, $T_f \to T_c$) : $T_f V_D^{\gamma - 1} = T_c V_A^{\gamma-1}$, soit $(V_A/V_D)^{\gamma-1} = T_f/T_c$. Les deux membres de droite étant égaux, $V_B/V_C = V_A/V_D$, c'est-à-dire $V_B/V_A = V_C/V_D$. Cette égalité ne doit \emph{rien} à l'entropie : elle découle uniquement de la loi de Laplace sur les deux branches adiabatiques.
+
+\textbf{Question 4.} D'après la question 2, $\oint \delta q = \dfrac{Q_c}{T_c} - \dfrac{Q_f}{T_f} = nR\ln(V_B/V_A) - nR\ln(V_C/V_D) = nR\ln\!\left(\dfrac{V_B/V_A}{V_C/V_D}\right)$. Or la question 3 donne $V_B/V_A = V_C/V_D$, donc ce rapport vaut $1$ et $\oint \delta q = nR \ln(1) = 0$.
+
+\textbf{Question 5.} Puisque $Q_c$ est inchangée mais $Q_f' > Q_f$, on a $Q_f'/T_f > Q_f/T_f = Q_c/T_c$ (question 4), donc
+\[
+\frac{Q_c}{T_c} - \frac{Q_f'}{T_f} < \frac{Q_c}{T_c} - \frac{Q_f}{T_f} = 0.
+\]
+Pour ce moteur irréversible, $\oint \delta Q/T < 0$ : c'est bien compatible avec (et un cas particulier de) l'inégalité de Clausius $\oint \delta Q/T \leq 0$, l'égalité n'ayant lieu que dans le cas réversible. Le signe négatif traduit le fait qu'une partie de la chaleur prélevée à la source chaude est, à cause de l'irréversibilité, rejetée « en pure perte » à la source froide sans avoir produit de travail supplémentaire : le rendement réel est nécessairement inférieur à $\eta_C$.
+
+\textbf{Question 6.} Clausius accepte la conservation de l'énergie établie par Mayer et Joule, et remarque que la quantité $\oint \delta Q_{\text{rév}}/T$, nulle pour tout cycle réversible (question 4) et strictement négative dès qu'une irréversibilité intervient (question 5), ne dépend que de l'état du système : elle définit une fonction d'état, l'entropie $S$, telle que $dS = \delta Q_{\text{rév}}/T$ le long d'une transformation réversible, et qui ne peut que croître dans un système isolé. Carnot avait donc parfaitement raison sur l'existence d'un rendement maximal universel ; il lui manquait seulement cette grandeur d'état permettant de quantifier, au-delà du seul cas réversible, le degré d'irréversibilité de n'importe quelle transformation.
+\end{solution}
+\end{exo}

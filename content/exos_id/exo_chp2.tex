@@ -1,0 +1,255 @@
+% Bank latihan — bab 2
+% Bab ditentukan oleh nama berkas ini.
+
+\begin{exo}[Dari es dingin hingga air mendidih: orde besaran]{chauffage-glace-eau-ebullition}
+\seoready{true}
+\keywords{kalorimetri, perubahan fase, peleburan, penguapan, kalor laten, orde besaran}
+
+\textbf{Data numerik (pada tekanan atmosfer):}
+\[
+\begin{aligned}
+c_{\text{ice}} &= 2{,}1\times10^3\,\text{J}\!\cdot\!\text{kg}^{-1}\!\cdot\!\text{K}^{-1},
+& L_f &= 3{,}34\times10^5\,\text{J}\!\cdot\!\text{kg}^{-1},\\
+c_{\text{water}} &= 4{,}18\times10^3\,\text{J}\!\cdot\!\text{kg}^{-1}\!\cdot\!\text{K}^{-1},
+& L_v &= 2{,}26\times10^6\,\text{J}\!\cdot\!\text{kg}^{-1}.
+\end{aligned}
+\]
+Pada tekanan atmosfer, satu kilogram es yang mula-mula bersuhu $-100\,{}^\circ\text{C}$ dipanaskan secara bertahap.
+\begin{enumerate}
+  \item Hitung energi untuk memanaskan es dari $-100\,{}^\circ\text{C}$ ke $0\,{}^\circ\text{C}$.
+  \item Hitung energi untuk melebur seluruh es pada $0\,{}^\circ\text{C}$.
+  \item Hitung energi untuk memanaskan air cair dari $0\,{}^\circ\text{C}$ ke $100\,{}^\circ\text{C}$.
+  \item Hitung energi tambahan untuk menguapkan seluruh air pada $100\,{}^\circ\text{C}$.
+  \item Tahap mana memerlukan energi terbesar? Bandingkan energi untuk memanaskan satu kilogram air dari $0\,{}^\circ\text{C}$ ke $100\,{}^\circ\text{C}$ dengan energi potensial massa $m$ yang jatuh sejauh sepuluh meter. Berapa massa yang harus jatuh untuk melepaskan energi yang sama?
+  \item Sekarang tinjau proses sebaliknya. Massa $m_v$ uap air mengembun pada kaca depan, tanpa pendinginan lanjutan air cair yang terbentuk. Nyatakan kalor $Q_{\text{rel}}$ yang dilepaskan saat kondensasi dan hitung untuk $m_v=1{,}0\times10^{-2}\,\text{kg}$. Pada suhu kaca depan ambil $L_v=2{,}45\times10^6\,\text{J}\!\cdot\!\text{kg}^{-1}$.
+\end{enumerate}
+\begin{indication}
+Untuk pemanasan tanpa perubahan fase gunakan $Q=mc\Delta T$. Untuk perubahan fase pada suhu tetap gunakan $Q=mL$. Energi potensial gravitasi massa $m$ pada ketinggian $h$ ialah $E_p=mgh$; ambil $g=9{,}81\,\text{m}\!\cdot\!\text{s}^{-2}$.
+\end{indication}
+\begin{solution}
+\textbf{1.}
+\[
+Q_1=mc_{\text{ice}}\Delta T
+=1{,}0\times2{,}1\times10^3\times100=2{,}1\times10^5\,\text{J}.
+\]
+\textbf{2.} Selama peleburan suhu tetap $0\,{}^\circ\text{C}$:
+\[
+Q_2=mL_f=1{,}0\times3{,}34\times10^5=3{,}34\times10^5\,\text{J}.
+\]
+\textbf{3.}
+\[
+Q_3=mc_{\text{water}}\Delta T
+=1{,}0\times4{,}18\times10^3\times100=4{,}18\times10^5\,\text{J}.
+\]
+\textbf{4.}
+\[
+Q_4=mL_v=1{,}0\times2{,}26\times10^6=2{,}26\times10^6\,\text{J}.
+\]
+Tahap ini sendiri memerlukan energi beberapa megajoule.
+
+\textbf{5.} Penguapan jauh paling boros energi:
+\[
+Q_4=2{,}26\times10^6>Q_3=4{,}18\times10^5>Q_2=3{,}34\times10^5>Q_1=2{,}1\times10^5\,\text{J}.
+\]
+Penguapan memerlukan sekitar $(2{,}26\times10^6)/(4{,}18\times10^5)\approx5{,}4$ kali energi pemanasan air cair dari $0$ ke $100\,{}^\circ\text{C}$.
+
+Untuk massa $m$ yang jatuh dari $h=10\,\text{m}$, $E_p=mgh$. Dengan $mgh=Q_3$ diperoleh
+\[
+m=\frac{Q_3}{gh}=\frac{4{,}18\times10^5}{9{,}81\times10}
+\approx4{,}26\times10^3\,\text{kg}.
+\]
+Jadi sekitar $4{,}3$ ton harus dijatuhkan sepuluh meter untuk melepaskan energi sebanyak yang diperlukan guna memanaskan satu kilogram air dari $0$ ke $100\,{}^\circ\text{C}$. Nilai ini sangat besar dan menjelaskan mengapa pemanasan air menyumbang bagian penting konsumsi energi rumah tangga. Kalor jenis air juga sangat besar dibanding logam umum, misalnya sekitar sepuluh kali kalor jenis tembaga (lihat latihan berikutnya).
+
+\textbf{6.} Kondensasi adalah kebalikan penguapan; uap menyerahkan kalor laten kepada kaca:
+\[
+Q_{\text{rel}}=m_vL_v.
+\]
+Untuk $m_v=1{,}0\times10^{-2}\,\text{kg}$,
+\[
+Q_{\text{rel}}=1{,}0\times10^{-2}\times2{,}45\times10^6
+=2{,}45\times10^4\,\text{J}.
+\]
+Dengan demikian, kondensasi sedikit uap pun dapat melepaskan kalor yang tidak dapat diabaikan, yang diterima kaca depan dan lingkungannya.
+\end{solution}
+\end{exo}
+
+\begin{exo}[Evapotranspirasi pohon besar: pendingin udara alami?]{odg-evapotranspiration-arbre}
+\seoready{true}
+\keywords{orde besaran, evapotranspirasi, pohon, kalor laten, daya pendinginan, pendingin udara, COP}
+
+Pada hari panas dan kering, pohon besar dengan persediaan air cukup dapat mengevapotranspirasikan sekitar $500\,\text{L}=5{,}0\times10^{-1}\,\text{m}^3$ air. Karena transpirasi terutama terjadi saat ada cahaya, anggap proses berlangsung dua belas jam. Tajuk pohon menutupi luas tanah $A_{\text{tree}}=50\,\text{m}^2$. Massa jenis air dan kalor laten penguapannya pada tekanan atmosfer adalah
+\[
+\rho_{\text{water}}=1{,}0\times10^3\,\text{kg}\!\cdot\!\text{m}^{-3},
+\qquad L_v=2{,}45\times10^6\,\text{J}\!\cdot\!\text{kg}^{-1}.
+\]
+\begin{enumerate}
+  \item Hitung massa air yang dievapotranspirasikan dalam sehari dan energi untuk menguapkannya.
+  \item Jelaskan mengapa proses ini menghasilkan pendinginan.
+  \item Hitung daya pendinginan rata-rata pohon per meter persegi selama dua belas jam transpirasi aktif.
+  \item Sebagai pembanding, tinjau pendingin udara dengan daya listrik $P_{\mathrm{el}}=2{,}0\times10^3\,\text{W}$, koefisien performa pendinginan $\mathrm{COP}=3{,}0$, yang mendinginkan ruangan seluas $A_{\text{room}}=20\,\text{m}^2$. Menurut definisi, $\mathrm{COP}=P_{\text{cool}}/P_{\mathrm{el}}$. Hitung daya pendinginan dan daya per meter persegi, lalu bandingkan dengan pohon.
+  \item Mengapa pohon dan pendingin udara tidak dapat dianggap memberikan sensasi dingin yang persis sama, meskipun daya per satuan luasnya berorde sama?
+  \item Dapatkah banyak tanaman dalam ruangan mendinginkan rumah? (Pengetahuan umum: jawabannya bergantung pada proses biologis.)
+\end{enumerate}
+\begin{indication}
+Gunakan $m=\rho V$, $Q_{\mathrm{evap}}=mL_v$, dan $P=Q/\tau$. Untuk pendingin udara, $P_{\text{cool}}=\mathrm{COP}\,P_{\mathrm{el}}$.
+\end{indication}
+\begin{solution}
+\textbf{1.}
+\[
+m=\rho_{\text{water}}V=1{,}0\times10^3\times5{,}0\times10^{-1}
+=5{,}0\times10^2\,\text{kg},
+\]
+\[
+Q_{\mathrm{evap}}=mL_v=5{,}0\times10^2\times2{,}45\times10^6
+=1{,}225\times10^9\,\text{J}.
+\]
+Orde besarannya satu gigajoule.
+
+\textbf{2.} Penguapan adalah perubahan fase endotermik. Energi diambil dari daun, tanah, dan udara sekitar sehingga suhu daun dan lingkungan dekatnya turun.
+
+\textbf{3.} Dua belas jam ialah $\tau=12\times3600=4{,}32\times10^4\,\text{s}$. Maka
+\[
+P_{\text{tree}}=\frac{Q_{\mathrm{evap}}}{\tau}
+=\frac{1{,}225\times10^9}{4{,}32\times10^4}\approx2{,}84\times10^4\,\text{W},
+\]
+dan per satuan luas
+\[
+\frac{P_{\text{tree}}}{A_{\text{tree}}}
+=\frac{2{,}84\times10^4}{50}\approx5{,}7\times10^2\,\text{W}\!\cdot\!\text{m}^{-2}.
+\]
+\textbf{4.}
+\[
+P_{\text{cool}}=\mathrm{COP}\,P_{\mathrm{el}}
+=3{,}0\times2{,}0\times10^3=6{,}0\times10^3\,\text{W},
+\]
+\[
+\frac{P_{\text{cool}}}{A_{\text{room}}}
+=\frac{6{,}0\times10^3}{20}=3{,}0\times10^2\,\text{W}\!\cdot\!\text{m}^{-2}.
+\]
+Dalam model ini, daya evapotranspirasi pohon per luas hampir dua kali pendingin udara biasa.
+
+\textbf{5.} Perbandingan hanya menyangkut aliran energi. Pendingin udara mendinginkan ruang tertutup dan terkendali, sedangkan uap pohon menyebar ke atmosfer dan angin membawa udara hangat. Efek yang dirasakan bergantung pada ventilasi, kelembapan, suhu, dan jarak dari pohon. Transpirasi juga berubah dengan sinar matahari, angin, kelembapan, spesies, serta air yang tersedia, dan dapat sangat berkurang saat kekeringan. Pohon juga memberi naungan sehingga langsung mengurangi radiasi matahari pada tanah dan manusia. Jadi perhitungan membandingkan orde besaran, bukan kesetaraan tepat kenyamanan termal.
+
+\textbf{6.} Dalam praktik, efek pendinginan tanaman dalam ruangan sangat kecil. Pada kebanyakan tanaman, cahaya mendorong stomata membuka; uap air keluar melalui pori kecil pada daun ini. Cahaya dalam ruangan biasanya lemah sehingga stomata kurang terbuka dan transpirasi menurun. Di ruangan kurang berventilasi, kenaikan kelembapan juga makin memperlambat penguapan.
+
+Banyak tanaman dapat memberi sedikit pendinginan evaporatif setempat, tetapi tidak menggantikan pendingin udara. Untuk terus mengeluarkan energi dari rumah, udara lembap harus dibuang ke luar. Pencahayaan buatan kuat mungkin merangsang transpirasi, tetapi energi listriknya hampir seluruhnya akan menjadi panas di ruangan. Tanaman CAM yang beradaptasi dengan lingkungan kering, termasuk kaktus, merupakan pengecualian: stomatanya terutama terbuka pada malam hari.
+\end{solution}
+\end{exo}
+
+\begin{exo}[Mencampur dua massa air]{calorimetrie-melange-eau}
+\seoready{true}
+\keywords{kalorimetri, pencampuran, kapasitas kalor, kalor jenis, Joseph Black, suhu kesetimbangan}
+
+$m_1=0{,}200\,\text{kg}$ air pada $T_1=80\,^\circ\text{C}$ dituangkan ke wadah yang telah berisi $m_2=0{,}300\,\text{kg}$ air pada $T_2=15\,^\circ\text{C}$. Wadah adalah kalorimeter ideal: kehilangan kalor ke luar dan kapasitas kalor wadah diabaikan. Berlaku $Q=mc\Delta T$, dengan $c=4{,}18\times10^3\,\text{J}\!\cdot\!\text{kg}^{-1}\!\cdot\!\text{K}^{-1}$ kalor jenis air cair.
+\begin{enumerate}
+  \item Jelaskan mengapa kalor yang dilepas air panas seluruhnya diterima air dingin, lalu tulis persamaan kekekalan yang memuat $m_1$, $m_2$, $c$, $T_1$, $T_2$, dan $T_{eq}$.
+  \item Turunkan bentuk dan nilai numerik $T_{eq}$.
+  \item Hitung kalor $Q$ yang dilepas air panas selama pencampuran.
+  \item Dapatkah pencampuran zat yang sama menentukan $c$? Jelaskan.
+\end{enumerate}
+\begin{indication}
+Kalorimeter terisolasi dan kaku sehingga energi dalam total $U_1+U_2$ kekal: kalor yang dilepas satu bagian diterima bagian lain dengan tanda berlawanan.
+\end{indication}
+\begin{solution}
+\textbf{1.}
+\[
+m_1c(T_{eq}-T_1)+m_2c(T_{eq}-T_2)=0.
+\]
+\textbf{2.} Faktor $c$ saling menghilangkan:
+\[
+T_{eq}=\frac{m_1T_1+m_2T_2}{m_1+m_2}
+=\frac{0{,}200\times80+0{,}300\times15}{0{,}200+0{,}300}=41\,^\circ\text{C}.
+\]
+\textbf{3.}
+\[
+Q=m_1c(T_1-T_{eq})=0{,}200\times4{,}18\times10^3\times(80-41)
+\approx3{,}26\times10^4\,\text{J}.
+\]
+Air dingin menerima jumlah yang sama:
+\[
+m_2c(T_{eq}-T_2)=0{,}300\times4{,}18\times10^3\times26
+\approx3{,}26\times10^4\,\text{J}.
+\]
+\textbf{4.} Tidak. Untuk zat yang sama, $c$ mengalikan kedua suku neraca dan saling menghilangkan. Suhu kesetimbangan tidak bergantung pada $c$, melainkan rata-rata suhu awal berbobot massa. Mengukur kalor jenis dengan metode campuran membutuhkan zat dengan kapasitas kalor diketahui, seperti latihan berikut.
+\end{solution}
+\end{exo}
+
+\begin{exo}[Menentukan kalor jenis logam dengan metode campuran]{calorimetrie-methode-melanges}
+\seoready{true}
+\keywords{kalorimetri, metode campuran, kalor jenis, kalorimeter, ekuivalen air}
+
+Seperti Joseph Black pada abad ke-18, kita hendak mengukur kalor jenis $c_m$ logam tak dikenal dengan \emph{metode campuran}. Sampel bermassa $m=0{,}150\,\text{kg}$ dipanaskan hingga $T_m=95\,^\circ\text{C}$ lalu segera dimasukkan ke kalorimeter yang berisi $m_e=0{,}250\,\text{kg}$ air, dengan $c_e=4{,}18\times10^3\,\text{J}\!\cdot\!\text{kg}^{-1}\!\cdot\!\text{K}^{-1}$ dan $T_e=18\,^\circ\text{C}$. Suhu kesetimbangan terukur $T_{eq}=22\,^\circ\text{C}$. Mula-mula kapasitas kalor wadah, pengaduk, dan termometer diabaikan.
+\begin{enumerate}
+  \item Tulis kekekalan energi sistem terisolasi logam–air dengan $c_m$ sebagai satu-satunya besaran yang tidak diketahui.
+  \item Turunkan dan hitung $c_m$. Logam umum apa yang nilainya mendekati? Nilai acuan dalam $\text{J}\!\cdot\!\text{kg}^{-1}\!\cdot\!\text{K}^{-1}$: aluminium $9{,}0\times10^2$, besi $4{,}5\times10^2$, tembaga $3{,}9\times10^2$, timbal $1{,}3\times10^2$.
+  \item Wadah juga menyerap kalor. Modelkan dengan \emph{ekuivalen air} $\mu=1{,}5\times10^{-2}\,\text{kg}$: kalorimeter berperilaku seperti tambahan massa air $\mu$. Hitung ulang $c_m$ dan jelaskan arah koreksi.
+  \item Mengapa sampel harus segera dimasukkan dan kalorimeter diisolasi baik dari udara sekitar?
+\end{enumerate}
+\begin{indication}
+Logam melepas $Q_m=mc_m(T_m-T_{eq})$, seluruhnya diterima air dan, pada soal 3, kalorimeter: $Q_m=(m_e+\mu)c_e(T_{eq}-T_e)$.
+\end{indication}
+\begin{solution}
+\textbf{1.}
+\[
+mc_m(T_m-T_{eq})=m_ec_e(T_{eq}-T_e).
+\]
+\textbf{2.}
+\[
+c_m=\frac{m_ec_e(T_{eq}-T_e)}{m(T_m-T_{eq})}
+=\frac{0{,}250\times4{,}18\times10^3\times(22-18)}{0{,}150\times(95-22)}
+\approx3{,}82\times10^2\,\text{J}\!\cdot\!\text{kg}^{-1}\!\cdot\!\text{K}^{-1}.
+\]
+Nilai ini sangat dekat dengan tembaga.
+
+\textbf{3.}
+\[
+c_m=\frac{(m_e+\mu)c_e(T_{eq}-T_e)}{m(T_m-T_{eq})}
+=\frac{(0{,}250+0{,}015)\times4{,}18\times10^3\times4}{0{,}150\times73}
+\approx4{,}05\times10^2\,\text{J}\!\cdot\!\text{kg}^{-1}\!\cdot\!\text{K}^{-1}.
+\]
+Koreksi menaikkan $c_m$: mengabaikan wadah membuat kalor yang benar-benar dilepas logam dan kalor jenisnya dinilai terlalu rendah.
+
+\textbf{4.} Metode mengandaikan sistem terisolasi selama pengukuran. Memasukkan sampel segera membatasi pertukaran kalor dengan udara sebelum mencapai air; isolasi baik membatasi kehilangan saat kesetimbangan terbentuk. Perpindahan kalor yang tidak dihitung mengacaukan neraca dan $c_m$. Kehati-hatian eksperimen inilah yang diterapkan Black, lalu Lavoisier dan Laplace dengan kalorimeter es mereka.
+\end{solution}
+\end{exo}
+
+\begin{exo}[Kalori makanan dan daya metabolik]{calorimetrie-calories-alimentaires}
+\seoready{true}
+\keywords{kalori, kilokalori, Kalori makanan, ekuivalen mekanik, daya metabolik, satuan}
+
+Label gizi menyatakan bahwa orang dewasa rata-rata mengonsumsi sekitar $2000\,\text{kcal}$ per hari. Kilokalori adalah satuan non-SI yang masih dipakai dalam gizi; $1\,\text{kcal}=4{,}18\times10^3\,\text{J}$.
+\begin{enumerate}
+  \item Ubah asupan harian ini ke joule.
+  \item Tentukan daya metabolik rata-rata dalam watt dengan menganggap energi digunakan merata selama 24 jam.
+  \item Batang energi berlabel ``$210\,\text{kcal}$''. Jika seluruh energi menjadi kalor, berapa massa air dari $20\,^\circ\text{C}$ yang dapat dipanaskan hingga mendidih pada $100\,^\circ\text{C}$? Ambil $c_{\text{water}}=4{,}18\times10^3\,\text{J}\!\cdot\!\text{kg}^{-1}\!\cdot\!\text{K}^{-1}$.
+  \item Dalam bentuk apa tubuh manusia sebenarnya menggunakan energi ini? Jawab secara kualitatif.
+\end{enumerate}
+\begin{indication}
+Untuk soal 2 gunakan $\mathcal P=E/\Delta t$. Untuk soal 3 ubah dahulu ke joule, lalu cari $m$ dari $Q=mc\Delta T$.
+\end{indication}
+\begin{solution}
+\textbf{1.}
+\[
+E=2000\times4{,}18\times10^3=8{,}36\times10^6\,\text{J}.
+\]
+\textbf{2.}
+\[
+\mathcal P=\frac{8{,}36\times10^6}{8{,}64\times10^4}\approx97\,\text{W}.
+\]
+Sepanjang hari, manusia menggunakan daya rata-rata kira-kira sebesar lampu pijar. Orde besaran yang sering mengejutkan ini menunjukkan manfaat mengubah kalori makanan ke satuan fisika yang lazim.
+
+\textbf{3.}
+\[
+Q=210\times4{,}18\times10^3\approx8{,}78\times10^5\,\text{J}.
+\]
+Dengan $\Delta T=80\,\text{K}$,
+\[
+m=\frac{Q}{c\Delta T}
+=\frac{8{,}78\times10^5}{4{,}18\times10^3\times80}
+\approx2{,}63\,\text{kg}.
+\]
+Jadi, dalam orde besaran, satu batang energi cukup untuk mendidihkan sekitar $2{,}5\,\text{kg}$ air keran.
+
+\textbf{4.} Tubuh tidak “mengonsumsi” energi dalam arti menghilangkannya, tetapi mengubah energi kimia nutrien. Sebagian dipakai untuk kerja otot, fungsi organ, mempertahankan gradien listrik sel, transportasi molekul, dan sintesis kimia; sebagian dapat disimpan sebagai glikogen atau lemak. Pada akhirnya sebagian besar energi yang digunakan terdisipasi sebagai kalor, membantu mempertahankan suhu tubuh sebelum berpindah ke lingkungan. Sebagian kecil keluar sebagai energi kimia yang masih tersimpan dalam limbah.
+\end{solution}
+\end{exo}

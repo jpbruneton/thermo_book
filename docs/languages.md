@@ -11,8 +11,8 @@ ce qui varie entre langues, c'est la profondeur du contenu réellement traduit
 | Code | Langue     | Statut       | Notes |
 |------|------------|--------------|-------|
 | fr   | Français   | ✅ en prod   | Langue source, contenu de référence, toutes sections |
-| en   | Anglais    | 🚧 partiel   | Chrome UI + traduction du contenu en cours, leçon par leçon |
-| de   | Allemand   | 🚧 partiel   | Accueil, à propos, liste des leçons (titres/descriptions/mots-clés), glossaire et leçon 1 traduits ; leçons 2+ affichent « contenu non disponible » ; exercices/quiz encore non traduits |
+| en   | Anglais    | 🚧 partiel   | Chrome UI + traduction du contenu en cours, leçon par leçon ; exercices du chapitre 2 traduits |
+| de   | Allemand   | 🚧 partiel   | Accueil, à propos, métadonnées des leçons, glossaire, leçon 1 et exercices du chapitre 2 traduits |
 | es   | Espagnol   | 🚧 partiel   | Idem de |
 | pt   | Portugais  | 🚧 partiel   | Idem de |
 | it   | Italien    | 🚧 partiel   | Idem de |
@@ -24,7 +24,7 @@ ce qui varie entre langues, c'est la profondeur du contenu réellement traduit
 | hi   | Hindi      | 🚧 partiel   | Idem de |
 | vi   | Vietnamien | 🚧 partiel   | Idem de |
 | ar   | Arabe      | 🚧 partiel   | Idem de + RTL (`dir="rtl"` sur `<html>`, mise en page en miroir automatique via flex/grid) |
-| id   | Indonésien | 🚧 partiel   | Accueil, à propos, liste des leçons (titres/descriptions/mots-clés), glossaire et leçons 1 et 2 traduits ; leçons 3+ affichent « contenu non disponible » ; exercices/quiz encore non traduits |
+| id   | Indonésien | 🚧 partiel   | Accueil, à propos, métadonnées des leçons, glossaire, leçons 1 et 2 et exercices du chapitre 2 traduits |
 | tr   | Turc       | 🚧 partiel   | Idem id |
 
 Légende : ✅ en prod (toutes sections) · 🚧 partiel (au moins une section a du
@@ -66,13 +66,17 @@ pages sans contenu affichent un état explicite) · 📋 planifié / pas commenc
   Pour ajouter une leçon dans une langue : déposer le fichier au bon endroit
   (voir `docs/translation-prompt.md` + `scripts/translate-lesson.mjs`), rien
   d'autre à changer.
-- **Pas de repli silencieux.** Les sections encore sans aucun contenu traduit
-  (exercices, quiz) n'affichent jamais de contenu anglais ou français sous
-  couvert d'une autre langue : `app/components/SectionUnavailable.tsx` affiche
-  un état explicite, déclenché quand la langue courante n'est pas dans
-  `TRANSLATED_SECTION_LANGS` (`["fr", "en"]`). Les leçons, la page « à
-  propos » et le glossaire n'ont plus cette garde de page entière : leur
-  contenu est résolu finement par langue.
+- **Exercices sans repli silencieux.** `lib/exercisesLibrary.server.ts` charge
+  `content/exos_<lang>/exo_chpN.tex` pour n'importe quel `Lang`. La liste, les
+  pages détaillées, les métadonnées et le sitemap n'annoncent une langue que
+  lorsque ses propres fichiers contiennent réellement des exercices. Le
+  chapitre 2 est traduit dans les 16 langues ; les fichiers vides des chapitres
+  1 et 3 réservent seulement la structure et ne créent aucune page factice.
+  Les exercices validés du chapitre 2 portent `\seoready{true}` dans chaque
+  langue. Eux seuls sont indexables et présents dans le sitemap ; les exercices
+  français des chapitres suivants restent en `noindex` jusqu'à leur validation.
+  Les slugs des pages détaillées sont dérivés du titre traduit pour les langues
+  à alphabet latin, avec redirection permanente depuis l'identifiant historique.
 - **Glossaire** : `app/[lang]/glossary/page.tsx` construit la liste des
   mots-clés à partir de `getThemeTopics(themeSlug, lesson, lang)` (même
   source que les bulles sous chaque leçon), et les libellés d'interface
@@ -83,11 +87,9 @@ pages sans contenu affichent un état explicite) · 📋 planifié / pas commenc
   de `app/[lang]/layout.tsx`, le header `x-site-lang` dans `middleware.ts`) —
   toutes ces routes existent et rendent quelque chose (contenu réel ou état
   « non disponible »), jamais une 404.
-- `TRANSLATED_SECTION_LANGS` (`["fr", "en"]`) pilote `app/sitemap.ts` pour les
-  sections encore binaires (exercices, quiz) : on n'indexe pas de pages « non
-  disponible » comme s'il s'agissait d'un contenu localisé. Chapitres, à
-  propos et glossaire sont indexés pour les 16 langues (`SUPPORTED_LANGS`)
-  puisqu'ils ont un contenu réel partout.
+- `app/sitemap.ts` détecte les langues disponibles section par section. Pour
+  les exercices, `hasExercises(lang)` et les identifiants communs déterminent
+  les pages et les liens `hreflang`; les coquilles vides ne sont pas indexées.
 - `app/[lang]/page.tsx` est la route d'accueil par langue (`/de`, `/es`,
   etc.) ; la racine `/` (`app/page.tsx`) reste la page d'accueil historique,
   pilotée par l'état client (`LangContext`), inchangée.
@@ -99,16 +101,16 @@ pages sans contenu affichent un état explicite) · 📋 planifié / pas commenc
   `about.translationWarning` (affiché pour toute langue ≠ fr).
 - **Slugs d'URL localisés** (`lib/i18n.ts` `sectionSlugs` + `next.config.js`
   `LOCALIZED_SECTION_SLUGS`, à garder synchronisés) : pour les langues à
-  alphabet latin (fr, de, es, pt, it, pl, id, tr), les mots de section dans l'URL sont
-  traduits — ex. `/de/uebungen`, `/id/latihan`, `/tr/dersler`. Les anciennes
+  alphabet latin (fr, de, es, pt, it, pl, vi, id, tr), les mots de section dans l'URL sont
+  traduits — ex. `/de/uebungen`, `/vi/bai-tap`, `/id/latihan`, `/tr/dersler`. Les anciennes
   URL anglaises (`/de/exercises`, etc.) redirigent en 308 vers la version
-  localisée. Pour les langues à écriture non latine (ru, zh, ja, ko, hi, vi,
+  localisée. Pour les langues à écriture non latine (ru, zh, ja, ko, hi,
   ar), le slug reste en anglais délibérément : une URL cyrillique/CJK/
   devanagari/arabe finit percent-encodée dès qu'elle est copiée-collée ou
   partagée, ce qui a l'air cassé — seul le slug reste en ASCII, le contenu et
   la navigation sont bien traduits.
 
-## Prochaine étape : traduire davantage de leçons, puis exercices/quiz
+## Prochaine étape : traduire davantage de leçons, d'exercices et de quiz
 
 Le prompt de traduction et la convention de fichiers restent dans
 [`translation-prompt.md`](translation-prompt.md) et le script
@@ -117,11 +119,9 @@ leçon supplémentaire ne demande **aucun changement de code** — juste dépose
 `content/tex/chpN_<code>/lessonM.tex` au bon endroit ; la page de détail la
 détecte automatiquement.
 
-Pour les exercices et le quiz, suivre le pattern déjà en place pour les
-leçons : généraliser `lib/exercisesLibrary.server.ts` / `lib/quizzes.ts` en
-`Record<Lang, ...>` ou équivalent par-langue, puis retirer la garde
-`TRANSLATED_SECTION_LANGS` pour cette section une fois le contenu réel
-disponible.
+Pour ajouter des exercices, déposer `exo_chpN.tex` dans le dossier
+`content/exos_<code>` correspondant. Le chargeur les détecte sans changement
+de code. Le quiz reste à généraliser sur le même modèle.
 
 Pour zh/ko/ja/ar en particulier : la typographie de `cleanLatexInline` (espaces
 insécables autour de `: ; ? !`, guillemets `«»`) est calée sur le français et

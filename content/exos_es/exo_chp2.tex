@@ -1,0 +1,296 @@
+% Banco de ejercicios — capítulo 2
+% El capítulo viene determinado por el nombre de este archivo.
+
+\begin{exo}[Del hielo frío al agua hirviendo: órdenes de magnitud]{chauffage-glace-eau-ebullition}
+\seoready{true}
+\keywords{calorimetría, cambio de estado, fusión, vaporización, calor latente, orden de magnitud}
+
+\textbf{Datos numéricos (a presión atmosférica):}
+\[
+\begin{aligned}
+c_{\text{hielo}} &= 2{,}1\times10^3\,\text{J}\!\cdot\!\text{kg}^{-1}\!\cdot\!\text{K}^{-1},
+& L_f &= 3{,}34\times10^5\,\text{J}\!\cdot\!\text{kg}^{-1},\\
+c_{\text{agua}} &= 4{,}18\times10^3\,\text{J}\!\cdot\!\text{kg}^{-1}\!\cdot\!\text{K}^{-1},
+& L_v &= 2{,}26\times10^6\,\text{J}\!\cdot\!\text{kg}^{-1}.
+\end{aligned}
+\]
+A presión atmosférica, se calienta progresivamente un kilogramo de hielo, inicialmente a $-100\,{}^\circ\text{C}$.
+
+\begin{enumerate}
+  \item Calcular la energía necesaria para llevar el hielo de $-100\,{}^\circ\text{C}$ a $0\,{}^\circ\text{C}$.
+  \item Calcular la energía necesaria para fundir completamente el hielo a $0\,{}^\circ\text{C}$.
+  \item Calcular la energía necesaria para calentar el agua líquida de $0\,{}^\circ\text{C}$ a $100\,{}^\circ\text{C}$.
+  \item Calcular la energía adicional necesaria para vaporizar completamente el agua a $100\,{}^\circ\text{C}$.
+  \item ¿Qué etapa requiere más energía? Comparar la energía necesaria para calentar un kilogramo de agua de $0\,{}^\circ\text{C}$ a $100\,{}^\circ\text{C}$ con la energía potencial de una masa $m$ que cae desde diez metros de altura. ¿Qué masa $m$ debe caer para igualar esta energía?
+  \item Consideremos ahora el proceso inverso. Una masa $m_v$ de vapor de agua se condensa sobre un parabrisas, sin que el agua líquida obtenida se enfríe después. Expresar el calor $Q_{\text{lib}}$ liberado durante la condensación y calcularlo para $m_v=1{,}0\times10^{-2}\,\text{kg}$. A la temperatura del parabrisas, tómese $L_v=2{,}45\times10^6\,\text{J}\!\cdot\!\text{kg}^{-1}$.
+\end{enumerate}
+
+\begin{indication}
+Para calentar una fase sin cambio de estado, utilizar $Q=mc\Delta T$. Para un cambio de estado a temperatura constante, utilizar $Q=mL$. La energía potencial gravitatoria de una masa $m$ situada a una altura $h$ es $E_p=mgh$; tómese $g=9{,}81\,\text{m}\!\cdot\!\text{s}^{-2}$.
+\end{indication}
+
+\begin{solution}
+\textbf{1.} Calentar el hielo hasta su temperatura de fusión requiere
+\[
+Q_1=mc_{\text{hielo}}\Delta T
+=1{,}0\times2{,}1\times10^3\times100
+=2{,}1\times10^5\,\text{J}.
+\]
+
+\textbf{2.} Durante la fusión, la temperatura permanece en $0\,{}^\circ\text{C}$:
+\[
+Q_2=mL_f=1{,}0\times3{,}34\times10^5
+=3{,}34\times10^5\,\text{J}.
+\]
+
+\textbf{3.} Para calentar el agua líquida de $0$ a $100\,{}^\circ\text{C}$,
+\[
+Q_3=mc_{\text{agua}}\Delta T
+=1{,}0\times4{,}18\times10^3\times100
+=4{,}18\times10^5\,\text{J}.
+\]
+
+\textbf{4.} La vaporización completa requiere además
+\[
+Q_4=mL_v=1{,}0\times2{,}26\times10^6
+=2{,}26\times10^6\,\text{J}.
+\]
+Por tanto, esta etapa requiere por sí sola una energía del orden de varios megajulios.
+
+\textbf{5.} La vaporización es, con diferencia, la etapa que más energía requiere:
+\[
+Q_4=2{,}26\times10^6\,\text{J}
+>Q_3=4{,}18\times10^5\,\text{J}
+>Q_2=3{,}34\times10^5\,\text{J}
+>Q_1=2{,}1\times10^5\,\text{J}.
+\]
+En particular, la vaporización requiere aproximadamente $(2{,}26\times10^6)/(4{,}18\times10^5)\approx5{,}4$ veces más energía que calentar el agua líquida de $0$ a $100\,{}^\circ\text{C}$.
+
+Para una masa $m$ que cae desde una altura $h=10\,\text{m}$, $E_p=mgh$. Imponiendo $mgh=Q_3$, se obtiene
+\[
+m=\frac{Q_3}{gh}
+=\frac{4{,}18\times10^5}{9{,}81\times10}
+\approx4{,}26\times10^3\,\text{kg}.
+\]
+Habría que dejar caer desde diez metros una masa de aproximadamente $4{,}3$ toneladas para liberar tanta energía como la necesaria para calentar un kilogramo de agua de $0$ a $100\,{}^\circ\text{C}$. Es enorme y explica por qué calentar agua representa una parte importante del consumo energético doméstico. El agua también posee una capacidad térmica específica muy grande frente a los metales corrientes: por ejemplo, es unas diez veces mayor que la del cobre (véanse los ejercicios siguientes).
+
+\textbf{6.} La condensación es el proceso inverso de la vaporización: el vapor cede al parabrisas el calor latente
+\[
+Q_{\text{lib}}=m_vL_v.
+\]
+Para $m_v=1{,}0\times10^{-2}\,\text{kg}$,
+\[
+Q_{\text{lib}}=1{,}0\times10^{-2}\times2{,}45\times10^6
+=2{,}45\times10^4\,\text{J}.
+\]
+Así, la condensación de una pequeña masa de vapor puede liberar una cantidad de calor nada despreciable, recibida por el parabrisas y su entorno.
+\end{solution}
+\end{exo}
+\begin{exo}[La evapotranspiración de un gran árbol: ¿un climatizador natural?]{odg-evapotranspiration-arbre}
+\seoready{true}
+\keywords{orden de magnitud, evapotranspiración, árbol, calor latente, potencia frigorífica, climatizador, COP}
+
+En un día caluroso y seco, un gran árbol con suficiente suministro de agua puede evapotranspirar aproximadamente $500\,\text{L}=5{,}0\times10^{-1}\,\text{m}^3$ de agua. Como la transpiración se produce principalmente con luz, supondremos que se reparte durante doce horas. La copa del árbol cubre en el suelo una superficie $A_{\text{tree}}=50\,\text{m}^2$. Se dan la densidad del agua y su calor latente de vaporización a presión atmosférica:
+\[
+\rho_{\text{agua}}=1{,}0\times10^3\,\text{kg}\!\cdot\!\text{m}^{-3},
+\qquad L_v=2{,}45\times10^6\,\text{J}\!\cdot\!\text{kg}^{-1}.
+\]
+
+\begin{enumerate}
+  \item Calcular la masa de agua evapotranspirada durante el día y la energía necesaria para vaporizarla.
+  \item Explicar por qué esto produce un efecto refrigerante.
+  \item Calcular la potencia refrigerante media del árbol por metro cuadrado durante las doce horas de transpiración activa.
+  \item Para comparar, se considera un climatizador alimentado con una potencia eléctrica $P_{\mathrm{el}}=2{,}0\times10^3\,\text{W}$, con coeficiente de rendimiento frigorífico $\mathrm{COP}=3{,}0$, que enfría una habitación de superficie $A_{\text{hab}}=20\,\text{m}^2$. Por definición, $\mathrm{COP}=P_{\text{cool}}/P_{\mathrm{el}}$. Calcular la potencia frigorífica y la potencia por metro cuadrado, y compararlas con las del árbol.
+  \item ¿Por qué no puede concluirse que el árbol y el climatizador producen exactamente la misma sensación de enfriamiento, aunque sus potencias por unidad de superficie tengan el mismo orden de magnitud?
+  \item ¿Se puede refrescar una vivienda con muchas plantas de interior? (Cultura general: la respuesta depende de procesos biológicos.)
+\end{enumerate}
+
+\begin{indication}
+Utilizar $m=\rho V$, $Q_{\mathrm{evap}}=mL_v$ y $P=Q/\tau$. Para el climatizador, $P_{\text{cool}}=\mathrm{COP}\,P_{\mathrm{el}}$.
+\end{indication}
+
+\begin{solution}
+\textbf{1.} La masa correspondiente es
+\[
+m=\rho_{\text{agua}}V
+=1{,}0\times10^3\times5{,}0\times10^{-1}
+=5{,}0\times10^2\,\text{kg}.
+\]
+La energía de vaporización vale
+\[
+Q_{\mathrm{evap}}=mL_v
+=5{,}0\times10^2\times2{,}45\times10^6
+=1{,}225\times10^9\,\text{J}.
+\]
+Su orden de magnitud es, por tanto, el gigajulio.
+
+\textbf{2.} La vaporización es un cambio de estado endotérmico: toma esta energía de las hojas, del suelo y del aire circundante. La extracción de calor reduce la temperatura de las hojas y de su entorno inmediato.
+
+\textbf{3.} Doce horas corresponden a $\tau=12\times3600=4{,}32\times10^4\,\text{s}$. Por tanto,
+\[
+P_{\text{tree}}=\frac{Q_{\mathrm{evap}}}{\tau}
+=\frac{1{,}225\times10^9}{4{,}32\times10^4}
+\approx2{,}84\times10^4\,\text{W},
+\]
+y por unidad de superficie,
+\[
+\frac{P_{\text{tree}}}{A_{\text{tree}}}
+=\frac{2{,}84\times10^4}{50}
+\approx5{,}7\times10^2\,\text{W}\!\cdot\!\text{m}^{-2}.
+\]
+
+\textbf{4.} La potencia frigorífica útil del climatizador es
+\[
+P_{\text{cool}}=\mathrm{COP}\,P_{\mathrm{el}}
+=3{,}0\times2{,}0\times10^3
+=6{,}0\times10^3\,\text{W}.
+\]
+Por unidad de superficie,
+\[
+\frac{P_{\text{cool}}}{A_{\text{hab}}}
+=\frac{6{,}0\times10^3}{20}
+=3{,}0\times10^2\,\text{W}\!\cdot\!\text{m}^{-2}.
+\]
+En este modelo, la evapotranspiración del árbol por unidad de superficie es casi dos veces más potente que un climatizador corriente.
+
+\textbf{5.} La comparación solo concierne a flujos de energía. El climatizador enfría un volumen cerrado y controlado, mientras que el vapor del árbol se dispersa en la atmósfera y el viento aporta aire caliente. El efecto percibido depende de la ventilación, la humedad, la temperatura ambiente y la distancia al árbol. La transpiración también varía con la radiación solar, el viento, la humedad del aire, la especie y el agua disponible, y puede disminuir mucho durante una sequía. Además, el árbol proporciona sombra y reduce directamente la radiación solar recibida por el suelo y las personas. Las potencias calculadas permiten comparar órdenes de magnitud, no establecer una equivalencia exacta de confort térmico.
+
+\textbf{6.} En la práctica, el efecto refrigerante de las plantas de interior sería muy pequeño. En la mayoría de las plantas, la luz favorece la apertura de los estomas, pequeños poros de las hojas por los que escapa el vapor. La iluminación interior suele ser débil: los estomas se abren menos y la transpiración disminuye. En una habitación poco ventilada, el aumento de humedad también ralentiza progresivamente la evaporación.
+
+Muchas plantas pueden producir un ligero enfriamiento evaporativo local, pero no sustituyen a un climatizador. Para evacuar energía de forma duradera habría que expulsar al exterior el aire húmedo. Una iluminación artificial intensa podría estimular la transpiración, pero su energía eléctrica terminaría casi íntegramente como calor en la habitación. Las plantas CAM adaptadas a medios áridos, entre ellas los cactus, son una excepción: sus estomas se abren principalmente por la noche.
+\end{solution}
+\end{exo}
+
+\begin{exo}[Mezcla de dos masas de agua]{calorimetrie-melange-eau}
+\seoready{true}
+\keywords{calorimetría, mezcla, capacidad térmica, calor específico, Joseph Black, temperatura de equilibrio}
+
+Se vierten $m_1=0{,}200\,\text{kg}$ de agua a $T_1=80\,^\circ\text{C}$ en un recipiente que ya contiene $m_2=0{,}300\,\text{kg}$ de agua a $T_2=15\,^\circ\text{C}$. El recipiente es un calorímetro ideal: se desprecia toda pérdida de calor al exterior y la capacidad térmica del propio recipiente. Se recuerda la relación $Q=mc\Delta T$, donde $c=4{,}18\times10^3\,\text{J}\!\cdot\!\text{kg}^{-1}\!\cdot\!\text{K}^{-1}$ es la capacidad térmica específica del agua líquida.
+
+\begin{enumerate}
+  \item Justificar que el calor cedido por el agua caliente es recibido íntegramente por el agua fría. Escribir la ecuación de conservación con $m_1$, $m_2$, $c$, $T_1$, $T_2$ y la temperatura de equilibrio $T_{eq}$.
+  \item Deducir la expresión de $T_{eq}$ y calcular su valor numérico.
+  \item Calcular el calor $Q$ cedido por el agua caliente durante la mezcla.
+  \item ¿Permiten tales mezclas de una misma sustancia determinar $c$? Justificar.
+\end{enumerate}
+
+\begin{indication}
+Como el calorímetro está aislado y es rígido, se conserva la energía interna total $U_1+U_2$: el calor cedido por uno es recibido por el otro con signo opuesto.
+\end{indication}
+
+\begin{solution}
+\textbf{1.} La conservación de la energía interna total da
+\[
+m_1c(T_{eq}-T_1)+m_2c(T_{eq}-T_2)=0.
+\]
+
+\textbf{2.} El factor común $c$ se simplifica y se obtiene
+\[
+T_{eq}=\frac{m_1T_1+m_2T_2}{m_1+m_2}
+=\frac{0{,}200\times80+0{,}300\times15}{0{,}200+0{,}300}
+=41\,^\circ\text{C}.
+\]
+
+\textbf{3.} El agua caliente cede
+\[
+Q=m_1c(T_1-T_{eq})
+=0{,}200\times4{,}18\times10^3\times(80-41)
+\approx3{,}26\times10^4\,\text{J}.
+\]
+El agua fría recibe exactamente la misma cantidad:
+\[
+m_2c(T_{eq}-T_2)=0{,}300\times4{,}18\times10^3\times26
+\approx3{,}26\times10^4\,\text{J}.
+\]
+
+\textbf{4.} No. Para dos masas de la misma sustancia, el mismo coeficiente $c$ multiplica ambos términos del balance y se simplifica. La temperatura de equilibrio no depende de $c$, sino que es la media de las temperaturas iniciales ponderada por las masas. Para medir una capacidad térmica específica mediante el método de mezclas hace falta una sustancia de capacidad conocida, como en el ejercicio siguiente.
+\end{solution}
+\end{exo}
+
+\begin{exo}[Determinación de la capacidad térmica específica de un metal por el método de mezclas]{calorimetrie-methode-melanges}
+\seoready{true}
+\keywords{calorimetría, método de mezclas, capacidad térmica específica, calorímetro, equivalente en agua}
+
+Como ya hacía Joseph Black en el siglo XVIII, se desea medir la capacidad térmica específica $c_m$ de un metal desconocido mediante el \emph{método de mezclas}. Se calienta una muestra de masa $m=0{,}150\,\text{kg}$ hasta $T_m=95\,^\circ\text{C}$ y se sumerge rápidamente en un calorímetro que contiene $m_e=0{,}250\,\text{kg}$ de agua, con $c_e=4{,}18\times10^3\,\text{J}\!\cdot\!\text{kg}^{-1}\!\cdot\!\text{K}^{-1}$, inicialmente a $T_e=18\,^\circ\text{C}$. La temperatura de equilibrio medida es $T_{eq}=22\,^\circ\text{C}$. Al principio se desprecia la capacidad térmica del recipiente, el agitador y el termómetro.
+
+\begin{enumerate}
+  \item Escribir la conservación de la energía del sistema aislado formado por el metal y el agua, dejando $c_m$ como única incógnita.
+  \item Deducir la expresión de $c_m$ y calcularla. ¿A qué metal usual corresponde aproximadamente? Valores de referencia en $\text{J}\!\cdot\!\text{kg}^{-1}\!\cdot\!\text{K}^{-1}$: aluminio $9{,}0\times10^2$, hierro $4{,}5\times10^2$, cobre $3{,}9\times10^2$, plomo $1{,}3\times10^2$.
+  \item El recipiente absorbe en realidad parte del calor. Se modela mediante un \emph{equivalente en agua} $\mu=1{,}5\times10^{-2}\,\text{kg}$: el calorímetro se comporta como una masa adicional $\mu$ de agua. Recalcular $c_m$ y comentar el sentido de la corrección.
+  \item ¿Por qué es esencial sumergir rápidamente la muestra y aislar bien el calorímetro del aire ambiente?
+\end{enumerate}
+
+\begin{indication}
+El metal cede $Q_m=mc_m(T_m-T_{eq})$, recibido por el agua y, en la pregunta 3, también por el calorímetro: $Q_m=(m_e+\mu)c_e(T_{eq}-T_e)$.
+\end{indication}
+
+\begin{solution}
+\textbf{1.} Para el sistema aislado,
+\[
+mc_m(T_m-T_{eq})=m_ec_e(T_{eq}-T_e).
+\]
+
+\textbf{2.} Por tanto,
+\[
+c_m=\frac{m_ec_e(T_{eq}-T_e)}{m(T_m-T_{eq})}
+=\frac{0{,}250\times4{,}18\times10^3\times(22-18)}{0{,}150\times(95-22)}
+\approx3{,}82\times10^2\,\text{J}\!\cdot\!\text{kg}^{-1}\!\cdot\!\text{K}^{-1}.
+\]
+Este valor es muy próximo al del cobre.
+
+\textbf{3.} Incluyendo el equivalente en agua,
+\[
+c_m=\frac{(m_e+\mu)c_e(T_{eq}-T_e)}{m(T_m-T_{eq})}
+=\frac{(0{,}250+0{,}015)\times4{,}18\times10^3\times4}{0{,}150\times73}
+\approx4{,}05\times10^2\,\text{J}\!\cdot\!\text{kg}^{-1}\!\cdot\!\text{K}^{-1}.
+\]
+La corrección aumenta $c_m$: al despreciar el recipiente se subestimaba el calor realmente cedido por el metal y, por tanto, su capacidad térmica específica.
+
+\textbf{4.} El método supone un sistema aislado durante toda la medida. La inmersión rápida limita el intercambio entre la muestra caliente y el aire antes de llegar al agua; un buen aislamiento limita las pérdidas mientras se establece el equilibrio. Cualquier transferencia no contabilizada falsearía el balance y el valor deducido de $c_m$. Este es precisamente el cuidado experimental que ya aplicaban Black y, más tarde, Lavoisier y Laplace con su calorímetro de hielo.
+\end{solution}
+\end{exo}
+
+\begin{exo}[Calorías alimentarias y potencia metabólica]{calorimetrie-calories-alimentaires}
+\seoready{true}
+\keywords{caloría, kilocaloría, caloría alimentaria, equivalente mecánico, potencia metabólica, unidades}
+
+Una etiqueta nutricional indica que un adulto consume en promedio unas $2000\,\text{kcal}$ al día. La kilocaloría es una unidad no SI todavía utilizada en nutrición; su conversión al SI es $1\,\text{kcal}=4{,}18\times10^3\,\text{J}$.
+
+\begin{enumerate}
+  \item Convertir esta ración diaria en julios.
+  \item Deducir la potencia metabólica media en vatios suponiendo que la energía se consume uniformemente durante 24 horas.
+  \item Una barrita energética indica «$210\,\text{kcal}$». ¿Qué masa de agua inicialmente a $20\,^\circ\text{C}$ podría llevarse a ebullición, $100\,^\circ\text{C}$, con la misma energía si se convirtiera íntegramente en calor? Tómese $c_{\text{agua}}=4{,}18\times10^3\,\text{J}\!\cdot\!\text{kg}^{-1}\!\cdot\!\text{K}^{-1}$.
+  \item ¿En qué formas utiliza realmente esta energía el organismo humano? Responder cualitativamente.
+\end{enumerate}
+
+\begin{indication}
+Para la pregunta 2, utilizar $\mathcal P=E/\Delta t$. Para la pregunta 3, convertir primero la energía a julios y despejar $m$ en $Q=mc\Delta T$.
+\end{indication}
+
+\begin{solution}
+\textbf{1.} En unidades SI,
+\[
+E=2000\times4{,}18\times10^3=8{,}36\times10^6\,\text{J}.
+\]
+
+\textbf{2.} La potencia media es
+\[
+\mathcal P=\frac{8{,}36\times10^6}{8{,}64\times10^4}\approx97\,\text{W}.
+\]
+En el conjunto del día, una persona consume en promedio aproximadamente la misma potencia que una bombilla incandescente. Este orden de magnitud, a menudo sorprendente, muestra el interés de convertir las calorías alimentarias a unidades físicas habituales.
+
+\textbf{3.} La energía de la barrita es
+\[
+Q=210\times4{,}18\times10^3\approx8{,}78\times10^5\,\text{J}.
+\]
+Con $\Delta T=80\,\text{K}$,
+\[
+m=\frac{Q}{c\Delta T}
+=\frac{8{,}78\times10^5}{4{,}18\times10^3\times80}
+\approx2{,}63\,\text{kg}.
+\]
+Una sola barrita representa, en orden de magnitud, energía suficiente para llevar a ebullición unos $2{,}5\,\text{kg}$ de agua del grifo.
+
+\textbf{4.} El organismo no «consume» energía en el sentido de hacerla desaparecer: transforma la energía química de los nutrientes. Una parte sirve para el trabajo muscular, el funcionamiento de los órganos, el mantenimiento de gradientes eléctricos celulares, el transporte molecular y las síntesis químicas. Otra parte puede almacenarse como glucógeno o grasa. Finalmente, la mayor parte de la energía utilizada se disipa como calor, contribuye a mantener la temperatura corporal y después se transfiere al entorno. Una pequeña fracción también abandona el organismo como energía química contenida en los residuos.
+\end{solution}
+\end{exo}

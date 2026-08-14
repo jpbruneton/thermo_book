@@ -1,0 +1,255 @@
+% Alıştırma bankası — bölüm 2
+% Bölüm, bu dosyanın adıyla belirlenir.
+
+\begin{exo}[Soğuk buzdan kaynayan suya: büyüklük mertebeleri]{chauffage-glace-eau-ebullition}
+\seoready{true}
+\keywords{kalorimetri, hâl değişimi, erime, buharlaşma, gizli ısı, büyüklük mertebesi}
+
+\textbf{Sayısal veriler (atmosfer basıncında):}
+\[
+\begin{aligned}
+c_{\text{ice}} &= 2{,}1\times10^3\,\text{J}\!\cdot\!\text{kg}^{-1}\!\cdot\!\text{K}^{-1},
+& L_f &= 3{,}34\times10^5\,\text{J}\!\cdot\!\text{kg}^{-1},\\
+c_{\text{water}} &= 4{,}18\times10^3\,\text{J}\!\cdot\!\text{kg}^{-1}\!\cdot\!\text{K}^{-1},
+& L_v &= 2{,}26\times10^6\,\text{J}\!\cdot\!\text{kg}^{-1}.
+\end{aligned}
+\]
+Atmosfer basıncında, başlangıçta $-100\,{}^\circ\text{C}$ sıcaklığında olan bir kilogram buz aşamalı olarak ısıtılıyor.
+\begin{enumerate}
+  \item Buzu $-100\,{}^\circ\text{C}$'den $0\,{}^\circ\text{C}$'ye getirmek için gereken enerjiyi hesaplayın.
+  \item Buzu $0\,{}^\circ\text{C}$'de tamamen eritmek için gereken enerjiyi hesaplayın.
+  \item Sıvı suyu $0\,{}^\circ\text{C}$'den $100\,{}^\circ\text{C}$'ye ısıtmak için gereken enerjiyi hesaplayın.
+  \item Suyu $100\,{}^\circ\text{C}$'de tamamen buharlaştırmak için gereken ek enerjiyi hesaplayın.
+  \item En çok enerji hangi aşamada gerekir? Bir kilogram suyu $0\,{}^\circ\text{C}$'den $100\,{}^\circ\text{C}$'ye ısıtma enerjisini, on metre düşen $m$ kütlesinin potansiyel enerjisiyle karşılaştırın. Aynı enerjiyi açığa çıkarmak için ne kadar kütle düşmelidir?
+  \item Şimdi ters süreci ele alın. $m_v$ kütleli su buharı bir ön cam üzerinde yoğuşuyor ve oluşan sıvı su daha sonra soğumuyor. Yoğuşmada açığa çıkan $Q_{\text{rel}}$ ısısını yazın ve $m_v=1{,}0\times10^{-2}\,\text{kg}$ için hesaplayın. Cam sıcaklığında $L_v=2{,}45\times10^6\,\text{J}\!\cdot\!\text{kg}^{-1}$ alın.
+\end{enumerate}
+\begin{indication}
+Hâl değişimi olmadan ısıtma için $Q=mc\Delta T$, sabit sıcaklıkta hâl değişimi için $Q=mL$ kullanın. $h$ yüksekliğindeki $m$ kütlesinin yerçekimi potansiyel enerjisi $E_p=mgh$'dir; $g=9{,}81\,\text{m}\!\cdot\!\text{s}^{-2}$ alın.
+\end{indication}
+\begin{solution}
+\textbf{1.}
+\[
+Q_1=mc_{\text{ice}}\Delta T
+=1{,}0\times2{,}1\times10^3\times100=2{,}1\times10^5\,\text{J}.
+\]
+\textbf{2.} Erime sırasında sıcaklık $0\,{}^\circ\text{C}$'de kalır:
+\[
+Q_2=mL_f=1{,}0\times3{,}34\times10^5=3{,}34\times10^5\,\text{J}.
+\]
+\textbf{3.}
+\[
+Q_3=mc_{\text{water}}\Delta T
+=1{,}0\times4{,}18\times10^3\times100=4{,}18\times10^5\,\text{J}.
+\]
+\textbf{4.}
+\[
+Q_4=mL_v=1{,}0\times2{,}26\times10^6=2{,}26\times10^6\,\text{J}.
+\]
+Yalnız bu aşama birkaç megajoule mertebesinde enerji gerektirir.
+
+\textbf{5.} Buharlaşma açık ara en fazla enerji isteyen aşamadır:
+\[
+Q_4=2{,}26\times10^6>Q_3=4{,}18\times10^5>Q_2=3{,}34\times10^5>Q_1=2{,}1\times10^5\,\text{J}.
+\]
+Buharlaşma, sıvı suyu $0$'dan $100\,{}^\circ\text{C}$'ye ısıtmaktan yaklaşık $(2{,}26\times10^6)/(4{,}18\times10^5)\approx5{,}4$ kat daha fazla enerji gerektirir.
+
+$h=10\,\text{m}$'den düşen $m$ kütlesi için $E_p=mgh$'dir. $mgh=Q_3$ alınırsa
+\[
+m=\frac{Q_3}{gh}=\frac{4{,}18\times10^5}{9{,}81\times10}
+\approx4{,}26\times10^3\,\text{kg}.
+\]
+Dolayısıyla bir kilogram suyu $0$'dan $100\,{}^\circ\text{C}$'ye ısıtmakla aynı enerjiyi açığa çıkarmak için yaklaşık $4{,}3$ tonluk bir kütleyi on metre düşürmek gerekir. Bu çok büyük değer, su ısıtmanın evsel enerji tüketiminde neden önemli yer tuttuğunu açıklar. Suyun özgül ısı kapasitesi yaygın metallere göre de çok büyüktür; örneğin bakırın yaklaşık on katıdır (sonraki alıştırmalara bakın).
+
+\textbf{6.} Yoğuşma buharlaşmanın tersidir; buhar gizli ısıyı cama verir:
+\[
+Q_{\text{rel}}=m_vL_v.
+\]
+$m_v=1{,}0\times10^{-2}\,\text{kg}$ için
+\[
+Q_{\text{rel}}=1{,}0\times10^{-2}\times2{,}45\times10^6
+=2{,}45\times10^4\,\text{J}.
+\]
+Bu nedenle az miktarda buharın yoğuşması bile ön cam ve çevresi tarafından alınan, ihmal edilemeyecek bir ısı açığa çıkarabilir.
+\end{solution}
+\end{exo}
+
+\begin{exo}[Büyük bir ağacın evapotranspirasyonu: doğal klima?]{odg-evapotranspiration-arbre}
+\seoready{true}
+\keywords{büyüklük mertebesi, evapotranspirasyon, ağaç, gizli ısı, soğutma gücü, klima, COP}
+
+Sıcak ve kuru bir günde, yeterli suya sahip büyük bir ağaç evapotranspirasyonla yaklaşık $500\,\text{L}=5{,}0\times10^{-1}\,\text{m}^3$ su verebilir. Terleme esas olarak ışık varken gerçekleştiğinden bunun on iki saat sürdüğünü varsayalım. Ağacın tacı yerde $A_{\text{tree}}=50\,\text{m}^2$ alan kaplar. Suyun yoğunluğu ve atmosfer basıncındaki gizli buharlaşma ısısı
+\[
+\rho_{\text{water}}=1{,}0\times10^3\,\text{kg}\!\cdot\!\text{m}^{-3},
+\qquad L_v=2{,}45\times10^6\,\text{J}\!\cdot\!\text{kg}^{-1}.
+\]
+\begin{enumerate}
+  \item Gün boyunca evapotranspirasyonla verilen suyun kütlesini ve onu buharlaştırmak için gereken enerjiyi hesaplayın.
+  \item Bunun neden soğutma etkisi oluşturduğunu açıklayın.
+  \item On iki saatlik etkin terleme sırasında ağacın metrekare başına ortalama soğutma gücünü hesaplayın.
+  \item Karşılaştırma için elektrik gücü $P_{\mathrm{el}}=2{,}0\times10^3\,\text{W}$, soğutma performans katsayısı $\mathrm{COP}=3{,}0$ olan ve $A_{\text{room}}=20\,\text{m}^2$ odayı soğutan klimayı ele alın. Tanım gereği $\mathrm{COP}=P_{\text{cool}}/P_{\mathrm{el}}$. Soğutma gücünü ve metrekare başına gücü hesaplayıp ağaçla karşılaştırın.
+  \item Birim alan başına güçler aynı mertebede olsa bile ağaç ve klimanın tamamen aynı hissedilen soğutmayı sağladığı neden söylenemez?
+  \item Çok sayıda ev bitkisiyle ev soğutulabilir mi? (Genel kültür: yanıt biyolojik süreçlere bağlıdır.)
+\end{enumerate}
+\begin{indication}
+$m=\rho V$, $Q_{\mathrm{evap}}=mL_v$ ve $P=Q/\tau$ kullanın. Klima için $P_{\text{cool}}=\mathrm{COP}\,P_{\mathrm{el}}$.
+\end{indication}
+\begin{solution}
+\textbf{1.}
+\[
+m=\rho_{\text{water}}V=1{,}0\times10^3\times5{,}0\times10^{-1}
+=5{,}0\times10^2\,\text{kg},
+\]
+\[
+Q_{\mathrm{evap}}=mL_v=5{,}0\times10^2\times2{,}45\times10^6
+=1{,}225\times10^9\,\text{J}.
+\]
+Bunun mertebesi bir gigajoule'dür.
+
+\textbf{2.} Buharlaşma endotermik hâl değişimidir. Enerji yapraklardan, topraktan ve çevre havasından çekilerek yaprakların ve yakın çevrenin sıcaklığını düşürür.
+
+\textbf{3.} On iki saat $\tau=12\times3600=4{,}32\times10^4\,\text{s}$'dir. Dolayısıyla
+\[
+P_{\text{tree}}=\frac{Q_{\mathrm{evap}}}{\tau}
+=\frac{1{,}225\times10^9}{4{,}32\times10^4}\approx2{,}84\times10^4\,\text{W},
+\]
+birim alan başına
+\[
+\frac{P_{\text{tree}}}{A_{\text{tree}}}
+=\frac{2{,}84\times10^4}{50}\approx5{,}7\times10^2\,\text{W}\!\cdot\!\text{m}^{-2}.
+\]
+\textbf{4.}
+\[
+P_{\text{cool}}=\mathrm{COP}\,P_{\mathrm{el}}
+=3{,}0\times2{,}0\times10^3=6{,}0\times10^3\,\text{W},
+\]
+\[
+\frac{P_{\text{cool}}}{A_{\text{room}}}
+=\frac{6{,}0\times10^3}{20}=3{,}0\times10^2\,\text{W}\!\cdot\!\text{m}^{-2}.
+\]
+Bu modelde ağacın alan başına evapotranspirasyon gücü sıradan klimanın neredeyse iki katıdır.
+
+\textbf{5.} Karşılaştırma yalnız enerji akılarıyla ilgilidir. Klima kapalı ve denetimli hacmi soğuturken ağacın buharı atmosfere dağılır, rüzgâr sıcak hava getirir. Hissedilen etki havalandırma, nem, ortam sıcaklığı ve ağaca uzaklığa bağlıdır. Terleme güneş, rüzgâr, nem, tür ve mevcut suyla değişir; kuraklıkta çok azalabilir. Ağaç ayrıca gölge sağlayarak zeminin ve insanların aldığı güneş ışınımını doğrudan azaltır. Dolayısıyla hesap mertebeleri karşılaştırır, ısıl konforun kesin eşdeğerliğini göstermez.
+
+\textbf{6.} Uygulamada ev bitkilerinin soğutma etkisi çok küçük olur. Çoğu bitkide ışık, su buharının çıktığı küçük yaprak gözenekleri olan stomaların açılmasını destekler. İç mekân ışığı genellikle zayıftır; stomalar daha az açılır ve terleme azalır. Az havalandırılan odada yükselen nem de buharlaşmayı giderek yavaşlatır.
+
+Çok sayıda bitki hafif yerel evaporatif soğutma sağlayabilir ama klimanın yerini tutmaz. Enerjiyi evden sürekli çıkarmak için nemli hava dışarı atılmalıdır. Güçlü yapay aydınlatma terlemeyi uyarabilir, fakat elektrik enerjisi neredeyse bütünüyle odada ısıya dönüşür. Kaktüsler dâhil kurak ortama uyumlu CAM bitkileri istisnadır: stomaları esas olarak geceleri açılır.
+\end{solution}
+\end{exo}
+
+\begin{exo}[İki su kütlesinin karıştırılması]{calorimetrie-melange-eau}
+\seoready{true}
+\keywords{kalorimetri, karıştırma, ısı kapasitesi, özgül ısı, Joseph Black, denge sıcaklığı}
+
+$T_1=80\,^\circ\text{C}$ sıcaklığındaki $m_1=0{,}200\,\text{kg}$ su, içinde $T_2=15\,^\circ\text{C}$ sıcaklığında $m_2=0{,}300\,\text{kg}$ su bulunan kaba dökülüyor. Kap ideal kalorimetredir: dışarı ısı kaybı ve kabın ısı kapasitesi ihmal edilir. $Q=mc\Delta T$ olup sıvı suyun özgül ısısı $c=4{,}18\times10^3\,\text{J}\!\cdot\!\text{kg}^{-1}\!\cdot\!\text{K}^{-1}$'dir.
+\begin{enumerate}
+  \item Sıcak suyun verdiği ısının tümüyle soğuk su tarafından alındığını açıklayın ve $m_1$, $m_2$, $c$, $T_1$, $T_2$, $T_{eq}$ içeren korunum denklemini yazın.
+  \item $T_{eq}$ ifadesini ve sayısal değerini bulun.
+  \item Karışım sırasında sıcak suyun verdiği $Q$ ısısını hesaplayın.
+  \item Aynı maddeyi karıştırmak $c$'yi belirlemeye yeter mi? Açıklayın.
+\end{enumerate}
+\begin{indication}
+Kalorimetre yalıtılmış ve rijit olduğundan toplam iç enerji $U_1+U_2$ korunur: birinin verdiği ısıyı diğeri ters işaretle alır.
+\end{indication}
+\begin{solution}
+\textbf{1.}
+\[
+m_1c(T_{eq}-T_1)+m_2c(T_{eq}-T_2)=0.
+\]
+\textbf{2.} Ortak $c$ çarpanı sadeleşir:
+\[
+T_{eq}=\frac{m_1T_1+m_2T_2}{m_1+m_2}
+=\frac{0{,}200\times80+0{,}300\times15}{0{,}200+0{,}300}=41\,^\circ\text{C}.
+\]
+\textbf{3.}
+\[
+Q=m_1c(T_1-T_{eq})=0{,}200\times4{,}18\times10^3\times(80-41)
+\approx3{,}26\times10^4\,\text{J}.
+\]
+Soğuk su aynı miktarı alır:
+\[
+m_2c(T_{eq}-T_2)=0{,}300\times4{,}18\times10^3\times26
+\approx3{,}26\times10^4\,\text{J}.
+\]
+\textbf{4.} Hayır. Aynı madde için $c$, enerji bilançosunun iki terimini de çarpar ve sadeleşir. Denge sıcaklığı $c$'ye bağlı değildir; başlangıç sıcaklıklarının kütleyle ağırlıklı ortalamasıdır. Karışım yöntemiyle özgül ısı ölçmek için sonraki alıştırmadaki gibi ısı kapasitesi bilinen bir madde gerekir.
+\end{solution}
+\end{exo}
+
+\begin{exo}[Bir metalin özgül ısısının karışım yöntemiyle belirlenmesi]{calorimetrie-methode-melanges}
+\seoready{true}
+\keywords{kalorimetri, karışım yöntemi, özgül ısı, kalorimetre, su eşdeğeri}
+
+Joseph Black'in 18. yüzyılda yaptığı gibi bilinmeyen metalin özgül ısısı $c_m$, \emph{karışım yöntemiyle} ölçülecek. $m=0{,}150\,\text{kg}$ örnek $T_m=95\,^\circ\text{C}$'ye ısıtılıp hızla $m_e=0{,}250\,\text{kg}$ su içeren kalorimetreye daldırılıyor. Su için $c_e=4{,}18\times10^3\,\text{J}\!\cdot\!\text{kg}^{-1}\!\cdot\!\text{K}^{-1}$ ve $T_e=18\,^\circ\text{C}$; ölçülen denge sıcaklığı $T_{eq}=22\,^\circ\text{C}$'dir. Önce kap, karıştırıcı ve termometrenin ısı kapasitesi ihmal edilir.
+\begin{enumerate}
+  \item Metal–su yalıtılmış sisteminin enerji korunumunu $c_m$ tek bilinmeyen olacak biçimde yazın.
+  \item $c_m$'yi çıkarıp hesaplayın. Hangi yaygın metale yakındır? $\text{J}\!\cdot\!\text{kg}^{-1}\!\cdot\!\text{K}^{-1}$ cinsinden referanslar: alüminyum $9{,}0\times10^2$, demir $4{,}5\times10^2$, bakır $3{,}9\times10^2$, kurşun $1{,}3\times10^2$.
+  \item Kap da ısı alır. Bunu \emph{su eşdeğeri} $\mu=1{,}5\times10^{-2}\,\text{kg}$ ile modelleyin: kalorimetre ek $\mu$ su kütlesi gibi davranır. $c_m$'yi yeniden hesaplayıp düzeltmenin yönünü açıklayın.
+  \item Örnek neden hızla daldırılmalı ve kalorimetre çevre havasından iyi yalıtılmalıdır?
+\end{enumerate}
+\begin{indication}
+Metal $Q_m=mc_m(T_m-T_{eq})$ verir; bunu su ve 3. soruda kalorimetre tümüyle alır: $Q_m=(m_e+\mu)c_e(T_{eq}-T_e)$.
+\end{indication}
+\begin{solution}
+\textbf{1.}
+\[
+mc_m(T_m-T_{eq})=m_ec_e(T_{eq}-T_e).
+\]
+\textbf{2.}
+\[
+c_m=\frac{m_ec_e(T_{eq}-T_e)}{m(T_m-T_{eq})}
+=\frac{0{,}250\times4{,}18\times10^3\times(22-18)}{0{,}150\times(95-22)}
+\approx3{,}82\times10^2\,\text{J}\!\cdot\!\text{kg}^{-1}\!\cdot\!\text{K}^{-1}.
+\]
+Bu değer bakırın değerine çok yakındır.
+
+\textbf{3.}
+\[
+c_m=\frac{(m_e+\mu)c_e(T_{eq}-T_e)}{m(T_m-T_{eq})}
+=\frac{(0{,}250+0{,}015)\times4{,}18\times10^3\times4}{0{,}150\times73}
+\approx4{,}05\times10^2\,\text{J}\!\cdot\!\text{kg}^{-1}\!\cdot\!\text{K}^{-1}.
+\]
+Düzeltme $c_m$'yi artırır: kabı ihmal etmek metalin gerçekte verdiği ısıyı ve dolayısıyla özgül ısısını küçük tahmin ettirir.
+
+\textbf{4.} Yöntem ölçüm boyunca yalıtılmış sistem varsayar. Hızlı daldırma, örnek suya ulaşmadan havayla ısı alışverişini; iyi yalıtım ise denge kurulurken kaybı sınırlar. Hesaba katılmayan ısı geçişi bilançoyu ve $c_m$'yi bozar. Black'in, daha sonra buz kalorimetresiyle Lavoisier ve Laplace'ın gösterdiği deneysel özen tam da budur.
+\end{solution}
+\end{exo}
+
+\begin{exo}[Gıda kalorileri ve metabolik güç]{calorimetrie-calories-alimentaires}
+\seoready{true}
+\keywords{kalori, kilokalori, gıda Kalorisi, mekanik eşdeğer, metabolik güç, birimler}
+
+Beslenme etiketi bir yetişkinin günde ortalama yaklaşık $2000\,\text{kcal}$ tükettiğini belirtir. Kilokalori beslenmede hâlâ kullanılan SI dışı birimdir; $1\,\text{kcal}=4{,}18\times10^3\,\text{J}$.
+\begin{enumerate}
+  \item Günlük enerjiyi joule'e çevirin.
+  \item Enerjinin 24 saat boyunca düzenli kullanıldığını varsayarak ortalama metabolik gücü watt cinsinden bulun.
+  \item Bir enerji barında ``$210\,\text{kcal}$'' yazıyor. Tüm enerji ısıya dönüşse başlangıçta $20\,^\circ\text{C}$ olan ne kadar suyu $100\,^\circ\text{C}$ kaynama noktasına getirebilir? $c_{\text{water}}=4{,}18\times10^3\,\text{J}\!\cdot\!\text{kg}^{-1}\!\cdot\!\text{K}^{-1}$ alın.
+  \item İnsan bedeni bu enerjiyi gerçekte hangi biçimlerde kullanır? Nitel yanıt verin.
+\end{enumerate}
+\begin{indication}
+2. soruda $\mathcal P=E/\Delta t$ kullanın. 3. soruda önce joule'e çevirip $Q=mc\Delta T$ denkleminden $m$'yi bulun.
+\end{indication}
+\begin{solution}
+\textbf{1.}
+\[
+E=2000\times4{,}18\times10^3=8{,}36\times10^6\,\text{J}.
+\]
+\textbf{2.}
+\[
+\mathcal P=\frac{8{,}36\times10^6}{8{,}64\times10^4}\approx97\,\text{W}.
+\]
+Bir gün boyunca insanın ortalama gücü yaklaşık akkor ampul kadardır. Çoğu zaman şaşırtıcı olan bu mertebe, gıda kalorilerini alışılmış fizik birimlerine çevirmenin yararını gösterir.
+
+\textbf{3.}
+\[
+Q=210\times4{,}18\times10^3\approx8{,}78\times10^5\,\text{J}.
+\]
+$\Delta T=80\,\text{K}$ için
+\[
+m=\frac{Q}{c\Delta T}
+=\frac{8{,}78\times10^5}{4{,}18\times10^3\times80}
+\approx2{,}63\,\text{kg}.
+\]
+Dolayısıyla bir enerji barı mertebe olarak yaklaşık $2{,}5\,\text{kg}$ musluk suyunu kaynatacak enerji içerir.
+
+\textbf{4.} Beden enerjiyi yok etme anlamında “tüketmez”; besinlerin kimyasal enerjisini dönüştürür. Bir bölümü kas işi, organların çalışması, hücresel elektrik gradyanlarının korunması, molekül taşınması ve kimyasal sentez için kullanılır; bir bölümü glikojen veya yağ olarak depolanabilir. Sonunda kullanılan enerjinin çoğu ısı olarak dağılır, vücut sıcaklığını korumaya katkı yaptıktan sonra çevreye geçer. Küçük bir bölümü de atıklarda kalan kimyasal enerji olarak bedenden çıkar.
+\end{solution}
+\end{exo}

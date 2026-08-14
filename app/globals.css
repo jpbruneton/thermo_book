@@ -1305,6 +1305,8 @@ a.exercise-index-card-link:focus-visible {
   padding: 0.55rem 0;
   border-bottom: 1px solid var(--border-subtle);
   font-family: var(--font-playfair);
+  font-size: 0.9rem;
+  line-height: 1.35;
   color: var(--text-heading);
   text-decoration: none;
 }

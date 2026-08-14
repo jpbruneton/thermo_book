@@ -1,0 +1,261 @@
+% 연습문제 모음 — 제2장
+% 장 번호는 이 파일의 이름으로 정한다.
+
+\begin{exo}[차가운 얼음에서 끓는 물까지: 크기 차수]{chauffage-glace-eau-ebullition}
+\seoready{true}
+\keywords{열량계, 상전이, 융해, 기화, 잠열, 크기 차수}
+
+\textbf{수치 자료(대기압):}
+\[
+\begin{aligned}
+c_{\text{ice}} &= 2{,}1\times10^3\,\text{J}\!\cdot\!\text{kg}^{-1}\!\cdot\!\text{K}^{-1},
+& L_f &= 3{,}34\times10^5\,\text{J}\!\cdot\!\text{kg}^{-1},\\
+c_{\text{water}} &= 4{,}18\times10^3\,\text{J}\!\cdot\!\text{kg}^{-1}\!\cdot\!\text{K}^{-1},
+& L_v &= 2{,}26\times10^6\,\text{J}\!\cdot\!\text{kg}^{-1}.
+\end{aligned}
+\]
+대기압에서 처음 온도가 $-100\,{}^\circ\text{C}$인 얼음 1킬로그램을 단계적으로 가열한다.
+
+\begin{enumerate}
+  \item 얼음을 $-100\,{}^\circ\text{C}$에서 $0\,{}^\circ\text{C}$까지 가열하는 데 필요한 에너지를 계산하라.
+  \item $0\,{}^\circ\text{C}$에서 얼음을 완전히 녹이는 데 필요한 에너지를 계산하라.
+  \item 액체 물을 $0\,{}^\circ\text{C}$에서 $100\,{}^\circ\text{C}$까지 가열하는 데 필요한 에너지를 계산하라.
+  \item $100\,{}^\circ\text{C}$에서 물을 완전히 기화시키는 데 추가로 필요한 에너지를 계산하라.
+  \item 어느 단계가 가장 많은 에너지를 요구하는가? 물 1킬로그램을 $0\,{}^\circ\text{C}$에서 $100\,{}^\circ\text{C}$까지 가열하는 에너지와 질량 $m$이 10미터 낙하할 때의 중력 위치 에너지를 비교하라. 같은 에너지를 방출하려면 얼마의 질량이 낙하해야 하는가?
+  \item 이제 역과정을 생각하자. 질량 $m_v$의 수증기가 자동차 앞유리에 응축하며, 생성된 액체 물은 이후 냉각되지 않는다고 한다. 응축 때 방출되는 열 $Q_{\text{rel}}$을 나타내고 $m_v=1{,}0\times10^{-2}\,\text{kg}$에 대해 계산하라. 유리 온도에서 $L_v=2{,}45\times10^6\,\text{J}\!\cdot\!\text{kg}^{-1}$을 사용한다.
+\end{enumerate}
+
+\begin{indication}
+상전이 없는 가열에는 $Q=mc\Delta T$를, 일정 온도에서의 상전이에는 $Q=mL$을 사용한다. 높이 $h$에 있는 질량 $m$의 중력 위치 에너지는 $E_p=mgh$이며, $g=9{,}81\,\text{m}\!\cdot\!\text{s}^{-2}$로 둔다.
+\end{indication}
+
+\begin{solution}
+\textbf{1.} 얼음을 녹는점까지 가열하는 데 필요한 에너지는
+\[
+Q_1=mc_{\text{ice}}\Delta T
+=1{,}0\times2{,}1\times10^3\times100=2{,}1\times10^5\,\text{J}.
+\]
+\textbf{2.} 융해 중 온도는 $0\,{}^\circ\text{C}$로 유지된다.
+\[
+Q_2=mL_f=1{,}0\times3{,}34\times10^5=3{,}34\times10^5\,\text{J}.
+\]
+\textbf{3.} 액체 물을 가열하는 데에는
+\[
+Q_3=mc_{\text{water}}\Delta T
+=1{,}0\times4{,}18\times10^3\times100=4{,}18\times10^5\,\text{J}
+\]
+이 필요하다.
+\textbf{4.} 완전한 기화에는 추가로
+\[
+Q_4=mL_v=1{,}0\times2{,}26\times10^6=2{,}26\times10^6\,\text{J}
+\]
+이 필요하다. 이 단계만으로도 수 메가줄 규모이다.
+
+\textbf{5.} 기화가 단연 가장 많은 에너지를 요구한다.
+\[
+Q_4=2{,}26\times10^6>Q_3=4{,}18\times10^5>Q_2=3{,}34\times10^5>Q_1=2{,}1\times10^5\,\text{J}.
+\]
+기화에는 액체 물을 $0$에서 $100\,{}^\circ\text{C}$까지 가열할 때보다 약 $(2{,}26\times10^6)/(4{,}18\times10^5)\approx5{,}4$배 많은 에너지가 든다.
+
+$h=10\,\text{m}$에서 낙하하는 질량 $m$에 대해 $E_p=mgh$이다. $mgh=Q_3$로 놓으면
+\[
+m=\frac{Q_3}{gh}=\frac{4{,}18\times10^5}{9{,}81\times10}
+\approx4{,}26\times10^3\,\text{kg}.
+\]
+따라서 물 1킬로그램을 $0$에서 $100\,{}^\circ\text{C}$까지 가열하는 것과 같은 에너지를 방출하려면 약 $4{,}3$톤을 10미터 낙하시켜야 한다. 이는 매우 큰 값이며 온수 가열이 가정 에너지 소비에서 큰 비중을 차지하는 이유를 보여 준다. 물의 비열도 일반 금속보다 매우 커서, 예를 들어 구리의 약 10배이다(다음 연습문제 참조).
+
+\textbf{6.} 응축은 기화의 역과정이며, 수증기는 앞유리에 잠열을 방출한다.
+\[
+Q_{\text{rel}}=m_vL_v.
+\]
+$m_v=1{,}0\times10^{-2}\,\text{kg}$이면
+\[
+Q_{\text{rel}}=1{,}0\times10^{-2}\times2{,}45\times10^6
+=2{,}45\times10^4\,\text{J}.
+\]
+따라서 적은 양의 수증기가 응축해도 무시할 수 없는 열을 방출하며, 앞유리와 주변이 이를 흡수한다.
+\end{solution}
+\end{exo}
+
+\begin{exo}[큰 나무의 증발산: 자연 에어컨?]{odg-evapotranspiration-arbre}
+\seoready{true}
+\keywords{크기 차수, 증발산, 나무, 잠열, 냉방 능력, 에어컨, COP}
+
+덥고 건조한 날, 물을 충분히 공급받는 큰 나무는 증발산으로 약 $500\,\text{L}=5{,}0\times10^{-1}\,\text{m}^3$의 물을 내보낼 수 있다. 증산은 주로 빛이 있을 때 일어나므로 12시간 동안 진행된다고 가정한다. 나무의 수관이 지면에서 덮는 면적은 $A_{\text{tree}}=50\,\text{m}^2$이다. 물의 밀도와 대기압에서의 기화 잠열은
+\[
+\rho_{\text{water}}=1{,}0\times10^3\,\text{kg}\!\cdot\!\text{m}^{-3},
+\qquad L_v=2{,}45\times10^6\,\text{J}\!\cdot\!\text{kg}^{-1}.
+\]
+\begin{enumerate}
+  \item 하루 동안 증발산한 물의 질량과 이를 기화시키는 데 필요한 에너지를 계산하라.
+  \item 이 과정이 냉각 효과를 만드는 이유를 설명하라.
+  \item 활발한 증산이 일어나는 12시간 동안 나무의 제곱미터당 평균 냉방 능력을 계산하라.
+  \item 비교를 위해 입력 전력 $P_{\mathrm{el}}=2{,}0\times10^3\,\text{W}$, 냉방 성능 계수 $\mathrm{COP}=3{,}0$이며 면적 $A_{\text{room}}=20\,\text{m}^2$인 방을 냉각하는 에어컨을 생각한다. 정의상 $\mathrm{COP}=P_{\text{cool}}/P_{\mathrm{el}}$이다. 냉방 능력과 제곱미터당 냉방 능력을 계산하여 나무와 비교하라.
+  \item 단위 면적당 능력이 같은 크기 차수라 해도 나무와 에어컨이 정확히 같은 체감 냉각을 만든다고 결론지을 수 없는 이유는 무엇인가?
+  \item 실내 식물을 많이 두어 집을 냉각할 수 있을까? (상식 문제: 답은 생물학적 과정에 달려 있다.)
+\end{enumerate}
+\begin{indication}
+$m=\rho V$, $Q_{\mathrm{evap}}=mL_v$, $P=Q/\tau$를 사용한다. 에어컨에는 $P_{\text{cool}}=\mathrm{COP}\,P_{\mathrm{el}}$을 사용한다.
+\end{indication}
+\begin{solution}
+\textbf{1.} 물의 질량은
+\[
+m=\rho_{\text{water}}V=1{,}0\times10^3\times5{,}0\times10^{-1}
+=5{,}0\times10^2\,\text{kg}.
+\]
+기화 에너지는
+\[
+Q_{\mathrm{evap}}=mL_v=5{,}0\times10^2\times2{,}45\times10^6
+=1{,}225\times10^9\,\text{J}.
+\]
+그 크기 차수는 1기가줄이다.
+
+\textbf{2.} 기화는 흡열 상전이로, 잎과 토양과 주변 공기에서 에너지를 가져간다. 열이 빠져나가면 잎과 그 가까운 환경의 온도가 낮아진다.
+
+\textbf{3.} 12시간은 $\tau=12\times3600=4{,}32\times10^4\,\text{s}$이므로
+\[
+P_{\text{tree}}=\frac{Q_{\mathrm{evap}}}{\tau}
+=\frac{1{,}225\times10^9}{4{,}32\times10^4}\approx2{,}84\times10^4\,\text{W},
+\]
+단위 면적당으로는
+\[
+\frac{P_{\text{tree}}}{A_{\text{tree}}}
+=\frac{2{,}84\times10^4}{50}\approx5{,}7\times10^2\,\text{W}\!\cdot\!\text{m}^{-2}.
+\]
+\textbf{4.} 에어컨의 유효 냉방 능력은
+\[
+P_{\text{cool}}=\mathrm{COP}\,P_{\mathrm{el}}
+=3{,}0\times2{,}0\times10^3=6{,}0\times10^3\,\text{W}.
+\]
+방의 단위 면적당으로는
+\[
+\frac{P_{\text{cool}}}{A_{\text{room}}}
+=\frac{6{,}0\times10^3}{20}=3{,}0\times10^2\,\text{W}\!\cdot\!\text{m}^{-2}.
+\]
+이 모델에서는 나무의 단위 면적당 증발산 능력이 일반 에어컨의 거의 두 배이다.
+
+\textbf{5.} 이 비교는 에너지 흐름만 다룬다. 에어컨은 닫히고 제어된 공간을 냉각하지만, 나무의 수증기는 대기 중으로 퍼지고 바람은 따뜻한 공기를 가져온다. 체감 효과는 환기, 습도, 주위 온도, 나무와의 거리에 달려 있다. 증산도 일조, 바람, 습도, 수종, 이용 가능한 물에 따라 변하며 가뭄에는 크게 줄 수 있다. 한편 나무 그늘은 지면과 사람이 받는 일사를 직접 줄인다. 따라서 계산은 크기 차수를 비교할 뿐 열적 쾌적함의 정확한 등가를 뜻하지 않는다.
+
+\textbf{6.} 실제로 실내 식물의 냉각 효과는 매우 작다. 대부분의 식물에서 빛은 잎의 작은 구멍인 기공을 열어 수증기가 빠져나가게 한다. 실내 조명은 보통 약하므로 기공이 덜 열리고 증산이 감소한다. 환기가 부족한 방에서는 습도 증가도 증발을 점차 늦춘다.
+
+많은 식물이 국소적으로 약한 증발 냉각을 만들 수 있지만 에어컨을 대신할 수는 없다. 집에서 에너지를 지속적으로 제거하려면 습한 공기를 밖으로 배출해야 한다. 강한 인공 조명은 증산을 촉진할 수 있지만, 그 전기 에너지는 거의 모두 방 안의 열이 된다. 선인장을 포함해 건조 환경에 적응한 CAM 식물은 예외로, 기공이 주로 밤에 열린다.
+\end{solution}
+\end{exo}
+
+\begin{exo}[두 물 질량의 혼합]{calorimetrie-melange-eau}
+\seoready{true}
+\keywords{열량계, 혼합, 열용량, 비열, 조지프 블랙, 평형 온도}
+
+$T_1=80\,^\circ\text{C}$인 물 $m_1=0{,}200\,\text{kg}$을 $T_2=15\,^\circ\text{C}$인 물 $m_2=0{,}300\,\text{kg}$이 든 용기에 붓는다. 용기는 이상적인 열량계로, 외부로의 열손실과 용기 자체의 열용량을 무시한다. $Q=mc\Delta T$이며 액체 물의 비열은 $c=4{,}18\times10^3\,\text{J}\!\cdot\!\text{kg}^{-1}\!\cdot\!\text{K}^{-1}$이다.
+\begin{enumerate}
+  \item 뜨거운 물이 내놓은 열을 찬물이 모두 받는 이유를 설명하고 $m_1$, $m_2$, $c$, $T_1$, $T_2$, 평형 온도 $T_{eq}$을 포함한 보존식을 쓰라.
+  \item $T_{eq}$의 식을 구하고 수치를 계산하라.
+  \item 혼합 중 뜨거운 물이 내놓은 열 $Q$를 계산하라.
+  \item 같은 물질끼리의 혼합으로 $c$를 구할 수 있는가? 설명하라.
+\end{enumerate}
+\begin{indication}
+열량계는 단열되고 강체이므로 전체 내부 에너지 $U_1+U_2$가 보존된다. 한쪽이 내놓은 열은 다른 쪽이 반대 부호로 받는다.
+\end{indication}
+\begin{solution}
+\textbf{1.}
+\[
+m_1c(T_{eq}-T_1)+m_2c(T_{eq}-T_2)=0.
+\]
+\textbf{2.} 공통 인자 $c$가 소거되어
+\[
+T_{eq}=\frac{m_1T_1+m_2T_2}{m_1+m_2}
+=\frac{0{,}200\times80+0{,}300\times15}{0{,}200+0{,}300}=41\,^\circ\text{C}.
+\]
+\textbf{3.}
+\[
+Q=m_1c(T_1-T_{eq})=0{,}200\times4{,}18\times10^3\times(80-41)
+\approx3{,}26\times10^4\,\text{J}.
+\]
+찬물도 정확히 같은 열을 받는다.
+\[
+m_2c(T_{eq}-T_2)=0{,}300\times4{,}18\times10^3\times26
+\approx3{,}26\times10^4\,\text{J}.
+\]
+\textbf{4.} 구할 수 없다. 같은 물질에서는 $c$가 에너지 수지의 양쪽 항에 곱해져 소거된다. 평형 온도는 $c$와 무관하고 초기 온도의 질량 가중 평균일 뿐이다. 혼합법으로 비열을 측정하려면 다음 문제처럼 열용량을 아는 물질이 필요하다.
+\end{solution}
+\end{exo}
+
+\begin{exo}[혼합법을 이용한 금속의 비열 측정]{calorimetrie-methode-melanges}
+\seoready{true}
+\keywords{열량계, 혼합법, 비열, 열량계 용기, 물당량}
+
+18세기의 조지프 블랙처럼 \emph{혼합법}으로 미지 금속의 비열 $c_m$을 측정한다. 질량 $m=0{,}150\,\text{kg}$인 시료를 $T_m=95\,^\circ\text{C}$까지 가열한 뒤, $m_e=0{,}250\,\text{kg}$의 물이 든 열량계에 빠르게 넣는다. 물은 $c_e=4{,}18\times10^3\,\text{J}\!\cdot\!\text{kg}^{-1}\!\cdot\!\text{K}^{-1}$, $T_e=18\,^\circ\text{C}$이고 평형 온도는 $T_{eq}=22\,^\circ\text{C}$이다. 먼저 용기, 젓개, 온도계의 열용량은 무시한다.
+\begin{enumerate}
+  \item 금속과 물로 이루어진 고립계의 에너지 보존식을 $c_m$만 미지수로 하여 쓰라.
+  \item $c_m$의 식과 수치를 구하라. 어느 흔한 금속과 가까운가? 기준값의 단위는 $\text{J}\!\cdot\!\text{kg}^{-1}\!\cdot\!\text{K}^{-1}$이며 알루미늄 $9{,}0\times10^2$, 철 $4{,}5\times10^2$, 구리 $3{,}9\times10^2$, 납 $1{,}3\times10^2$이다.
+  \item 용기도 일부 열을 흡수한다. 이 효과를 \emph{물당량} $\mu=1{,}5\times10^{-2}\,\text{kg}$으로 나타내어 열량계를 추가 물 질량 $\mu$로 본다. $c_m$을 다시 계산하고 보정 방향을 설명하라.
+  \item 시료를 빠르게 넣고 열량계를 주위 공기와 잘 단열해야 하는 이유는 무엇인가?
+\end{enumerate}
+\begin{indication}
+금속은 $Q_m=mc_m(T_m-T_{eq})$를 내놓고 물과, 3번에서는 열량계가 모두 받는다. $Q_m=(m_e+\mu)c_e(T_{eq}-T_e)$.
+\end{indication}
+\begin{solution}
+\textbf{1.}
+\[
+mc_m(T_m-T_{eq})=m_ec_e(T_{eq}-T_e).
+\]
+\textbf{2.}
+\[
+c_m=\frac{m_ec_e(T_{eq}-T_e)}{m(T_m-T_{eq})}
+=\frac{0{,}250\times4{,}18\times10^3\times(22-18)}{0{,}150\times(95-22)}
+\approx3{,}82\times10^2\,\text{J}\!\cdot\!\text{kg}^{-1}\!\cdot\!\text{K}^{-1}.
+\]
+이 값은 구리의 값과 매우 가깝다.
+
+\textbf{3.}
+\[
+c_m=\frac{(m_e+\mu)c_e(T_{eq}-T_e)}{m(T_m-T_{eq})}
+=\frac{(0{,}250+0{,}015)\times4{,}18\times10^3\times4}{0{,}150\times73}
+\approx4{,}05\times10^2\,\text{J}\!\cdot\!\text{kg}^{-1}\!\cdot\!\text{K}^{-1}.
+\]
+보정하면 $c_m$이 커진다. 용기를 무시하면 금속이 실제로 내놓은 열과 그 비열을 과소평가하기 때문이다.
+
+\textbf{4.} 이 방법은 측정 내내 계가 고립되어 있다고 가정한다. 시료를 빠르게 넣으면 물에 닿기 전 공기와의 열교환이 줄고, 좋은 단열은 평형에 이르는 동안의 손실을 줄인다. 계산에 포함되지 않은 열전달은 수지와 $c_m$을 왜곡한다. 이는 블랙과 뒤이어 얼음 열량계를 사용한 라부아지에와 라플라스가 지켰던 실험적 주의이다.
+\end{solution}
+\end{exo}
+
+\begin{exo}[식품 칼로리와 대사율]{calorimetrie-calories-alimentaires}
+\seoready{true}
+\keywords{칼로리, 킬로칼로리, 식품 칼로리, 역학적 당량, 대사율, 단위}
+
+영양 표시에서는 성인이 하루 평균 약 $2000\,\text{kcal}$를 섭취한다고 한다. 킬로칼로리는 영양학에서 아직 쓰이는 비SI 단위이며 $1\,\text{kcal}=4{,}18\times10^3\,\text{J}$이다.
+\begin{enumerate}
+  \item 하루 섭취량을 줄로 환산하라.
+  \item 에너지가 24시간 동안 고르게 사용된다고 보고 평균 대사율을 와트로 구하라.
+  \item 에너지 바에 ``$210\,\text{kcal}$''라고 적혀 있다. 이 에너지가 모두 열로 바뀐다면 처음 $20\,^\circ\text{C}$인 물을 몇 킬로그램 $100\,^\circ\text{C}$까지 가열할 수 있는가? $c_{\text{water}}=4{,}18\times10^3\,\text{J}\!\cdot\!\text{kg}^{-1}\!\cdot\!\text{K}^{-1}$을 사용한다.
+  \item 인체는 실제로 이 에너지를 어떤 형태로 사용하는가? 정성적으로 답하라.
+\end{enumerate}
+\begin{indication}
+2번에는 $\mathcal P=E/\Delta t$를 쓴다. 3번에는 먼저 줄로 바꾼 뒤 $Q=mc\Delta T$에서 $m$을 구한다.
+\end{indication}
+\begin{solution}
+\textbf{1.}
+\[
+E=2000\times4{,}18\times10^3=8{,}36\times10^6\,\text{J}.
+\]
+\textbf{2.}
+\[
+\mathcal P=\frac{8{,}36\times10^6}{8{,}64\times10^4}\approx97\,\text{W}.
+\]
+하루 전체에서 사람의 평균 대사율은 백열전구의 전력과 비슷하다. 흔히 놀라운 이 크기 차수는 식품 칼로리를 익숙한 물리 단위로 바꾸는 유용성을 보여 준다.
+
+\textbf{3.}
+\[
+Q=210\times4{,}18\times10^3\approx8{,}78\times10^5\,\text{J}.
+\]
+$\Delta T=80\,\text{K}$이므로
+\[
+m=\frac{Q}{c\Delta T}
+=\frac{8{,}78\times10^5}{4{,}18\times10^3\times80}
+\approx2{,}63\,\text{kg}.
+\]
+따라서 에너지 바 하나에는 크기 차수로 약 $2{,}5\,\text{kg}$의 수돗물을 끓게 할 에너지가 들어 있다.
+
+\textbf{4.} 인체는 에너지를 사라지게 하는 뜻으로 ``소비''하지 않고 영양소의 화학 에너지를 변환한다. 일부는 근육의 일, 장기 기능, 세포의 전기적 기울기 유지, 분자 수송, 화학 합성에 쓰이고, 일부는 글리코겐이나 지방으로 저장된다. 결국 사용된 에너지의 대부분은 열로 소산되어 체온 유지에 기여한 뒤 환경으로 전달된다. 소량은 노폐물에 남은 화학 에너지로 몸을 떠난다.
+\end{solution}
+\end{exo}

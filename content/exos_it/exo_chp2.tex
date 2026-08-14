@@ -1,0 +1,290 @@
+% Raccolta di esercizi — capitolo 2
+% Il capitolo è determinato dal nome di questo file.
+
+\begin{exo}[Dal ghiaccio freddo all'acqua bollente: ordini di grandezza]{chauffage-glace-eau-ebullition}
+\seoready{true}
+\keywords{calorimetria, cambiamento di stato, fusione, vaporizzazione, calore latente, ordine di grandezza}
+
+\textbf{Dati numerici (alla pressione atmosferica):}
+\[
+\begin{aligned}
+c_{\text{ghiaccio}} &= 2{,}1\times10^3\,\text{J}\!\cdot\!\text{kg}^{-1}\!\cdot\!\text{K}^{-1},
+& L_f &= 3{,}34\times10^5\,\text{J}\!\cdot\!\text{kg}^{-1},\\
+c_{\text{acqua}} &= 4{,}18\times10^3\,\text{J}\!\cdot\!\text{kg}^{-1}\!\cdot\!\text{K}^{-1},
+& L_v &= 2{,}26\times10^6\,\text{J}\!\cdot\!\text{kg}^{-1}.
+\end{aligned}
+\]
+Alla pressione atmosferica si riscalda progressivamente un chilogrammo di ghiaccio, inizialmente a $-100\,{}^\circ\text{C}$.
+
+\begin{enumerate}
+  \item Calcolare l'energia necessaria per portare il ghiaccio da $-100\,{}^\circ\text{C}$ a $0\,{}^\circ\text{C}$.
+  \item Calcolare l'energia necessaria per fondere completamente il ghiaccio a $0\,{}^\circ\text{C}$.
+  \item Calcolare l'energia necessaria per riscaldare l'acqua liquida da $0\,{}^\circ\text{C}$ a $100\,{}^\circ\text{C}$.
+  \item Calcolare l'energia supplementare necessaria per vaporizzare completamente l'acqua a $100\,{}^\circ\text{C}$.
+  \item Quale fase richiede più energia? Confrontare l'energia necessaria per riscaldare un chilogrammo d'acqua da $0\,{}^\circ\text{C}$ a $100\,{}^\circ\text{C}$ con l'energia potenziale di una massa $m$ che cade da dieci metri di altezza. Quale massa $m$ deve cadere per liberare la stessa energia?
+  \item Consideriamo ora il processo inverso. Una massa $m_v$ di vapore acqueo condensa su un parabrezza, senza che l'acqua liquida ottenuta si raffreddi successivamente. Esprimere il calore $Q_{\text{lib}}$ liberato durante la condensazione e calcolarlo per $m_v=1{,}0\times10^{-2}\,\text{kg}$. Alla temperatura del parabrezza si assuma $L_v=2{,}45\times10^6\,\text{J}\!\cdot\!\text{kg}^{-1}$.
+\end{enumerate}
+
+\begin{indication}
+Per riscaldare una fase senza cambiamento di stato, usare $Q=mc\Delta T$. Per un cambiamento di stato a temperatura costante, usare $Q=mL$. L'energia potenziale gravitazionale di una massa $m$ posta a un'altezza $h$ è $E_p=mgh$; si assuma $g=9{,}81\,\text{m}\!\cdot\!\text{s}^{-2}$.
+\end{indication}
+
+\begin{solution}
+\textbf{1.} Il riscaldamento del ghiaccio fino alla temperatura di fusione richiede
+\[
+Q_1=mc_{\text{ghiaccio}}\Delta T
+=1{,}0\times2{,}1\times10^3\times100
+=2{,}1\times10^5\,\text{J}.
+\]
+
+\textbf{2.} Durante la fusione la temperatura rimane a $0\,{}^\circ\text{C}$:
+\[
+Q_2=mL_f=1{,}0\times3{,}34\times10^5
+=3{,}34\times10^5\,\text{J}.
+\]
+
+\textbf{3.} Per riscaldare l'acqua liquida da $0$ a $100\,{}^\circ\text{C}$,
+\[
+Q_3=mc_{\text{acqua}}\Delta T
+=1{,}0\times4{,}18\times10^3\times100
+=4{,}18\times10^5\,\text{J}.
+\]
+
+\textbf{4.} La vaporizzazione completa richiede inoltre
+\[
+Q_4=mL_v=1{,}0\times2{,}26\times10^6
+=2{,}26\times10^6\,\text{J}.
+\]
+Questa fase da sola richiede dunque un'energia dell'ordine di alcuni megajoule.
+
+\textbf{5.} La vaporizzazione è di gran lunga la fase più dispendiosa:
+\[
+Q_4=2{,}26\times10^6\,\text{J}
+>Q_3=4{,}18\times10^5\,\text{J}
+>Q_2=3{,}34\times10^5\,\text{J}
+>Q_1=2{,}1\times10^5\,\text{J}.
+\]
+In particolare, la vaporizzazione richiede circa $(2{,}26\times10^6)/(4{,}18\times10^5)\approx5{,}4$ volte più energia del riscaldamento dell'acqua liquida da $0$ a $100\,{}^\circ\text{C}$.
+
+Per una massa $m$ che cade da un'altezza $h=10\,\text{m}$, $E_p=mgh$. Ponendo $mgh=Q_3$ si ottiene
+\[
+m=\frac{Q_3}{gh}
+=\frac{4{,}18\times10^5}{9{,}81\times10}
+\approx4{,}26\times10^3\,\text{kg}.
+\]
+Occorrerebbe quindi far cadere da dieci metri una massa di circa $4{,}3$ tonnellate per liberare tanta energia quanta ne serve per riscaldare un chilogrammo d'acqua da $0$ a $100\,{}^\circ\text{C}$! È una quantità enorme e spiega perché il riscaldamento dell'acqua rappresenta una parte importante del consumo energetico domestico. L'acqua ha inoltre una capacità termica massica molto elevata rispetto ai metalli comuni: è, per esempio, circa dieci volte quella del rame (si vedano gli esercizi seguenti).
+
+\textbf{6.} La condensazione è il processo inverso della vaporizzazione: il vapore cede al parabrezza il calore latente
+\[
+Q_{\text{lib}}=m_vL_v.
+\]
+Per $m_v=1{,}0\times10^{-2}\,\text{kg}$,
+\[
+Q_{\text{lib}}=1{,}0\times10^{-2}\times2{,}45\times10^6
+=2{,}45\times10^4\,\text{J}.
+\]
+La condensazione di una piccola massa di vapore può quindi liberare una quantità di calore non trascurabile, assorbita dal parabrezza e dall'ambiente circostante.
+\end{solution}
+\end{exo}
+
+\begin{exo}[L'evapotraspirazione di un grande albero: un climatizzatore naturale?]{odg-evapotranspiration-arbre}
+\seoready{true}
+\keywords{ordine di grandezza, evapotraspirazione, albero, calore latente, potenza frigorifera, climatizzatore, COP}
+
+In una giornata calda e secca, un grande albero con acqua sufficiente può evapotraspirare circa $500\,\text{L}=5{,}0\times10^{-1}\,\text{m}^3$ d'acqua. Poiché la traspirazione avviene principalmente in presenza di luce, si suppone che sia distribuita su dodici ore. La chioma copre al suolo un'area $A_{\text{albero}}=50\,\text{m}^2$. Sono date la densità dell'acqua e il suo calore latente di vaporizzazione alla pressione atmosferica:
+\[
+\rho_{\text{acqua}}=1{,}0\times10^3\,\text{kg}\!\cdot\!\text{m}^{-3},
+\qquad L_v=2{,}45\times10^6\,\text{J}\!\cdot\!\text{kg}^{-1}.
+\]
+
+\begin{enumerate}
+  \item Calcolare la massa d'acqua evapotraspirata durante la giornata e l'energia necessaria per vaporizzarla.
+  \item Spiegare perché ciò produce un effetto refrigerante.
+  \item Calcolare la potenza frigorifera media dell'albero per metro quadrato durante le dodici ore di traspirazione attiva.
+  \item Per confronto, si consideri un climatizzatore alimentato con potenza elettrica $P_{\mathrm{el}}=2{,}0\times10^3\,\text{W}$, coefficiente di prestazione frigorifera $\mathrm{COP}=3{,}0$, che raffredda un locale di area $A_{\text{locale}}=20\,\text{m}^2$. Per definizione, $\mathrm{COP}=P_{\text{freddo}}/P_{\mathrm{el}}$. Calcolare la potenza frigorifera e la potenza per metro quadrato, confrontandole con quelle dell'albero.
+  \item Perché non si può concludere che l'albero e il climatizzatore producano esattamente lo stesso raffreddamento percepito, anche se le potenze per unità di superficie hanno lo stesso ordine di grandezza?
+  \item È possibile raffreddare una casa con molte piante da appartamento? (Cultura generale: la risposta dipende da processi biologici.)
+\end{enumerate}
+
+\begin{indication}
+Usare $m=\rho V$, $Q_{\mathrm{evap}}=mL_v$ e $P=Q/\tau$. Per il climatizzatore, $P_{\text{freddo}}=\mathrm{COP}\,P_{\mathrm{el}}$.
+\end{indication}
+
+\begin{solution}
+\textbf{1.} La massa corrispondente è
+\[
+m=\rho_{\text{acqua}}V
+=1{,}0\times10^3\times5{,}0\times10^{-1}
+=5{,}0\times10^2\,\text{kg}.
+\]
+L'energia di vaporizzazione vale
+\[
+Q_{\mathrm{evap}}=mL_v
+=5{,}0\times10^2\times2{,}45\times10^6
+=1{,}225\times10^9\,\text{J}.
+\]
+L'ordine di grandezza è quindi il gigajoule.
+
+\textbf{2.} La vaporizzazione è un cambiamento di stato endotermico: richiede energia prelevata dalle foglie, dal suolo e dall'aria circostante. Questa sottrazione di calore abbassa la temperatura delle foglie e dell'ambiente immediatamente vicino.
+
+\textbf{3.} Dodici ore corrispondono a $\tau=12\times3600=4{,}32\times10^4\,\text{s}$. Pertanto,
+\[
+P_{\text{albero}}=\frac{Q_{\mathrm{evap}}}{\tau}
+=\frac{1{,}225\times10^9}{4{,}32\times10^4}
+\approx2{,}84\times10^4\,\text{W},
+\]
+e per unità di superficie,
+\[
+\frac{P_{\text{albero}}}{A_{\text{albero}}}
+=\frac{2{,}84\times10^4}{50}
+\approx5{,}7\times10^2\,\text{W}\!\cdot\!\text{m}^{-2}.
+\]
+
+\textbf{4.} La potenza frigorifera utile del climatizzatore è
+\[
+P_{\text{freddo}}=\mathrm{COP}\,P_{\mathrm{el}}
+=3{,}0\times2{,}0\times10^3
+=6{,}0\times10^3\,\text{W}.
+\]
+Per unità di superficie del locale,
+\[
+\frac{P_{\text{freddo}}}{A_{\text{locale}}}
+=\frac{6{,}0\times10^3}{20}
+=3{,}0\times10^2\,\text{W}\!\cdot\!\text{m}^{-2}.
+\]
+In questo modello, l'evapotraspirazione dell'albero per unità di superficie è quasi due volte più potente di un climatizzatore comune.
+
+\textbf{5.} Il confronto riguarda soltanto flussi di energia. Il climatizzatore raffredda un volume chiuso e controllato, mentre il vapore prodotto dall'albero si disperde nell'atmosfera e il vento porta aria calda. L'effetto percepito dipende da ventilazione, umidità, temperatura ambiente e distanza dall'albero. La traspirazione varia anche con l'irraggiamento solare, il vento, l'umidità dell'aria, la specie e l'acqua disponibile, e può diminuire molto durante la siccità. Inoltre, l'albero fornisce ombra, riducendo direttamente la radiazione solare ricevuta dal suolo e dalle persone. Le potenze calcolate consentono quindi un confronto tra ordini di grandezza, non un'equivalenza esatta di comfort termico.
+
+\textbf{6.} In pratica, l'effetto refrigerante delle piante da appartamento sarebbe molto debole. Nella maggior parte delle piante, la luce favorisce l'apertura degli stomi, piccoli pori delle foglie attraverso i quali fuoriesce il vapore acqueo. L'illuminazione interna è generalmente debole: gli stomi si aprono meno e la traspirazione diminuisce. Inoltre, in un locale poco ventilato, l'aumento dell'umidità rallenta progressivamente l'evaporazione.
+
+Molte piante possono quindi produrre un lieve raffreddamento evaporativo locale, ma non sostituiscono un climatizzatore. Per sottrarre durevolmente energia all'abitazione, bisognerebbe espellere all'esterno l'aria umida. Un'illuminazione artificiale intensa potrebbe stimolare la traspirazione, ma la sua energia elettrica finirebbe quasi interamente sotto forma di calore nel locale. Le piante CAM adattate agli ambienti aridi, tra cui i cactus, costituiscono un'eccezione: i loro stomi si aprono soprattutto di notte.
+\end{solution}
+\end{exo}
+
+\begin{exo}[Mescolamento di due masse d'acqua]{calorimetrie-melange-eau}
+\seoready{true}
+\keywords{calorimetria, mescolamento, capacità termica, calore specifico, Joseph Black, temperatura di equilibrio}
+
+Si versano $m_1=0{,}200\,\text{kg}$ d'acqua a $T_1=80\,^\circ\text{C}$ in un recipiente che contiene già $m_2=0{,}300\,\text{kg}$ d'acqua a $T_2=15\,^\circ\text{C}$. Il recipiente è un calorimetro ideale: si trascurano le perdite di calore verso l'esterno e la capacità termica del recipiente stesso. Si ricorda la relazione $Q=mc\Delta T$, dove $c=4{,}18\times10^3\,\text{J}\!\cdot\!\text{kg}^{-1}\!\cdot\!\text{K}^{-1}$ è la capacità termica massica dell'acqua liquida.
+
+\begin{enumerate}
+  \item Giustificare che il calore ceduto dall'acqua calda è interamente ricevuto dall'acqua fredda. Scrivere l'equazione di conservazione con $m_1$, $m_2$, $c$, $T_1$, $T_2$ e la temperatura di equilibrio $T_{eq}$.
+  \item Ricavare l'espressione di $T_{eq}$ e calcolarne il valore numerico.
+  \item Calcolare il calore $Q$ ceduto dall'acqua calda durante il mescolamento.
+  \item Mescolamenti della stessa sostanza permettono di determinare $c$? Giustificare.
+\end{enumerate}
+
+\begin{indication}
+Poiché il calorimetro è isolato e rigido, l'energia interna totale $U_1+U_2$ si conserva: il calore ceduto da una massa è ricevuto dall'altra con segno opposto.
+\end{indication}
+
+\begin{solution}
+\textbf{1.} La conservazione dell'energia interna totale fornisce
+\[
+m_1c(T_{eq}-T_1)+m_2c(T_{eq}-T_2)=0.
+\]
+\textbf{2.} Il fattore comune $c$ si semplifica:
+\[
+T_{eq}=\frac{m_1T_1+m_2T_2}{m_1+m_2}
+=\frac{0{,}200\times80+0{,}300\times15}{0{,}200+0{,}300}=41\,^\circ\text{C}.
+\]
+\textbf{3.} L'acqua calda cede
+\[
+Q=m_1c(T_1-T_{eq})=0{,}200\times4{,}18\times10^3\times(80-41)
+\approx3{,}26\times10^4\,\text{J}.
+\]
+L'acqua fredda riceve la stessa quantità:
+\[
+m_2c(T_{eq}-T_2)=0{,}300\times4{,}18\times10^3\times26
+\approx3{,}26\times10^4\,\text{J}.
+\]
+\textbf{4.} No. Per due masse della stessa sostanza, lo stesso coefficiente $c$ moltiplica entrambi i termini del bilancio e si semplifica. La temperatura di equilibrio non dipende da $c$, ma è la media delle temperature iniziali ponderata con le masse. Per misurare una capacità termica massica con il metodo dei mescolamenti occorre una sostanza di capacità nota, come nell'esercizio seguente.
+\end{solution}
+\end{exo}
+
+\begin{exo}[Determinazione della capacità termica massica di un metallo con il metodo dei mescolamenti]{calorimetrie-methode-melanges}
+\seoready{true}
+\keywords{calorimetria, metodo dei mescolamenti, capacità termica massica, calorimetro, equivalente in acqua}
+
+Come già faceva Joseph Black nel XVIII secolo, si vuole misurare la capacità termica massica $c_m$ di un metallo ignoto con il \emph{metodo dei mescolamenti}. Un campione di massa $m=0{,}150\,\text{kg}$ viene riscaldato a $T_m=95\,^\circ\text{C}$ e immerso rapidamente in un calorimetro contenente $m_e=0{,}250\,\text{kg}$ d'acqua, con $c_e=4{,}18\times10^3\,\text{J}\!\cdot\!\text{kg}^{-1}\!\cdot\!\text{K}^{-1}$, inizialmente a $T_e=18\,^\circ\text{C}$. Si misura $T_{eq}=22\,^\circ\text{C}$. In un primo momento si trascura la capacità termica del recipiente, dell'agitatore e del termometro.
+
+\begin{enumerate}
+  \item Scrivere la conservazione dell'energia del sistema isolato formato da metallo e acqua, lasciando $c_m$ come unica incognita.
+  \item Ricavare l'espressione di $c_m$ e calcolarne il valore. A quale metallo comune corrisponde approssimativamente? Valori di riferimento in $\text{J}\!\cdot\!\text{kg}^{-1}\!\cdot\!\text{K}^{-1}$: alluminio $9{,}0\times10^2$, ferro $4{,}5\times10^2$, rame $3{,}9\times10^2$, piombo $1{,}3\times10^2$.
+  \item Il recipiente assorbe in realtà parte del calore. Si modella questo effetto con un \emph{equivalente in acqua} $\mu=1{,}5\times10^{-2}\,\text{kg}$: il calorimetro si comporta come una massa d'acqua supplementare $\mu$. Ricalcolare $c_m$ e commentare il verso della correzione.
+  \item Perché è essenziale immergere rapidamente il campione e isolare bene il calorimetro dall'aria ambiente?
+\end{enumerate}
+
+\begin{indication}
+Il metallo cede $Q_m=mc_m(T_m-T_{eq})$, interamente ricevuto dall'acqua e, nella domanda 3, anche dal calorimetro: $Q_m=(m_e+\mu)c_e(T_{eq}-T_e)$.
+\end{indication}
+
+\begin{solution}
+\textbf{1.} Per il sistema isolato,
+\[
+mc_m(T_m-T_{eq})=m_ec_e(T_{eq}-T_e).
+\]
+\textbf{2.} Si ottiene
+\[
+c_m=\frac{m_ec_e(T_{eq}-T_e)}{m(T_m-T_{eq})}
+=\frac{0{,}250\times4{,}18\times10^3\times(22-18)}{0{,}150\times(95-22)}
+\approx3{,}82\times10^2\,\text{J}\!\cdot\!\text{kg}^{-1}\!\cdot\!\text{K}^{-1}.
+\]
+Questo valore è molto vicino a quello del rame.
+
+\textbf{3.} Tenendo conto dell'equivalente in acqua,
+\[
+c_m=\frac{(m_e+\mu)c_e(T_{eq}-T_e)}{m(T_m-T_{eq})}
+=\frac{(0{,}250+0{,}015)\times4{,}18\times10^3\times4}{0{,}150\times73}
+\approx4{,}05\times10^2\,\text{J}\!\cdot\!\text{kg}^{-1}\!\cdot\!\text{K}^{-1}.
+\]
+La correzione aumenta $c_m$: trascurando il recipiente si sottostimavano il calore realmente ceduto dal metallo e quindi la sua capacità termica massica.
+
+\textbf{4.} Il metodo presuppone un sistema isolato per tutta la misura. L'immersione rapida limita gli scambi tra il campione caldo e l'aria prima che raggiunga l'acqua; un buon isolamento limita le perdite mentre si stabilisce l'equilibrio. Ogni trasferimento non contabilizzato falserebbe il bilancio e il valore dedotto di $c_m$. È proprio la cura sperimentale già adottata da Black e, in seguito, da Lavoisier e Laplace con il loro calorimetro a ghiaccio.
+\end{solution}
+\end{exo}
+
+\begin{exo}[Calorie alimentari e potenza metabolica]{calorimetrie-calories-alimentaires}
+\seoready{true}
+\keywords{caloria, chilocaloria, Caloria alimentare, equivalente meccanico, potenza metabolica, unità}
+
+Un'etichetta nutrizionale indica che un adulto assume in media circa $2000\,\text{kcal}$ al giorno. La chilocaloria è un'unità non SI ancora usata in nutrizione; la conversione in SI è $1\,\text{kcal}=4{,}18\times10^3\,\text{J}$.
+
+\begin{enumerate}
+  \item Convertire questa razione giornaliera in joule.
+  \item Ricavare la potenza metabolica media in watt, supponendo che l'energia sia utilizzata uniformemente nelle 24 ore.
+  \item Una barretta energetica riporta «$210\,\text{kcal}$». Quale massa d'acqua inizialmente a $20\,^\circ\text{C}$ potrebbe essere portata all'ebollizione, a $100\,^\circ\text{C}$, con la stessa energia, se fosse interamente convertita in calore? Si assuma $c_{\text{acqua}}=4{,}18\times10^3\,\text{J}\!\cdot\!\text{kg}^{-1}\!\cdot\!\text{K}^{-1}$.
+  \item In quali forme questa energia viene realmente utilizzata dall'organismo umano? Rispondere qualitativamente.
+\end{enumerate}
+
+\begin{indication}
+Per la domanda 2 usare $\mathcal P=E/\Delta t$. Per la domanda 3 convertire prima l'energia in joule, poi ricavare $m$ da $Q=mc\Delta T$.
+\end{indication}
+
+\begin{solution}
+\textbf{1.} In unità SI,
+\[
+E=2000\times4{,}18\times10^3=8{,}36\times10^6\,\text{J}.
+\]
+\textbf{2.} La potenza media è
+\[
+\mathcal P=\frac{8{,}36\times10^6}{8{,}64\times10^4}\approx97\,\text{W}.
+\]
+Nell'arco della giornata una persona utilizza quindi, in media, una potenza simile a quella di una lampadina a incandescenza. Questo ordine di grandezza, spesso sorprendente, mostra l'utilità di convertire le calorie alimentari in unità fisiche comuni.
+
+\textbf{3.} L'energia della barretta è
+\[
+Q=210\times4{,}18\times10^3\approx8{,}78\times10^5\,\text{J}.
+\]
+Con $\Delta T=80\,\text{K}$,
+\[
+m=\frac{Q}{c\Delta T}
+=\frac{8{,}78\times10^5}{4{,}18\times10^3\times80}
+\approx2{,}63\,\text{kg}.
+\]
+Una sola barretta rappresenta quindi, come ordine di grandezza, energia sufficiente per portare all'ebollizione circa $2{,}5\,\text{kg}$ d'acqua di rubinetto.
+
+\textbf{4.} L'organismo non «consuma» energia nel senso di farla scomparire: trasforma l'energia chimica dei nutrienti. Una parte serve al lavoro muscolare, al funzionamento degli organi, al mantenimento dei gradienti elettrici cellulari, al trasporto di molecole e alle sintesi chimiche. Un'altra parte può essere immagazzinata chimicamente come glicogeno o grasso. Infine, la maggior parte dell'energia utilizzata viene dissipata come calore, contribuendo al mantenimento della temperatura corporea prima di essere trasferita all'ambiente. Una piccola frazione lascia inoltre l'organismo come energia chimica ancora contenuta nei rifiuti.
+\end{solution}
+\end{exo}

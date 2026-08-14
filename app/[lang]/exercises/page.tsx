@@ -1,7 +1,8 @@
-import { getWebThemes } from "@/lib/chapters";
-import { exerciseTitleToPlainHtml, getTexWebHtmlFromSource } from "@/lib/chapterContent.server";
-import { loadExercises } from "@/lib/exercisesLibrary.server";
+import { getThemeTitle, getWebThemes } from "@/lib/chapters";
+import { exerciseTitleToPlainHtml } from "@/lib/chapterContent.server";
+import { getExerciseUrlSlug, loadExercises } from "@/lib/exercisesLibrary.server";
 import { getAllExercisesPdfHref } from "@/lib/exercisePdfDownloads.server";
+import type { Lang } from "@/lib/i18n";
 import { ExercisesClient } from "./ExercisesClient";
 
 const SHOW_ALL_EXERCISES_PDF_DOWNLOAD = false;
@@ -9,51 +10,40 @@ const SHOW_ALL_EXERCISES_PDF_DOWNLOAD = false;
 export interface ExerciseCard {
   number: number;
   id: string;
+  urlSlug: string;
   titleHtml: string;
   titleTex: string;
   lecon: number;
-  leconTitleFr: string;
-  leconTitleEn: string;
+  lessonTitle: string;
   keywords: string[];
-  enonceHtml: string;
-  indicationHtml: string | null;
-  solutionHtml: string | null;
 }
 
-function buildCards(lang: "fr" | "en"): ExerciseCard[] {
+function buildCards(lang: Lang): ExerciseCard[] {
   const lessons = getWebThemes();
   const lessonTitle = (n: number) => {
     const l = lessons.find((t) => t.number === n);
-    return l ? { fr: l.titleFr, en: l.titleEn } : { fr: `Leçon ${n}`, en: `Lesson ${n}` };
+    return l ? getThemeTitle(l, lang) : `${lang === "fr" ? "Leçon" : "Lesson"} ${n}`;
   };
   return loadExercises(lang).map((e) => ({
     number: e.number,
     id: e.id,
+    urlSlug: getExerciseUrlSlug(lang, e),
     titleHtml: exerciseTitleToPlainHtml(e.titleTex),
     titleTex: e.titleTex,
     lecon: e.lecon,
-    leconTitleFr: lessonTitle(e.lecon).fr,
-    leconTitleEn: lessonTitle(e.lecon).en,
+    lessonTitle: lessonTitle(e.lecon),
     keywords: e.keywords,
-    enonceHtml: getTexWebHtmlFromSource(e.enonceTex, lang, []),
-    indicationHtml: e.indicationTex
-      ? getTexWebHtmlFromSource(`\\begin{indication}\n${e.indicationTex}\n\\end{indication}`, lang, [])
-      : null,
-    solutionHtml: e.solutionTex
-      ? getTexWebHtmlFromSource(`\\begin{solution}\n${e.solutionTex}\n\\end{solution}`, lang, [])
-      : null,
   }));
 }
 
-export default function ExercisesPage() {
-  const cardsFr = buildCards("fr");
-  const cardsEn = buildCards("en");
+export default function ExercisesPage({ params }: { params: { lang: Lang } }) {
+  const { lang } = params;
   return (
     <ExercisesClient
-      cardsFr={cardsFr}
-      cardsEn={cardsEn}
-      allPdfHrefFr={SHOW_ALL_EXERCISES_PDF_DOWNLOAD ? getAllExercisesPdfHref("fr") : null}
-      allPdfHrefEn={SHOW_ALL_EXERCISES_PDF_DOWNLOAD ? getAllExercisesPdfHref("en") : null}
+      cards={loadExercises(lang).length > 0 ? buildCards(lang) : []}
+      allPdfHref={SHOW_ALL_EXERCISES_PDF_DOWNLOAD && (lang === "fr" || lang === "en")
+        ? getAllExercisesPdfHref(lang)
+        : null}
     />
   );
 }

@@ -21,15 +21,6 @@ export const SUPPORTED_LANGS: readonly Lang[] = [
   "fr", "en", "de", "es", "pt", "it", "pl", "ru", "zh", "ja", "ko", "hi", "vi", "ar", "id", "tr",
 ];
 
-/**
- * Languages with real, section-by-section translated content (chapters, exercises,
- * quiz, glossary, about) — used to scope sitemap generation for those sections so we
- * don't index thin fallback pages under a language code as if they were localized.
- * Languages outside this list still resolve as routes (chrome text translated, page
- * content falls back to English) but aren't advertised per-section in the sitemap.
- */
-export const TRANSLATED_SECTION_LANGS: readonly Lang[] = ["fr", "en"];
-
 export function isLang(value: string): value is Lang {
   return (SUPPORTED_LANGS as readonly string[]).includes(value);
 }
@@ -51,7 +42,7 @@ const IDENTITY_SECTION_SLUGS: Record<Section, string> = {
  * The internal route folders (app/[lang]/chapters, .../exercises, etc.) always use the
  * English word; `next.config.js` rewrites each language's public words to those internal
  * paths (keep the two files in sync). Languages with a non-Latin alphabet (ru, zh, ja, ko,
- * hi, vi, ar) deliberately reuse the English word instead of a localized one: URLs in
+ * hi, ar) deliberately reuse the English word instead of a localized one: URLs in
  * Cyrillic/CJK/Devanagari/Arabic script get percent-encoded the moment they're copied or
  * shared (chat, social, email), which reads as broken — the content itself is translated,
  * only the slug stays in ASCII.
@@ -105,7 +96,13 @@ export const sectionSlugs: Record<Lang, Record<Section, string>> = {
   ja: IDENTITY_SECTION_SLUGS,
   ko: IDENTITY_SECTION_SLUGS,
   hi: IDENTITY_SECTION_SLUGS,
-  vi: IDENTITY_SECTION_SLUGS,
+  vi: {
+    chapters: "bai-hoc",
+    exercises: "bai-tap",
+    quiz: "quiz",
+    glossary: "bang-thuat-ngu",
+    about: "gioi-thieu",
+  },
   ar: IDENTITY_SECTION_SLUGS,
   id: {
     chapters: "pelajaran",

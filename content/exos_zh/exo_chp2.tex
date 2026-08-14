@@ -1,0 +1,268 @@
+% 习题库——第2章
+% 章节编号由本文件名确定。
+
+\begin{exo}[从低温冰到沸水：数量级估算]{chauffage-glace-eau-ebullition}
+\seoready{true}
+\keywords{量热学, 相变, 熔化, 汽化, 潜热, 数量级}
+
+\textbf{数值数据（大气压下）：}
+\[
+\begin{aligned}
+c_{\text{ice}} &= 2{,}1\times10^3\,\text{J}\!\cdot\!\text{kg}^{-1}\!\cdot\!\text{K}^{-1},
+& L_f &= 3{,}34\times10^5\,\text{J}\!\cdot\!\text{kg}^{-1},\\
+c_{\text{water}} &= 4{,}18\times10^3\,\text{J}\!\cdot\!\text{kg}^{-1}\!\cdot\!\text{K}^{-1},
+& L_v &= 2{,}26\times10^6\,\text{J}\!\cdot\!\text{kg}^{-1}.
+\end{aligned}
+\]
+在大气压下，逐步加热一千克初温为 $-100\,{}^\circ\text{C}$ 的冰。
+
+\begin{enumerate}
+  \item 计算把冰从 $-100\,{}^\circ\text{C}$ 加热到 $0\,{}^\circ\text{C}$ 所需的能量。
+  \item 计算使冰在 $0\,{}^\circ\text{C}$ 完全熔化所需的能量。
+  \item 计算把液态水从 $0\,{}^\circ\text{C}$ 加热到 $100\,{}^\circ\text{C}$ 所需的能量。
+  \item 计算使水在 $100\,{}^\circ\text{C}$ 完全汽化还需增加的能量。
+  \item 哪个阶段需要的能量最多？把一千克水从 $0\,{}^\circ\text{C}$ 加热到 $100\,{}^\circ\text{C}$ 所需的能量，与质量 $m$ 从十米高处下落时的重力势能进行比较。要释放相同的能量，需要多大的质量下落？
+  \item 现在考虑逆过程。质量为 $m_v$ 的水蒸气在挡风玻璃上凝结，并假设所得液态水之后不再冷却。写出凝结释放的热量 $Q_{\text{rel}}$，并对 $m_v=1{,}0\times10^{-2}\,\text{kg}$ 进行计算。在挡风玻璃的温度下取 $L_v=2{,}45\times10^6\,\text{J}\!\cdot\!\text{kg}^{-1}$。
+\end{enumerate}
+
+\begin{indication}
+无相变加热时使用 $Q=mc\Delta T$；恒温相变时使用 $Q=mL$。质量 $m$ 在高度 $h$ 处的重力势能为 $E_p=mgh$；取 $g=9{,}81\,\text{m}\!\cdot\!\text{s}^{-2}$。
+\end{indication}
+
+\begin{solution}
+\textbf{1.} 把冰加热到熔点需要
+\[
+Q_1=mc_{\text{ice}}\Delta T
+=1{,}0\times2{,}1\times10^3\times100
+=2{,}1\times10^5\,\text{J}.
+\]
+\textbf{2.} 熔化过程中温度保持在 $0\,{}^\circ\text{C}$：
+\[
+Q_2=mL_f=1{,}0\times3{,}34\times10^5=3{,}34\times10^5\,\text{J}.
+\]
+\textbf{3.} 加热液态水需要
+\[
+Q_3=mc_{\text{water}}\Delta T
+=1{,}0\times4{,}18\times10^3\times100
+=4{,}18\times10^5\,\text{J}.
+\]
+\textbf{4.} 完全汽化还需要
+\[
+Q_4=mL_v=1{,}0\times2{,}26\times10^6=2{,}26\times10^6\,\text{J}.
+\]
+仅此阶段所需能量就达到数兆焦耳。
+
+\textbf{5.} 汽化显然是耗能最大的阶段：
+\[
+Q_4=2{,}26\times10^6>Q_3=4{,}18\times10^5>Q_2=3{,}34\times10^5>Q_1=2{,}1\times10^5\,\text{J}.
+\]
+汽化所需能量约为把液态水从 $0$ 加热到 $100\,{}^\circ\text{C}$ 所需能量的 $(2{,}26\times10^6)/(4{,}18\times10^5)\approx5{,}4$ 倍。
+
+质量 $m$ 从 $h=10\,\text{m}$ 高处下落时，$E_p=mgh$。令 $mgh=Q_3$，得到
+\[
+m=\frac{Q_3}{gh}=\frac{4{,}18\times10^5}{9{,}81\times10}
+\approx4{,}26\times10^3\,\text{kg}.
+\]
+因此，约 $4{,}3$ 吨的物体从十米高处下落，才能释放与把一千克水从 $0$ 加热到 $100\,{}^\circ\text{C}$ 相同的能量。这一数值很大，也解释了为什么热水在家庭能耗中占有重要比例。水的比热容相对于常见金属也很大，例如约为铜的十倍（见后续习题）。
+
+\textbf{6.} 凝结是汽化的逆过程，水蒸气向挡风玻璃释放潜热
+\[
+Q_{\text{rel}}=m_vL_v.
+\]
+对 $m_v=1{,}0\times10^{-2}\,\text{kg}$，
+\[
+Q_{\text{rel}}=1{,}0\times10^{-2}\times2{,}45\times10^6
+=2{,}45\times10^4\,\text{J}.
+\]
+因此，即使少量水蒸气凝结，也能释放不可忽略的热量，这些热量由挡风玻璃及其周围环境吸收。
+\end{solution}
+\end{exo}
+
+\begin{exo}[大树的蒸散作用：天然空调？]{odg-evapotranspiration-arbre}
+\seoready{true}
+\keywords{数量级, 蒸散作用, 树木, 潜热, 制冷功率, 空调, COP}
+
+在炎热干燥的一天，一棵水分供应充足的大树可通过蒸散作用排出约 $500\,\text{L}=5{,}0\times10^{-1}\,\text{m}^3$ 的水。由于蒸腾主要在有光时发生，假设活跃期持续十二小时。树冠在地面上的覆盖面积为 $A_{\text{tree}}=50\,\text{m}^2$。水的密度和大气压下的汽化潜热为
+\[
+\rho_{\text{water}}=1{,}0\times10^3\,\text{kg}\!\cdot\!\text{m}^{-3},
+\qquad L_v=2{,}45\times10^6\,\text{J}\!\cdot\!\text{kg}^{-1}.
+\]
+
+\begin{enumerate}
+  \item 计算大树一天中蒸散的水的质量，以及使这些水汽化所需的能量。
+  \item 说明该过程为什么会产生冷却作用。
+  \item 计算十二小时活跃蒸腾期间，大树每平方米的平均制冷功率。
+  \item 作为比较，考虑输入电功率 $P_{\mathrm{el}}=2{,}0\times10^3\,\text{W}$、制冷性能系数 $\mathrm{COP}=3{,}0$ 的空调，它冷却面积为 $A_{\text{room}}=20\,\text{m}^2$ 的房间。根据定义，$\mathrm{COP}=P_{\text{cool}}/P_{\mathrm{el}}$。计算空调的制冷功率及单位面积制冷功率，并与大树的结果比较。
+  \item 即使二者的单位面积功率属于同一数量级，为什么也不能断言大树与空调带来的体感降温完全相同？
+  \item 在家中摆放许多室内植物能否起到降温作用？（常识题：答案取决于生物过程。）
+\end{enumerate}
+
+\begin{indication}
+使用 $m=\rho V$、$Q_{\mathrm{evap}}=mL_v$ 和 $P=Q/\tau$。对空调使用 $P_{\text{cool}}=\mathrm{COP}\,P_{\mathrm{el}}$。
+\end{indication}
+
+\begin{solution}
+\textbf{1.} 水的质量为
+\[
+m=\rho_{\text{water}}V=1{,}0\times10^3\times5{,}0\times10^{-1}
+=5{,}0\times10^2\,\text{kg}.
+\]
+汽化所需能量为
+\[
+Q_{\mathrm{evap}}=mL_v=5{,}0\times10^2\times2{,}45\times10^6
+=1{,}225\times10^9\,\text{J}.
+\]
+其数量级为一吉焦耳。
+
+\textbf{2.} 汽化是吸热相变，所需能量取自叶片、土壤和周围空气。热量被带走会降低叶片及其近旁环境的温度。
+
+\textbf{3.} 十二小时为 $\tau=12\times3600=4{,}32\times10^4\,\text{s}$。因此
+\[
+P_{\text{tree}}=\frac{Q_{\mathrm{evap}}}{\tau}
+=\frac{1{,}225\times10^9}{4{,}32\times10^4}
+\approx2{,}84\times10^4\,\text{W},
+\]
+单位覆盖面积上的功率为
+\[
+\frac{P_{\text{tree}}}{A_{\text{tree}}}
+=\frac{2{,}84\times10^4}{50}
+\approx5{,}7\times10^2\,\text{W}\!\cdot\!\text{m}^{-2}.
+\]
+
+\textbf{4.} 空调的有效制冷功率为
+\[
+P_{\text{cool}}=\mathrm{COP}\,P_{\mathrm{el}}
+=3{,}0\times2{,}0\times10^3=6{,}0\times10^3\,\text{W}.
+\]
+单位房间面积上的功率为
+\[
+\frac{P_{\text{cool}}}{A_{\text{room}}}
+=\frac{6{,}0\times10^3}{20}=3{,}0\times10^2\,\text{W}\!\cdot\!\text{m}^{-2}.
+\]
+在这一模型中，大树单位面积的蒸散功率接近普通空调的两倍。
+
+\textbf{5.} 这一比较只涉及能量流。空调冷却封闭且受控的空间，而大树产生的水蒸气会扩散到大气中，风也会带来暖空气。体感效果取决于通风、湿度、环境温度和离树的距离。蒸腾还随日照、风、空气湿度、树种和可用水量而变，干旱时可能显著下降。另一方面，树荫直接减少地面和人体接收的太阳辐射。因此计算只能比较数量级，不能证明热舒适度完全等效。
+
+\textbf{6.} 实际上，室内植物的降温效果很弱。对大多数植物而言，光照促进气孔开放，水蒸气通过这些叶片上的小孔逸出。室内光照通常较弱，气孔开放较少，蒸腾随之降低。在通风不足的房间内，空气湿度升高也会逐渐减慢蒸发。
+
+许多植物可以造成轻微的局部蒸发冷却，却不能取代空调。若要持续把能量排出住宅，必须把潮湿空气排到室外。强人工照明或许会促进蒸腾，但其电能最终几乎全部转化为房间内的热量。适应干旱环境的 CAM 植物（包括仙人掌）是例外：它们的气孔主要在夜间开放。
+\end{solution}
+\end{exo}
+
+\begin{exo}[混合两份水]{calorimetrie-melange-eau}
+\seoready{true}
+\keywords{量热学, 混合, 热容量, 比热容, 约瑟夫·布莱克, 平衡温度}
+
+把 $m_1=0{,}200\,\text{kg}$、温度为 $T_1=80\,^\circ\text{C}$ 的水倒入一个已装有 $m_2=0{,}300\,\text{kg}$、温度为 $T_2=15\,^\circ\text{C}$ 的水的容器中。容器是理想量热器：忽略向外界的热损失及容器自身的热容量。已知 $Q=mc\Delta T$，其中 $c=4{,}18\times10^3\,\text{J}\!\cdot\!\text{kg}^{-1}\!\cdot\!\text{K}^{-1}$ 为液态水的比热容。
+\begin{enumerate}
+  \item 说明热水放出的热量为何全部被冷水吸收，并写出含 $m_1$、$m_2$、$c$、$T_1$、$T_2$ 和平衡温度 $T_{eq}$ 的守恒方程。
+  \item 推导 $T_{eq}$ 的表达式并计算数值。
+  \item 计算混合过程中热水放出的热量 $Q$。
+  \item 混合同一种物质能否测定 $c$？说明理由。
+\end{enumerate}
+\begin{indication}
+量热器隔热且刚性，因此总内能 $U_1+U_2$ 守恒：一份水放出的热量由另一份水以相反符号吸收。
+\end{indication}
+\begin{solution}
+\textbf{1.} 内能守恒给出
+\[
+m_1c(T_{eq}-T_1)+m_2c(T_{eq}-T_2)=0.
+\]
+\textbf{2.} 公因子 $c$ 消去：
+\[
+T_{eq}=\frac{m_1T_1+m_2T_2}{m_1+m_2}
+=\frac{0{,}200\times80+0{,}300\times15}{0{,}200+0{,}300}=41\,^\circ\text{C}.
+\]
+\textbf{3.} 热水放出的热量为
+\[
+Q=m_1c(T_1-T_{eq})=0{,}200\times4{,}18\times10^3\times(80-41)
+\approx3{,}26\times10^4\,\text{J}.
+\]
+冷水恰好吸收相同的热量：
+\[
+m_2c(T_{eq}-T_2)=0{,}300\times4{,}18\times10^3\times26
+\approx3{,}26\times10^4\,\text{J}.
+\]
+\textbf{4.} 不能。对同一种物质的两份质量，$c$ 同时乘在能量平衡的两项上并被消去。平衡温度与 $c$ 无关，只是按质量加权的初温平均值。用混合法测比热容需要引入热容量已知的物质，如下一题所示。
+\end{solution}
+\end{exo}
+
+\begin{exo}[用混合法测定金属的比热容]{calorimetrie-methode-melanges}
+\seoready{true}
+\keywords{量热学, 混合法, 比热容, 量热器, 水当量}
+
+仿照约瑟夫·布莱克在十八世纪已采用的方法，用\emph{混合法}测量未知金属的比热容 $c_m$。把质量 $m=0{,}150\,\text{kg}$ 的金属样品加热到 $T_m=95\,^\circ\text{C}$，再迅速放入装有 $m_e=0{,}250\,\text{kg}$ 水的量热器中。水的 $c_e=4{,}18\times10^3\,\text{J}\!\cdot\!\text{kg}^{-1}\!\cdot\!\text{K}^{-1}$，初温为 $T_e=18\,^\circ\text{C}$，测得平衡温度 $T_{eq}=22\,^\circ\text{C}$。先忽略容器、搅拌器和温度计的热容量。
+\begin{enumerate}
+  \item 写出金属与水组成的孤立系统的能量守恒方程，以 $c_m$ 为唯一未知量。
+  \item 推导并计算 $c_m$。它大致对应哪种常见金属？参考值的单位均为 $\text{J}\!\cdot\!\text{kg}^{-1}\!\cdot\!\text{K}^{-1}$：铝 $9{,}0\times10^2$、铁 $4{,}5\times10^2$、铜 $3{,}9\times10^2$、铅 $1{,}3\times10^2$。
+  \item 容器实际也会吸热。用\emph{水当量} $\mu=1{,}5\times10^{-2}\,\text{kg}$ 表示这一作用，即量热器相当于额外的水质量 $\mu$。重新计算 $c_m$ 并说明修正方向。
+  \item 为什么实验中必须迅速放入样品，并使量热器与周围空气良好隔热？
+\end{enumerate}
+\begin{indication}
+金属放出 $Q_m=mc_m(T_m-T_{eq})$，由水以及第3问中的量热器全部吸收：$Q_m=(m_e+\mu)c_e(T_{eq}-T_e)$。
+\end{indication}
+\begin{solution}
+\textbf{1.} 对孤立系统，
+\[
+mc_m(T_m-T_{eq})=m_ec_e(T_{eq}-T_e).
+\]
+\textbf{2.} 因此
+\[
+c_m=\frac{m_ec_e(T_{eq}-T_e)}{m(T_m-T_{eq})}
+=\frac{0{,}250\times4{,}18\times10^3\times(22-18)}{0{,}150\times(95-22)}
+\approx3{,}82\times10^2\,\text{J}\!\cdot\!\text{kg}^{-1}\!\cdot\!\text{K}^{-1}.
+\]
+该值非常接近铜的比热容。
+
+\textbf{3.} 计入水当量后，
+\[
+c_m=\frac{(m_e+\mu)c_e(T_{eq}-T_e)}{m(T_m-T_{eq})}
+=\frac{(0{,}250+0{,}015)\times4{,}18\times10^3\times4}{0{,}150\times73}
+\approx4{,}05\times10^2\,\text{J}\!\cdot\!\text{kg}^{-1}\!\cdot\!\text{K}^{-1}.
+\]
+修正使 $c_m$ 增大：忽略容器会低估金属实际放出的热量，从而低估其比热容。
+
+\textbf{4.} 该方法假设测量期间系统始终孤立。迅速放入样品可限制热样品入水前与空气的热交换，良好隔热可限制达到平衡过程中的损失。任何未计入的传热都会使能量平衡和推得的 $c_m$ 失真。这正是布莱克，以及后来使用冰量热器的拉瓦锡和拉普拉斯所重视的实验细节。
+\end{solution}
+\end{exo}
+
+\begin{exo}[食物热量与代谢功率]{calorimetrie-calories-alimentaires}
+\seoready{true}
+\keywords{卡路里, 千卡, 食物大卡, 机械当量, 代谢功率, 单位}
+
+营养标签表明，成年人平均每天摄入约 $2000\,\text{kcal}$。千卡是营养学中仍在使用的非 SI 单位；$1\,\text{kcal}=4{,}18\times10^3\,\text{J}$。
+\begin{enumerate}
+  \item 把每日摄入量换算为焦耳。
+  \item 假设能量在24小时内均匀使用，求成年人的平均代谢功率（瓦）。
+  \item 一根能量棒标有“$210\,\text{kcal}$”。如果这些能量全部转化为热量，可以把多少质量、初温为 $20\,^\circ\text{C}$ 的水加热到 $100\,^\circ\text{C}$ 沸点？取 $c_{\text{water}}=4{,}18\times10^3\,\text{J}\!\cdot\!\text{kg}^{-1}\!\cdot\!\text{K}^{-1}$。
+  \item 人体实际上以哪些形式使用这些能量？作定性回答。
+\end{enumerate}
+\begin{indication}
+第2问使用 $\mathcal P=E/\Delta t$。第3问先换算成焦耳，再由 $Q=mc\Delta T$ 解出 $m$。
+\end{indication}
+\begin{solution}
+\textbf{1.} 用 SI 单位表示，
+\[
+E=2000\times4{,}18\times10^3=8{,}36\times10^6\,\text{J}.
+\]
+\textbf{2.} 平均功率为
+\[
+\mathcal P=\frac{8{,}36\times10^6}{8{,}64\times10^4}\approx97\,\text{W}.
+\]
+在一整天内，人体使用的平均功率大致相当于一只白炽灯泡。这个常令人意外的数量级说明，把食物热量换算成熟悉的物理单位很有意义。
+
+\textbf{3.} 能量棒的能量为
+\[
+Q=210\times4{,}18\times10^3\approx8{,}78\times10^5\,\text{J}.
+\]
+对 $\Delta T=80\,\text{K}$，
+\[
+m=\frac{Q}{c\Delta T}
+=\frac{8{,}78\times10^5}{4{,}18\times10^3\times80}
+\approx2{,}63\,\text{kg}.
+\]
+因此，一根能量棒所含能量的数量级足以把约 $2{,}5\,\text{kg}$ 自来水加热到沸腾。
+
+\textbf{4.} 人体并不是让能量“消失”，而是转化营养物中的化学能。一部分用于肌肉做功、器官运行、维持细胞电势梯度、分子运输和化学合成；另一部分可作为糖原或脂肪储存。最终，大部分已用能量以热的形式耗散，帮助维持体温后传给环境。还有一小部分以废物中残留的化学能离开人体。
+\end{solution}
+\end{exo}

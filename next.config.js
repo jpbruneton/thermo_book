@@ -43,6 +43,12 @@ const LOCALIZED_SECTION_SLUGS = {
     glossary: "slowniczek",
     about: "o-ksiazce",
   },
+  vi: {
+    chapters: "bai-hoc",
+    exercises: "bai-tap",
+    glossary: "bang-thuat-ngu",
+    about: "gioi-thieu",
+  },
   id: {
     chapters: "pelajaran",
     exercises: "latihan",

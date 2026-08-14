@@ -1,6 +1,6 @@
 import Link from "next/link";
 import type { Metadata } from "next";
-import { notFound, redirect } from "next/navigation";
+import { notFound, permanentRedirect } from "next/navigation";
 import {
   exerciseTitleToPlainHtml,
   getTexWebHtmlFromSource,
@@ -9,97 +9,123 @@ import { getWebThemes, getThemeTitle, getThemeUrlSlug, bookMeta } from "@/lib/ch
 import {
   exerciseTitleToPlainText,
   getExerciseById,
+  getExerciseByUrlSlug,
+  getExerciseUrlSlug,
   loadExercises,
 } from "@/lib/exercisesLibrary.server";
+import { getExerciseTranslations } from "@/lib/exerciseTranslations";
 import { processLatex } from "@/lib/latex";
 import { absoluteUrl } from "@/lib/siteUrl";
-import { isLang, sectionHref, type Lang } from "@/lib/i18n";
+import { getTranslations, isLang, sectionHref, SUPPORTED_LANGS, type Lang } from "@/lib/i18n";
 
 interface Props {
   params: { lang: string; slug: string };
 }
 
 export function generateStaticParams({ params }: { params: { lang: string } }) {
-  if (params.lang !== "fr") return [];
-  return loadExercises("fr").map((exercise) => ({ slug: exercise.id }));
+  if (!isLang(params.lang)) return [];
+  const lang = params.lang;
+  return loadExercises(lang).map((exercise) => ({
+    slug: getExerciseUrlSlug(lang, exercise),
+  }));
 }
 
 function exerciseDescription(
+  lang: Lang,
   title: string,
   lessonTitle: string,
   keywords: string[],
   hasSolution: boolean
 ): string {
-  const correction = hasSolution ? "avec solution détaillée" : "avec méthode et indication";
-  const topics = keywords.length > 0 ? ` Notions : ${keywords.slice(0, 5).join(", ")}.` : "";
-  return `${title} : exercice de thermodynamique ${correction}, rattaché au cours « ${lessonTitle} ».${topics}`;
+  const t = getExerciseTranslations(lang);
+  const solution = hasSolution ? t.withDetailedSolution : t.withGuidance;
+  const topics = keywords.length > 0 ? ` ${t.topics}: ${keywords.slice(0, 5).join(", ")}.` : "";
+  return `${title}. ${t.solvedExercise}. ${solution} ${t.relatedLesson}: ${lessonTitle}.${topics}`;
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { lang, slug } = params;
-  if (!isLang(lang) || lang !== "fr") {
+  if (!isLang(lang)) {
     return { robots: { index: false, follow: true } };
   }
 
-  const exercise = getExerciseById("fr", slug);
+  const exercise = getExerciseByUrlSlug(lang, slug);
   if (!exercise) return {};
 
+  const t = getExerciseTranslations(lang);
   const theme = getWebThemes().find((item) => item.number === exercise.lecon);
-  const title = exerciseTitleToPlainText(exercise.titleTex) || `Exercice ${exercise.number}`;
-  const lessonTitle = theme ? getThemeTitle(theme, "fr") : `Leçon ${exercise.lecon}`;
+  const title = exerciseTitleToPlainText(exercise.titleTex) || `${t.exercise} ${exercise.number}`;
+  const lessonTitle = theme ? getThemeTitle(theme, lang) : `${t.lesson} ${exercise.lecon}`;
   const description = exerciseDescription(
+    lang,
     title,
     lessonTitle,
     exercise.keywords,
     Boolean(exercise.solutionTex)
   );
-  const url = absoluteUrl(sectionHref("fr", "exercises", exercise.id));
+  const url = absoluteUrl(sectionHref(lang, "exercises", getExerciseUrlSlug(lang, exercise)));
+  const metadataTitle = `${title} — ${t.metadataSuffix}`;
+  const languages: Record<string, string> = {};
+  for (const availableLang of SUPPORTED_LANGS) {
+    const candidate = getExerciseById(availableLang, exercise.id);
+    if (candidate?.seoReady) {
+      languages[availableLang] = absoluteUrl(
+        sectionHref(availableLang, "exercises", getExerciseUrlSlug(availableLang, candidate))
+      );
+    }
+  }
+  if (languages.fr) languages["x-default"] = languages.fr;
 
   return {
-    title: `${title} — exercice corrigé de thermodynamique`,
+    title: metadataTitle,
     description,
     keywords: exercise.keywords,
     alternates: {
       canonical: url,
-      languages: exercise.seoReady ? { fr: url } : undefined,
+      languages: exercise.seoReady ? languages : undefined,
     },
     robots: exercise.seoReady ? undefined : { index: false, follow: true },
     openGraph: {
       type: "article",
-      title: `${title} — exercice corrigé de thermodynamique`,
+      title: metadataTitle,
       description,
       url,
     },
     twitter: {
       card: "summary",
-      title: `${title} — exercice corrigé de thermodynamique`,
+      title: metadataTitle,
       description,
     },
   };
 }
 
 function exerciseJsonLd({
+  lang,
   exercise,
   title,
   description,
   url,
   lessonUrl,
   lessonTitle,
+  homeLabel,
 }: {
+  lang: Lang;
   exercise: NonNullable<ReturnType<typeof getExerciseById>>;
   title: string;
   description: string;
   url: string;
   lessonUrl: string | null;
   lessonTitle: string;
+  homeLabel: string;
 }) {
+  const t = getExerciseTranslations(lang);
   const breadcrumbItems = [
-    { "@type": "ListItem", position: 1, name: "Accueil", item: absoluteUrl("/fr") },
+    { "@type": "ListItem", position: 1, name: homeLabel, item: absoluteUrl(`/${lang}`) },
     {
       "@type": "ListItem",
       position: 2,
-      name: "Exercices corrigés",
-      item: absoluteUrl(sectionHref("fr", "exercises")),
+      name: t.hubTitle,
+      item: absoluteUrl(sectionHref(lang, "exercises")),
     },
     { "@type": "ListItem", position: 3, name: title, item: url },
   ];
@@ -110,16 +136,16 @@ function exerciseJsonLd({
     name: title,
     description,
     url,
-    inLanguage: "fr",
-    learningResourceType: "Exercice corrigé",
-    educationalLevel: "Enseignement supérieur — Licence",
+    inLanguage: lang,
+    learningResourceType: t.learningResourceType,
+    educationalLevel: t.educationalLevel,
     author: { "@type": "Person", name: bookMeta.author },
     publisher: { "@type": "Organization", name: bookMeta.affiliation },
     about: exercise.keywords.map((name) => ({ "@type": "Thing", name })),
     isPartOf: {
       "@type": "Book",
       name: bookMeta.title,
-      url: absoluteUrl("/fr"),
+      url: absoluteUrl(`/${lang}`),
     },
   };
 
@@ -143,36 +169,47 @@ function exerciseJsonLd({
 
 export default function ExerciseDetailPage({ params }: Props) {
   if (!isLang(params.lang)) notFound();
-  if (params.lang !== "fr") redirect(sectionHref(params.lang as Lang, "exercises"));
+  const lang = params.lang as Lang;
+  const siteT = getTranslations(lang);
+  const t = getExerciseTranslations(lang);
 
-  const exercise = getExerciseById("fr", params.slug);
+  const exercise = getExerciseByUrlSlug(lang, params.slug);
   if (!exercise) notFound();
+  const publicSlug = getExerciseUrlSlug(lang, exercise);
+  if (params.slug !== publicSlug) {
+    permanentRedirect(sectionHref(lang, "exercises", publicSlug));
+  }
 
-  const exercises = loadExercises("fr");
+  const exercises = loadExercises(lang);
   const exerciseIndex = exercises.findIndex((item) => item.id === exercise.id);
   const previousExercise = exerciseIndex > 0 ? exercises[exerciseIndex - 1] : null;
   const nextExercise = exerciseIndex < exercises.length - 1 ? exercises[exerciseIndex + 1] : null;
   const theme = getWebThemes().find((item) => item.number === exercise.lecon);
-  const title = exerciseTitleToPlainText(exercise.titleTex) || `Exercice ${exercise.number}`;
+  const exerciseLabel = t.exercise;
+  const lessonLabel = t.lesson;
+  const statementLabel = t.statement;
+  const solutionLabel = t.detailedSolution;
+  const title = exerciseTitleToPlainText(exercise.titleTex) || `${exerciseLabel} ${exercise.number}`;
   const titleHtml = exerciseTitleToPlainHtml(exercise.titleTex);
-  const lessonTitle = theme ? getThemeTitle(theme, "fr") : `Leçon ${exercise.lecon}`;
+  const lessonTitle = theme ? getThemeTitle(theme, lang) : `${lessonLabel} ${exercise.lecon}`;
   const lessonUrl = theme
-    ? absoluteUrl(sectionHref("fr", "chapters", getThemeUrlSlug(theme, "fr")))
+    ? absoluteUrl(sectionHref(lang, "chapters", getThemeUrlSlug(theme, lang)))
     : null;
-  const url = absoluteUrl(sectionHref("fr", "exercises", exercise.id));
+  const url = absoluteUrl(sectionHref(lang, "exercises", publicSlug));
   const description = exerciseDescription(
+    lang,
     title,
     lessonTitle,
     exercise.keywords,
     Boolean(exercise.solutionTex)
   );
 
-  const statementHtml = processLatex(getTexWebHtmlFromSource(exercise.enonceTex, "fr", []));
+  const statementHtml = processLatex(getTexWebHtmlFromSource(exercise.enonceTex, lang, []));
   const hintHtml = exercise.indicationTex
     ? processLatex(
         getTexWebHtmlFromSource(
           `\\begin{indication}\n${exercise.indicationTex}\n\\end{indication}`,
-          "fr",
+          lang,
           []
         )
       )
@@ -181,7 +218,7 @@ export default function ExerciseDetailPage({ params }: Props) {
     ? processLatex(
         getTexWebHtmlFromSource(
           `\\begin{solution}\n${exercise.solutionTex}\n\\end{solution}`,
-          "fr",
+          lang,
           []
         )
       )
@@ -189,7 +226,16 @@ export default function ExerciseDetailPage({ params }: Props) {
 
   return (
     <>
-      {exerciseJsonLd({ exercise, title, description, url, lessonUrl, lessonTitle }).map(
+      {exerciseJsonLd({
+        lang,
+        exercise,
+        title,
+        description,
+        url,
+        lessonUrl,
+        lessonTitle,
+        homeLabel: siteT.nav.home,
+      }).map(
         (block, index) => (
           <script
             key={index}
@@ -201,22 +247,22 @@ export default function ExerciseDetailPage({ params }: Props) {
 
       <article className="exercise-detail-page">
         <div className="exercise-detail-inner">
-          <nav className="exercise-breadcrumb" aria-label="Fil d’Ariane">
-            <Link href="/fr">Accueil</Link>
+          <nav className="exercise-breadcrumb" aria-label={t.breadcrumbLabel}>
+            <Link href={`/${lang}`}>{siteT.nav.home}</Link>
             <span aria-hidden="true">/</span>
-            <Link href={sectionHref("fr", "exercises")}>Exercices</Link>
+            <Link href={sectionHref(lang, "exercises")}>{siteT.nav.exercises}</Link>
             <span aria-hidden="true">/</span>
-            <span>Exercice {exercise.number}</span>
+            <span>{exerciseLabel} {exercise.number}</span>
           </nav>
 
           <header className="exercise-detail-header">
-            <p className="exercise-detail-kicker">Exercice corrigé de thermodynamique</p>
+            <p className="exercise-detail-kicker">{t.solvedExercise}</p>
             <h1 dangerouslySetInnerHTML={{ __html: titleHtml || title }} />
             <p className="exercise-detail-context">
-              Exercice {exercise.number} · Leçon {exercise.lecon} — {lessonTitle}
+              {exerciseLabel} {exercise.number} · {lessonLabel} {exercise.lecon} — {lessonTitle}
             </p>
             {exercise.keywords.length > 0 && (
-              <ul className="exercise-keywords" aria-label="Notions abordées">
+              <ul className="exercise-keywords" aria-label={t.topics}>
                 {exercise.keywords.map((keyword) => <li key={keyword}>{keyword}</li>)}
               </ul>
             )}
@@ -224,50 +270,50 @@ export default function ExerciseDetailPage({ params }: Props) {
 
           {!exercise.seoReady && (
             <p className="exercise-draft-notice" data-nosnippet>
-              Version de travail — cet exercice est encore en cours de relecture.
+              {t.draftNotice}
             </p>
           )}
 
           <section aria-labelledby="exercise-statement-title" className="exercise-detail-section">
-            <h2 id="exercise-statement-title">Énoncé</h2>
+            <h2 id="exercise-statement-title">{statementLabel}</h2>
             <div className="prose-content" dangerouslySetInnerHTML={{ __html: statementHtml }} />
           </section>
 
           {hintHtml && (
             <section aria-labelledby="exercise-hint-title" className="exercise-detail-section">
-              <h2 id="exercise-hint-title" className="visually-hidden">Indication</h2>
+              <h2 id="exercise-hint-title" className="visually-hidden">{t.hint}</h2>
               <div className="prose-content" dangerouslySetInnerHTML={{ __html: hintHtml }} />
             </section>
           )}
 
           {solutionHtml && (
             <section aria-labelledby="exercise-solution-title" className="exercise-detail-section">
-              <h2 id="exercise-solution-title">Solution détaillée</h2>
+              <h2 id="exercise-solution-title">{solutionLabel}</h2>
               <div className="prose-content" dangerouslySetInnerHTML={{ __html: solutionHtml }} />
             </section>
           )}
 
-          <aside className="exercise-related-lesson" aria-label="Cours associé">
-            <span>À revoir avant cet exercice</span>
+          <aside className="exercise-related-lesson" aria-label={t.relatedLessonLabel}>
+            <span>{t.reviewBefore}</span>
             {theme ? (
-              <Link href={sectionHref("fr", "chapters", getThemeUrlSlug(theme, "fr"))}>
-                Leçon {theme.number} — {lessonTitle} →
+              <Link href={sectionHref(lang, "chapters", getThemeUrlSlug(theme, lang))}>
+                {lessonLabel} {theme.number} — {lessonTitle} →
               </Link>
             ) : (
               <strong>{lessonTitle}</strong>
             )}
           </aside>
 
-          <nav className="exercise-prev-next" aria-label="Navigation entre les exercices">
+          <nav className="exercise-prev-next" aria-label={t.exercises}>
             {previousExercise ? (
-              <Link href={sectionHref("fr", "exercises", previousExercise.id)}>
-                <span>← Exercice précédent</span>
+              <Link href={sectionHref(lang, "exercises", previousExercise.id)}>
+                <span>{t.previousExercise}</span>
                 {exerciseTitleToPlainText(previousExercise.titleTex)}
               </Link>
             ) : <span />}
             {nextExercise ? (
-              <Link href={sectionHref("fr", "exercises", nextExercise.id)}>
-                <span>Exercice suivant →</span>
+              <Link href={sectionHref(lang, "exercises", nextExercise.id)}>
+                <span>{t.nextExercise}</span>
                 {exerciseTitleToPlainText(nextExercise.titleTex)}
               </Link>
             ) : <span />}
