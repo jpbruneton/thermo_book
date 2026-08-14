@@ -1,24 +1,217 @@
 % Banque d'exercices — chapitre 2
 % Le chapitre est déterminé par le nom de ce fichier.
 
+\begin{exo}[De la glace froide à l'eau bouillante : ordres de grandeur]{chauffage-glace-eau-ebullition}
+\keywords{calorimétrie, changement d'état, fusion, vaporisation, chaleur latente, ordre de grandeur}
+
+\textbf{Données numériques (à la pression atmosphérique) :}
+\[
+\begin{aligned}
+m &= 1{,}0\,\text{kg}, & T_i &= -100\,{}^\circ\text{C},\\
+c_{\text{glace}} &= 2{,}1\times10^3\,\text{J}\!\cdot\!\text{kg}^{-1}\!\cdot\!\text{K}^{-1},
+& L_f &= 3{,}34\times10^5\,\text{J}\!\cdot\!\text{kg}^{-1},\\
+c_{\text{eau}} &= 4{,}18\times10^3\,\text{J}\!\cdot\!\text{kg}^{-1}\!\cdot\!\text{K}^{-1},
+& L_v &= 2{,}26\times10^6\,\text{J}\!\cdot\!\text{kg}^{-1}.
+\end{aligned}
+\]
+À la pression atmosphérique, on chauffe progressivement un kilogramme de glace,
+initialement à $-100\,{}^\circ\text{C}$.
+
+\begin{enumerate}
+  \item Calculer l'énergie nécessaire pour amener la glace de $-100\,{}^\circ\text{C}$ à $0\,{}^\circ\text{C}$.
+  \item Calculer l'énergie nécessaire pour faire fondre entièrement la glace à $0\,{}^\circ\text{C}$.
+  \item Calculer l'énergie nécessaire pour chauffer l'eau liquide de $0\,{}^\circ\text{C}$ à $100\,{}^\circ\text{C}$.
+  \item Calculer l'énergie supplémentaire nécessaire pour vaporiser entièrement l'eau à $100\,{}^\circ\text{C}$.
+  \item Quelle étape demande le plus d'énergie ? Comparer l'énergie du chauffage de $0\,{}^\circ\text{C}$ à $100\,{}^\circ\text{C}$ d'un kilogramme d'eau à l'énergie potentielle d'une masse $m$ tombant de dix mètres de haut. Quelle masse $m$ faut-il ainsi faire tomber pour égaler cette énergie ?
+  \item On considère maintenant le processus inverse. Une masse $m_v$ de vapeur d'eau se condense sur un pare-brise, sans que l'eau liquide obtenue se refroidisse ensuite. Exprimer la chaleur $Q_{\text{lib}}$ libérée lors de la condensation, puis la calculer pour $m_v=1{,}0\times10^{-2}\,\text{kg}$.
+\end{enumerate}
+
+\begin{indication}
+Pour chauffer une phase sans changement d'état, utiliser $Q=mc\Delta T$. Pour un changement d'état à température constante, utiliser $Q=mL$. L'énergie potentielle de pesanteur d'une masse $m$ située à une hauteur $h$ vaut $E_p=mgh$ ; on prendra $g=9{,}81\,\text{m}\!\cdot\!\text{s}^{-2}$.
+\end{indication}
+
+\begin{solution}
+\textbf{1.} Le chauffage de la glace jusqu'à sa température de fusion demande
+\[
+Q_1=mc_{\text{glace}}\Delta T
+=1{,}0\times2{,}1\times10^3\times100
+=2{,}1\times10^5\,\text{J}.
+\]
+
+\textbf{2.} Pendant la fusion, la température reste égale à $0\,{}^\circ\text{C}$ :
+\[
+Q_2=mL_f=1{,}0\times3{,}34\times10^5
+=3{,}34\times10^5\,\text{J}.
+\]
+
+\textbf{3.} Pour chauffer l'eau liquide de $0$ à $100\,{}^\circ\text{C}$,
+\[
+Q_3=mc_{\text{eau}}\Delta T
+=1{,}0\times4{,}18\times10^3\times100
+=4{,}18\times10^5\,\text{J}.
+\]
+
+\textbf{4.} La vaporisation complète demande encore
+\[
+Q_4=mL_v=1{,}0\times2{,}26\times10^6
+=2{,}26\times10^6\,\text{J}.
+\]
+Cette étape demande donc à elle seule une énergie de l'ordre de quelques mégajoules.
+
+\textbf{5.} La vaporisation est de loin l'étape la plus coûteuse :
+\[
+Q_4=2{,}26\times10^6\,\text{J}
+>Q_3=4{,}18\times10^5\,\text{J}
+>Q_2=3{,}34\times10^5\,\text{J}
+>Q_1=2{,}1\times10^5\,\text{J}.
+\]
+La vaporisation exige notamment environ $(2{,}26\times10^6)/(4{,}18\times10^5)\approx5{,}4$ fois plus d'énergie que le chauffage de l'eau liquide de $0$ à $100\,{}^\circ\text{C}$.
+
+Pour une masse $m$ tombant d'une hauteur $h=10\,\text{m}$, l'énergie potentielle libérée vaut
+\[
+E_p=mgh.
+\]
+On cherche la masse telle que $mgh=Q_3$. Ainsi,
+\[
+m=\frac{Q_3}{gh}
+=\frac{4{,}18\times10^5}{9{,}81\times10}
+\approx4{,}26\times10^3\,\text{kg}.
+\]
+Il faudrait donc faire tomber d'une hauteur de dix mètres une masse d'environ $4{,}3\times10^3\,\text{kg}$ pour libérer autant d'énergie que celle nécessaire au chauffage d'un kilogramme d'eau de $0$ à $100\,{}^\circ\text{C}$. Avec l'approximation $g\approx10\,\text{m}\!\cdot\!\text{s}^{-2}$, on trouve directement $m\approx4{,}2\times10^3\,\text{kg}$.
+
+\textbf{6.} La condensation est le processus inverse de la vaporisation : la vapeur cède au pare-brise la chaleur latente
+\[
+Q_{\text{lib}}=m_vL_v.
+\]
+Pour $m_v=1{,}0\times10^{-2}\,\text{kg}$,
+\[
+Q_{\text{lib}}=1{,}0\times10^{-2}\times2{,}26\times10^6
+=2{,}26\times10^4\,\text{J}.
+\]
+Ainsi, la condensation d'une faible masse de vapeur peut libérer une quantité de chaleur non négligeable. Cette chaleur est reçue par le pare-brise et son environnement.
+\end{solution}
+
+\end{exo}
+
+\begin{exo}[Un degré de trop en Méditerranée]{odg-rechauffement-mediterranee}
+\keywords{ordre de grandeur, Méditerranée, température de surface, capacité thermique, pluie, cyclone, chaleur latente}
+
+On observe lors de certains épisodes chauds un excès de température de surface de la mer Méditerranée de l'ordre de $1\,{}^\circ\text{C}$. Une température mesurée exactement à la surface ne suffit pas à déterminer une énergie : il faut connaître la profondeur sur laquelle l'anomalie s'étend. On adopte ici un modèle simple dans lequel les dix premiers mètres de la mer sont uniformément plus chauds de $1\,{}^\circ\text{C}$.
+
+\textbf{Données numériques :}
+\[
+\begin{aligned}
+A_{\text{Méd}}&=2{,}5\times10^{12}\,\text{m}^2,
+& h&=10\,\text{m},
+& \Delta T&=1\,\text{K},\\
+\rho_{\text{eau}}&=1{,}0\times10^3\,\text{kg}\!\cdot\!\text{m}^{-3},
+& c_{\text{eau}}&=4{,}0\times10^3\,\text{J}\!\cdot\!\text{kg}^{-1}\!\cdot\!\text{K}^{-1},
+& L_v&=2{,}5\times10^6\,\text{J}\!\cdot\!\text{kg}^{-1}.
+\end{aligned}
+\]
+
+Pour fixer les idées, on modélise un épisode de pluie méditerranéen très intense par une hauteur d'eau $H=1{,}0\times10^{-1}\,\text{m}$ tombant sur une surface $S=1{,}0\times10^{10}\,\text{m}^2$. On admet également qu'un cyclone tropical mature libère, par condensation de la vapeur d'eau, une puissance thermique de l'ordre de $P_{\text{cyc}}=6\times10^{14}\,\text{W}$.
+
+\begin{enumerate}
+  \item Estimer la masse d'eau contenue dans la couche superficielle d'épaisseur $h=10\,\text{m}$.
+  \item Estimer l'énergie thermique $E_{\text{Méd}}$ correspondant à un excès uniforme de température de $1\,{}^\circ\text{C}$ dans cette couche. En donner l'ordre de grandeur en joules.
+  \item Calculer la masse d'eau qui tombe lors de l'épisode pluvieux décrit ci-dessus, puis l'énergie thermique $E_{\text{pluie}}$ libérée dans l'atmosphère lors de la condensation de cette eau. Combien de tels épisodes représentent, en énergie, l'excès thermique calculé à la question précédente ?
+  \item Pendant quelle durée un cyclone tropical mature doit-il libérer de la chaleur à la puissance $P_{\text{cyc}}$ pour atteindre cette énergie ? Donner d'abord le résultat en secondes, puis en jours pour l'interpréter.
+  \item Si toute l'énergie excédentaire de la couche superficielle était évacuée uniformément pendant $\tau=2{,}6\times10^6\,\text{s}$, calculer la puissance thermique moyenne correspondante, puis le flux thermique moyen par unité de surface de la Méditerranée.
+  \item Pourquoi ces comparaisons énergétiques ne permettent-elles pas d'affirmer que l'excès thermique de la Méditerranée sera intégralement converti en pluie ou en énergie cyclonique ?
+\end{enumerate}
+
+\begin{indication}
+Le volume de la couche superficielle vaut $Ah$ et sa masse $\rho Ah$. L'énergie libérée par la condensation d'une masse $m$ d'eau vaut $mL_v$. Enfin, une puissance est une énergie divisée par une durée, et un flux thermique une puissance divisée par une surface.
+\end{indication}
+
+\begin{solution}
+\textbf{1.} Le volume des dix premiers mètres est
+\[
+V=A_{\text{Méd}}h
+=2{,}5\times10^{12}\times10
+=2{,}5\times10^{13}\,\text{m}^3,
+\]
+et leur masse vaut
+\[
+M=\rho_{\text{eau}}V
+=10^3\times2{,}5\times10^{13}
+=2{,}5\times10^{16}\,\text{kg}.
+\]
+
+\textbf{2.} L'énergie thermique excédentaire est
+\[
+E_{\text{Méd}}=Mc_{\text{eau}}\Delta T
+=2{,}5\times10^{16}\times4{,}0\times10^3\times1
+=1{,}0\times10^{20}\,\text{J}.
+\]
+L'ordre de grandeur recherché est donc $10^{20}\,\text{J}$. Le résultat est proportionnel à la profondeur choisie : une anomalie limitée au premier mètre représenterait dix fois moins d'énergie, tandis qu'une anomalie atteignant $50\,\text{m}$ en représenterait cinq fois plus.
+
+\textbf{3.} Le volume puis la masse de pluie sont
+\[
+V_{\text{pluie}}=SH=1{,}0\times10^{10}\times1{,}0\times10^{-1}=1{,}0\times10^9\,\text{m}^3,
+\qquad
+m_{\text{pluie}}=\rho_{\text{eau}}V_{\text{pluie}}=10^{12}\,\text{kg}.
+\]
+La condensation de cette eau libère approximativement
+\[
+E_{\text{pluie}}=m_{\text{pluie}}L_v
+=10^{12}\times2{,}5\times10^6
+=2{,}5\times10^{18}\,\text{J}.
+\]
+Le rapport vaut
+\[
+\frac{E_{\text{Méd}}}{E_{\text{pluie}}}
+=\frac{10^{20}}{2{,}5\times10^{18}}
+\approx40.
+\]
+L'excès thermique modélisé représente donc le même ordre de grandeur que la chaleur latente libérée par quelques dizaines de tels épisodes de pluie très intense.
+
+\textbf{4.} La durée recherchée est
+\[
+\tau_{\text{cyc}}=\frac{E_{\text{Méd}}}{P_{\text{cyc}}}
+=\frac{1{,}0\times10^{20}}{6\times10^{14}}
+\approx1{,}7\times10^5\,\text{s}
+\approx1{,}9\,\text{jours}.
+\]
+L'énergie excédentaire estimée est ainsi comparable à la chaleur latente libérée en environ deux journées par un cyclone tropical mature. Il s'agit de chaleur dégagée par la condensation, et non de la seule énergie cinétique des vents, qui est beaucoup plus faible.
+
+\textbf{5.} La puissance moyenne serait
+\[
+P=\frac{E_{\text{Méd}}}{\tau}
+=\frac{10^{20}}{2{,}6\times10^6}
+\approx3{,}9\times10^{13}\,\text{W}.
+\]
+Répartie sur toute la surface de la Méditerranée, elle correspondrait au flux
+\[
+\Phi=\frac{P}{A_{\text{Méd}}}
+=\frac{3{,}9\times10^{13}}{2{,}5\times10^{12}}
+\approx16\,\text{W}\!\cdot\!\text{m}^{-2}.
+\]
+
+\textbf{6.} Ce calcul compare des réservoirs et des transferts d'énergie, mais ne décrit pas leur dynamique. Une partie de la chaleur de la mer est transportée par les courants, mélangée vers des couches plus profondes ou rayonnée vers l'espace ; seule une fraction est transférée à l'atmosphère par évaporation, conduction et rayonnement. La formation d'une pluie extrême ou d'un cyclone dépend aussi de l'humidité, de la stabilité de l'atmosphère, des vents et de leur cisaillement, de la pression et de la circulation à grande échelle. Une énergie disponible importante peut donc favoriser certains phénomènes sans être intégralement ni automatiquement convertie en un événement météorologique donné.
+\end{solution}
+
+\end{exo}
+
 \begin{exo}[Mélange de deux masses d'eau]{calorimetrie-melange-eau}
 \keywords{calorimétrie, mélange, capacité thermique, chaleur spécifique, Joseph Black, température d'équilibre}
 
-On verse $m_1 = 200\,\text{g}$ d'eau à $T_1 = 80\,^\circ\text{C}$ dans un récipient contenant déjà $m_2 = 300\,\text{g}$ d'eau à $T_2 = 15\,^\circ\text{C}$. Le récipient est un calorimètre idéal~: on néglige toute perte de chaleur vers l'extérieur ainsi que la capacité thermique du récipient lui-même. On rappelle la relation établie par Joseph Black,
+On verse $m_1 = 0{,}200\,\text{kg}$ d'eau à $T_1 = 80\,^\circ\text{C}$ dans un récipient contenant déjà $m_2 = 0{,}300\,\text{kg}$ d'eau à $T_2 = 15\,^\circ\text{C}$. Le récipient est un calorimètre idéal~: on néglige toute perte de chaleur vers l'extérieur ainsi que la capacité thermique du récipient lui-même. On rappelle la relation
 \[
 Q = mc\Delta T,
 \]
-où $c = 4{,}18\,\text{J}\!\cdot\!\text{g}^{-1}\!\cdot\!{}^\circ\text{C}^{-1}$ est la capacité thermique massique de l'eau liquide (supposée indépendante de la température sur cette plage).
+où $c = 4{,}18\times10^3\,\text{J}\!\cdot\!\text{kg}^{-1}\!\cdot\!\text{K}^{-1}$ est la capacité thermique massique de l'eau liquide.
 
 \begin{enumerate}
   \item Justifier que la chaleur cédée par l'eau chaude est intégralement reçue par l'eau froide~: écrire cette conservation sous la forme d'une équation faisant intervenir $m_1$, $m_2$, $c$, $T_1$, $T_2$ et la température d'équilibre $T_{eq}$.
   \item En déduire l'expression littérale de $T_{eq}$, puis sa valeur numérique.
-  \item Calculer la quantité de chaleur $Q$ (en joules, puis en calories) cédée par l'eau chaude au cours de ce mélange.
-  \item Le résultat de la question 2 dépend-il de la valeur de $c$ ? Pourquoi ce mélange de deux échantillons d'une même substance est-il, dans ce sens précis, plus simple que le mélange de deux matériaux différents ?
+  \item Calculer la quantité de chaleur $Q$ cédée par l'eau chaude au cours de ce mélange.
+  \item De tels mélanges d'une même substance permettent-ils de déterminer la valeur de $c$ ? Justifier.
 \end{enumerate}
 
 \begin{indication}
-Le calorimètre étant isolé et rigide, l'énergie interne totale $U_1 + U_2$ se conserve : la chaleur cédée par l'un est reçue par l'autre au signe près. Pour la question 3, une calorie vaut $4{,}18\,\text{J}$ par définition de $c$.
+Le calorimètre étant isolé et rigide, l'énergie interne totale $U_1 + U_2$ se conserve : la chaleur cédée par l'un est reçue par l'autre au signe près.
 \end{indication}
 
 \begin{solution}
@@ -29,16 +222,29 @@ m_1 c (T_{eq} - T_1) + m_2 c (T_{eq} - T_2) = 0.
 
 \textbf{2.} Le coefficient $c$ se simplifie (même substance des deux côtés), et on obtient
 \[
-T_{eq} = \frac{m_1 T_1 + m_2 T_2}{m_1 + m_2} = \frac{200 \times 80 + 300 \times 15}{200 + 300} = \frac{16000 + 4500}{500} = 41\,^\circ\text{C}.
+T_{eq} = \frac{m_1 T_1 + m_2 T_2}{m_1 + m_2}
+= \frac{0{,}200 \times 80 + 0{,}300 \times 15}{0{,}200 + 0{,}300}
+= 41\,^\circ\text{C}.
 \]
 
 \textbf{3.} La chaleur cédée par l'eau chaude en refroidissant de $80\,^\circ\text{C}$ à $41\,^\circ\text{C}$ vaut
 \[
-Q = m_1 c (T_1 - T_{eq}) = 200 \times 4{,}18 \times (80 - 41) = 200 \times 4{,}18 \times 39 \approx 32\,600\,\text{J} \approx 32{,}6\,\text{kJ},
+Q = m_1 c (T_1 - T_{eq})
+=0{,}200\times4{,}18\times10^3\times(80-41)
+\approx3{,}26\times10^4\,\text{J}.
 \]
-soit, en repassant en calories (par définition $1\,\text{cal} = 4{,}18\,\text{J}$), $Q \approx 32\,600/4{,}18 \approx 7800\,\text{cal} = 7{,}8\,\text{kcal}$. On vérifie que l'eau froide reçoit exactement cette même quantité en s'échauffant de $15\,^\circ\text{C}$ à $41\,^\circ\text{C}$~: $m_2 c (T_{eq}-T_2) = 300\times4{,}18\times26 \approx 32\,600\,\text{J}$.
+On vérifie que l'eau froide reçoit exactement cette même quantité en s'échauffant de $15\,^\circ\text{C}$ à $41\,^\circ\text{C}$~:
+\[
+m_2c(T_{eq}-T_2)
+=0{,}300\times4{,}18\times10^3\times26
+\approx3{,}26\times10^4\,\text{J}.
+\]
 
-\textbf{4.} Non~: $T_{eq}$ ne dépend absolument pas de la valeur de $c$, car ce coefficient se simplifie dans l'équation de la question 1 dès lors que les deux masses sont faites de la \emph{même} substance. La température d'équilibre est alors une simple moyenne des températures initiales pondérée par les masses. Ce ne serait plus le cas pour deux matériaux différents (un bloc de métal et de l'eau, par exemple)~: $c$ resterait alors présent dans l'expression de $T_{eq}$, chaque substance pondérant l'équilibre par sa propre capacité thermique $mc$ (voir l'exercice suivant).
+\textbf{4.} Non. Pour deux masses de la même substance, le même coefficient $c$ multiplie les deux termes du bilan
+\[
+m_1c(T_{eq}-T_1)+m_2c(T_{eq}-T_2)=0
+\]
+et se simplifie. La température d'équilibre mesurée ne dépend donc pas de $c$ : elle est uniquement la moyenne des températures initiales pondérée par les masses. Un tel mélange ne permet pas de déterminer $c$. Pour mesurer une capacité thermique massique par la méthode des mélanges, il faut introduire une substance de capacité thermique connue, comme dans l'exercice suivant.
 \end{solution}
 
 \end{exo}
@@ -46,12 +252,12 @@ soit, en repassant en calories (par définition $1\,\text{cal} = 4{,}18\,\text{J
 \begin{exo}[Détermination de la capacité thermique d'un métal par la méthode des mélanges]{calorimetrie-methode-melanges}
 \keywords{calorimétrie, méthode des mélanges, capacité thermique massique, calorimètre, chaleur spécifique, valeur en eau}
 
-On souhaite mesurer, comme le faisait déjà Joseph Black au XVIII\textsuperscript{e}~siècle, la capacité thermique massique $c_m$ d'un métal inconnu par la \emph{méthode des mélanges}~: on chauffe un échantillon de ce métal, de masse $m = 150\,\text{g}$, jusqu'à $T_m = 95\,^\circ\text{C}$, puis on le plonge rapidement dans un calorimètre contenant $m_e = 250\,\text{g}$ d'eau ($c_e = 4{,}18\,\text{J}\!\cdot\!\text{g}^{-1}\!\cdot\!{}^\circ\text{C}^{-1}$) initialement à $T_e = 18\,^\circ\text{C}$. On mesure, une fois l'équilibre thermique atteint, $T_{eq} = 22\,^\circ\text{C}$. Dans un premier temps, on néglige la capacité thermique propre du récipient du calorimètre (parois, agitateur, thermomètre).
+On souhaite mesurer, comme le faisait déjà Joseph Black au XVIII\textsuperscript{e}~siècle, la capacité thermique massique $c_m$ d'un métal inconnu par la \emph{méthode des mélanges}~: on chauffe un échantillon de ce métal, de masse $m = 0{,}150\,\text{kg}$, jusqu'à $T_m = 95\,^\circ\text{C}$, puis on le plonge rapidement dans un calorimètre contenant $m_e = 0{,}250\,\text{kg}$ d'eau ($c_e = 4{,}18\times10^3\,\text{J}\!\cdot\!\text{kg}^{-1}\!\cdot\!\text{K}^{-1}$) initialement à $T_e = 18\,^\circ\text{C}$. On mesure, une fois l'équilibre thermique atteint, $T_{eq} = 22\,^\circ\text{C}$. Dans un premier temps, on néglige la capacité thermique propre du récipient du calorimètre (parois, agitateur, thermomètre).
 
 \begin{enumerate}
   \item Écrire, comme à l'exercice précédent, la conservation de l'énergie du système isolé $\{$métal, eau$\}$, en faisant apparaître $c_m$ comme seule inconnue.
-  \item En déduire l'expression littérale de $c_m$, puis sa valeur numérique. À quel métal usuel cette valeur correspond-elle approximativement (comparer aux valeurs de référence~: aluminium $\approx 0{,}90\,\text{J}\!\cdot\!\text{g}^{-1}\!\cdot\!{}^\circ\text{C}^{-1}$, fer $\approx 0{,}45$, cuivre $\approx 0{,}39$, plomb $\approx 0{,}13$) ?
-  \item En réalité, le récipient du calorimètre lui-même absorbe une partie de la chaleur cédée par le métal. On modélise cet effet par une \emph{valeur en eau} $\mu = 15\,\text{g}$~: tout se passe comme si le calorimètre se comportait comme une masse supplémentaire $\mu$ d'eau. Reprendre le calcul de $c_m$ en tenant compte de $\mu$, et commenter le sens de la correction (le $c_m$ corrigé est-il plus grand ou plus petit que celui de la question 2~?).
+  \item En déduire l'expression littérale de $c_m$, puis sa valeur numérique. À quel métal usuel cette valeur correspond-elle approximativement (comparer aux valeurs de référence~: aluminium $\approx 9{,}0\times10^2\,\text{J}\!\cdot\!\text{kg}^{-1}\!\cdot\!\text{K}^{-1}$, fer $\approx 4{,}5\times10^2$, cuivre $\approx 3{,}9\times10^2$, plomb $\approx 1{,}3\times10^2$) ?
+  \item En réalité, le récipient du calorimètre lui-même absorbe une partie de la chaleur cédée par le métal. On modélise cet effet par une \emph{valeur en eau} $\mu = 1{,}5\times10^{-2}\,\text{kg}$~: tout se passe comme si le calorimètre se comportait comme une masse supplémentaire $\mu$ d'eau. Reprendre le calcul de $c_m$ en tenant compte de $\mu$, et commenter le sens de la correction (le $c_m$ corrigé est-il plus grand ou plus petit que celui de la question 2~?).
   \item Pourquoi est-il essentiel, expérimentalement, de plonger l'échantillon \emph{rapidement} dans le calorimètre, et de bien l'isoler thermiquement de l'air ambiant pendant la mesure ?
 \end{enumerate}
 
@@ -67,13 +273,17 @@ mc_m(T_m - T_{eq}) = m_e c_e (T_{eq} - T_e).
 
 \textbf{2.} On isole $c_m$~:
 \[
-c_m = \frac{m_e c_e (T_{eq}-T_e)}{m(T_m-T_{eq})} = \frac{250 \times 4{,}18 \times (22-18)}{150 \times (95-22)} = \frac{250\times4{,}18\times4}{150\times73} = \frac{4180}{10\,950} \approx 0{,}38\,\text{J}\!\cdot\!\text{g}^{-1}\!\cdot\!{}^\circ\text{C}^{-1}.
+c_m = \frac{m_e c_e (T_{eq}-T_e)}{m(T_m-T_{eq})}
+= \frac{0{,}250\times4{,}18\times10^3\times(22-18)}{0{,}150\times(95-22)}
+\approx3{,}82\times10^2\,\text{J}\!\cdot\!\text{kg}^{-1}\!\cdot\!\text{K}^{-1}.
 \]
-Cette valeur est très proche de celle du cuivre ($\approx 0{,}39\,\text{J}\!\cdot\!\text{g}^{-1}\!\cdot\!{}^\circ\text{C}^{-1}$).
+Cette valeur est très proche de celle du cuivre ($\approx3{,}9\times10^2\,\text{J}\!\cdot\!\text{kg}^{-1}\!\cdot\!\text{K}^{-1}$).
 
 \textbf{3.} En tenant compte de la valeur en eau du calorimètre, l'eau \emph{et} le récipient reçoivent ensemble la chaleur cédée par le métal~:
 \[
-c_m = \frac{(m_e+\mu) c_e (T_{eq}-T_e)}{m(T_m-T_{eq})} = \frac{(250+15) \times 4{,}18 \times 4}{150\times73} = \frac{265\times4{,}18\times4}{10\,950} = \frac{4431}{10\,950} \approx 0{,}40\,\text{J}\!\cdot\!\text{g}^{-1}\!\cdot\!{}^\circ\text{C}^{-1}.
+c_m = \frac{(m_e+\mu) c_e (T_{eq}-T_e)}{m(T_m-T_{eq})}
+= \frac{(0{,}250+0{,}015)\times4{,}18\times10^3\times4}{0{,}150\times73}
+\approx4{,}05\times10^2\,\text{J}\!\cdot\!\text{kg}^{-1}\!\cdot\!\text{K}^{-1}.
 \]
 La correction augmente légèrement $c_m$~: en négligeant la valeur en eau du calorimètre à la question 2, on sous-estimait la quantité de chaleur réellement cédée par le métal (une partie servait aussi à chauffer le récipient), et donc on sous-estimait $c_m$.
 
@@ -85,215 +295,95 @@ La correction augmente légèrement $c_m$~: en négligeant la valeur en eau du c
 \begin{exo}[Calories alimentaires et puissance métabolique]{calorimetrie-calories-alimentaires}
 \keywords{calorie, kilocalorie, Calorie alimentaire, équivalent mécanique, puissance métabolique, unités}
 
-Un adulte consomme en moyenne environ $2000\,\text{kcal}$ par jour (on rappelle qu'une « Calorie » alimentaire, notée avec une majuscule ou kcal, vaut $1000$ fois la calorie des physiciens~: $1\,\text{Cal} = 1\,\text{kcal} = 1000\,\text{cal}$, et que $1\,\text{cal} \approx 4{,}18\,\text{J}$).
+L'étiquette nutritionnelle indique qu'un adulte consomme en moyenne environ $2000\,\text{kcal}$ par jour. La kilocalorie est une unité non-SI encore utilisée en nutrition ; on donne directement sa conversion vers le SI : $1\,\text{kcal}=4{,}18\times10^3\,\text{J}$.
 
 \begin{enumerate}
-  \item Exprimer cette ration quotidienne en calories (cal), puis en joules.
-  \item En déduire la puissance métabolique moyenne de cet adulte, en watts, en supposant cette énergie consommée de façon uniforme sur $24$ heures.
-  \item Une barre énergétique affiche « $210\,\text{kcal} $». Quelle masse d'eau initialement à $20\,^\circ\text{C}$ pourrait-on porter à ébullition ($100\,^\circ\text{C}$) avec cette même quantité d'énergie, si elle était intégralement convertie en chaleur (on prendra $c_{\text{eau}} = 4{,}18\,\text{J}\!\cdot\!\text{g}^{-1}\!\cdot\!{}^\circ\text{C}^{-1}$) ?
+  \item Convertir cette ration quotidienne en joules.
+  \item En déduire la puissance métabolique moyenne de cet adulte, en watts, en supposant cette énergie consommée uniformément pendant $\Delta t=8{,}64\times10^4\,\text{s}$.
+  \item Une barre énergétique affiche « $210\,\text{kcal}$ ». Quelle masse d'eau initialement à $20\,^\circ\text{C}$ pourrait-on porter à ébullition ($100\,^\circ\text{C}$) avec cette même quantité d'énergie, si elle était intégralement convertie en chaleur ? On prendra $c_{\text{eau}} = 4{,}18\times10^3\,\text{J}\!\cdot\!\text{kg}^{-1}\!\cdot\!\text{K}^{-1}$.
   \item Le corps humain n'est bien sûr pas un poêle~: il ne restitue pas directement cette énergie sous forme de chaleur pure. Qu'est-ce que ce calcul mesure malgré tout correctement, et qu'est-ce qu'il ne prend pas en compte ?
 \end{enumerate}
 
 \begin{indication}
-Pour la question 2, une journée compte $24\times3600$ secondes. Pour la question 3, isoler $m$ dans $Q=mc\Delta T$.
+Pour la question 2, utiliser $\mathcal P=E/\Delta t$. Pour la question 3, convertir d'abord l'énergie indiquée sur l'étiquette en joules, puis isoler $m$ dans $Q=mc\Delta T$.
 \end{indication}
 
 \begin{solution}
-\textbf{1.} $2000\,\text{kcal} = 2\,000\,000\,\text{cal} = 2\times10^6 \times 4{,}18 \approx 8{,}36\times10^6\,\text{J} = 8{,}36\,\text{MJ}$.
-
-\textbf{2.} Une journée compte $24\times3600 = 86\,400\,\text{s}$, donc
+\textbf{1.} En unités SI,
 \[
-\mathcal{P} = \frac{8{,}36\times10^6}{86\,400} \approx 97\,\text{W}.
+E=2000\times4{,}18\times10^3
+=8{,}36\times10^6\,\text{J}.
+\]
+
+\textbf{2.} La puissance moyenne vaut
+\[
+\mathcal{P} = \frac{8{,}36\times10^6}{8{,}64\times10^4} \approx 97\,\text{W}.
 \]
 Un être humain au repos consomme donc, en moyenne, à peu près autant de puissance qu'une ampoule à incandescence -- un ordre de grandeur qui surprend souvent, et qui illustre bien l'intérêt de convertir les calories alimentaires en unités physiques usuelles.
 
-\textbf{3.} $210\,\text{kcal} = 210\,000 \times 4{,}18 \approx 878\,000\,\text{J}$. En résolvant $Q = mc\Delta T$ avec $\Delta T = 100-20=80\,^\circ\text{C}$ :
+\textbf{3.} L'énergie de la barre, convertie en joules, vaut
 \[
-m = \frac{Q}{c\Delta T} = \frac{878\,000}{4{,}18\times80} = \frac{878\,000}{334{,}4} \approx 2625\,\text{g} \approx 2{,}6\,\text{L}.
+Q=210\times4{,}18\times10^3
+\approx8{,}78\times10^5\,\text{J}.
 \]
-Une seule barre énergétique représente donc, en ordre de grandeur, de quoi porter environ $2{,}5$ litres d'eau du robinet à ébullition.
+Avec $\Delta T=80\,\text{K}$,
+\[
+m = \frac{Q}{c\Delta T}
+= \frac{8{,}78\times10^5}{4{,}18\times10^3\times80}
+\approx2{,}63\,\text{kg}.
+\]
+Une seule barre énergétique représente donc, en ordre de grandeur, de quoi porter environ $2{,}5\,\text{kg}$ d'eau du robinet à ébullition.
 
 \textbf{4.} Ce calcul mesure correctement le contenu \emph{énergétique total} de l'aliment, tel que mesuré par calorimétrie directe (combustion complète de l'aliment dans un calorimètre, à la manière de Lavoisier et Laplace) -- c'est très exactement la définition physique de la kilocalorie alimentaire. Il ne prend en revanche pas en compte le fait que le métabolisme ne convertit pas cette énergie en chaleur pure~: une partie sert à un travail chimique et mécanique utile (contraction musculaire, synthèse de molécules, maintien du potentiel électrique des cellules, etc.), une partie n'est de toute façon pas absorbée par l'organisme (digestion incomplète), et l'énergie effectivement libérée sous forme de chaleur ne l'est pas de façon uniforme dans le temps comme le suppose l'hypothèse de la question 2.
 \end{solution}
 
 \end{exo}
 
-\begin{exo}[Stefan (1879) : le $T^4$ par analyse dimensionnelle]{stefan-raisonnement}
-\keywords{Stefan-Boltzmann, corps noir, rayonnement, analyse dimensionnelle, température, histoire de la thermodynamique, constante de Planck}
 
-On appelle \emph{corps noir} une surface idéale qui absorbe tout rayonnement incident et réémet un rayonnement thermique ne dépendant que de sa température $T$. En 1879, en étudiant des mesures de rayonnement sur un fil de platine chauffé, Josef Stefan remarque que la puissance $P$ rayonnée par unité de surface d'un corps noir (en W·m$^{-2}$) croît beaucoup plus vite que ce que suggéraient les modèles de l'époque, et propose empiriquement une loi de la forme
-\[
-P = \sigma\, T^n,
-\]
-où $\sigma$ est une constante universelle (indépendante du corps noir considéré) et $n$ un exposant entier à déterminer. On se propose ici de retrouver la valeur de $n$ par un raisonnement dimensionnel, puis d'en tirer une application numérique.
 
-\begin{enumerate}
-\item On admet que $\sigma$ se construit uniquement à partir de trois constantes fondamentales : la constante de Planck réduite $\hbar$ (J$\cdot$s), la vitesse de la lumière $c$ (m$\cdot$s$^{-1}$), et la constante de Boltzmann $k_B$ (J$\cdot$K$^{-1}$) -- sachant que $k_B$ et $T$ n'interviennent physiquement que par le produit $k_BT$ (une énergie), on peut écrire $P = \hbar^{\,a}\,c^{\,b}\,(k_BT)^{\,n}$ à une constante numérique sans dimension près (avec donc le même exposant $n$ pour $k_B$ et pour $T$). En imposant l'homogénéité de cette relation vis-à-vis des unités de masse, longueur et temps, déterminer $a$, $b$ et $n$.
-\item Deux corps noirs identiques sont l'un à $T$, l'autre à $2T$. Par quel facteur la puissance totale rayonnée par le second dépasse-t-elle celle du premier ?
-\item La photosphère solaire rayonne environ $P = 6{,}5\times10^7$ W·m$^{-2}$. En supposant le Soleil corps noir, estimer sa température de surface ($\sigma = 5{,}67\times10^{-8}$ W·m$^{-2}$·K$^{-4}$).
-\end{enumerate}
-
-\begin{indication}
-Question 1 : $[\hbar] = \text{kg}\cdot\text{m}^2\cdot\text{s}^{-1}$, $[c] = \text{m}\cdot\text{s}^{-1}$, $[k_BT] = \text{kg}\cdot\text{m}^2\cdot\text{s}^{-2}$, et $[P] = \text{kg}\cdot\text{s}^{-3}$. Écrire les trois équations obtenues en identifiant les puissances de kg, m et s de part et d'autre, et les résoudre pour $a$, $b$, $n$. Question 3 : inverser $P = \sigma T^n$ une fois $n$ connu.
-\end{indication}
-
-\begin{solution}
-\textbf{Question 1.} La relation $P = \hbar^a c^b (k_BT)^n$ a pour dimension
-\[
-\text{kg}^{a+n}\cdot\text{m}^{2a+b+2n}\cdot\text{s}^{-a-b-2n},
-\]
-qui doit être égale à $[P] = \text{kg}^1\cdot\text{m}^0\cdot\text{s}^{-3}$. On obtient le système
-\[
-a+n=1, \qquad 2a+b+2n=0, \qquad -a-b-2n=-3.
-\]
-La première équation donne $a = 1-n$ ; en reportant dans la deuxième, $2(1-n)+b+2n=0 \implies b=-2$ ; la troisième équation redonne alors $-(1-n)+2-2n=-3 \implies 1-n=-3 \implies n=4$, d'où $a=1-4=-3$. On trouve donc $n=4$, et
-\[
-\sigma \;\propto\; \frac{k_B^4}{\hbar^3 c^2}.
-\]
-C'est la loi de Stefan-Boltzmann $P = \sigma T^4$ : l'exposant est fixé de façon unique par la seule exigence d'homogénéité dimensionnelle, une fois admis que $\sigma$ ne dépend que de $\hbar$, $c$ et $k_B$.
-
-\emph{Remarque historique.} L'exposant 4 peut en réalité s'obtenir sans aucune notion quantique, par un argument purement thermodynamique dû à Boltzmann (1884) : en admettant que la pression de radiation vaut $P_{\text{rad}} = u/3$ (où $u$ est la densité volumique d'énergie du rayonnement, un résultat d'électromagnétisme classique), une relation de Maxwell appliquée au gaz de photons donne directement $u \propto T^4$. C'est la véritable démonstration historique de l'exposant. La présence de $\hbar$ ci-dessus montre en revanche que la valeur \emph{numérique} du préfacteur $\sigma$ (qui vaut exactement $\pi^2 k_B^4 / 60\hbar^3c^2$) ne pouvait être obtenue qu'après la théorie quantique du rayonnement de Planck (1900) -- un raffinement inaccessible à Stefan comme à Boltzmann.
-
-\textbf{Question 2.} Avec $P \propto T^4$, le rapport vaut $(2T/T)^4 = 16$ : doubler la température multiplie le flux rayonné par seize.
-
-\textbf{Question 3.} $T = (P/\sigma)^{1/4} = (6{,}5\times10^7 / 5{,}67\times10^{-8})^{1/4} \approx 5800$ K, cohérent avec la température de surface solaire admise aujourd'hui ($\approx 5778$ K). Stefan lui-même avait obtenu une estimation très proche par cette méthode, avant même que Boltzmann n'en donne une justification théorique.
-\end{solution}
-\end{exo}
-
-\begin{exo}[Einstein (1907) : la chaleur spécifique du solide]{einstein-chaleur-specifique}
-\keywords{Einstein, chaleur spécifique, solide, capacité calorifique, Dulong-Petit, quantique, histoire}
-
-Einstein modélise un cristal de $N$ atomes par $3N$ oscillateurs harmoniques indépendants de même fréquence (chaque atome contribuant trois degrés de liberté vibrationnels, un par direction de l'espace). On admet que la capacité calorifique à volume constant du solide s'écrit
-\[
-C_V = 3Nk_B\,\frac{x^2 e^x}{(e^x - 1)^2}, \qquad x = \frac{\Theta_E}{T},
-\]
-où $\Theta_E$ est la température d'Einstein caractéristique du cristal et $k_B$ la constante de Boltzmann.
-
-\begin{enumerate}
-\item Calculer $\displaystyle\lim_{T\to\infty} C_V$ et retrouver la loi de Dulong-Petit ($C_V \to 3Nk_B$).
-\item Montrer que pour $T \ll \Theta_E$, on a $C_V \approx 3Nk_B (x^2 e^{-x})$ et que $C_V \to 0$ quand $T \to 0$.
-\item Pour le cuivre ($\Theta_E \approx 340$ K), comparer $C_V$ à $3Nk_B$ à $T = 300$ K et à $T = 10$ K (ordre de grandeur).
-\item Pourquoi ce modèle améliore-t-il la loi classique tout en restant insuffisant à basse température ?
-\end{enumerate}
-
-\begin{indication}
-Grands $x$ : $e^x \gg 1$ et $(e^x-1)^2 \approx e^{2x}$. Petits $x$ : développer le numérateur et le dénominateur.
-\end{indication}
-
-\begin{solution}
-\textbf{Question 1.} Quand $T \to \infty$, $x \to 0$ et $x^2 e^x / (e^x-1)^2 \to 1$, donc $C_V \to 3Nk_B = 3nR$ molaire : chaque oscillateur apporte $k_B$ en moyenne (théorème d'équipartition).
-
-\textbf{Question 2.} Pour $T \ll \Theta_E$, $x \gg 1$ : $(e^x-1)^2 \approx e^{2x}$, donc $C_V \approx 3Nk_B x^2 e^{-x} \to 0$. Le solide « gèle » thermiquement : les degrés de liberté quantiques ne s'excitent plus.
-
-\textbf{Question 3.} À 300 K : $x = 340/300 \approx 1{,}13$, correction modérée ($C_V \approx 0{,}9\times 3Nk_B$). À 10 K : $x = 34$, terme $e^{-x}$ négligeable : $C_V$ est essentiellement nul, contrairement à Dulong-Petit qui prédirait encore $3Nk_B$.
-
-\textbf{Question 4.} Einstein explique pourquoi $C_V$ baisse à basse $T$ (succès majeur de 1907), mais une seule fréquence donne une décroissance exponentielle, alors que l'expérience montre $C_V \propto T^3$ (loi de Debye, 1912). Le modèle d'Einstein reste pédagogiquement central comme première correction quantique à la thermodynamique classique.
-\end{solution}
-\end{exo}
-
-\begin{exo}[Carnot (1824) : rendement universel par l'absurde]{carnot-raisonnement-historique}
-\keywords{Carnot, rendement, machine réversible, second principe, calorique, histoire, impossibilité}
-
-Carnot se demande si le rendement d'une machine thermique dépend du fluide de travail ou de la construction mécanique. Il considère deux machines $M_1$ et $M_2$ réversibles fonctionnant entre les mêmes sources chaude ($T_c$) et froide ($T_f$), de rendements respectifs $\eta_1 > \eta_2$. On admet l'\emph{énoncé de Clausius} du second principe : il est impossible qu'un système échange spontanément de la chaleur d'une source froide vers une source chaude sans qu'aucun travail ne soit fourni de l'extérieur.
-
-\begin{enumerate}
-\item $M_1$ fonctionne en moteur : elle prélève $Q_c$ à la source chaude et en rejette $Q_f^{(1)} = Q_c(1-\eta_1)$ à la source froide. Quel travail $W_1$ produit-elle par cycle ?
-\item On utilise la \emph{totalité} de ce travail $W_1$ pour actionner $M_2$ en sens inverse (cycle récepteur, comme une pompe à chaleur). Exprimer, en fonction de $W_1$ et $\eta_2$, la chaleur $Q_c^{(2)}$ que $M_2$ rejette alors à la source chaude et la chaleur $Q_f^{(2)}$ qu'elle prélève à la source froide.
-\item Vérifier que le travail net échangé avec l'extérieur par l'ensemble $\{M_1 + M_2\text{ en sens inverse}\}$ est nul, puis calculer le bilan net de chaleur reçu par la source chaude et par la source froide. Que constate-t-on ?
-\item Conclure sur l'existence de $\eta_1 > \eta_2$ pour deux machines réversibles entre mêmes sources. Que dit-on aujourd'hui de ce raisonnement, alors que Carnot croyait au calorique ?
-\end{enumerate}
-
-\begin{indication}
-Réversibilité : faire tourner $M_2$ en sens inverse échange $Q$ et $W$ avec des signes opposés par rapport à son fonctionnement en moteur, mais les mêmes relations $Q_c^{(2)} = W^{(2)}/\eta_2$ restent valables en valeur absolue. Pour la question 3, faire le bilan sur chaque source séparément et comparer au signe attendu par l'énoncé de Clausius.
-\end{indication}
-
-\begin{solution}
-\textbf{Question 1.} $W_1 = \eta_1 Q_c$ et $Q_f^{(1)} = Q_c - W_1 = Q_c(1-\eta_1)$.
-
-\textbf{Question 2.} Fonctionnant en sens inverse et consommant un travail $W_1$, $M_2$ vérifie toujours $W_1 = \eta_2\, Q_c^{(2)}$ (même relation qu'en moteur, mais $Q_c^{(2)}$ est maintenant \emph{rejetée} à la source chaude), d'où $Q_c^{(2)} = W_1/\eta_2$. Le premier principe sur son cycle donne $Q_f^{(2)} = Q_c^{(2)} - W_1 = W_1\left(\dfrac{1}{\eta_2} - 1\right) = \dfrac{W_1(1-\eta_2)}{\eta_2}$.
-
-\textbf{Question 3.} L'ensemble reçoit $W_1$ de l'extérieur pour actionner $M_2$, mais $M_1$ restitue ce même $W_1$ à l'extérieur : le bilan de travail net est donc nul, et le dispositif combiné n'échange que de la chaleur avec ses deux sources. Le bilan à la source chaude est
-\[
-Q_c^{(2)} - Q_c = \frac{W_1}{\eta_2} - Q_c = \frac{\eta_1 Q_c}{\eta_2} - Q_c = Q_c\,\frac{\eta_1-\eta_2}{\eta_2} > 0 :
-\]
-la source chaude reçoit un flux net de chaleur (elle en reçoit plus de $M_2$ qu'elle n'en cède à $M_1$). Par conservation de l'énergie (travail net nul), la source froide doit céder exactement ce même flux :
-\[
-Q_f^{(1)} - Q_f^{(2)} = Q_c(1-\eta_1) - \frac{W_1(1-\eta_2)}{\eta_2} = Q_c(1-\eta_1) - \eta_1 Q_c\frac{1-\eta_2}{\eta_2} = -Q_c\,\frac{\eta_1-\eta_2}{\eta_2} < 0.
-\]
-Sans aucun travail net échangé avec l'extérieur, ce dispositif fait donc passer spontanément une chaleur $Q_c(\eta_1-\eta_2)/\eta_2 > 0$ de la source froide vers la source chaude.
-
-\textbf{Question 4.} C'est très exactement ce que l'énoncé de Clausius interdit. Comme $M_1$ et $M_2$ sont toutes deux réversibles, on peut échanger leurs rôles et refaire le même raisonnement en sens inverse : l'hypothèse $\eta_1 > \eta_2$ (et de même $\eta_2 > \eta_1$) est donc impossible, si bien que $\eta_1 = \eta_2$. Toutes les machines \emph{réversibles} fonctionnant entre les mêmes températures $T_c$ et $T_f$ ont donc nécessairement le même rendement, quels que soient le fluide de travail et les détails de construction. Ce raisonnement par l'absurde, purement logique, reste entièrement valable aujourd'hui : Carnot avait raison sur la structure de l'argument, bien qu'il croyait encore le calorique conservé (une substance matérielle qui se contenterait de « tomber » du chaud vers le froid comme l'eau d'une cascade, sans que la chaleur puisse se convertir en travail). Seule l'expression numérique $\eta_C = 1 - T_f/T_c$ lui manquait, faute d'une définition rigoureuse de la température absolue -- ce que Kelvin fournira vingt ans plus tard (cf. leçon 10).
-\end{solution}
-\end{exo}
 
 \begin{exo}[Mayer et Joule : l'équivalent mécanique de la chaleur]{mayer-equivalent-mecanique}
 \keywords{Mayer, Joule, premier principe, équivalent mécanique, chaleur, travail, histoire}
 
-Une chute d'eau de hauteur $h = 50$ m déverse un débit $Q = 1000$ kg d'eau par seconde. On admet, comme Mayer (1842) et Joule après lui, que toute l'énergie mécanique perdue par l'eau au cours de sa chute se retrouve intégralement sous forme de chaleur -- l'idée étant qu'\emph{aucune} énergie ne disparaît, mais qu'elle change seulement de forme, de mécanique à thermique.
+Une chute d'eau de hauteur $h=50\,\text{m}$ transporte un débit massique $\dot m=1{,}0\times10^3\,\text{kg}\!\cdot\!\text{s}^{-1}$. On admet, comme Mayer (1842) et Joule après lui, que toute l'énergie mécanique perdue par l'eau au cours de sa chute se retrouve intégralement sous forme de chaleur -- l'idée étant qu'\emph{aucune} énergie ne disparaît, mais qu'elle change seulement de forme, de mécanique à thermique.
 
 \begin{enumerate}
-\item Exprimer puis calculer la puissance mécanique $\mathcal{P}$ perdue par ce flux d'eau, en fonction de $Q$, $h$ et $g = 9{,}81$ m·s$^{-2}$.
-\item On isole maintenant, par la pensée, $1\,\text{kg}$ de cette eau qui chute de la hauteur $h$ puis s'immobilise, et on suppose que la totalité de son énergie mécanique perdue reste emmagasinée dans cette même eau sous forme de chaleur (elle ne se dilue pas dans un bassin extérieur). Exprimer, en Joules, l'énergie $W$ ainsi convertie.
-\item Par définition, une calorie (cal) est la quantité de chaleur nécessaire pour élever de $1$ K la température de $1$ gramme d'eau liquide. On mesure expérimentalement que ce même kilogramme d'eau voit sa température s'élever de $\Delta T \approx 0{,}117$ K après la chute. Exprimer, \emph{en calories, sans utiliser Joule ni aucune constante exprimée en J·kg$^{-1}$·K$^{-1}$}, la quantité de chaleur $Q_{\text{cal}}$ correspondante.
-\item En déduire l'équivalent mécanique de la chaleur $J = W/Q_{\text{cal}}$, exprimé en J·cal$^{-1}$, et comparer à la valeur moderne ($4{,}184$ J·cal$^{-1}$).
+\item Exprimer puis calculer la puissance mécanique $\mathcal{P}$ perdue par ce flux d'eau, en fonction de $\dot m$, $h$ et $g=9{,}81\,\text{m}\!\cdot\!\text{s}^{-2}$.
+\item On isole maintenant, par la pensée, $1\,\text{kg}$ de cette eau qui chute de la hauteur $h$ puis s'immobilise, et on suppose que la totalité de son énergie mécanique perdue reste emmagasinée dans cette même eau sous forme de chaleur (elle ne se dilue pas dans un bassin extérieur). Exprimer, en joules, l'énergie $W$ ainsi convertie.
+\item Par définition historique, une calorie (cal) est la quantité de chaleur nécessaire pour élever de $1\,\text{K}$ la température de $1{,}0\times10^{-3}\,\text{kg}$ d'eau liquide. On mesure expérimentalement que ce même kilogramme d'eau voit sa température s'élever de $\Delta T\approx0{,}117\,\text{K}$ après la chute. Exprimer, \emph{en calories, sans utiliser le joule ni aucune constante exprimée en $\text{J}\!\cdot\!\text{kg}^{-1}\!\cdot\!\text{K}^{-1}$}, la quantité de chaleur $Q_{\text{cal}}$ correspondante.
+\item En déduire l'équivalent mécanique de la chaleur $J = W/Q_{\text{cal}}$, exprimé en $\text{J}\!\cdot\!\text{cal}^{-1}$, et comparer à la valeur moderne ($4{,}184\,\text{J}\!\cdot\!\text{cal}^{-1}$).
 \item Comment ce résultat préfigure-t-il le premier principe ?
 \end{enumerate}
 
 \begin{indication}
-Question 1 : $\mathcal{P} = Qgh$. Question 3 : la définition de la calorie ne fait intervenir que des grammes et des kelvins, jamais de joules -- c'est précisément ce qui rend la question 4 non circulaire.
+Question 1 : $\mathcal{P}=\dot mgh$. Question 3 : déterminer combien de masses élémentaires de $1{,}0\times10^{-3}\,\text{kg}$ sont contenues dans $1\,\text{kg}$. La définition historique de la calorie ne fait intervenir aucun joule -- c'est précisément ce qui rend la question 4 non circulaire.
 \end{indication}
 
 \begin{solution}
-\textbf{Question 1.} $\mathcal{P} = Qgh = 1000 \times 9{,}81 \times 50 \approx 4{,}9\times10^5$ W $\approx 490$ kW : l'équivalent, pour un vrai cours d'eau, d'une petite centrale électrique.
-
-\textbf{Question 2.} Pour $m = 1$ kg, $W = mgh = 1 \times 9{,}81 \times 50 = 490{,}5$ J.
-
-\textbf{Question 3.} La masse d'eau considérée est $1\,\text{kg} = 1000\,\text{g}$. Par définition de la calorie (indépendante de toute unité mécanique), élever cette masse de $\Delta T$ nécessite
+\textbf{Question 1.}
 \[
-Q_{\text{cal}} = 1000 \times \Delta T \times 1\,\text{cal}\!\cdot\!\text{g}^{-1}\!\cdot\!\text{K}^{-1} = 1000 \times 0{,}117 \approx 117\,\text{cal}.
+\mathcal{P}=\dot mgh
+=1{,}0\times10^3\times9{,}81\times50
+\approx4{,}9\times10^5\,\text{W}.
+\]
+C'est l'ordre de grandeur de la puissance d'une petite centrale électrique.
+
+\textbf{Question 2.} Pour $m=1\,\text{kg}$,
+\[
+W=mgh=1\times9{,}81\times50=4{,}905\times10^2\,\text{J}.
 \]
 
-\textbf{Question 4.} $J = W/Q_{\text{cal}} = 490{,}5 / 117 \approx 4{,}19\,\text{J}\!\cdot\!\text{cal}^{-1}$, en excellent accord avec la valeur moderne $4{,}184\,\text{J}\!\cdot\!\text{cal}^{-1}$. Le point essentiel est que ce calcul ne présuppose \emph{à aucun moment} la valeur numérique de $J$ : le travail $W$ est mesuré en unités purement mécaniques (kg, m, s), et la chaleur $Q_{\text{cal}}$ en unités purement thermiques, définies par un protocole expérimental sur l'eau (calories) sans référence au travail. C'est cette indépendance des deux mesures qui rend la détermination de $J$ non triviale et physiquement significative -- au contraire d'un calcul qui utiliserait d'emblée la capacité thermique de l'eau exprimée en J·kg$^{-1}$·K$^{-1}$, ce qui reviendrait à supposer déjà connu le résultat que l'on cherche à établir.
+\textbf{Question 3.} La masse de $1\,\text{kg}$ contient
+\[
+\frac{1\,\text{kg}}{1{,}0\times10^{-3}\,\text{kg}}=1000
+\]
+fois la masse de référence intervenant dans la définition de la calorie. Par conséquent,
+\[
+Q_{\text{cal}}=1000\times0{,}117\approx117\,\text{cal}.
+\]
+
+\textbf{Question 4.} $J = W/Q_{\text{cal}} = 490{,}5 / 117 \approx 4{,}19\,\text{J}\!\cdot\!\text{cal}^{-1}$, en excellent accord avec la valeur moderne $4{,}184\,\text{J}\!\cdot\!\text{cal}^{-1}$. Le point essentiel est que ce calcul ne présuppose \emph{à aucun moment} la valeur numérique de $J$ : le travail $W$ est mesuré en unités purement mécaniques ($\text{kg}$, $\text{m}$, $\text{s}$), et la chaleur $Q_{\text{cal}}$ en unités purement thermiques, définies par un protocole expérimental sur l'eau (calories) sans référence au travail. C'est cette indépendance des deux mesures qui rend la détermination de $J$ non triviale et physiquement significative -- au contraire d'un calcul qui utiliserait d'emblée la capacité thermique de l'eau exprimée en $\text{J}\!\cdot\!\text{kg}^{-1}\!\cdot\!\text{K}^{-1}$, ce qui reviendrait à supposer déjà connu le résultat que l'on cherche à établir.
 
 \textbf{Question 5.} Mayer, puis Joule par des expériences bien plus systématiques (la roue à palettes brassant de l'eau, 1845--1850), établissent ainsi que travail mécanique et chaleur sont deux formes d'échange d'une seule et même grandeur conservée : l'énergie. La constante $J$ n'a de sens que tant que l'on mesure la chaleur et le travail dans des unités historiquement différentes ; une fois cette équivalence acceptée, on peut choisir une unité commune (le joule) pour les deux, et $J$ disparaît purement et simplement de l'écriture moderne du premier principe, $\Delta U = W + Q$.
-\end{solution}
-\end{exo}
-
-\begin{exo}[Clausius (1850) : réconcilier Carnot et la conservation de l'énergie]{clausius-entropie-argument}
-\keywords{Clausius, entropie, second principe, Carnot, conservation de l'énergie, histoire}
-
-Le premier principe autorise a priori un moteur cyclique monotherme convertissant intégralement une chaleur $Q$ en travail ($W = Q$, rendement 100\%). Carnot, lui, affirme qu'aucune machine ne peut avoir un rendement supérieur au cycle réversible entre deux sources $T_c > T_f$. On se propose de retrouver, comme Clausius, une conséquence quantitative de ce résultat.
-
-On modélise le fluide moteur par un gaz parfait de coefficient $\gamma$ parcourant un cycle de Carnot réversible : une détente isotherme à $T_c$ ($A \to B$, volumes $V_A \to V_B$), une détente adiabatique ($B \to C$, la température passant de $T_c$ à $T_f$), une compression isotherme à $T_f$ ($C \to D$, volumes $V_C \to V_D$), puis une compression adiabatique ($D \to A$, ramenant le gaz à $T_c$).
-
-\begin{enumerate}
-\item Écrire le bilan énergétique de ce moteur : exprimer le travail $W$ produit par cycle en fonction de la chaleur $Q_c$ reçue à $T_c$ et de la chaleur $Q_f$ rejetée à $T_f$ (comptées positivement), et en déduire $\eta_C = W/Q_c$ en fonction de $Q_c$ et $Q_f$.
-\item Exprimer $Q_c$ (reçue sur $A\to B$) et $Q_f$ (rejetée sur $C \to D$) à l'aide de $n$, $R$, $T_c$, $T_f$ et des volumes $V_A, V_B, V_C, V_D$.
-\item En appliquant la loi de Laplace $TV^{\gamma-1} = \text{cste}$ sur chacune des deux branches adiabatiques $B \to C$ et $D \to A$, montrer que $V_B/V_A = V_C/V_D$.
-\item On définit $q = Q/T$ pour chaque échange réversible (en comptant algébriquement $+Q_c/T_c$ pour la chaleur reçue et $-Q_f/T_f$ pour la chaleur rejetée). En utilisant les questions précédentes, montrer que $\oint \delta q = Q_c/T_c - Q_f/T_f = 0$ sur ce cycle réversible.
-\item Un moteur réel de rendement $\eta < \eta_C$ rejette, pour la même chaleur $Q_c$ reçue, une chaleur $Q_f' > Q_f$ au froid (où $Q_f$ est la valeur réversible de la question précédente). Que vaut alors $Q_c/T_c - Q_f'/T_f$ ? Interpréter le signe obtenu à la lumière de l'inégalité de Clausius $\oint \delta Q/T \leq 0$.
-\item En quel sens Clausius a-t-il « comblé » la lacune de Carnot tout en conservant son résultat sur le rendement maximal ?
-\end{enumerate}
-
-\begin{indication}
-Sur une isotherme réversible à température $T$ pour un gaz parfait : $Q = nRT\ln(V_{\text{final}}/V_{\text{initial}})$. Sur une adiabatique réversible, $\delta Q = 0$ et $TV^{\gamma - 1}$ est constant. Pour la question 5, comparer $Q_f'/T_f$ à $Q_f/T_f$ sachant que $Q_c$ est inchangée.
-\end{indication}
-
-\begin{solution}
-\textbf{Question 1.} Sur un cycle, $\Delta U = 0 = Q_c - Q_f - W$, donc $W = Q_c - Q_f$ et $\eta_C = W/Q_c = 1 - Q_f/Q_c$.
-
-\textbf{Question 2.} Sur l'isotherme $A \to B$ à $T_c$ : $Q_c = nRT_c \ln(V_B/V_A)$ (positif car $V_B > V_A$, le gaz se détend). Sur l'isotherme $C \to D$ à $T_f$, le gaz est comprimé ($V_D < V_C$) et \emph{rejette} la chaleur $Q_f = nRT_f \ln(V_C/V_D) > 0$.
-
-\textbf{Question 3.} Sur $B \to C$ (adiabatique, $T_c \to T_f$) : $T_c V_B^{\gamma-1} = T_f V_C^{\gamma-1}$, soit $(V_B/V_C)^{\gamma - 1} = T_f/T_c$. Sur $D \to A$ (adiabatique, $T_f \to T_c$) : $T_f V_D^{\gamma - 1} = T_c V_A^{\gamma-1}$, soit $(V_A/V_D)^{\gamma-1} = T_f/T_c$. Les deux membres de droite étant égaux, $V_B/V_C = V_A/V_D$, c'est-à-dire $V_B/V_A = V_C/V_D$. Cette égalité ne doit \emph{rien} à l'entropie : elle découle uniquement de la loi de Laplace sur les deux branches adiabatiques.
-
-\textbf{Question 4.} D'après la question 2, $\oint \delta q = \dfrac{Q_c}{T_c} - \dfrac{Q_f}{T_f} = nR\ln(V_B/V_A) - nR\ln(V_C/V_D) = nR\ln\!\left(\dfrac{V_B/V_A}{V_C/V_D}\right)$. Or la question 3 donne $V_B/V_A = V_C/V_D$, donc ce rapport vaut $1$ et $\oint \delta q = nR \ln(1) = 0$.
-
-\textbf{Question 5.} Puisque $Q_c$ est inchangée mais $Q_f' > Q_f$, on a $Q_f'/T_f > Q_f/T_f = Q_c/T_c$ (question 4), donc
-\[
-\frac{Q_c}{T_c} - \frac{Q_f'}{T_f} < \frac{Q_c}{T_c} - \frac{Q_f}{T_f} = 0.
-\]
-Pour ce moteur irréversible, $\oint \delta Q/T < 0$ : c'est bien compatible avec (et un cas particulier de) l'inégalité de Clausius $\oint \delta Q/T \leq 0$, l'égalité n'ayant lieu que dans le cas réversible. Le signe négatif traduit le fait qu'une partie de la chaleur prélevée à la source chaude est, à cause de l'irréversibilité, rejetée « en pure perte » à la source froide sans avoir produit de travail supplémentaire : le rendement réel est nécessairement inférieur à $\eta_C$.
-
-\textbf{Question 6.} Clausius accepte la conservation de l'énergie établie par Mayer et Joule, et remarque que la quantité $\oint \delta Q_{\text{rév}}/T$, nulle pour tout cycle réversible (question 4) et strictement négative dès qu'une irréversibilité intervient (question 5), ne dépend que de l'état du système : elle définit une fonction d'état, l'entropie $S$, telle que $dS = \delta Q_{\text{rév}}/T$ le long d'une transformation réversible, et qui ne peut que croître dans un système isolé. Carnot avait donc parfaitement raison sur l'existence d'un rendement maximal universel ; il lui manquait seulement cette grandeur d'état permettant de quantifier, au-delà du seul cas réversible, le degré d'irréversibilité de n'importe quelle transformation.
 \end{solution}
 \end{exo}
