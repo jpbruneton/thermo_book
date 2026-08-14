@@ -8,6 +8,7 @@ import { getThemeTitle, getThemeDescription, getThemeUrlSlug } from "@/lib/chapt
 import { ChapterContent } from "../ChapterContent";
 import { useLang } from "@/app/context/LangContext";
 import { sectionHref } from "@/lib/i18n";
+import { getExerciseTranslations } from "@/lib/exerciseTranslations";
 
 type LocalizedLesson = Theme["lessons"][number] & {
   contentLang: string;
@@ -23,7 +24,7 @@ interface Props {
   theme: ThemeWithLocalizedLessonContent;
   prev: Theme | null;
   next: Theme | null;
-  relatedExercises: Array<{ id: string; number: number; title: string }>;
+  relatedExercises: Array<{ id: string; urlSlug: string; number: number; title: string }>;
 }
 
 const headerBoxStyle: CSSProperties = {
@@ -238,6 +239,7 @@ function ChapterLessonTabButtons({ theme }: { theme: ThemeWithLocalizedLessonCon
 
 function ChapterContentAndPrevNext({ theme, prev, next, relatedExercises }: Props) {
   const { t, lang } = useLang();
+  const exerciseT = getExerciseTranslations(lang);
   const pathname = usePathname();
   const router = useRouter();
   const searchParams = useSearchParams();
@@ -362,27 +364,27 @@ function ChapterContentAndPrevNext({ theme, prev, next, relatedExercises }: Prop
         </div>
       )}
 
-      {lang === "fr" && relatedExercises.length > 0 && (
+      {relatedExercises.length > 0 && (
         <div style={{ maxWidth: "1320px", margin: "0 auto", padding: "0 1.5rem" }}>
           {/* Reuses the .lesson-web-layout grid so the box's left/right edges
               align with the lesson text column instead of the full page width,
               and never extends under the TOC column. */}
           <div className="lesson-web-layout">
             <div className="lesson-web-main">
-              <aside className="lesson-related-exercises" aria-label="Mettre ce cours en pratique">
-                <p>Mettre ce cours en pratique</p>
+              <aside className="lesson-related-exercises" aria-label={exerciseT.exercisesOnLesson}>
+                <p>{exerciseT.exercisesOnLesson}</p>
                 <ul>
                   {relatedExercises.map((exercise) => (
                     <li key={exercise.id}>
-                      <Link href={sectionHref("fr", "exercises", exercise.id)}>
-                        <span>Exercice {exercise.number}</span>
+                      <Link href={sectionHref(lang, "exercises", exercise.urlSlug)}>
+                        <span>{exerciseT.exercise} {exercise.number}</span>
                         {exercise.title}
                       </Link>
                     </li>
                   ))}
                 </ul>
-                <Link className="lesson-related-exercises-all" href={sectionHref("fr", "exercises")}>
-                  Voir tous les exercices →
+                <Link className="lesson-related-exercises-all" href={sectionHref(lang, "exercises")}>
+                  {exerciseT.hubTitle} →
                 </Link>
               </aside>
             </div>

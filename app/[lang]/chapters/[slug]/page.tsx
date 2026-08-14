@@ -6,7 +6,11 @@ import { getLessonReferences, getLessonWebContent, getTexFilePathForLang, hasLes
 import { processLatex } from "@/lib/latex";
 import { absoluteUrl, getSiteUrl } from "@/lib/siteUrl";
 import { sectionHref, SUPPORTED_LANGS, type Lang } from "@/lib/i18n";
-import { exerciseTitleToPlainText, loadExercises } from "@/lib/exercisesLibrary.server";
+import {
+  exerciseTitleToPlainText,
+  getExerciseUrlSlug,
+  loadExercises,
+} from "@/lib/exercisesLibrary.server";
 
 interface Props {
   params: { slug: string; lang: Lang };
@@ -145,11 +149,12 @@ export default function ChapterPage({ params, searchParams }: Props) {
   const next =
     currentIndex < webThemes.length - 1 ? webThemes[currentIndex + 1] : null;
   const isPrimaryExerciseLesson = webThemes.find((item) => item.number === theme.number)?.slug === theme.slug;
-  const relatedExercises = params.lang === "fr" && isPrimaryExerciseLesson
-    ? loadExercises("fr")
+  const relatedExercises = isPrimaryExerciseLesson
+    ? loadExercises(params.lang)
         .filter((exercise) => exercise.lecon === theme.number)
         .map((exercise) => ({
           id: exercise.id,
+          urlSlug: getExerciseUrlSlug(params.lang, exercise),
           number: exercise.number,
           title: exerciseTitleToPlainText(exercise.titleTex),
         }))

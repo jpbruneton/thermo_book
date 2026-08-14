@@ -306,13 +306,13 @@ export default function ExerciseDetailPage({ params }: Props) {
 
           <nav className="exercise-prev-next" aria-label={t.exercises}>
             {previousExercise ? (
-              <Link href={sectionHref(lang, "exercises", previousExercise.id)}>
+              <Link href={sectionHref(lang, "exercises", getExerciseUrlSlug(lang, previousExercise))}>
                 <span>{t.previousExercise}</span>
                 {exerciseTitleToPlainText(previousExercise.titleTex)}
               </Link>
             ) : <span />}
             {nextExercise ? (
-              <Link href={sectionHref(lang, "exercises", nextExercise.id)}>
+              <Link href={sectionHref(lang, "exercises", getExerciseUrlSlug(lang, nextExercise))}>
                 <span>{t.nextExercise}</span>
                 {exerciseTitleToPlainText(nextExercise.titleTex)}
               </Link>
