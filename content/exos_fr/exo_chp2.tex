@@ -7,7 +7,6 @@
 \textbf{Données numériques (à la pression atmosphérique) :}
 \[
 \begin{aligned}
-m &= 1{,}0\,\text{kg}, & T_i &= -100\,{}^\circ\text{C},\\
 c_{\text{glace}} &= 2{,}1\times10^3\,\text{J}\!\cdot\!\text{kg}^{-1}\!\cdot\!\text{K}^{-1},
 & L_f &= 3{,}34\times10^5\,\text{J}\!\cdot\!\text{kg}^{-1},\\
 c_{\text{eau}} &= 4{,}18\times10^3\,\text{J}\!\cdot\!\text{kg}^{-1}\!\cdot\!\text{K}^{-1},
@@ -77,7 +76,9 @@ m=\frac{Q_3}{gh}
 =\frac{4{,}18\times10^5}{9{,}81\times10}
 \approx4{,}26\times10^3\,\text{kg}.
 \]
-Il faudrait donc faire tomber d'une hauteur de dix mètres une masse d'environ $4{,}3\times10^3\,\text{kg}$ pour libérer autant d'énergie que celle nécessaire au chauffage d'un kilogramme d'eau de $0$ à $100\,{}^\circ\text{C}$. Avec l'approximation $g\approx10\,\text{m}\!\cdot\!\text{s}^{-2}$, on trouve directement $m\approx4{,}2\times10^3\,\text{kg}$.
+Il faudrait donc faire tomber d'une hauteur de dix mètres une masse d'environ $4{,}3\times10^3\,\text{kg}$ pour libérer autant d'énergie que celle nécessaire au chauffage d'un kilogramme d'eau de $0$ à $100\,{}^\circ\text{C}$~!
+Avec l'approximation $g\approx10\,\text{m}\!\cdot\!\text{s}^{-2}$, on trouve directement $m\approx4{,}2\times10^3\,\text{kg}$. C'est énorme, et explique la part importante de l'énergie consommée par le chauffage de l'eau dans le bilan énergétique mondial.
+On remarque aussi que la capacité thermique de l'eau est très grande, en particulier vis-à-vis de celle des métaux (environ 10 fois plus grande, cf. exercices suivants).
 
 \textbf{6.} La condensation est le processus inverse de la vaporisation : la vapeur cède au pare-brise la chaleur latente
 \[
@@ -96,7 +97,7 @@ Ainsi, la condensation d'une faible masse de vapeur peut libérer une quantité 
 \begin{exo}[Un degré de trop en Méditerranée]{odg-rechauffement-mediterranee}
 \keywords{ordre de grandeur, Méditerranée, température de surface, capacité thermique, pluie, cyclone, chaleur latente}
 
-On observe lors de certains épisodes chauds un excès de température de surface de la mer Méditerranée de l'ordre de $1\,{}^\circ\text{C}$. Une température mesurée exactement à la surface ne suffit pas à déterminer une énergie : il faut connaître la profondeur sur laquelle l'anomalie s'étend. On adopte ici un modèle simple dans lequel les dix premiers mètres de la mer sont uniformément plus chauds de $1\,{}^\circ\text{C}$.
+On observe lors de certains épisodes chauds un excès de température de surface de la mer Méditerranée. On suppose ici cet excès de l'ordre de $1\,{}^\circ\text{C}$. Une température mesurée exactement à la surface ne suffit pas à déterminer une énergie : il faut connaître la profondeur sur laquelle l'anomalie s'étend. On adopte ici un modèle simple dans lequel les dix premiers mètres de la mer sont uniformément plus chauds de $1\,{}^\circ\text{C}$.
 
 \textbf{Données numériques :}
 \[
@@ -110,19 +111,21 @@ A_{\text{Méd}}&=2{,}5\times10^{12}\,\text{m}^2,
 \end{aligned}
 \]
 
-Pour fixer les idées, on modélise un épisode de pluie méditerranéen très intense par une hauteur d'eau $H=1{,}0\times10^{-1}\,\text{m}$ tombant sur une surface $S=1{,}0\times10^{10}\,\text{m}^2$. On admet également qu'un cyclone tropical mature libère, par condensation de la vapeur d'eau, une puissance thermique de l'ordre de $P_{\text{cyc}}=6\times10^{14}\,\text{W}$.
+Le mécanisme physique qui relie réellement un excès de température de surface à ces phénomènes est l'évaporation : une mer plus chaude évapore davantage, et cette évaporation prélève de la chaleur latente sur la mer ; la vapeur ainsi produite restitue ensuite cette même énergie, sous forme de chaleur latente de condensation, lorsqu'elle forme des nuages et des précipitations dans l'atmosphère. On ne cherche pas ici à modéliser ce couplage évaporation-condensation, qui dépend de façon complexe de l'humidité, du vent et de la stabilité de l'atmosphère : on se contente de comparer les ordres de grandeur de deux réservoirs d'énergie indépendants, celui de l'excès de chaleur de la mer et celui de la chaleur latente mise en jeu par des phénomènes atmosphériques typiques, afin d'évaluer si ces réservoirs sont comparables.
+
+Pour fixer les idées, on modélise un épisode de pluie méditerranéen très intense par une hauteur d'eau $H=1{,}0\times10^{-1}\,\text{m}$ tombant sur une surface $S=1{,}0\times10^{10}\,\text{m}^2$. On admet également qu'un cyclone tropical mature met en jeu, par condensation de la vapeur d'eau, une puissance thermique de l'ordre de $P_{\text{cyc}}=6\times10^{14}\,\text{W}$.
 
 \begin{enumerate}
   \item Estimer la masse d'eau contenue dans la couche superficielle d'épaisseur $h=10\,\text{m}$.
   \item Estimer l'énergie thermique $E_{\text{Méd}}$ correspondant à un excès uniforme de température de $1\,{}^\circ\text{C}$ dans cette couche. En donner l'ordre de grandeur en joules.
-  \item Calculer la masse d'eau qui tombe lors de l'épisode pluvieux décrit ci-dessus, puis l'énergie thermique $E_{\text{pluie}}$ libérée dans l'atmosphère lors de la condensation de cette eau. Combien de tels épisodes représentent, en énergie, l'excès thermique calculé à la question précédente ?
-  \item Pendant quelle durée un cyclone tropical mature doit-il libérer de la chaleur à la puissance $P_{\text{cyc}}$ pour atteindre cette énergie ? Donner d'abord le résultat en secondes, puis en jours pour l'interpréter.
+  \item Calculer la masse d'eau qui tombe lors de l'épisode pluvieux décrit ci-dessus, puis l'énergie thermique $E_{\text{pluie}}$ mise en jeu par la condensation de cette eau (cette même énergie a dû, au préalable, être prélevée par évaporation sur une étendue d'eau). Cette énergie est-elle du même ordre de grandeur que l'excès thermique calculé à la question précédente ?
+  \item Pendant quelle durée un cyclone tropical mature doit-il mettre en jeu de la chaleur à la puissance $P_{\text{cyc}}$ pour atteindre l'énergie $E_{\text{Méd}}$ ? Donner d'abord le résultat en secondes, puis en jours pour l'interpréter.
   \item Si toute l'énergie excédentaire de la couche superficielle était évacuée uniformément pendant $\tau=2{,}6\times10^6\,\text{s}$, calculer la puissance thermique moyenne correspondante, puis le flux thermique moyen par unité de surface de la Méditerranée.
-  \item Pourquoi ces comparaisons énergétiques ne permettent-elles pas d'affirmer que l'excès thermique de la Méditerranée sera intégralement converti en pluie ou en énergie cyclonique ?
+  \item Le mécanisme reliant réellement l'excès de température de la mer à ces phénomènes passe par l'évaporation. Pourquoi ces comparaisons énergétiques ne permettent-elles pas d'affirmer que l'excès thermique de la Méditerranée sera intégralement converti en pluie ou en énergie cyclonique ?
 \end{enumerate}
 
 \begin{indication}
-Le volume de la couche superficielle vaut $Ah$ et sa masse $\rho Ah$. L'énergie libérée par la condensation d'une masse $m$ d'eau vaut $mL_v$. Enfin, une puissance est une énergie divisée par une durée, et un flux thermique une puissance divisée par une surface.
+Le volume de la couche superficielle vaut $Ah$ et sa masse $\rho Ah$. L'énergie mise en jeu par le changement d'état d'une masse $m$ d'eau (évaporation puis condensation) vaut $mL_v$. Enfin, une puissance est une énergie divisée par une durée, et un flux thermique une puissance divisée par une surface.
 \end{indication}
 
 \begin{solution}
@@ -153,7 +156,7 @@ V_{\text{pluie}}=SH=1{,}0\times10^{10}\times1{,}0\times10^{-1}=1{,}0\times10^9\,
 \qquad
 m_{\text{pluie}}=\rho_{\text{eau}}V_{\text{pluie}}=10^{12}\,\text{kg}.
 \]
-La condensation de cette eau libère approximativement
+Le changement d'état de cette eau (évaporation puis condensation) met en jeu approximativement
 \[
 E_{\text{pluie}}=m_{\text{pluie}}L_v
 =10^{12}\times2{,}5\times10^6
@@ -165,7 +168,7 @@ Le rapport vaut
 =\frac{10^{20}}{2{,}5\times10^{18}}
 \approx40.
 \]
-L'excès thermique modélisé représente donc le même ordre de grandeur que la chaleur latente libérée par quelques dizaines de tels épisodes de pluie très intense.
+L'excès thermique modélisé est donc bien du même ordre de grandeur (à un facteur quelques dizaines près) que la chaleur latente mise en jeu par un tel épisode de pluie très intense : les deux réservoirs d'énergie sont comparables, ce qui est cohérent avec l'idée qu'une mer anormalement chaude puisse, via une évaporation renforcée, contribuer à nourrir des précipitations extrêmes — sans que ce calcul ne prouve un tel lien de cause à effet (voir question 6).
 
 \textbf{4.} La durée recherchée est
 \[
@@ -174,7 +177,7 @@ L'excès thermique modélisé représente donc le même ordre de grandeur que la
 \approx1{,}7\times10^5\,\text{s}
 \approx1{,}9\,\text{jours}.
 \]
-L'énergie excédentaire estimée est ainsi comparable à la chaleur latente libérée en environ deux journées par un cyclone tropical mature. Il s'agit de chaleur dégagée par la condensation, et non de la seule énergie cinétique des vents, qui est beaucoup plus faible.
+L'énergie excédentaire estimée est ainsi comparable à la chaleur latente mise en jeu en environ deux journées par un cyclone tropical mature. Il s'agit de chaleur latente de changement d'état, et non de la seule énergie cinétique des vents, qui est beaucoup plus faible.
 
 \textbf{5.} La puissance moyenne serait
 \[
@@ -189,7 +192,108 @@ Répartie sur toute la surface de la Méditerranée, elle correspondrait au flux
 \approx16\,\text{W}\!\cdot\!\text{m}^{-2}.
 \]
 
-\textbf{6.} Ce calcul compare des réservoirs et des transferts d'énergie, mais ne décrit pas leur dynamique. Une partie de la chaleur de la mer est transportée par les courants, mélangée vers des couches plus profondes ou rayonnée vers l'espace ; seule une fraction est transférée à l'atmosphère par évaporation, conduction et rayonnement. La formation d'une pluie extrême ou d'un cyclone dépend aussi de l'humidité, de la stabilité de l'atmosphère, des vents et de leur cisaillement, de la pression et de la circulation à grande échelle. Une énergie disponible importante peut donc favoriser certains phénomènes sans être intégralement ni automatiquement convertie en un événement météorologique donné.
+\textbf{6.} Ce calcul compare l'ordre de grandeur de deux réservoirs d'énergie, mais ne décrit pas la dynamique qui les relierait. Concrètement, seule une fraction de l'excès de chaleur de la mer est transférée à l'atmosphère par évaporation (le reste étant transporté par les courants, mélangé vers des couches plus profondes ou rayonné vers l'espace), et cette évaporation elle-même dépend de façon non linéaire de la température de surface, du vent et de l'humidité de l'air. La vapeur ainsi produite ne se condense pas nécessairement au-dessus de la Méditerranée ni au moment voulu : la formation d'une pluie extrême ou d'un cyclone dépend aussi de la stabilité de l'atmosphère, du cisaillement des vents, de la pression et de la circulation à grande échelle. Une énergie disponible importante peut donc favoriser certains phénomènes sans être intégralement ni automatiquement convertie en un événement météorologique donné.
+\end{solution}
+
+\end{exo}
+\begin{exo}[L'évapotranspiration d'un grand arbre : un climatiseur naturel ?]{odg-evapotranspiration-arbre}
+\keywords{ordre de grandeur, évapotranspiration, arbre, chaleur latente, puissance frigorifique, climatiseur, COP}
+
+Lors d'une journée chaude et sèche, un grand arbre disposant de suffisamment d'eau peut évapotranspirer un volume d'eau de l'ordre de $5{,}0\times10^{-1}\,\text{m}^3$ en une journée. On suppose que son feuillage couvre une surface au sol $A_{\text{arbre}}=50\,\text{m}^2$.
+
+Pour effectuer tous les calculs en unités SI, on utilisera les données suivantes :
+\[
+\begin{aligned}
+V&=5{,}0\times10^{-1}\,\text{m}^3,
+& \rho_{\text{eau}}&=1{,}0\times10^3\,\text{kg}\!\cdot\!\text{m}^{-3},\\
+L_v&=2{,}45\times10^6\,\text{J}\!\cdot\!\text{kg}^{-1},
+& \tau_{24}&=8{,}64\times10^4\,\text{s},\\
+\tau_{\text{jour}}&=4{,}32\times10^4\,\text{s},
+& A_{\text{arbre}}&=50\,\text{m}^2.
+\end{aligned}
+\]
+La durée $\tau_{\text{jour}}$ représente douze heures de transpiration active. Pour comparaison, on considère un climatiseur alimenté par une puissance électrique $P_{\text{élec}}=2{,}0\times10^3\,\text{W}$, de coefficient de performance frigorifique $\mathrm{COP}=3{,}0$, refroidissant une pièce de surface $A_{\text{pièce}}=20\,\text{m}^2$. Par définition,
+\[
+\mathrm{COP}=\frac{P_{\text{froid}}}{P_{\text{élec}}},
+\]
+où $P_{\text{froid}}$ est la puissance thermique extraite de la pièce.
+
+\begin{enumerate}
+  \item Calculer la masse d'eau évapotranspirée par l'arbre pendant la journée.
+  \item Calculer l'énergie $Q_{\text{évap}}$ nécessaire pour vaporiser cette eau. Cette énergie est prélevée au sol, aux feuilles et à l'air environnant : elle correspond à un effet refroidissant.
+  \item Calculer la puissance refroidissante moyenne de l'arbre, d'abord sur vingt-quatre heures, puis pendant les douze heures de transpiration active.
+  \item Ramener ces deux puissances à un mètre carré de surface couverte par le houppier. Calculer également l'épaisseur d'eau équivalente $e=V/A_{\text{arbre}}$. Comparer cette dernière à une évapotranspiration journalière typique comprise, lors d'une journée chaude, entre $5\times10^{-3}\,\text{m}$ et $1\times10^{-2}\,\text{m}$.
+  \item Calculer la puissance frigorifique $P_{\text{froid}}$ du climatiseur, puis sa puissance frigorifique par mètre carré de pièce. Comparer avec les résultats obtenus pour l'arbre.
+  \item Pourquoi ne peut-on pas conclure que l'arbre et le climatiseur produisent exactement le même refroidissement ressenti, même si leurs puissances par unité de surface ont le même ordre de grandeur ?
+\end{enumerate}
+
+\begin{indication}
+Utiliser $m=\rho V$, $Q_{\text{évap}}=mL_v$ et $P=Q/\tau$. Pour le climatiseur, $P_{\text{froid}}=\mathrm{COP}\,P_{\text{élec}}$.
+\end{indication}
+
+\begin{solution}
+\textbf{1.} La masse d'eau évapotranspirée vaut
+\[
+m=\rho_{\text{eau}}V
+=1{,}0\times10^3\times5{,}0\times10^{-1}
+=5{,}0\times10^2\,\text{kg}.
+\]
+
+\textbf{2.} L'énergie absorbée lors de la vaporisation est
+\[
+Q_{\text{évap}}=mL_v
+=5{,}0\times10^2\times2{,}45\times10^6
+\approx1{,}2\times10^9\,\text{J}.
+\]
+L'ordre de grandeur est donc le gigajoule.
+
+\textbf{3.} Moyennée sur vingt-quatre heures, la puissance refroidissante latente vaut
+\[
+P_{24}=\frac{Q_{\text{évap}}}{\tau_{24}}
+=\frac{1{,}225\times10^9}{8{,}64\times10^4}
+\approx1{,}4\times10^4\,\text{W}.
+\]
+Si l'essentiel de l'évapotranspiration a lieu pendant douze heures, la puissance moyenne pendant cette période est deux fois plus grande :
+\[
+P_{\text{jour}}=\frac{Q_{\text{évap}}}{\tau_{\text{jour}}}
+\approx2{,}8\times10^4\,\text{W}.
+\]
+
+\textbf{4.} Par unité de surface couverte par le houppier,
+\[
+\frac{P_{24}}{A_{\text{arbre}}}
+=\frac{1{,}4\times10^4}{50}
+\approx2{,}8\times10^2\,\text{W}\!\cdot\!\text{m}^{-2},
+\]
+et, pendant les heures de transpiration active,
+\[
+\frac{P_{\text{jour}}}{A_{\text{arbre}}}
+=\frac{2{,}8\times10^4}{50}
+\approx5{,}6\times10^2\,\text{W}\!\cdot\!\text{m}^{-2}.
+\]
+L'épaisseur d'eau équivalente est
+\[
+e=\frac{V}{A_{\text{arbre}}}
+=\frac{5{,}0\times10^{-1}}{50}
+=1{,}0\times10^{-2}\,\text{m}.
+\]
+La valeur choisie correspond donc à la borne haute d'une évapotranspiration journalière réaliste en conditions chaudes et avec une alimentation en eau suffisante.
+
+\textbf{5.} La puissance frigorifique utile du climatiseur est
+\[
+P_{\text{froid}}=\mathrm{COP}\,P_{\text{élec}}
+=3{,}0\times2{,}0\times10^3
+=6{,}0\times10^3\,\text{W}.
+\]
+Rapportée à la surface de la pièce,
+\[
+\frac{P_{\text{froid}}}{A_{\text{pièce}}}
+=\frac{6{,}0\times10^3}{20}
+=3{,}0\times10^2\,\text{W}\!\cdot\!\text{m}^{-2}.
+\]
+Cette valeur est du même ordre de grandeur que la puissance latente moyenne de l'arbre rapportée à la surface de son houppier : environ $2{,}8\times10^2\,\text{W}\!\cdot\!\text{m}^{-2}$ sur vingt-quatre heures, et jusqu'à environ $5{,}6\times10^2\,\text{W}\!\cdot\!\text{m}^{-2}$ pendant les heures actives dans le modèle retenu.
+
+\textbf{6.} La comparaison porte uniquement sur des flux d'énergie. Le climatiseur refroidit un volume fermé et contrôlé, tandis que la vapeur produite par l'arbre se disperse dans l'atmosphère. Une partie de l'énergie d'évaporation est prélevée au sol et aux feuilles plutôt que directement à l'air situé sous le houppier. La transpiration varie aussi avec l'ensoleillement, le vent, l'humidité de l'air, l'espèce et l'eau disponible ; elle peut fortement diminuer en période de sécheresse. Inversement, l'arbre apporte également de l'ombre, ce qui réduit directement le rayonnement solaire reçu par le sol et les personnes. Les puissances calculées permettent donc une comparaison d'ordre de grandeur, mais pas une équivalence exacte de confort thermique.
 \end{solution}
 
 \end{exo}
@@ -301,7 +405,7 @@ L'étiquette nutritionnelle indique qu'un adulte consomme en moyenne environ $20
   \item Convertir cette ration quotidienne en joules.
   \item En déduire la puissance métabolique moyenne de cet adulte, en watts, en supposant cette énergie consommée uniformément pendant $\Delta t=8{,}64\times10^4\,\text{s}$.
   \item Une barre énergétique affiche « $210\,\text{kcal}$ ». Quelle masse d'eau initialement à $20\,^\circ\text{C}$ pourrait-on porter à ébullition ($100\,^\circ\text{C}$) avec cette même quantité d'énergie, si elle était intégralement convertie en chaleur ? On prendra $c_{\text{eau}} = 4{,}18\times10^3\,\text{J}\!\cdot\!\text{kg}^{-1}\!\cdot\!\text{K}^{-1}$.
-  \item Le corps humain n'est bien sûr pas un poêle~: il ne restitue pas directement cette énergie sous forme de chaleur pure. Qu'est-ce que ce calcul mesure malgré tout correctement, et qu'est-ce qu'il ne prend pas en compte ?
+  \item À votre avis, sous quelle forme cette énergie est-elle réellement consommée par l'organisme humain ? (réponse qualitative)
 \end{enumerate}
 
 \begin{indication}
@@ -334,56 +438,8 @@ m = \frac{Q}{c\Delta T}
 \]
 Une seule barre énergétique représente donc, en ordre de grandeur, de quoi porter environ $2{,}5\,\text{kg}$ d'eau du robinet à ébullition.
 
-\textbf{4.} Ce calcul mesure correctement le contenu \emph{énergétique total} de l'aliment, tel que mesuré par calorimétrie directe (combustion complète de l'aliment dans un calorimètre, à la manière de Lavoisier et Laplace) -- c'est très exactement la définition physique de la kilocalorie alimentaire. Il ne prend en revanche pas en compte le fait que le métabolisme ne convertit pas cette énergie en chaleur pure~: une partie sert à un travail chimique et mécanique utile (contraction musculaire, synthèse de molécules, maintien du potentiel électrique des cellules, etc.), une partie n'est de toute façon pas absorbée par l'organisme (digestion incomplète), et l'énergie effectivement libérée sous forme de chaleur ne l'est pas de façon uniforme dans le temps comme le suppose l'hypothèse de la question 2.
+\textbf{4.} L'organisme ne « consomme » pas l'énergie au sens où elle disparaîtrait : il transforme l'énergie chimique contenue dans les nutriments. Une partie sert au travail mécanique des muscles, au fonctionnement des organes, au maintien des gradients électriques des cellules, au transport de molécules et aux synthèses chimiques nécessaires au renouvellement des tissus. Une autre partie peut être stockée sous forme chimique, notamment dans les réserves de glycogène et de graisse. Finalement, l'essentiel de l'énergie utilisée est dissipé sous forme de chaleur, ce qui contribue au maintien de la température corporelle avant que cette chaleur ne soit transférée à l'environnement. Une petite fraction quitte aussi l'organisme sous forme d'énergie chimique encore contenue dans les déchets.
+
 \end{solution}
 
-\end{exo}
-
-
-
-
-\begin{exo}[Mayer et Joule : l'équivalent mécanique de la chaleur]{mayer-equivalent-mecanique}
-\keywords{Mayer, Joule, premier principe, équivalent mécanique, chaleur, travail, histoire}
-
-Une chute d'eau de hauteur $h=50\,\text{m}$ transporte un débit massique $\dot m=1{,}0\times10^3\,\text{kg}\!\cdot\!\text{s}^{-1}$. On admet, comme Mayer (1842) et Joule après lui, que toute l'énergie mécanique perdue par l'eau au cours de sa chute se retrouve intégralement sous forme de chaleur -- l'idée étant qu'\emph{aucune} énergie ne disparaît, mais qu'elle change seulement de forme, de mécanique à thermique.
-
-\begin{enumerate}
-\item Exprimer puis calculer la puissance mécanique $\mathcal{P}$ perdue par ce flux d'eau, en fonction de $\dot m$, $h$ et $g=9{,}81\,\text{m}\!\cdot\!\text{s}^{-2}$.
-\item On isole maintenant, par la pensée, $1\,\text{kg}$ de cette eau qui chute de la hauteur $h$ puis s'immobilise, et on suppose que la totalité de son énergie mécanique perdue reste emmagasinée dans cette même eau sous forme de chaleur (elle ne se dilue pas dans un bassin extérieur). Exprimer, en joules, l'énergie $W$ ainsi convertie.
-\item Par définition historique, une calorie (cal) est la quantité de chaleur nécessaire pour élever de $1\,\text{K}$ la température de $1{,}0\times10^{-3}\,\text{kg}$ d'eau liquide. On mesure expérimentalement que ce même kilogramme d'eau voit sa température s'élever de $\Delta T\approx0{,}117\,\text{K}$ après la chute. Exprimer, \emph{en calories, sans utiliser le joule ni aucune constante exprimée en $\text{J}\!\cdot\!\text{kg}^{-1}\!\cdot\!\text{K}^{-1}$}, la quantité de chaleur $Q_{\text{cal}}$ correspondante.
-\item En déduire l'équivalent mécanique de la chaleur $J = W/Q_{\text{cal}}$, exprimé en $\text{J}\!\cdot\!\text{cal}^{-1}$, et comparer à la valeur moderne ($4{,}184\,\text{J}\!\cdot\!\text{cal}^{-1}$).
-\item Comment ce résultat préfigure-t-il le premier principe ?
-\end{enumerate}
-
-\begin{indication}
-Question 1 : $\mathcal{P}=\dot mgh$. Question 3 : déterminer combien de masses élémentaires de $1{,}0\times10^{-3}\,\text{kg}$ sont contenues dans $1\,\text{kg}$. La définition historique de la calorie ne fait intervenir aucun joule -- c'est précisément ce qui rend la question 4 non circulaire.
-\end{indication}
-
-\begin{solution}
-\textbf{Question 1.}
-\[
-\mathcal{P}=\dot mgh
-=1{,}0\times10^3\times9{,}81\times50
-\approx4{,}9\times10^5\,\text{W}.
-\]
-C'est l'ordre de grandeur de la puissance d'une petite centrale électrique.
-
-\textbf{Question 2.} Pour $m=1\,\text{kg}$,
-\[
-W=mgh=1\times9{,}81\times50=4{,}905\times10^2\,\text{J}.
-\]
-
-\textbf{Question 3.} La masse de $1\,\text{kg}$ contient
-\[
-\frac{1\,\text{kg}}{1{,}0\times10^{-3}\,\text{kg}}=1000
-\]
-fois la masse de référence intervenant dans la définition de la calorie. Par conséquent,
-\[
-Q_{\text{cal}}=1000\times0{,}117\approx117\,\text{cal}.
-\]
-
-\textbf{Question 4.} $J = W/Q_{\text{cal}} = 490{,}5 / 117 \approx 4{,}19\,\text{J}\!\cdot\!\text{cal}^{-1}$, en excellent accord avec la valeur moderne $4{,}184\,\text{J}\!\cdot\!\text{cal}^{-1}$. Le point essentiel est que ce calcul ne présuppose \emph{à aucun moment} la valeur numérique de $J$ : le travail $W$ est mesuré en unités purement mécaniques ($\text{kg}$, $\text{m}$, $\text{s}$), et la chaleur $Q_{\text{cal}}$ en unités purement thermiques, définies par un protocole expérimental sur l'eau (calories) sans référence au travail. C'est cette indépendance des deux mesures qui rend la détermination de $J$ non triviale et physiquement significative -- au contraire d'un calcul qui utiliserait d'emblée la capacité thermique de l'eau exprimée en $\text{J}\!\cdot\!\text{kg}^{-1}\!\cdot\!\text{K}^{-1}$, ce qui reviendrait à supposer déjà connu le résultat que l'on cherche à établir.
-
-\textbf{Question 5.} Mayer, puis Joule par des expériences bien plus systématiques (la roue à palettes brassant de l'eau, 1845--1850), établissent ainsi que travail mécanique et chaleur sont deux formes d'échange d'une seule et même grandeur conservée : l'énergie. La constante $J$ n'a de sens que tant que l'on mesure la chaleur et le travail dans des unités historiquement différentes ; une fois cette équivalence acceptée, on peut choisir une unité commune (le joule) pour les deux, et $J$ disparaît purement et simplement de l'écriture moderne du premier principe, $\Delta U = W + Q$.
-\end{solution}
 \end{exo}
