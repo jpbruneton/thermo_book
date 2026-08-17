@@ -5,7 +5,7 @@ import {
   getThemeDescription,
   getThemeTitle,
   getThemeUrlSlug,
-  getWebThemes,
+  getListedWebThemes,
 } from "@/lib/chapters";
 import { absoluteUrl } from "@/lib/siteUrl";
 import { getTranslations, sectionHref, SUPPORTED_LANGS, type Lang } from "@/lib/i18n";
@@ -43,7 +43,7 @@ export async function generateMetadata({
 }
 
 function lessonListJsonLd(lang: Lang) {
-  const lessons = getWebThemes().filter((theme) =>
+  const lessons = getListedWebThemes().filter((theme) =>
     theme.lessons.some((lesson) => hasLessonWebContent(lesson.texFile, lang))
   );
   return {

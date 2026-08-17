@@ -41,6 +41,13 @@ export interface Theme {
   /** If set, a section heading is shown above this theme on the chapters index (e.g. Part I / Part II). */
   partHeadingFr?: string;
   partHeadingEn?: string;
+  /**
+   * false = hidden from the /chapters listing and homepage, and noindexed,
+   * in every language, while the page itself stays reachable and routable.
+   * Defaults to true. Used to keep draft content (Parts II/III) off the
+   * indexable, browsable site without 404ing direct links.
+   */
+  listed?: boolean;
 }
 
 export const bookMeta = {
@@ -93,6 +100,7 @@ function makeLecon(params: {
   content?: string;
   partHeadingFr?: string;
   partHeadingEn?: string;
+  listed?: boolean;
 }): Theme {
   return {
     slug: params.slug,
@@ -104,6 +112,7 @@ function makeLecon(params: {
     descriptionEn: params.descriptionEn,
     partHeadingFr: params.partHeadingFr,
     partHeadingEn: params.partHeadingEn,
+    listed: params.listed ?? true,
     lessons: [
       {
         slug: `${params.slug}-lecon`,
@@ -440,6 +449,7 @@ export const themes: Theme[] = [
     descriptionEn: "The geometric structures underlying thermodynamics.",
     topicsFr: ["Géométrie de contact", "Variétés thermodynamiques", "Legendre et géométrie", "Structure symplectique"],
     topicsEn: ["Contact geometry", "Thermodynamic manifolds", "Legendre and geometry", "Symplectic structure"],
+    listed: false,
   }),
   makeLecon({
     number: 10,
@@ -450,6 +460,7 @@ export const themes: Theme[] = [
     descriptionEn: "Information, entropy, and the limits of classical thermodynamics.",
     topicsFr: ["Démon de Maxwell", "Entropie et information", "Principe de Landauer", "Effacement d'information"],
     topicsEn: ["Maxwell's demon", "Entropy and information", "Landauer's principle", "Information erasure"],
+    listed: false,
   }),
   makeLecon({
     number: 11,
@@ -460,6 +471,7 @@ export const themes: Theme[] = [
     descriptionEn: "Efficiency at maximum power and real heat engines.",
     topicsFr: ["Endoréversibilité", "Rendement de Curzon-Ahlborn", "Puissance maximale", "Optimisation thermodynamique"],
     topicsEn: ["Endoreversibility", "Curzon-Ahlborn efficiency", "Maximum power", "Thermodynamic optimization"],
+    listed: false,
   }),
   makeLecon({
     number: 12,
@@ -470,6 +482,7 @@ export const themes: Theme[] = [
     descriptionEn: "Thermoelectric effects and energy conversion.",
     topicsFr: ["Effet Seebeck", "Effet Peltier", "Effet Thomson", "Figure de mérite"],
     topicsEn: ["Seebeck effect", "Peltier effect", "Thomson effect", "Figure of merit"],
+    listed: false,
   }),
   makeLecon({
     number: 13,
@@ -480,6 +493,7 @@ export const themes: Theme[] = [
     descriptionEn: "Irreversible phenomena and Onsager's relations.",
     topicsFr: ["Thermodynamique linéaire", "Relations d'Onsager", "Réciprocité", "Production d'entropie", "Phénomènes couplés"],
     topicsEn: ["Linear thermodynamics", "Onsager relations", "Reciprocity", "Entropy production", "Coupled phenomena"],
+    listed: false,
   }),
   makeLecon({
     number: 14,
@@ -490,6 +504,7 @@ export const themes: Theme[] = [
     descriptionEn: "Thermodynamic applications to Earth's climate system.",
     topicsFr: ["Bilan radiatif", "Effet de serre", "Moteur thermique atmosphérique", "Entropie climatique"],
     topicsEn: ["Radiative balance", "Greenhouse effect", "Atmospheric heat engine", "Climate entropy"],
+    listed: false,
   }),
   makeLecon({
     number: 15,
@@ -499,6 +514,7 @@ export const themes: Theme[] = [
     titleFr: "Thermodynamique quantique",
     titleEn: "Quantum Thermodynamics",
     descriptionFr: "Travail, chaleur et entropie à l'échelle quantique.",
+    listed: false,
     descriptionEn: "Work, heat, and entropy at the quantum scale.",
     topicsFr: ["Moteurs quantiques", "Fluctuations quantiques", "Égalité de Jarzynski", "Thermodynamique de l'information quantique"],
     topicsEn: ["Quantum engines", "Quantum fluctuations", "Jarzynski equality", "Quantum information thermodynamics"],
@@ -520,6 +536,16 @@ export function getWebThemes(): Theme[] {
 
 export function getWebTheme(slug: string): Theme | undefined {
   return getWebThemes().find((theme) => theme.slug === slug);
+}
+
+/**
+ * Themes shown on /chapters and the homepage contents grid. Unlisted themes
+ * (`listed: false`, currently Parts II/III) stay reachable at their own URL —
+ * see generateMetadata in chapters/[slug]/page.tsx for the matching noindex —
+ * but are left out of every listing, in every language.
+ */
+export function getListedWebThemes(): Theme[] {
+  return getWebThemes().filter((theme) => theme.listed !== false);
 }
 
 /**

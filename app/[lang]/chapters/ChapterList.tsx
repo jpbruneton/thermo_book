@@ -1,12 +1,12 @@
 "use client";
 import Link from "next/link";
-import { getWebThemes, getThemeTitle, getThemeDescription, getThemePartHeading, getThemeUrlSlug } from "@/lib/chapters";
+import { getListedWebThemes, getThemeTitle, getThemeDescription, getThemePartHeading, getThemeUrlSlug } from "@/lib/chapters";
 import { useLang } from "@/app/context/LangContext";
 import { sectionHref } from "@/lib/i18n";
 
 export function ChapterList() {
   const { t, lang } = useLang();
-  const webThemes = getWebThemes();
+  const webThemes = getListedWebThemes();
 
   return (
     <div style={{ display: "flex", flexDirection: "column", gap: "1px" }}>

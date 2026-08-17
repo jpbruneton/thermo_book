@@ -75,7 +75,7 @@ export async function generateMetadata({
         "x-default": frenchUrl,
       },
     },
-    robots: isFr ? undefined : { index: false, follow: true },
+    robots: isFr && lesson?.listed !== false ? undefined : { index: false, follow: true },
     openGraph: {
       title: `Quiz — ${title} | ${localizedSiteTitle(lang)}`,
       url,

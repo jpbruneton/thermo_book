@@ -46,6 +46,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
   ];
 
   const webThemes = getWebThemes();
+  // Lesson numbers belonging to an unlisted (Part II/III, draft) theme: their
+  // quiz and exercise pages are excluded from the sitemap too, not just the lessons.
+  const listedLessonNumbers = new Set(
+    webThemes.filter((theme) => theme.listed !== false).map((theme) => theme.number)
+  );
 
   const sectionsConfig: Array<{
     section: "chapters" | "about" | "glossary" | "exercises" | "quiz";
@@ -86,10 +91,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
     }
   }
 
-  // One URL per authored lesson translation. Thin "not available yet" shells remain
-  // navigable for users, but are deliberately absent from the sitemap and hreflang.
+  // One URL per authored lesson translation. Thin "not available yet" shells, and
+  // unlisted/draft themes (Parts II/III, noindexed — see chapters/[slug]/page.tsx),
+  // remain navigable for users but are deliberately absent from the sitemap and hreflang.
   const themeRoutes: MetadataRoute.Sitemap = webThemes.flatMap((theme) => {
-    if (theme.lessons.length === 0) return [];
+    if (theme.lessons.length === 0 || theme.listed === false) return [];
 
     return theme.lessons.flatMap((lesson, lessonIndex) => {
       const langs = SUPPORTED_LANGS.filter((lang) =>
@@ -112,7 +118,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   // Quiz questions are authored in French only. English and other unavailable
   // shells are not advertised as indexable educational content.
-  const quizRoutes: MetadataRoute.Sitemap = getQuizLessons().flatMap((lecon) => {
+  const quizRoutes: MetadataRoute.Sitemap = getQuizLessons()
+    .filter((lecon) => listedLessonNumbers.has(lecon))
+    .flatMap((lecon) => {
     const urlsByLang: Partial<Record<Lang, string>> = {};
     for (const lang of ["fr"] as const) {
       urlsByLang[lang] = `${SITE_URL}${sectionHref(lang, "quiz", String(lecon))}`;
@@ -130,7 +138,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   // with one localized URL for each language that contains the same exercise id.
   const exerciseDetailRoutes: MetadataRoute.Sitemap = SUPPORTED_LANGS.flatMap((lang) =>
     loadExercises(lang)
-      .filter((exercise) => exercise.seoReady)
+      .filter((exercise) => exercise.seoReady && listedLessonNumbers.has(exercise.lecon))
       .map((exercise) => {
         const urlsByLang: Partial<Record<Lang, string>> = {};
         for (const availableLang of SUPPORTED_LANGS) {

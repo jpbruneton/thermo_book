@@ -37,12 +37,16 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const availableLangs = SUPPORTED_LANGS.filter((candidateLang) =>
     theme.lessons.some((lesson) => hasLessonWebContent(lesson.texFile, candidateLang))
   );
-  for (const availableLang of availableLangs) {
-    languages[availableLang] = absoluteUrl(
-      sectionHref(availableLang, "chapters", getThemeUrlSlug(theme, availableLang))
-    );
+  // Unlisted (draft) themes are noindexed everywhere, so don't advertise
+  // cross-language alternates for them either.
+  if (theme.listed !== false) {
+    for (const availableLang of availableLangs) {
+      languages[availableLang] = absoluteUrl(
+        sectionHref(availableLang, "chapters", getThemeUrlSlug(theme, availableLang))
+      );
+    }
+    if (languages.fr) languages["x-default"] = languages.fr;
   }
-  if (languages.fr) languages["x-default"] = languages.fr;
   const contentAvailable = availableLangs.includes(lang);
   return {
     title: `${label} ${theme.number}: ${title}`,
@@ -52,7 +56,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       canonical: url,
       languages,
     },
-    robots: contentAvailable ? undefined : { index: false, follow: true },
+    // Parts II/III (theme.listed === false) are draft content: kept reachable
+    // by direct URL, but noindexed in every language regardless of whether a
+    // translation exists, same as content that isn't authored yet.
+    robots: contentAvailable && theme.listed !== false ? undefined : { index: false, follow: true },
     openGraph: {
       type: "article",
       title: `${label} ${theme.number}: ${title}`,
@@ -146,8 +153,10 @@ export default function ChapterPage({ params, searchParams }: Props) {
   const webThemes = getWebThemes();
   const currentIndex = webThemes.findIndex((item) => item.slug === theme.slug);
   const prev = currentIndex > 0 ? webThemes[currentIndex - 1] : null;
-  const next =
+  const nextCandidate =
     currentIndex < webThemes.length - 1 ? webThemes[currentIndex + 1] : null;
+  // Don't lead readers from a listed chapter into an unlisted (draft) one.
+  const next = theme.listed !== false && nextCandidate?.listed === false ? null : nextCandidate;
   const isPrimaryExerciseLesson = webThemes.find((item) => item.number === theme.number)?.slug === theme.slug;
   const relatedExercises = isPrimaryExerciseLesson
     ? loadExercises(params.lang)

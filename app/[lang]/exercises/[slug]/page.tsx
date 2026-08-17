@@ -82,9 +82,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     keywords: exercise.keywords,
     alternates: {
       canonical: url,
-      languages: exercise.seoReady ? languages : undefined,
+      languages: exercise.seoReady && theme?.listed !== false ? languages : undefined,
     },
-    robots: exercise.seoReady ? undefined : { index: false, follow: true },
+    // Unlisted (Part II/III) lessons keep their exercises noindexed too.
+    robots: exercise.seoReady && theme?.listed !== false ? undefined : { index: false, follow: true },
     openGraph: {
       type: "article",
       title: metadataTitle,

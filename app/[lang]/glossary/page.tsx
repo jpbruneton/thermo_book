@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { Suspense, useMemo } from "react";
 import { useSearchParams } from "next/navigation";
-import { getWebThemes, getThemeTitle, getThemeTopics, getThemeUrlSlug } from "@/lib/chapters";
+import { getListedWebThemes, getThemeTitle, getThemeTopics, getThemeUrlSlug } from "@/lib/chapters";
 import { useLang } from "@/app/context/LangContext";
 import { sectionHref } from "@/lib/i18n";
 
@@ -62,7 +62,7 @@ function GlossaryFilterAndList() {
 
   const glossaryItems = useMemo<GlossaryItem[]>(() => {
     const map = new Map<string, GlossaryItem>();
-    const themes = getWebThemes();
+    const themes = getListedWebThemes();
 
     for (const theme of themes) {
       for (const lesson of theme.lessons) {
