@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { bookMeta, bookMetaDisplayTitle } from "@/lib/chapters";
+import { bookMeta, localizedSiteTitle } from "@/lib/chapters";
 import { absoluteUrl } from "@/lib/siteUrl";
 import { sectionHref, type Lang } from "@/lib/i18n";
 
@@ -12,11 +12,11 @@ export async function generateMetadata({
   const isFr = lang === "fr";
   const title = isFr ? "À propos" : "About";
   const description = isFr
-    ? `${bookMetaDisplayTitle()} — par ${bookMeta.author} (${bookMeta.affiliation}). ${bookMeta.description}`
-    : `${bookMetaDisplayTitle()} — by ${bookMeta.author} (${bookMeta.affiliation}). ${bookMeta.description}`;
+    ? `${localizedSiteTitle(lang)} — par ${bookMeta.author} (${bookMeta.affiliation}). ${bookMeta.description}`
+    : `${localizedSiteTitle(lang)} — by ${bookMeta.author} (${bookMeta.affiliation}). ${bookMeta.description}`;
   const ogDescription = isFr
-    ? `${bookMetaDisplayTitle()} par ${bookMeta.author}, ${bookMeta.affiliation}.`
-    : `${bookMetaDisplayTitle()} by ${bookMeta.author}, ${bookMeta.affiliation}.`;
+    ? `${localizedSiteTitle(lang)} par ${bookMeta.author}, ${bookMeta.affiliation}.`
+    : `${localizedSiteTitle(lang)} by ${bookMeta.author}, ${bookMeta.affiliation}.`;
   const url = absoluteUrl(sectionHref(lang, "about"));
   return {
     title,
@@ -29,7 +29,7 @@ export async function generateMetadata({
       },
     },
     openGraph: {
-      title: `${title} | ${bookMeta.title}`,
+      title: `${title} | ${localizedSiteTitle(lang)}`,
       description: ogDescription,
       url,
     },

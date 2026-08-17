@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
-import { getWebThemes, bookMeta } from "@/lib/chapters";
+import { getWebThemes, localizedSiteTitle } from "@/lib/chapters";
 import { absoluteUrl } from "@/lib/siteUrl";
 import { sectionHref, type Lang } from "@/lib/i18n";
 import { getQuizLessons, getQuizQuestionsByLecon } from "@/lib/quizzes";
@@ -77,7 +77,7 @@ export async function generateMetadata({
     },
     robots: isFr ? undefined : { index: false, follow: true },
     openGraph: {
-      title: `Quiz — ${title} | ${bookMeta.title}`,
+      title: `Quiz — ${title} | ${localizedSiteTitle(lang)}`,
       url,
     },
   };

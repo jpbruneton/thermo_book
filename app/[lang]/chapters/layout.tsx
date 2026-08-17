@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import {
   bookMeta,
+  localizedSiteTitle,
   getThemeDescription,
   getThemeTitle,
   getThemeUrlSlug,
@@ -34,7 +35,7 @@ export async function generateMetadata({
       languages,
     },
     openGraph: {
-      title: `${title} | ${bookMeta.title}`,
+      title: `${title} | ${localizedSiteTitle(lang)}`,
       description,
       url,
     },

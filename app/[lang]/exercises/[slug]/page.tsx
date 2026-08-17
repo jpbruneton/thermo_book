@@ -5,7 +5,7 @@ import {
   exerciseTitleToPlainHtml,
   getTexWebHtmlFromSource,
 } from "@/lib/chapterContent.server";
-import { getWebThemes, getThemeTitle, getThemeUrlSlug, bookMeta } from "@/lib/chapters";
+import { getWebThemes, getThemeTitle, getThemeUrlSlug, bookMeta, localizedSiteTitle } from "@/lib/chapters";
 import {
   exerciseTitleToPlainText,
   getExerciseById,
@@ -144,7 +144,7 @@ function exerciseJsonLd({
     about: exercise.keywords.map((name) => ({ "@type": "Thing", name })),
     isPartOf: {
       "@type": "Book",
-      name: bookMeta.title,
+      name: localizedSiteTitle(lang),
       url: absoluteUrl(`/${lang}`),
     },
   };

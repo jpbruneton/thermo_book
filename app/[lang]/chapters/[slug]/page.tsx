@@ -1,5 +1,5 @@
 import { notFound, permanentRedirect } from "next/navigation";
-import { getWebThemeFromUrlSlug, getWebThemes, getThemeTitle, getThemeDescription, getThemeTopics, getThemeUrlSlug, bookMeta } from "@/lib/chapters";
+import { getWebThemeFromUrlSlug, getWebThemes, getThemeTitle, getThemeDescription, getThemeTopics, getThemeUrlSlug, bookMeta, localizedSiteTitle } from "@/lib/chapters";
 import { ChapterPageClient } from "./ChapterPageClient";
 import type { Metadata } from "next";
 import { getLessonReferences, getLessonWebContent, getTexFilePathForLang, hasLessonWebContent } from "@/lib/chapterContent.server";
@@ -103,7 +103,7 @@ function themeJsonLd(
     },
     isPartOf: {
       "@type": "Book",
-      name: bookMeta.title,
+      name: localizedSiteTitle(lang),
       url: getSiteUrl(),
     },
   };

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { bookMeta } from "@/lib/chapters";
+import { localizedSiteTitle } from "@/lib/chapters";
 import { absoluteUrl } from "@/lib/siteUrl";
 import { sectionHref, SUPPORTED_LANGS, type Lang } from "@/lib/i18n";
 import { hasExercises } from "@/lib/exercisesLibrary.server";
@@ -32,7 +32,7 @@ export async function generateMetadata({
     },
     robots: contentAvailable ? undefined : { index: false, follow: true },
     openGraph: {
-      title: `${title} | ${bookMeta.title}`,
+      title: `${title} | ${localizedSiteTitle(lang)}`,
       description,
       url,
     },

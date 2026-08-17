@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { bookMeta } from "@/lib/chapters";
+import { localizedSiteTitle } from "@/lib/chapters";
 import { absoluteUrl } from "@/lib/siteUrl";
 import { sectionHref, type Lang } from "@/lib/i18n";
 
@@ -12,8 +12,8 @@ export async function generateMetadata({
   const isFr = lang === "fr";
   const title = isFr ? "Glossaire" : "Glossary";
   const description = isFr
-    ? `Termes et notions clés de ${bookMeta.title}.`
-    : `Key terms and concepts from ${bookMeta.title}.`;
+    ? `Termes et notions clés de ${localizedSiteTitle(lang)}.`
+    : `Key terms and concepts from ${localizedSiteTitle(lang)}.`;
   const url = absoluteUrl(sectionHref(lang, "glossary"));
   return {
     title,
@@ -26,7 +26,7 @@ export async function generateMetadata({
       },
     },
     openGraph: {
-      title: `${title} | ${bookMeta.title}`,
+      title: `${title} | ${localizedSiteTitle(lang)}`,
       description,
       url,
     },

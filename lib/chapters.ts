@@ -1,4 +1,4 @@
-import type { Lang } from "./i18n";
+import { getTranslations, type Lang } from "./i18n";
 import { chapterTranslations } from "./chapterTranslations";
 
 export interface LessonReference {
@@ -58,6 +58,19 @@ export const bookMeta = {
 export function bookMetaDisplayTitle(): string {
   const sub = bookMeta.subtitle.trim();
   return sub.length > 0 ? `${bookMeta.title}: ${sub}` : bookMeta.title;
+}
+
+/**
+ * Localized site title, for use as the " | Site Name" suffix on <title> tags
+ * and og:title on /[lang] pages. Falls back to the French bookMeta.title only
+ * when no lang is given (non-localized routes like the historical `/`).
+ */
+export function localizedSiteTitle(lang?: Lang): string {
+  if (!lang) return bookMetaDisplayTitle();
+  const t = getTranslations(lang);
+  const title = t.book.title.replace(/\n/g, " ");
+  const sub = t.book.subtitle?.trim();
+  return sub && sub.length > 0 ? `${title}: ${sub}` : title;
 }
 
 /**

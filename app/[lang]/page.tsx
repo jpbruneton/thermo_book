@@ -21,7 +21,10 @@ export async function generateMetadata({
   for (const l of SUPPORTED_LANGS) languages[l] = `${SITE_URL}/${l}`;
 
   return {
-    title,
+    // Absolute: the homepage title already *is* the site name, so it must
+    // not go through the "%s | site name" template (app/[lang]/layout.tsx)
+    // or it would render as "Title | Title".
+    title: { absolute: title },
     description: t.book.description,
     alternates: { canonical: url, languages },
     openGraph: { url, title, description: t.book.description },
