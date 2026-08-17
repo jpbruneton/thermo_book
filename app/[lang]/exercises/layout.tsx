@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
-import { localizedSiteTitle } from "@/lib/chapters";
+import { bookMeta, getListedWebThemes, localizedSiteTitle } from "@/lib/chapters";
 import { absoluteUrl } from "@/lib/siteUrl";
 import { sectionHref, SUPPORTED_LANGS, type Lang } from "@/lib/i18n";
-import { hasExercises } from "@/lib/exercisesLibrary.server";
+import { exerciseTitleToPlainText, getExerciseUrlSlug, hasExercises, loadExercises } from "@/lib/exercisesLibrary.server";
 import { getExerciseTranslations } from "@/lib/exerciseTranslations";
 
 export async function generateMetadata({
@@ -39,6 +39,51 @@ export async function generateMetadata({
   };
 }
 
-export default function ExercisesLayout({ children }: { children: React.ReactNode }) {
-  return <>{children}</>;
+// Explicit, machine-readable "these are solved/corrected exercises" signal for
+// the hub listing page, mirroring what each exercise page already states in its
+// own JSON-LD (learningResourceType) — same wording as the visible page title.
+function exercisesListJsonLd(lang: Lang) {
+  const t = getExerciseTranslations(lang);
+  const listedLessonNumbers = new Set(getListedWebThemes().map((theme) => theme.number));
+  const exercises = loadExercises(lang).filter(
+    (exercise) => exercise.seoReady && listedLessonNumbers.has(exercise.lecon)
+  );
+  return {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    name: t.hubTitle,
+    description: t.hubDescription,
+    numberOfItems: exercises.length,
+    itemListElement: exercises.map((exercise, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      item: {
+        "@type": "LearningResource",
+        name: exerciseTitleToPlainText(exercise.titleTex),
+        learningResourceType: t.learningResourceType,
+        educationalLevel: t.educationalLevel,
+        url: absoluteUrl(sectionHref(lang, "exercises", getExerciseUrlSlug(lang, exercise))),
+        inLanguage: lang,
+        provider: { "@type": "Organization", name: bookMeta.affiliation },
+      },
+    })),
+  };
+}
+
+export default function ExercisesLayout({
+  children,
+  params,
+}: {
+  children: React.ReactNode;
+  params: { lang: Lang };
+}) {
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(exercisesListJsonLd(params.lang)) }}
+      />
+      {children}
+    </>
+  );
 }

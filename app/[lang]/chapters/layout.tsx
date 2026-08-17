@@ -60,7 +60,7 @@ function lessonListJsonLd(lang: Lang) {
         description: getThemeDescription(theme, lang),
         url: absoluteUrl(sectionHref(lang, "chapters", getThemeUrlSlug(theme, lang))),
         inLanguage: lang,
-        learningResourceType: lang === "fr" ? "Cours universitaire" : "University lesson",
+        learningResourceType: getTranslations(lang).chapter.learningResourceType,
         provider: { "@type": "Organization", name: bookMeta.affiliation },
       },
     })),

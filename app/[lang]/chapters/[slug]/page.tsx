@@ -5,7 +5,7 @@ import type { Metadata } from "next";
 import { getLessonReferences, getLessonWebContent, getTexFilePathForLang, hasLessonWebContent } from "@/lib/chapterContent.server";
 import { processLatex } from "@/lib/latex";
 import { absoluteUrl, getSiteUrl } from "@/lib/siteUrl";
-import { sectionHref, SUPPORTED_LANGS, type Lang } from "@/lib/i18n";
+import { getTranslations, sectionHref, SUPPORTED_LANGS, type Lang } from "@/lib/i18n";
 import {
   exerciseTitleToPlainText,
   getExerciseUrlSlug,
@@ -21,14 +21,19 @@ export async function generateStaticParams({ params }: { params: { lang: Lang } 
   return getWebThemes().map((theme) => ({ slug: getThemeUrlSlug(theme, params.lang) }));
 }
 
+// chapter.chapterLabel/themeLabel are stored upper-case (small-caps badge use,
+// see ChapterPageClient) but read as "Lesson 9" / "LEÇON 9" in titles and JSON-LD.
+function titleCaseLabel(label: string): string {
+  return label.charAt(0) + label.slice(1).toLowerCase();
+}
+
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const theme = getWebThemeFromUrlSlug(params.slug, params.lang);
   if (!theme) return {};
   const { lang } = params;
-  const isFr = lang === "fr";
   const title = getThemeTitle(theme, lang);
   const description = getThemeDescription(theme, lang);
-  const label = isFr ? "Leçon" : "Lesson";
+  const label = titleCaseLabel(getTranslations(lang).chapter.chapterLabel);
   const keywords = theme.lessons
     .flatMap((l) => getThemeTopics(theme.slug, l, lang))
     .slice(0, 15);
@@ -74,10 +79,10 @@ function themeJsonLd(
   lang: Lang,
   contentAvailable: boolean
 ) {
-  const isFr = lang === "fr";
+  const t = getTranslations(lang).chapter;
   const title = getThemeTitle(theme, lang);
   const description = getThemeDescription(theme, lang);
-  const label = isFr ? "Leçon" : "Lesson";
+  const label = titleCaseLabel(t.chapterLabel);
   const url = absoluteUrl(sectionHref(lang, "chapters", getThemeUrlSlug(theme, lang)));
   const chaptersUrl = absoluteUrl(sectionHref(lang, "chapters"));
 
@@ -85,8 +90,8 @@ function themeJsonLd(
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     itemListElement: [
-      { "@type": "ListItem", position: 1, name: isFr ? "Accueil" : "Home", item: getSiteUrl() },
-      { "@type": "ListItem", position: 2, name: isFr ? "Leçons" : "Lessons", item: chaptersUrl },
+      { "@type": "ListItem", position: 1, name: t.breadcrumbHome, item: getSiteUrl() },
+      { "@type": "ListItem", position: 2, name: t.breadcrumbThemes, item: chaptersUrl },
       { "@type": "ListItem", position: 3, name: `${label} ${theme.number}: ${title}`, item: url },
     ],
   };
@@ -98,8 +103,8 @@ function themeJsonLd(
     description,
     url,
     inLanguage: lang,
-    learningResourceType: isFr ? "Cours universitaire" : "University lesson",
-    educationalLevel: isFr ? "Enseignement supérieur — Licence" : "Undergraduate",
+    learningResourceType: t.learningResourceType,
+    educationalLevel: t.educationalLevel,
     author: {
       "@type": "Person",
       name: bookMeta.author,

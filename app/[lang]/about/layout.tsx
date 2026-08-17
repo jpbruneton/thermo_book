@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { bookMeta, localizedSiteTitle } from "@/lib/chapters";
 import { absoluteUrl } from "@/lib/siteUrl";
-import { sectionHref, type Lang } from "@/lib/i18n";
+import { getTranslations, sectionHref, SUPPORTED_LANGS, type Lang } from "@/lib/i18n";
 
 export async function generateMetadata({
   params,
@@ -9,24 +9,22 @@ export async function generateMetadata({
   params: { lang: Lang };
 }): Promise<Metadata> {
   const { lang } = params;
-  const isFr = lang === "fr";
-  const title = isFr ? "À propos" : "About";
-  const description = isFr
-    ? `${localizedSiteTitle(lang)} — par ${bookMeta.author} (${bookMeta.affiliation}). ${bookMeta.description}`
-    : `${localizedSiteTitle(lang)} — by ${bookMeta.author} (${bookMeta.affiliation}). ${bookMeta.description}`;
-  const ogDescription = isFr
-    ? `${localizedSiteTitle(lang)} par ${bookMeta.author}, ${bookMeta.affiliation}.`
-    : `${localizedSiteTitle(lang)} by ${bookMeta.author}, ${bookMeta.affiliation}.`;
+  const t = getTranslations(lang);
+  const title = t.nav.about;
+  const description = `${localizedSiteTitle(lang)} — ${bookMeta.author} (${bookMeta.affiliation}). ${t.book.description}`;
+  const ogDescription = `${localizedSiteTitle(lang)} — ${bookMeta.author}, ${bookMeta.affiliation}.`;
   const url = absoluteUrl(sectionHref(lang, "about"));
+  const languages: Record<string, string> = {};
+  for (const availableLang of SUPPORTED_LANGS) {
+    languages[availableLang] = absoluteUrl(sectionHref(availableLang, "about"));
+  }
+  languages["x-default"] = absoluteUrl(sectionHref("fr", "about"));
   return {
     title,
     description,
     alternates: {
       canonical: url,
-      languages: {
-        fr: absoluteUrl(sectionHref("fr", "about")),
-        en: absoluteUrl(sectionHref("en", "about")),
-      },
+      languages,
     },
     openGraph: {
       title: `${title} | ${localizedSiteTitle(lang)}`,

@@ -1,10 +1,10 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
-import { getWebThemes, localizedSiteTitle } from "@/lib/chapters";
-import { absoluteUrl } from "@/lib/siteUrl";
-import { sectionHref, type Lang } from "@/lib/i18n";
-import { getQuizLessons, getQuizQuestionsByLecon } from "@/lib/quizzes";
+import { getThemeUrlSlug, getWebThemes, localizedSiteTitle } from "@/lib/chapters";
+import { absoluteUrl, getSiteUrl } from "@/lib/siteUrl";
+import { getTranslations, sectionHref, type Lang } from "@/lib/i18n";
+import { getQuizLessons, getQuizQuestionsByLecon, type QuizQuestion } from "@/lib/quizzes";
 import { QuizRunner } from "./QuizRunner";
 
 /**
@@ -47,6 +47,62 @@ function QuizUnavailable({ lang, title, lecon }: { lang: Lang; title: string; le
 
 export function generateStaticParams() {
   return getQuizLessons().map((lecon) => ({ lecon: String(lecon) }));
+}
+
+// Quiz content is French-only and noindexed elsewhere (see QuizUnavailable
+// above), so this structured data is only ever emitted on the fr branch.
+function quizJsonLd({
+  lang,
+  lecon,
+  title,
+  url,
+  quizUrl,
+  lessonUrl,
+  questions,
+}: {
+  lang: Lang;
+  lecon: number;
+  title: string;
+  url: string;
+  quizUrl: string;
+  lessonUrl: string | null;
+  questions: QuizQuestion[];
+}) {
+  const t = getTranslations(lang);
+  const breadcrumb = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: t.nav.home, item: getSiteUrl() },
+      { "@type": "ListItem", position: 2, name: t.nav.quiz, item: quizUrl },
+      { "@type": "ListItem", position: 3, name: `Quiz — ${title}`, item: url },
+    ],
+  };
+
+  const quiz = {
+    "@context": "https://schema.org",
+    "@type": "Quiz",
+    name: `Quiz — ${title}`,
+    about: title,
+    inLanguage: lang,
+    url,
+    educationalLevel: t.chapter.educationalLevel,
+    learningResourceType: "Quiz",
+    numberOfQuestions: questions.length,
+    ...(lessonUrl
+      ? { isBasedOn: { "@type": "LearningResource", name: title, url: lessonUrl } }
+      : {}),
+    hasPart: questions.map((q) => ({
+      "@type": "Question",
+      name: q.question,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: q.choices[q.correctIndex],
+      },
+    })),
+  };
+
+  return [breadcrumb, quiz];
 }
 
 export async function generateMetadata({
@@ -104,12 +160,29 @@ export default async function QuizLeconPage({
     return <QuizUnavailable lang={lang} title={titleEn} lecon={lecon} />;
   }
 
+  const url = absoluteUrl(sectionHref(lang, "quiz", String(lecon)));
+  const quizUrl = absoluteUrl(sectionHref(lang, "quiz"));
+  const lessonUrl = lesson
+    ? absoluteUrl(sectionHref(lang, "chapters", getThemeUrlSlug(lesson, lang)))
+    : null;
+
   return (
-    <QuizRunner
-      lecon={lecon}
-      titleFr={titleFr}
-      titleEn={titleEn}
-      questions={questions}
-    />
+    <>
+      {quizJsonLd({ lang, lecon, title: titleFr, url, quizUrl, lessonUrl, questions }).map(
+        (block, index) => (
+          <script
+            key={index}
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{ __html: JSON.stringify(block) }}
+          />
+        )
+      )}
+      <QuizRunner
+        lecon={lecon}
+        titleFr={titleFr}
+        titleEn={titleEn}
+        questions={questions}
+      />
+    </>
   );
 }
