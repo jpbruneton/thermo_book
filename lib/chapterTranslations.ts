@@ -23,8 +23,7 @@ export const chapterTranslations: Record<Exclude<Lang, "fr" | "en">, ThemeTransl
   de: {
     introduction: {
       title: "Allgemeine Einführung",
-      description:
-        "Warum Thermodynamik studieren: Umwandlung von Wärme in Arbeit, Wärmekraftmaschinen, Energiequellen und aktuelle Herausforderungen.",
+      description: "Das Wesen der Thermodynamik.",
       topics: [
         "Wärmekraftmaschinen",
         "Umwandlung von Wärme in Arbeit",
@@ -39,8 +38,7 @@ export const chapterTranslations: Record<Exclude<Lang, "fr" | "en">, ThemeTransl
     },
     historique: {
       title: "Geschichte der Thermodynamik und Kalorimetrie",
-      description:
-        "Von der Theorie des Caloricums zur Entropie von Clausius: die langsame Trennung von Wärme und Temperatur und die Entstehung der beiden Hauptsätze.",
+      description: "Von der Theorie des Caloricums zur Entropie von Clausius.",
       topics: [
         "Geschichte der Thermodynamik",
         "Theorie des Caloricums",
@@ -73,16 +71,18 @@ export const chapterTranslations: Record<Exclude<Lang, "fr" | "en">, ThemeTransl
       ],
     },
     "premier-principe": {
-      title: "Energieerhaltung: der erste Hauptsatz",
+      title: "Der erste Hauptsatz der Thermodynamik",
       description: "Arbeit, Wärme, innere Energie und der erste Hauptsatz.",
       topics: [
         "Innere Energie",
-        "Wärmeübertragung",
         "Erster Hauptsatz",
-        "Arbeit",
-        "Clapeyron-Diagramm",
-        "Kreisprozesse von Wärmekraftmaschinen",
-        "Kältemaschinenzyklen",
+        "Volumenarbeit",
+        "Wärmeübertragung",
+        "Zustandsfunktionen",
+        "Vollständiges Differential",
+        "Quasistatische Zustandsänderungen",
+        "Adiabatische Zustandsänderung",
+        "Extensivität",
       ],
     },
     "second-principe": {
@@ -207,8 +207,7 @@ export const chapterTranslations: Record<Exclude<Lang, "fr" | "en">, ThemeTransl
   es: {
     introduction: {
       title: "Introducción general",
-      description:
-        "Por qué estudiar termodinámica: conversión de calor en trabajo, máquinas térmicas, fuentes de energía y desafíos contemporáneos.",
+      description: "La naturaleza de la termodinámica.",
       topics: [
         "Máquinas térmicas",
         "Conversión calor-trabajo",
@@ -223,8 +222,7 @@ export const chapterTranslations: Record<Exclude<Lang, "fr" | "en">, ThemeTransl
     },
     historique: {
       title: "Historia de la termodinámica y la calorimetría",
-      description:
-        "De la teoría del calórico a la entropía de Clausius: la lenta separación entre calor y temperatura, y el nacimiento de los dos principios.",
+      description: "De la teoría del calórico a la entropía de Clausius.",
       topics: [
         "Historia de la termodinámica",
         "Teoría del calórico",
@@ -256,16 +254,18 @@ export const chapterTranslations: Record<Exclude<Lang, "fr" | "en">, ThemeTransl
       ],
     },
     "premier-principe": {
-      title: "Conservación de la energía: el primer principio",
+      title: "El primer principio de la termodinámica",
       description: "Trabajo, calor, energía interna y el primer principio.",
       topics: [
         "Energía interna",
-        "Transferencia de calor",
         "Primer principio",
-        "Trabajo",
-        "Diagrama de Clapeyron",
-        "Ciclos de potencia",
-        "Ciclos de refrigeración",
+        "Trabajo de presión",
+        "Transferencia de calor",
+        "Funciones de estado",
+        "Diferencial exacta",
+        "Transformaciones cuasiestáticas",
+        "Transformación adiabática",
+        "Extensividad",
       ],
     },
     "second-principe": {
@@ -383,8 +383,7 @@ export const chapterTranslations: Record<Exclude<Lang, "fr" | "en">, ThemeTransl
   pt: {
     introduction: {
       title: "Introdução geral",
-      description:
-        "Por que estudar termodinâmica: conversão de calor em trabalho, máquinas térmicas, fontes de energia e desafios contemporâneos.",
+      description: "A natureza da termodinâmica.",
       topics: [
         "Máquinas térmicas",
         "Conversão calor-trabalho",
@@ -399,8 +398,7 @@ export const chapterTranslations: Record<Exclude<Lang, "fr" | "en">, ThemeTransl
     },
     historique: {
       title: "História da termodinâmica e da calorimetria",
-      description:
-        "Da teoria do calórico à entropia de Clausius: a lenta separação entre calor e temperatura, e o nascimento dos dois princípios.",
+      description: "Da teoria do calórico à entropia de Clausius.",
       topics: [
         "História da termodinâmica",
         "Teoria do calórico",
@@ -432,16 +430,18 @@ export const chapterTranslations: Record<Exclude<Lang, "fr" | "en">, ThemeTransl
       ],
     },
     "premier-principe": {
-      title: "Conservação da energia: o primeiro princípio",
+      title: "O primeiro princípio da termodinâmica",
       description: "Trabalho, calor, energia interna e o primeiro princípio.",
       topics: [
         "Energia interna",
-        "Transferência de calor",
         "Primeiro princípio",
-        "Trabalho",
-        "Diagrama de Clapeyron",
-        "Ciclos de potência",
-        "Ciclos de refrigeração",
+        "Trabalho de pressão",
+        "Transferência de calor",
+        "Funções de estado",
+        "Diferencial exata",
+        "Transformações quase-estáticas",
+        "Transformação adiabática",
+        "Extensividade",
       ],
     },
     "second-principe": {
@@ -559,8 +559,7 @@ export const chapterTranslations: Record<Exclude<Lang, "fr" | "en">, ThemeTransl
   it: {
     introduction: {
       title: "Introduzione generale",
-      description:
-        "Perché studiare la termodinamica: conversione calore-lavoro, macchine termiche, fonti di energia e sfide contemporanee.",
+      description: "La natura della termodinamica.",
       topics: [
         "Macchine termiche",
         "Conversione calore-lavoro",
@@ -575,8 +574,7 @@ export const chapterTranslations: Record<Exclude<Lang, "fr" | "en">, ThemeTransl
     },
     historique: {
       title: "Storia della termodinamica e della calorimetria",
-      description:
-        "Dalla teoria del calorico all'entropia di Clausius: la lenta separazione tra calore e temperatura, e la nascita dei due principi.",
+      description: "Dalla teoria del calorico all'entropia di Clausius.",
       topics: [
         "Storia della termodinamica",
         "Teoria del calorico",
@@ -608,16 +606,18 @@ export const chapterTranslations: Record<Exclude<Lang, "fr" | "en">, ThemeTransl
       ],
     },
     "premier-principe": {
-      title: "Conservazione dell'energia: il primo principio",
+      title: "Il primo principio della termodinamica",
       description: "Lavoro, calore, energia interna e il primo principio.",
       topics: [
         "Energia interna",
-        "Trasferimento di calore",
         "Primo principio",
-        "Lavoro",
-        "Diagramma di Clapeyron",
-        "Cicli motori",
-        "Cicli frigoriferi",
+        "Lavoro delle forze di pressione",
+        "Trasferimento di calore",
+        "Funzioni di stato",
+        "Differenziale esatto",
+        "Trasformazioni quasi-statiche",
+        "Trasformazione adiabatica",
+        "Estensività",
       ],
     },
     "second-principe": {
@@ -735,8 +735,7 @@ export const chapterTranslations: Record<Exclude<Lang, "fr" | "en">, ThemeTransl
   pl: {
     introduction: {
       title: "Wprowadzenie ogólne",
-      description:
-        "Dlaczego warto studiować termodynamikę: przemiana ciepła w pracę, silniki cieplne, źródła energii i współczesne wyzwania.",
+      description: "Natura termodynamiki.",
       topics: [
         "Silniki cieplne",
         "Przemiana ciepła w pracę",
@@ -751,8 +750,7 @@ export const chapterTranslations: Record<Exclude<Lang, "fr" | "en">, ThemeTransl
     },
     historique: {
       title: "Historia termodynamiki i kalorymetrii",
-      description:
-        "Od teorii cieplika do entropii Clausiusa: powolne oddzielenie ciepła od temperatury i narodziny dwóch zasad.",
+      description: "Od teorii cieplika do entropii Clausiusa.",
       topics: [
         "Historia termodynamiki",
         "Teoria cieplika",
@@ -784,16 +782,18 @@ export const chapterTranslations: Record<Exclude<Lang, "fr" | "en">, ThemeTransl
       ],
     },
     "premier-principe": {
-      title: "Zachowanie energii: pierwsza zasada",
+      title: "Pierwsza zasada termodynamiki",
       description: "Praca, ciepło, energia wewnętrzna i pierwsza zasada.",
       topics: [
         "Energia wewnętrzna",
-        "Przekazywanie ciepła",
         "Pierwsza zasada",
-        "Praca",
-        "Wykres Clapeyrona",
-        "Cykle silnikowe",
-        "Cykle chłodnicze",
+        "Praca objętościowa",
+        "Przekazywanie ciepła",
+        "Funkcje stanu",
+        "Różniczka zupełna",
+        "Przemiany quasi-statyczne",
+        "Przemiana adiabatyczna",
+        "Ekstensywność",
       ],
     },
     "second-principe": {
@@ -911,8 +911,7 @@ export const chapterTranslations: Record<Exclude<Lang, "fr" | "en">, ThemeTransl
   ru: {
     introduction: {
       title: "Общее введение",
-      description:
-        "Зачем изучать термодинамику: преобразование теплоты в работу, тепловые машины, источники энергии и современные вызовы.",
+      description: "Природа термодинамики.",
       topics: [
         "Тепловые машины",
         "Преобразование теплоты в работу",
@@ -927,8 +926,7 @@ export const chapterTranslations: Record<Exclude<Lang, "fr" | "en">, ThemeTransl
     },
     historique: {
       title: "История термодинамики и калориметрии",
-      description:
-        "От теории теплорода к энтропии Клаузиуса: медленное разделение понятий теплоты и температуры и рождение двух начал.",
+      description: "От теории теплорода к энтропии Клаузиуса.",
       topics: [
         "История термодинамики",
         "Теория теплорода",
@@ -960,16 +958,18 @@ export const chapterTranslations: Record<Exclude<Lang, "fr" | "en">, ThemeTransl
       ],
     },
     "premier-principe": {
-      title: "Сохранение энергии: первое начало",
+      title: "Первое начало термодинамики",
       description: "Работа, теплота, внутренняя энергия и первое начало.",
       topics: [
         "Внутренняя энергия",
-        "Теплопередача",
         "Первое начало",
-        "Работа",
-        "Диаграмма Клапейрона",
-        "Циклы тепловых двигателей",
-        "Холодильные циклы",
+        "Работа сил давления",
+        "Теплопередача",
+        "Функции состояния",
+        "Полный дифференциал",
+        "Квазистатические процессы",
+        "Адиабатический процесс",
+        "Экстенсивность",
       ],
     },
     "second-principe": {
@@ -1087,13 +1087,13 @@ export const chapterTranslations: Record<Exclude<Lang, "fr" | "en">, ThemeTransl
   zh: {
     introduction: {
       title: "总论",
-      description: "为什么要学习热力学：热功转换、热机、能源以及当代挑战。",
+      description: "热力学的本质。",
       topics: ["热机", "热功转换", "第二定律", "熵", "高温热源", "低温热源", "卡诺效率", "热力学的普适性"],
       partHeading: "第一部分——基础课程",
     },
     historique: {
       title: "热力学与量热学的历史",
-      description: "从热质说到克劳修斯熵：热与温度概念的缓慢分离，以及两大定律的诞生。",
+      description: "从热质说到克劳修斯熵。",
       topics: ["热力学史", "热质说", "约瑟夫·布莱克", "量热学", "潜热", "朗福德与戴维", "理想气体", "迈尔", "焦耳", "开尔文", "克劳修斯", "熵"],
     },
     "notions-fondamentales": {
@@ -1102,9 +1102,19 @@ export const chapterTranslations: Record<Exclude<Lang, "fr" | "en">, ThemeTransl
       topics: ["热力学系统", "壁", "平衡态", "状态变量", "状态函数", "准静态过程", "热库", "广延性", "强度性"],
     },
     "premier-principe": {
-      title: "能量守恒：热力学第一定律",
+      title: "热力学第一定律",
       description: "功、热、内能与第一定律。",
-      topics: ["内能", "热传递", "第一定律", "功", "克拉珀龙图", "动力循环", "制冷循环"],
+      topics: [
+        "内能",
+        "第一定律",
+        "体积功",
+        "热传递",
+        "状态函数",
+        "全微分",
+        "准静态过程",
+        "绝热过程",
+        "广延性",
+      ],
     },
     "second-principe": {
       title: "可逆与不可逆：热力学第二定律",
@@ -1188,13 +1198,13 @@ export const chapterTranslations: Record<Exclude<Lang, "fr" | "en">, ThemeTransl
   ja: {
     introduction: {
       title: "総論",
-      description: "なぜ熱力学を学ぶのか：熱と仕事の変換、熱機関、エネルギー源、そして現代的な課題。",
+      description: "熱力学の本質。",
       topics: ["熱機関", "熱と仕事の変換", "第二法則", "エントロピー", "高温熱源", "低温熱源", "カルノー効率", "熱力学の普遍性"],
       partHeading: "第1部——基礎コース",
     },
     historique: {
       title: "熱力学と熱量測定の歴史",
-      description: "熱素説からクラウジウスのエントロピーへ：熱と温度という概念のゆるやかな分離と、二つの法則の誕生。",
+      description: "熱素説からクラウジウスのエントロピーへ。",
       topics: [
         "熱力学の歴史",
         "熱素説",
@@ -1216,9 +1226,19 @@ export const chapterTranslations: Record<Exclude<Lang, "fr" | "en">, ThemeTransl
       topics: ["熱力学系", "壁", "平衡", "状態変数", "状態関数", "準静的過程", "熱浴", "示量性", "示強性"],
     },
     "premier-principe": {
-      title: "エネルギー保存：熱力学第一法則",
+      title: "熱力学第一法則",
       description: "仕事、熱、内部エネルギー、そして第一法則。",
-      topics: ["内部エネルギー", "熱移動", "熱力学第一法則", "仕事", "クラペイロン線図", "動力サイクル", "冷凍サイクル"],
+      topics: [
+        "内部エネルギー",
+        "熱力学第一法則",
+        "圧力による仕事",
+        "熱移動",
+        "状態関数",
+        "完全微分",
+        "準静的過程",
+        "断熱過程",
+        "示量性",
+      ],
     },
     "second-principe": {
       title: "可逆性と不可逆性：熱力学第二法則",
@@ -1302,13 +1322,13 @@ export const chapterTranslations: Record<Exclude<Lang, "fr" | "en">, ThemeTransl
   ko: {
     introduction: {
       title: "일반 서론",
-      description: "왜 열역학을 공부해야 하는가: 열-일 변환, 열기관, 에너지원, 그리고 현대적 과제들.",
+      description: "열역학의 본질.",
       topics: ["열기관", "열-일 변환", "제2법칙", "엔트로피", "고온 열원", "저온 열원", "카르노 효율", "열역학의 보편성"],
       partHeading: "제1부 — 기초 과정",
     },
     historique: {
       title: "열역학과 열량측정의 역사",
-      description: "열소설에서 클라우지우스의 엔트로피까지: 열과 온도 개념의 더딘 분리, 그리고 두 법칙의 탄생.",
+      description: "열소설에서 클라우지우스의 엔트로피까지.",
       topics: [
         "열역학의 역사",
         "열소설",
@@ -1330,9 +1350,19 @@ export const chapterTranslations: Record<Exclude<Lang, "fr" | "en">, ThemeTransl
       topics: ["열역학계", "벽", "평형", "상태변수", "상태함수", "준정적 과정", "열원", "시량성", "시강성"],
     },
     "premier-principe": {
-      title: "에너지 보존: 열역학 제1법칙",
+      title: "열역학 제1법칙",
       description: "일, 열, 내부 에너지, 그리고 제1법칙.",
-      topics: ["내부 에너지", "열전달", "열역학 제1법칙", "일", "클라페롱 선도", "동력 사이클", "냉동 사이클"],
+      topics: [
+        "내부 에너지",
+        "열역학 제1법칙",
+        "압력에 의한 일",
+        "열전달",
+        "상태함수",
+        "완전미분",
+        "준정적 과정",
+        "단열 과정",
+        "시량성",
+      ],
     },
     "second-principe": {
       title: "가역성과 비가역성: 열역학 제2법칙",
@@ -1416,7 +1446,7 @@ export const chapterTranslations: Record<Exclude<Lang, "fr" | "en">, ThemeTransl
   hi: {
     introduction: {
       title: "सामान्य परिचय",
-      description: "ऊष्मागतिकी का अध्ययन क्यों करें: ऊष्मा-कार्य रूपांतरण, ऊष्मा इंजन, ऊर्जा स्रोत और समकालीन चुनौतियाँ।",
+      description: "ऊष्मागतिकी की प्रकृति।",
       topics: [
         "ऊष्मा इंजन",
         "ऊष्मा-कार्य रूपांतरण",
@@ -1431,7 +1461,7 @@ export const chapterTranslations: Record<Exclude<Lang, "fr" | "en">, ThemeTransl
     },
     historique: {
       title: "ऊष्मागतिकी एवं ऊष्मामिति का इतिहास",
-      description: "कैलोरिक सिद्धांत से क्लॉसियस की एंट्रॉपी तक: ऊष्मा और तापमान के बीच धीमे पृथक्करण, तथा दो सिद्धांतों का जन्म।",
+      description: "कैलोरिक सिद्धांत से क्लॉसियस की एंट्रॉपी तक।",
       topics: [
         "ऊष्मागतिकी का इतिहास",
         "कैलोरिक सिद्धांत",
@@ -1463,9 +1493,19 @@ export const chapterTranslations: Record<Exclude<Lang, "fr" | "en">, ThemeTransl
       ],
     },
     "premier-principe": {
-      title: "ऊर्जा संरक्षण: प्रथम नियम",
+      title: "ऊष्मागतिकी का प्रथम नियम",
       description: "कार्य, ऊष्मा, आंतरिक ऊर्जा और प्रथम नियम।",
-      topics: ["आंतरिक ऊर्जा", "ऊष्मा स्थानांतरण", "प्रथम नियम", "कार्य", "क्लैपेरॉन आरेख", "इंजन चक्र", "प्रशीतन चक्र"],
+      topics: [
+        "आंतरिक ऊर्जा",
+        "प्रथम नियम",
+        "दाब बलों का कार्य",
+        "ऊष्मा स्थानांतरण",
+        "अवस्था फलन",
+        "पूर्ण अवकलन",
+        "अर्ध-स्थैतिक प्रक्रियाएँ",
+        "रुद्धोष्म प्रक्रिया",
+        "व्यापकता",
+      ],
     },
     "second-principe": {
       title: "प्रतिवर्तनीयता और अप्रतिवर्तनीयता: द्वितीय नियम",
@@ -1568,8 +1608,7 @@ export const chapterTranslations: Record<Exclude<Lang, "fr" | "en">, ThemeTransl
   vi: {
     introduction: {
       title: "Giới thiệu chung",
-      description:
-        "Vì sao nên học nhiệt động lực học: chuyển hóa nhiệt thành công, động cơ nhiệt, nguồn năng lượng và những thách thức đương đại.",
+      description: "Bản chất của nhiệt động lực học.",
       topics: [
         "Động cơ nhiệt",
         "Chuyển hóa nhiệt thành công",
@@ -1584,8 +1623,7 @@ export const chapterTranslations: Record<Exclude<Lang, "fr" | "en">, ThemeTransl
     },
     historique: {
       title: "Lịch sử nhiệt động lực học và nhiệt lượng học",
-      description:
-        "Từ thuyết chất nhiệt đến entropy của Clausius: sự tách biệt chậm rãi giữa nhiệt và nhiệt độ, và sự ra đời của hai định luật.",
+      description: "Từ thuyết chất nhiệt đến entropy của Clausius.",
       topics: [
         "Lịch sử nhiệt động lực học",
         "Thuyết chất nhiệt",
@@ -1617,9 +1655,19 @@ export const chapterTranslations: Record<Exclude<Lang, "fr" | "en">, ThemeTransl
       ],
     },
     "premier-principe": {
-      title: "Bảo toàn năng lượng: định luật thứ nhất",
+      title: "Định luật thứ nhất của nhiệt động lực học",
       description: "Công, nhiệt, nội năng và định luật thứ nhất.",
-      topics: ["Nội năng", "Truyền nhiệt", "Định luật thứ nhất", "Công", "Giản đồ Clapeyron", "Chu trình động cơ", "Chu trình làm lạnh"],
+      topics: [
+        "Nội năng",
+        "Định luật thứ nhất",
+        "Công của áp suất",
+        "Truyền nhiệt",
+        "Hàm trạng thái",
+        "Vi phân toàn phần",
+        "Quá trình tựa tĩnh",
+        "Quá trình đoạn nhiệt",
+        "Tính quảng tính",
+      ],
     },
     "second-principe": {
       title: "Thuận nghịch và bất thuận nghịch: định luật thứ hai",
@@ -1722,7 +1770,7 @@ export const chapterTranslations: Record<Exclude<Lang, "fr" | "en">, ThemeTransl
   ar: {
     introduction: {
       title: "مقدمة عامة",
-      description: "لماذا ندرس الديناميكا الحرارية: تحويل الحرارة إلى شغل، المحركات الحرارية، مصادر الطاقة، والتحديات المعاصرة.",
+      description: "طبيعة الديناميكا الحرارية.",
       topics: [
         "المحركات الحرارية",
         "تحويل الحرارة إلى شغل",
@@ -1737,7 +1785,7 @@ export const chapterTranslations: Record<Exclude<Lang, "fr" | "en">, ThemeTransl
     },
     historique: {
       title: "تاريخ الديناميكا الحرارية والمسعرية",
-      description: "من نظرية الحريرة إلى إنتروبيا كلاوزيوس: الانفصال البطيء بين الحرارة ودرجة الحرارة، وولادة المبدأين.",
+      description: "من نظرية الحريرة إلى إنتروبيا كلاوزيوس.",
       topics: [
         "تاريخ الديناميكا الحرارية",
         "نظرية الحريرة",
@@ -1769,9 +1817,19 @@ export const chapterTranslations: Record<Exclude<Lang, "fr" | "en">, ThemeTransl
       ],
     },
     "premier-principe": {
-      title: "حفظ الطاقة: المبدأ الأول",
+      title: "المبدأ الأول للديناميكا الحرارية",
       description: "الشغل، الحرارة، الطاقة الداخلية، والمبدأ الأول.",
-      topics: ["الطاقة الداخلية", "انتقال الحرارة", "المبدأ الأول", "الشغل", "مخطط كلابيرون", "دورات المحركات", "دورات التبريد"],
+      topics: [
+        "الطاقة الداخلية",
+        "المبدأ الأول",
+        "شغل قوى الضغط",
+        "انتقال الحرارة",
+        "دوال الحالة",
+        "التفاضل التام",
+        "التحولات شبه الساكنة",
+        "التحول الأدياباتي",
+        "الخاصية الجامعة",
+      ],
     },
     "second-principe": {
       title: "العكوسية واللاعكوسية: المبدأ الثاني",
@@ -1874,8 +1932,7 @@ export const chapterTranslations: Record<Exclude<Lang, "fr" | "en">, ThemeTransl
   id: {
     introduction: {
       title: "Pengantar Umum",
-      description:
-        "Mengapa mempelajari termodinamika: konversi kalor menjadi kerja, mesin kalor, sumber energi, dan tantangan masa kini.",
+      description: "Hakikat termodinamika.",
       topics: [
         "Mesin kalor",
         "Konversi kalor menjadi kerja",
@@ -1890,8 +1947,7 @@ export const chapterTranslations: Record<Exclude<Lang, "fr" | "en">, ThemeTransl
     },
     historique: {
       title: "Sejarah Termodinamika dan Kalorimetri",
-      description:
-        "Dari teori kalorik hingga entropi Clausius: pemisahan bertahap antara kalor dan suhu serta lahirnya kedua hukum termodinamika.",
+      description: "Dari teori kalorik hingga entropi Clausius.",
       topics: [
         "Sejarah termodinamika",
         "Teori kalorik",
@@ -1924,16 +1980,18 @@ export const chapterTranslations: Record<Exclude<Lang, "fr" | "en">, ThemeTransl
       ],
     },
     "premier-principe": {
-      title: "Kekekalan Energi: Hukum Pertama",
+      title: "Hukum Pertama Termodinamika",
       description: "Kerja, kalor, energi dalam, dan hukum pertama.",
       topics: [
         "Energi dalam",
-        "Perpindahan kalor",
         "Hukum pertama",
-        "Kerja",
-        "Diagram Clapeyron",
-        "Siklus daya",
-        "Siklus refrigerasi",
+        "Kerja tekanan",
+        "Perpindahan kalor",
+        "Fungsi keadaan",
+        "Diferensial eksak",
+        "Transformasi kuasistatik",
+        "Transformasi adiabatik",
+        "Ekstensivitas",
       ],
     },
     "second-principe": {
@@ -2058,8 +2116,7 @@ export const chapterTranslations: Record<Exclude<Lang, "fr" | "en">, ThemeTransl
   tr: {
     introduction: {
       title: "Genel Giriş",
-      description:
-        "Termodinamik neden incelenir: ısının işe dönüştürülmesi, ısı makineleri, enerji kaynakları ve günümüzün sorunları.",
+      description: "Termodinamiğin doğası.",
       topics: [
         "Isı makineleri",
         "Isının işe dönüştürülmesi",
@@ -2074,8 +2131,7 @@ export const chapterTranslations: Record<Exclude<Lang, "fr" | "en">, ThemeTransl
     },
     historique: {
       title: "Termodinamik ve Kalorimetri Tarihi",
-      description:
-        "Kalorik kuramından Clausius entropisine: ısı ile sıcaklığın yavaş yavaş ayrılması ve iki termodinamik yasanın doğuşu.",
+      description: "Kalorik kuramından Clausius entropisine.",
       topics: [
         "Termodinamik tarihi",
         "Kalorik kuramı",
@@ -2107,16 +2163,18 @@ export const chapterTranslations: Record<Exclude<Lang, "fr" | "en">, ThemeTransl
       ],
     },
     "premier-principe": {
-      title: "Enerjinin Korunumu: Birinci Yasa",
+      title: "Termodinamiğin Birinci Yasası",
       description: "İş, ısı, iç enerji ve birinci yasa.",
       topics: [
         "İç enerji",
-        "Isı aktarımı",
         "Birinci yasa",
-        "İş",
-        "Clapeyron diyagramı",
-        "Güç çevrimleri",
-        "Soğutma çevrimleri",
+        "Basınç işi",
+        "Isı aktarımı",
+        "Hâl fonksiyonları",
+        "Tam diferansiyel",
+        "Yarı-statik dönüşümler",
+        "Adyabatik dönüşüm",
+        "Ekstensiflik",
       ],
     },
     "second-principe": {

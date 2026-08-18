@@ -145,10 +145,8 @@ export const themes: Theme[] = [
     partHeadingEn: "Part I — Elementary Course",
     titleFr: "Introduction générale",
     titleEn: "General Introduction",
-    descriptionFr:
-      "Pourquoi étudier la thermodynamique : conversion chaleur-travail, machines thermiques, sources d'énergie et enjeux contemporains.",
-    descriptionEn:
-      "Why study thermodynamics: heat-to-work conversion, heat engines, energy sources, and contemporary stakes.",
+    descriptionFr: "La nature de la thermodynamique.",
+    descriptionEn: "The nature of thermodynamics.",
     readingTime: "12 min",
     topicsFr: [
       "Machines thermiques",
@@ -176,10 +174,8 @@ export const themes: Theme[] = [
     slug: "historique",
     titleFr: "Historique de la thermodynamique et de la calorimétrie",
     titleEn: "A History of Thermodynamics and Calorimetry",
-    descriptionFr:
-      "De la théorie du calorique à l'entropie de Clausius : la lente séparation de la chaleur et de la température, et la naissance des deux principes.",
-    descriptionEn:
-      "From the caloric theory to Clausius's entropy: the slow separation of heat and temperature, and the birth of the two laws.",
+    descriptionFr: "De la théorie du calorique à l'entropie de Clausius.",
+    descriptionEn: "From the caloric theory to Clausius's entropy.",
     readingTime: "11 min",
     topicsFr: [
       "Histoire de la thermodynamique",
@@ -260,6 +256,7 @@ export const themes: Theme[] = [
       "Différentielle exacte",
       "Transformation quasi-statique",
       "Transformation adiabatique",
+      "Extensivité",
     ],
     topicsEn: [
       "Internal energy",
@@ -270,6 +267,7 @@ export const themes: Theme[] = [
       "Exact differential",
       "Quasi-static process",
       "Adiabatic process",
+      "Extensivity",
     ],
   }),
   makeLecon({
