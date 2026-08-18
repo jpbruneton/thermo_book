@@ -923,6 +923,7 @@ type ContentLanguage = Lang;
 /** Per-language wording for theorem-like block headings, hint/proof labels, and figure chrome. */
 interface BlockLabels {
   definition: string;
+  principle: string;
   theorem: string;
   proposition: string;
   lemma: string;
@@ -947,7 +948,7 @@ interface BlockLabels {
 
 const blockLabelsByLang: Record<Lang, BlockLabels> = {
   fr: {
-    definition: "Définition", theorem: "Théorème", proposition: "Proposition", lemma: "Lemme",
+    definition: "Définition", principle: "Principe", theorem: "Théorème", proposition: "Proposition", lemma: "Lemme",
     property: "Propriété", corollary: "Corollaire", remark: "Remarque", toGoFurther: "Pour aller plus loin",
     example: "Exemple", summary: "Résumé", important: "Important", keyPoint: "À retenir",
     exercise: "Exercice", hint: "Indice", indication: "Indication", solution: "Solution",
@@ -955,7 +956,7 @@ const blockLabelsByLang: Record<Lang, BlockLabels> = {
     openFigurePdf: "Ouvrir la figure PDF",
   },
   en: {
-    definition: "Definition", theorem: "Theorem", proposition: "Proposition", lemma: "Lemma",
+    definition: "Definition", principle: "Principle", theorem: "Theorem", proposition: "Proposition", lemma: "Lemma",
     property: "Property", corollary: "Corollary", remark: "Remark", toGoFurther: "To go further",
     example: "Example", summary: "Summary", important: "Important", keyPoint: "Key point",
     exercise: "Exercise", hint: "Hint", indication: "Hint", solution: "Solution",
@@ -963,7 +964,7 @@ const blockLabelsByLang: Record<Lang, BlockLabels> = {
     openFigurePdf: "Open the PDF figure",
   },
   de: {
-    definition: "Definition", theorem: "Satz", proposition: "Proposition", lemma: "Lemma",
+    definition: "Definition", principle: "Prinzip", theorem: "Satz", proposition: "Proposition", lemma: "Lemma",
     property: "Eigenschaft", corollary: "Korollar", remark: "Bemerkung", toGoFurther: "Vertiefung",
     example: "Beispiel", summary: "Zusammenfassung", important: "Wichtig", keyPoint: "Wichtig zu merken",
     exercise: "Übung", hint: "Hinweis", indication: "Hinweis", solution: "Lösung",
@@ -971,7 +972,7 @@ const blockLabelsByLang: Record<Lang, BlockLabels> = {
     openFigurePdf: "PDF-Abbildung öffnen",
   },
   es: {
-    definition: "Definición", theorem: "Teorema", proposition: "Proposición", lemma: "Lema",
+    definition: "Definición", principle: "Principio", theorem: "Teorema", proposition: "Proposición", lemma: "Lema",
     property: "Propiedad", corollary: "Corolario", remark: "Observación", toGoFurther: "Para ir más lejos",
     example: "Ejemplo", summary: "Resumen", important: "Importante", keyPoint: "Para recordar",
     exercise: "Ejercicio", hint: "Pista", indication: "Pista", solution: "Solución",
@@ -979,7 +980,7 @@ const blockLabelsByLang: Record<Lang, BlockLabels> = {
     openFigurePdf: "Abrir la figura en PDF",
   },
   pt: {
-    definition: "Definição", theorem: "Teorema", proposition: "Proposição", lemma: "Lema",
+    definition: "Definição", principle: "Princípio", theorem: "Teorema", proposition: "Proposição", lemma: "Lema",
     property: "Propriedade", corollary: "Corolário", remark: "Observação", toGoFurther: "Para ir mais longe",
     example: "Exemplo", summary: "Resumo", important: "Importante", keyPoint: "Para lembrar",
     exercise: "Exercício", hint: "Dica", indication: "Dica", solution: "Solução",
@@ -987,7 +988,7 @@ const blockLabelsByLang: Record<Lang, BlockLabels> = {
     openFigurePdf: "Abrir a figura em PDF",
   },
   it: {
-    definition: "Definizione", theorem: "Teorema", proposition: "Proposizione", lemma: "Lemma",
+    definition: "Definizione", principle: "Principio", theorem: "Teorema", proposition: "Proposizione", lemma: "Lemma",
     property: "Proprietà", corollary: "Corollario", remark: "Osservazione", toGoFurther: "Per approfondire",
     example: "Esempio", summary: "Riepilogo", important: "Importante", keyPoint: "Da ricordare",
     exercise: "Esercizio", hint: "Suggerimento", indication: "Suggerimento", solution: "Soluzione",
@@ -995,7 +996,7 @@ const blockLabelsByLang: Record<Lang, BlockLabels> = {
     openFigurePdf: "Apri la figura PDF",
   },
   pl: {
-    definition: "Definicja", theorem: "Twierdzenie", proposition: "Propozycja", lemma: "Lemat",
+    definition: "Definicja", principle: "Zasada", theorem: "Twierdzenie", proposition: "Propozycja", lemma: "Lemat",
     property: "Własność", corollary: "Wniosek", remark: "Uwaga", toGoFurther: "Aby pójść dalej",
     example: "Przykład", summary: "Podsumowanie", important: "Ważne", keyPoint: "Do zapamiętania",
     exercise: "Ćwiczenie", hint: "Wskazówka", indication: "Wskazówka", solution: "Rozwiązanie",
@@ -1003,7 +1004,7 @@ const blockLabelsByLang: Record<Lang, BlockLabels> = {
     openFigurePdf: "Otwórz rysunek PDF",
   },
   ru: {
-    definition: "Определение", theorem: "Теорема", proposition: "Утверждение", lemma: "Лемма",
+    definition: "Определение", principle: "Принцип", theorem: "Теорема", proposition: "Утверждение", lemma: "Лемма",
     property: "Свойство", corollary: "Следствие", remark: "Замечание", toGoFurther: "Углубление темы",
     example: "Пример", summary: "Резюме", important: "Важно", keyPoint: "Запомнить",
     exercise: "Упражнение", hint: "Подсказка", indication: "Подсказка", solution: "Решение",
@@ -1011,7 +1012,7 @@ const blockLabelsByLang: Record<Lang, BlockLabels> = {
     openFigurePdf: "Открыть рисунок в PDF",
   },
   zh: {
-    definition: "定义", theorem: "定理", proposition: "命题", lemma: "引理",
+    definition: "定义", principle: "原理", theorem: "定理", proposition: "命题", lemma: "引理",
     property: "性质", corollary: "推论", remark: "注记", toGoFurther: "深入探讨",
     example: "例", summary: "小结", important: "重点", keyPoint: "要点",
     exercise: "练习", hint: "提示", indication: "提示", solution: "解答",
@@ -1019,7 +1020,7 @@ const blockLabelsByLang: Record<Lang, BlockLabels> = {
     openFigurePdf: "打开PDF图片",
   },
   ja: {
-    definition: "定義", theorem: "定理", proposition: "命題", lemma: "補題",
+    definition: "定義", principle: "原理", theorem: "定理", proposition: "命題", lemma: "補題",
     property: "性質", corollary: "系", remark: "注記", toGoFurther: "さらに深く",
     example: "例", summary: "まとめ", important: "重要", keyPoint: "要点",
     exercise: "演習", hint: "ヒント", indication: "ヒント", solution: "解答",
@@ -1027,7 +1028,7 @@ const blockLabelsByLang: Record<Lang, BlockLabels> = {
     openFigurePdf: "PDF図を開く",
   },
   ko: {
-    definition: "정의", theorem: "정리", proposition: "명제", lemma: "보조정리",
+    definition: "정의", principle: "원리", theorem: "정리", proposition: "명제", lemma: "보조정리",
     property: "성질", corollary: "따름정리", remark: "비고", toGoFurther: "더 알아보기",
     example: "예제", summary: "요약", important: "중요", keyPoint: "핵심 정리",
     exercise: "연습문제", hint: "힌트", indication: "힌트", solution: "풀이",
@@ -1035,7 +1036,7 @@ const blockLabelsByLang: Record<Lang, BlockLabels> = {
     openFigurePdf: "PDF 그림 열기",
   },
   hi: {
-    definition: "परिभाषा", theorem: "प्रमेय", proposition: "प्रस्ताव", lemma: "उपप्रमेय",
+    definition: "परिभाषा", principle: "सिद्धांत", theorem: "प्रमेय", proposition: "प्रस्ताव", lemma: "उपप्रमेय",
     property: "गुणधर्म", corollary: "उपफल", remark: "टिप्पणी", toGoFurther: "आगे जानने के लिए",
     example: "उदाहरण", summary: "सारांश", important: "महत्वपूर्ण", keyPoint: "याद रखने योग्य",
     exercise: "अभ्यास", hint: "संकेत", indication: "संकेत", solution: "हल",
@@ -1043,7 +1044,7 @@ const blockLabelsByLang: Record<Lang, BlockLabels> = {
     openFigurePdf: "PDF चित्र खोलें",
   },
   vi: {
-    definition: "Định nghĩa", theorem: "Định lý", proposition: "Mệnh đề", lemma: "Bổ đề",
+    definition: "Định nghĩa", principle: "Nguyên lý", theorem: "Định lý", proposition: "Mệnh đề", lemma: "Bổ đề",
     property: "Tính chất", corollary: "Hệ quả", remark: "Nhận xét", toGoFurther: "Tìm hiểu thêm",
     example: "Ví dụ", summary: "Tóm tắt", important: "Quan trọng", keyPoint: "Cần ghi nhớ",
     exercise: "Bài tập", hint: "Gợi ý", indication: "Gợi ý", solution: "Lời giải",
@@ -1051,7 +1052,7 @@ const blockLabelsByLang: Record<Lang, BlockLabels> = {
     openFigurePdf: "Mở hình PDF",
   },
   ar: {
-    definition: "تعريف", theorem: "مبرهنة", proposition: "قضية", lemma: "لِمّا",
+    definition: "تعريف", principle: "مبدأ", theorem: "مبرهنة", proposition: "قضية", lemma: "لِمّا",
     property: "خاصية", corollary: "نتيجة", remark: "ملاحظة", toGoFurther: "للتعمق أكثر",
     example: "مثال", summary: "ملخص", important: "مهم", keyPoint: "للتذكر",
     exercise: "تمرين", hint: "تلميح", indication: "تلميح", solution: "الحل",
@@ -1059,7 +1060,7 @@ const blockLabelsByLang: Record<Lang, BlockLabels> = {
     openFigurePdf: "فتح الشكل بصيغة PDF",
   },
   id: {
-    definition: "Definisi", theorem: "Teorema", proposition: "Proposisi", lemma: "Lemma",
+    definition: "Definisi", principle: "Prinsip", theorem: "Teorema", proposition: "Proposisi", lemma: "Lemma",
     property: "Sifat", corollary: "Korolari", remark: "Catatan", toGoFurther: "Untuk memperdalam",
     example: "Contoh", summary: "Ringkasan", important: "Penting", keyPoint: "Perlu diingat",
     exercise: "Latihan", hint: "Petunjuk", indication: "Petunjuk", solution: "Solusi",
@@ -1067,7 +1068,7 @@ const blockLabelsByLang: Record<Lang, BlockLabels> = {
     openFigurePdf: "Buka gambar PDF",
   },
   tr: {
-    definition: "Tanım", theorem: "Teorem", proposition: "Önerme", lemma: "Yardımcı Teorem",
+    definition: "Tanım", principle: "İlke", theorem: "Teorem", proposition: "Önerme", lemma: "Yardımcı Teorem",
     property: "Özellik", corollary: "Sonuç", remark: "Not", toGoFurther: "Daha ileri gitmek için",
     example: "Örnek", summary: "Özet", important: "Önemli", keyPoint: "Akılda tutulması gereken",
     exercise: "Alıştırma", hint: "İpucu", indication: "İpucu", solution: "Çözüm",
@@ -1328,6 +1329,7 @@ function normalizeLatexBlocks(
     { env: "corollaire", title: labels.corollary },
     { env: "corollary", title: labels.corollary },
     { env: "remark", title: labels.remark },
+    { env: "principe", title: labels.principle },
     { env: "plusloin", title: labels.toGoFurther },
     { env: "exemple", title: labels.example },
     { env: "example", title: labels.example },
@@ -1383,6 +1385,12 @@ function normalizeLatexBlocks(
           ? `<strong class="latex-plusloin-topic"> (${cleanLatexInline(displayLabel)})</strong>`
           : "";
         return `\n\n<div class="latex-block latex-block-plusloin"><div class="latex-block-heading"><span class="latex-plusloin-label">${label}</span>${topicHtml}</div><div class="latex-block-body">`;
+      }
+      if (blockKind.env === "principe") {
+        // The statement carries its own name ("Premier principe ..."), so use it
+        // as the heading instead of appending it to a redundant "Principe" label.
+        const heading = displayLabel ? cleanLatexInline(displayLabel) : blockKind.title;
+        return `\n\n<div class="latex-block latex-block-principe"><div class="latex-block-heading"><strong>${heading}</strong></div><div class="latex-block-body">`;
       }
       const isExo = blockKind.env === "exo";
       if (isExo) {

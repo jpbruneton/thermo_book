@@ -721,6 +721,50 @@ body::before {
   background: #9ca3af1f;
 }
 
+/* Statement of a law of thermodynamics: the most solemn box of the book. */
+.prose-content .latex-block-principe {
+  border: 1px solid #b9472740;
+  border-left: 4px solid #b94727;
+  background: #b9472712;
+  padding: 1.05rem 1.15rem 0.95rem;
+}
+
+.prose-content .latex-block-principe > .latex-block-heading {
+  margin-bottom: 0.7rem;
+  padding-bottom: 0.45rem;
+  border-bottom: 1px solid #b9472726;
+}
+
+.prose-content .latex-block-principe > .latex-block-heading strong {
+  color: #b94727;
+  font-size: 0.82em;
+  font-weight: 700;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+}
+
+.prose-content .latex-block-principe strong,
+.prose-content .latex-block-principe .latex-inline-blue-strong {
+  color: #8f3720;
+  font-weight: 700;
+}
+
+[data-theme="dark"] .prose-content .latex-block-principe {
+  border-color: #e0714d40;
+  border-left-color: #e0714d;
+  background: #e0714d14;
+}
+
+[data-theme="dark"] .prose-content .latex-block-principe > .latex-block-heading {
+  border-bottom-color: #e0714d2e;
+}
+
+[data-theme="dark"] .prose-content .latex-block-principe > .latex-block-heading strong,
+[data-theme="dark"] .prose-content .latex-block-principe strong,
+[data-theme="dark"] .prose-content .latex-block-principe .latex-inline-blue-strong {
+  color: #e0714d;
+}
+
 .prose-content .latex-block-plusloin {
   --plusloin-heading-color: rgba(88, 28, 135, 0.92);
   border-color: rgba(107, 33, 168, 0.22);
