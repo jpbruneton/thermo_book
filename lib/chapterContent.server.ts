@@ -437,6 +437,65 @@ function extractFigureHtml(figureBlock: string, figureNumber: number, lang: Lang
   return `<figure class="latex-figure"><a class="latex-figure-zoom-link" href="${imagePath}" target="_blank" rel="noreferrer"><img src="${imagePath}" alt="${altText}" loading="lazy" /></a>${figCaption}</figure>`;
 }
 
+/**
+ * Extend the reach of a loose image to the \caption and \label commands that
+ * immediately follow it, so they end up inside the synthesized figure block.
+ */
+function readFigureTailEnd(input: string, startIndex: number): number {
+  let cursor = startIndex;
+
+  for (;;) {
+    let next = cursor;
+    while (next < input.length && /\s/.test(input[next])) next += 1;
+    const commandMatch = input.slice(next).match(/^\\(?:caption|label)\s*/);
+    if (!commandMatch) return cursor;
+    const braces = readBalancedBraces(input, next + commandMatch[0].length);
+    if (!braces) return cursor;
+    cursor = braces.endIndex;
+  }
+}
+
+/** Wrap images left outside any figure environment, caption included. */
+function wrapLooseIncludeGraphics(input: string): string {
+  const figureOrImageRegex =
+    /\\begin\{figure\*?\}[\s\S]*?\\end\{figure\*?\}|\\includegraphics(?:\[[^\]]*\])?\{[^{}]+\}/g;
+  let result = "";
+  let lastIndex = 0;
+  let match: RegExpExecArray | null;
+
+  while ((match = figureOrImageRegex.exec(input)) !== null) {
+    if (match[0].startsWith("\\begin{figure")) continue;
+    const end = readFigureTailEnd(input, match.index + match[0].length);
+    const block = input.slice(match.index, end).trim();
+    result += `${input.slice(lastIndex, match.index)}\n\n\\begin{figure}\n${block}\n\\end{figure}\n\n`;
+    lastIndex = end;
+    figureOrImageRegex.lastIndex = end;
+  }
+
+  return result + input.slice(lastIndex);
+}
+
+/**
+ * LaTeX forbids floats inside boxed environments (plusloin, aretenir, ...), so
+ * figures placed there are written as a centered \includegraphics followed by
+ * \captionof{figure}{...}. Rewrite such blocks — and any other image left
+ * outside a float — as ordinary figure environments, so they go through the
+ * usual numbering, caption, label and zoom handling.
+ */
+function normalizeCaptionOfFigures(input: string): string {
+  let result = input.replace(/\\captionof\s*\{\s*figure\s*\}\s*/g, "\\caption");
+
+  result = result.replace(
+    /\\begin\{center\}([\s\S]*?)\\end\{center\}/g,
+    (block: string, inner: string) => {
+      if (!/\\includegraphics/.test(inner) || !/\\caption\s*\{/.test(inner)) return block;
+      return `\n\n\\begin{figure}\n${inner.trim()}\n\\end{figure}\n\n`;
+    }
+  );
+
+  return wrapLooseIncludeGraphics(result);
+}
+
 function renderSectionHeading(
   level: string,
   rawTitle: string,
@@ -1164,7 +1223,9 @@ function normalizeLatexBlocks(
   citationMaps: CitationNumberMaps,
   contentLanguage: ContentLanguage
 ): string {
-  let result = input;
+  // Runs before collectReferenceMap so synthesized figures share the numbering
+  // and \label resolution of the figures written as floats.
+  let result = normalizeCaptionOfFigures(input);
   let figureRenderIndex = 0;
   let equationRenderIndex = 0;
   const references = collectReferenceMap(result);
