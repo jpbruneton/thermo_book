@@ -337,6 +337,40 @@ function extractFootnotesFromParagraph(input: string): { text: string; footnotes
   return { text: output, footnotes };
 }
 
+/**
+ * A footnote is extracted paragraph by paragraph, by brace matching, so its body
+ * must never span a blank line. Display math is normally surrounded by blank
+ * lines, which would cut the footnote in two and leak \footnote and its content
+ * into the prose. Inline the display delimiters inside footnote bodies:
+ * processLatex still renders $$ ... $$ as display math.
+ */
+function inlineFootnoteDisplayMath(input: string): string {
+  const marker = "\\footnote";
+  let result = "";
+  let cursor = 0;
+
+  for (;;) {
+    const start = input.indexOf(marker, cursor);
+    if (start === -1) return result + input.slice(cursor);
+
+    let next = start + marker.length;
+    while (next < input.length && /\s/.test(input[next])) next += 1;
+    const body = input[next] === "{" ? readBalancedBraces(input, next) : null;
+    if (!body) {
+      result += input.slice(cursor, start + marker.length);
+      cursor = start + marker.length;
+      continue;
+    }
+
+    const inlined = body.content
+      .replace(/(?<!\\)\\\[/g, () => "$$")
+      .replace(/(?<!\\)\\\]/g, () => "$$")
+      .replace(/\n\s*\n+/g, "\n");
+    result += `${input.slice(cursor, start)}${marker}{${inlined}}`;
+    cursor = body.endIndex;
+  }
+}
+
 function normalizeFigurePath(path: string): string {
   const withoutPrefix = path.replace(/^\.?\/*/, "").replace(/^figs\//, "");
   return `/figs/${withoutPrefix}`;
@@ -1225,7 +1259,7 @@ function normalizeLatexBlocks(
 ): string {
   // Runs before collectReferenceMap so synthesized figures share the numbering
   // and \label resolution of the figures written as floats.
-  let result = normalizeCaptionOfFigures(input);
+  let result = inlineFootnoteDisplayMath(normalizeCaptionOfFigures(input));
   let figureRenderIndex = 0;
   let equationRenderIndex = 0;
   const references = collectReferenceMap(result);
