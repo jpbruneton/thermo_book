@@ -1,6 +1,77 @@
 % Banque d'exercices — chapitre 4
 % Le chapitre est déterminé par le nom de ce fichier.
 
+\begin{exo}[Intégrer une forme différentielle le long d'un chemin]{integrale-forme-differentielle}
+\keywords{forme différentielle, différentielle exacte, critère de Schwarz, intégrale curviligne, travail des forces de pression, gaz parfait}
+
+\textbf{Partie A — dans le plan.} On considère les deux formes différentielles
+\[
+\omega_1 = y\,\mathrm{d}x + x\,\mathrm{d}y,
+\qquad
+\omega_2 = y\,\mathrm{d}x,
+\]
+et trois chemins joignant l'origine $O(0,0)$ au point $M(1,1)$ : le chemin
+$\gamma_1$ formé du segment horizontal $O\to(1,0)$ suivi du segment vertical
+$(1,0)\to M$ ; le chemin $\gamma_2$ formé du segment vertical $O\to(0,1)$ suivi
+du segment horizontal $(0,1)\to M$ ; et le chemin $\gamma_3$, segment de droite
+joignant directement $O$ à $M$.
+
+\begin{enumerate}
+\item Montrer que $\omega_1$ est exacte en exhibant une fonction $f$ telle que $\omega_1 = \mathrm{d}f$.
+\item Calculer $\int_{\gamma_1}\omega_1$ et $\int_{\gamma_2}\omega_1$ en paramétrant chaque segment. Retrouver le résultat sans calcul.
+\item Appliquer le critère de Schwarz à $\omega_2$. Que peut-on en conclure ?
+\item Calculer $\int_{\gamma_1}\omega_2$, $\int_{\gamma_2}\omega_2$ et $\int_{\gamma_3}\omega_2$. Commenter.
+\end{enumerate}
+
+\textbf{Partie B — le travail des forces de pression.} On reprend $n$ moles de gaz
+parfait monoatomique ($U = \frac{3}{2}nRT$), décrit par les variables $(T,V)$, et
+l'on joint l'état $A(T_1,V_1)$ à l'état $B(T_2,V_2)$ par deux chemins
+quasi-statiques, avec $P_{\mathrm{ext}} = P$ à chaque instant : le chemin
+$\Gamma_1$, isotherme à $T_1$ de $V_1$ à $V_2$ puis isochore à $V_2$ de $T_1$ à
+$T_2$ ; et le chemin $\Gamma_2$, isochore à $V_1$ puis isotherme à $T_2$.
+
+\begin{enumerate}
+\setcounter{enumi}{4}
+\item Calculer le travail reçu $W_1$ et $W_2$ le long de chacun des deux chemins. Que vaut leur différence ?
+\item Calculer $\Delta U$ le long de chacun des deux chemins, puis en déduire $Q_1$ et $Q_2$. Conclure sur la nature de $\delta Q$.
+\item Application numérique : $n = 1$ mol, $T_1 = 300$ K, $T_2 = 600$ K, $V_2 = 2V_1$.
+\end{enumerate}
+
+\begin{indication}
+Sur un segment horizontal $\mathrm{d}y = 0$, sur un segment vertical $\mathrm{d}x = 0$ : chaque intégrale se réduit à une intégrale simple. Pour la partie B, une isochore ne contribue pas au travail des forces de pression, et sur une isotherme on remplace $P$ par $nRT/V$ avant d'intégrer.
+\end{indication}
+
+\begin{solution}
+\textbf{Question 1.} $f(x,y) = xy$ convient, puisque $\partial f/\partial x = y$ et $\partial f/\partial y = x$.
+
+\textbf{Question 2.} Sur $\gamma_1$ : le premier segment porte $y = 0$ et $\mathrm{d}y = 0$, sa contribution est nulle ; le second porte $x = 1$ et $\mathrm{d}x = 0$, il donne $\int_0^1 1\,\mathrm{d}y = 1$. Total : $1$. Sur $\gamma_2$, par symétrie : $0 + \int_0^1 1\,\mathrm{d}x = 1$. Les deux valeurs coïncident, ce qui était acquis d'avance : $\omega_1$ étant exacte, $\int_\gamma \omega_1 = f(M) - f(O) = 1 - 0 = 1$ quel que soit le chemin.
+
+\textbf{Question 3.} Ici $A = y$ et $B = 0$, donc $\partial A/\partial y = 1$ tandis que $\partial B/\partial x = 0$. Les dérivées croisées diffèrent : $\omega_2$ n'est pas exacte, et son intégrale doit dépendre du chemin.
+
+\textbf{Question 4.} Sur $\gamma_1$ : $y = 0$ sur le premier segment et $\mathrm{d}x = 0$ sur le second, donc $\int_{\gamma_1}\omega_2 = 0$. Sur $\gamma_2$ : $\mathrm{d}x = 0$ sur le premier segment, puis $y = 1$ sur le second, donc $\int_{\gamma_2}\omega_2 = \int_0^1 \mathrm{d}x = 1$. Sur $\gamma_3$, paramétré par $x = y = t$ avec $t\in[0,1]$ : $\int_0^1 t\,\mathrm{d}t = \tfrac12$. Trois chemins, trois valeurs, pour les mêmes extrémités : c'est exactement ce que signifie « ne pas être exacte ».
+
+\textbf{Question 5.} Une isochore ne contribue pas, et sur une isotherme à température $T$,
+\[
+W = -\int_{V_1}^{V_2}\frac{nRT}{V}\,\mathrm{d}V = -nRT\ln\frac{V_2}{V_1}.
+\]
+D'où $W_1 = -nRT_1\ln(V_2/V_1)$ et $W_2 = -nRT_2\ln(V_2/V_1)$, puis
+\[
+W_1 - W_2 = nR\,(T_2-T_1)\ln\frac{V_2}{V_1} \neq 0 .
+\]
+Mêmes états extrêmes, travaux différents : $\delta W$ n'est pas une différentielle exacte, conformément au critère appliqué dans la leçon.
+
+\textbf{Question 6.} $U$ ne dépend que de $T$, donc $\Delta U = \frac{3}{2}nR(T_2-T_1)$ sur les deux chemins : $\mathrm{d}U$ est exacte. Il vient $Q = \Delta U - W$, soit
+\[
+Q_1 = \tfrac{3}{2}nR(T_2-T_1) + nRT_1\ln\frac{V_2}{V_1},
+\qquad
+Q_2 = \tfrac{3}{2}nR(T_2-T_1) + nRT_2\ln\frac{V_2}{V_1}.
+\]
+Différence d'une quantité exacte et d'une quantité qui ne l'est pas, $\delta Q$ n'est pas exacte non plus.
+
+\textbf{Question 7.} Avec $\ln 2 \simeq 0{,}693$ : $W_1 \simeq -1{,}73$ kJ, $W_2 \simeq -3{,}46$ kJ, $\Delta U \simeq 3{,}74$ kJ, $Q_1 \simeq 5{,}47$ kJ et $Q_2 \simeq 7{,}20$ kJ. Le gaz fournit deux fois plus de travail par le second chemin, et reçoit la chaleur correspondante en plus.
+\end{solution}
+\end{exo}
+
 \begin{exo}[Travail et chaleur le long de trois chemins élémentaires]{travail-trois-chemins}
 \keywords{travail des forces de pression, isotherme, isobare, isochore, diagramme de Clapeyron, premier principe}
 
