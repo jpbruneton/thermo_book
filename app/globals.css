@@ -13,14 +13,14 @@
   --font-inter: 'Inter', sans-serif;
 
   /* Backgrounds — warm paper instead of cold slate */
-  --bg-primary: #faf7f1;
+  --bg-primary: #fdfcf9;
   --bg-secondary: #f3eee4;
   --bg-card: #fffdf8;
   --bg-card-hover: #f0e9dc;
   --cover-bg: linear-gradient(145deg, #f6e8d8 0%, #faf3e8 40%, #f3e4d0 100%);
 
   /* Text — warm ink */
-  --text-primary: #3b342b;
+  --text-primary: #241f19;
   --text-heading: #1c1712;
   --text-bright: #1c1712;
   --text-secondary: #5c5346;
@@ -49,7 +49,7 @@
   --border-subtle: rgba(60, 40, 20, 0.08);
 
   /* Nav */
-  --nav-bg: rgba(250, 247, 241, 0.92);
+  --nav-bg: rgba(253, 252, 249, 0.92);
 
   /* Glow */
   --glow-text: rgba(176, 58, 26, 0.18);
