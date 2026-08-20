@@ -298,38 +298,16 @@ export const quizQuestions: QuizQuestion[] = [
 
   // ─── Leçon 4 : Premier principe ───
   {
-    id: "l4-q1",
-    lecon: 4,
-    question: "Pour un système fermé, le premier principe de la thermodynamique s'écrit :",
-    choices: [
-      "dS = δQ / T",
-      "dG = -S dT + V dP",
-      "dU = δQ × δW",
-      "dU = δQ + δW",
-    ],
-    explanations: [
-      "Faux : c'est la définition différentielle de l'entropie (pour une transformation réversible), issue du second principe.",
-      "Faux : c'est la différentielle de l'enthalpie libre G (leçon 7).",
-      "Faux : les termes d'échange s'ajoutent, ils ne se multiplient pas.",
-      "Exact : l'énergie interne d'un système fermé ne varie que par échange de chaleur ou de travail (convention du banquier).",
-    ],
-    correctIndex: 3,
-  },
-  {
     id: "l4-q2",
     lecon: 4,
     question: "Pourquoi note-t-on δQ et δW plutôt que dQ et dW ?",
     choices: [
       "Parce que ce sont des différentielles inexactes : leur intégrale dépend du chemin suivi.",
-      "Par convention typographique historique, héritée de Clausius, sans conséquence sur les calculs que l'on mène ensuite.",
       "Parce que Q et W sont des grandeurs trop petites pour être décrites par des différentielles ordinaires.",
-      "Parce que la chaleur et le travail ne sont définis que pour les transformations irréversibles, contrairement à U.",
     ],
     explanations: [
       "Exact : Q et W dépendent du chemin, contrairement à U qui ne dépend que des états initial et final. Écrire dQ reviendrait à ressusciter la théorie du calorique.",
-      "Faux : la notation a un sens mathématique précis (différentielle inexacte), et écrire dQ dans une copie signale une incompréhension du formalisme.",
       "Faux : la « taille » des grandeurs n'a rien à voir ; c'est la dépendance au chemin qui est en jeu.",
-      "Faux : chaleur et travail sont définis pour toute transformation ; c'est leur caractère non-fonction-d'état qui impose le δ.",
     ],
     correctIndex: 0,
   },
@@ -358,23 +336,21 @@ export const quizQuestions: QuizQuestion[] = [
     question:
       "Un système fermé subit une transformation cyclique (A → A). Que peut-on affirmer sur le bilan Q_cycle + W_cycle ?",
     choices: [
-      "Il vaut nécessairement zéro, car ΔU_cycle = 0 : U est une fonction d'état, donc U(A) − U(A) = 0.",
       "Il vaut nécessairement zéro, car Q et W sont eux-mêmes des fonctions d'état lorsqu'on revient à l'état initial.",
-      "Il peut être positif, ce qui permettrait à la machine de fournir indéfiniment du travail sans rien recevoir de l'extérieur.",
+      "Il vaut zéro car U est une fonction d'état.",
       "Il est toujours strictement positif pour une machine motrice.",
     ],
     explanations: [
-      "Exact : sur un cycle, le système retrouve son état initial, donc ΔU_cycle = U(A) − U(A) = 0 puisque U est une fonction d'état. Le premier principe impose alors Q_cycle + W_cycle = ΔU_cycle = 0.",
       "Faux : c'est l'inverse — Q et W ne sont pas des fonctions d'état (ce sont des transferts, pas des grandeurs du système) ; c'est justement parce qu'ils ne le sont pas que seule leur somme est contrainte à s'annuler sur un cycle, via ΔU_cycle = 0.",
-      "Faux : c'est exactement ce que le premier principe exclut. C'est l'impossibilité du mouvement perpétuel de première espèce : une machine cyclique ne peut fournir indéfiniment du travail sans recevoir une quantité égale d'énergie de son environnement.",
+      "Exact : sur un cycle, le système retrouve son état initial. Comme U est une fonction d'état, ΔU_cycle = U(A) − U(A) = 0, donc le premier principe impose Q_cycle + W_cycle = 0.",
       "Faux : c'est la somme Q_cycle + W_cycle qui est nulle, pas chaque terme séparément ; Q_cycle et W_cycle peuvent chacun être non nuls (et de signes opposés) pour une machine motrice.",
     ],
-    correctIndex: 0,
+    correctIndex: 1,
   },
   {
     id: "l4-q4",
     lecon: 4,
-    question: "On comprime un gaz de façon quasi-statique : dV < 0. Le travail reçu par le gaz, δW = -P dV, est alors :",
+    question: "On comprime un gaz de façon quasi-statique. Que peut-on dire du travail reçu par le gaz ?",
     choices: [
       "Négatif : en se comprimant, le gaz cède nécessairement de l'énergie mécanique au milieu extérieur qui le comprime.",
       "Positif : le gaz reçoit du travail lors d'une compression.",
@@ -388,22 +364,21 @@ export const quizQuestions: QuizQuestion[] = [
     correctIndex: 1,
   },
   {
-    id: "l4-q5",
+    id: "l4-qmacro",
     lecon: 4,
-    question: "Un gaz parfait subit une détente de Joule : on casse la paroi qui le sépare d'un compartiment vide, dans une enceinte isolée. Sa température finale est :",
+    question:
+      "Un système fermé, initialement au repos, est accéléré comme un tout sans modification de son état thermodynamique interne. Que peut-on affirmer ?",
     choices: [
-      "Plus élevée qu'au départ",
-      "Plus basse qu'au départ, car le gaz fournit du travail en se détendant",
-      "Inchangée",
-      "Plus haute ou plus basse selon la valeur de γ",
+      "ΔE_c^macro > 0, tandis que ΔU = 0.",
+      "ΔE_c^macro = 0, tandis que ΔU > 0.",
+      "ΔE_c^macro = ΔU > 0 : les deux énergies augmentent nécessairement de la même quantité.",
     ],
     explanations: [
-      "Faux : rien n'apporte d'énergie au gaz ; l'enceinte est isolée.",
-      "Faux : c'est le piège ; le gaz se détend contre le vide, donc sans force opposée : W = 0. Et Q = 0 (isolé). Donc ΔU = 0.",
-      "Exact : W = 0 (détente contre le vide), Q = 0 (enceinte isolée), donc ΔU = 0 ; or pour un gaz parfait U ne dépend que de T, donc T est inchangée.",
-      "Faux : γ n'intervient pas ici ; le bilan W = Q = 0 vaut quel que soit le gaz parfait.",
+      "Exact : l'accélération du mouvement d'ensemble augmente l'énergie cinétique macroscopique, sans modifier l'énergie interne si l'état thermodynamique reste inchangé.",
+      "Faux : c'est précisément l'énergie cinétique macroscopique qui varie ici ; l'état interne ne change pas.",
+      "Faux : l'énergie cinétique du mouvement d'ensemble et l'énergie interne sont deux contributions distinctes à l'énergie totale.",
     ],
-    correctIndex: 2,
+    correctIndex: 0,
   },
   {
     id: "l4-q6",
@@ -420,22 +395,6 @@ export const quizQuestions: QuizQuestion[] = [
       "Faux : c'est le bilan d'une transformation isotherme d'un gaz parfait (U ne dépendant que de T).",
     ],
     correctIndex: 0,
-  },
-  {
-    id: "l4-q7",
-    lecon: 4,
-    question: "Une mole de gaz parfait subit une compression isotherme. Que vaut ΔU ?",
-    choices: [
-      "ΔU = W, le travail reçu pendant la compression, car toute l'énergie mécanique fournie est stockée dans le gaz",
-      "ΔU = Q, la chaleur échangée pendant la compression, comptée avec son signe",
-      "ΔU = 0",
-    ],
-    explanations: [
-      "Faux : le gaz reçoit bien du travail, mais il expulse exactement la même quantité d'énergie sous forme de chaleur pour maintenir sa température.",
-      "Faux : ΔU = Q ne vaut qu'en isochore (W = 0), pas en isotherme.",
-      "Exact : pour un gaz parfait, U ne dépend que de T ; isotherme ⇒ ΔU = 0, et donc Q = -W (le gaz expulse la chaleur reçue sous forme de travail).",
-    ],
-    correctIndex: 2,
   },
   {
     id: "l4-vf1",
@@ -555,6 +514,24 @@ export const quizQuestions: QuizQuestion[] = [
   {
     id: "l5-q7",
     lecon: 5,
+    question: "Un gaz parfait subit une détente de Joule : on casse la paroi qui le sépare d'un compartiment vide, dans une enceinte isolée. Sa température finale est :",
+    choices: [
+      "Plus élevée qu'au départ",
+      "Plus basse qu'au départ, car le gaz fournit du travail en se détendant",
+      "Inchangée",
+      "Plus haute ou plus basse selon la valeur de γ",
+    ],
+    explanations: [
+      "Faux : rien n'apporte d'énergie au gaz ; l'enceinte est isolée.",
+      "Faux : c'est le piège ; le gaz se détend contre le vide, donc sans force opposée : W = 0. Et Q = 0 (isolé). Donc ΔU = 0.",
+      "Exact : W = 0 (détente contre le vide), Q = 0 (enceinte isolée), donc ΔU = 0 ; or pour un gaz parfait U ne dépend que de T, donc T est inchangée.",
+      "Faux : γ n'intervient pas ici ; le bilan W = Q = 0 vaut quel que soit le gaz parfait.",
+    ],
+    correctIndex: 2,
+  },
+  {
+    id: "l5-q8",
+    lecon: 5,
     question: "Dans la détente de Joule d'un gaz parfait (enceinte isolée, détente dans le vide), on a Q = 0. Peut-on en conclure que ΔS = 0 ?",
     choices: [
       "Oui : dS = δQ/T et δQ = 0, donc l'entropie ne varie pas.",
@@ -565,6 +542,22 @@ export const quizQuestions: QuizQuestion[] = [
       "Faux : c'est le piège classique ; dS = δQ/T suppose la réversibilité. Ici dS = δQ/T + dS_c avec dS_c > 0.",
       "Faux : S dépend aussi du volume, S = S(U,V,N) ; à U constant, le volume ayant augmenté, l'entropie augmente (ΔS = nR ln(V_f/V_i) pour un GP).",
       "Exact : on calcule ΔS par un chemin virtuel réversible (isotherme, car T est inchangée) et on trouve ΔS = nR ln(V_f/V_i) > 0, signature de l'irréversibilité.",
+    ],
+    correctIndex: 2,
+  },
+  {
+    id: "l5-q9",
+    lecon: 5,
+    question: "Une mole de gaz parfait subit une compression isotherme. Que vaut ΔU ?",
+    choices: [
+      "ΔU = W, le travail reçu pendant la compression, car toute l'énergie mécanique fournie est stockée dans le gaz",
+      "ΔU = Q, la chaleur échangée pendant la compression, comptée avec son signe",
+      "ΔU = 0",
+    ],
+    explanations: [
+      "Faux : le gaz reçoit bien du travail, mais il expulse exactement la même quantité d'énergie sous forme de chaleur pour maintenir sa température.",
+      "Faux : ΔU = Q ne vaut qu'en isochore (W = 0), pas en isotherme.",
+      "Exact : pour un gaz parfait, U ne dépend que de T ; isotherme ⇒ ΔU = 0, et donc Q = -W (le gaz expulse la chaleur reçue sous forme de travail).",
     ],
     correctIndex: 2,
   },
