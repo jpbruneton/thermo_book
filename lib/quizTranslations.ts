@@ -19,6 +19,8 @@ export interface QuizTranslations {
   controlLabel: string;
   /** "Leçon n°3" / "Lesson 3" — localized numbering, no hard-coded "n°". */
   lessonLabel: (lecon: number) => string;
+  /** Optional shorter titles used only by lesson cards on the quiz hub. */
+  lessonCardTitles: Partial<Record<number, string>>;
   /** Card call to action on the hub. */
   startQuiz: string;
   /** Card footer: how many questions this quiz holds. */
@@ -54,6 +56,7 @@ export const quizTranslations: Record<Lang, QuizTranslations> = {
     hubTitle: "Quiz : questions de cours",
     controlLabel: "Contrôle de cours",
     lessonLabel: (n) => `Leçon n°${n}`,
+    lessonCardTitles: { 2: "Historique de la thermodynamique" },
     startQuiz: "Commencer le quiz →",
     questionCount: (n) => `${n} question${n > 1 ? "s" : ""}`,
     back: "← Retour aux quiz",
@@ -76,6 +79,7 @@ export const quizTranslations: Record<Lang, QuizTranslations> = {
     hubTitle: "Quiz — Course Check",
     controlLabel: "Course check",
     lessonLabel: (n) => `Lesson ${n}`,
+    lessonCardTitles: { 2: "History of Thermodynamics" },
     startQuiz: "Start the quiz →",
     questionCount: (n) => `${n} question${n === 1 ? "" : "s"}`,
     back: "← Back to quizzes",
@@ -98,6 +102,7 @@ export const quizTranslations: Record<Lang, QuizTranslations> = {
     hubTitle: "Quiz — Fragen zum Kurs",
     controlLabel: "Wissenscheck",
     lessonLabel: (n) => `Lektion ${n}`,
+    lessonCardTitles: { 2: "Geschichte der Thermodynamik" },
     startQuiz: "Quiz starten →",
     questionCount: (n) => `${n} Frage${n === 1 ? "" : "n"}`,
     back: "← Zurück zu den Quiz",
@@ -120,6 +125,7 @@ export const quizTranslations: Record<Lang, QuizTranslations> = {
     hubTitle: "Quiz: preguntas de curso",
     controlLabel: "Control de curso",
     lessonLabel: (n) => `Lección ${n}`,
+    lessonCardTitles: { 2: "Historia de la termodinámica" },
     startQuiz: "Comenzar el quiz →",
     questionCount: (n) => `${n} pregunta${n === 1 ? "" : "s"}`,
     back: "← Volver a los quiz",
@@ -142,6 +148,7 @@ export const quizTranslations: Record<Lang, QuizTranslations> = {
     hubTitle: "Quiz: perguntas de curso",
     controlLabel: "Controlo de conhecimentos",
     lessonLabel: (n) => `Lição ${n}`,
+    lessonCardTitles: { 2: "História da termodinâmica" },
     startQuiz: "Começar o quiz →",
     questionCount: (n) => `${n} pergunta${n === 1 ? "" : "s"}`,
     back: "← Voltar aos quiz",
@@ -164,6 +171,7 @@ export const quizTranslations: Record<Lang, QuizTranslations> = {
     hubTitle: "Quiz: domande di teoria",
     controlLabel: "Verifica di teoria",
     lessonLabel: (n) => `Lezione ${n}`,
+    lessonCardTitles: { 2: "Storia della termodinamica" },
     startQuiz: "Inizia il quiz →",
     questionCount: (n) => `${n} domand${n === 1 ? "a" : "e"}`,
     back: "← Torna ai quiz",
@@ -186,6 +194,7 @@ export const quizTranslations: Record<Lang, QuizTranslations> = {
     hubTitle: "Quiz: pytania z wykładu",
     controlLabel: "Sprawdzian z wykładu",
     lessonLabel: (n) => `Lekcja ${n}`,
+    lessonCardTitles: { 2: "Historia termodynamiki" },
     startQuiz: "Rozpocznij quiz →",
     // Polish plural: 1 pytanie, 2-4 pytania, 5+ pytań (with the 12-14 exception).
     questionCount: (n) => {
@@ -215,6 +224,7 @@ export const quizTranslations: Record<Lang, QuizTranslations> = {
     hubTitle: "Тесты по курсу",
     controlLabel: "Проверка знаний",
     lessonLabel: (n) => `Урок ${n}`,
+    lessonCardTitles: { 2: "История термодинамики" },
     startQuiz: "Начать тест →",
     // Russian plural: 1 вопрос, 2-4 вопроса, 5+ вопросов (with the 11-14 exception).
     questionCount: (n) => {
@@ -245,6 +255,7 @@ export const quizTranslations: Record<Lang, QuizTranslations> = {
     hubTitle: "测验：课程问题",
     controlLabel: "课程自测",
     lessonLabel: (n) => `第 ${n} 讲`,
+    lessonCardTitles: { 2: "热力学史" },
     startQuiz: "开始测验 →",
     questionCount: (n) => `${n} 道题`,
     back: "← 返回测验列表",
@@ -267,6 +278,7 @@ export const quizTranslations: Record<Lang, QuizTranslations> = {
     hubTitle: "クイズ：講義の確認問題",
     controlLabel: "理解度チェック",
     lessonLabel: (n) => `第 ${n} 講`,
+    lessonCardTitles: { 2: "熱力学の歴史" },
     startQuiz: "クイズを始める →",
     questionCount: (n) => `${n} 問`,
     back: "← クイズ一覧へ戻る",
@@ -289,6 +301,7 @@ export const quizTranslations: Record<Lang, QuizTranslations> = {
     hubTitle: "퀴즈: 강의 확인 문제",
     controlLabel: "학습 점검",
     lessonLabel: (n) => `${n}강`,
+    lessonCardTitles: { 2: "열역학의 역사" },
     startQuiz: "퀴즈 시작하기 →",
     questionCount: (n) => `${n}문항`,
     back: "← 퀴즈 목록으로",
@@ -311,6 +324,7 @@ export const quizTranslations: Record<Lang, QuizTranslations> = {
     hubTitle: "क्विज़: पाठ के प्रश्न",
     controlLabel: "पाठ जाँच",
     lessonLabel: (n) => `पाठ ${n}`,
+    lessonCardTitles: { 2: "ऊष्मागतिकी का इतिहास" },
     startQuiz: "क्विज़ शुरू करें →",
     questionCount: (n) => `${n} प्रश्न`,
     back: "← क्विज़ पर वापस",
@@ -333,6 +347,7 @@ export const quizTranslations: Record<Lang, QuizTranslations> = {
     hubTitle: "Trắc nghiệm: câu hỏi bài học",
     controlLabel: "Kiểm tra bài học",
     lessonLabel: (n) => `Bài ${n}`,
+    lessonCardTitles: { 2: "Lịch sử nhiệt động lực học" },
     startQuiz: "Bắt đầu làm bài →",
     questionCount: (n) => `${n} câu hỏi`,
     back: "← Quay lại danh sách trắc nghiệm",
@@ -355,6 +370,7 @@ export const quizTranslations: Record<Lang, QuizTranslations> = {
     hubTitle: "اختبارات الدروس",
     controlLabel: "اختبار الدرس",
     lessonLabel: (n) => `الدرس ${n}`,
+    lessonCardTitles: { 2: "تاريخ الديناميكا الحرارية" },
     startQuiz: "ابدأ الاختبار ←",
     // Arabic plural: 1 singular, 2 dual, 3-10 plural, 11+ accusative singular.
     questionCount: (n) => {
@@ -383,6 +399,7 @@ export const quizTranslations: Record<Lang, QuizTranslations> = {
     hubTitle: "Kuis: pertanyaan pelajaran",
     controlLabel: "Cek pemahaman",
     lessonLabel: (n) => `Pelajaran ${n}`,
+    lessonCardTitles: { 2: "Sejarah Termodinamika" },
     startQuiz: "Mulai kuis →",
     questionCount: (n) => `${n} soal`,
     back: "← Kembali ke daftar kuis",
@@ -405,6 +422,7 @@ export const quizTranslations: Record<Lang, QuizTranslations> = {
     hubTitle: "Test: ders soruları",
     controlLabel: "Ders kontrolü",
     lessonLabel: (n) => `${n}. Ders`,
+    lessonCardTitles: { 2: "Termodinamiğin Tarihi" },
     startQuiz: "Teste başla →",
     questionCount: (n) => `${n} soru`,
     back: "← Testlere dön",

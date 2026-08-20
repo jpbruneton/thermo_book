@@ -29,7 +29,9 @@ export default async function QuizHomePage({
       const lesson = lessons.find((theme) => theme.number === lecon);
       return {
         lecon,
-        title: lesson ? getThemeTitle(lesson, lang) : t.lessonLabel(lecon),
+        title:
+          t.lessonCardTitles[lecon] ??
+          (lesson ? getThemeTitle(lesson, lang) : t.lessonLabel(lecon)),
         count: getLocalizedQuizQuestions(lecon, lang)?.length ?? 0,
       };
     });
