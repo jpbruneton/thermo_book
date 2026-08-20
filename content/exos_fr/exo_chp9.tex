@@ -1,171 +1,317 @@
 % Banque d'exercices — chapitre 9
 % Le chapitre est déterminé par le nom de ce fichier.
 
-\begin{exo}[Équation de Clausius-Clapeyron et point d'ébullition en altitude]{clausius-clapeyron}
-\keywords{transition de phase, Clausius-Clapeyron, changement d'état, pression de vapeur saturante, chaleur latente}
+\begin{exo}[Relation de Mayer : $C_p - C_v = nR$]{mayer-relation}
+\keywords{coefficients calorimétriques, Cp, Cv, relation de Mayer, gaz parfait, coefficient de dilatation}
 
-L'eau bout à $100\,°\text{C}$ sous la pression atmosphérique $P_0 = 1{,}013 \times 10^5\,\text{Pa}$. Sa chaleur latente de vaporisation est $L = 2{,}26 \times 10^6\,\text{J·kg}^{-1}$.
-
-L'équation de Clausius-Clapeyron donne la pente de la courbe de coexistence liquide-vapeur :
-$$\frac{\mathrm{d}P}{\mathrm{d}T} = \frac{L}{T\,\Delta v}$$
-où $\Delta v = v_g - v_l$ est la variation de volume massique. En supposant que la vapeur est un gaz parfait et que $v_l \ll v_g$ :
-$$\frac{\mathrm{d}P}{\mathrm{d}T} \approx \frac{LP}{rT^2}$$
-où $r = R/M = 461\,\text{J·kg}^{-1}\text{K}^{-1}$ est la constante spécifique de la vapeur d'eau.
+On considère un gaz parfait de $n$ moles. On rappelle que $C_p = \left(\partial H/\partial T\right)_P$ et $C_v = \left(\partial U/\partial T\right)_V$, et que $H = U + PV$.
 
 \begin{enumerate}
-  \item Montrer que $P(T) \approx P_0 \exp\!\left[-\dfrac{L}{r}\!\left(\dfrac{1}{T} - \dfrac{1}{T_0}\right)\right]$ avec $T_0 = 373\,\text{K}$.
-  \item Au sommet du Mont-Blanc ($P \approx 0{,}54\,P_0$), à quelle température l'eau bout-elle ?
+  \item Exprimer $H$ en fonction de $U$ et montrer que $H = U + nRT$ pour un gaz parfait.
+  \item En déduire que $C_p - C_v = nR$ (relation de Mayer).
+  \item Application numérique : pour l'air ($n=1$ mol, $R = 8{,}314\,\text{J·mol}^{-1}\text{K}^{-1}$), calculer $C_p - C_v$.
+  \item Montrer que la relation de Mayer implique $\gamma = C_p/C_v > 1$.
 \end{enumerate}
 
 \begin{indication}
-Séparer les variables dans l'équation différentielle et intégrer entre $T_0$ et $T$. Pour la question 2, inverser la formule pour trouver $T$.
+Utiliser $PV = nRT$ pour simplifier $H = U + PV$, puis dériver par rapport à $T$ à pression constante.
 \end{indication}
 
 \begin{solution}
-\textbf{1.} Séparation des variables : $\dfrac{\mathrm{d}P}{P} = \dfrac{L}{r}\dfrac{\mathrm{d}T}{T^2}$.
+\textbf{1.} $H = U + PV = U + nRT$ (gaz parfait). Comme $U$ ne dépend que de $T$, $H$ ne dépend aussi que de $T$.
 
-En intégrant entre $T_0$ (où $P = P_0$) et $T$ :
-$$\ln\frac{P}{P_0} = -\frac{L}{r}\!\left(\frac{1}{T} - \frac{1}{T_0}\right) \implies P = P_0\exp\!\left[-\frac{L}{r}\!\left(\frac{1}{T}-\frac{1}{T_0}\right)\right].$$
+\textbf{2.} $C_p = \left(\partial H/\partial T\right)_P = \mathrm{d}H/\mathrm{d}T = \mathrm{d}U/\mathrm{d}T + nR = C_v + nR$. Donc $C_p - C_v = nR$.
 
-\textbf{2.} On cherche $T$ tel que $P = 0{,}54\,P_0$ :
-$$\ln(0{,}54) = -\frac{L}{r}\!\left(\frac{1}{T}-\frac{1}{T_0}\right) \implies \frac{1}{T} = \frac{1}{T_0} - \frac{r\ln(0{,}54)}{L}.$$
-$$\frac{1}{T} = \frac{1}{373} + \frac{461 \times 0{,}616}{2{,}26\times10^6} \approx 2{,}681\times10^{-3} + 1{,}256\times10^{-4} \approx 2{,}806\times10^{-3}\,\text{K}^{-1}.$$
-$$T \approx 356\,\text{K} \approx 83\,°\text{C}.$$
-L'eau bout donc à environ $83\,°\text{C}$ au sommet du Mont-Blanc — ce qui rend la cuisson des aliments notablement plus longue.
+\textbf{3.} $C_p - C_v = 1 \times 8{,}314 \approx 8{,}3\,\text{J·K}^{-1}$.
+
+\textbf{4.} $C_p = C_v + nR > C_v$ car $nR > 0$. Donc $\gamma = C_p/C_v > 1$.
 \end{solution}
 
 \end{exo}
 
-\begin{exo}[Point triple de l'eau]{point-triple-eau}
-\keywords{point triple, coexistence, sublimation, vaporisation, eau, diagramme des phases}
+\begin{exo}[Les six coefficients du gaz parfait]{coefficients-gaz-parfait}
+\keywords{coefficients calorimétriques, coefficients thermoélastiques, dilatation isobare, compressibilité isotherme, gaz parfait}
 
-Au point triple de l'eau : $T_{tr} = 273{,}16$ K et $P_{tr} = 611$ Pa. On donne les volumes massiques : $v_l = 1{,}0\times10^{-3}$ m$^3$·kg$^{-1}$, $v_g = 206$ m$^3$·kg$^{-1}$, $v_s = 1{,}09\times10^{-3}$ m$^3$·kg$^{-1}$. Chaleurs latentes massiques : $L_{sub} = 2{,}83\times10^6$ J·kg$^{-1}$ (solide $\to$ gaz), $L_{vap} = 2{,}26\times10^6$ J·kg$^{-1}$ (liquide $\to$ gaz).
-
-\begin{enumerate}
-\item Vérifier la relation de Clapeyron entre les pentes des courbes de sublimation et de vaporisation au point triple : $L_{sub}/(T_{tr}\Delta v_{sg}) \approx L_{vap}/(T_{tr}\Delta v_{lg})$ (à $\Delta v$ près).
-\item Calculer la chaleur latente de fusion $L_{fus} = L_{sub} - L_{vap}$ et la pente de la courbe fusion à $T_{tr}$.
-\item Pourquoi le point triple fixe-t-il historiquement l'échelle Kelvin ?
-\item Peut-on faire coexister les trois phases à $P \neq P_{tr}$ ? Justifier.
-\end{enumerate}
-
-\begin{indication}
-$\Delta v_{sg} = v_g - v_s$, $\Delta v_{lg} = v_g - v_l$. Au point triple, les trois phases sont en équilibre chimique : $\mu_s = \mu_l = \mu_g$.
-\end{indication}
-
-\begin{solution}
-\textbf{Question 1.} $\Delta v_{sg} \approx 205$ m$^3$·kg$^{-1}$, $\Delta v_{lg} \approx 205$ m$^3$·kg$^{-1}$ (car $v_l \approx v_s \ll v_g$). Pentes : $L_{sub}/(T_{tr}\Delta v_{sg}) \approx 2{,}83\times10^6/(273\times205) \approx 50$ Pa·K$^{-1}$ et $L_{vap}/(T_{tr}\Delta v_{lg}) \approx 40$ Pa·K$^{-1}$ — même ordre de grandeur ; l'écart vient de $v_l \neq v_s$ (pente fusion non nulle).
-
-\textbf{Question 2.} $L_{fus} = 0{,}57\times10^6$ J·kg$^{-1}$. Pente fusion : $L_{fus}/(T_{tr}(v_l-v_s)) \approx 0{,}57\times10^6/(273\times(-9\times10^{-5})) \approx -2{,}3\times10^7$ Pa·K$^{-1}$ (pente négative : glace moins dense que l'eau).
-
-\textbf{Question 3.} $T_{tr}$ est une propriété universelle de l'eau pure ; la définition moderne du kelvin s'appuie sur un ensemble de points fixes, dont le point triple de l'eau (273,16 K exactement).
-
-\textbf{Question 4.} Non : à $T_{tr}$ fixe, trois phases coexistent seulement à la pression unique $P_{tr}$ (variété d'équilibre de dimension 0 en $(P,T)$ pour un corps pur).
-\end{solution}
-\end{exo}
-
-\begin{exo}[Gaz de van der Waals : palier de Maxwell]{van-der-waals-maxwell}
-\keywords{van der Waals, Maxwell, palier, courbe de saturation, titre vapeur, transition liquide-gaz}
-
-Une mole de CO$_2$ obéit à $P = RT/(v-b) - a/v^2$ avec $R = 8{,}314$ J·mol$^{-1}$·K$^{-1}$, $a = 0{,}364$ Pa·m$^6$·mol$^{-2}$, $b = 4{,}27\times10^{-5}$ m$^3$·mol$^{-1}$. À $T = 280$ K (sous la température critique), l'isotherme présente une zone instable ($\partial P/\partial v > 0$).
-
-\begin{enumerate}
-\item Calculer la température critique $T_c = 8a/(27Rb)$ et montrer que $T = 280$ K $< T_c$.
-\item On remplace la portion instable par un palier isotherme à $P_{sat}$. Énoncer la règle des paliers de Maxwell (égalité des aires).
-\item Numériquement, on trouve $P_{sat} \approx 3{,}4$ MPa avec $v_l \approx 4{,}5\times10^{-5}$ m$^3$·mol$^{-1}$ et $v_g \approx 1{,}2\times10^{-3}$ m$^3$·mol$^{-1}$. Un système de volume molaire $v_M = 3\times10^{-4}$ m$^3$·mol$^{-1}$ est sur le palier : calculer le titre molaire en vapeur $x_v = (v_M - v_l)/(v_g - v_l)$.
-\item Interpréter le palier sur le diagramme $(P,v)$.
-\end{enumerate}
-
-\begin{indication}
-$T_c = 8a/(27Rb)$. Règle des moments : $x_v = (v_M - v_l)/(v_g - v_l)$. Aire Maxwell : $\int_{v_l}^{v_g}(P_{sat} - P(v))\,\mathrm{d}v = 0$.
-\end{indication}
-
-\begin{solution}
-\textbf{Question 1.} $T_c = 8\times0{,}364/(27\times8{,}314\times4{,}27\times10^{-5}) \approx 304$ K. Donc 280 K $< T_c$ : isotherme sous-critique avec loop instable.
-
-\textbf{Question 2.} Maxwell : $\int_{v_l}^{v_g} P(v)\,\mathrm{d}v = P_{sat}(v_g - v_l)$ — l'aire sous la courbe métastable égale celle du rectangle sous le palier.
-
-\textbf{Question 3.} $x_v = (3\times10^{-4} - 4{,}5\times10^{-5})/(1{,}2\times10^{-3} - 4{,}5\times10^{-5}) \approx 0{,}22$ : environ 22\,\% en vapeur, 78\,\% liquide.
-
-\textbf{Question 4.} À gauche du palier : liquide ; à droite : gaz ; sur le palier : mélange diphasique à $P_{sat}(T)$ constant — construction graphique de la transition de phase dans le modèle VdW.
-\end{solution}
-\end{exo}
-
-\begin{exo}[Au voisinage du point critique]{opalescence-critique}
-\keywords{point critique, compressibilité, opalescence, van der Waals, transition de phase}
-
-Au voisinage du point critique $(T_c, P_c)$ d'un fluide, la compressibilité isotherme diverge :
+On rappelle les définitions, pour $n$ moles de gaz parfait :
 \[
-\chi_T \sim \frac{\kappa}{|T - T_c|},
+\delta Q = C_V\,\mathrm{d}T + \ell\,\mathrm{d}V = C_P\,\mathrm{d}T + h\,\mathrm{d}P, \qquad
+\alpha = \frac{1}{V}\left(\frac{\partial V}{\partial T}\right)_P, \quad
+\beta = \frac{1}{P}\left(\frac{\partial P}{\partial T}\right)_V, \quad
+\chi_T = -\frac{1}{V}\left(\frac{\partial V}{\partial P}\right)_T.
 \]
-et le volume molaire tend vers $v_c = 3b$ pour un gaz de van der Waals.
 
 \begin{enumerate}
-\item Rappeler pourquoi $\chi_T > 0$ correspond à une phase stable et $\chi_T < 0$ à une instabilité.
-\item Pour $T - T_c = 1$ K, avec $\kappa \sim 10^{-5}$ m$^3$·J$^{-1}$, estimer $\chi_T$ et commenter (opalescence critique : fluctuations gigantesques).
-\item Au point critique strict, que devient la distinction liquide/gaz ? Relier au fluide supercritique du cours.
+\item En utilisant le fait que $U$ ne dépend que de $T$, montrer que $\ell = P$ pour le gaz parfait. En utilisant le fait que $H$ ne dépend que de $T$, montrer que $h = -V$.
+\item Calculer $\alpha$, $\beta$ et $\chi_T$ pour le gaz parfait.
+\item Vérifier sur ces valeurs les relations générales $\ell = \beta TP$, $h = -\alpha VT$ et $P\beta\chi_T = \alpha$.
+\item Démontrer la relation $\ell = h\left(\dfrac{\partial P}{\partial V}\right)_T$ et la vérifier pour le gaz parfait.
+\item Interpréter physiquement le signe de $h$ : que doit faire la pression d'un gaz parfait qui reçoit de la chaleur à température constante ?
 \end{enumerate}
 
 \begin{indication}
-Instabilité VdW : zone où $\partial P/\partial v > 0$. Opalescence : $\chi_T$ énorme $\Rightarrow$ fluctuations de densité visibles.
+Isotherme : $\mathrm{d}U = 0$ donne $\delta Q = P\,\mathrm{d}V$ ; de même $\mathrm{d}H = 0$ donne $\delta Q = -V\,\mathrm{d}P$. Pour la question 4, écrire $\delta Q$ en variables $(T,V)$ et y substituer $\mathrm{d}P$ exprimé en fonction de $\mathrm{d}T$ et $\mathrm{d}V$... ou plus simplement comparer les deux écritures de $\delta Q$ sur une isotherme.
 \end{indication}
 
 \begin{solution}
-\textbf{Question 1.} Stabilité isotherme : $\left(\partial P/\partial V\right)_T < 0$ équivaut à $\chi_T > 0$. Si $\chi_T < 0$, une fluctuation de volume s'amplifie : phase instable.
+\textbf{Question 1.} Sur une isotherme du gaz parfait, $\mathrm{d}U = 0$, donc $\delta Q = P\,\mathrm{d}V$ ; par identification avec $\delta Q = C_V\,\mathrm{d}T + \ell\,\mathrm{d}V = \ell\,\mathrm{d}V$, on lit $\ell = P$. De même $H$ ne dépend que de $T$ : $\mathrm{d}H = \delta Q + V\,\mathrm{d}P = 0$ sur l'isotherme, donc $\delta Q = -V\,\mathrm{d}P = h\,\mathrm{d}P$, d'où $h = -V$.
 
-\textbf{Question 2.} $\chi_T \sim 10^{-5}/1 = 10^{-5}$ m$^3$·J$^{-1}$ — énorme comparé au liquide ordinaire ($\sim10^{-10}$ Pa$^{-1}$ en volume molaire). Les fluctuations de densité éclairent le milieu (opalescence).
+\textbf{Question 2.} De $V = nRT/P$ : $\alpha = \dfrac{1}{V}\cdot\dfrac{nR}{P} = \dfrac{1}{T}$ et $\chi_T = -\dfrac{1}{V}\left(-\dfrac{nRT}{P^2}\right) = \dfrac{1}{P}$. De $P = nRT/V$ : $\beta = \dfrac{1}{P}\cdot\dfrac{nR}{V} = \dfrac{1}{T}$.
 
-\textbf{Question 3.} À $(T_c, P_c)$, les phases liquide et gaz coïncident : plus de frontière nette. Au-delà, fluide supercritique — une seule phase indifférenciée, comme dans le cours (diagramme $P,T$).
+\textbf{Question 3.} $\beta TP = \frac{1}{T}\,TP = P = \ell$ \checkmark ; $-\alpha VT = -\frac{1}{T}\,VT = -V = h$ \checkmark ; $P\beta\chi_T = P\cdot\frac{1}{T}\cdot\frac{1}{P} = \frac{1}{T} = \alpha$ \checkmark.
+
+\textbf{Question 4.} Sur une isotherme, les deux écritures de $\delta Q$ donnent $\ell\,\mathrm{d}V = h\,\mathrm{d}P$, et comme $\mathrm{d}P = \left(\partial P/\partial V\right)_T\mathrm{d}V$ à $T$ fixé :
+\[
+\ell = h\left(\frac{\partial P}{\partial V}\right)_T.
+\]
+Gaz parfait : $h\left(\partial P/\partial V\right)_T = (-V)\left(-\dfrac{nRT}{V^2}\right) = \dfrac{nRT}{V} = P = \ell$. \checkmark
+
+\textbf{Question 5.} $\delta Q = h\,\mathrm{d}P = -V\,\mathrm{d}P$ : pour recevoir de la chaleur ($\delta Q > 0$) à température constante, il faut $\mathrm{d}P < 0$. Rien d'étrange : à $T$ fixée, $PV$ est constant, le gaz se dilate en absorbant la chaleur ($\delta Q = P\,\mathrm{d}V > 0$) et sa pression chute d'autant.
 \end{solution}
 \end{exo}
 
-\begin{exo}[Surfusion et surchauffe : métastabilité]{surfusion-surchauffe}
-\keywords{surfusion, surchauffe, métastabilité, transition de phase, instabilité locale}
+\begin{exo}[Entropie du CO$_2$ : quand $C_V$ dépend de $T$]{cv-dependant-de-t}
+\keywords{capacité thermique variable, dioxyde de carbone, entropie, chauffage isochore, intégration}
+
+Entre 273 et 500 K, la capacité thermique molaire à volume constant du dioxyde de carbone est bien décrite par
+\[
+c_V(T) = A + BT, \qquad A = 23{,}83\ \text{J·mol}^{-1}\text{K}^{-1}, \quad B = 22{,}15\times10^{-3}\ \text{J·mol}^{-1}\text{K}^{-2}.
+\]
+On traite le CO$_2$ comme un gaz parfait (au sens $PV = nRT$).
 
 \begin{enumerate}
-\item Rappeler la différence entre stabilité \emph{locale} et \emph{globale} d'un état d'équilibre, en vous appuyant sur le graphe $S(U)$ du cours.
-\item L'eau liquide peut rester liquide jusqu'à $T \approx -40\,°\text{C}$ (surfusion) si le récipient est parfaitement lisse. Pourquoi une perturbation mécanique déclenche-t-elle la solidification brutale ?
-\item De même, l'eau peut être surchauffée au-delà de 100\,$°$C sans bouillir. Quel risque présente l'ouverture brusque d'un micro-ondes dans ce cas ?
-\item Relier ces phénomènes à l'enveloppe concave de $S(U)$ et au palier de Maxwell.
+\item Établir, à une constante près, l'expression de l'entropie de $n$ moles de ce gaz en fonction de $T$ et $V$.
+\item Calculer la variation d'entropie $\Delta S$ pour un échauffement isochore de cinq moles de CO$_2$ de 289 K à 400 K.
+\item La relation de Mayer molaire $c_P - c_V = R$ reste-t-elle valable ? Que vaut $c_P(T)$ ?
 \end{enumerate}
 
 \begin{indication}
-Localement stable mais au-dessous de l'enveloppe concave : le système n'a pas encore trouvé le minimum global diphasique.
+Reprendre $\mathrm{d}S = \dfrac{nc_V(T)}{T}\mathrm{d}T + \dfrac{nR}{V}\mathrm{d}V$ et intégrer terme à terme ; le terme en $BT/T$ donne une contribution linéaire en $T$.
 \end{indication}
 
 \begin{solution}
-\textbf{Question 1.} Localement stable : petites fluctuations reviennent (minimum local de potentiel). Globalement stable : minimum le plus bas compatible avec les contraintes — pour $U$ fixé isolé, maximum de $S$ (enveloppe concave).
+\textbf{Question 1.}
+\[
+S(T,V) = n\!\int\!\frac{A + BT}{T}\,\mathrm{d}T + nR\ln V + \text{cste} = n\left[A\ln T + BT\right] + nR\ln V + \text{cste}.
+\]
 
-\textbf{Question 2.} En surfusion, le liquide est métastable : une gerçure ou vibration fournit des germes de glace ; le système bascule vers l'état global stable (glace + liquide sur le palier), libérant la chaleur latente brutalement.
+\textbf{Question 2.} Isochore, $n = 5$ mol :
+\[
+\Delta S = 5\left[23{,}83\ln\frac{400}{289} + 22{,}15\times10^{-3}\,(400 - 289)\right] = 5\left[7{,}75 + 2{,}46\right] \approx 51\ \text{J/K}.
+\]
+Le terme linéaire en $T$ n'est pas négligeable : il pèse près d'un quart du total.
 
-\textbf{Question 3.} Surchauffe : le liquide dépasse $T_{sat}$ sans nucléation de vapeur. Une perturbation (cuillère, ouverture du four) déclenche l'ébullition explosive — projections brûlantes (accidents domestiques).
-
-\textbf{Question 4.} Les portions métastables VdW correspondent à des points sous l'enveloppe concave de $S$ ; le palier / segment BF remplace l'instabilité globale. Surfusion/surchauffe = rester sur une branche métastable avant bascule.
+\textbf{Question 3.} Oui : la relation de Mayer du gaz parfait ne dépend que de l'équation d'état $PV = nRT$, pas de la forme de $c_V$. Donc $c_P(T) = c_V(T) + R = (A + R) + BT$ : les deux capacités dépendent de $T$, mais leur différence reste constante.
 \end{solution}
 \end{exo}
 
-\begin{exo}[Phases extrêmes : glace et diamant sous pression]{phases-haute-pression}
-\keywords{diagramme des phases, haute pression, glace, diamant, graphite, transition de phase}
+\begin{exo}[Relations de Clapeyron : la loi de Joule démontrée]{relations-clapeyron}
+\keywords{relations de Clapeyron, coefficients calorimétriques, relation de Maxwell, loi de Joule, énergie interne, gaz parfait}
 
-Le diagramme simplifié de l'eau comporte, outre la glace $I_h$ ordinaire, des phases $III$, $VI$ et $VII$ stables au-delà de quelques GPa. Le carbone présente une transition graphite $\to$ diamant vers $P \approx 5$ GPa à température ambiante.
+On rappelle les relations de Maxwell issues de $F$ et de $G$ :
+\[
+\left(\frac{\partial S}{\partial V}\right)_T = \left(\frac{\partial P}{\partial T}\right)_V, \qquad
+\left(\frac{\partial S}{\partial P}\right)_T = -\left(\frac{\partial V}{\partial T}\right)_P.
+\]
 
 \begin{enumerate}
-\item À $T = 300$ K, le graphite est stable à $P < 5$ GPa et le diamant au-delà. Quelle transition de phase se produit lors d'une compression isotherme de 0 à 10 GPa ?
-\item La glace $VII$ (coordonnée cubique centrée) est stable au-delà de $\sim 2$ GPa. Pour une planète « océan » avec $P$ croissant avec la profondeur ($\approx 10$ MPa/km dans l'eau), à quelle profondeur l'eau ordinaire cède-t-elle place à des glaces denses ?
-\item Ordre de grandeur : si $\Delta v < 0$ pour graphite $\to$ diamant, le signe de $\mathrm{d}P/\mathrm{d}T$ le long de la coexistence est-il positif ou négatif (Clausius-Clapeyron) ?
-\item Pourquoi un « diamant géant » (planète carbonée) n'est-il pas décrit par le seul modèle de van der Waals ?
+\item À partir des définitions $\ell = T\left(\partial S/\partial V\right)_T$ et $h = T\left(\partial S/\partial P\right)_T$, démontrer les deux relations de Clapeyron :
+\[
+\ell = T\left(\frac{\partial P}{\partial T}\right)_V, \qquad h = -T\left(\frac{\partial V}{\partial T}\right)_P.
+\]
+\item En déduire l'identité générale
+\[
+\left(\frac{\partial U}{\partial V}\right)_T = T\left(\frac{\partial P}{\partial T}\right)_V - P.
+\]
+\item Montrer que pour tout fluide dont la pression est proportionnelle à $T$ à volume fixé, l'énergie interne ne dépend pas du volume. Vérifier explicitement pour le gaz parfait : c'est la (première) loi de Joule, ici \emph{démontrée} et non postulée.
+\item L'expérience de la détente de Joule montre en réalité un léger refroidissement pour les gaz réels. Qu'est-ce que cela révèle sur $\left(\partial P/\partial T\right)_V$ des gaz réels ?
 \end{enumerate}
 
 \begin{indication}
-Clausius-Clapeyron : $\mathrm{d}P/\mathrm{d}T = L/(T\Delta v)$. VdW = fluide ; transitions solide-solid ou solid-liquid à haute $P$ demandent d'autres modèles.
+Pour la question 2, partir de $\mathrm{d}U = T\,\mathrm{d}S - P\,\mathrm{d}V$ et dériver par rapport à $V$ à $T$ fixé. Pour la question 3, écrire $P = T\,f(V)$ et calculer.
 \end{indication}
 
 \begin{solution}
-\textbf{Question 1.} Traversée de la frontière graphite/diamant vers $\sim 5$ GPa : transition de phase solide-solide (réarrangement cristallin), libération de chaleur latente de transition.
+\textbf{Question 1.} Immédiat en substituant les relations de Maxwell dans les définitions : $\ell = T\left(\partial S/\partial V\right)_T = T\left(\partial P/\partial T\right)_V$, et $h = T\left(\partial S/\partial P\right)_T = -T\left(\partial V/\partial T\right)_P$.
 
-\textbf{Question 2.} 2 GPa $\approx 200$ km de profondeur océanique (ordre de grandeur) : au c\oe ur de géantes glace/eau, phases $VI$-$VII$ plutôt que glace $I_h$ — contexte astro/géo.
+\textbf{Question 2.} De $\mathrm{d}U = T\,\mathrm{d}S - P\,\mathrm{d}V$, à $T$ fixé :
+\[
+\left(\frac{\partial U}{\partial V}\right)_T = T\left(\frac{\partial S}{\partial V}\right)_T - P = \ell - P = T\left(\frac{\partial P}{\partial T}\right)_V - P.
+\]
 
-\textbf{Question 3.} Graphite $\to$ diamant : $v_{dia} < v_{graph}$, donc $\Delta v < 0$. Or la frontière graphite/diamant observée expérimentalement a une pente $\mathrm{d}P/\mathrm{d}T > 0$ (c'est pourquoi la synthèse industrielle du diamant demande \emph{à la fois} une pression et une température élevées). D'après Clausius-Clapeyron, $\mathrm{d}P/\mathrm{d}T = L/(T\Delta v)$ : avec $\Delta v < 0$ et $\mathrm{d}P/\mathrm{d}T > 0$, il faut nécessairement $L < 0$ pour cette transition, c'est-à-dire que le passage graphite $\to$ diamant \emph{libère} de la chaleur (le diamant, cristal plus rigide et plus ordonné, a une entropie molaire plus faible que le graphite : $\Delta s < 0$, cohérent avec $\Delta v < 0$ pour donner $\mathrm{d}P/\mathrm{d}T = \Delta s/\Delta v > 0$).
+\textbf{Question 3.} Si $P = T\,f(V)$, alors $T\left(\partial P/\partial T\right)_V = T\,f(V) = P$, et $\left(\partial U/\partial V\right)_T = 0$ : $U$ ne dépend que de $T$. Le gaz parfait ($P = nRT/V$) est exactement de cette forme : $T\cdot nR/V - P = 0$. \checkmark\ La loi de Joule n'est donc pas une hypothèse supplémentaire : elle découle de l'équation d'état et des deux principes.
 
-\textbf{Question 4.} VdW décrit un fluide avec instabilité liquide-gaz ; les transitions cristallines (diamant, glaces polymorphes) impliquent l'ordre à longue portée et des interactions spécifiques — hors champ du VdW, mais lisibles sur un diagramme $(P,T)$ expérimental.
+\textbf{Question 4.} Un refroidissement dans la détente de Joule signifie $\left(\partial U/\partial V\right)_T > 0$ ($U$ augmente avec $V$ à $T$ fixé, donc à $U$ constant, $T$ baisse quand $V$ croît) : donc $T\left(\partial P/\partial T\right)_V > P$ pour un gaz réel. La pression y croît plus vite que linéairement en température — signature des interactions attractives entre molécules, comme le montre l'exercice suivant sur van der Waals.
+\end{solution}
+\end{exo}
+
+\begin{exo}[Gaz de van der Waals : énergie interne et détente de Joule]{van-der-waals-energie}
+\keywords{van der Waals, gaz réel, énergie interne, détente de Joule, refroidissement, pression de cohésion}
+
+Le gaz de van der Waals a pour équation d'état
+\[
+P = \frac{nRT}{V - nb} - \frac{an^2}{V^2},
+\]
+avec $a, b > 0$. On suppose $C_V$ constant.
+
+\begin{enumerate}
+\item Calculer $\ell = T\left(\partial P/\partial T\right)_V$ puis $\left(\partial U/\partial V\right)_T$.
+\item En déduire que $U(T,V) = C_VT - \dfrac{an^2}{V} + \text{cste}$. Interpréter le signe du terme en $a$.
+\item Ce gaz subit une détente de Joule (récipient calorifugé, détente dans le vide) de $V_0$ vers $2V_0$. Montrer que
+\[
+\Delta T = -\frac{an^2}{2V_0\,C_V} < 0.
+\]
+\item Application numérique pour une mole de diazote : $a = 0{,}137$ Pa·m$^6$·mol$^{-2}$, $C_V = \frac{5}{2}R$, $V_0 = 1{,}0$ L. Commenter la petitesse du résultat et expliquer pourquoi l'expérience historique de Joule (avec un calorimètre à eau) n'a rien détecté.
+\end{enumerate}
+
+\begin{indication}
+Utiliser l'identité $\left(\partial U/\partial V\right)_T = T\left(\partial P/\partial T\right)_V - P$ de l'exercice précédent, puis intégrer à $T$ fixé. Dans la détente de Joule, $\Delta U = 0$.
+\end{indication}
+
+\begin{solution}
+\textbf{Question 1.} $\left(\dfrac{\partial P}{\partial T}\right)_V = \dfrac{nR}{V - nb}$, donc $\ell = \dfrac{nRT}{V - nb} = P + \dfrac{an^2}{V^2}$ et
+\[
+\left(\frac{\partial U}{\partial V}\right)_T = \ell - P = \frac{an^2}{V^2} > 0.
+\]
+
+\textbf{Question 2.} En intégrant à $T$ fixé : $U = -\dfrac{an^2}{V} + f(T)$, et $C_V = f'(T)$ constant donne $f = C_VT + \text{cste}$ :
+\[
+U(T,V) = C_VT - \frac{an^2}{V} + \text{cste}.
+\]
+Le terme $-an^2/V$ est une énergie potentielle d'attraction entre molécules : rapprocher les molécules (diminuer $V$) abaisse cette énergie, et il faut fournir du travail contre l'attraction pour dilater le gaz.
+
+\textbf{Question 3.} Détente de Joule : $W = Q = 0$ donc $\Delta U = 0$ :
+\[
+C_V\Delta T - an^2\left(\frac{1}{2V_0} - \frac{1}{V_0}\right) = 0 \implies \Delta T = -\frac{an^2}{2V_0C_V} < 0.
+\]
+L'énergie d'agitation thermique se convertit en énergie potentielle d'attraction : le gaz se refroidit — contrairement au gaz parfait dont la température ne bouge pas.
+
+\textbf{Question 4.} $\Delta T = -\dfrac{0{,}137}{2\times1{,}0\times10^{-3}\times20{,}8} \approx -3{,}3$ K. C'est faible, et dans l'expérience historique la capacité thermique du calorimètre à eau (des kilojoules par kelvin, contre $\sim21$ J/K pour le gaz) diluait cet effet d'un facteur cent : Joule ne pouvait pas le voir. Les mesures modernes, directes sur le gaz, le confirment.
+\end{solution}
+\end{exo}
+
+\begin{exo}[Dilatation thermique des océans]{dilatation-oceans}
+\keywords{coefficient de dilatation isobare, océans, réchauffement climatique, montée du niveau de la mer, capacité thermique de l'eau}
+
+Les rapports du GIEC estiment que l'excès de flux radiatif dû à l'effet de serre injecte dans les océans environ $E = 5\times10^{21}$ J par an. Données : coefficient de dilatation isobare de l'eau $\alpha \approx 2{,}5\times10^{-4}\ \text{K}^{-1}$ (à 20 °C), capacité thermique massique $c \approx 4180$ J·kg$^{-1}$·K$^{-1}$, masse volumique $\rho = 1000$ kg·m$^{-3}$, profondeur moyenne des océans $H = 4000$ m, rayon terrestre $R_T = 6400$ km, fraction de la surface terrestre couverte par les océans : $75\,\%$.
+
+\begin{enumerate}
+\item Convertir $E$ en puissance moyenne. Comparer à la puissance d'une centrale nucléaire ($\sim10^9$ W).
+\item Estimer la masse totale des océans, puis l'élévation annuelle de température $\Delta T$ qui résulte de l'apport $E$.
+\item Montrer qu'une colonne d'eau de hauteur $H$ chauffée de $\Delta T$ s'élève de $\Delta h = \alpha H\,\Delta T$. Estimer la montée annuelle du niveau de la mer par simple dilatation thermique, puis sur un siècle.
+\item Citer au moins une raison pour laquelle la hausse réellement observée ($\sim3$ mm/an) est plus grande.
+\end{enumerate}
+
+\begin{indication}
+Une année vaut environ $3{,}15\times10^7$ s. Pour la question 3, le volume de la colonne de section $A$ vaut $V = AH$ et sa variation isobare est $\Delta V = \alpha V\Delta T$ ; la section ne changeant pas, tout passe dans la hauteur.
+\end{indication}
+
+\begin{solution}
+\textbf{Question 1.} $\mathcal{P} = \dfrac{5\times10^{21}}{3{,}15\times10^7} \approx 1{,}6\times10^{14}$ W, soit l'équivalent d'environ 160\,000 centrales nucléaires fonctionnant en continu.
+
+\textbf{Question 2.} Surface océanique : $S \approx 0{,}75\times4\pi R_T^2 \approx 3{,}9\times10^{14}$ m$^2$, d'où une masse $m = \rho SH \approx 1{,}5\times10^{21}$ kg. Alors
+\[
+\Delta T = \frac{E}{mc} \approx \frac{5\times10^{21}}{1{,}5\times10^{21}\times4180} \approx 8\times10^{-4}\ \text{K/an},
+\]
+soit environ un millième de degré par an (0,1 °C par siècle en ordre de grandeur).
+
+\textbf{Question 3.} $\Delta V = \alpha V\Delta T$ avec $V = AH$ et $A$ fixée : $\Delta h = \alpha H\Delta T \approx 2{,}5\times10^{-4}\times4000\times8\times10^{-4} \approx 0{,}8$ mm/an, soit de l'ordre de 8 cm par siècle par pure dilatation thermique.
+
+\textbf{Question 4.} La dilatation thermique n'est qu'une contribution ($\sim$ un tiers) : il faut ajouter la fonte des glaces continentales (Groenland, Antarctique, glaciers), et tenir compte du fait que $\alpha$ croît avec la température (le chauffage se concentre dans les couches superficielles plus chaudes, qui se dilatent davantage que la moyenne).
+\end{solution}
+\end{exo}
+
+\begin{exo}[Relation de Mayer générale et stabilité : $\gamma > 1$]{mayer-generale-stabilite}
+\keywords{relation de Mayer générale, stabilité thermodynamique, gamma, compressibilité, dilatation, capacités thermiques}
+
+On rappelle la relation de Mayer générale établie en cours :
+\[
+C_P - C_V = T\left(\frac{\partial P}{\partial T}\right)_V\left(\frac{\partial V}{\partial T}\right)_P,
+\]
+ainsi que les définitions de $\alpha$, $\beta$, $\chi_T$ et la relation $P\beta\chi_T = \alpha$.
+
+\begin{enumerate}
+\item Exprimer $C_P - C_V$ en fonction de $T$, $V$, $\alpha$ et $\chi_T$ uniquement.
+\item La stabilité thermodynamique impose $C_V \geq 0$ et $\chi_T \geq 0$ (vu en cours). En déduire que $\gamma = C_P/C_V \geq 1$. Dans quel cas a-t-on exactement $\gamma = 1$ ?
+\item Vérifier que la formule de la question 1 redonne $C_P - C_V = nR$ pour le gaz parfait.
+\item Pour l'eau liquide à 4 °C, le coefficient de dilatation $\alpha$ s'annule (anomalie dilatométrique). Que valent alors $C_P - C_V$ et $\gamma$ ? Commenter le cas général des phases condensées.
+\end{enumerate}
+
+\begin{indication}
+$\left(\partial P/\partial T\right)_V = \beta P$ et $\left(\partial V/\partial T\right)_P = \alpha V$, puis éliminer $\beta$ avec $P\beta\chi_T = \alpha$.
+\end{indication}
+
+\begin{solution}
+\textbf{Question 1.} $C_P - C_V = T(\beta P)(\alpha V) = TV\alpha\,(\beta P)$, et $\beta P = \alpha/\chi_T$ :
+\[
+\boxed{C_P - C_V = \frac{TV\alpha^2}{\chi_T}}.
+\]
+
+\textbf{Question 2.} Le membre de droite est un carré divisé par $\chi_T \geq 0$ : donc $C_P \geq C_V \geq 0$, d'où $\gamma = C_P/C_V \geq 1$ pour tout système stable — quel que soit le fluide, parfait ou non. L'égalité $\gamma = 1$ exige $\alpha = 0$ : un corps qui ne se dilate pas du tout avec la température.
+
+\textbf{Question 3.} Gaz parfait : $\alpha = 1/T$, $\chi_T = 1/P$, donc $\dfrac{TV\alpha^2}{\chi_T} = \dfrac{TV\,P}{T^2} = \dfrac{PV}{T} = nR$. \checkmark
+
+\textbf{Question 4.} À 4 °C, $\alpha = 0$ donne exactement $C_P = C_V$ et $\gamma = 1$ pour l'eau. Plus généralement, pour les liquides et solides, $\alpha$ est très petit : $C_P - C_V = TV\alpha^2/\chi_T$ est du second ordre en $\alpha$, ce qui justifie l'approximation courante $C_P \approx C_V = C$ pour les phases condensées.
+\end{solution}
+\end{exo}
+
+\begin{exo}[Équation d'état d'un liquide ou solide]{eos-liquide-solide}
+\keywords{équation d'état, liquide, solide, dilatation thermique, compressibilité, phase condensée}
+
+On modélise une phase condensée par $\alpha = \dfrac{1}{V}\left(\dfrac{\partial V}{\partial T}\right)_P$ et $\chi_T = -\dfrac{1}{V}\left(\dfrac{\partial V}{\partial P}\right)_T$ constants. On note $(T_0, P_0, V_0)$ un état de référence.
+
+\begin{enumerate}
+\item Intégrer les définitions pour obtenir $V(T,P) = V_0 \exp\!\left[\alpha(T-T_0) - \chi_T(P-P_0)\right]$, puis le développement linéaire à faible écart.
+\item On admet $C_P = m c$ constant. Montrer que $S(T,P) = mc\ln(T/T_0) - \alpha V_0 (P-P_0) + \text{cste}$ à l'ordre linéaire en $\alpha$ et $\chi_T$.
+\item Comparer au modèle incompressible ($\alpha = \chi_T = 0$) vu en cours : pourquoi ce dernier est-il pathologique ?
+\item Application : pour l'eau liquide ($\alpha \approx 2{,}1\times10^{-4}$ K$^{-1}$, $\chi_T \approx 4{,}5\times10^{-10}$ Pa$^{-1}$, $V_0 = 18$ cm$^3$·mol$^{-1}$), estimer la variation de volume molaire entre $P_0 = 1$ bar et $P = 1000$ bar à $T = T_0$.
+\end{enumerate}
+
+\begin{indication}
+$\mathrm{d}V/V = \alpha\,\mathrm{d}T - \chi_T\,\mathrm{d}P$ à coefficients constants. Pour $S$ : $T\,\mathrm{d}S = C_P\,\mathrm{d}T + h\,\mathrm{d}P$ avec $h = -\alpha VT$.
+\end{indication}
+
+\begin{solution}
+\textbf{Question 1.} Intégration directe : $\ln(V/V_0) = \alpha(T-T_0) - \chi_T(P-P_0)$. DL : $V \approx V_0[1 + \alpha(T-T_0) - \chi_T(P-P_0)]$.
+
+\textbf{Question 2.} $T\,\mathrm{d}S = mc\,\mathrm{d}T - \alpha V_0\,\mathrm{d}P$ à l'ordre linéaire, d'où $S = mc\ln(T/T_0) - \alpha V_0(P-P_0) + \text{cste}$.
+
+\textbf{Question 3.} Si $\alpha = \chi_T = 0$, alors $V = V_0$ et $S = mc\ln(T/T_0)$ seule : $S = S(U)$, donc $P = T(\partial S/\partial V)_U = 0$ — pression nulle, absurde. Il faut garder $\alpha, \chi_T$ petits mais non nuls.
+
+\textbf{Question 4.} $\Delta V/V_0 \approx -\chi_T \Delta P = -4{,}5\times10^{-10} \times 999\times10^5 \approx -0{,}045$ : environ $-4{,}5\,\%$ de volume, non négligeable à 1000 bar.
+\end{solution}
+\end{exo}
+
+\begin{exo}[Détente de Joule-Thomson]{joule-thomson}
+\keywords{Joule-Thomson, détente isenthalpique, coefficient de Joule-Thomson, van der Waals, liquéfaction}
+
+Une détente de Joule-Thomson est une détente lente (quasi-statique) à enthalpie constante : le fluide passe d'une pression $P_i$ à $P_f < P_i$ à travers un tamis ou une valve.
+
+\begin{enumerate}
+\item Montrer que la variation de température s'écrit $\Delta T = \displaystyle\int_{P_i}^{P_f} \mu_{JT}\,\mathrm{d}P$ avec $\mu_{JT} = \left(\dfrac{\partial T}{\partial P}\right)_H$.
+\item Établir $\mu_{JT} = \dfrac{1}{C_P}\left[T\left(\dfrac{\partial V}{\partial T}\right)_P - V\right] = \dfrac{V}{C_P}(\alpha T - 1)$.
+\item Pour un gaz parfait, que vaut $\mu_{JT}$ ? Retrouver $\Delta T = 0$.
+\item Gaz de van der Waals ($C_P$ constant) : montrer que $\mu_{JT} > 0$ pour $T < T_i = 2a/(Rb)$ (température d'inversion). Application : $a = 0{,}14$ Pa·m$^6$·mol$^{-2}$, $b = 3{,}9\times10^{-5}$ m$^3$·mol$^{-1}$ — estimer $T_i$.
+\end{enumerate}
+
+\begin{indication}
+Enthalpie constante : $\mathrm{d}H = T\,\mathrm{d}S + V\,\mathrm{d}P = 0$. Utiliser $\left(\partial S/\partial P\right)_T = -\left(\partial V/\partial T\right)_P$. Pour VdW : $T_i$ vérifie $\alpha T_i = 1$ avec $\alpha = (V-nb)/(nRTV)$.
+\end{indication}
+
+\begin{solution}
+\textbf{Question 1.} $\Delta T = T(P_f) - T(P_i) = \int_{P_i}^{P_f} (\partial T/\partial P)_H\,\mathrm{d}P$ par définition de $\mu_{JT}$.
+
+\textbf{Question 2.} Écrire $\mathrm{d}H = T\,\mathrm{d}S + V\,\mathrm{d}P$, et utiliser $\mathrm{d}S = \left(\dfrac{\partial S}{\partial T}\right)_P\mathrm{d}T + \left(\dfrac{\partial S}{\partial P}\right)_T\mathrm{d}P = \dfrac{C_P}{T}\,\mathrm{d}T - \left(\dfrac{\partial V}{\partial T}\right)_P\mathrm{d}P$ (relation de Maxwell). On obtient
+\[
+\mathrm{d}H = C_P\,\mathrm{d}T + \left[V - T\left(\frac{\partial V}{\partial T}\right)_P\right]\mathrm{d}P.
+\]
+À $H$ constant, $\mathrm{d}H = 0$ donne directement
+\[
+\mu_{JT} = \left(\frac{\partial T}{\partial P}\right)_H = \frac{T\left(\partial V/\partial T\right)_P - V}{C_P} = \frac{V(\alpha T - 1)}{C_P}.
+\]
+Attention à ne pas confondre ce résultat avec le coefficient calorimétrique $h = -TV\alpha$ de l'exercice sur les relations de Clapeyron : $h$ intervient dans $\delta Q = C_P\,\mathrm{d}T + h\,\mathrm{d}P$, alors que $\mu_{JT}$ fait intervenir $H$, et $\mathrm{d}H \neq \delta Q$ dès que $\mathrm{d}P \neq 0$ (on a $\mathrm{d}H = \delta Q + V\,\mathrm{d}P = C_P\mathrm{d}T + (h+V)\mathrm{d}P$).
+
+\textbf{Question 3.} GP : $\alpha = 1/T$, donc $\alpha T - 1 = 0$ : $\mu_{JT} = 0$ et $\Delta T = 0$ (première loi de Joule).
+
+\textbf{Question 4.} Pour VdW, $\alpha T > 1$ sous $T_i = 2a/(Rb) \approx 2\times0{,}14/(8{,}314\times3{,}9\times10^{-5}) \approx 860$ K. En dessous, la détente refroidit ($\mu_{JT} > 0$) : principe de liquéfaction des gaz (Linde, Claude).
 \end{solution}
 \end{exo}

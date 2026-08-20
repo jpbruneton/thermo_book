@@ -272,6 +272,31 @@ export const themes: Theme[] = [
   }),
   makeLecon({
     number: 5,
+    slug: "application-gaz-parfait",
+    titleFr: "Application au gaz parfait",
+    titleEn: "Application to the Ideal Gas",
+    descriptionFr: "Application du premier principe aux transformations du gaz parfait.",
+    descriptionEn: "Application of the first law to ideal-gas transformations.",
+    readingTime: "10 min",
+    topicsFr: [
+      "Gaz parfait",
+      "Premier principe",
+      "Énergie interne",
+      "Transformations isothermes",
+      "Transformations adiabatiques",
+      "Détente de Joule",
+    ],
+    topicsEn: [
+      "Ideal gas",
+      "First law",
+      "Internal energy",
+      "Isothermal processes",
+      "Adiabatic processes",
+      "Joule expansion",
+    ],
+  }),
+  makeLecon({
+    number: 6,
     slug: "second-principe",
     titleFr: "Réversibilité et irréversibilité : le second principe",
     titleEn: "Reversibility and Irreversibility: The Second Law",
@@ -296,7 +321,7 @@ export const themes: Theme[] = [
     ],
   }),
   makeLecon({
-    number: 6,
+    number: 7,
     slug: "relations-fondamentales",
     titleFr: "Structure mathématique : les relations fondamentales",
     titleEn: "Mathematical Structure: The Fundamental Relations",
@@ -329,7 +354,7 @@ export const themes: Theme[] = [
     ],
   }),
   makeLecon({
-    number: 7,
+    number: 8,
     slug: "changements-de-variables",
     titleFr: "Structure formelle : Changements de variables",
     titleEn: "Formal Structure: Changes of Variables",
@@ -354,7 +379,7 @@ export const themes: Theme[] = [
     ],
   }),
   makeLecon({
-    number: 8,
+    number: 9,
     slug: "coefficients",
     titleFr: "Coefficients calorimétriques et thermoélastiques",
     titleEn: "Calorimetric and Thermoelastic Coefficients",
@@ -379,7 +404,7 @@ export const themes: Theme[] = [
     ],
   }),
   makeLecon({
-    number: 9,
+    number: 10,
     slug: "transitions-de-phases",
     titleFr: "Transition de phases",
     titleEn: "Phase Transitions",
@@ -408,7 +433,7 @@ export const themes: Theme[] = [
     ],
   }),
   makeLecon({
-    number: 10,
+    number: 11,
     slug: "machines-thermiques",
     titleFr: "Machines thermiques",
     titleEn: "Heat Engines",

@@ -364,23 +364,6 @@ export const quizQuestions: QuizQuestion[] = [
     correctIndex: 1,
   },
   {
-    id: "l4-qmacro",
-    lecon: 4,
-    question:
-      "Un système fermé, initialement au repos, est accéléré comme un tout sans modification de son état thermodynamique interne. Que peut-on affirmer ?",
-    choices: [
-      "ΔE_c^macro > 0, tandis que ΔU = 0.",
-      "ΔE_c^macro = 0, tandis que ΔU > 0.",
-      "ΔE_c^macro = ΔU > 0 : les deux énergies augmentent nécessairement de la même quantité.",
-    ],
-    explanations: [
-      "Exact : l'accélération du mouvement d'ensemble augmente l'énergie cinétique macroscopique, sans modifier l'énergie interne si l'état thermodynamique reste inchangé.",
-      "Faux : c'est précisément l'énergie cinétique macroscopique qui varie ici ; l'état interne ne change pas.",
-      "Faux : l'énergie cinétique du mouvement d'ensemble et l'énergie interne sont deux contributions distinctes à l'énergie totale.",
-    ],
-    correctIndex: 0,
-  },
-  {
     id: "l4-q6",
     lecon: 4,
     question: "Lors d'une transformation isochore d'un système fermé, on a toujours :",
@@ -396,123 +379,9 @@ export const quizQuestions: QuizQuestion[] = [
     ],
     correctIndex: 0,
   },
-  {
-    id: "l4-vf1",
-    lecon: 4,
-    question: "Le travail δW et la chaleur δQ échangés par un système sont, comme l'énergie interne U, des différentielles exactes.",
-    choices: ["Vrai", "Faux"],
-    explanations: [
-      "Faux : contrairement à dU, ni δQ ni δW ne sont exactes ; leur intégrale dépend du chemin suivi, pas seulement des états initial et final.",
-      "Exact : c'est justement la raison du symbole δ. Seules les fonctions d'état ont des différentielles exactes.",
-    ],
-    correctIndex: 1,
-  },
-
-  // ─── Leçon 5 : Second principe (entropie) ───
+  // ─── Leçon 5 : Application au gaz parfait ───
   {
     id: "l5-q1",
-    lecon: 5,
-    question: "Pour une transformation infinitésimale réversible d'un système fermé, la variation d'entropie s'écrit :",
-    choices: [
-      "dS = δQ_rev / T",
-      "dS = δW / T",
-      "dS = δQ_rev × T",
-      "dS = dU / T",
-    ],
-    explanations: [
-      "Exact : c'est la définition donnée par le second principe pour une transformation réversible.",
-      "Faux : l'entropie fait intervenir la chaleur échangée réversiblement, pas le travail.",
-      "Faux : on divise par T, on ne multiplie pas ; l'entropie est en J/K.",
-      "Faux : dU = δQ + δW n'égale T dS qu'en l'absence de travail ; la relation générale réversible est dU = T dS - P dV.",
-    ],
-    correctIndex: 0,
-  },
-  {
-    id: "l5-q2",
-    lecon: 5,
-    question: "Pour un système isolé, le second principe affirme que :",
-    choices: [
-      "Son entropie reste constante au cours de toute transformation, puisque aucun échange de chaleur n'est possible avec l'extérieur.",
-      "Son entropie ne peut que croître ou rester constante ; l'équilibre correspond au maximum d'entropie.",
-      "Son énergie interne ne peut que décroître, l'énergie se dégradant progressivement en chaleur inutilisable.",
-      "Sa température s'uniformise instantanément dès que le système est fermé par des parois adiabatiques.",
-    ],
-    explanations: [
-      "Faux : dS = δQ/T ne vaut que pour les chemins réversibles ; pour un système isolé, dS = dS_c ≥ 0 et l'entropie croît dès qu'il y a irréversibilité.",
-      "Exact : c'est l'énoncé central, croissance de l'entropie lors des évolutions spontanées, maximum à l'équilibre.",
-      "Faux : l'énergie d'un système isolé est constante (premier principe) ; c'est l'entropie qui évolue.",
-      "Faux : l'uniformisation prend un temps caractéristique, et le second principe ne dit rien d'« instantané ».",
-    ],
-    correctIndex: 1,
-  },
-  {
-    id: "l5-q3",
-    lecon: 5,
-    question: "Pourquoi calcule-t-on souvent ΔS le long d'un « chemin virtuel réversible » plutôt que le long de la transformation réelle, quand celle-ci est irréversible ?",
-    choices: [
-      "Parce que l'entropie n'est mathématiquement définie que le long des transformations réversibles, jamais pour les autres.",
-      "Parce que S est une fonction d'état : ΔS ne dépend que des états initial et final, donc tout chemin réversible commode convient.",
-      "Parce que les transformations irréversibles n'admettent pas d'état final d'équilibre sur lequel évaluer l'entropie.",
-      "Parce que le long d'un chemin réversible, la température reste constante, ce qui simplifie l'intégrale.",
-    ],
-    explanations: [
-      "Faux : l'entropie est définie pour tout état d'équilibre, quel que soit le chemin qui y a mené.",
-      "Exact : c'est « l'astuce fondamentale » du cours ; on choisit un chemin réversible entre les mêmes états A et B pour pouvoir intégrer dS = δQ_rev/T.",
-      "Faux : l'état final d'une transformation irréversible est un état d'équilibre parfaitement défini ; c'est le chemin qui est mal défini.",
-      "Faux : rien n'impose l'isothermie le long d'un chemin réversible.",
-    ],
-    correctIndex: 1,
-  },
-  {
-    id: "l5-q4",
-    lecon: 5,
-    question: "On plonge de l'eau à 20°C dans un four maintenu à 80°C. Pour calculer la variation d'entropie de l'eau, il faut :",
-    choices: [
-      "Diviser la chaleur reçue par la température du four : ΔS_eau = Q/T_four, puisque c'est le four qui impose la température.",
-      "Intégrer dS = m c dT/T le long de la montée en température de l'eau, ce qui donne m c ln(T_f/T_i).",
-      "Conclure ΔS_eau = 0, car la variation d'entropie ne concerne que le four, seul système dont la température est bien définie.",
-    ],
-    explanations: [
-      "Faux : c'est l'erreur classique ; diviser par la température du thermostat ne vaut que pour le four lui-même (ΔS_four = -Q/T_four), pas pour l'eau dont la température varie.",
-      "Exact : l'eau traverse toutes les températures entre 20 et 80°C ; on intègre le long de sa propre trajectoire (chemin virtuel réversible), d'où le logarithme.",
-      "Faux : l'eau reçoit de la chaleur, son entropie augmente bel et bien, et le bilan total (eau + four) est positif, signalant l'irréversibilité.",
-    ],
-    correctIndex: 1,
-  },
-  {
-    id: "l5-q5",
-    lecon: 5,
-    question: "L'entropie d'un système non isolé peut-elle décroître au cours d'une transformation ?",
-    choices: [
-      "Non : l'entropie de tout système, isolé ou non, ne peut jamais décroître ; c'est l'énoncé universel du second principe.",
-      "Oui, si un opérateur extérieur apporte de l'énergie de la bonne façon (ranger une pièce, démêler des câbles, un organisme vivant).",
-      "Oui, mais uniquement pour des systèmes microscopiques soumis à des fluctuations quantiques.",
-    ],
-    explanations: [
-      "Faux : l'interdiction ne porte que sur les systèmes isolés. Refroidir un verre d'eau diminue son entropie, par exemple.",
-      "Exact : l'entropie locale peut décroître au prix d'une création d'entropie ailleurs (opérateur, environnement) qui compense largement. Le vivant fonctionne exactement ainsi.",
-      "Faux : nul besoin d'effets quantiques ; refroidir un corps macroscopique suffit à faire décroître son entropie.",
-    ],
-    correctIndex: 1,
-  },
-  {
-    id: "l5-q6",
-    lecon: 5,
-    question: "Un système passe d'un état A à un état B, une fois par un chemin réversible, une fois par un chemin irréversible. La chaleur échangée Q est-elle la même dans les deux cas ?",
-    choices: [
-      "Oui, puisque les états initial et final sont identiques, tous les termes du bilan énergétique coïncident.",
-      "Non : ΔS est le même (fonction d'état), mais Q_irr < Q_rev car la création d'entropie remplace une partie de l'échange.",
-      "Oui pour la chaleur, mais pas pour le travail, qui seul dépend du chemin suivi entre A et B.",
-    ],
-    explanations: [
-      "Faux : Q et W dépendent du chemin ; seules les fonctions d'état (U, S...) ont la même variation.",
-      "Exact : ΔS = ∫δQ_rev/T = ∫δQ_irr/T + S_créée avec S_créée > 0, donc les chaleurs échangées diffèrent nécessairement. Les indices « rev » et « irr » comptent !",
-      "Faux : chaleur et travail dépendent tous deux du chemin ; seule leur somme ΔU = Q + W est fixée.",
-    ],
-    correctIndex: 1,
-  },
-  {
-    id: "l5-q7",
     lecon: 5,
     question: "Un gaz parfait subit une détente de Joule : on casse la paroi qui le sépare d'un compartiment vide, dans une enceinte isolée. Sa température finale est :",
     choices: [
@@ -530,23 +399,7 @@ export const quizQuestions: QuizQuestion[] = [
     correctIndex: 2,
   },
   {
-    id: "l5-q8",
-    lecon: 5,
-    question: "Dans la détente de Joule d'un gaz parfait (enceinte isolée, détente dans le vide), on a Q = 0. Peut-on en conclure que ΔS = 0 ?",
-    choices: [
-      "Oui : dS = δQ/T et δQ = 0, donc l'entropie ne varie pas.",
-      "Oui, car l'énergie interne est constante et l'entropie ne dépend que de U.",
-      "Non : la formule dS = δQ/T ne vaut que pour un chemin réversible, or cette détente est brutalement irréversible ; ΔS > 0.",
-    ],
-    explanations: [
-      "Faux : c'est le piège classique ; dS = δQ/T suppose la réversibilité. Ici dS = δQ/T + dS_c avec dS_c > 0.",
-      "Faux : S dépend aussi du volume, S = S(U,V,N) ; à U constant, le volume ayant augmenté, l'entropie augmente (ΔS = nR ln(V_f/V_i) pour un GP).",
-      "Exact : on calcule ΔS par un chemin virtuel réversible (isotherme, car T est inchangée) et on trouve ΔS = nR ln(V_f/V_i) > 0, signature de l'irréversibilité.",
-    ],
-    correctIndex: 2,
-  },
-  {
-    id: "l5-q9",
+    id: "l5-q2",
     lecon: 5,
     question: "Une mole de gaz parfait subit une compression isotherme. Que vaut ΔU ?",
     choices: [
@@ -561,9 +414,129 @@ export const quizQuestions: QuizQuestion[] = [
     ],
     correctIndex: 2,
   },
+
+  // ─── Leçon 6 : Second principe (entropie) ───
   {
-    id: "l5-vf1",
-    lecon: 5,
+    id: "l6-q1",
+    lecon: 6,
+    question: "Pour une transformation infinitésimale réversible d'un système fermé, la variation d'entropie s'écrit :",
+    choices: [
+      "dS = δQ_rev / T",
+      "dS = δW / T",
+      "dS = δQ_rev × T",
+      "dS = dU / T",
+    ],
+    explanations: [
+      "Exact : c'est la définition donnée par le second principe pour une transformation réversible.",
+      "Faux : l'entropie fait intervenir la chaleur échangée réversiblement, pas le travail.",
+      "Faux : on divise par T, on ne multiplie pas ; l'entropie est en J/K.",
+      "Faux : dU = δQ + δW n'égale T dS qu'en l'absence de travail ; la relation générale réversible est dU = T dS - P dV.",
+    ],
+    correctIndex: 0,
+  },
+  {
+    id: "l6-q2",
+    lecon: 6,
+    question: "Pour un système isolé, le second principe affirme que :",
+    choices: [
+      "Son entropie reste constante au cours de toute transformation, puisque aucun échange de chaleur n'est possible avec l'extérieur.",
+      "Son entropie ne peut que croître ou rester constante ; l'équilibre correspond au maximum d'entropie.",
+      "Son énergie interne ne peut que décroître, l'énergie se dégradant progressivement en chaleur inutilisable.",
+      "Sa température s'uniformise instantanément dès que le système est fermé par des parois adiabatiques.",
+    ],
+    explanations: [
+      "Faux : dS = δQ/T ne vaut que pour les chemins réversibles ; pour un système isolé, dS = dS_c ≥ 0 et l'entropie croît dès qu'il y a irréversibilité.",
+      "Exact : c'est l'énoncé central, croissance de l'entropie lors des évolutions spontanées, maximum à l'équilibre.",
+      "Faux : l'énergie d'un système isolé est constante (premier principe) ; c'est l'entropie qui évolue.",
+      "Faux : l'uniformisation prend un temps caractéristique, et le second principe ne dit rien d'« instantané ».",
+    ],
+    correctIndex: 1,
+  },
+  {
+    id: "l6-q3",
+    lecon: 6,
+    question: "Pourquoi calcule-t-on souvent ΔS le long d'un « chemin virtuel réversible » plutôt que le long de la transformation réelle, quand celle-ci est irréversible ?",
+    choices: [
+      "Parce que l'entropie n'est mathématiquement définie que le long des transformations réversibles, jamais pour les autres.",
+      "Parce que S est une fonction d'état : ΔS ne dépend que des états initial et final, donc tout chemin réversible commode convient.",
+      "Parce que les transformations irréversibles n'admettent pas d'état final d'équilibre sur lequel évaluer l'entropie.",
+      "Parce que le long d'un chemin réversible, la température reste constante, ce qui simplifie l'intégrale.",
+    ],
+    explanations: [
+      "Faux : l'entropie est définie pour tout état d'équilibre, quel que soit le chemin qui y a mené.",
+      "Exact : c'est « l'astuce fondamentale » du cours ; on choisit un chemin réversible entre les mêmes états A et B pour pouvoir intégrer dS = δQ_rev/T.",
+      "Faux : l'état final d'une transformation irréversible est un état d'équilibre parfaitement défini ; c'est le chemin qui est mal défini.",
+      "Faux : rien n'impose l'isothermie le long d'un chemin réversible.",
+    ],
+    correctIndex: 1,
+  },
+  {
+    id: "l6-q4",
+    lecon: 6,
+    question: "On plonge de l'eau à 20°C dans un four maintenu à 80°C. Pour calculer la variation d'entropie de l'eau, il faut :",
+    choices: [
+      "Diviser la chaleur reçue par la température du four : ΔS_eau = Q/T_four, puisque c'est le four qui impose la température.",
+      "Intégrer dS = m c dT/T le long de la montée en température de l'eau, ce qui donne m c ln(T_f/T_i).",
+      "Conclure ΔS_eau = 0, car la variation d'entropie ne concerne que le four, seul système dont la température est bien définie.",
+    ],
+    explanations: [
+      "Faux : c'est l'erreur classique ; diviser par la température du thermostat ne vaut que pour le four lui-même (ΔS_four = -Q/T_four), pas pour l'eau dont la température varie.",
+      "Exact : l'eau traverse toutes les températures entre 20 et 80°C ; on intègre le long de sa propre trajectoire (chemin virtuel réversible), d'où le logarithme.",
+      "Faux : l'eau reçoit de la chaleur, son entropie augmente bel et bien, et le bilan total (eau + four) est positif, signalant l'irréversibilité.",
+    ],
+    correctIndex: 1,
+  },
+  {
+    id: "l6-q5",
+    lecon: 6,
+    question: "L'entropie d'un système non isolé peut-elle décroître au cours d'une transformation ?",
+    choices: [
+      "Non : l'entropie de tout système, isolé ou non, ne peut jamais décroître ; c'est l'énoncé universel du second principe.",
+      "Oui, si un opérateur extérieur apporte de l'énergie de la bonne façon (ranger une pièce, démêler des câbles, un organisme vivant).",
+      "Oui, mais uniquement pour des systèmes microscopiques soumis à des fluctuations quantiques.",
+    ],
+    explanations: [
+      "Faux : l'interdiction ne porte que sur les systèmes isolés. Refroidir un verre d'eau diminue son entropie, par exemple.",
+      "Exact : l'entropie locale peut décroître au prix d'une création d'entropie ailleurs (opérateur, environnement) qui compense largement. Le vivant fonctionne exactement ainsi.",
+      "Faux : nul besoin d'effets quantiques ; refroidir un corps macroscopique suffit à faire décroître son entropie.",
+    ],
+    correctIndex: 1,
+  },
+  {
+    id: "l6-q6",
+    lecon: 6,
+    question: "Un système passe d'un état A à un état B, une fois par un chemin réversible, une fois par un chemin irréversible. La chaleur échangée Q est-elle la même dans les deux cas ?",
+    choices: [
+      "Oui, puisque les états initial et final sont identiques, tous les termes du bilan énergétique coïncident.",
+      "Non : ΔS est le même (fonction d'état), mais Q_irr < Q_rev car la création d'entropie remplace une partie de l'échange.",
+      "Oui pour la chaleur, mais pas pour le travail, qui seul dépend du chemin suivi entre A et B.",
+    ],
+    explanations: [
+      "Faux : Q et W dépendent du chemin ; seules les fonctions d'état (U, S...) ont la même variation.",
+      "Exact : ΔS = ∫δQ_rev/T = ∫δQ_irr/T + S_créée avec S_créée > 0, donc les chaleurs échangées diffèrent nécessairement. Les indices « rev » et « irr » comptent !",
+      "Faux : chaleur et travail dépendent tous deux du chemin ; seule leur somme ΔU = Q + W est fixée.",
+    ],
+    correctIndex: 1,
+  },
+  {
+    id: "l6-q7",
+    lecon: 6,
+    question: "Dans la détente de Joule d'un gaz parfait (enceinte isolée, détente dans le vide), on a Q = 0. Peut-on en conclure que ΔS = 0 ?",
+    choices: [
+      "Oui : dS = δQ/T et δQ = 0, donc l'entropie ne varie pas.",
+      "Oui, car l'énergie interne est constante et l'entropie ne dépend que de U.",
+      "Non : la formule dS = δQ/T ne vaut que pour un chemin réversible, or cette détente est brutalement irréversible ; ΔS > 0.",
+    ],
+    explanations: [
+      "Faux : c'est le piège classique ; dS = δQ/T suppose la réversibilité. Ici dS = δQ/T + dS_c avec dS_c > 0.",
+      "Faux : S dépend aussi du volume, S = S(U,V,N) ; à U constant, le volume ayant augmenté, l'entropie augmente (ΔS = nR ln(V_f/V_i) pour un GP).",
+      "Exact : on calcule ΔS par un chemin virtuel réversible (isotherme, car T est inchangée) et on trouve ΔS = nR ln(V_f/V_i) > 0, signature de l'irréversibilité.",
+    ],
+    correctIndex: 2,
+  },
+  {
+    id: "l6-vf1",
+    lecon: 6,
     question: "Une transformation adiabatique réversible est isentropique.",
     choices: ["Vrai", "Faux"],
     explanations: [
@@ -573,10 +546,10 @@ export const quizQuestions: QuizQuestion[] = [
     correctIndex: 0,
   },
 
-  // ─── Leçon 6 : Relations fondamentales ───
+  // ─── Leçon 7 : Relations fondamentales ───
   {
-    id: "l6-q1",
-    lecon: 6,
+    id: "l7-q1",
+    lecon: 7,
     question: "Les variables naturelles de l'énergie interne U sont :",
     choices: ["T, P, N", "S, V, N", "T, V, N", "S, P, N"],
     explanations: [
@@ -588,8 +561,8 @@ export const quizQuestions: QuizQuestion[] = [
     correctIndex: 1,
   },
   {
-    id: "l6-q2",
-    lecon: 6,
+    id: "l7-q2",
+    lecon: 7,
     question: "Parmi ces relations, laquelle est une équation d'état en représentation énergie ?",
     choices: [
       "T = (∂U/∂S) à V, N fixés",
@@ -606,8 +579,8 @@ export const quizQuestions: QuizQuestion[] = [
     correctIndex: 0,
   },
   {
-    id: "l6-q3",
-    lecon: 6,
+    id: "l7-q3",
+    lecon: 7,
     question: "Le théorème d'Euler, appliqué à l'extensivité de U(S,V,N), donne :",
     choices: [
       "U = T S + P V - μ N",
@@ -624,8 +597,8 @@ export const quizQuestions: QuizQuestion[] = [
     correctIndex: 3,
   },
   {
-    id: "l6-q4",
-    lecon: 6,
+    id: "l7-q4",
+    lecon: 7,
     question: "Que nous apprend la relation de Gibbs-Duhem, S dT - V dP + N dμ = 0 ?",
     choices: [
       "Que les trois paramètres intensifs T, P, μ ne peuvent pas varier indépendamment : il n'y a que deux degrés de liberté.",
@@ -640,8 +613,8 @@ export const quizQuestions: QuizQuestion[] = [
     correctIndex: 0,
   },
   {
-    id: "l6-q5",
-    lecon: 6,
+    id: "l7-q5",
+    lecon: 7,
     question: "Parmi ces égalités, laquelle est une relation de Maxwell correcte ?",
     choices: [
       "(∂T/∂V)_S = -(∂P/∂S)_V",
@@ -658,8 +631,8 @@ export const quizQuestions: QuizQuestion[] = [
     correctIndex: 0,
   },
   {
-    id: "l6-q6",
-    lecon: 6,
+    id: "l7-q6",
+    lecon: 7,
     question: "La loi de Laplace, P V^γ = constante, est valable pour :",
     choices: [
       "Toute transformation adiabatique d'un gaz parfait, qu'elle soit brutale ou infiniment lente, dès lors que Q = 0.",
@@ -676,8 +649,8 @@ export const quizQuestions: QuizQuestion[] = [
     correctIndex: 3,
   },
   {
-    id: "l6-vf1",
-    lecon: 6,
+    id: "l7-vf1",
+    lecon: 7,
     question: "Les relations de Maxwell découlent de l'égalité des dérivées croisées (théorème de Schwarz) appliquée aux potentiels thermodynamiques.",
     choices: ["Vrai", "Faux"],
     explanations: [
@@ -687,10 +660,10 @@ export const quizQuestions: QuizQuestion[] = [
     correctIndex: 0,
   },
 
-  // ─── Leçon 7 : Changements de variables, potentiels ───
+  // ─── Leçon 8 : Changements de variables, potentiels ───
   {
-    id: "l7-q1",
-    lecon: 7,
+    id: "l8-q1",
+    lecon: 8,
     question: "Pourquoi faut-il toujours préciser les variables tenues constantes dans une dérivée partielle thermodynamique ?",
     choices: [
       "Parce que les variables ne sont pas indépendantes : la même dérivée prend des valeurs différentes selon ce qu'on fixe.",
@@ -705,8 +678,8 @@ export const quizQuestions: QuizQuestion[] = [
     correctIndex: 0,
   },
   {
-    id: "l7-q2",
-    lecon: 7,
+    id: "l8-q2",
+    lecon: 8,
     question: "Une transformée de Legendre, en thermodynamique, permet de :",
     choices: [
       "Calculer l'entropie d'un gaz parfait à partir de ses deux équations d'état, par intégration directe terme à terme.",
@@ -723,8 +696,8 @@ export const quizQuestions: QuizQuestion[] = [
     correctIndex: 2,
   },
   {
-    id: "l7-q3",
-    lecon: 7,
+    id: "l8-q3",
+    lecon: 8,
     question: "L'énergie libre F = U - TS a pour variables naturelles :",
     choices: ["S, V, N", "T, V, N", "T, P, N", "S, P, N"],
     explanations: [
@@ -736,8 +709,8 @@ export const quizQuestions: QuizQuestion[] = [
     correctIndex: 1,
   },
   {
-    id: "l7-q4",
-    lecon: 7,
+    id: "l8-q4",
+    lecon: 8,
     question: "Parmi les quatre potentiels usuels U, F, H, G, lequel a pour variables naturelles (S, P, N) ?",
     choices: ["U, l'énergie interne", "F, l'énergie libre", "H, l'enthalpie", "G, l'enthalpie libre"],
     explanations: [
@@ -749,8 +722,8 @@ export const quizQuestions: QuizQuestion[] = [
     correctIndex: 2,
   },
   {
-    id: "l7-q5",
-    lecon: 7,
+    id: "l8-q5",
+    lecon: 8,
     question: "La différentielle de l'enthalpie libre G s'écrit :",
     choices: [
       "dG = T dS + V dP + μ dN",
@@ -765,8 +738,8 @@ export const quizQuestions: QuizQuestion[] = [
     correctIndex: 2,
   },
   {
-    id: "l7-q6",
-    lecon: 7,
+    id: "l8-q6",
+    lecon: 8,
     question: "Pour un système fermé, la variation d'enthalpie ΔH est égale à la chaleur reçue Q lors d'une transformation :",
     choices: ["Isotherme", "Isochore", "Isobare", "Adiabatique"],
     explanations: [
@@ -778,10 +751,10 @@ export const quizQuestions: QuizQuestion[] = [
     correctIndex: 2,
   },
 
-  // ─── Leçon 8 : Coefficients calorimétriques et thermoélastiques ───
+  // ─── Leçon 9 : Coefficients calorimétriques et thermoélastiques ───
   {
-    id: "l8-q1",
-    lecon: 8,
+    id: "l9-q1",
+    lecon: 9,
     question: "La capacité thermique à volume constant C_V est définie par :",
     choices: [
       "C_V = T (∂S/∂T)_V",
@@ -798,8 +771,8 @@ export const quizQuestions: QuizQuestion[] = [
     correctIndex: 0,
   },
   {
-    id: "l8-q2",
-    lecon: 8,
+    id: "l9-q2",
+    lecon: 9,
     question: "Pour un gaz parfait quelconque, la relation de Mayer c_P - c_V (molaire) vaut :",
     choices: ["0", "γR", "3R/2", "R"],
     explanations: [
@@ -811,8 +784,8 @@ export const quizQuestions: QuizQuestion[] = [
     correctIndex: 3,
   },
   {
-    id: "l8-q3",
-    lecon: 8,
+    id: "l9-q3",
+    lecon: 9,
     question: "On chauffe l'air d'une pièce avec un radiateur. La pièce n'est pas hermétique : l'air dilaté s'échappe par les interstices, la pression restant atmosphérique. Quelle capacité thermique utiliser ?",
     choices: [
       "C_V, car le volume de la pièce est fixé par les murs",
@@ -827,8 +800,8 @@ export const quizQuestions: QuizQuestion[] = [
     correctIndex: 1,
   },
   {
-    id: "l8-q4",
-    lecon: 8,
+    id: "l9-q4",
+    lecon: 9,
     question: "La stabilité thermodynamique impose notamment :",
     choices: [
       "C_V ≥ 0 et χ_T ≥ 0",
@@ -845,8 +818,8 @@ export const quizQuestions: QuizQuestion[] = [
     correctIndex: 0,
   },
   {
-    id: "l8-q5",
-    lecon: 8,
+    id: "l9-q5",
+    lecon: 9,
     question: "Pour un gaz parfait monoatomique, le coefficient de Laplace γ = C_P/C_V vaut :",
     choices: ["7/5", "5/3", "3/2", "1"],
     explanations: [
@@ -858,8 +831,8 @@ export const quizQuestions: QuizQuestion[] = [
     correctIndex: 1,
   },
   {
-    id: "l8-vf1",
-    lecon: 8,
+    id: "l9-vf1",
+    lecon: 9,
     question: "Pour un gaz parfait, la capacité thermique à pression constante C_P est toujours strictement supérieure à C_V.",
     choices: ["Vrai", "Faux"],
     explanations: [
@@ -869,10 +842,10 @@ export const quizQuestions: QuizQuestion[] = [
     correctIndex: 0,
   },
 
-  // ─── Leçon 9 : Transitions de phase ───
+  // ─── Leçon 10 : Transitions de phase ───
   {
-    id: "l9-q1",
-    lecon: 9,
+    id: "l10-q1",
+    lecon: 10,
     question: "Au cours d'une transition de phase à pression constante (par exemple la fusion), tant que les deux phases coexistent, la température :",
     choices: ["Augmente continûment", "Devient indéfinie", "Diminue continûment", "Reste constante"],
     explanations: [
@@ -884,8 +857,8 @@ export const quizQuestions: QuizQuestion[] = [
     correctIndex: 3,
   },
   {
-    id: "l9-q2",
-    lecon: 9,
+    id: "l10-q2",
+    lecon: 10,
     question: "Dans le diagramme (P,V) du gaz de Van der Waals, à quoi sert la règle des paliers de Maxwell ?",
     choices: [
       "À fixer la position du palier liquide-vapeur, par égalité des aires au-dessus et au-dessous du segment.",
@@ -900,8 +873,8 @@ export const quizQuestions: QuizQuestion[] = [
     correctIndex: 0,
   },
   {
-    id: "l9-q3",
-    lecon: 9,
+    id: "l10-q3",
+    lecon: 10,
     question: "Des gouttes de pluie verglaçante restent liquides en dessous de 0°C (surfusion) jusqu'à toucher le sol. Que peut-on dire de cet état ?",
     choices: [
       "C'est un état d'équilibre stable, aussi stable que la glace à cette température, les deux phases étant simplement séparées par une barrière de tension superficielle.",
@@ -916,8 +889,8 @@ export const quizQuestions: QuizQuestion[] = [
     correctIndex: 1,
   },
   {
-    id: "l9-q4",
-    lecon: 9,
+    id: "l10-q4",
+    lecon: 10,
     question: "La formule de Clapeyron, (dP/dT) = Δs/Δv le long d'une courbe de coexistence, cesse d'être applicable :",
     choices: [
       "Dès que l'on s'éloigne du point triple, car la chaleur latente varie trop vite avec la température pour que la dérivée garde un sens.",
@@ -932,8 +905,8 @@ export const quizQuestions: QuizQuestion[] = [
     correctIndex: 2,
   },
   {
-    id: "l9-q5",
-    lecon: 9,
+    id: "l10-q5",
+    lecon: 10,
     question: "Sur un palier de coexistence liquide-vapeur en diagramme (P,V), le système est au point M, entre les extrémités A (liquide) et B (vapeur). Le titre en vapeur x_v vaut :",
     choices: ["AM / AB", "MB / AB", "AM / MB"],
     explanations: [
@@ -944,8 +917,8 @@ export const quizQuestions: QuizQuestion[] = [
     correctIndex: 0,
   },
   {
-    id: "l9-q6",
-    lecon: 9,
+    id: "l10-q6",
+    lecon: 10,
     question: "Sur la courbe de saturation d'un diagramme (P,V), comment s'appellent la branche montante (côté liquide) et la branche descendante (côté vapeur) ?",
     choices: [
       "Courbe d'ébullition (liquide) et courbe de rosée (vapeur)",
@@ -960,8 +933,8 @@ export const quizQuestions: QuizQuestion[] = [
     correctIndex: 0,
   },
   {
-    id: "l9-q7",
-    lecon: 9,
+    id: "l10-q7",
+    lecon: 10,
     question: "Un taux d'humidité relative de 100 % signifie que :",
     choices: [
       "L'air est entièrement constitué de vapeur d'eau, l'azote et l'oxygène ayant été chassés par évaporation.",
@@ -976,8 +949,8 @@ export const quizQuestions: QuizQuestion[] = [
     correctIndex: 2,
   },
   {
-    id: "l9-vf1",
-    lecon: 9,
+    id: "l10-vf1",
+    lecon: 10,
     question: "Il est possible de faire coexister à l'équilibre quatre phases distinctes d'un même corps pur.",
     choices: ["Vrai", "Faux"],
     explanations: [
@@ -987,10 +960,10 @@ export const quizQuestions: QuizQuestion[] = [
     correctIndex: 1,
   },
 
-  // ─── Leçon 10 : Machines thermiques ───
+  // ─── Leçon 11 : Machines thermiques ───
   {
-    id: "l10-q1",
-    lecon: 10,
+    id: "l11-q1",
+    lecon: 11,
     question: "Le rendement maximal d'un moteur ditherme entre une source chaude T_c et une source froide T_f vaut :",
     choices: [
       "η = 1 - T_f/T_c",
@@ -1007,8 +980,8 @@ export const quizQuestions: QuizQuestion[] = [
     correctIndex: 0,
   },
   {
-    id: "l10-q2",
-    lecon: 10,
+    id: "l11-q2",
+    lecon: 11,
     question: "L'efficacité d'une pompe à chaleur ou d'un réfrigérateur peut-elle dépasser 1 ?",
     choices: [
       "Non : comme le rendement d'un moteur, elle est bornée par 1 en vertu de la conservation de l'énergie, qui interdit de restituer plus que ce que l'on fournit.",
@@ -1023,8 +996,8 @@ export const quizQuestions: QuizQuestion[] = [
     correctIndex: 1,
   },
   {
-    id: "l10-q3",
-    lecon: 10,
+    id: "l11-q3",
+    lecon: 11,
     question: "L'efficacité maximale d'une pompe à chaleur fonctionnant entre T_f et T_c vaut :",
     choices: [
       "T_c / (T_c - T_f)",
@@ -1041,8 +1014,8 @@ export const quizQuestions: QuizQuestion[] = [
     correctIndex: 0,
   },
   {
-    id: "l10-q4",
-    lecon: 10,
+    id: "l11-q4",
+    lecon: 11,
     question: "L'énoncé de Kelvin du second principe affirme que :",
     choices: [
       "La chaleur ne peut pas passer spontanément d'un corps froid vers un corps plus chaud, sans compensation par un apport extérieur de travail.",
@@ -1057,8 +1030,8 @@ export const quizQuestions: QuizQuestion[] = [
     correctIndex: 1,
   },
   {
-    id: "l10-q5",
-    lecon: 10,
+    id: "l11-q5",
+    lecon: 11,
     question: "L'inégalité de Clausius pour un cycle quelconque s'écrit :",
     choices: [
       "∮ δQ/T ≥ 0",
@@ -1075,8 +1048,8 @@ export const quizQuestions: QuizQuestion[] = [
     correctIndex: 3,
   },
   {
-    id: "l10-q6",
-    lecon: 10,
+    id: "l11-q6",
+    lecon: 11,
     question: "Dans un diagramme (T,S), un cycle de Carnot a la forme :",
     choices: ["D'un rectangle", "D'une ellipse", "D'un triangle rectangle"],
     explanations: [
@@ -1087,8 +1060,8 @@ export const quizQuestions: QuizQuestion[] = [
     correctIndex: 0,
   },
   {
-    id: "l10-q7",
-    lecon: 10,
+    id: "l11-q7",
+    lecon: 11,
     question: "Dans un diagramme (T,S), l'aire enclose par un cycle réversible parcouru en sens horaire représente :",
     choices: [
       "La chaleur totale reçue sur le cycle, égale au travail fourni.",
@@ -1103,8 +1076,8 @@ export const quizQuestions: QuizQuestion[] = [
     correctIndex: 0,
   },
   {
-    id: "l10-vf1",
-    lecon: 10,
+    id: "l11-vf1",
+    lecon: 11,
     question: "Dans un diagramme (T,S), une adiabatique réversible est représentée par un segment vertical.",
     choices: ["Vrai", "Faux"],
     explanations: [
