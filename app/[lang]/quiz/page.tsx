@@ -1,31 +1,38 @@
-import { getListedWebThemes } from "@/lib/chapters";
-import { getQuizLessons, getQuizQuestionsByLecon } from "@/lib/quizzes";
+import { getListedWebThemes, getThemeTitle } from "@/lib/chapters";
+import type { Lang } from "@/lib/i18n";
+import { getQuizTranslations } from "@/lib/quizTranslations";
+import { getLocalizedQuizQuestions, getQuizLessonsForLang } from "@/lib/quizzes";
 import { QuizHomeClient } from "./QuizHomeClient";
 
 export interface QuizLessonCard {
   lecon: number;
-  titleFr: string;
-  titleEn: string;
+  /** Lesson title, already resolved for the current language. */
+  title: string;
   count: number;
 }
 
-export default function QuizHomePage() {
+export default async function QuizHomePage({
+  params,
+}: {
+  params: Promise<{ lang: Lang }>;
+}) {
+  const { lang } = await params;
   const lessons = getListedWebThemes();
-  const listedNumbers = new Set(lessons.map((t) => t.number));
-  const lessonTitle = (n: number) => {
-    const l = lessons.find((t) => t.number === n);
-    return l ? { fr: l.titleFr, en: l.titleEn } : { fr: `Leçon ${n}`, en: `Lesson ${n}` };
-  };
+  const listedNumbers = new Set(lessons.map((theme) => theme.number));
+  const t = getQuizTranslations(lang);
 
-  // Unlisted (Part II/III) lesson numbers are excluded even if quiz content exists for them.
-  const cards: QuizLessonCard[] = getQuizLessons()
+  // Unlisted (Part II/III) lessons are excluded even if quiz content exists for
+  // them, and a lesson only appears once its quiz is fully translated in `lang`.
+  const cards: QuizLessonCard[] = getQuizLessonsForLang(lang)
     .filter((lecon) => listedNumbers.has(lecon))
-    .map((lecon) => ({
-      lecon,
-      titleFr: lessonTitle(lecon).fr,
-      titleEn: lessonTitle(lecon).en,
-      count: getQuizQuestionsByLecon(lecon).length,
-    }));
+    .map((lecon) => {
+      const lesson = lessons.find((theme) => theme.number === lecon);
+      return {
+        lecon,
+        title: lesson ? getThemeTitle(lesson, lang) : t.lessonLabel(lecon),
+        count: getLocalizedQuizQuestions(lecon, lang)?.length ?? 0,
+      };
+    });
 
   return <QuizHomeClient cards={cards} />;
 }

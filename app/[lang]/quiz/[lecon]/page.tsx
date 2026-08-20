@@ -1,20 +1,26 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
-import { getThemeUrlSlug, getWebThemes, localizedSiteTitle } from "@/lib/chapters";
+import { getThemeTitle, getThemeUrlSlug, getWebThemes, localizedSiteTitle } from "@/lib/chapters";
 import { absoluteUrl, getSiteUrl } from "@/lib/siteUrl";
-import { getTranslations, sectionHref, type Lang } from "@/lib/i18n";
-import { getQuizLessons, getQuizQuestionsByLecon, type QuizQuestion } from "@/lib/quizzes";
+import { getTranslations, sectionHref, SUPPORTED_LANGS, type Lang } from "@/lib/i18n";
+import { getQuizTranslations } from "@/lib/quizTranslations";
+import {
+  getLocalizedQuizQuestions,
+  getQuizLangsForLecon,
+  getQuizLessons,
+  getQuizQuestionsByLecon,
+  type QuizQuestion,
+} from "@/lib/quizzes";
 import { QuizRunner } from "./QuizRunner";
 
 /**
- * Quiz questions are currently authored in French only (lib/quizzes.ts has no
- * per-language content). Rather than silently serving French content under
- * /en/, show an explicit "not available yet" state until real English
- * questions exist.
+ * Quiz questions are translated lesson by lesson (`lib/quizQuestionTranslations.ts`).
+ * A language that has no complete translation for this lesson gets an explicit
+ * "not available yet" state rather than French content served under /de/, /es/…
  */
 function QuizUnavailable({ lang, title, lecon }: { lang: Lang; title: string; lecon: number }) {
-  const isFr = lang === "fr";
+  const t = getQuizTranslations(lang);
   return (
     <div style={{ position: "relative", zIndex: 1, padding: "4rem 1.5rem 5rem" }}>
       <div style={{ maxWidth: "760px", margin: "0 auto" }}>
@@ -22,7 +28,7 @@ function QuizUnavailable({ lang, title, lecon }: { lang: Lang; title: string; le
           href={sectionHref(lang, "quiz")}
           style={{ fontFamily: "var(--font-inter)", fontSize: "0.85rem", color: "var(--amber)", textDecoration: "none" }}
         >
-          {isFr ? "← Retour aux quiz" : "← Back to quizzes"}
+          {t.back}
         </Link>
         <h1
           style={{
@@ -36,9 +42,7 @@ function QuizUnavailable({ lang, title, lecon }: { lang: Lang; title: string; le
           {title}
         </h1>
         <p style={{ fontFamily: "var(--font-crimson)", fontSize: "1.05rem", color: "var(--text-secondary)", lineHeight: 1.75 }}>
-          {isFr
-            ? `Le quiz de la leçon ${lecon} n'est pas encore disponible dans cette langue.`
-            : `The quiz for lesson ${lecon} is not available yet in this language.`}
+          {t.unavailableLesson(lecon)}
         </p>
       </div>
     </div>
@@ -49,11 +53,8 @@ export function generateStaticParams() {
   return getQuizLessons().map((lecon) => ({ lecon: String(lecon) }));
 }
 
-// Quiz content is French-only and noindexed elsewhere (see QuizUnavailable
-// above), so this structured data is only ever emitted on the fr branch.
 function quizJsonLd({
   lang,
-  lecon,
   title,
   url,
   quizUrl,
@@ -61,7 +62,6 @@ function quizJsonLd({
   questions,
 }: {
   lang: Lang;
-  lecon: number;
   title: string;
   url: string;
   quizUrl: string;
@@ -75,14 +75,14 @@ function quizJsonLd({
     itemListElement: [
       { "@type": "ListItem", position: 1, name: t.nav.home, item: getSiteUrl() },
       { "@type": "ListItem", position: 2, name: t.nav.quiz, item: quizUrl },
-      { "@type": "ListItem", position: 3, name: `Quiz — ${title}`, item: url },
+      { "@type": "ListItem", position: 3, name: `${t.nav.quiz} — ${title}`, item: url },
     ],
   };
 
   const quiz = {
     "@context": "https://schema.org",
     "@type": "Quiz",
-    name: `Quiz — ${title}`,
+    name: `${t.nav.quiz} — ${title}`,
     about: title,
     inLanguage: lang,
     url,
@@ -112,28 +112,28 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { lecon: leconParam, lang } = await params;
   const lecon = Number(leconParam);
-  const lessons = getWebThemes();
-  const lesson = lessons.find((t) => t.number === lecon);
-  const isFr = lang === "fr";
-  const title = lesson ? (isFr ? lesson.titleFr : lesson.titleEn) : (isFr ? `Leçon ${lecon}` : `Lesson ${lecon}`);
-  const description = isFr
-    ? `Quiz de cours sur la leçon ${lecon} : ${title}.`
-    : `Course quiz on lesson ${lecon}: ${title}.`;
+  const lesson = getWebThemes().find((theme) => theme.number === lecon);
+  const t = getQuizTranslations(lang);
+  const quizWord = getTranslations(lang).nav.quiz;
+  const title = lesson ? getThemeTitle(lesson, lang) : t.lessonLabel(lecon);
+
   const url = absoluteUrl(sectionHref(lang, "quiz", String(lecon)));
-  const frenchUrl = absoluteUrl(sectionHref("fr", "quiz", String(lecon)));
+  // Only languages actually serving this quiz are advertised to search engines.
+  const availableLangs = getQuizLangsForLecon(lecon, SUPPORTED_LANGS);
+  const languages: Record<string, string> = {};
+  for (const availableLang of availableLangs) {
+    languages[availableLang] = absoluteUrl(sectionHref(availableLang, "quiz", String(lecon)));
+  }
+  if (languages.fr) languages["x-default"] = languages.fr;
+
+  const available = availableLangs.includes(lang);
   return {
-    title: `Quiz — ${title}`,
-    description,
-    alternates: {
-      canonical: url,
-      languages: {
-        fr: frenchUrl,
-        "x-default": frenchUrl,
-      },
-    },
-    robots: isFr && lesson?.listed !== false ? undefined : { index: false, follow: true },
+    title: `${quizWord} — ${title}`,
+    description: t.lessonMetaDescription(lecon, title),
+    alternates: { canonical: url, languages },
+    robots: available && lesson?.listed !== false ? undefined : { index: false, follow: true },
     openGraph: {
-      title: `Quiz — ${title} | ${localizedSiteTitle(lang)}`,
+      title: `${quizWord} — ${title} | ${localizedSiteTitle(lang)}`,
       url,
     },
   };
@@ -146,18 +146,17 @@ export default async function QuizLeconPage({
 }) {
   const { lecon: leconParam, lang } = await params;
   const lecon = Number(leconParam);
-  const questions = getQuizQuestionsByLecon(lecon);
-  if (!Number.isInteger(lecon) || questions.length === 0) {
+  if (!Number.isInteger(lecon) || getQuizQuestionsByLecon(lecon).length === 0) {
     notFound();
   }
 
-  const lessons = getWebThemes();
-  const lesson = lessons.find((t) => t.number === lecon);
-  const titleFr = lesson ? lesson.titleFr : `Leçon ${lecon}`;
-  const titleEn = lesson ? lesson.titleEn : `Lesson ${lecon}`;
+  const lesson = getWebThemes().find((theme) => theme.number === lecon);
+  const t = getQuizTranslations(lang);
+  const title = lesson ? getThemeTitle(lesson, lang) : t.lessonLabel(lecon);
 
-  if (lang !== "fr") {
-    return <QuizUnavailable lang={lang} title={titleEn} lecon={lecon} />;
+  const questions = getLocalizedQuizQuestions(lecon, lang);
+  if (!questions) {
+    return <QuizUnavailable lang={lang} title={title} lecon={lecon} />;
   }
 
   const url = absoluteUrl(sectionHref(lang, "quiz", String(lecon)));
@@ -168,21 +167,14 @@ export default async function QuizLeconPage({
 
   return (
     <>
-      {quizJsonLd({ lang, lecon, title: titleFr, url, quizUrl, lessonUrl, questions }).map(
-        (block, index) => (
-          <script
-            key={index}
-            type="application/ld+json"
-            dangerouslySetInnerHTML={{ __html: JSON.stringify(block) }}
-          />
-        )
-      )}
-      <QuizRunner
-        lecon={lecon}
-        titleFr={titleFr}
-        titleEn={titleEn}
-        questions={questions}
-      />
+      {quizJsonLd({ lang, title, url, quizUrl, lessonUrl, questions }).map((block, index) => (
+        <script
+          key={index}
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(block) }}
+        />
+      ))}
+      <QuizRunner lecon={lecon} title={title} questions={questions} />
     </>
   );
 }

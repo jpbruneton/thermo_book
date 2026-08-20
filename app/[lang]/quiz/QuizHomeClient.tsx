@@ -4,6 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { useLang } from "@/app/context/LangContext";
 import { sectionHref, type Lang } from "@/lib/i18n";
+import { getQuizTranslations, type QuizTranslations } from "@/lib/quizTranslations";
 import { SectionUnavailable } from "@/app/components/SectionUnavailable";
 import type { QuizLessonCard } from "./page";
 
@@ -13,26 +14,13 @@ interface Props {
 
 export function QuizHomeClient({ cards }: Props) {
   const { lang } = useLang();
+  const t = getQuizTranslations(lang);
 
-  if (lang !== "fr" && lang !== "en") {
+  // The server only sends lessons whose quiz is fully translated in this
+  // language; none means the section has nothing to show here yet.
+  if (cards.length === 0) {
     return <SectionUnavailable />;
   }
-
-  const t = lang === "fr"
-    ? {
-        title: "Quiz : questions de cours",
-        leconPrefix: "Leçon",
-        startQuiz: "Commencer le quiz →",
-        questionCount: (n: number) => `${n} question${n > 1 ? "s" : ""}`,
-        frenchOnlyNote: "Note: quiz content is currently available in French only.",
-      }
-    : {
-        title: "Quiz — Course Check",
-        leconPrefix: "Lesson",
-        startQuiz: "Start the quiz →",
-        questionCount: (n: number) => `${n} question${n > 1 ? "s" : ""}`,
-        frenchOnlyNote: "Note : le contenu des quiz est pour l'instant disponible uniquement en français.",
-      };
 
   return (
     <div style={{ position: "relative", zIndex: 1, padding: "4rem 1.5rem 5rem" }}>
@@ -46,21 +34,8 @@ export function QuizHomeClient({ cards }: Props) {
             marginBottom: "0.6rem",
           }}
         >
-          {t.title}
+          {t.hubTitle}
         </h1>
-        {lang === "en" && (
-          <p
-            style={{
-              fontFamily: "var(--font-inter)",
-              fontSize: "0.85rem",
-              fontStyle: "italic",
-              color: "var(--amber-soft)",
-              marginBottom: "2rem",
-            }}
-          >
-            {t.frenchOnlyNote}
-          </p>
-        )}
 
         <div
           style={{
@@ -71,14 +46,7 @@ export function QuizHomeClient({ cards }: Props) {
           }}
         >
           {cards.map((card) => (
-            <QuizLessonCardView
-              key={card.lecon}
-              card={card}
-              lang={lang}
-              leconPrefix={t.leconPrefix}
-              startQuiz={t.startQuiz}
-              questionCount={t.questionCount}
-            />
+            <QuizLessonCardView key={card.lecon} card={card} lang={lang} t={t} />
           ))}
         </div>
       </div>
@@ -89,18 +57,13 @@ export function QuizHomeClient({ cards }: Props) {
 function QuizLessonCardView({
   card,
   lang,
-  leconPrefix,
-  startQuiz,
-  questionCount,
+  t,
 }: {
   card: QuizLessonCard;
   lang: Lang;
-  leconPrefix: string;
-  startQuiz: string;
-  questionCount: (n: number) => string;
+  t: QuizTranslations;
 }) {
   const [hovered, setHovered] = useState(false);
-  const title = lang === "fr" ? card.titleFr : card.titleEn;
 
   return (
     <Link href={sectionHref(lang, "quiz", String(card.lecon))} style={{ textDecoration: "none" }}>
@@ -134,7 +97,7 @@ function QuizLessonCardView({
             marginBottom: "0.55rem",
           }}
         >
-          {leconPrefix} n°{card.lecon}
+          {t.lessonLabel(card.lecon)}
         </span>
         <span
           style={{
@@ -146,7 +109,7 @@ function QuizLessonCardView({
             flex: 1,
           }}
         >
-          {title}
+          {card.title}
         </span>
         <span
           style={{
@@ -156,7 +119,7 @@ function QuizLessonCardView({
             marginTop: "0.85rem",
           }}
         >
-          {questionCount(card.count)}
+          {t.questionCount(card.count)}
         </span>
         <span
           style={{
@@ -166,7 +129,7 @@ function QuizLessonCardView({
             marginTop: "0.6rem",
           }}
         >
-          {startQuiz}
+          {t.startQuiz}
         </span>
       </div>
     </Link>

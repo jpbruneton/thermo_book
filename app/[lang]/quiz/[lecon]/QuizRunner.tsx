@@ -4,12 +4,13 @@ import Link from "next/link";
 import { useMemo, useState } from "react";
 import { useLang } from "@/app/context/LangContext";
 import { sectionHref } from "@/lib/i18n";
+import { getQuizTranslations } from "@/lib/quizTranslations";
 import type { QuizQuestion } from "@/lib/quizzes";
 
 interface Props {
   lecon: number;
-  titleFr: string;
-  titleEn: string;
+  /** Lesson title, already resolved for the current language server-side. */
+  title: string;
   questions: QuizQuestion[];
 }
 
@@ -35,16 +36,16 @@ function QuizText({ text }: { text: string }) {
 
 function QuizNavCard({
   label,
-  question,
   align,
+  visible,
   onClick,
 }: {
   label: string;
-  question: QuizQuestion | null;
   align: "left" | "right";
+  visible: boolean;
   onClick: () => void;
 }) {
-  if (!question) return <div />;
+  if (!visible) return <div />;
 
   return (
     <button
@@ -64,35 +65,19 @@ function QuizNavCard({
         <div
           style={{
             fontFamily: "var(--font-inter)",
-            fontSize: "0.68rem",
-            textTransform: "uppercase",
-            letterSpacing: "0.08em",
-            color: "var(--text-dim)",
-            marginBottom: "0.3rem",
+            fontSize: "0.82rem",
+            fontWeight: 600,
+            color: "var(--amber)",
           }}
         >
           {label}
-        </div>
-        <div
-          style={{
-            fontFamily: "var(--font-playfair)",
-            fontSize: "0.88rem",
-            color: "var(--text-heading)",
-            overflow: "hidden",
-            textOverflow: "ellipsis",
-            display: "-webkit-box",
-            WebkitLineClamp: 2,
-            WebkitBoxOrient: "vertical",
-          }}
-        >
-          <QuizText text={question.question} />
         </div>
       </div>
     </button>
   );
 }
 
-export function QuizRunner({ lecon, titleFr, titleEn, questions }: Props) {
+export function QuizRunner({ lecon, title, questions }: Props) {
   const { lang } = useLang();
   const [index, setIndex] = useState(0);
   const [states, setStates] = useState<QuestionState[]>(
@@ -100,43 +85,7 @@ export function QuizRunner({ lecon, titleFr, titleEn, questions }: Props) {
   );
   const [finished, setFinished] = useState(false);
 
-  const t = lang === "fr"
-    ? {
-        back: "← Retour aux quiz",
-        controlLabel: "Contrôle de cours",
-        leconPrefix: "Leçon",
-        questionOf: (a: number, b: number) => `Question ${a} / ${b}`,
-        next: "Question suivante →",
-        seeScore: "Voir mon score →",
-        restart: "Recommencer ce quiz",
-        backToList: "← Retour à la liste des quiz",
-        scoreTitle: "Résultat",
-        scoreLine: (score: number, total: number) => `${score} / ${total} bonnes réponses du premier coup.`,
-        correct: "Correct",
-        incorrect: "Incorrect",
-        recap: "Récapitulatif",
-        prevQuestion: "Question précédente",
-        nextQuestion: "Question suivante",
-      }
-    : {
-        back: "← Back to quizzes",
-        controlLabel: "Course check",
-        leconPrefix: "Lesson",
-        questionOf: (a: number, b: number) => `Question ${a} / ${b}`,
-        next: "Next question →",
-        seeScore: "See my score →",
-        restart: "Restart this quiz",
-        backToList: "← Back to the quiz list",
-        scoreTitle: "Result",
-        scoreLine: (score: number, total: number) => `${score} / ${total} correct on the first try.`,
-        correct: "Correct",
-        incorrect: "Incorrect",
-        recap: "Summary",
-        prevQuestion: "Previous question",
-        nextQuestion: "Next question",
-      };
-
-  const title = lang === "fr" ? titleFr : titleEn;
+  const t = getQuizTranslations(lang);
 
   const score = useMemo(
     () =>
@@ -197,7 +146,7 @@ export function QuizRunner({ lecon, titleFr, titleEn, questions }: Props) {
             fontWeight: 700,
           }}
         >
-          {t.controlLabel} — {t.leconPrefix} n°{lecon}
+          {t.controlLabel} — {t.lessonLabel(lecon)}
         </span>
         <h1
           style={{
@@ -435,7 +384,9 @@ export function QuizRunner({ lecon, titleFr, titleEn, questions }: Props) {
                         color: "var(--amber)",
                       }}
                     >
-                      {q.choices[0] === "Vrai" ? (ci === 0 ? "V" : "F") : String.fromCharCode(65 + ci)}
+                      {q.trueFalse
+                        ? choice.trim().charAt(0).toUpperCase()
+                        : String.fromCharCode(65 + ci)}
                     </span>
                     <span><QuizText text={choice} /></span>
                   </button>
@@ -485,14 +436,14 @@ export function QuizRunner({ lecon, titleFr, titleEn, questions }: Props) {
         <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "1rem", marginTop: "1.5rem" }}>
           <QuizNavCard
             label={t.prevQuestion}
-            question={index > 0 ? questions[index - 1] : null}
             align="left"
+            visible={index > 0}
             onClick={() => setIndex((i) => i - 1)}
           />
           <QuizNavCard
             label={t.nextQuestion}
-            question={index < questions.length - 1 ? questions[index + 1] : null}
             align="right"
+            visible={!locked && index < questions.length - 1}
             onClick={() => setIndex((i) => i + 1)}
           />
         </div>

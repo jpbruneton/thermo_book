@@ -1,3 +1,6 @@
+import type { Lang } from "@/lib/i18n";
+import { quizQuestionTranslations } from "@/lib/quizQuestionTranslations";
+
 export interface QuizQuestion {
   id: string;
   /** Lesson number (1..10), matches lib/chapters.ts theme numbers. */
@@ -8,6 +11,12 @@ export interface QuizQuestion {
   /** Explanation shown when the corresponding choice is clicked (index-aligned with choices). */
   explanations: string[];
   correctIndex: number;
+  /**
+   * True/false question, derived from the French source (`choices` = Vrai/Faux)
+   * by `getLocalizedQuizQuestions`. Set on the localized copy so the renderer
+   * can pick the V/F badge without string-matching a French word.
+   */
+  trueFalse?: boolean;
 }
 
 export const quizQuestions: QuizQuestion[] = [
@@ -1120,4 +1129,60 @@ export function getQuizLessons(): number[] {
 
 export function getQuizQuestionsByLecon(lecon: number): QuizQuestion[] {
   return quizQuestions.filter((q) => q.lecon === lecon);
+}
+
+/** A true/false question is recognised on the French source, never on a translation. */
+function isTrueFalse(question: QuizQuestion): boolean {
+  return question.choices.length === 2 && question.choices[0] === "Vrai";
+}
+
+/**
+ * Questions of one lesson in `lang`, or `null` when that language has no
+ * complete translation for it.
+ *
+ * All-or-nothing on purpose: a quiz mixing translated and French questions
+ * would be worse than an explicit "not available yet" page, so a single
+ * missing (or structurally mismatched) question disables the whole lesson for
+ * that language. See docs/languages.md.
+ */
+export function getLocalizedQuizQuestions(lecon: number, lang: Lang): QuizQuestion[] | null {
+  const source = getQuizQuestionsByLecon(lecon);
+  if (source.length === 0) return null;
+
+  if (lang === "fr") {
+    return source.map((q) => ({ ...q, trueFalse: isTrueFalse(q) }));
+  }
+
+  const table = quizQuestionTranslations[lang];
+  if (!table) return null;
+
+  const localized: QuizQuestion[] = [];
+  for (const q of source) {
+    const translated = table[q.id];
+    if (
+      !translated ||
+      translated.choices.length !== q.choices.length ||
+      translated.explanations.length !== q.explanations.length
+    ) {
+      return null;
+    }
+    localized.push({
+      ...q,
+      question: translated.question,
+      choices: translated.choices,
+      explanations: translated.explanations,
+      trueFalse: isTrueFalse(q),
+    });
+  }
+  return localized;
+}
+
+/** Lesson numbers whose quiz is fully available in `lang`. */
+export function getQuizLessonsForLang(lang: Lang): number[] {
+  return getQuizLessons().filter((lecon) => getLocalizedQuizQuestions(lecon, lang) !== null);
+}
+
+/** Languages serving a complete quiz for this lesson — drives hreflang and the sitemap. */
+export function getQuizLangsForLecon(lecon: number, langs: readonly Lang[]): Lang[] {
+  return langs.filter((lang) => getLocalizedQuizQuestions(lecon, lang) !== null);
 }

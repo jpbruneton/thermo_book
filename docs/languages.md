@@ -11,8 +11,8 @@ ce qui varie entre langues, c'est la profondeur du contenu réellement traduit
 | Code | Langue     | Statut       | Notes |
 |------|------------|--------------|-------|
 | fr   | Français   | ✅ en prod   | Langue source, contenu de référence, toutes sections |
-| en   | Anglais    | 🚧 partiel   | Chrome UI + traduction du contenu en cours, leçon par leçon ; exercices du chapitre 2 traduits |
-| de   | Allemand   | 🚧 partiel   | Accueil, à propos, métadonnées des leçons, glossaire, leçon 1 et exercices du chapitre 2 traduits |
+| en   | Anglais    | 🚧 partiel   | Chrome UI + traduction du contenu en cours, leçon par leçon ; exercices du chapitre 2 et quiz de la leçon 1 traduits |
+| de   | Allemand   | 🚧 partiel   | Accueil, à propos, métadonnées des leçons, glossaire, leçon 1, exercices du chapitre 2 et quiz de la leçon 1 traduits |
 | es   | Espagnol   | 🚧 partiel   | Idem de |
 | pt   | Portugais  | 🚧 partiel   | Idem de |
 | it   | Italien    | 🚧 partiel   | Idem de |
@@ -24,7 +24,7 @@ ce qui varie entre langues, c'est la profondeur du contenu réellement traduit
 | hi   | Hindi      | 🚧 partiel   | Idem de |
 | vi   | Vietnamien | 🚧 partiel   | Idem de |
 | ar   | Arabe      | 🚧 partiel   | Idem de + RTL (`dir="rtl"` sur `<html>`, mise en page en miroir automatique via flex/grid) |
-| id   | Indonésien | 🚧 partiel   | Accueil, à propos, métadonnées des leçons, glossaire, leçons 1 et 2 et exercices du chapitre 2 traduits |
+| id   | Indonésien | 🚧 partiel   | Accueil, à propos, métadonnées des leçons, glossaire, leçons 1 et 2, exercices du chapitre 2 et quiz de la leçon 1 traduits |
 | tr   | Turc       | 🚧 partiel   | Idem id |
 
 Légende : ✅ en prod (toutes sections) · 🚧 partiel (au moins une section a du
@@ -77,6 +77,21 @@ pages sans contenu affichent un état explicite) · 📋 planifié / pas commenc
   français des chapitres suivants restent en `noindex` jusqu'à leur validation.
   Les slugs des pages détaillées sont dérivés du titre traduit pour les langues
   à alphabet latin, avec redirection permanente depuis l'identifiant historique.
+- **Quiz sans repli silencieux.** Les libellés d'interface viennent de
+  `lib/quizTranslations.ts` (les 16 langues, même rôle que
+  `exerciseTranslations`) et le contenu des questions de
+  `lib/quizQuestionTranslations.ts`, indexé par identifiant de question.
+  `getLocalizedQuizQuestions(lecon, lang)` renvoie les questions traduites ou
+  `null` : une leçon n'est servie dans une langue que si **toutes** ses
+  questions y sont traduites, avec le même nombre de choix et d'explications
+  qu'en français — sinon la page affiche `unavailableLesson`, jamais un quiz
+  mi-traduit. Le hub ne liste que les leçons réellement disponibles, et les
+  métadonnées (`hreflang`, `robots`) comme le sitemap sont calculés à partir de
+  cette même disponibilité. La leçon 1 est traduite dans les 16 langues ; les
+  leçons 2 à 10 restent en français seulement. Pour ajouter une langue à une
+  leçon : compléter `quizQuestionTranslations`, rien d'autre à changer.
+  Les questions vrai/faux sont repérées sur la source française (champ
+  `trueFalse`), pas en comparant le libellé traduit.
 - **Glossaire** : `app/[lang]/glossary/page.tsx` construit la liste des
   mots-clés à partir de `getThemeTopics(themeSlug, lesson, lang)` (même
   source que les bulles sous chaque leçon), et les libellés d'interface
@@ -121,7 +136,9 @@ détecte automatiquement.
 
 Pour ajouter des exercices, déposer `exo_chpN.tex` dans le dossier
 `content/exos_<code>` correspondant. Le chargeur les détecte sans changement
-de code. Le quiz reste à généraliser sur le même modèle.
+de code. Pour les quiz, ajouter les questions traduites dans
+`lib/quizQuestionTranslations.ts` (voir plus haut) : leçons 2 à 10 encore à
+faire.
 
 Pour zh/ko/ja/ar en particulier : la typographie de `cleanLatexInline` (espaces
 insécables autour de `: ; ? !`, guillemets `«»`) est calée sur le français et

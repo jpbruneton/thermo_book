@@ -4,7 +4,7 @@ import { getSiteUrl } from "@/lib/siteUrl";
 import { getExerciseById, getExerciseUrlSlug, hasExercises, loadExercises } from "@/lib/exercisesLibrary.server";
 import { hasLessonWebContent } from "@/lib/chapterContent.server";
 import { getAllExercisesPdfHref, getExerciseThemePdfLinks } from "@/lib/exercisePdfDownloads.server";
-import { getQuizLessons } from "@/lib/quizzes";
+import { getQuizLangsForLecon, getQuizLessons, getQuizLessonsForLang } from "@/lib/quizzes";
 import { sectionHref, SUPPORTED_LANGS, type Lang } from "@/lib/i18n";
 
 const SITE_URL = getSiteUrl();
@@ -63,7 +63,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { section: "chapters", priority: 0.9, changeFrequency: "monthly", langs: SUPPORTED_LANGS, includeLang: () => true },
     { section: "about", priority: 0.6, changeFrequency: "yearly", langs: SUPPORTED_LANGS, includeLang: () => true },
     { section: "glossary", priority: 0.5, changeFrequency: "monthly", langs: SUPPORTED_LANGS, includeLang: () => true },
-    { section: "quiz", priority: 0.7, changeFrequency: "monthly", langs: ["fr"], includeLang: () => true },
+    {
+      section: "quiz",
+      priority: 0.7,
+      changeFrequency: "monthly",
+      langs: SUPPORTED_LANGS,
+      includeLang: (lang) =>
+        getQuizLessonsForLang(lang).some((lecon) => listedLessonNumbers.has(lecon)),
+    },
     {
       section: "exercises",
       priority: 0.75,
@@ -116,23 +123,25 @@ export default function sitemap(): MetadataRoute.Sitemap {
     });
   });
 
-  // Quiz questions are authored in French only. English and other unavailable
-  // shells are not advertised as indexable educational content.
+  // Quiz questions are translated lesson by lesson: one URL per language that
+  // serves a complete quiz for that lesson. "Not available yet" shells are not
+  // advertised as indexable educational content.
   const quizRoutes: MetadataRoute.Sitemap = getQuizLessons()
     .filter((lecon) => listedLessonNumbers.has(lecon))
     .flatMap((lecon) => {
-    const urlsByLang: Partial<Record<Lang, string>> = {};
-    for (const lang of ["fr"] as const) {
-      urlsByLang[lang] = `${SITE_URL}${sectionHref(lang, "quiz", String(lecon))}`;
-    }
-    return (["fr"] as const).map((lang) => ({
-      url: urlsByLang[lang]!,
-      lastModified: new Date(),
-      changeFrequency: "monthly" as const,
-      priority: 0.65,
-      alternates: hreflangFor(urlsByLang),
-    }));
-  });
+      const langs = getQuizLangsForLecon(lecon, SUPPORTED_LANGS);
+      const urlsByLang: Partial<Record<Lang, string>> = {};
+      for (const lang of langs) {
+        urlsByLang[lang] = `${SITE_URL}${sectionHref(lang, "quiz", String(lecon))}`;
+      }
+      return langs.map((lang) => ({
+        url: urlsByLang[lang]!,
+        lastModified: new Date(),
+        changeFrequency: "monthly" as const,
+        priority: 0.65,
+        alternates: hreflangFor(urlsByLang),
+      }));
+    });
 
   // Stable, intent-specific landing pages for every approved worked exercise,
   // with one localized URL for each language that contains the same exercise id.
