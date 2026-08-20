@@ -33,6 +33,65 @@ function QuizText({ text }: { text: string }) {
   );
 }
 
+function QuizNavCard({
+  label,
+  question,
+  align,
+  onClick,
+}: {
+  label: string;
+  question: QuizQuestion | null;
+  align: "left" | "right";
+  onClick: () => void;
+}) {
+  if (!question) return <div />;
+
+  return (
+    <button
+      type="button"
+      onClick={onClick}
+      style={{ textAlign: "left", border: "none", background: "none", padding: 0, cursor: "pointer", width: "100%" }}
+    >
+      <div
+        style={{
+          background: "var(--bg-card)",
+          border: "1px solid var(--accent-border-sm)",
+          borderRadius: "6px",
+          padding: "0.9rem 1.1rem",
+          textAlign: align,
+        }}
+      >
+        <div
+          style={{
+            fontFamily: "var(--font-inter)",
+            fontSize: "0.68rem",
+            textTransform: "uppercase",
+            letterSpacing: "0.08em",
+            color: "var(--text-dim)",
+            marginBottom: "0.3rem",
+          }}
+        >
+          {label}
+        </div>
+        <div
+          style={{
+            fontFamily: "var(--font-playfair)",
+            fontSize: "0.88rem",
+            color: "var(--text-heading)",
+            overflow: "hidden",
+            textOverflow: "ellipsis",
+            display: "-webkit-box",
+            WebkitLineClamp: 2,
+            WebkitBoxOrient: "vertical",
+          }}
+        >
+          <QuizText text={question.question} />
+        </div>
+      </div>
+    </button>
+  );
+}
+
 export function QuizRunner({ lecon, titleFr, titleEn, questions }: Props) {
   const { lang } = useLang();
   const [index, setIndex] = useState(0);
@@ -56,6 +115,8 @@ export function QuizRunner({ lecon, titleFr, titleEn, questions }: Props) {
         correct: "Correct",
         incorrect: "Incorrect",
         recap: "Récapitulatif",
+        prevQuestion: "Question précédente",
+        nextQuestion: "Question suivante",
       }
     : {
         back: "← Back to quizzes",
@@ -71,6 +132,8 @@ export function QuizRunner({ lecon, titleFr, titleEn, questions }: Props) {
         correct: "Correct",
         incorrect: "Incorrect",
         recap: "Summary",
+        prevQuestion: "Previous question",
+        nextQuestion: "Next question",
       };
 
   const title = lang === "fr" ? titleFr : titleEn;
@@ -418,6 +481,21 @@ export function QuizRunner({ lecon, titleFr, titleEn, questions }: Props) {
             </button>
           </div>
         )}
+
+        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "1rem", marginTop: "1.5rem" }}>
+          <QuizNavCard
+            label={t.prevQuestion}
+            question={index > 0 ? questions[index - 1] : null}
+            align="left"
+            onClick={() => setIndex((i) => i - 1)}
+          />
+          <QuizNavCard
+            label={t.nextQuestion}
+            question={index < questions.length - 1 ? questions[index + 1] : null}
+            align="right"
+            onClick={() => setIndex((i) => i + 1)}
+          />
+        </div>
       </div>
     </div>
   );

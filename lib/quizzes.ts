@@ -134,7 +134,7 @@ export const quizQuestions: QuizQuestion[] = [
   {
     id: "l2-q6",
     lecon: 2,
-    question: "Un emballage alimentaire indique « 250 cal ». À combien de kilojoules cela correspond-il approximativement ?",
+    question: "Un emballage alimentaire indique « 250 cal ». À combien de joules cela correspond-il approximativement ?",
     choices: ["≈ 250 J", "≈ 1046 kJ", "≈ 1046 J", "≈ 250 kJ"],
     explanations: [
       "Faux : cela reviendrait à confondre l'unité indiquée avec le joule.",
@@ -162,8 +162,8 @@ export const quizQuestions: QuizQuestion[] = [
     question:
       "On réchauffe un glaçon à 0°C jusqu'à obtenir de l'eau liquide à 20°C. Comment calculer correctement la chaleur totale reçue ?",
     choices: [
-      "Q = m c ΔT, avec ΔT = 20°C et c la capacité thermique massique de l'eau liquide.",
-      "Q = m L + m c Δ T, avec L la chaleur massique latente de fusion et ΔT = 20°C.",
+      "Q = m c_eau ΔT, avec ΔT = 20°C et c_eau la capacité thermique massique de l'eau liquide.",
+      "Q = m L + m c_eau ΔT, avec L la chaleur massique latente de fusion, c_eau la capacité thermique massique de l'eau liquide, et ΔT = 20°C.",
       "Q = m c_glace ΔT + m c_eau ΔT avec ΔT = 20°C.",
     ],
     explanations: [
@@ -176,7 +176,7 @@ export const quizQuestions: QuizQuestion[] = [
   {
     id: "l2-vf4",
     lecon: 2,
-    question: "Lorsque de l'eau liquide gèle (passage à l'état solide), elle libère de la chaleur vers l'extérieur.",
+    question: "Lorsque de l'eau liquide gèle, elle libère de la chaleur vers l'extérieur.",
     choices: ["Vrai", "Faux"],
     explanations: [
       "Exact : la solidification est l'inverse de la fusion. L'eau restitue exactement la chaleur latente qu'il avait fallu lui fournir pour fondre la même quantité de glace, ce qui explique par exemple pourquoi l'eau d'un lac qui gèle en hiver réchauffe légèrement l'air environnant.",
@@ -238,24 +238,6 @@ export const quizQuestions: QuizQuestion[] = [
     correctIndex: 0,
   },
   {
-    id: "l3-q2",
-    lecon: 3,
-    question: "Le principe zéro de la thermodynamique affirme que :",
-    choices: [
-      "L'énergie totale d'un système isolé reste constante au cours de toute transformation.",
-      "L'entropie d'un système isolé ne peut qu'augmenter lors d'une évolution spontanée.",
-      "L'équilibre thermodynamique est transitif : si A est en équilibre avec B, et B avec C, alors A l'est avec C.",
-      "L'entropie de tout système tend vers zéro quand la température tend vers le zéro absolu.",
-    ],
-    explanations: [
-      "Faux : c'est le contenu du premier principe.",
-      "Faux : c'est le contenu du second principe.",
-      "Exact : c'est le principe zéro ; il fonde la notion même de température et ne se déduit pas des autres principes.",
-      "Faux : c'est le troisième principe.",
-    ],
-    correctIndex: 2,
-  },
-  {
     id: "l3-q3",
     lecon: 3,
     question: "Parmi ces grandeurs, laquelle est intensive ?",
@@ -267,22 +249,6 @@ export const quizQuestions: QuizQuestion[] = [
       "Faux : N double avec le système ; il est extensif.",
     ],
     correctIndex: 2,
-  },
-  {
-    id: "l3-q4",
-    lecon: 3,
-    question: "Une transformation quasi-statique est-elle nécessairement réversible ?",
-    choices: [
-      "Oui : les deux notions sont équivalentes, elles décrivent des transformations infiniment lentes.",
-      "Non : elle passe par des équilibres successifs, mais peut rester irréversible, par exemple s'il y a des frottements ou des transformations chimiques (cuire un oeuf lentement).",
-      "Non : une transformation quasi-statique est par définition toujours irréversible.",
-    ],
-    explanations: [
-      "Faux : quasi-statique est nécessaire mais pas suffisant : il faut en plus l'égalité des paramètres intensifs de part et d'autre des parois, l'absence de dissipation, et même encore ce n'est pas toujours suffisant .",
-      "Exact : on peut être quasi-statique tout en dissipant de l'énergie, ce qui rend la transformation irréversible.",
-      "Faux : elle peut être réversible ou irréversible.",
-    ],
-    correctIndex: 1,
   },
   {
     id: "l3-q5",
@@ -303,8 +269,20 @@ export const quizQuestions: QuizQuestion[] = [
     question: "Un système thermodynamique à l'équilibre est nécessairement homogène (mêmes paramètres intensifs en tout point).",
     choices: ["Vrai", "Faux"],
     explanations: [
-      "Faux : un verre d'eau posé sur une table est à l'équilibre, pourtant sa pression augmente avec la profondeur (loi de Pascal) ; l'équilibre signifie l'absence de flux, pas l'uniformité spatiale.",
-      "Exact : l'exemple classique du verre d'eau le montre ; l'équilibre n'implique pas l'homogénéité.",
+      "Faux : un verre d'eau posé sur une table est à l'équilibre, et pourtant sa pression n'est pas la même en surface et au fond. C'est la loi de Pascal (hydrostatique) : dans un fluide au repos soumis à la pesanteur, la pression augmente avec la profondeur, P(z) = P_0 + ρgh. Cette non-uniformité ne disparaît jamais, même en attendant indéfiniment : elle n'est donc pas due à un défaut d'équilibre, mais à la présence d'un champ de force extérieur (la gravité).",
+      "Exact : le verre d'eau posé sur une table en est l'exemple classique — sa pression augmente avec la profondeur (loi de Pascal : P(z) = P_0 + ρgh) sans que rien n'y circule ni n'évolue. L'équilibre thermodynamique n'exige que l'absence de flux macroscopique (de chaleur, de matière, de quantité de mouvement) entre les points du système ; il n'exige pas que les paramètres intensifs comme la pression y soient partout identiques, surtout en présence d'un champ extérieur comme la gravité.",
+    ],
+    correctIndex: 1,
+  },
+  {
+    id: "l3-vf5",
+    lecon: 3,
+    question:
+      "Une barre métallique dont les deux extrémités sont maintenues à des températures différentes finit par atteindre un régime où le profil de température ne dépend plus du temps. Ce régime est un état d'équilibre thermodynamique.",
+    choices: ["Vrai", "Faux"],
+    explanations: [
+      "Faux : c'est un état stationnaire, pas un état d'équilibre. Le profil de température est bien constant dans le temps, mais un flux de chaleur macroscopique continue de traverser la barre, de l'extrémité chaude vers l'extrémité froide.",
+      "Exact : il s'agit d'un état stationnaire, à distinguer de l'équilibre. La définition de l'équilibre thermodynamique exige non seulement que les grandeurs macroscopiques n'évoluent plus, mais aussi l'absence de tout flux macroscopique (ici, un flux de chaleur persiste entre les deux extrémités).",
     ],
     correctIndex: 1,
   },
@@ -347,22 +325,42 @@ export const quizQuestions: QuizQuestion[] = [
     correctIndex: 0,
   },
   {
-    id: "l4-q3",
+    id: "l4-q2b",
     lecon: 4,
-    question: "Sur un diagramme de Clapeyron (P,V), pour un cycle parcouru dans le sens horaire, l'aire intérieure au cycle représente :",
+    question:
+      "Un gaz parfait passe d'un état d'équilibre A à un état d'équilibre B, soit en le comprimant puis en le chauffant, soit en le chauffant puis en le comprimant. Que peut-on affirmer ?",
     choices: [
-      "La variation d'énergie interne du fluide sur un cycle complet.",
-      "La chaleur totale échangée avec l'extérieur, qui est nulle sur un cycle.",
-      "Le travail fourni par le gaz à l'extérieur au cours du cycle.",
-      "La variation d'entropie du fluide sur un cycle complet.",
+      "La variation d'énergie interne ΔU, la chaleur Q et le travail W reçus sont les mêmes dans les deux cas.",
+      "ΔU est la même dans les deux cas, mais Q et W peuvent différer d'un chemin à l'autre.",
+      "Q est la même dans les deux cas, mais ΔU peut différer.",
+      "Aucune des trois grandeurs ne dépend du chemin suivi.",
     ],
     explanations: [
-      "Faux : ΔU = 0 sur tout cycle puisque U est une fonction d'état ; ce n'est pas ce que représente l'aire.",
-      "Faux : la chaleur totale n'est pas nulle sur un cycle moteur (c'est elle qui est convertie en travail) ; seules ΔU et ΔS sont nulles.",
-      "Exact : parcourue en sens horaire, l'aire du cycle vaut le travail fourni ; c'est un cycle moteur.",
-      "Faux : ΔS = 0 sur tout cycle (fonction d'état), et l'aire en (P,V) n'a pas la dimension d'une entropie.",
+      "Faux : seule ΔU est fixée par les états A et B ; Q et W dépendent en général du chemin suivi.",
+      "Exact : U est une fonction d'état (dU est une différentielle exacte), donc ΔU = U(B) − U(A) ne dépend que des états initial et final. Q et W ne sont pas des fonctions d'état (δQ, δW ne sont pas des différentielles exactes) : ils dépendent du chemin suivi ; seule leur somme Q + W = ΔU est fixée par le premier principe.",
+      "Faux : c'est l'inverse qui est vrai — ΔU est la grandeur indépendante du chemin, pas Q.",
+      "Faux : ΔU ne dépend pas du chemin, mais Q et W, eux, en dépendent en général.",
     ],
-    correctIndex: 2,
+    correctIndex: 1,
+  },
+  {
+    id: "l4-q3",
+    lecon: 4,
+    question:
+      "Un système fermé subit une transformation cyclique (A → A). Que peut-on affirmer sur le bilan Q_cycle + W_cycle ?",
+    choices: [
+      "Il vaut nécessairement zéro, car ΔU_cycle = 0 : U est une fonction d'état, donc U(A) − U(A) = 0.",
+      "Il vaut nécessairement zéro, car Q et W sont eux-mêmes des fonctions d'état lorsqu'on revient à l'état initial.",
+      "Il peut être positif, ce qui permettrait à la machine de fournir indéfiniment du travail sans rien recevoir de l'extérieur.",
+      "Il est toujours strictement positif pour une machine motrice.",
+    ],
+    explanations: [
+      "Exact : sur un cycle, le système retrouve son état initial, donc ΔU_cycle = U(A) − U(A) = 0 puisque U est une fonction d'état. Le premier principe impose alors Q_cycle + W_cycle = ΔU_cycle = 0.",
+      "Faux : c'est l'inverse — Q et W ne sont pas des fonctions d'état (ce sont des transferts, pas des grandeurs du système) ; c'est justement parce qu'ils ne le sont pas que seule leur somme est contrainte à s'annuler sur un cycle, via ΔU_cycle = 0.",
+      "Faux : c'est exactement ce que le premier principe exclut. C'est l'impossibilité du mouvement perpétuel de première espèce : une machine cyclique ne peut fournir indéfiniment du travail sans recevoir une quantité égale d'énergie de son environnement.",
+      "Faux : c'est la somme Q_cycle + W_cycle qui est nulle, pas chaque terme séparément ; Q_cycle et W_cycle peuvent chacun être non nuls (et de signes opposés) pour une machine motrice.",
+    ],
+    correctIndex: 0,
   },
   {
     id: "l4-q4",
