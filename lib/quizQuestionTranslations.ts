@@ -233,6 +233,67 @@ export const quizQuestionTranslations: Partial<
         "Correct: this is a steady state, which must be distinguished from equilibrium. The definition of thermodynamic equilibrium requires not only that macroscopic quantities no longer change, but also that every macroscopic flux be absent (here, a heat flux persists between the two ends).",
       ],
     },
+    "l4-q2": {
+      question: "Why do we write δQ and δW rather than dQ and dW?",
+      choices: [
+        "Because they are inexact differentials: their integrals depend on the path followed.",
+        "Because Q and W are quantities too small to be described by ordinary differentials.",
+      ],
+      explanations: [
+        "Correct: Q and W depend on the path, unlike U, which depends only on the initial and final states. Writing dQ would amount to reviving caloric theory.",
+        "Wrong: the ‘size’ of the quantities is irrelevant; what matters is their path dependence.",
+      ],
+    },
+    "l4-q2b": {
+      question: "An ideal gas goes from an equilibrium state A to an equilibrium state B, either by being compressed and then heated, or by being heated and then compressed. What can we say?",
+      choices: [
+        "The change in internal energy ΔU and the heat Q and work W received are the same in both cases.",
+        "ΔU is the same in both cases, but Q and W may differ from one path to the other.",
+        "Q is the same in both cases, but ΔU may differ.",
+        "None of the three quantities depends on the path followed.",
+      ],
+      explanations: [
+        "Wrong: only ΔU is fixed by states A and B; Q and W generally depend on the path followed.",
+        "Correct: U is a state function (dU is an exact differential), so ΔU = U(B) − U(A) depends only on the initial and final states. Q and W are not state functions (δQ and δW are not exact differentials), so they depend on the path; only their sum Q + W = ΔU is fixed by the first law.",
+        "Wrong: the reverse is true—ΔU, not Q, is independent of the path.",
+        "Wrong: ΔU does not depend on the path, but Q and W generally do.",
+      ],
+    },
+    "l4-q3": {
+      question: "A closed system undergoes a cyclic transformation (A → A). What can we say about the balance Q_cycle + W_cycle?",
+      choices: [
+        "It must be zero because Q and W themselves become state functions when the system returns to its initial state.",
+        "It is zero because U is a state function.",
+        "It is always strictly positive for a heat engine.",
+      ],
+      explanations: [
+        "Wrong: the reverse is true—Q and W are not state functions; they are transfers, not properties of the system. Only their sum is constrained to vanish over a cycle through ΔU_cycle = 0.",
+        "Correct: over a cycle, the system returns to its initial state. Since U is a state function, ΔU_cycle = U(A) − U(A) = 0, so the first law requires Q_cycle + W_cycle = 0.",
+        "Wrong: it is the sum Q_cycle + W_cycle that is zero, not each term separately; Q_cycle and W_cycle may each be nonzero and have opposite signs in a heat engine.",
+      ],
+    },
+    "l4-q4": {
+      question: "A gas is compressed quasi-statically. What can we say about the work received by the gas?",
+      choices: [
+        "It is negative: as it is compressed, the gas necessarily transfers mechanical energy to the surroundings that compress it.",
+        "It is positive: the gas receives work during compression.",
+        "It is zero: in a quasi-static transformation, work exchanges cancel exactly at every stage.",
+      ],
+      explanations: [
+        "Wrong: this is the classic sign error; with dV < 0, we have −P dV > 0, so the gas receives work.",
+        "Correct: compressing a gas requires mechanical energy to be supplied to it; under the banker’s sign convention, energy entering the system is counted as positive.",
+        "Wrong: quasi-static does not mean zero work; it only means that the transformation passes through a sequence of equilibrium states.",
+      ],
+    },
+    "l4-q6": {
+      question: "During an isochoric transformation of a closed system, we always have:",
+      choices: ["W = 0, so ΔU = Q", "Q = 0, so ΔU = W", "ΔU = 0, so Q = −W"],
+      explanations: [
+        "Correct: at constant volume, δW = −P dV = 0; the entire change in internal energy comes from heat.",
+        "Wrong: this is the balance for an adiabatic transformation, not an isochoric one.",
+        "Wrong: this is the balance for an isothermal transformation of an ideal gas, since U depends only on T.",
+      ],
+    },
   },
 
   de: {
@@ -443,6 +504,67 @@ export const quizQuestionTranslations: Partial<
       explanations: [
         "Falsch: Dies ist ein stationärer Zustand, kein Gleichgewichtszustand. Das Temperaturprofil ist zwar zeitlich konstant, doch durch den Stab fließt weiterhin ein makroskopischer Wärmefluss vom heißen zum kalten Ende.",
         "Richtig: Es handelt sich um einen stationären Zustand, der vom Gleichgewicht zu unterscheiden ist. Die Definition des thermodynamischen Gleichgewichts verlangt nicht nur, dass sich die makroskopischen Größen nicht mehr ändern, sondern auch das Fehlen jedes makroskopischen Flusses (hier bleibt ein Wärmefluss zwischen den beiden Enden bestehen).",
+      ],
+    },
+    "l4-q2": {
+      question: "Warum schreibt man δQ und δW statt dQ und dW?",
+      choices: [
+        "Weil es sich um nicht exakte Differentiale handelt: Ihre Integrale hängen vom eingeschlagenen Weg ab.",
+        "Weil Q und W zu kleine Größen sind, um mit gewöhnlichen Differentialen beschrieben zu werden.",
+      ],
+      explanations: [
+        "Richtig: Q und W hängen vom Weg ab, anders als U, das nur vom Anfangs- und Endzustand abhängt. dQ zu schreiben hieße, die Wärmestofftheorie wiederzubeleben.",
+        "Falsch: Die ‚Größe‘ der Größen spielt keine Rolle; entscheidend ist die Wegabhängigkeit.",
+      ],
+    },
+    "l4-q2b": {
+      question: "Ein ideales Gas gelangt vom Gleichgewichtszustand A zum Gleichgewichtszustand B, entweder indem es zuerst komprimiert und dann erwärmt oder zuerst erwärmt und dann komprimiert wird. Was lässt sich sagen?",
+      choices: [
+        "Die Änderung der inneren Energie ΔU sowie die aufgenommene Wärme Q und Arbeit W sind in beiden Fällen gleich.",
+        "ΔU ist in beiden Fällen gleich, Q und W können sich jedoch von Weg zu Weg unterscheiden.",
+        "Q ist in beiden Fällen gleich, ΔU kann sich jedoch unterscheiden.",
+        "Keine der drei Größen hängt vom eingeschlagenen Weg ab.",
+      ],
+      explanations: [
+        "Falsch: Nur ΔU ist durch die Zustände A und B festgelegt; Q und W hängen im Allgemeinen vom Weg ab.",
+        "Richtig: U ist eine Zustandsfunktion (dU ist ein exaktes Differential), daher hängt ΔU = U(B) − U(A) nur vom Anfangs- und Endzustand ab. Q und W sind keine Zustandsfunktionen (δQ und δW sind keine exakten Differentiale) und hängen daher vom Weg ab; nur ihre Summe Q + W = ΔU ist durch den ersten Hauptsatz festgelegt.",
+        "Falsch: Das Gegenteil ist richtig—ΔU ist wegunabhängig, nicht Q.",
+        "Falsch: ΔU hängt nicht vom Weg ab, Q und W dagegen im Allgemeinen schon.",
+      ],
+    },
+    "l4-q3": {
+      question: "Ein geschlossenes System durchläuft eine Kreisprozessänderung (A → A). Was lässt sich über die Bilanz Q_cycle + W_cycle sagen?",
+      choices: [
+        "Sie ist notwendigerweise null, weil Q und W selbst zu Zustandsfunktionen werden, wenn das System in seinen Anfangszustand zurückkehrt.",
+        "Sie ist null, weil U eine Zustandsfunktion ist.",
+        "Für eine Wärmekraftmaschine ist sie immer strikt positiv.",
+      ],
+      explanations: [
+        "Falsch: Das Gegenteil ist richtig—Q und W sind keine Zustandsfunktionen, sondern Übertragungen und keine Größen des Systems. Nur ihre Summe muss wegen ΔU_cycle = 0 über einen Kreisprozess verschwinden.",
+        "Richtig: Nach einem Kreisprozess befindet sich das System wieder im Anfangszustand. Da U eine Zustandsfunktion ist, gilt ΔU_cycle = U(A) − U(A) = 0; der erste Hauptsatz fordert daher Q_cycle + W_cycle = 0.",
+        "Falsch: Die Summe Q_cycle + W_cycle ist null, nicht jeder Term einzeln; bei einer Wärmekraftmaschine können Q_cycle und W_cycle beide ungleich null sein und entgegengesetzte Vorzeichen haben.",
+      ],
+    },
+    "l4-q4": {
+      question: "Ein Gas wird quasistatisch komprimiert. Was lässt sich über die vom Gas aufgenommene Arbeit sagen?",
+      choices: [
+        "Sie ist negativ: Bei der Kompression gibt das Gas notwendigerweise mechanische Energie an die komprimierende Umgebung ab.",
+        "Sie ist positiv: Das Gas nimmt bei einer Kompression Arbeit auf.",
+        "Sie ist null: Bei einer quasistatischen Zustandsänderung heben sich die Arbeitsaustausche in jedem Schritt genau auf.",
+      ],
+      explanations: [
+        "Falsch: Das ist der klassische Vorzeichenfehler; für dV < 0 gilt −P dV > 0, das Gas nimmt also Arbeit auf.",
+        "Richtig: Um ein Gas zu komprimieren, muss ihm mechanische Energie zugeführt werden; nach der Bankierskonvention wird ein Energiezufluss positiv gezählt.",
+        "Falsch: Quasistatisch bedeutet nicht, dass die Arbeit null ist, sondern nur, dass die Zustandsänderung eine Folge von Gleichgewichtszuständen durchläuft.",
+      ],
+    },
+    "l4-q6": {
+      question: "Bei einer isochoren Zustandsänderung eines geschlossenen Systems gilt stets:",
+      choices: ["W = 0, also ΔU = Q", "Q = 0, also ΔU = W", "ΔU = 0, also Q = −W"],
+      explanations: [
+        "Richtig: Bei konstantem Volumen ist δW = −P dV = 0; die gesamte Änderung der inneren Energie stammt aus der Wärme.",
+        "Falsch: Das ist die Bilanz einer adiabatischen, nicht einer isochoren Zustandsänderung.",
+        "Falsch: Das ist die Bilanz einer isothermen Zustandsänderung eines idealen Gases, da U nur von T abhängt.",
       ],
     },
   },
@@ -657,6 +779,67 @@ export const quizQuestionTranslations: Partial<
         "Correcto: se trata de un estado estacionario, que debe distinguirse del equilibrio. La definición de equilibrio termodinámico exige no solo que las magnitudes macroscópicas ya no cambien, sino también la ausencia de todo flujo macroscópico (aquí persiste un flujo de calor entre los dos extremos).",
       ],
     },
+    "l4-q2": {
+      question: "¿Por qué se escriben δQ y δW en lugar de dQ y dW?",
+      choices: [
+        "Porque son diferenciales inexactas: sus integrales dependen del camino seguido.",
+        "Porque Q y W son magnitudes demasiado pequeñas para describirse mediante diferenciales ordinarias.",
+      ],
+      explanations: [
+        "Correcto: Q y W dependen del camino, a diferencia de U, que solo depende de los estados inicial y final. Escribir dQ equivaldría a resucitar la teoría del calórico.",
+        "Incorrecto: el «tamaño» de las magnitudes no tiene nada que ver; lo importante es la dependencia del camino.",
+      ],
+    },
+    "l4-q2b": {
+      question: "Un gas ideal pasa de un estado de equilibrio A a otro B, bien comprimiéndolo y después calentándolo, bien calentándolo y después comprimiéndolo. ¿Qué se puede afirmar?",
+      choices: [
+        "La variación de energía interna ΔU y el calor Q y el trabajo W recibidos son iguales en ambos casos.",
+        "ΔU es igual en ambos casos, pero Q y W pueden diferir de un camino a otro.",
+        "Q es igual en ambos casos, pero ΔU puede diferir.",
+        "Ninguna de las tres magnitudes depende del camino seguido.",
+      ],
+      explanations: [
+        "Incorrecto: solo ΔU queda fijada por los estados A y B; Q y W dependen en general del camino seguido.",
+        "Correcto: U es una función de estado (dU es una diferencial exacta), por lo que ΔU = U(B) − U(A) solo depende de los estados inicial y final. Q y W no son funciones de estado (δQ y δW no son diferenciales exactas), así que dependen del camino; solo su suma Q + W = ΔU queda fijada por el primer principio.",
+        "Incorrecto: lo cierto es lo contrario—ΔU, y no Q, es independiente del camino.",
+        "Incorrecto: ΔU no depende del camino, pero Q y W sí dependen en general.",
+      ],
+    },
+    "l4-q3": {
+      question: "Un sistema cerrado experimenta una transformación cíclica (A → A). ¿Qué se puede afirmar sobre el balance Q_cycle + W_cycle?",
+      choices: [
+        "Es necesariamente nulo porque Q y W se convierten en funciones de estado cuando se regresa al estado inicial.",
+        "Es nulo porque U es una función de estado.",
+        "Siempre es estrictamente positivo para una máquina térmica motriz.",
+      ],
+      explanations: [
+        "Incorrecto: ocurre lo contrario—Q y W no son funciones de estado, sino transferencias, no magnitudes del sistema. Solo su suma debe anularse en un ciclo mediante ΔU_cycle = 0.",
+        "Correcto: al terminar un ciclo, el sistema recupera su estado inicial. Como U es una función de estado, ΔU_cycle = U(A) − U(A) = 0; por tanto, el primer principio impone Q_cycle + W_cycle = 0.",
+        "Incorrecto: es la suma Q_cycle + W_cycle la que es nula, no cada término por separado; Q_cycle y W_cycle pueden ser ambos no nulos y de signos opuestos en una máquina térmica.",
+      ],
+    },
+    "l4-q4": {
+      question: "Se comprime un gas de forma cuasiestática. ¿Qué se puede decir del trabajo recibido por el gas?",
+      choices: [
+        "Es negativo: al comprimirse, el gas cede necesariamente energía mecánica al entorno que lo comprime.",
+        "Es positivo: el gas recibe trabajo durante una compresión.",
+        "Es nulo: en una transformación cuasiestática, los intercambios de trabajo se compensan exactamente en cada etapa.",
+      ],
+      explanations: [
+        "Incorrecto: es el error de signo clásico; con dV < 0 se tiene −P dV > 0, por lo que el gas recibe trabajo.",
+        "Correcto: comprimir un gas exige suministrarle energía mecánica; según el convenio contable, lo que entra se cuenta como positivo.",
+        "Incorrecto: cuasiestático no significa trabajo nulo, sino únicamente que la transformación atraviesa una sucesión de estados de equilibrio.",
+      ],
+    },
+    "l4-q6": {
+      question: "Durante una transformación isócora de un sistema cerrado, siempre se cumple:",
+      choices: ["W = 0, por tanto ΔU = Q", "Q = 0, por tanto ΔU = W", "ΔU = 0, por tanto Q = −W"],
+      explanations: [
+        "Correcto: a volumen constante, δW = −P dV = 0; toda la variación de energía interna procede del calor.",
+        "Incorrecto: este es el balance de una transformación adiabática, no isócora.",
+        "Incorrecto: este es el balance de una transformación isotérmica de un gas ideal, pues U solo depende de T.",
+      ],
+    },
   },
 
   pt: {
@@ -869,6 +1052,67 @@ export const quizQuestionTranslations: Partial<
         "Correto: trata-se de um estado estacionário, que deve ser distinguido do equilíbrio. A definição de equilíbrio termodinâmico exige não só que as grandezas macroscópicas deixem de evoluir, mas também a ausência de qualquer fluxo macroscópico (neste caso, persiste um fluxo de calor entre as duas extremidades).",
       ],
     },
+    "l4-q2": {
+      question: "Por que se escreve δQ e δW em vez de dQ e dW?",
+      choices: [
+        "Porque são diferenciais inexatas: os seus integrais dependem do caminho seguido.",
+        "Porque Q e W são grandezas demasiado pequenas para serem descritas por diferenciais ordinárias.",
+      ],
+      explanations: [
+        "Correto: Q e W dependem do caminho, ao contrário de U, que depende apenas dos estados inicial e final. Escrever dQ equivaleria a ressuscitar a teoria do calórico.",
+        "Errado: o «tamanho» das grandezas é irrelevante; o que está em causa é a dependência do caminho.",
+      ],
+    },
+    "l4-q2b": {
+      question: "Um gás ideal passa de um estado de equilíbrio A para um estado de equilíbrio B, quer sendo primeiro comprimido e depois aquecido, quer sendo primeiro aquecido e depois comprimido. O que se pode afirmar?",
+      choices: [
+        "A variação da energia interna ΔU e o calor Q e o trabalho W recebidos são iguais nos dois casos.",
+        "ΔU é igual nos dois casos, mas Q e W podem diferir de um caminho para outro.",
+        "Q é igual nos dois casos, mas ΔU pode diferir.",
+        "Nenhuma das três grandezas depende do caminho seguido.",
+      ],
+      explanations: [
+        "Errado: apenas ΔU é fixada pelos estados A e B; Q e W dependem, em geral, do caminho seguido.",
+        "Correto: U é uma função de estado (dU é uma diferencial exata), pelo que ΔU = U(B) − U(A) depende apenas dos estados inicial e final. Q e W não são funções de estado (δQ e δW não são diferenciais exatas), pelo que dependem do caminho; apenas a sua soma Q + W = ΔU é fixada pelo primeiro princípio.",
+        "Errado: é o contrário que é verdade—ΔU, e não Q, é independente do caminho.",
+        "Errado: ΔU não depende do caminho, mas Q e W dependem em geral.",
+      ],
+    },
+    "l4-q3": {
+      question: "Um sistema fechado sofre uma transformação cíclica (A → A). O que se pode afirmar sobre o balanço Q_cycle + W_cycle?",
+      choices: [
+        "É necessariamente nulo porque Q e W se tornam funções de estado quando o sistema regressa ao estado inicial.",
+        "É nulo porque U é uma função de estado.",
+        "É sempre estritamente positivo para uma máquina térmica motora.",
+      ],
+      explanations: [
+        "Errado: é o contrário—Q e W não são funções de estado; são transferências, não grandezas do sistema. Apenas a sua soma é obrigada a anular-se num ciclo por ΔU_cycle = 0.",
+        "Correto: num ciclo, o sistema regressa ao estado inicial. Como U é uma função de estado, ΔU_cycle = U(A) − U(A) = 0; o primeiro princípio impõe, portanto, Q_cycle + W_cycle = 0.",
+        "Errado: é a soma Q_cycle + W_cycle que é nula, não cada termo separadamente; Q_cycle e W_cycle podem ser ambos não nulos e ter sinais opostos numa máquina térmica.",
+      ],
+    },
+    "l4-q4": {
+      question: "Comprime-se um gás de forma quase-estática. O que se pode dizer do trabalho recebido pelo gás?",
+      choices: [
+        "É negativo: ao ser comprimido, o gás cede necessariamente energia mecânica ao meio exterior que o comprime.",
+        "É positivo: o gás recebe trabalho durante uma compressão.",
+        "É nulo: numa transformação quase-estática, as trocas de trabalho compensam-se exatamente em cada etapa.",
+      ],
+      explanations: [
+        "Errado: é o erro de sinal clássico; com dV < 0, tem-se −P dV > 0, pelo que o gás recebe trabalho.",
+        "Correto: comprimir um gás exige fornecer-lhe energia mecânica; pela convenção contabilística, o que entra é contado positivamente.",
+        "Errado: quase-estática não significa trabalho nulo, mas apenas que a transformação passa por uma sucessão de estados de equilíbrio.",
+      ],
+    },
+    "l4-q6": {
+      question: "Durante uma transformação isocórica de um sistema fechado, tem-se sempre:",
+      choices: ["W = 0, logo ΔU = Q", "Q = 0, logo ΔU = W", "ΔU = 0, logo Q = −W"],
+      explanations: [
+        "Correto: a volume constante, δW = −P dV = 0; toda a variação da energia interna provém do calor.",
+        "Errado: este é o balanço de uma transformação adiabática, não isocórica.",
+        "Errado: este é o balanço de uma transformação isotérmica de um gás ideal, pois U depende apenas de T.",
+      ],
+    },
   },
 
   it: {
@@ -1074,6 +1318,67 @@ export const quizQuestionTranslations: Partial<
       explanations: [
         "Falso: è uno stato stazionario, non uno stato di equilibrio. Il profilo di temperatura è effettivamente costante nel tempo, ma un flusso di calore macroscopico continua ad attraversare la barra dall'estremità calda a quella fredda.",
         "Esatto: si tratta di uno stato stazionario, da distinguere dall'equilibrio. La definizione di equilibrio termodinamico richiede non solo che le grandezze macroscopiche non cambino più, ma anche l'assenza di ogni flusso macroscopico (qui persiste un flusso di calore tra le due estremità).",
+      ],
+    },
+    "l4-q2": {
+      question: "Perché si scrivono δQ e δW anziché dQ e dW?",
+      choices: [
+        "Perché sono differenziali inesatti: i loro integrali dipendono dal cammino seguito.",
+        "Perché Q e W sono grandezze troppo piccole per essere descritte con differenziali ordinari.",
+      ],
+      explanations: [
+        "Esatto: Q e W dipendono dal cammino, a differenza di U, che dipende soltanto dagli stati iniziale e finale. Scrivere dQ equivarrebbe a resuscitare la teoria del calorico.",
+        "Falso: la «dimensione» delle grandezze non c'entra; ciò che conta è la dipendenza dal cammino.",
+      ],
+    },
+    "l4-q2b": {
+      question: "Un gas ideale passa da uno stato di equilibrio A a uno stato di equilibrio B, comprimendolo prima di riscaldarlo oppure riscaldandolo prima di comprimerlo. Che cosa si può affermare?",
+      choices: [
+        "La variazione di energia interna ΔU e il calore Q e il lavoro W ricevuti sono uguali nei due casi.",
+        "ΔU è uguale nei due casi, ma Q e W possono differire da un cammino all'altro.",
+        "Q è uguale nei due casi, ma ΔU può differire.",
+        "Nessuna delle tre grandezze dipende dal cammino seguito.",
+      ],
+      explanations: [
+        "Falso: soltanto ΔU è fissata dagli stati A e B; Q e W dipendono in generale dal cammino seguito.",
+        "Esatto: U è una funzione di stato (dU è un differenziale esatto), quindi ΔU = U(B) − U(A) dipende soltanto dagli stati iniziale e finale. Q e W non sono funzioni di stato (δQ e δW non sono differenziali esatti), perciò dipendono dal cammino; solo la loro somma Q + W = ΔU è fissata dal primo principio.",
+        "Falso: è vero il contrario—ΔU, non Q, è indipendente dal cammino.",
+        "Falso: ΔU non dipende dal cammino, mentre Q e W in generale sì.",
+      ],
+    },
+    "l4-q3": {
+      question: "Un sistema chiuso subisce una trasformazione ciclica (A → A). Che cosa si può affermare sul bilancio Q_cycle + W_cycle?",
+      choices: [
+        "È necessariamente nullo perché Q e W diventano essi stessi funzioni di stato quando si torna allo stato iniziale.",
+        "È nullo perché U è una funzione di stato.",
+        "È sempre strettamente positivo per una macchina termica motrice.",
+      ],
+      explanations: [
+        "Falso: è vero il contrario—Q e W non sono funzioni di stato, ma trasferimenti, non grandezze del sistema. Solo la loro somma deve annullarsi su un ciclo tramite ΔU_cycle = 0.",
+        "Esatto: al termine di un ciclo il sistema ritrova lo stato iniziale. Poiché U è una funzione di stato, ΔU_cycle = U(A) − U(A) = 0; il primo principio impone quindi Q_cycle + W_cycle = 0.",
+        "Falso: è la somma Q_cycle + W_cycle a essere nulla, non ciascun termine separatamente; Q_cycle e W_cycle possono essere entrambi non nulli e di segno opposto in una macchina termica.",
+      ],
+    },
+    "l4-q4": {
+      question: "Un gas viene compresso in modo quasi-statico. Che cosa si può dire del lavoro ricevuto dal gas?",
+      choices: [
+        "È negativo: comprimendosi, il gas cede necessariamente energia meccanica all'ambiente esterno che lo comprime.",
+        "È positivo: durante una compressione il gas riceve lavoro.",
+        "È nullo: in una trasformazione quasi-statica gli scambi di lavoro si compensano esattamente in ogni fase.",
+      ],
+      explanations: [
+        "Falso: è il classico errore di segno; con dV < 0 si ha −P dV > 0, quindi il gas riceve lavoro.",
+        "Esatto: comprimere un gas richiede di fornirgli energia meccanica; con la convenzione del banchiere, ciò che entra viene contato positivamente.",
+        "Falso: quasi-statico non significa lavoro nullo, ma soltanto che la trasformazione attraversa una successione di stati di equilibrio.",
+      ],
+    },
+    "l4-q6": {
+      question: "Durante una trasformazione isocora di un sistema chiuso si ha sempre:",
+      choices: ["W = 0, quindi ΔU = Q", "Q = 0, quindi ΔU = W", "ΔU = 0, quindi Q = −W"],
+      explanations: [
+        "Esatto: a volume costante, δW = −P dV = 0; l'intera variazione di energia interna proviene dal calore.",
+        "Falso: questo è il bilancio di una trasformazione adiabatica, non isocora.",
+        "Falso: questo è il bilancio di una trasformazione isoterma di un gas ideale, poiché U dipende soltanto da T.",
       ],
     },
   },
@@ -1283,6 +1588,67 @@ export const quizQuestionTranslations: Partial<
         "Dobrze: jest to stan stacjonarny, który należy odróżnić od równowagi. Definicja równowagi termodynamicznej wymaga nie tylko, aby wielkości makroskopowe przestały się zmieniać, lecz także braku wszelkich przepływów makroskopowych (tutaj między końcami nadal płynie ciepło).",
       ],
     },
+    "l4-q2": {
+      question: "Dlaczego zapisujemy δQ i δW zamiast dQ i dW?",
+      choices: [
+        "Ponieważ są to różniczki niezupełne: ich całki zależą od obranej drogi.",
+        "Ponieważ Q i W są wielkościami zbyt małymi, aby opisać je zwykłymi różniczkami.",
+      ],
+      explanations: [
+        "Dobrze: Q i W zależą od drogi, w przeciwieństwie do U, które zależy wyłącznie od stanu początkowego i końcowego. Zapis dQ oznaczałby wskrzeszenie teorii cieplika.",
+        "Źle: „rozmiar” wielkości nie ma tu znaczenia; chodzi o zależność od drogi.",
+      ],
+    },
+    "l4-q2b": {
+      question: "Gaz doskonały przechodzi ze stanu równowagi A do stanu równowagi B: albo najpierw jest sprężany, a potem ogrzewany, albo najpierw ogrzewany, a potem sprężany. Co można stwierdzić?",
+      choices: [
+        "Zmiana energii wewnętrznej ΔU oraz pobrane ciepło Q i praca W są w obu przypadkach takie same.",
+        "ΔU jest w obu przypadkach taka sama, lecz Q i W mogą być różne dla różnych dróg.",
+        "Q jest w obu przypadkach takie samo, lecz ΔU może być różna.",
+        "Żadna z tych trzech wielkości nie zależy od obranej drogi.",
+      ],
+      explanations: [
+        "Źle: tylko ΔU jest wyznaczona przez stany A i B; Q i W na ogół zależą od drogi.",
+        "Dobrze: U jest funkcją stanu (dU jest różniczką zupełną), więc ΔU = U(B) − U(A) zależy wyłącznie od stanu początkowego i końcowego. Q i W nie są funkcjami stanu (δQ i δW nie są różniczkami zupełnymi), dlatego zależą od drogi; pierwsza zasada wyznacza tylko ich sumę Q + W = ΔU.",
+        "Źle: prawdziwe jest stwierdzenie odwrotne—to ΔU, a nie Q, jest niezależna od drogi.",
+        "Źle: ΔU nie zależy od drogi, natomiast Q i W na ogół od niej zależą.",
+      ],
+    },
+    "l4-q3": {
+      question: "Układ zamknięty przechodzi przemianę cykliczną (A → A). Co można powiedzieć o bilansie Q_cycle + W_cycle?",
+      choices: [
+        "Musi być równy zeru, ponieważ po powrocie do stanu początkowego Q i W same stają się funkcjami stanu.",
+        "Jest równy zeru, ponieważ U jest funkcją stanu.",
+        "Dla silnika cieplnego jest zawsze ściśle dodatni.",
+      ],
+      explanations: [
+        "Źle: jest odwrotnie—Q i W nie są funkcjami stanu; są przekazami energii, a nie wielkościami układu. Tylko ich suma musi zniknąć w cyklu na mocy ΔU_cycle = 0.",
+        "Dobrze: po zakończeniu cyklu układ wraca do stanu początkowego. Ponieważ U jest funkcją stanu, ΔU_cycle = U(A) − U(A) = 0, zatem pierwsza zasada wymaga Q_cycle + W_cycle = 0.",
+        "Źle: zerowa jest suma Q_cycle + W_cycle, a nie każdy składnik z osobna; w silniku cieplnym Q_cycle i W_cycle mogą być niezerowe i mieć przeciwne znaki.",
+      ],
+    },
+    "l4-q4": {
+      question: "Gaz jest sprężany quasi-statycznie. Co można powiedzieć o pracy pobranej przez gaz?",
+      choices: [
+        "Jest ujemna: podczas sprężania gaz musi oddawać energię mechaniczną otoczeniu, które go spręża.",
+        "Jest dodatnia: podczas sprężania gaz pobiera pracę.",
+        "Jest równa zeru: w przemianie quasi-statycznej wymiany pracy dokładnie znoszą się na każdym etapie.",
+      ],
+      explanations: [
+        "Źle: to klasyczny błąd znaku; dla dV < 0 mamy −P dV > 0, więc gaz pobiera pracę.",
+        "Dobrze: sprężenie gazu wymaga dostarczenia mu energii mechanicznej; zgodnie z przyjętą konwencją znaków energia wpływająca do układu jest dodatnia.",
+        "Źle: quasi-statyczna nie znaczy bez pracy, lecz jedynie, że przemiana przebiega przez ciąg stanów równowagi.",
+      ],
+    },
+    "l4-q6": {
+      question: "Podczas przemiany izochorycznej układu zamkniętego zawsze zachodzi:",
+      choices: ["W = 0, zatem ΔU = Q", "Q = 0, zatem ΔU = W", "ΔU = 0, zatem Q = −W"],
+      explanations: [
+        "Dobrze: przy stałej objętości δW = −P dV = 0; cała zmiana energii wewnętrznej pochodzi z ciepła.",
+        "Źle: jest to bilans przemiany adiabatycznej, a nie izochorycznej.",
+        "Źle: jest to bilans przemiany izotermicznej gazu doskonałego, ponieważ U zależy wyłącznie od T.",
+      ],
+    },
   },
 
   ru: {
@@ -1488,6 +1854,67 @@ export const quizQuestionTranslations: Partial<
       explanations: [
         "Неверно: это стационарное состояние, а не состояние равновесия. Распределение температуры действительно постоянно во времени, но через стержень по-прежнему идёт макроскопический поток теплоты от горячего конца к холодному.",
         "Верно: это стационарное состояние, которое следует отличать от равновесия. Определение термодинамического равновесия требует не только неизменности макроскопических величин, но и отсутствия любых макроскопических потоков; здесь между концами сохраняется поток теплоты.",
+      ],
+    },
+    "l4-q2": {
+      question: "Почему записывают δQ и δW, а не dQ и dW?",
+      choices: [
+        "Потому что это неточные дифференциалы: их интегралы зависят от выбранного пути.",
+        "Потому что Q и W слишком малы, чтобы описывать их обычными дифференциалами.",
+      ],
+      explanations: [
+        "Верно: Q и W зависят от пути, в отличие от U, которое зависит только от начального и конечного состояний. Запись dQ означала бы возрождение теории теплорода.",
+        "Неверно: «размер» величин здесь ни при чём; важна зависимость от пути.",
+      ],
+    },
+    "l4-q2b": {
+      question: "Идеальный газ переходит из равновесного состояния A в равновесное состояние B: либо сначала сжимается, а затем нагревается, либо сначала нагревается, а затем сжимается. Что можно утверждать?",
+      choices: [
+        "Изменение внутренней энергии ΔU, полученные теплота Q и работа W одинаковы в обоих случаях.",
+        "ΔU одинаково в обоих случаях, но Q и W могут различаться для разных путей.",
+        "Q одинаково в обоих случаях, но ΔU может различаться.",
+        "Ни одна из трёх величин не зависит от выбранного пути.",
+      ],
+      explanations: [
+        "Неверно: состояниями A и B однозначно задаётся только ΔU; Q и W в общем случае зависят от пути.",
+        "Верно: U — функция состояния (dU является точным дифференциалом), поэтому ΔU = U(B) − U(A) зависит только от начального и конечного состояний. Q и W не являются функциями состояния (δQ и δW — неточные дифференциалы), поэтому зависят от пути; первый закон задаёт лишь их сумму Q + W = ΔU.",
+        "Неверно: верно обратное—от пути не зависит ΔU, а не Q.",
+        "Неверно: ΔU не зависит от пути, а Q и W в общем случае зависят.",
+      ],
+    },
+    "l4-q3": {
+      question: "Закрытая система совершает циклический процесс (A → A). Что можно утверждать о балансе Q_cycle + W_cycle?",
+      choices: [
+        "Он обязательно равен нулю, поскольку при возвращении в начальное состояние Q и W сами становятся функциями состояния.",
+        "Он равен нулю, поскольку U является функцией состояния.",
+        "Для теплового двигателя он всегда строго положителен.",
+      ],
+      explanations: [
+        "Неверно: всё наоборот—Q и W не являются функциями состояния; это способы передачи энергии, а не величины системы. Только их сумма обязана обратиться в нуль за цикл благодаря ΔU_cycle = 0.",
+        "Верно: по завершении цикла система возвращается в начальное состояние. Поскольку U — функция состояния, ΔU_cycle = U(A) − U(A) = 0; следовательно, первый закон требует Q_cycle + W_cycle = 0.",
+        "Неверно: равна нулю сумма Q_cycle + W_cycle, а не каждый член по отдельности; в тепловом двигателе Q_cycle и W_cycle могут быть ненулевыми и иметь противоположные знаки.",
+      ],
+    },
+    "l4-q4": {
+      question: "Газ квазистатически сжимают. Что можно сказать о работе, полученной газом?",
+      choices: [
+        "Она отрицательна: при сжатии газ обязательно передаёт механическую энергию среде, которая его сжимает.",
+        "Она положительна: при сжатии газ получает работу.",
+        "Она равна нулю: в квазистатическом процессе обмены работой точно компенсируются на каждом этапе.",
+      ],
+      explanations: [
+        "Неверно: это классическая ошибка со знаком; при dV < 0 имеем −P dV > 0, поэтому газ получает работу.",
+        "Верно: чтобы сжать газ, ему необходимо сообщить механическую энергию; по банковскому соглашению о знаках входящая энергия считается положительной.",
+        "Неверно: квазистатический не означает нулевую работу; это означает лишь, что процесс проходит через последовательность равновесных состояний.",
+      ],
+    },
+    "l4-q6": {
+      question: "При изохорном процессе в закрытой системе всегда выполняется:",
+      choices: ["W = 0, поэтому ΔU = Q", "Q = 0, поэтому ΔU = W", "ΔU = 0, поэтому Q = −W"],
+      explanations: [
+        "Верно: при постоянном объёме δW = −P dV = 0; всё изменение внутренней энергии обусловлено теплотой.",
+        "Неверно: это баланс адиабатического, а не изохорного процесса.",
+        "Неверно: это баланс изотермического процесса идеального газа, поскольку U зависит только от T.",
       ],
     },
   },
@@ -1697,6 +2124,67 @@ export const quizQuestionTranslations: Partial<
         "正确：这是定常态，必须与平衡态区分。热力学平衡的定义不仅要求宏观量不再变化，还要求不存在任何宏观通量；这里两端之间仍持续存在热流。",
       ],
     },
+    "l4-q2": {
+      question: "为什么写作 δQ 和 δW，而不是 dQ 和 dW？",
+      choices: [
+        "因为它们是非全微分：其积分取决于所经过的路径。",
+        "因为 Q 和 W 太小，无法用普通微分来描述。",
+      ],
+      explanations: [
+        "正确：Q 和 W 与路径有关，而 U 只取决于初态和终态。写成 dQ 就等于让热质说死灰复燃。",
+        "错误：这与物理量的“大小”无关，关键在于路径依赖性。",
+      ],
+    },
+    "l4-q2b": {
+      question: "理想气体从平衡态 A 变到平衡态 B：可以先压缩再加热，也可以先加热再压缩。下列说法哪一项正确？",
+      choices: [
+        "两种情况下，内能变化 ΔU、吸收的热量 Q 和功 W 都相同。",
+        "两种情况下 ΔU 相同，但 Q 和 W 可随路径而不同。",
+        "两种情况下 Q 相同，但 ΔU 可以不同。",
+        "这三个量都与所经过的路径无关。",
+      ],
+      explanations: [
+        "错误：只有 ΔU 由状态 A 和 B 决定；Q 和 W 通常取决于路径。",
+        "正确：U 是状态函数（dU 是全微分），所以 ΔU = U(B) − U(A) 只取决于初态和终态。Q 和 W 不是状态函数（δQ 和 δW 不是全微分），因而与路径有关；第一定律只确定它们的和 Q + W = ΔU。",
+        "错误：事实恰好相反——与路径无关的是 ΔU，而不是 Q。",
+        "错误：ΔU 与路径无关，但 Q 和 W 通常与路径有关。",
+      ],
+    },
+    "l4-q3": {
+      question: "一个封闭系统经历循环过程（A → A）。关于能量收支 Q_cycle + W_cycle，可以说什么？",
+      choices: [
+        "它必然为零，因为系统回到初态时，Q 和 W 本身会变成状态函数。",
+        "它为零，因为 U 是状态函数。",
+        "对于热机，它总是严格大于零。",
+      ],
+      explanations: [
+        "错误：事实恰好相反——Q 和 W 不是状态函数；它们是能量传递，而不是系统自身的物理量。由于 ΔU_cycle = 0，只有它们的和在一个循环中必须为零。",
+        "正确：一个循环结束后，系统回到初态。由于 U 是状态函数，ΔU_cycle = U(A) − U(A) = 0，因此第一定律要求 Q_cycle + W_cycle = 0。",
+        "错误：为零的是 Q_cycle + W_cycle 之和，而不是每一项分别为零；对于热机，Q_cycle 和 W_cycle 都可以不为零且符号相反。",
+      ],
+    },
+    "l4-q4": {
+      question: "对气体进行准静态压缩。关于气体所接受的功，可以说什么？",
+      choices: [
+        "功为负：气体被压缩时，必然向压缩它的外界传递机械能。",
+        "功为正：气体在压缩过程中接受功。",
+        "功为零：在准静态过程中，各阶段的功交换恰好相互抵消。",
+      ],
+      explanations: [
+        "错误：这是典型的符号错误；当 dV < 0 时，−P dV > 0，因此气体接受功。",
+        "正确：压缩气体需要向它提供机械能；按收支符号约定，进入系统的能量记为正。",
+        "错误：准静态并不意味着功为零，而只表示过程经过一系列平衡态。",
+      ],
+    },
+    "l4-q6": {
+      question: "封闭系统经历等容过程时，总有：",
+      choices: ["W = 0，因此 ΔU = Q", "Q = 0，因此 ΔU = W", "ΔU = 0，因此 Q = −W"],
+      explanations: [
+        "正确：体积不变时，δW = −P dV = 0；内能的全部变化都来自热量。",
+        "错误：这是绝热过程的能量收支，而不是等容过程。",
+        "错误：这是理想气体等温过程的能量收支，因为 U 只依赖于 T。",
+      ],
+    },
   },
 
   ja: {
@@ -1902,6 +2390,67 @@ export const quizQuestionTranslations: Partial<
       explanations: [
         "誤り：これは定常状態であり、平衡状態ではない。温度分布は時間に依存しないが、高温端から低温端へ巨視的な熱流が棒を流れ続ける。",
         "正解：これは平衡とは区別すべき定常状態である。熱力学的平衡の定義では、巨視的量が変化しないだけでなく、あらゆる巨視的流束が存在しないことも必要である。ここでは両端の間に熱流が残っている。",
+      ],
+    },
+    "l4-q2": {
+      question: "なぜ dQ、dW ではなく δQ、δW と書くのか？",
+      choices: [
+        "これらは不完全微分であり、その積分が経路に依存するから。",
+        "Q と W は通常の微分で表すには小さすぎる量だから。",
+      ],
+      explanations: [
+        "正解：Q と W は経路に依存するが、U は初期状態と最終状態だけに依存する。dQ と書けば、熱素説を復活させることになる。",
+        "誤り：量の「大きさ」は関係なく、問題は経路依存性である。",
+      ],
+    },
+    "l4-q2b": {
+      question: "理想気体が平衡状態 A から平衡状態 B へ移る。先に圧縮してから加熱する場合と、先に加熱してから圧縮する場合について、何がいえるか？",
+      choices: [
+        "内部エネルギー変化 ΔU、受け取った熱 Q、仕事 W は、いずれも両方の場合で同じである。",
+        "ΔU は両方の場合で同じだが、Q と W は経路によって異なりうる。",
+        "Q は両方の場合で同じだが、ΔU は異なりうる。",
+        "三つの量はいずれも経路に依存しない。",
+      ],
+      explanations: [
+        "誤り：状態 A と B によって決まるのは ΔU だけであり、Q と W は一般に経路に依存する。",
+        "正解：U は状態関数（dU は完全微分）なので、ΔU = U(B) − U(A) は初期状態と最終状態だけに依存する。Q と W は状態関数ではなく（δQ と δW は完全微分ではない）、経路に依存する。第一法則が定めるのは、その和 Q + W = ΔU だけである。",
+        "誤り：逆であり、経路に依存しないのは Q ではなく ΔU である。",
+        "誤り：ΔU は経路に依存しないが、Q と W は一般に依存する。",
+      ],
+    },
+    "l4-q3": {
+      question: "閉じた系がサイクル変化（A → A）を行う。収支 Q_cycle + W_cycle について何がいえるか？",
+      choices: [
+        "初期状態に戻ると Q と W 自体が状態関数になるため、必ずゼロである。",
+        "U が状態関数なのでゼロである。",
+        "熱機関では常に厳密に正である。",
+      ],
+      explanations: [
+        "誤り：逆である。Q と W は状態関数ではなく、系の量ではなくエネルギーの移動である。ΔU_cycle = 0 により、サイクルでゼロになるよう制約されるのはその和だけである。",
+        "正解：サイクルの終わりに系は初期状態へ戻る。U は状態関数なので ΔU_cycle = U(A) − U(A) = 0 となり、第一法則から Q_cycle + W_cycle = 0 である。",
+        "誤り：ゼロなのは Q_cycle + W_cycle の和であり、各項ではない。熱機関では Q_cycle と W_cycle はともにゼロでなく、互いに逆符号になりうる。",
+      ],
+    },
+    "l4-q4": {
+      question: "気体を準静的に圧縮する。気体が受け取る仕事について何がいえるか？",
+      choices: [
+        "負である。圧縮される気体は、それを圧縮する外界へ必ず力学的エネルギーを渡すから。",
+        "正である。気体は圧縮時に仕事を受け取るから。",
+        "ゼロである。準静的変化では、各段階の仕事の交換が厳密に相殺されるから。",
+      ],
+      explanations: [
+        "誤り：典型的な符号の間違いである。dV < 0 なら −P dV > 0 なので、気体は仕事を受け取る。",
+        "正解：気体を圧縮するには力学的エネルギーを与える必要がある。系に入るものを正とする符号規約では正になる。",
+        "誤り：準静的とは仕事がゼロという意味ではなく、変化が一連の平衡状態を通るという意味にすぎない。",
+      ],
+    },
+    "l4-q6": {
+      question: "閉じた系の等積変化では、常に次が成り立つ：",
+      choices: ["W = 0、したがって ΔU = Q", "Q = 0、したがって ΔU = W", "ΔU = 0、したがって Q = −W"],
+      explanations: [
+        "正解：体積一定では δW = −P dV = 0 であり、内部エネルギーの変化はすべて熱による。",
+        "誤り：これは断熱変化の収支であり、等積変化ではない。",
+        "誤り：U は T のみに依存するので、これは理想気体の等温変化の収支である。",
       ],
     },
   },
@@ -2111,6 +2660,67 @@ export const quizQuestionTranslations: Partial<
         "정답: 이는 평형과 구분해야 하는 정상 상태이다. 열역학적 평형의 정의는 거시적 양이 더 이상 변하지 않을 뿐 아니라 거시적 유량이 전혀 없을 것도 요구한다. 여기서는 두 끝 사이에 열류가 남아 있다.",
       ],
     },
+    "l4-q2": {
+      question: "왜 dQ와 dW 대신 δQ와 δW라고 쓰는가?",
+      choices: [
+        "불완전미분이기 때문이다. 그 적분은 어떤 경로를 따랐는지에 따라 달라진다.",
+        "Q와 W는 너무 작은 양이라서 보통의 미분으로 나타낼 수 없기 때문이다.",
+      ],
+      explanations: [
+        "정답: Q와 W는 경로에 의존하지만 U는 초기 상태와 최종 상태에만 의존한다. dQ라고 쓰는 것은 열소 이론을 되살리는 것과 같다.",
+        "틀림: 양의 ‘크기’는 관계없다. 핵심은 경로 의존성이다.",
+      ],
+    },
+    "l4-q2b": {
+      question: "이상 기체가 평형 상태 A에서 평형 상태 B로 간다. 먼저 압축한 뒤 가열하거나, 먼저 가열한 뒤 압축할 때 무엇을 말할 수 있는가?",
+      choices: [
+        "내부 에너지 변화 ΔU와 받은 열 Q 및 일 W는 두 경우 모두 같다.",
+        "ΔU는 두 경우 모두 같지만 Q와 W는 경로에 따라 달라질 수 있다.",
+        "Q는 두 경우 모두 같지만 ΔU는 달라질 수 있다.",
+        "세 양 가운데 어느 것도 경로에 의존하지 않는다.",
+      ],
+      explanations: [
+        "틀림: 상태 A와 B로 정해지는 것은 ΔU뿐이며, Q와 W는 일반적으로 경로에 의존한다.",
+        "정답: U는 상태함수이고 dU는 완전미분이므로 ΔU = U(B) − U(A)는 초기 상태와 최종 상태에만 의존한다. Q와 W는 상태함수가 아니며 δQ와 δW는 완전미분이 아니므로 경로에 의존한다. 제1법칙이 정하는 것은 그 합 Q + W = ΔU뿐이다.",
+        "틀림: 반대가 옳다. 경로와 무관한 것은 Q가 아니라 ΔU이다.",
+        "틀림: ΔU는 경로에 의존하지 않지만 Q와 W는 일반적으로 의존한다.",
+      ],
+    },
+    "l4-q3": {
+      question: "닫힌계가 순환 과정(A → A)을 겪는다. 수지 Q_cycle + W_cycle에 대해 무엇을 말할 수 있는가?",
+      choices: [
+        "초기 상태로 돌아오면 Q와 W 자체가 상태함수가 되므로 반드시 0이다.",
+        "U가 상태함수이므로 0이다.",
+        "열기관에서는 언제나 엄밀히 양수이다.",
+      ],
+      explanations: [
+        "틀림: 반대이다. Q와 W는 상태함수가 아니라 계의 양이 아닌 에너지 전달이다. ΔU_cycle = 0이므로 한 순환에서 0이 되도록 제한되는 것은 그 합뿐이다.",
+        "정답: 한 순환이 끝나면 계는 초기 상태로 돌아온다. U는 상태함수이므로 ΔU_cycle = U(A) − U(A) = 0이고, 따라서 제1법칙에 의해 Q_cycle + W_cycle = 0이다.",
+        "틀림: 0인 것은 Q_cycle + W_cycle의 합이지 각 항이 아니다. 열기관에서는 Q_cycle과 W_cycle이 각각 0이 아니면서 부호가 반대일 수 있다.",
+      ],
+    },
+    "l4-q4": {
+      question: "기체를 준정적으로 압축한다. 기체가 받은 일에 대해 무엇을 말할 수 있는가?",
+      choices: [
+        "음수이다. 압축되는 기체는 자신을 압축하는 외부에 반드시 역학적 에너지를 주기 때문이다.",
+        "양수이다. 기체는 압축될 때 일을 받는다.",
+        "0이다. 준정적 과정에서는 각 단계의 일 교환이 정확히 상쇄되기 때문이다.",
+      ],
+      explanations: [
+        "틀림: 전형적인 부호 오류이다. dV < 0이면 −P dV > 0이므로 기체는 일을 받는다.",
+        "정답: 기체를 압축하려면 역학적 에너지를 공급해야 한다. 계로 들어오는 에너지를 양수로 세는 부호 규약에 따르면 양수이다.",
+        "틀림: 준정적이라는 말은 일이 0이라는 뜻이 아니라, 과정이 일련의 평형 상태를 거친다는 뜻이다.",
+      ],
+    },
+    "l4-q6": {
+      question: "닫힌계의 등적 과정에서는 언제나 다음이 성립한다:",
+      choices: ["W = 0, 따라서 ΔU = Q", "Q = 0, 따라서 ΔU = W", "ΔU = 0, 따라서 Q = −W"],
+      explanations: [
+        "정답: 부피가 일정하면 δW = −P dV = 0이며, 내부 에너지 변화 전체가 열에서 온다.",
+        "틀림: 이는 단열 과정의 수지이지 등적 과정의 수지가 아니다.",
+        "틀림: U는 T에만 의존하므로 이는 이상 기체의 등온 과정에 대한 수지이다.",
+      ],
+    },
   },
 
   hi: {
@@ -2318,6 +2928,67 @@ export const quizQuestionTranslations: Partial<
         "सही: यह स्थायी अवस्था है, जिसे साम्य से अलग करना चाहिए। ऊष्मागतिक साम्य की परिभाषा केवल यह नहीं चाहती कि स्थूल राशियाँ बदलना बंद करें, बल्कि किसी भी स्थूल अभिवाह का अभाव भी चाहती है। यहाँ दोनों सिरों के बीच ऊष्मा-अभिवाह बना रहता है।",
       ],
     },
+    "l4-q2": {
+      question: "हम dQ और dW के बजाय δQ और δW क्यों लिखते हैं?",
+      choices: [
+        "क्योंकि ये अयथार्थ अवकल रूप हैं: इनके समाकल अनुसरित मार्ग पर निर्भर करते हैं।",
+        "क्योंकि Q और W इतनी छोटी राशियाँ हैं कि उन्हें सामान्य अवकलजों से वर्णित नहीं किया जा सकता।",
+      ],
+      explanations: [
+        "सही: Q और W मार्ग पर निर्भर करते हैं, जबकि U केवल आरंभिक और अंतिम अवस्थाओं पर निर्भर करता है। dQ लिखना कैलरिक सिद्धांत को पुनर्जीवित करने के समान होता।",
+        "गलत: राशियों के ‘आकार’ का इससे कोई संबंध नहीं; प्रश्न मार्ग-निर्भरता का है।",
+      ],
+    },
+    "l4-q2b": {
+      question: "एक आदर्श गैस साम्यावस्था A से साम्यावस्था B तक जाती है: या तो पहले उसे संपीडित करके फिर गर्म किया जाता है, या पहले गर्म करके फिर संपीडित किया जाता है। क्या कहा जा सकता है?",
+      choices: [
+        "आंतरिक ऊर्जा का परिवर्तन ΔU तथा प्राप्त ऊष्मा Q और कार्य W दोनों स्थितियों में समान हैं।",
+        "ΔU दोनों स्थितियों में समान है, किंतु Q और W अलग-अलग मार्गों के लिए भिन्न हो सकते हैं।",
+        "Q दोनों स्थितियों में समान है, किंतु ΔU भिन्न हो सकता है।",
+        "इन तीनों राशियों में से कोई भी अनुसरित मार्ग पर निर्भर नहीं करती।",
+      ],
+      explanations: [
+        "गलत: केवल ΔU अवस्थाओं A और B द्वारा निर्धारित है; Q और W सामान्यतः अनुसरित मार्ग पर निर्भर करते हैं।",
+        "सही: U एक अवस्था फलन है (dU पूर्ण अवकलज है), इसलिए ΔU = U(B) − U(A) केवल आरंभिक और अंतिम अवस्थाओं पर निर्भर करता है। Q और W अवस्था फलन नहीं हैं (δQ और δW पूर्ण अवकलज नहीं हैं), अतः वे मार्ग पर निर्भर करते हैं; प्रथम नियम केवल उनका योग Q + W = ΔU निर्धारित करता है।",
+        "गलत: इसका उलटा सत्य है—मार्ग से स्वतंत्र राशि ΔU है, Q नहीं।",
+        "गलत: ΔU मार्ग पर निर्भर नहीं करता, किंतु Q और W सामान्यतः निर्भर करते हैं।",
+      ],
+    },
+    "l4-q3": {
+      question: "एक बंद निकाय चक्रीय प्रक्रम (A → A) से गुजरता है। ऊर्जा-संतुलन Q_cycle + W_cycle के बारे में क्या कहा जा सकता है?",
+      choices: [
+        "यह अनिवार्यतः शून्य है, क्योंकि आरंभिक अवस्था में लौटने पर Q और W स्वयं अवस्था फलन बन जाते हैं।",
+        "यह शून्य है, क्योंकि U एक अवस्था फलन है।",
+        "ऊष्मा इंजन के लिए यह सदैव पूर्णतः धनात्मक होता है।",
+      ],
+      explanations: [
+        "गलत: उलटा सत्य है—Q और W अवस्था फलन नहीं, बल्कि ऊर्जा-अंतरण हैं, निकाय की राशियाँ नहीं। ΔU_cycle = 0 के कारण केवल उनका योग ही किसी चक्र पर शून्य होना आवश्यक है।",
+        "सही: चक्र के अंत में निकाय अपनी आरंभिक अवस्था में लौट आता है। चूँकि U अवस्था फलन है, ΔU_cycle = U(A) − U(A) = 0; इसलिए प्रथम नियम Q_cycle + W_cycle = 0 अनिवार्य करता है।",
+        "गलत: शून्य उनका योग Q_cycle + W_cycle है, प्रत्येक पद अलग-अलग नहीं; ऊष्मा इंजन में Q_cycle और W_cycle दोनों अशून्य तथा विपरीत चिह्नों वाले हो सकते हैं।",
+      ],
+    },
+    "l4-q4": {
+      question: "किसी गैस को अर्ध-स्थैतिक रूप से संपीडित किया जाता है। गैस द्वारा प्राप्त कार्य के बारे में क्या कहा जा सकता है?",
+      choices: [
+        "यह ऋणात्मक है: संपीडित होते समय गैस उसे संपीडित करने वाले बाहरी परिवेश को अनिवार्यतः यांत्रिक ऊर्जा देती है।",
+        "यह धनात्मक है: संपीडन के दौरान गैस कार्य प्राप्त करती है।",
+        "यह शून्य है: अर्ध-स्थैतिक प्रक्रम में प्रत्येक चरण पर कार्य-अंतरण ठीक-ठीक निरस्त हो जाते हैं।",
+      ],
+      explanations: [
+        "गलत: यह चिह्न की पारंपरिक भूल है; dV < 0 होने पर −P dV > 0 होता है, अतः गैस कार्य प्राप्त करती है।",
+        "सही: गैस को संपीडित करने के लिए उसे यांत्रिक ऊर्जा देनी पड़ती है; लेखा-चिह्न परिपाटी में निकाय में प्रवेश करने वाली ऊर्जा धनात्मक गिनी जाती है।",
+        "गलत: अर्ध-स्थैतिक का अर्थ कार्य शून्य होना नहीं, बल्कि केवल यह है कि प्रक्रम साम्यावस्थाओं की एक श्रृंखला से गुजरता है।",
+      ],
+    },
+    "l4-q6": {
+      question: "बंद निकाय के समआयतनी प्रक्रम में सदैव होता है:",
+      choices: ["W = 0, अतः ΔU = Q", "Q = 0, अतः ΔU = W", "ΔU = 0, अतः Q = −W"],
+      explanations: [
+        "सही: नियत आयतन पर δW = −P dV = 0; आंतरिक ऊर्जा का पूरा परिवर्तन ऊष्मा से आता है।",
+        "गलत: यह रुद्धोष्म प्रक्रम का संतुलन है, समआयतनी प्रक्रम का नहीं।",
+        "गलत: यह आदर्श गैस के समतापी प्रक्रम का संतुलन है, क्योंकि U केवल T पर निर्भर करता है।",
+      ],
+    },
   },
 
   vi: {
@@ -2523,6 +3194,67 @@ export const quizQuestionTranslations: Partial<
       explanations: [
         "Sai: đây là trạng thái dừng, không phải trạng thái cân bằng. Phân bố nhiệt độ không đổi theo thời gian, nhưng một dòng nhiệt vĩ mô vẫn liên tục đi qua thanh từ đầu nóng sang đầu lạnh.",
         "Đúng: đây là trạng thái dừng, cần phân biệt với cân bằng. Định nghĩa cân bằng nhiệt động không chỉ đòi hỏi các đại lượng vĩ mô ngừng biến đổi mà còn đòi hỏi không có bất kỳ dòng vĩ mô nào; ở đây vẫn còn dòng nhiệt giữa hai đầu.",
+      ],
+    },
+    "l4-q2": {
+      question: "Tại sao ta viết δQ và δW thay vì dQ và dW?",
+      choices: [
+        "Vì chúng là các vi phân không đúng: tích phân của chúng phụ thuộc vào đường đi.",
+        "Vì Q và W là những đại lượng quá nhỏ để có thể mô tả bằng các vi phân thông thường.",
+      ],
+      explanations: [
+        "Đúng: Q và W phụ thuộc vào đường đi, khác với U chỉ phụ thuộc vào trạng thái đầu và cuối. Viết dQ chẳng khác nào làm sống lại thuyết chất nhiệt.",
+        "Sai: ‘độ lớn’ của các đại lượng không liên quan; vấn đề là sự phụ thuộc vào đường đi.",
+      ],
+    },
+    "l4-q2b": {
+      question: "Một khí lý tưởng đi từ trạng thái cân bằng A đến trạng thái cân bằng B, hoặc được nén rồi nung nóng, hoặc được nung nóng rồi nén. Ta có thể khẳng định điều gì?",
+      choices: [
+        "Độ biến thiên nội năng ΔU, nhiệt Q và công W mà khí nhận được đều như nhau trong hai trường hợp.",
+        "ΔU như nhau trong hai trường hợp, nhưng Q và W có thể khác nhau theo đường đi.",
+        "Q như nhau trong hai trường hợp, nhưng ΔU có thể khác nhau.",
+        "Không đại lượng nào trong ba đại lượng phụ thuộc vào đường đi.",
+      ],
+      explanations: [
+        "Sai: chỉ ΔU được xác định bởi các trạng thái A và B; Q và W nói chung phụ thuộc vào đường đi.",
+        "Đúng: U là một hàm trạng thái (dU là vi phân toàn phần), nên ΔU = U(B) − U(A) chỉ phụ thuộc vào trạng thái đầu và cuối. Q và W không phải là hàm trạng thái (δQ và δW không phải là vi phân toàn phần), nên chúng phụ thuộc vào đường đi; nguyên lý thứ nhất chỉ ấn định tổng Q + W = ΔU.",
+        "Sai: điều ngược lại mới đúng—ΔU, chứ không phải Q, không phụ thuộc vào đường đi.",
+        "Sai: ΔU không phụ thuộc vào đường đi, còn Q và W nói chung thì có.",
+      ],
+    },
+    "l4-q3": {
+      question: "Một hệ kín trải qua quá trình theo chu trình (A → A). Có thể khẳng định gì về cân bằng Q_cycle + W_cycle?",
+      choices: [
+        "Nó nhất thiết bằng không vì Q và W tự trở thành hàm trạng thái khi hệ trở về trạng thái ban đầu.",
+        "Nó bằng không vì U là một hàm trạng thái.",
+        "Nó luôn luôn dương nghiêm ngặt đối với một động cơ nhiệt.",
+      ],
+      explanations: [
+        "Sai: điều ngược lại mới đúng—Q và W không phải là hàm trạng thái; chúng là các truyền năng lượng, không phải đại lượng của hệ. Chỉ tổng của chúng bị buộc phải bằng không trên một chu trình thông qua ΔU_cycle = 0.",
+        "Đúng: sau một chu trình, hệ trở lại trạng thái ban đầu. Vì U là hàm trạng thái nên ΔU_cycle = U(A) − U(A) = 0; do đó nguyên lý thứ nhất áp đặt Q_cycle + W_cycle = 0.",
+        "Sai: chính tổng Q_cycle + W_cycle bằng không, chứ không phải từng số hạng riêng lẻ; trong một động cơ nhiệt, Q_cycle và W_cycle đều có thể khác không và trái dấu.",
+      ],
+    },
+    "l4-q4": {
+      question: "Một chất khí được nén theo cách tựa tĩnh. Có thể nói gì về công mà khí nhận được?",
+      choices: [
+        "Công âm: khi bị nén, khí nhất thiết truyền năng lượng cơ học cho môi trường bên ngoài đang nén nó.",
+        "Công dương: khí nhận công trong quá trình nén.",
+        "Công bằng không: trong quá trình tựa tĩnh, các trao đổi công triệt tiêu chính xác ở mỗi giai đoạn.",
+      ],
+      explanations: [
+        "Sai: đây là lỗi dấu kinh điển; với dV < 0 ta có −P dV > 0, nên khí nhận công.",
+        "Đúng: nén khí đòi hỏi cung cấp năng lượng cơ học cho nó; theo quy ước dấu kế toán, năng lượng đi vào hệ được tính dương.",
+        "Sai: tựa tĩnh không có nghĩa là công bằng không, mà chỉ có nghĩa quá trình đi qua một chuỗi trạng thái cân bằng.",
+      ],
+    },
+    "l4-q6": {
+      question: "Trong một quá trình đẳng tích của hệ kín, ta luôn có:",
+      choices: ["W = 0, nên ΔU = Q", "Q = 0, nên ΔU = W", "ΔU = 0, nên Q = −W"],
+      explanations: [
+        "Đúng: ở thể tích không đổi, δW = −P dV = 0; toàn bộ độ biến thiên nội năng đến từ nhiệt.",
+        "Sai: đây là cân bằng của một quá trình đoạn nhiệt, không phải đẳng tích.",
+        "Sai: đây là cân bằng của một quá trình đẳng nhiệt của khí lý tưởng, vì U chỉ phụ thuộc vào T.",
       ],
     },
   },
@@ -2734,6 +3466,67 @@ export const quizQuestionTranslations: Partial<
         "صحيح: هذه حالة مستقرة يجب تمييزها عن التوازن. لا يقتضي تعريف التوازن الديناميكي الحراري توقف تطور الكميات العيانية فحسب، بل يقتضي أيضا غياب كل تدفق عياني؛ وهنا يستمر تدفق الحرارة بين الطرفين.",
       ],
     },
+    "l4-q2": {
+      question: "لماذا نكتب δQ وδW بدلا من dQ وdW؟",
+      choices: [
+        "لأنهما تفاضلان غير تامين: فتكاملهما يتعلق بالمسار المتبع.",
+        "لأن Q وW كميتان أصغر من أن توصفا بتفاضلات عادية.",
+      ],
+      explanations: [
+        "صحيح: تتعلق Q وW بالمسار، خلافا لـU التي لا تتعلق إلا بالحالتين البدئية والنهائية. وكتابة dQ تعني إحياء نظرية السيال الحراري.",
+        "خطأ: لا علاقة لـ«حجم» الكميات بالأمر؛ المسألة هي تعلقها بالمسار.",
+      ],
+    },
+    "l4-q2b": {
+      question: "ينتقل غاز مثالي من حالة التوازن A إلى حالة التوازن B، إما بضغطه ثم تسخينه، وإما بتسخينه ثم ضغطه. ماذا يمكن أن نؤكد؟",
+      choices: [
+        "تكون قيم تغير الطاقة الداخلية ΔU والحرارة Q والشغل W المتلقاة متساوية في الحالتين.",
+        "يكون ΔU متساويا في الحالتين، لكن Q وW قد يختلفان من مسار إلى آخر.",
+        "تكون Q متساوية في الحالتين، لكن ΔU قد يختلف.",
+        "لا تتعلق أي من الكميات الثلاث بالمسار المتبع.",
+      ],
+      explanations: [
+        "خطأ: لا تحدد الحالتان A وB إلا ΔU؛ أما Q وW فتتعلقان عموما بالمسار المتبع.",
+        "صحيح: U دالة حالة (وdU تفاضل تام)، لذلك لا يتعلق ΔU = U(B) − U(A) إلا بالحالتين البدئية والنهائية. أما Q وW فليستا دالتي حالة (وδQ وδW ليسا تفاضلين تامين)، ولذلك تتعلقان بالمسار؛ ولا يحدد المبدأ الأول إلا مجموعهما Q + W = ΔU.",
+        "خطأ: العكس هو الصحيح—فـΔU، لا Q، هي المستقلة عن المسار.",
+        "خطأ: لا يتعلق ΔU بالمسار، بينما تتعلق به Q وW عموما.",
+      ],
+    },
+    "l4-q3": {
+      question: "يخضع نظام مغلق لتحول دوري (A → A). ماذا يمكن أن نقول عن الحصيلة Q_cycle + W_cycle؟",
+      choices: [
+        "هي منعدمة بالضرورة لأن Q وW تصبحان بنفسيهما دالتي حالة عند العودة إلى الحالة البدئية.",
+        "هي منعدمة لأن U دالة حالة.",
+        "هي دائما موجبة تماما بالنسبة إلى آلة حرارية محركة.",
+      ],
+      explanations: [
+        "خطأ: العكس هو الصحيح—فـQ وW ليستا دالتي حالة؛ إنهما انتقالان للطاقة لا كميتان للنظام. ولا يلزم أن ينعدم على دورة، بفعل ΔU_cycle = 0، إلا مجموعهما.",
+        "صحيح: في نهاية الدورة يعود النظام إلى حالته البدئية. وبما أن U دالة حالة فإن ΔU_cycle = U(A) − U(A) = 0؛ ومن ثم يفرض المبدأ الأول Q_cycle + W_cycle = 0.",
+        "خطأ: المنعدم هو المجموع Q_cycle + W_cycle لا كل حد على حدة؛ ويمكن أن يكون كل من Q_cycle وW_cycle غير منعدم وبإشارتين متعاكستين في آلة حرارية.",
+      ],
+    },
+    "l4-q4": {
+      question: "يُضغط غاز بطريقة شبه ساكنة. ماذا يمكن أن نقول عن الشغل الذي يتلقاه الغاز؟",
+      choices: [
+        "هو سالب: فالغاز، حين ينضغط، يعطي بالضرورة طاقة ميكانيكية للوسط الخارجي الذي يضغطه.",
+        "هو موجب: فالغاز يتلقى شغلا أثناء الضغط.",
+        "هو منعدم: ففي تحول شبه ساكن تتعادل تبادلات الشغل تماما في كل مرحلة.",
+      ],
+      explanations: [
+        "خطأ: هذا هو خطأ الإشارة الشائع؛ فعندما يكون dV < 0 يكون −P dV > 0، ولذلك يتلقى الغاز شغلا.",
+        "صحيح: يتطلب ضغط الغاز تزويده بطاقة ميكانيكية؛ ووفق اصطلاح الإشارات المحاسبي تحسب الطاقة الداخلة موجبة.",
+        "خطأ: لا يعني شبه السكون انعدام الشغل، بل يعني فقط أن التحول يمر بسلسلة من حالات التوازن.",
+      ],
+    },
+    "l4-q6": {
+      question: "في تحول ثابت الحجم لنظام مغلق، يكون لدينا دائما:",
+      choices: ["W = 0، ومن ثم ΔU = Q", "Q = 0، ومن ثم ΔU = W", "ΔU = 0، ومن ثم Q = −W"],
+      explanations: [
+        "صحيح: عند ثبات الحجم يكون δW = −P dV = 0؛ ويأتي تغير الطاقة الداخلية كله من الحرارة.",
+        "خطأ: هذه حصيلة تحول كظوم، لا تحول ثابت الحجم.",
+        "خطأ: هذه حصيلة تحول متساوي الحرارة لغاز مثالي، لأن U لا تتعلق إلا بـT.",
+      ],
+    },
   },
 
   id: {
@@ -2941,6 +3734,67 @@ export const quizQuestionTranslations: Partial<
         "Benar: ini adalah keadaan tunak, yang harus dibedakan dari kesetimbangan. Definisi kesetimbangan termodinamika bukan hanya mensyaratkan besaran makroskopik berhenti berubah, melainkan juga ketiadaan semua fluks makroskopik; di sini fluks kalor tetap berlangsung di antara kedua ujung.",
       ],
     },
+    "l4-q2": {
+      question: "Mengapa kita menulis δQ dan δW, bukan dQ dan dW?",
+      choices: [
+        "Karena keduanya adalah diferensial tak eksak: integralnya bergantung pada lintasan yang ditempuh.",
+        "Karena Q dan W merupakan besaran yang terlalu kecil untuk dijelaskan dengan diferensial biasa.",
+      ],
+      explanations: [
+        "Benar: Q dan W bergantung pada lintasan, berbeda dengan U yang hanya bergantung pada keadaan awal dan akhir. Menulis dQ sama saja dengan menghidupkan kembali teori kalorik.",
+        "Salah: ‘ukuran’ besaran tidak ada hubungannya; persoalannya adalah ketergantungan pada lintasan.",
+      ],
+    },
+    "l4-q2b": {
+      question: "Gas ideal berpindah dari keadaan kesetimbangan A ke keadaan kesetimbangan B, baik dengan dimampatkan lalu dipanaskan maupun dipanaskan lalu dimampatkan. Apa yang dapat dinyatakan?",
+      choices: [
+        "Perubahan energi dalam ΔU serta kalor Q dan kerja W yang diterima sama dalam kedua kasus.",
+        "ΔU sama dalam kedua kasus, tetapi Q dan W dapat berbeda dari satu lintasan ke lintasan lain.",
+        "Q sama dalam kedua kasus, tetapi ΔU dapat berbeda.",
+        "Tidak satu pun dari ketiga besaran itu bergantung pada lintasan yang ditempuh.",
+      ],
+      explanations: [
+        "Salah: hanya ΔU yang ditentukan oleh keadaan A dan B; Q dan W pada umumnya bergantung pada lintasan.",
+        "Benar: U adalah fungsi keadaan (dU merupakan diferensial eksak), sehingga ΔU = U(B) − U(A) hanya bergantung pada keadaan awal dan akhir. Q dan W bukan fungsi keadaan (δQ dan δW bukan diferensial eksak), sehingga keduanya bergantung pada lintasan; hukum pertama hanya menentukan jumlahnya, Q + W = ΔU.",
+        "Salah: yang benar adalah kebalikannya—ΔU, bukan Q, tidak bergantung pada lintasan.",
+        "Salah: ΔU tidak bergantung pada lintasan, tetapi Q dan W pada umumnya bergantung.",
+      ],
+    },
+    "l4-q3": {
+      question: "Sebuah sistem tertutup mengalami proses siklik (A → A). Apa yang dapat dikatakan tentang neraca Q_cycle + W_cycle?",
+      choices: [
+        "Nilainya pasti nol karena Q dan W sendiri menjadi fungsi keadaan ketika sistem kembali ke keadaan awal.",
+        "Nilainya nol karena U adalah fungsi keadaan.",
+        "Nilainya selalu positif secara ketat untuk sebuah mesin kalor.",
+      ],
+      explanations: [
+        "Salah: justru kebalikannya—Q dan W bukan fungsi keadaan; keduanya adalah perpindahan energi, bukan besaran sistem. Hanya jumlah keduanya yang harus nol dalam satu siklus melalui ΔU_cycle = 0.",
+        "Benar: pada akhir siklus sistem kembali ke keadaan awal. Karena U adalah fungsi keadaan, ΔU_cycle = U(A) − U(A) = 0; maka hukum pertama mensyaratkan Q_cycle + W_cycle = 0.",
+        "Salah: yang nol adalah jumlah Q_cycle + W_cycle, bukan setiap suku secara terpisah; pada mesin kalor, Q_cycle dan W_cycle dapat sama-sama tak nol dan bertanda berlawanan.",
+      ],
+    },
+    "l4-q4": {
+      question: "Gas dimampatkan secara kuasistatik. Apa yang dapat dikatakan tentang kerja yang diterima gas?",
+      choices: [
+        "Negatif: ketika dimampatkan, gas pasti memberikan energi mekanis kepada lingkungan luar yang memampatkannya.",
+        "Positif: gas menerima kerja selama pemampatan.",
+        "Nol: dalam proses kuasistatik, pertukaran kerja saling meniadakan secara tepat pada setiap tahap.",
+      ],
+      explanations: [
+        "Salah: ini adalah kekeliruan tanda yang klasik; untuk dV < 0 berlaku −P dV > 0, sehingga gas menerima kerja.",
+        "Benar: memampatkan gas memerlukan pemberian energi mekanis kepadanya; menurut konvensi tanda akuntansi, energi yang masuk dihitung positif.",
+        "Salah: kuasistatik tidak berarti kerja nol, melainkan hanya bahwa proses melewati serangkaian keadaan kesetimbangan.",
+      ],
+    },
+    "l4-q6": {
+      question: "Dalam proses isokhorik pada sistem tertutup, selalu berlaku:",
+      choices: ["W = 0, sehingga ΔU = Q", "Q = 0, sehingga ΔU = W", "ΔU = 0, sehingga Q = −W"],
+      explanations: [
+        "Benar: pada volume konstan, δW = −P dV = 0; seluruh perubahan energi dalam berasal dari kalor.",
+        "Salah: ini adalah neraca proses adiabatik, bukan proses isokhorik.",
+        "Salah: ini adalah neraca proses isotermal gas ideal, karena U hanya bergantung pada T.",
+      ],
+    },
   },
 
   tr: {
@@ -3146,6 +4000,67 @@ export const quizQuestionTranslations: Partial<
       explanations: [
         "Yanlış: bu bir sürekli rejimdir, denge durumu değildir. Sıcaklık profili zaman içinde sabittir, fakat sıcak uçtan soğuk uca makroskopik bir ısı akısı çubuktan geçmeye devam eder.",
         "Doğru: bu, dengeden ayırt edilmesi gereken bir sürekli rejimdir. Termodinamik denge tanımı yalnızca makroskopik büyüklüklerin değişmeyi bırakmasını değil, bütün makroskopik akıların yokluğunu da gerektirir; burada iki uç arasında ısı akısı sürer.",
+      ],
+    },
+    "l4-q2": {
+      question: "Neden dQ ve dW yerine δQ ve δW yazılır?",
+      choices: [
+        "Çünkü bunlar tam olmayan diferansiyellerdir: integralleri izlenen yola bağlıdır.",
+        "Çünkü Q ve W, sıradan diferansiyellerle betimlenemeyecek kadar küçük büyüklüklerdir.",
+      ],
+      explanations: [
+        "Doğru: Yalnızca başlangıç ve bitiş durumlarına bağlı olan U'nun tersine Q ile W yola bağlıdır. dQ yazmak kalorik teorisini yeniden diriltmek olurdu.",
+        "Yanlış: Büyüklüklerin ‘boyutu’ konuyla ilgisizdir; söz konusu olan yola bağımlılıktır.",
+      ],
+    },
+    "l4-q2b": {
+      question: "İdeal bir gaz, önce sıkıştırılıp sonra ısıtılarak ya da önce ısıtılıp sonra sıkıştırılarak A denge durumundan B denge durumuna geçiyor. Ne söylenebilir?",
+      choices: [
+        "İç enerji değişimi ΔU ile alınan ısı Q ve iş W her iki durumda da aynıdır.",
+        "ΔU her iki durumda da aynıdır, ama Q ile W bir yoldan diğerine farklı olabilir.",
+        "Q her iki durumda da aynıdır, ama ΔU farklı olabilir.",
+        "Üç büyüklüğün hiçbiri izlenen yola bağlı değildir.",
+      ],
+      explanations: [
+        "Yanlış: Yalnızca ΔU, A ve B durumlarınca belirlenir; Q ile W genel olarak izlenen yola bağlıdır.",
+        "Doğru: U bir durum fonksiyonudur (dU tam diferansiyeldir), dolayısıyla ΔU = U(B) − U(A) yalnızca başlangıç ve bitiş durumlarına bağlıdır. Q ile W durum fonksiyonu değildir (δQ ile δW tam diferansiyel değildir), bu yüzden yola bağlıdır; birinci yasa yalnızca toplamlarını, Q + W = ΔU'yu belirler.",
+        "Yanlış: Tersi doğrudur—yoldan bağımsız olan Q değil, ΔU'dur.",
+        "Yanlış: ΔU yola bağlı değildir, ama Q ile W genel olarak bağlıdır.",
+      ],
+    },
+    "l4-q3": {
+      question: "Kapalı bir sistem çevrimsel bir dönüşüm (A → A) geçiriyor. Q_cycle + W_cycle bilançosu için ne söylenebilir?",
+      choices: [
+        "Mutlaka sıfırdır, çünkü başlangıç durumuna dönülünce Q ile W'nin kendileri durum fonksiyonu olur.",
+        "U bir durum fonksiyonu olduğu için sıfırdır.",
+        "Bir ısı makinesi için her zaman kesinlikle pozitiftir.",
+      ],
+      explanations: [
+        "Yanlış: Tersi doğrudur—Q ile W durum fonksiyonu değildir; sistemin büyüklükleri değil, enerji aktarımlarıdır. ΔU_cycle = 0 aracılığıyla bir çevrimde yalnızca toplamlarının sıfır olması gerekir.",
+        "Doğru: Çevrimin sonunda sistem başlangıç durumuna döner. U bir durum fonksiyonu olduğundan ΔU_cycle = U(A) − U(A) = 0'dır; bu nedenle birinci yasa Q_cycle + W_cycle = 0'ı gerektirir.",
+        "Yanlış: Sıfır olan, her terim ayrı ayrı değil, Q_cycle + W_cycle toplamıdır; bir ısı makinesinde Q_cycle ile W_cycle sıfırdan farklı ve zıt işaretli olabilir.",
+      ],
+    },
+    "l4-q4": {
+      question: "Bir gaz kuazistatik olarak sıkıştırılıyor. Gazın aldığı iş için ne söylenebilir?",
+      choices: [
+        "Negatiftir: Gaz sıkıştırılırken onu sıkıştıran dış ortama zorunlu olarak mekanik enerji verir.",
+        "Pozitiftir: Gaz sıkıştırma sırasında iş alır.",
+        "Sıfırdır: Kuazistatik bir dönüşümde iş alışverişleri her aşamada birbirini tam olarak götürür.",
+      ],
+      explanations: [
+        "Yanlış: Bu klasik işaret hatasıdır; dV < 0 iken −P dV > 0 olur, dolayısıyla gaz iş alır.",
+        "Doğru: Bir gazı sıkıştırmak ona mekanik enerji vermeyi gerektirir; muhasebe işaret uzlaşımında sisteme giren enerji pozitif sayılır.",
+        "Yanlış: Kuazistatik, işin sıfır olduğu anlamına gelmez; yalnızca dönüşümün bir denge durumları dizisinden geçtiğini belirtir.",
+      ],
+    },
+    "l4-q6": {
+      question: "Kapalı bir sistemin izokorik dönüşümünde her zaman:",
+      choices: ["W = 0, dolayısıyla ΔU = Q", "Q = 0, dolayısıyla ΔU = W", "ΔU = 0, dolayısıyla Q = −W"],
+      explanations: [
+        "Doğru: Sabit hacimde δW = −P dV = 0'dır; iç enerji değişiminin tamamı ısıdan gelir.",
+        "Yanlış: Bu, izokorik değil adyabatik bir dönüşümün bilançosudur.",
+        "Yanlış: U yalnızca T'ye bağlı olduğundan bu, ideal gazın izotermal dönüşümünün bilançosudur.",
       ],
     },
   },
