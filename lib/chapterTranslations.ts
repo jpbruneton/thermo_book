@@ -2359,4 +2359,384 @@ export const chapterTranslations: Record<Exclude<Lang, "fr" | "en">, ThemeTransl
       partHeading: "Bölüm III — Kuantum Termodinamiği",
     },
   },
+  bn: {
+    introduction: {
+      title: "সাধারণ ভূমিকা",
+      description: "তাপগতিবিদ্যার প্রকৃতি।",
+      topics: ["তাপ ইঞ্জিন", "তাপ-কর্ম রূপান্তর", "দ্বিতীয় সূত্র", "এনট্রপি", "উষ্ণ উৎস", "শীতল উৎস", "কার্নো দক্ষতা", "তাপগতিবিদ্যার সার্বজনীনতা"],
+      partHeading: "অংশ ১ — প্রাথমিক কোর্স",
+    },
+    historique: {
+      title: "তাপগতিবিদ্যা ও ক্যালোরিমিতির ইতিহাস",
+      description: "ক্যালোরিক তত্ত্ব থেকে ক্লসিয়ুসের এনট্রপি পর্যন্ত।",
+      topics: ["তাপগতিবিদ্যার ইতিহাস", "ক্যালোরিক তত্ত্ব", "জোসেফ ব্ল্যাক", "ক্যালোরিমিতি", "লীন তাপ", "রামফোর্ড ও ডেভি", "আদর্শ গ্যাস", "মেয়ার", "জুল", "কেলভিন", "ক্লসিয়ুস", "এনট্রপি"],
+    },
+    "notions-fondamentales": {
+      title: "মৌলিক ধারণাসমূহ",
+      description: "সাম্যাবস্থা, প্রাচীর, অবস্থা চলক ও ফাংশন, তাপগতিবিদ্যাগত রূপান্তর।",
+      topics: ["তাপগতিবিদ্যা তন্ত্র", "প্রাচীর", "সাম্যাবস্থা", "অবস্থা চলক", "অবস্থা ফাংশন", "প্রায়-স্থিতিক রূপান্তর", "রিজার্ভার", "সম্প্রসারকতা", "নিবিড়তা"],
+    },
+    "premier-principe": {
+      title: "তাপগতিবিদ্যার প্রথম সূত্র",
+      description: "কাজ, তাপ, অভ্যন্তরীণ শক্তি এবং প্রথম সূত্র।",
+      topics: ["অভ্যন্তরীণ শক্তি", "প্রথম সূত্র", "চাপ-আয়তন কাজ", "তাপ স্থানান্তর", "অবস্থা ফাংশন", "সম্পূর্ণ অন্তরক", "প্রায়-স্থিতিক প্রক্রিয়া", "রুদ্ধতাপীয় প্রক্রিয়া", "সম্প্রসারকতা"],
+    },
+    "application-gaz-parfait": {
+      title: "আদর্শ গ্যাসে প্রয়োগ",
+      description: "আদর্শ গ্যাসের রূপান্তরে প্রথম সূত্রের প্রয়োগ।",
+      topics: ["আদর্শ গ্যাস", "প্রথম সূত্র", "অভ্যন্তরীণ শক্তি", "সমোষ্ণ প্রক্রিয়া", "রুদ্ধতাপীয় প্রক্রিয়া", "জুল সম্প্রসারণ"],
+    },
+    "second-principe": {
+      title: "প্রত্যাবর্তনযোগ্যতা ও অপ্রত্যাবর্তনযোগ্যতা: দ্বিতীয় সূত্র",
+      description: "এনট্রপি, প্রত্যাবর্তনযোগ্যতা এবং দ্বিতীয় সূত্র।",
+      topics: ["দ্বিতীয় সূত্র", "এনট্রপি", "প্রত্যাবর্তনযোগ্যতা", "অপ্রত্যাবর্তনযোগ্যতা", "এনট্রপি সৃষ্টি", "স্বতঃস্ফূর্ত বিবর্তন"],
+    },
+    "relations-fondamentales": {
+      title: "গাণিতিক গঠন: মৌলিক সম্পর্কসমূহ",
+      description: "মৌলিক সম্পর্ক ও তাপগতিবিদ্যাগত বিভবসমূহ।",
+      topics: ["মুক্ত তন্ত্র", "মৌলিক সম্পর্ক", "শক্তি উপস্থাপনা", "এনট্রপি উপস্থাপনা", "ম্যাক্সওয়েল সম্পর্ক", "গিবস-ডুহেম সম্পর্ক", "অয়লারের উপপাদ্য", "তৃতীয় সূত্র", "তাপগতিবিদ্যাগত স্থিতিশীলতা", "উত্তলতা"],
+    },
+    "changements-de-variables": {
+      title: "আকারভঙ্গি: চলক পরিবর্তন",
+      description: "অন্তরক ক্যালকুলাস, লেজান্দ্র রূপান্তর এবং তাপগতিবিদ্যাগত বিভবসমূহ।",
+      topics: ["বহুচল অন্তরক ক্যালকুলাস", "লেজান্দ্র রূপান্তর", "তাপগতিবিদ্যাগত বিভব", "হেল্মহোলৎস মুক্ত শক্তি", "এনথালপি", "গিবস মুক্ত শক্তি"],
+    },
+    coefficients: {
+      title: "ক্যালোরিমিতিক ও তাপ-স্থিতিস্থাপক গুণাঙ্ক",
+      description: "ক্যালোরিমিতিক ও তাপ-স্থিতিস্থাপক গুণাঙ্ক এবং অবস্থা সমীকরণ।",
+      topics: ["ক্যালোরিমিতিক গুণাঙ্ক", "তাপ-স্থিতিস্থাপক গুণাঙ্ক", "তাপ ধারণক্ষমতা", "অবস্থা সমীকরণ", "অসংকোচনীয় দশা", "তাপগতিবিদ্যাগত স্থিতিশীলতা"],
+    },
+    "transitions-de-phases": {
+      title: "দশা রূপান্তর",
+      description: "দশা চিত্র, অস্থিতিশীলতা এবং ভ্যান ডার ওয়ালস গ্যাস।",
+      topics: ["দশা রূপান্তর", "দশা চিত্র", "সংকট বিন্দু", "অস্থিতিশীলতা", "ভ্যান ডার ওয়ালস গ্যাস", "সমোষ্ণ রেখা", "ম্যাক্সওয়েল নির্মাণ", "সম্পৃক্তি রেখা"],
+    },
+    "machines-thermiques": {
+      title: "তাপ ইঞ্জিন",
+      description: "দ্বি-রিজার্ভার চক্র, কার্নো চক্র, দক্ষতা এবং দ্বিতীয় সূত্রের বিবৃতি।",
+      topics: ["তাপ ইঞ্জিন", "বাষ্প ইঞ্জিন", "দ্বি-রিজার্ভার চক্র", "ক্লসিয়ুস অসমতা", "কার্নো চক্র", "দক্ষতা", "কার্যক্ষমতা গুণাঙ্ক (COP)", "TS চিত্র", "র‍্যাঙ্কাইন চক্র"],
+    },
+    "geometrie-differentielle": {
+      title: "তাপগতিবিদ্যায় অন্তরক জ্যামিতি",
+      description: "তাপগতিবিদ্যার অন্তর্নিহিত জ্যামিতিক গঠন।",
+      topics: ["সংস্পর্শ জ্যামিতি", "তাপগতিবিদ্যাগত বহুধা", "লেজান্দ্র ও জ্যামিতি", "সিম্পলেক্টিক গঠন"],
+      partHeading: "অংশ ২ — উন্নত তাপগতিবিদ্যা",
+    },
+    "demon-de-maxwell": {
+      title: "ম্যাক্সওয়েলের দানব",
+      description: "তথ্য, এনট্রপি এবং শাস্ত্রীয় তাপগতিবিদ্যার সীমাবদ্ধতা।",
+      topics: ["ম্যাক্সওয়েলের দানব", "এনট্রপি ও তথ্য", "ল্যান্ডাউয়ার নীতি", "তথ্য মোচন"],
+    },
+    endoreversibilite: {
+      title: "এন্ডোরিভার্সিবল চক্র",
+      description: "সর্বোচ্চ ক্ষমতায় দক্ষতা এবং বাস্তব তাপ ইঞ্জিন।",
+      topics: ["এন্ডোরিভার্সিবিলিটি", "কার্জন-আলবর্ন দক্ষতা", "সর্বোচ্চ ক্ষমতা", "তাপগতিবিদ্যাগত অপ্টিমাইজেশন"],
+    },
+    thermoelectricite: {
+      title: "তাপবিদ্যুৎ",
+      description: "তাপবৈদ্যুতিক প্রভাব এবং শক্তি রূপান্তর।",
+      topics: ["সিবেক প্রভাব", "পেলটিয়ার প্রভাব", "থমসন প্রভাব", "গুণমান সূচক"],
+    },
+    "thermodynamique-hors-equilibre": {
+      title: "অসাম্যাবস্থার তাপগতিবিদ্যা",
+      description: "অপ্রত্যাবর্তনযোগ্য প্রপঞ্চ এবং অনসাগার সম্পর্ক।",
+      topics: ["রৈখিক তাপগতিবিদ্যা", "অনসাগার সম্পর্ক", "পারস্পরিকতা", "এনট্রপি উৎপাদন", "যুগ্মিত প্রপঞ্চ"],
+    },
+    climat: {
+      title: "জলবায়ুবিজ্ঞান ও তাপগতিবিদ্যা",
+      description: "পৃথিবীর জলবায়ু ব্যবস্থায় তাপগতিবিদ্যাগত প্রয়োগ।",
+      topics: ["বিকিরণ ভারসাম্য", "গ্রিনহাউস প্রভাব", "বায়ুমণ্ডলীয় তাপ ইঞ্জিন", "জলবায়ু এনট্রপি"],
+    },
+    "thermodynamique-quantique": {
+      title: "কোয়ান্টাম তাপগতিবিদ্যা",
+      description: "কোয়ান্টাম স্কেলে কাজ, তাপ এবং এনট্রপি।",
+      topics: ["কোয়ান্টাম ইঞ্জিন", "কোয়ান্টাম ওঠানামা", "জারজিনস্কি সমতা", "কোয়ান্টাম তথ্য তাপগতিবিদ্যা"],
+      partHeading: "অংশ ৩ — কোয়ান্টাম তাপগতিবিদ্যা",
+    },
+  },
+  ur: {
+    introduction: {
+      title: "عمومی تعارف",
+      description: "حرارتی حرکیات کی نوعیت۔",
+      topics: ["حرارتی انجن", "حرارت سے کام میں تبدیلی", "دوسرا اصول", "اینٹروپی", "گرم منبع", "ٹھنڈا منبع", "کارنو کی کارکردگی", "حرارتی حرکیات کی آفاقیت"],
+      partHeading: "حصہ اول — بنیادی کورس",
+    },
+    historique: {
+      title: "حرارتی حرکیات اور کیلوری میٹری کی تاریخ",
+      description: "کیلورک نظریے سے کلازیئس کی اینٹروپی تک۔",
+      topics: ["حرارتی حرکیات کی تاریخ", "کیلورک نظریہ", "جوزف بلیک", "کیلوری میٹری", "پوشیدہ حرارت", "رمفورڈ اور ڈیوی", "مثالی گیس", "میئر", "جول", "کیلون", "کلازیئس", "اینٹروپی"],
+    },
+    "notions-fondamentales": {
+      title: "بنیادی تصورات",
+      description: "توازن، دیواریں، حالتی متغیرات و افعال، حرارتی حرکیاتی تبدیلیاں۔",
+      topics: ["حرارتی حرکیاتی نظام", "دیواریں", "توازن", "حالتی متغیرات", "حالتی افعال", "شبہ ساکن تبدیلیاں", "ذخیرہ", "توسیعیت", "شدتیت"],
+    },
+    "premier-principe": {
+      title: "حرارتی حرکیات کا پہلا اصول",
+      description: "کام، حرارت، داخلی توانائی اور پہلا اصول۔",
+      topics: ["داخلی توانائی", "پہلا اصول", "دباؤ-حجم کا کام", "حرارت کی منتقلی", "حالتی فعل", "مکمل تفرق", "شبہ ساکن عمل", "ایڈیا بیٹک عمل", "توسیعیت"],
+    },
+    "application-gaz-parfait": {
+      title: "مثالی گیس پر اطلاق",
+      description: "مثالی گیس کی تبدیلیوں پر پہلے اصول کا اطلاق۔",
+      topics: ["مثالی گیس", "پہلا اصول", "داخلی توانائی", "ہم حرارت عمل", "ایڈیا بیٹک عمل", "جول پھیلاؤ"],
+    },
+    "second-principe": {
+      title: "برگشت پذیری اور ناقابلِ برگشت پذیری: دوسرا اصول",
+      description: "اینٹروپی، برگشت پذیری اور دوسرا اصول۔",
+      topics: ["دوسرا اصول", "اینٹروپی", "برگشت پذیری", "ناقابلِ برگشت پذیری", "اینٹروپی کی پیداوار", "خودبخود ارتقاء"],
+    },
+    "relations-fondamentales": {
+      title: "ریاضیاتی ساخت: بنیادی تعلقات",
+      description: "بنیادی تعلقات اور حرارتی حرکیاتی صلاحیتیں۔",
+      topics: ["کھلے نظام", "بنیادی تعلقات", "توانائی کی نمائندگی", "اینٹروپی کی نمائندگی", "میکسویل تعلقات", "گبس-ڈوہیم تعلق", "یولر کا نظریہ", "تیسرا اصول", "حرارتی حرکیاتی استحکام", "محدبیت"],
+    },
+    "changements-de-variables": {
+      title: "ہیئتی ساخت: متغیرات کی تبدیلی",
+      description: "تفرقی حساب، لیجانڈر تبدیلی اور حرارتی حرکیاتی صلاحیتیں۔",
+      topics: ["کثیر متغیر تفرقی حساب", "لیجانڈر تبدیلی", "حرارتی حرکیاتی صلاحیتیں", "ہیلمہولٹز آزاد توانائی", "اینتھالپی", "گبس آزاد توانائی"],
+    },
+    coefficients: {
+      title: "کیلوری میٹرک اور حرارتی-لچکدار ضرائب",
+      description: "کیلوری میٹرک اور حرارتی-لچکدار ضرائب اور حالتی مساوات۔",
+      topics: ["کیلوری میٹرک ضرائب", "حرارتی-لچکدار ضرائب", "حرارتی گنجائشیں", "حالتی مساوات", "ناقابلِ تراکم مرحلہ", "حرارتی حرکیاتی استحکام"],
+    },
+    "transitions-de-phases": {
+      title: "مرحلاتی تبدیلی",
+      description: "مرحلاتی خاکے، عدم استحکام اور وان ڈیر والز گیس۔",
+      topics: ["مرحلاتی تبدیلیاں", "مرحلاتی خاکہ", "نازک نقطہ", "عدم استحکام", "وان ڈیر والز گیس", "ہم حرارت خطوط", "میکسویل تعمیر", "اشباع خط"],
+    },
+    "machines-thermiques": {
+      title: "حرارتی انجن",
+      description: "دو ذخیروں والے چکر، کارنو چکر، کارکردگی اور دوسرے اصول کے بیانات۔",
+      topics: ["حرارتی انجن", "بھاپ کا انجن", "دو ذخیروں والے چکر", "کلازیئس عدم مساوات", "کارنو چکر", "کارکردگی", "کارکردگی کا ضریب (COP)", "TS خاکہ", "رینکائن چکر"],
+    },
+    "geometrie-differentielle": {
+      title: "حرارتی حرکیات میں تفرقی جیومیٹری",
+      description: "حرارتی حرکیات کی بنیادی جیومیٹریائی ساختیں۔",
+      topics: ["رابطہ جیومیٹری", "حرارتی حرکیاتی کثیر منیفولڈز", "لیجانڈر اور جیومیٹری", "سمپلیکٹک ساخت"],
+      partHeading: "حصہ دوم — اعلیٰ حرارتی حرکیات",
+    },
+    "demon-de-maxwell": {
+      title: "میکسویل کا شیطان",
+      description: "معلومات، اینٹروپی اور کلاسیکی حرارتی حرکیات کی حدود۔",
+      topics: ["میکسویل کا شیطان", "اینٹروپی اور معلومات", "لینڈاؤر کا اصول", "معلومات کا خاتمہ"],
+    },
+    endoreversibilite: {
+      title: "اینڈوریورسیبل چکر",
+      description: "زیادہ سے زیادہ طاقت پر کارکردگی اور حقیقی حرارتی انجن۔",
+      topics: ["اینڈوریورسیبلٹی", "کرزون-آلبورن کارکردگی", "زیادہ سے زیادہ طاقت", "حرارتی حرکیاتی بہتری"],
+    },
+    thermoelectricite: {
+      title: "تھرمو الیکٹرسٹی",
+      description: "تھرمو الیکٹرک اثرات اور توانائی کی تبدیلی۔",
+      topics: ["زیبیک اثر", "پیلٹیئر اثر", "تھامسن اثر", "معیار کا عدد"],
+    },
+    "thermodynamique-hors-equilibre": {
+      title: "غیر توازنی حرارتی حرکیات",
+      description: "ناقابلِ برگشت مظاہر اور اونساگر تعلقات۔",
+      topics: ["خطی حرارتی حرکیات", "اونساگر تعلقات", "باہمی تعلق", "اینٹروپی کی پیداوار", "مربوط مظاہر"],
+    },
+    climat: {
+      title: "موسمیات اور حرارتی حرکیات",
+      description: "زمین کے موسمیاتی نظام پر حرارتی حرکیاتی اطلاقات۔",
+      topics: ["اشعاعی توازن", "گرین ہاؤس اثر", "فضائی حرارتی انجن", "موسمیاتی اینٹروپی"],
+    },
+    "thermodynamique-quantique": {
+      title: "کوانٹم حرارتی حرکیات",
+      description: "کوانٹم پیمانے پر کام، حرارت اور اینٹروپی۔",
+      topics: ["کوانٹم انجن", "کوانٹم اتار چڑھاؤ", "جارزنسکی مساوات", "کوانٹم اطلاعاتی حرارتی حرکیات"],
+      partHeading: "حصہ سوم — کوانٹم حرارتی حرکیات",
+    },
+  },
+  sw: {
+    introduction: {
+      title: "Utangulizi wa Jumla",
+      description: "Asili ya thermodynamiki.",
+      topics: ["Injini za joto", "Ubadilishaji wa joto kuwa kazi", "Kanuni ya pili", "Entropy", "Chanzo cha joto", "Chanzo baridi", "Ufanisi wa Carnot", "Uwiano wa jumla wa thermodynamiki"],
+      partHeading: "Sehemu ya I — Kozi ya Msingi",
+    },
+    historique: {
+      title: "Historia ya Thermodynamiki na Calorimetry",
+      description: "Kutoka nadharia ya caloric hadi entropy ya Clausius.",
+      topics: ["Historia ya thermodynamiki", "Nadharia ya caloric", "Joseph Black", "Calorimetry", "Joto fiche", "Rumford na Davy", "Gesi bora", "Mayer", "Joule", "Kelvin", "Clausius", "Entropy"],
+    },
+    "notions-fondamentales": {
+      title: "Dhana za Msingi",
+      description: "Usawa, kuta, vigezo na kazi za hali, mabadiliko ya thermodynamiki.",
+      topics: ["Mfumo wa thermodynamiki", "Kuta", "Usawa", "Vigezo vya hali", "Kazi za hali", "Mabadiliko ya taratibu", "Hifadhi", "Uwingi (extensivity)", "Uzito (intensivity)"],
+    },
+    "premier-principe": {
+      title: "Kanuni ya Kwanza ya Thermodynamiki",
+      description: "Kazi, joto, nishati ya ndani, na kanuni ya kwanza.",
+      topics: ["Nishati ya ndani", "Kanuni ya kwanza", "Kazi ya shinikizo-ujazo", "Uhamishaji wa joto", "Kazi ya hali", "Tofauti kamili", "Mchakato wa taratibu", "Mchakato wa adiabatic", "Uwingi (extensivity)"],
+    },
+    "application-gaz-parfait": {
+      title: "Matumizi kwa Gesi Bora",
+      description: "Matumizi ya kanuni ya kwanza kwa mabadiliko ya gesi bora.",
+      topics: ["Gesi bora", "Kanuni ya kwanza", "Nishati ya ndani", "Mchakato wa isothermal", "Mchakato wa adiabatic", "Upanuzi wa Joule"],
+    },
+    "second-principe": {
+      title: "Uwezekano wa Kurudi na Kutorudi: Kanuni ya Pili",
+      description: "Entropy, uwezekano wa kurudi, na kanuni ya pili.",
+      topics: ["Kanuni ya pili", "Entropy", "Uwezekano wa kurudi", "Kutowezekana kurudi", "Uzalishaji wa entropy", "Mabadiliko ya hiari"],
+    },
+    "relations-fondamentales": {
+      title: "Muundo wa Kihisabati: Uhusiano wa Msingi",
+      description: "Uhusiano wa msingi na uwezo wa thermodynamiki.",
+      topics: ["Mifumo huria", "Uhusiano wa msingi", "Uwakilishi wa nishati", "Uwakilishi wa entropy", "Uhusiano wa Maxwell", "Uhusiano wa Gibbs-Duhem", "Nadharia ya Euler", "Kanuni ya tatu", "Uthabiti wa thermodynamiki", "Ugeuzo (convexity)"],
+    },
+    "changements-de-variables": {
+      title: "Muundo wa Kiufundi: Mabadiliko ya Vigezo",
+      description: "Hesabu tofautishi, mageuzi ya Legendre, na uwezo wa thermodynamiki.",
+      topics: ["Hesabu tofautishi ya vigezo vingi", "Mageuzi ya Legendre", "Uwezo wa thermodynamiki", "Nishati huru ya Helmholtz", "Enthalpy", "Nishati huru ya Gibbs"],
+    },
+    coefficients: {
+      title: "Vigezo vya Calorimetric na Thermoelastic",
+      description: "Vigezo vya calorimetric na thermoelastic, na milinganyo ya hali.",
+      topics: ["Vigezo vya calorimetric", "Vigezo vya thermoelastic", "Uwezo wa joto", "Mlinganyo wa hali", "Awamu isiyoweza kubanwa", "Uthabiti wa thermodynamiki"],
+    },
+    "transitions-de-phases": {
+      title: "Mabadiliko ya Awamu",
+      description: "Michoro ya awamu, kutokuwa thabiti, na gesi ya Van der Waals.",
+      topics: ["Mabadiliko ya awamu", "Mchoro wa awamu", "Kiwango muhimu", "Kutokuwa thabiti", "Gesi ya Van der Waals", "Mistari ya isothermal", "Ujenzi wa Maxwell", "Mkondo wa kueneza"],
+    },
+    "machines-thermiques": {
+      title: "Injini za Joto",
+      description: "Mizunguko ya hifadhi mbili, mzunguko wa Carnot, ufanisi, na kauli za kanuni ya pili.",
+      topics: ["Injini za joto", "Injini ya mvuke", "Mizunguko ya hifadhi mbili", "Ukosefu wa usawa wa Clausius", "Mzunguko wa Carnot", "Ufanisi", "Mgawo wa utendaji (COP)", "Mchoro wa TS", "Mzunguko wa Rankine"],
+    },
+    "geometrie-differentielle": {
+      title: "Jiometri Tofautishi katika Thermodynamiki",
+      description: "Miundo ya kijiometri iliyo msingi wa thermodynamiki.",
+      topics: ["Jiometri ya mguso", "Mifumo ya thermodynamiki (manifolds)", "Legendre na jiometri", "Muundo wa symplectic"],
+      partHeading: "Sehemu ya II — Thermodynamiki ya Juu",
+    },
+    "demon-de-maxwell": {
+      title: "Pepo wa Maxwell",
+      description: "Taarifa, entropy, na mipaka ya thermodynamiki ya kawaida.",
+      topics: ["Pepo wa Maxwell", "Entropy na taarifa", "Kanuni ya Landauer", "Ufutaji wa taarifa"],
+    },
+    endoreversibilite: {
+      title: "Mizunguko ya Endoreversible",
+      description: "Ufanisi kwa nguvu ya juu zaidi na injini halisi za joto.",
+      topics: ["Endoreversibility", "Ufanisi wa Curzon-Ahlborn", "Nguvu ya juu zaidi", "Uboreshaji wa thermodynamiki"],
+    },
+    thermoelectricite: {
+      title: "Thermoelectricity",
+      description: "Athari za thermoelectric na ubadilishaji wa nishati.",
+      topics: ["Athari ya Seebeck", "Athari ya Peltier", "Athari ya Thomson", "Kipimo cha ubora"],
+    },
+    "thermodynamique-hors-equilibre": {
+      title: "Thermodynamiki Isiyo ya Usawa",
+      description: "Matukio yasiyoweza kurudi na uhusiano wa Onsager.",
+      topics: ["Thermodynamiki ya mstari", "Uhusiano wa Onsager", "Ulinganifu (reciprocity)", "Uzalishaji wa entropy", "Matukio yaliyounganishwa"],
+    },
+    climat: {
+      title: "Hali ya Hewa na Thermodynamiki",
+      description: "Matumizi ya thermodynamiki kwenye mfumo wa hali ya hewa wa Dunia.",
+      topics: ["Mizani ya mionzi", "Athari ya chafu", "Injini ya joto ya angahewa", "Entropy ya hali ya hewa"],
+    },
+    "thermodynamique-quantique": {
+      title: "Thermodynamiki ya Kwantamu",
+      description: "Kazi, joto, na entropy katika kiwango cha kwantamu.",
+      topics: ["Injini za kwantamu", "Mizunguko ya kwantamu (fluctuations)", "Usawa wa Jarzynski", "Thermodynamiki ya taarifa za kwantamu"],
+      partHeading: "Sehemu ya III — Thermodynamiki ya Kwantamu",
+    },
+  },
+  fa: {
+    introduction: {
+      title: "مقدمهٔ عمومی",
+      description: "ماهیت ترمودینامیک.",
+      topics: ["موتورهای حرارتی", "تبدیل گرما به کار", "قانون دوم", "آنتروپی", "منبع گرم", "منبع سرد", "بازده کارنو", "جهان‌شمولی ترمودینامیک"],
+      partHeading: "بخش اول — درس مقدماتی",
+    },
+    historique: {
+      title: "تاریخچهٔ ترمودینامیک و کالریمتری",
+      description: "از نظریهٔ کالریک تا آنتروپی کلازیوس.",
+      topics: ["تاریخچهٔ ترمودینامیک", "نظریهٔ کالریک", "جوزف بلک", "کالریمتری", "گرمای نهان", "رامفورد و دیوی", "گاز ایده‌آل", "مایر", "ژول", "کلوین", "کلازیوس", "آنتروپی"],
+    },
+    "notions-fondamentales": {
+      title: "مفاهیم بنیادین",
+      description: "تعادل، دیواره‌ها، متغیرها و توابع حالت، فرایندهای ترمودینامیکی.",
+      topics: ["سامانهٔ ترمودینامیکی", "دیواره‌ها", "تعادل", "متغیرهای حالت", "توابع حالت", "فرایندهای شبه‌استاتیک", "مخزن", "برون‌گستری", "درون‌گستری"],
+    },
+    "premier-principe": {
+      title: "قانون اول ترمودینامیک",
+      description: "کار، گرما، انرژی درونی و قانون اول.",
+      topics: ["انرژی درونی", "قانون اول", "کار فشار-حجم", "انتقال گرما", "تابع حالت", "دیفرانسیل کامل", "فرایند شبه‌استاتیک", "فرایند بی‌دررو", "برون‌گستری"],
+    },
+    "application-gaz-parfait": {
+      title: "کاربرد در گاز ایده‌آل",
+      description: "کاربرد قانون اول در فرایندهای گاز ایده‌آل.",
+      topics: ["گاز ایده‌آل", "قانون اول", "انرژی درونی", "فرایندهای هم‌دما", "فرایندهای بی‌دررو", "انبساط ژول"],
+    },
+    "second-principe": {
+      title: "برگشت‌پذیری و برگشت‌ناپذیری: قانون دوم",
+      description: "آنتروپی، برگشت‌پذیری و قانون دوم.",
+      topics: ["قانون دوم", "آنتروپی", "برگشت‌پذیری", "برگشت‌ناپذیری", "تولید آنتروپی", "تحول خودبه‌خودی"],
+    },
+    "relations-fondamentales": {
+      title: "ساختار ریاضی: روابط بنیادین",
+      description: "روابط بنیادین و پتانسیل‌های ترمودینامیکی.",
+      topics: ["سامانه‌های باز", "روابط بنیادین", "نمایش انرژی", "نمایش آنتروپی", "روابط ماکسول", "رابطهٔ گیبس-دوهم", "قضیهٔ اویلر", "قانون سوم", "پایداری ترمودینامیکی", "تحدب"],
+    },
+    "changements-de-variables": {
+      title: "ساختار صوری: تغییر متغیرها",
+      description: "حساب دیفرانسیل، تبدیل لژاندر و پتانسیل‌های ترمودینامیکی.",
+      topics: ["حساب دیفرانسیل چندمتغیره", "تبدیل لژاندر", "پتانسیل‌های ترمودینامیکی", "انرژی آزاد هلمهولتز", "آنتالپی", "انرژی آزاد گیبس"],
+    },
+    coefficients: {
+      title: "ضرایب کالریمتریک و ترموالاستیک",
+      description: "ضرایب کالریمتریک، ترموالاستیک و معادلات حالت.",
+      topics: ["ضرایب کالریمتریک", "ضرایب ترموالاستیک", "ظرفیت‌های گرمایی", "معادلهٔ حالت", "فاز تراکم‌ناپذیر", "پایداری ترمودینامیکی"],
+    },
+    "transitions-de-phases": {
+      title: "گذار فاز",
+      description: "نمودارهای فاز، ناپایداری‌ها و گاز ون‌در‌والس.",
+      topics: ["گذارهای فاز", "نمودار فاز", "نقطهٔ بحرانی", "ناپایداری", "گاز ون‌در‌والس", "هم‌دماها", "ساخت ماکسول", "منحنی اشباع"],
+    },
+    "machines-thermiques": {
+      title: "موتورهای حرارتی",
+      description: "چرخه‌های دومخزنی، چرخهٔ کارنو، بازده‌ها و صورت‌بندی‌های قانون دوم.",
+      topics: ["موتورهای حرارتی", "موتور بخار", "چرخه‌های دومخزنی", "نامساوی کلازیوس", "چرخهٔ کارنو", "بازده", "ضریب عملکرد (COP)", "نمودار TS", "چرخهٔ رانکین"],
+    },
+    "geometrie-differentielle": {
+      title: "هندسهٔ دیفرانسیل در ترمودینامیک",
+      description: "ساختارهای هندسی زیربنایی ترمودینامیک.",
+      topics: ["هندسهٔ تماسی", "منیفلدهای ترمودینامیکی", "لژاندر و هندسه", "ساختار سمپلکتیک"],
+      partHeading: "بخش دوم — ترمودینامیک پیشرفته",
+    },
+    "demon-de-maxwell": {
+      title: "شیطان ماکسول",
+      description: "اطلاعات، آنتروپی و محدودیت‌های ترمودینامیک کلاسیک.",
+      topics: ["شیطان ماکسول", "آنتروپی و اطلاعات", "اصل لاندائر", "پاک‌سازی اطلاعات"],
+    },
+    endoreversibilite: {
+      title: "چرخه‌های اندورورسیبل",
+      description: "بازده در توان بیشینه و موتورهای حرارتی واقعی.",
+      topics: ["اندورورسیبیلیتی", "بازده کورزون-آلبورن", "توان بیشینه", "بهینه‌سازی ترمودینامیکی"],
+    },
+    thermoelectricite: {
+      title: "ترموالکتریسیته",
+      description: "اثرهای ترموالکتریک و تبدیل انرژی.",
+      topics: ["اثر زیبک", "اثر پلتیه", "اثر تامسون", "شاخص کیفیت"],
+    },
+    "thermodynamique-hors-equilibre": {
+      title: "ترمودینامیک دور از تعادل",
+      description: "پدیده‌های برگشت‌ناپذیر و روابط آنساگر.",
+      topics: ["ترمودینامیک خطی", "روابط آنساگر", "تقابل‌پذیری", "تولید آنتروپی", "پدیده‌های جفت‌شده"],
+    },
+    climat: {
+      title: "اقلیم‌شناسی و ترمودینامیک",
+      description: "کاربردهای ترمودینامیکی در سامانهٔ اقلیمی زمین.",
+      topics: ["تراز تابشی", "اثر گلخانه‌ای", "موتور حرارتی جوی", "آنتروپی اقلیمی"],
+    },
+    "thermodynamique-quantique": {
+      title: "ترمودینامیک کوانتومی",
+      description: "کار، گرما و آنتروپی در مقیاس کوانتومی.",
+      topics: ["موتورهای کوانتومی", "نوسانات کوانتومی", "تساوی یارژینسکی", "ترمودینامیک اطلاعات کوانتومی"],
+      partHeading: "بخش سوم — ترمودینامیک کوانتومی",
+    },
+  },
 };

@@ -2,7 +2,7 @@
 
 Liste de référence des langues envisagées pour la diffusion du site.
 L'architecture i18n (`Lang` dans [`lib/i18n.ts`](../lib/i18n.ts)) supporte
-désormais les 16 codes ci-dessous comme routes valides (`/xx` et `/xx/...`) ;
+désormais les 20 codes ci-dessous comme routes valides (`/xx` et `/xx/...`) ;
 ce qui varie entre langues, c'est la profondeur du contenu réellement traduit
 — voir la colonne Statut. Statut à mettre à jour au fur et à mesure.
 
@@ -26,6 +26,10 @@ ce qui varie entre langues, c'est la profondeur du contenu réellement traduit
 | ar   | Arabe      | 🚧 partiel   | Idem de + RTL (`dir="rtl"` sur `<html>`, mise en page en miroir automatique via flex/grid) |
 | id   | Indonésien | 🚧 partiel   | Accueil, à propos, métadonnées des leçons, glossaire, leçons 1 et 2, exercices du chapitre 2 et quiz de la leçon 1 traduits |
 | tr   | Turc       | 🚧 partiel   | Idem id |
+| bn   | Bengali    | 🚧 partiel   | Chrome uniquement : accueil, à propos, métadonnées des leçons (titres/descriptions/mots-clés), glossaire, libellés d'exercices et de quiz. Aucun contenu de leçon, d'exercice ni de question de quiz traduit pour l'instant |
+| ur   | Ourdou     | 🚧 partiel   | Idem bn + RTL (`dir="rtl"` sur `<html>`, mise en page en miroir automatique via flex/grid) |
+| sw   | Swahili    | 🚧 partiel   | Idem bn |
+| fa   | Farsi      | 🚧 partiel   | Idem bn + RTL (`dir="rtl"` sur `<html>`, mise en page en miroir automatique via flex/grid) |
 
 Légende : ✅ en prod (toutes sections) · 🚧 partiel (au moins une section a du
 contenu réel dans cette langue ; jamais de repli silencieux vers fr/en — les
@@ -116,12 +120,12 @@ pages sans contenu affichent un état explicite) · 📋 planifié / pas commenc
   `about.translationWarning` (affiché pour toute langue ≠ fr).
 - **Slugs d'URL localisés** (`lib/i18n.ts` `sectionSlugs` + `next.config.js`
   `LOCALIZED_SECTION_SLUGS`, à garder synchronisés) : pour les langues à
-  alphabet latin (fr, de, es, pt, it, pl, vi, id, tr), les mots de section dans l'URL sont
-  traduits — ex. `/de/uebungen`, `/vi/bai-tap`, `/id/latihan`, `/tr/dersler`. Les anciennes
-  URL anglaises (`/de/exercises`, etc.) redirigent en 308 vers la version
+  alphabet latin (fr, de, es, pt, it, pl, vi, id, tr, sw), les mots de section dans l'URL sont
+  traduits — ex. `/de/uebungen`, `/vi/bai-tap`, `/id/latihan`, `/tr/dersler`, `/sw/mazoezi`. Les
+  anciennes URL anglaises (`/de/exercises`, etc.) redirigent en 308 vers la version
   localisée. Pour les langues à écriture non latine (ru, zh, ja, ko, hi,
-  ar), le slug reste en anglais délibérément : une URL cyrillique/CJK/
-  devanagari/arabe finit percent-encodée dès qu'elle est copiée-collée ou
+  ar, bn, ur, fa), le slug reste en anglais délibérément : une URL cyrillique/CJK/
+  devanagari/arabe/bengali finit percent-encodée dès qu'elle est copiée-collée ou
   partagée, ce qui a l'air cassé — seul le slug reste en ASCII, le contenu et
   la navigation sont bien traduits.
 

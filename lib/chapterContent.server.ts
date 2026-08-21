@@ -1075,6 +1075,38 @@ const blockLabelsByLang: Record<Lang, BlockLabels> = {
     proof: "İspat", question: "Soru", figureTakenFrom: "Şekil kaynağı: ", figure: "Şekil",
     openFigurePdf: "PDF şeklini aç",
   },
+  bn: {
+    definition: "সংজ্ঞা", principle: "নীতি", theorem: "উপপাদ্য", proposition: "প্রস্তাবনা", lemma: "সহায়ক উপপাদ্য",
+    property: "ধর্ম", corollary: "অনুসিদ্ধান্ত", remark: "মন্তব্য", toGoFurther: "আরও জানতে",
+    example: "উদাহরণ", summary: "সারসংক্ষেপ", important: "গুরুত্বপূর্ণ", keyPoint: "মনে রাখার বিষয়",
+    exercise: "অনুশীলনী", hint: "ইঙ্গিত", indication: "ইঙ্গিত", solution: "সমাধান",
+    proof: "প্রমাণ", question: "প্রশ্ন", figureTakenFrom: "চিত্রের উৎস: ", figure: "চিত্র",
+    openFigurePdf: "PDF চিত্র খুলুন",
+  },
+  ur: {
+    definition: "تعریف", principle: "اصول", theorem: "قضیہ", proposition: "تجویز", lemma: "لیما",
+    property: "خاصیت", corollary: "نتیجہ", remark: "تبصرہ", toGoFurther: "مزید جاننے کے لیے",
+    example: "مثال", summary: "خلاصہ", important: "اہم", keyPoint: "یاد رکھنے کی بات",
+    exercise: "مشق", hint: "اشارہ", indication: "اشارہ", solution: "حل",
+    proof: "ثبوت", question: "سوال", figureTakenFrom: "شکل ماخوذ از ", figure: "شکل",
+    openFigurePdf: "PDF شکل کھولیں",
+  },
+  sw: {
+    definition: "Ufafanuzi", principle: "Kanuni", theorem: "Nadharia", proposition: "Pendekezo", lemma: "Lema",
+    property: "Sifa", corollary: "Tokeo", remark: "Maoni", toGoFurther: "Kwa maelezo zaidi",
+    example: "Mfano", summary: "Muhtasari", important: "Muhimu", keyPoint: "Kumbuka",
+    exercise: "Zoezi", hint: "Kidokezo", indication: "Kidokezo", solution: "Suluhisho",
+    proof: "Uthibitisho", question: "Swali", figureTakenFrom: "Kielelezo kutoka ", figure: "Kielelezo",
+    openFigurePdf: "Fungua kielelezo cha PDF",
+  },
+  fa: {
+    definition: "تعریف", principle: "اصل", theorem: "قضیه", proposition: "گزاره", lemma: "لم",
+    property: "ویژگی", corollary: "نتیجه", remark: "یادداشت", toGoFurther: "برای مطالعهٔ بیشتر",
+    example: "مثال", summary: "خلاصه", important: "مهم", keyPoint: "نکتهٔ کلیدی",
+    exercise: "تمرین", hint: "راهنمایی", indication: "راهنمایی", solution: "پاسخ",
+    proof: "اثبات", question: "پرسش", figureTakenFrom: "شکل برگرفته از ", figure: "شکل",
+    openFigurePdf: "باز کردن شکل PDF",
+  },
 };
 
 function buildCitationNumberMaps(references: LessonReference[]): CitationNumberMaps {

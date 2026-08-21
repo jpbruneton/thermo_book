@@ -62,6 +62,13 @@ const LOCALIZED_SECTION_SLUGS = {
     glossary: "sozluk",
     about: "kitap-hakkinda",
   },
+  sw: {
+    chapters: "masomo",
+    exercises: "mazoezi",
+    quiz: "jaribio",
+    glossary: "kamusi",
+    about: "kuhusu-kitabu",
+  },
 };
 
 const nextConfig = {

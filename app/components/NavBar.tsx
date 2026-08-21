@@ -23,6 +23,10 @@ const MORE_LANGUAGES: { code: Exclude<Lang, "fr" | "en">; flag: string; nativeNa
   { code: "ar", flag: "🇸🇦", nativeName: "العربية" },
   { code: "id", flag: "🇮🇩", nativeName: "Bahasa Indonesia" },
   { code: "tr", flag: "🇹🇷", nativeName: "Türkçe" },
+  { code: "bn", flag: "🇧🇩", nativeName: "বাংলা" },
+  { code: "ur", flag: "🇵🇰", nativeName: "اردو" },
+  { code: "sw", flag: "🇹🇿", nativeName: "Kiswahili" },
+  { code: "fa", flag: "🇮🇷", nativeName: "فارسی" },
 ];
 
 const MORE_LABELS: Partial<Record<Lang, string>> = {

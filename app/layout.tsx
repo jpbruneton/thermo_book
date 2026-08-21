@@ -7,7 +7,7 @@ import { Providers } from "./providers";
 import { VercelInstrumentation } from "./components/VercelInstrumentation";
 import { bookMeta, bookMetaDisplayTitle, localizedSiteTitle } from "@/lib/chapters";
 import { getSiteUrl } from "@/lib/siteUrl";
-import { getTranslations, isLang, SUPPORTED_LANGS, type Lang } from "@/lib/i18n";
+import { getTranslations, isLang, isRtlLang, SUPPORTED_LANGS, type Lang } from "@/lib/i18n";
 
 const SITE_URL = getSiteUrl();
 
@@ -103,7 +103,7 @@ export default function RootLayout({
   const htmlLang = resolveHtmlLang();
 
   return (
-    <html lang={htmlLang} dir={htmlLang === "ar" ? "rtl" : "ltr"} suppressHydrationWarning>
+    <html lang={htmlLang} dir={isRtlLang(htmlLang) ? "rtl" : "ltr"} suppressHydrationWarning>
       <head>
         <script
           type="application/ld+json"

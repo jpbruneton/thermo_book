@@ -1,7 +1,7 @@
 "use client";
 import { createContext, useContext, useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
-import { getTranslations, isLang, type Lang, type Translations } from "@/lib/i18n";
+import { getTranslations, isLang, isRtlLang, type Lang, type Translations } from "@/lib/i18n";
 
 interface LangContextValue {
   lang: Lang;
@@ -42,7 +42,7 @@ export function LangProvider({ children }: { children: React.ReactNode }) {
 
   useEffect(() => {
     document.documentElement.lang = activeLang;
-    document.documentElement.dir = activeLang === "ar" ? "rtl" : "ltr";
+    document.documentElement.dir = isRtlLang(activeLang) ? "rtl" : "ltr";
   }, [activeLang]);
 
   const setLang = (newLang: Lang) => {

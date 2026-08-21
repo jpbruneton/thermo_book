@@ -14,15 +14,27 @@ export type Lang =
   | "vi"
   | "ar"
   | "id"
-  | "tr";
+  | "tr"
+  | "bn"
+  | "ur"
+  | "sw"
+  | "fa";
 
 /** Every routable language code — /{lang}/... resolves for all of these. */
 export const SUPPORTED_LANGS: readonly Lang[] = [
   "fr", "en", "de", "es", "pt", "it", "pl", "ru", "zh", "ja", "ko", "hi", "vi", "ar", "id", "tr",
+  "bn", "ur", "sw", "fa",
 ];
 
 export function isLang(value: string): value is Lang {
   return (SUPPORTED_LANGS as readonly string[]).includes(value);
+}
+
+/** Right-to-left script languages — drives `dir="rtl"` on <html> and mirrored chrome layout. */
+const RTL_LANGS: readonly Lang[] = ["ar", "ur", "fa"];
+
+export function isRtlLang(lang: Lang): boolean {
+  return (RTL_LANGS as readonly string[]).includes(lang);
 }
 
 export const SECTIONS = ["chapters", "exercises", "quiz", "glossary", "about"] as const;
@@ -42,8 +54,8 @@ const IDENTITY_SECTION_SLUGS: Record<Section, string> = {
  * The internal route folders (app/[lang]/chapters, .../exercises, etc.) always use the
  * English word; `next.config.js` rewrites each language's public words to those internal
  * paths (keep the two files in sync). Languages with a non-Latin alphabet (ru, zh, ja, ko,
- * hi, ar) deliberately reuse the English word instead of a localized one: URLs in
- * Cyrillic/CJK/Devanagari/Arabic script get percent-encoded the moment they're copied or
+ * hi, ar, bn, ur, fa) deliberately reuse the English word instead of a localized one: URLs in
+ * Cyrillic/CJK/Devanagari/Arabic/Bengali script get percent-encoded the moment they're copied or
  * shared (chat, social, email), which reads as broken — the content itself is translated,
  * only the slug stays in ASCII.
  */
@@ -118,6 +130,16 @@ export const sectionSlugs: Record<Lang, Record<Section, string>> = {
     glossary: "sozluk",
     about: "kitap-hakkinda",
   },
+  bn: IDENTITY_SECTION_SLUGS,
+  ur: IDENTITY_SECTION_SLUGS,
+  sw: {
+    chapters: "masomo",
+    exercises: "mazoezi",
+    quiz: "jaribio",
+    glossary: "kamusi",
+    about: "kuhusu-kitabu",
+  },
+  fa: IDENTITY_SECTION_SLUGS,
 };
 
 /** Builds the public href for a section, e.g. sectionHref("fr", "chapters", "introduction") -> "/fr/chapitres/introduction". */
@@ -2378,6 +2400,539 @@ const partialTranslations: Record<Exclude<Lang, "fr" | "en">, DeepPartial<Transl
       sameAuthorBody:
         "Kuantum Mekaniği — Modern Bir Giriş, kuantum mekaniği üzerine tamamlayıcı bir ders.",
       sameAuthorLink: "quantumlectures.org adresinde okuyun",
+    },
+  },
+  bn: {
+    book: {
+      title: "প্রাথমিক ও উন্নত\nতাপগতিবিদ্যা",
+      subtitle: "",
+      description:
+        "প্রথম অংশটি একটি স্নাতক স্তরের কোর্স, যাতে রয়েছে বহু সমাধানকৃত অনুশীলনী, এবং যা তাপগতিবিদ্যার শব্দভাণ্ডার, আকারভঙ্গি ও মৌলিক নীতি, গ্যাস ও দশা পরিবর্তনের অধ্যয়ন, এবং তাপ ইঞ্জিন ও তাপীয় চক্র নিয়ে আলোচনা করে। পরবর্তী অংশগুলিতে আরও উচ্চতর বিষয় অন্বেষণ করা হয়েছে: তাপগতিবিদ্যায় অন্তরক জ্যামিতি, ম্যাক্সওয়েলের দানব, এন্ডোরিভার্সিবিলিটি, জলবায়ু পদার্থবিজ্ঞান, তাপবিদ্যুৎ, প্রায়-সাম্যাবস্থার তাপগতিবিদ্যা (অনসাগার সম্পর্ক প্রভৃতি), এবং কোয়ান্টাম তাপগতিবিদ্যা।",
+      edition: "প্রথম সংস্করণ",
+    },
+    nav: {
+      home: "হোম",
+      chapters: "পাঠ",
+      exercises: "অনুশীলনী",
+      quiz: "কুইজ",
+      glossary: "শব্দকোষ",
+      about: "বইটি সম্পর্কে",
+    },
+    chapters: {
+      label: "পাঠ",
+      title: "সমস্ত পাঠ",
+      description: "",
+    },
+    chapter: {
+      chapterLabel: "পাঠ",
+      themeLabel: "পাঠ",
+      lessonLabel: "পাঠ",
+      learningResourceType: "বিশ্ববিদ্যালয় পাঠ",
+      educationalLevel: "উচ্চশিক্ষা — স্নাতক পর্যায়",
+      readTime: (t: string) => `পড়ার সময়: ${t}`,
+      downloadPdf: "↓ PDF ডাউনলোড করুন",
+      breadcrumbHome: "হোম",
+      breadcrumbChapters: "পাঠ",
+      breadcrumbThemes: "পাঠ",
+      prev: "← পূর্ববর্তী",
+      next: "পরবর্তী →",
+      noteTitle: "নোট:",
+      noteBody:
+        "এটি একটি পূর্বরূপ অংশ। সম্পূর্ণ অধ্যায়, অনুশীলনী ও সমাধানের জন্য পূর্ণ PDF ডাউনলোড করুন।",
+      tabOnline: "অনলাইনে পড়ুন",
+      tabReferences: "তথ্যসূত্র",
+      tabPdf: "PDF ভিউয়ার",
+      tocTitle: "সূচিপত্র",
+      showToc: "সূচিপত্র দেখান",
+      hideToc: "সূচিপত্র লুকান",
+      refsEmpty: "এই পাঠের জন্য এখনও কোনো তথ্যসূত্র যোগ করা হয়নি।",
+      refsEnglishTitle: "ইংরেজি তথ্যসূত্র",
+      refsFrenchTitle: "ফরাসি তথ্যসূত্র",
+      refsSectionEmpty: "এই বিভাগে এখনও কোনো লিঙ্ক যোগ করা হয়নি।",
+      contentUnavailable:
+        "এই পাঠের বিষয়বস্তু এই ভাষায় এখনও উপলব্ধ নয়।",
+      downloadBtn: "↓ ডাউনলোড করুন",
+      pdfFallback: "যদি PDF প্রদর্শিত না হয়,",
+      pdfFallbackLink: "ডাউনলোড করতে এখানে ক্লিক করুন",
+      noLessonTitle: "কোনো পাঠ উপলব্ধ নেই",
+      noLessonBody:
+        "এই পাঠটি কাঠামোতে তালিকাভুক্ত আছে, কিন্তু এর বিষয়বস্তু এখনও প্রকাশিত হয়নি।",
+    },
+    home: {
+      badge: "বিনামূল্যে অনলাইন সংস্করণ",
+      readOnline: "অনলাইনে পড়ুন →",
+      aboutBook: "বইটি সম্পর্কে",
+      chapterPrefix: "অধ্যায়",
+      themePrefix: "পাঠ",
+      stats: { chapters: "পাঠ", edition: "সংস্করণ", format: "ফরম্যাট", formatValue: "ওয়েব + PDF" },
+      contentsLabel: "সূচি",
+      exploreTitle: "পাঠগুলি অন্বেষণ করুন",
+      readTheme: "পাঠ খুলুন →",
+      readLesson: "পাঠ পড়ুন →",
+      readChapter: "অধ্যায় পড়ুন →",
+      fullBookDownload: "সম্পূর্ণ সংস্করণ ডাউনলোড করুন (শীঘ্রই)",
+      features: [
+        {
+          icon: "∫",
+          title: "সম্পূর্ণ গাণিতিক উপস্থাপন",
+          body: "সমস্ত সমীকরণ KaTeX দিয়ে রেন্ডার করা হয় — আপনার ব্রাউজারে নিখুঁত LaTeX-মানের গণিত।",
+        },
+        {
+          icon: "⬇",
+          title: "PDF ডাউনলোড",
+          body: "অফলাইনে অধ্যয়নের জন্য প্রতিটি অধ্যায় ডাউনলোডযোগ্য PDF হিসেবে উপলব্ধ।",
+        },
+        {
+          icon: "◎",
+          title: "মুক্ত ও বিনামূল্যে প্রবেশাধিকার",
+          body: "সম্পূর্ণ পাঠ্য বিনামূল্যে অনলাইনে উপলব্ধ। কোনো পেওয়াল নেই, নিবন্ধনের প্রয়োজন নেই।",
+        },
+      ],
+    },
+    footer: {
+      navigation: "নেভিগেশন",
+      home: "হোম",
+      allChapters: "সমস্ত পাঠ",
+      exercises: "অনুশীলনী",
+      aboutBook: "বইটি সম্পর্কে",
+      author: "লেখক",
+      copyright: (year: string, author: string) => `© ${year} ${author}. সর্বস্বত্ব সংরক্ষিত।`,
+    },
+    glossary: {
+      title: "মূল শব্দকোষ",
+      subtitle: "কোনো মূল শব্দে ক্লিক করে সেটি ব্যবহারকারী সমস্ত পাঠ দেখুন।",
+      allKeywords: "সমস্ত মূল শব্দ",
+      relatedLessons: "সম্পর্কিত পাঠ",
+      noResult: "এই ফিল্টারের জন্য কোনো মূল শব্দ পাওয়া যায়নি।",
+      lessonEntry: (n: number, title: string) => `পাঠ ${n}: ${title}`,
+    },
+    about: {
+      label: "বইটি সম্পর্কে",
+      aboutBookTitle: "এই বই সম্পর্কে",
+      bookDetails: "বইয়ের বিবরণ",
+      detailLabels: { author: "লেখক", affiliation: "প্রতিষ্ঠান", edition: "সংস্করণ", year: "বছর" },
+      authorTitle: "লেখক সম্পর্কে",
+      authorBioSuffix: "একজন পদার্থবিদ, তিনি কর্মরত আছেন ",
+      authorBioRest:
+        "তাঁর গবেষণার আগ্রহের মধ্যে রয়েছে মহাকর্ষের সূত্র, কোয়ান্টাম বলবিদ্যা ও তার ভিত্তি, এবং মেশিন লার্নিং-এর একটি কাজ হিসেবে সিম্বলিক রিগ্রেশন। এই বইটি স্নাতকোত্তর ও উচ্চতর স্নাতক স্তরে বহু বছরের শিক্ষকতার মধ্য দিয়ে গড়ে ওঠা পাঠ্যনোট থেকে বিকশিত হয়েছে।",
+      authorLinksHeading: "প্রোফাইল",
+      authorLinkLinkedIn: "LinkedIn",
+      authorLinkGoogleScholar: "Google Scholar",
+      authorLinkGitHub: "GitHub",
+      aboutProjectTitle: "প্রকল্প সম্পর্কে",
+      aboutProjectLead:
+        "এই ওয়েবসাইট এবং বইটি উন্নয়নাধীন। পাঠ ও অনুশীলনী ধীরে ধীরে যোগ করা হবে। বইটি লেখক দ্বারা ফরাসি ভাষায় রচিত; অন্যান্য ভাষায় প্রদত্ত বিষয়বস্তু স্বয়ংক্রিয় (AI) অনুবাদের মাধ্যমে তৈরি।",
+      aboutProjectOutlineLabel: "পরিকল্পিত বিষয়বস্তু:",
+      aboutProjectOutlineBody:
+        "তাপগতিবিদ্যার একটি ক্রমবর্ধমান কোর্স, মৌলিক নীতি থেকে শুরু করে আরও উচ্চতর বিকাশ পর্যন্ত।",
+      aboutProjectStatusBody:
+        "বর্তমান অবস্থা: সমস্ত ভাষায় ১ থেকে ৩ নম্বর পাঠ চূড়ান্ত করা হয়েছে।",
+      aboutBookBody2:
+        "এই পাঠ্য প্রাথমিক নীতি থেকে তাপগতিবিদ্যা বিকশিত করে। প্রমাণগুলি সম্পূর্ণভাবে দেওয়া হয় যখনই তা পদার্থবিজ্ঞানকে স্পষ্ট করে, এবং বহু সমাধানকৃত উদাহরণ তাত্ত্বিক বিবরণের পরিপূরক।",
+      translationWarning:
+        "সতর্কতা: এই বইটি মূলত ফরাসি ভাষায় রচিত; এই সংস্করণটি Claude Sonnet 4.6 ব্যবহার করে স্বয়ংক্রিয়ভাবে অনূদিত।",
+      sameAuthorTitle: "একই লেখকের অন্যান্য বই",
+      sameAuthorBody:
+        "Quantum Mechanics — A Modern Introduction, কোয়ান্টাম বলবিদ্যার উপর একটি সহযোগী কোর্স।",
+      sameAuthorLink: "quantumlectures.org-এ পড়ুন",
+    },
+  },
+  ur: {
+    book: {
+      title: "بنیادی اور اعلیٰ\nحرارتی حرکیات",
+      subtitle: "",
+      description:
+        "پہلا حصہ ایک انڈرگریجویٹ کورس ہے جس میں بہت سی حل شدہ مشقیں شامل ہیں، جو حرارتی حرکیات کی اصطلاحات، ہیئت اور بنیادی اصولوں، گیسوں اور فیز کی تبدیلیوں کے مطالعے، اور حرارتی انجنوں اور حرارتی چکروں کا احاطہ کرتا ہے۔ اگلے حصے مزید اعلیٰ موضوعات کا جائزہ لیتے ہیں: حرارتی حرکیات میں تفرقی جیومیٹری، میکسویل کا شیطان، اینڈوریورسیبلٹی، موسمیاتی طبیعیات، تھرمو الیکٹرسٹی، توازن کے قریب حرارتی حرکیات (اونساگر تعلقات وغیرہ)، اور کوانٹم حرارتی حرکیات۔",
+      edition: "پہلا ایڈیشن",
+    },
+    nav: {
+      home: "ہوم",
+      chapters: "اسباق",
+      exercises: "مشقیں",
+      quiz: "کوئز",
+      glossary: "لغت",
+      about: "کتاب کے بارے میں",
+    },
+    chapters: {
+      label: "اسباق",
+      title: "تمام اسباق",
+      description: "",
+    },
+    chapter: {
+      chapterLabel: "سبق",
+      themeLabel: "سبق",
+      lessonLabel: "سبق",
+      learningResourceType: "جامعہ کورس",
+      educationalLevel: "اعلیٰ تعلیم — انڈرگریجویٹ",
+      readTime: (t: string) => `پڑھنے کا وقت: ${t}`,
+      downloadPdf: "↓ PDF ڈاؤن لوڈ کریں",
+      breadcrumbHome: "ہوم",
+      breadcrumbChapters: "اسباق",
+      breadcrumbThemes: "اسباق",
+      prev: "→ پچھلا",
+      next: "اگلا ←",
+      noteTitle: "نوٹ:",
+      noteBody:
+        "یہ ایک پیش نظارہ اقتباس ہے۔ مکمل باب، مشقیں اور حل کے لیے مکمل PDF ڈاؤن لوڈ کریں۔",
+      tabOnline: "آن لائن پڑھیں",
+      tabReferences: "حوالہ جات",
+      tabPdf: "PDF ویور",
+      tocTitle: "فہرست مضامین",
+      showToc: "فہرست دکھائیں",
+      hideToc: "فہرست چھپائیں",
+      refsEmpty: "اس سبق کے لیے ابھی تک کوئی حوالہ شامل نہیں کیا گیا۔",
+      refsEnglishTitle: "انگریزی حوالہ جات",
+      refsFrenchTitle: "فرانسیسی حوالہ جات",
+      refsSectionEmpty: "اس سیکشن میں ابھی تک کوئی لنک شامل نہیں کیا گیا۔",
+      contentUnavailable: "اس سبق کا مواد ابھی اس زبان میں دستیاب نہیں ہے۔",
+      downloadBtn: "↓ ڈاؤن لوڈ کریں",
+      pdfFallback: "اگر PDF ظاہر نہ ہو،",
+      pdfFallbackLink: "ڈاؤن لوڈ کرنے کے لیے یہاں کلک کریں",
+      noLessonTitle: "کوئی سبق دستیاب نہیں",
+      noLessonBody: "یہ سبق ڈھانچے میں شامل ہے، لیکن اس کا مواد ابھی شائع نہیں ہوا۔",
+    },
+    home: {
+      badge: "مفت آن لائن ایڈیشن",
+      readOnline: "آن لائن پڑھیں ←",
+      aboutBook: "کتاب کے بارے میں",
+      chapterPrefix: "باب",
+      themePrefix: "سبق",
+      stats: { chapters: "اسباق", edition: "ایڈیشن", format: "فارمیٹ", formatValue: "ویب + PDF" },
+      contentsLabel: "مشمولات",
+      exploreTitle: "اسباق دریافت کریں",
+      readTheme: "سبق کھولیں ←",
+      readLesson: "سبق پڑھیں ←",
+      readChapter: "باب پڑھیں ←",
+      fullBookDownload: "مکمل ایڈیشن ڈاؤن لوڈ کریں (جلد آ رہا ہے)",
+      features: [
+        {
+          icon: "∫",
+          title: "مکمل ریاضیاتی پیشکش",
+          body: "تمام مساوات KaTeX کے ذریعے دکھائی جاتی ہیں — آپ کے براؤزر میں شفاف LaTeX معیار کی ریاضی۔",
+        },
+        {
+          icon: "⬇",
+          title: "PDF ڈاؤن لوڈز",
+          body: "ہر باب آف لائن مطالعے کے لیے ڈاؤن لوڈ کے قابل PDF کے طور پر دستیاب ہے۔",
+        },
+        {
+          icon: "◎",
+          title: "آزاد اور مفت رسائی",
+          body: "مکمل متن مفت آن لائن دستیاب ہے۔ کوئی پے وال نہیں، کسی رجسٹریشن کی ضرورت نہیں۔",
+        },
+      ],
+    },
+    footer: {
+      navigation: "نیویگیشن",
+      home: "ہوم",
+      allChapters: "تمام اسباق",
+      exercises: "مشقیں",
+      aboutBook: "کتاب کے بارے میں",
+      author: "مصنف",
+      copyright: (year: string, author: string) => `© ${year} ${author}۔ جملہ حقوق محفوظ ہیں۔`,
+    },
+    glossary: {
+      title: "کلیدی الفاظ کی لغت",
+      subtitle: "کسی کلیدی لفظ پر کلک کریں تاکہ وہ تمام اسباق دیکھ سکیں جو اسے استعمال کرتے ہیں۔",
+      allKeywords: "تمام کلیدی الفاظ",
+      relatedLessons: "متعلقہ اسباق",
+      noResult: "اس فلٹر کے لیے کوئی کلیدی لفظ نہیں ملا۔",
+      lessonEntry: (n: number, title: string) => `سبق ${n}: ${title}`,
+    },
+    about: {
+      label: "کتاب کے بارے میں",
+      aboutBookTitle: "اس کتاب کے بارے میں",
+      bookDetails: "کتاب کی تفصیلات",
+      detailLabels: { author: "مصنف", affiliation: "ادارہ", edition: "ایڈیشن", year: "سال" },
+      authorTitle: "مصنف کے بارے میں",
+      authorBioSuffix: "ایک طبیعیات دان ہیں، وہ کام کرتے ہیں ",
+      authorBioRest:
+        "ان کی تحقیقی دلچسپیوں میں کشش ثقل کے قوانین، کوانٹم میکانکس اور اس کی بنیادیں، اور مشین لرننگ کے کام کے طور پر علامتی رجعت شامل ہیں۔ یہ کتاب گریجویٹ اور اعلیٰ انڈرگریجویٹ سطح پر کئی سالوں کی تدریس کے دوران تیار کیے گئے لیکچر نوٹس سے وجود میں آئی۔",
+      authorLinksHeading: "پروفائلز",
+      authorLinkLinkedIn: "LinkedIn",
+      authorLinkGoogleScholar: "Google Scholar",
+      authorLinkGitHub: "GitHub",
+      aboutProjectTitle: "پروجیکٹ کے بارے میں",
+      aboutProjectLead:
+        "یہ ویب سائٹ اور یہ کتاب زیرِ تکمیل ہیں۔ اسباق اور مشقیں بتدریج شامل کی جائیں گی۔ یہ کتاب مصنف نے فرانسیسی زبان میں لکھی ہے؛ دیگر زبانوں میں پیش کردہ مواد خودکار (AI) ترجمے کے ذریعے تیار کیا گیا ہے۔",
+      aboutProjectOutlineLabel: "منصوبہ بند مواد:",
+      aboutProjectOutlineBody:
+        "حرارتی حرکیات کا ایک بتدریج کورس، بنیادی اصولوں سے لے کر مزید اعلیٰ پیش رفتوں تک۔",
+      aboutProjectStatusBody:
+        "موجودہ حیثیت: تمام زبانوں میں اسباق 1 سے 3 مکمل۔",
+      aboutBookBody2:
+        "یہ متن حرارتی حرکیات کو بنیادی اصولوں سے شروع کرتے ہوئے آگے بڑھاتا ہے۔ ثبوت مکمل طور پر دیے جاتے ہیں جب بھی وہ طبیعیات کو واضح کرتے ہیں، اور بہت سی حل شدہ مثالیں نظری وضاحت کی تکمیل کرتی ہیں۔",
+      translationWarning:
+        "انتباہ: یہ کتاب بنیادی طور پر فرانسیسی زبان میں لکھی گئی ہے؛ یہ نسخہ Claude Sonnet 4.6 کے ذریعے خودکار طور پر ترجمہ کیا گیا ہے۔",
+      sameAuthorTitle: "اسی مصنف کی دیگر تصانیف",
+      sameAuthorBody: "Quantum Mechanics — A Modern Introduction، کوانٹم میکانکس پر ایک ہمراہ کورس۔",
+      sameAuthorLink: "quantumlectures.org پر پڑھیں",
+    },
+  },
+  sw: {
+    book: {
+      title: "Thermodynamiki ya Msingi\nna ya Juu",
+      subtitle: "",
+      description:
+        "Sehemu ya kwanza ni kozi ya shahada ya kwanza yenye mazoezi mengi yaliyofanyiwa kazi, inayoshughulikia msamiati, uundaji wa kimfumo, na kanuni za msingi za thermodynamiki, uchunguzi wa gesi na mabadiliko ya awamu, pamoja na injini za joto na mizunguko ya joto. Sehemu zinazofuata zinachunguza mada za kina zaidi: jiometri tofautishi katika thermodynamiki, pepo wa Maxwell, endoreversibility, fizikia ya hali ya hewa, thermoelectricity, thermodynamiki karibu na usawa (uhusiano wa Onsager, n.k.), na thermodynamiki ya kwantamu.",
+      edition: "Toleo la Kwanza",
+    },
+    nav: {
+      home: "Nyumbani",
+      chapters: "Masomo",
+      exercises: "Mazoezi",
+      quiz: "Jaribio",
+      glossary: "Kamusi",
+      about: "Kuhusu Kitabu",
+    },
+    chapters: {
+      label: "MASOMO",
+      title: "Masomo Yote",
+      description: "",
+    },
+    chapter: {
+      chapterLabel: "SOMO",
+      themeLabel: "SOMO",
+      lessonLabel: "SOMO",
+      learningResourceType: "Kozi ya Chuo Kikuu",
+      educationalLevel: "Elimu ya Juu — Shahada ya Kwanza",
+      readTime: (t: string) => `Muda wa kusoma: ${t}`,
+      downloadPdf: "↓ Pakua PDF",
+      breadcrumbHome: "Nyumbani",
+      breadcrumbChapters: "Masomo",
+      breadcrumbThemes: "Masomo",
+      prev: "← Iliyotangulia",
+      next: "Inayofuata →",
+      noteTitle: "Kumbuka:",
+      noteBody:
+        "Huu ni muhtasari wa onyesho la awali. Pakua PDF kamili kwa ajili ya sura nzima, mazoezi, na majibu.",
+      tabOnline: "Soma Mtandaoni",
+      tabReferences: "Marejeleo",
+      tabPdf: "Kionyeshi cha PDF",
+      tocTitle: "Yaliyomo",
+      showToc: "Onyesha Yaliyomo",
+      hideToc: "Ficha Yaliyomo",
+      refsEmpty: "Hakuna marejeleo yaliyoongezwa kwa somo hili bado.",
+      refsEnglishTitle: "Marejeleo ya Kiingereza",
+      refsFrenchTitle: "Marejeleo ya Kifaransa",
+      refsSectionEmpty: "Hakuna kiungo kilichoongezwa katika sehemu hii bado.",
+      contentUnavailable: "Maudhui ya somo hili bado hayapatikani katika lugha hii.",
+      downloadBtn: "↓ Pakua",
+      pdfFallback: "Ikiwa PDF haionekani,",
+      pdfFallbackLink: "bofya hapa kuipakua",
+      noLessonTitle: "Hakuna Somo Linalopatikana",
+      noLessonBody: "Somo hili limeorodheshwa katika muundo, lakini maudhui yake bado hayajachapishwa.",
+    },
+    home: {
+      badge: "Toleo Bure la Mtandaoni",
+      readOnline: "Soma Mtandaoni →",
+      aboutBook: "Kuhusu Kitabu",
+      chapterPrefix: "Sura",
+      themePrefix: "Somo",
+      stats: { chapters: "Masomo", edition: "Toleo", format: "Muundo", formatValue: "Wavuti + PDF" },
+      contentsLabel: "Yaliyomo",
+      exploreTitle: "Gundua Masomo",
+      readTheme: "Fungua somo →",
+      readLesson: "Soma somo →",
+      readChapter: "Soma sura →",
+      fullBookDownload: "Pakua toleo kamili (hivi karibuni)",
+      features: [
+        {
+          icon: "∫",
+          title: "Uonyeshaji Kamili wa Hisabati",
+          body: "Milinganyo yote inaonyeshwa kwa KaTeX — hisabati safi ya ubora wa LaTeX kwenye kivinjari chako.",
+        },
+        {
+          icon: "⬇",
+          title: "Upakuaji wa PDF",
+          body: "Kila sura inapatikana kama PDF inayopakuliwa kwa ajili ya masomo bila mtandao.",
+        },
+        {
+          icon: "◎",
+          title: "Ufikiaji Huru na Bure",
+          body: "Maandishi kamili yanapatikana bure mtandaoni. Hakuna malipo, hakuna usajili unaohitajika.",
+        },
+      ],
+    },
+    footer: {
+      navigation: "Uelekezaji",
+      home: "Nyumbani",
+      allChapters: "Masomo Yote",
+      exercises: "Mazoezi",
+      aboutBook: "Kuhusu Kitabu",
+      author: "Mwandishi",
+      copyright: (year: string, author: string) => `© ${year} ${author}. Haki zote zimehifadhiwa.`,
+    },
+    glossary: {
+      title: "Kamusi ya Maneno Muhimu",
+      subtitle: "Bofya neno muhimu kuona masomo yote yanayolitumia.",
+      allKeywords: "Maneno Muhimu Yote",
+      relatedLessons: "Masomo Yanayohusiana",
+      noResult: "Hakuna neno muhimu lililopatikana kwa kichujio hiki.",
+      lessonEntry: (n: number, title: string) => `Somo ${n}: ${title}`,
+    },
+    about: {
+      label: "KUHUSU KITABU",
+      aboutBookTitle: "Kuhusu Kitabu Hiki",
+      bookDetails: "Maelezo ya Kitabu",
+      detailLabels: { author: "Mwandishi", affiliation: "Taasisi", edition: "Toleo", year: "Mwaka" },
+      authorTitle: "Kuhusu Mwandishi",
+      authorBioSuffix: "ni mwanafizikia katika ",
+      authorBioRest:
+        "Maslahi yake ya utafiti ni pamoja na sheria za mvuto, mekanika ya kwantamu na misingi yake, na urejeshi wa alama (symbolic regression) kama kazi ya kujifunza kwa mashine. Kitabu hiki kimetokana na maelezo ya masomo yaliyoendelezwa kwa miaka mingi ya ufundishaji katika ngazi ya shahada ya uzamili na shahada ya kwanza ya juu.",
+      authorLinksHeading: "Wasifu",
+      authorLinkLinkedIn: "LinkedIn",
+      authorLinkGoogleScholar: "Google Scholar",
+      authorLinkGitHub: "GitHub",
+      aboutProjectTitle: "Kuhusu Mradi",
+      aboutProjectLead:
+        "Tovuti hii na kitabu hiki bado vinaendelezwa. Masomo na mazoezi yataongezwa hatua kwa hatua. Kitabu kimeandikwa kwa Kifaransa na mwandishi; maudhui yanayotolewa katika lugha nyingine yametengenezwa kwa tafsiri ya kiotomatiki (AI).",
+      aboutProjectOutlineLabel: "Maudhui Yaliyopangwa:",
+      aboutProjectOutlineBody:
+        "Kozi inayoendelea ya thermodynamiki, kutoka kanuni za msingi hadi maendeleo ya kina zaidi.",
+      aboutProjectStatusBody:
+        "Hali ya sasa: masomo 1 hadi 3 yamekamilika katika lugha zote.",
+      aboutBookBody2:
+        "Maandishi haya yanaendeleza thermodynamiki kutoka kanuni za kwanza. Uthibitisho hutolewa kikamilifu kila unapofafanua fizikia, na mifano mingi iliyofanyiwa kazi inakamilisha maelezo ya kinadharia.",
+      translationWarning:
+        "Onyo: kitabu hiki kimeandikwa awali kwa Kifaransa; toleo hili linatafsiriwa kiotomatiki kwa kutumia Claude Sonnet 4.6.",
+      sameAuthorTitle: "Kutoka kwa Mwandishi Huyo Huyo",
+      sameAuthorBody:
+        "Quantum Mechanics — A Modern Introduction, kozi shirikishi kuhusu mekanika ya kwantamu.",
+      sameAuthorLink: "Isome kwenye quantumlectures.org",
+    },
+  },
+  fa: {
+    book: {
+      title: "ترمودینامیک\nمقدماتی و پیشرفته",
+      subtitle: "",
+      description:
+        "بخش اول یک درس مقطع کارشناسی است که همراه با تمرین‌های حل‌شدهٔ فراوان، به واژگان، صورت‌بندی و اصول بنیادین ترمودینامیک، مطالعهٔ گازها و گذارهای فاز، و همچنین موتورهای حرارتی و چرخه‌های گرمایی می‌پردازد. بخش‌های بعدی موضوعات پیشرفته‌تری را بررسی می‌کنند: هندسهٔ دیفرانسیل در ترمودینامیک، شیطان ماکسول، برگشت‌ناپذیری درونی، فیزیک اقلیم، ترموالکتریسیته، ترمودینامیک نزدیک به تعادل (روابط آنساگر و غیره)، و ترمودینامیک کوانتومی.",
+      edition: "چاپ اول",
+    },
+    nav: {
+      home: "خانه",
+      chapters: "درس‌ها",
+      exercises: "تمرین‌ها",
+      quiz: "آزمون",
+      glossary: "واژه‌نامه",
+      about: "دربارهٔ کتاب",
+    },
+    chapters: {
+      label: "درس‌ها",
+      title: "همهٔ درس‌ها",
+      description: "",
+    },
+    chapter: {
+      chapterLabel: "درس",
+      themeLabel: "درس",
+      lessonLabel: "درس",
+      learningResourceType: "درس دانشگاهی",
+      educationalLevel: "آموزش عالی — مقطع کارشناسی",
+      readTime: (t: string) => `زمان مطالعه: ${t}`,
+      downloadPdf: "↓ دانلود PDF",
+      breadcrumbHome: "خانه",
+      breadcrumbChapters: "درس‌ها",
+      breadcrumbThemes: "درس‌ها",
+      prev: "→ قبلی",
+      next: "بعدی ←",
+      noteTitle: "توجه:",
+      noteBody:
+        "این یک بخش پیش‌نمایش است. برای فصل کامل، تمرین‌ها و پاسخ‌ها، PDF کامل را دانلود کنید.",
+      tabOnline: "مطالعهٔ آنلاین",
+      tabReferences: "منابع",
+      tabPdf: "نمایشگر PDF",
+      tocTitle: "فهرست مطالب",
+      showToc: "نمایش فهرست مطالب",
+      hideToc: "پنهان کردن فهرست مطالب",
+      refsEmpty: "هنوز هیچ منبعی برای این درس افزوده نشده است.",
+      refsEnglishTitle: "منابع انگلیسی",
+      refsFrenchTitle: "منابع فرانسوی",
+      refsSectionEmpty: "هنوز هیچ پیوندی در این بخش افزوده نشده است.",
+      contentUnavailable: "محتوای این درس هنوز به این زبان در دسترس نیست.",
+      downloadBtn: "↓ دانلود",
+      pdfFallback: "اگر PDF نمایش داده نشد،",
+      pdfFallbackLink: "برای دانلود اینجا کلیک کنید",
+      noLessonTitle: "درسی در دسترس نیست",
+      noLessonBody: "این درس در ساختار فهرست شده است، اما محتوای آن هنوز منتشر نشده است.",
+    },
+    home: {
+      badge: "نسخهٔ آنلاین رایگان",
+      readOnline: "مطالعهٔ آنلاین ←",
+      aboutBook: "دربارهٔ کتاب",
+      chapterPrefix: "فصل",
+      themePrefix: "درس",
+      stats: { chapters: "درس‌ها", edition: "چاپ", format: "قالب", formatValue: "وب + PDF" },
+      contentsLabel: "فهرست",
+      exploreTitle: "کاوش در درس‌ها",
+      readTheme: "باز کردن درس ←",
+      readLesson: "مطالعهٔ درس ←",
+      readChapter: "مطالعهٔ فصل ←",
+      fullBookDownload: "دانلود نسخهٔ کامل (به‌زودی)",
+      features: [
+        {
+          icon: "∫",
+          title: "نمایش کامل ریاضی",
+          body: "همهٔ معادلات با KaTeX نمایش داده می‌شوند — ریاضیاتی شفاف با کیفیت LaTeX در مرورگر شما.",
+        },
+        {
+          icon: "⬇",
+          title: "دانلود PDF",
+          body: "هر فصل به‌صورت PDF قابل‌دانلود برای مطالعهٔ آفلاین در دسترس است.",
+        },
+        {
+          icon: "◎",
+          title: "دسترسی آزاد و رایگان",
+          body: "متن کامل به‌صورت رایگان آنلاین در دسترس است. بدون دیوار پرداخت، بدون نیاز به ثبت‌نام.",
+        },
+      ],
+    },
+    footer: {
+      navigation: "پیمایش",
+      home: "خانه",
+      allChapters: "همهٔ درس‌ها",
+      exercises: "تمرین‌ها",
+      aboutBook: "دربارهٔ کتاب",
+      author: "نویسنده",
+      copyright: (year: string, author: string) => `© ${year} ${author}. تمامی حقوق محفوظ است.`,
+    },
+    glossary: {
+      title: "واژه‌نامهٔ کلیدواژه‌ها",
+      subtitle: "روی یک کلیدواژه کلیک کنید تا همهٔ درس‌هایی که از آن استفاده می‌کنند را ببینید.",
+      allKeywords: "همهٔ کلیدواژه‌ها",
+      relatedLessons: "درس‌های مرتبط",
+      noResult: "هیچ کلیدواژه‌ای برای این فیلتر یافت نشد.",
+      lessonEntry: (n: number, title: string) => `درس ${n}: ${title}`,
+    },
+    about: {
+      label: "دربارهٔ کتاب",
+      aboutBookTitle: "دربارهٔ این کتاب",
+      bookDetails: "مشخصات کتاب",
+      detailLabels: { author: "نویسنده", affiliation: "وابستگی سازمانی", edition: "چاپ", year: "سال" },
+      authorTitle: "دربارهٔ نویسنده",
+      authorBioSuffix: "فیزیک‌دانی است که در ",
+      authorBioRest:
+        "علایق پژوهشی او شامل قوانین گرانش، مکانیک کوانتومی و مبانی آن، و رگرسیون نمادین به‌عنوان یک وظیفهٔ یادگیری ماشین است. این کتاب از یادداشت‌های درسی‌ای شکل گرفته که طی سال‌های متمادی تدریس در مقاطع تحصیلات تکمیلی و کارشناسی پیشرفته تدوین شده‌اند.",
+      authorLinksHeading: "نمایه‌ها",
+      authorLinkLinkedIn: "LinkedIn",
+      authorLinkGoogleScholar: "Google Scholar",
+      authorLinkGitHub: "GitHub",
+      aboutProjectTitle: "دربارهٔ پروژه",
+      aboutProjectLead:
+        "این وب‌سایت و این کتاب هنوز در حال توسعه هستند. درس‌ها و تمرین‌ها به‌تدریج افزوده خواهند شد. کتاب به زبان فرانسه توسط نویسنده نوشته شده است؛ محتوای ارائه‌شده به زبان‌های دیگر از طریق ترجمهٔ خودکار (هوش مصنوعی) تولید می‌شود.",
+      aboutProjectOutlineLabel: "محتوای برنامه‌ریزی‌شده:",
+      aboutProjectOutlineBody:
+        "دوره‌ای تدریجی در ترمودینامیک، از اصول بنیادین تا پیشرفت‌های پیشرفته‌تر.",
+      aboutProjectStatusBody:
+        "وضعیت فعلی: درس‌های ۱ تا ۳ در همهٔ زبان‌ها نهایی شده‌اند.",
+      aboutBookBody2:
+        "این متن ترمودینامیک را از اصول نخستین بسط می‌دهد. اثبات‌ها هر جا که به روشن‌شدن فیزیک کمک کنند به‌طور کامل ارائه می‌شوند، و مثال‌های حل‌شدهٔ فراوان مکمل ارائهٔ نظری هستند.",
+      translationWarning:
+        "هشدار: این کتاب در اصل به زبان فرانسه نوشته شده است؛ این نسخه به‌صورت خودکار با Claude Sonnet 4.6 ترجمه شده است.",
+      sameAuthorTitle: "از همین نویسنده",
+      sameAuthorBody:
+        "Quantum Mechanics — A Modern Introduction، دوره‌ای همراه دربارهٔ مکانیک کوانتومی.",
+      sameAuthorLink: "مطالعه در quantumlectures.org",
     },
   },
 };

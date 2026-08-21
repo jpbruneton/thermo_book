@@ -43,6 +43,10 @@ const LANGUAGES = {
   ar: "Arabic",
   id: "Indonesian",
   tr: "Turkish",
+  bn: "Bengali",
+  ur: "Urdu",
+  sw: "Swahili",
+  fa: "Persian (Farsi)",
 };
 
 function buildSystemPrompt(languageName) {
