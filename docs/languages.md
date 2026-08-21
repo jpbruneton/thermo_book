@@ -26,10 +26,10 @@ ce qui varie entre langues, c'est la profondeur du contenu réellement traduit
 | ar   | Arabe      | 🚧 partiel   | Idem de + RTL (`dir="rtl"` sur `<html>`, mise en page en miroir automatique via flex/grid) |
 | id   | Indonésien | 🚧 partiel   | Accueil, à propos, métadonnées des leçons, glossaire, leçons 1 et 2, exercices du chapitre 2 et quiz de la leçon 1 traduits |
 | tr   | Turc       | 🚧 partiel   | Idem id |
-| bn   | Bengali    | 🚧 partiel   | Chrome uniquement : accueil, à propos, métadonnées des leçons (titres/descriptions/mots-clés), glossaire, libellés d'exercices et de quiz. Aucun contenu de leçon, d'exercice ni de question de quiz traduit pour l'instant |
-| ur   | Ourdou     | 🚧 partiel   | Idem bn + RTL (`dir="rtl"` sur `<html>`, mise en page en miroir automatique via flex/grid) |
-| sw   | Swahili    | 🚧 partiel   | Idem bn |
-| fa   | Farsi      | 🚧 partiel   | Idem bn + RTL (`dir="rtl"` sur `<html>`, mise en page en miroir automatique via flex/grid) |
+| bn   | Bengali    | 🚧 partiel   | Chrome (accueil, à propos, métadonnées, glossaire, libellés d'exercices et de quiz) + leçons 1 à 3 traduites. Pas encore d'exercice ni de question de quiz traduits |
+| ur   | Ourdou     | 🚧 partiel   | Chrome + leçons 1 et 3 traduites + RTL (`dir="rtl"` sur `<html>`, mise en page en miroir automatique via flex/grid) |
+| sw   | Swahili    | 🚧 partiel   | Chrome + leçons 1 à 3 traduites. Pas encore d'exercice ni de question de quiz traduits |
+| fa   | Farsi      | 🚧 partiel   | Chrome + leçons 1 et 3 traduites + RTL (`dir="rtl"` sur `<html>`, mise en page en miroir automatique via flex/grid) |
 
 Légende : ✅ en prod (toutes sections) · 🚧 partiel (au moins une section a du
 contenu réel dans cette langue ; jamais de repli silencieux vers fr/en — les
