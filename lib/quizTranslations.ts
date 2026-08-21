@@ -10,7 +10,7 @@ import type { Lang } from "@/lib/i18n";
  * unavailable — that case renders `unavailableLesson`, never French content.
  *
  * Arrow direction follows the same RTL convention as `exerciseTranslations`:
- * in Arabic, "forward" is ← and "back" is →.
+ * in Arabic-script RTL languages, "forward" is ← and "back" is →.
  */
 export interface QuizTranslations {
   /** Hub page heading. */
@@ -445,7 +445,12 @@ export const quizTranslations: Record<Lang, QuizTranslations> = {
     hubTitle: "কুইজ: পাঠের প্রশ্ন",
     controlLabel: "পাঠ পরীক্ষা",
     lessonLabel: (n) => `পাঠ ${n}`,
-    lessonCardTitles: { 2: "তাপগতিবিদ্যার ইতিহাস" },
+    lessonCardTitles: {
+      1: "সাধারণ ভূমিকা",
+      2: "তাপগতিবিদ্যার ইতিহাস",
+      3: "মৌলিক ধারণাসমূহ",
+      4: "প্রথম সূত্র",
+    },
     startQuiz: "কুইজ শুরু করুন →",
     questionCount: (n) => `${n}টি প্রশ্ন`,
     back: "← কুইজে ফিরে যান",
@@ -462,13 +467,18 @@ export const quizTranslations: Record<Lang, QuizTranslations> = {
     unavailableLesson: (n) => `পাঠ ${n}-এর কুইজ এখনও এই ভাষায় উপলব্ধ নয়।`,
     hubMetaDescription: (site) => `${site}-এর জন্য পাঠ কুইজ (বহুনির্বাচনী প্রশ্ন)।`,
     hubMetaOgDescription: (site) => `${site} সম্পর্কে আপনার জ্ঞান পরীক্ষা করুন।`,
-    lessonMetaDescription: (n, title) => `পাঠ ${n}-এর পাঠ কুইজ: ${title}।`,
+    lessonMetaDescription: (n, title) => `পাঠ ${n}-এর কুইজ: ${title}।`,
   },
   ur: {
     hubTitle: "کوئز: اسباق کے سوالات",
     controlLabel: "سبق کی جانچ",
     lessonLabel: (n) => `سبق ${n}`,
-    lessonCardTitles: { 2: "حرارتی حرکیات کی تاریخ" },
+    lessonCardTitles: {
+      1: "عمومی تعارف",
+      2: "حرارتی حرکیات کی تاریخ",
+      3: "بنیادی تصورات",
+      4: "پہلا اصول",
+    },
     startQuiz: "کوئز شروع کریں ←",
     questionCount: (n) => `${n} سوالات`,
     back: "کوئز کی طرف واپس →",
@@ -491,7 +501,12 @@ export const quizTranslations: Record<Lang, QuizTranslations> = {
     hubTitle: "Jaribio: maswali ya somo",
     controlLabel: "Ukaguzi wa somo",
     lessonLabel: (n) => `Somo ${n}`,
-    lessonCardTitles: { 2: "Historia ya Thermodynamiki" },
+    lessonCardTitles: {
+      1: "Utangulizi wa Jumla",
+      2: "Historia ya thermodinamiki",
+      3: "Dhana za Msingi",
+      4: "Kanuni ya Kwanza",
+    },
     startQuiz: "Anza jaribio →",
     questionCount: (n) => `Maswali ${n}`,
     back: "← Rudi kwenye majaribio",
@@ -514,7 +529,12 @@ export const quizTranslations: Record<Lang, QuizTranslations> = {
     hubTitle: "آزمون: پرسش‌های درس",
     controlLabel: "بررسی درس",
     lessonLabel: (n) => `درس ${n}`,
-    lessonCardTitles: { 2: "تاریخچهٔ ترمودینامیک" },
+    lessonCardTitles: {
+      1: "مقدمهٔ عمومی",
+      2: "تاریخچهٔ ترمودینامیک",
+      3: "مفاهیم بنیادی",
+      4: "قانون اول",
+    },
     startQuiz: "شروع آزمون ←",
     questionCount: (n) => `${n} پرسش`,
     back: "بازگشت به آزمون‌ها →",

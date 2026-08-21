@@ -2373,13 +2373,13 @@ export const chapterTranslations: Record<Exclude<Lang, "fr" | "en">, ThemeTransl
     },
     "notions-fondamentales": {
       title: "মৌলিক ধারণাসমূহ",
-      description: "সাম্যাবস্থা, প্রাচীর, অবস্থা চলক ও ফাংশন, তাপগতিবিদ্যাগত রূপান্তর।",
-      topics: ["তাপগতিবিদ্যা তন্ত্র", "প্রাচীর", "সাম্যাবস্থা", "অবস্থা চলক", "অবস্থা ফাংশন", "প্রায়-স্থিতিক রূপান্তর", "রিজার্ভার", "সম্প্রসারকতা", "নিবিড়তা"],
+      description: "সাম্যাবস্থা, দেয়াল, অবস্থা চলক ও অপেক্ষক এবং তাপগতীয় রূপান্তর।",
+      topics: ["তাপগতীয় তন্ত্র", "দেয়াল", "সাম্যাবস্থা", "অবস্থা চলক", "অবস্থা অপেক্ষক", "কোয়াসি-স্থিতিশীল রূপান্তর", "আধার", "ব্যাপকতা", "নিবিড়তা"],
     },
     "premier-principe": {
       title: "তাপগতিবিদ্যার প্রথম সূত্র",
       description: "কাজ, তাপ, অভ্যন্তরীণ শক্তি এবং প্রথম সূত্র।",
-      topics: ["অভ্যন্তরীণ শক্তি", "প্রথম সূত্র", "চাপ-আয়তন কাজ", "তাপ স্থানান্তর", "অবস্থা ফাংশন", "সম্পূর্ণ অন্তরক", "প্রায়-স্থিতিক প্রক্রিয়া", "রুদ্ধতাপীয় প্রক্রিয়া", "সম্প্রসারকতা"],
+      topics: ["অভ্যন্তরীণ শক্তি", "প্রথম সূত্র", "চাপ-আয়তন কাজ", "তাপ স্থানান্তর", "অবস্থা অপেক্ষক", "সম্পূর্ণ অন্তরক", "কোয়াসি-স্থিতিশীল রূপান্তর", "রুদ্ধতাপীয় রূপান্তর", "ব্যাপকতা"],
     },
     "application-gaz-parfait": {
       title: "আদর্শ গ্যাসে প্রয়োগ",
@@ -2468,13 +2468,13 @@ export const chapterTranslations: Record<Exclude<Lang, "fr" | "en">, ThemeTransl
     },
     "notions-fondamentales": {
       title: "بنیادی تصورات",
-      description: "توازن، دیواریں، حالتی متغیرات و افعال، حرارتی حرکیاتی تبدیلیاں۔",
-      topics: ["حرارتی حرکیاتی نظام", "دیواریں", "توازن", "حالتی متغیرات", "حالتی افعال", "شبہ ساکن تبدیلیاں", "ذخیرہ", "توسیعیت", "شدتیت"],
+      description: "توازن، دیواریں، حالتی متغیرات و تفاعلات، اور حرارتی حرکیاتی تبدیلیاں۔",
+      topics: ["حرارتی حرکیاتی نظام", "دیواریں", "توازن", "حالتی متغیرات", "حالتی تفاعلات", "نیم سکونی تبدیلیاں", "مخزن", "امتدادیت", "شدتیت"],
     },
     "premier-principe": {
       title: "حرارتی حرکیات کا پہلا اصول",
       description: "کام، حرارت، داخلی توانائی اور پہلا اصول۔",
-      topics: ["داخلی توانائی", "پہلا اصول", "دباؤ-حجم کا کام", "حرارت کی منتقلی", "حالتی فعل", "مکمل تفرق", "شبہ ساکن عمل", "ایڈیا بیٹک عمل", "توسیعیت"],
+      topics: ["اندرونی توانائی", "پہلا اصول", "دباؤ-حجم کا کام", "حرارت کی منتقلی", "حالتی تفاعل", "کامل تفرق", "نیم سکونی تبدیلی", "ادیابیاتی تبدیلی", "امتدادیت"],
     },
     "application-gaz-parfait": {
       title: "مثالی گیس پر اطلاق",
@@ -2563,13 +2563,13 @@ export const chapterTranslations: Record<Exclude<Lang, "fr" | "en">, ThemeTransl
     },
     "notions-fondamentales": {
       title: "Dhana za Msingi",
-      description: "Usawa, kuta, vigezo na kazi za hali, mabadiliko ya thermodynamiki.",
-      topics: ["Mfumo wa thermodynamiki", "Kuta", "Usawa", "Vigezo vya hali", "Kazi za hali", "Mabadiliko ya taratibu", "Hifadhi", "Uwingi (extensivity)", "Uzito (intensivity)"],
+      description: "Usawa, kuta, vigezo na dhima za hali, na mabadiliko ya thermodynamiki.",
+      topics: ["Mfumo wa thermodynamiki", "Kuta", "Usawa", "Vigezo vya hali", "Dhima za hali", "Mabadiliko nusutuli", "Hifadhi", "Utegemezi kwa ukubwa", "Kutotegemea ukubwa"],
     },
     "premier-principe": {
       title: "Kanuni ya Kwanza ya Thermodynamiki",
       description: "Kazi, joto, nishati ya ndani, na kanuni ya kwanza.",
-      topics: ["Nishati ya ndani", "Kanuni ya kwanza", "Kazi ya shinikizo-ujazo", "Uhamishaji wa joto", "Kazi ya hali", "Tofauti kamili", "Mchakato wa taratibu", "Mchakato wa adiabatic", "Uwingi (extensivity)"],
+      topics: ["Nishati ya ndani", "Kanuni ya kwanza", "Kazi ya shinikizo-ujazo", "Uhamishaji wa joto", "Dhima ya hali", "Diferenshali kamili", "Mabadiliko nusutuli", "Mabadiliko ya adiabatiki", "Utegemezi kwa ukubwa"],
     },
     "application-gaz-parfait": {
       title: "Matumizi kwa Gesi Bora",
@@ -2658,13 +2658,13 @@ export const chapterTranslations: Record<Exclude<Lang, "fr" | "en">, ThemeTransl
     },
     "notions-fondamentales": {
       title: "مفاهیم بنیادین",
-      description: "تعادل، دیواره‌ها، متغیرها و توابع حالت، فرایندهای ترمودینامیکی.",
-      topics: ["سامانهٔ ترمودینامیکی", "دیواره‌ها", "تعادل", "متغیرهای حالت", "توابع حالت", "فرایندهای شبه‌استاتیک", "مخزن", "برون‌گستری", "درون‌گستری"],
+      description: "تعادل، دیواره‌ها، متغیرها و توابع حالت، و تحول‌های ترمودینامیکی.",
+      topics: ["دستگاه ترمودینامیکی", "دیواره‌ها", "تعادل", "متغیرهای حالت", "توابع حالت", "تحول‌های شبه‌ایستا", "مخزن", "گستردگی", "شدتی‌بودن"],
     },
     "premier-principe": {
       title: "قانون اول ترمودینامیک",
       description: "کار، گرما، انرژی درونی و قانون اول.",
-      topics: ["انرژی درونی", "قانون اول", "کار فشار-حجم", "انتقال گرما", "تابع حالت", "دیفرانسیل کامل", "فرایند شبه‌استاتیک", "فرایند بی‌دررو", "برون‌گستری"],
+      topics: ["انرژی درونی", "قانون اول", "کار فشار-حجم", "انتقال گرما", "تابع حالت", "دیفرانسیل کامل", "تحول شبه‌ایستا", "تحول بی‌دررو", "گستردگی"],
     },
     "application-gaz-parfait": {
       title: "کاربرد در گاز ایده‌آل",

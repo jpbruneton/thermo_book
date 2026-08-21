@@ -2526,11 +2526,11 @@ const partialTranslations: Record<Exclude<Lang, "fr" | "en">, DeepPartial<Transl
       aboutProjectOutlineBody:
         "তাপগতিবিদ্যার একটি ক্রমবর্ধমান কোর্স, মৌলিক নীতি থেকে শুরু করে আরও উচ্চতর বিকাশ পর্যন্ত।",
       aboutProjectStatusBody:
-        "বর্তমান অবস্থা: সমস্ত ভাষায় ১ থেকে ৩ নম্বর পাঠ চূড়ান্ত করা হয়েছে।",
+        "বর্তমান অবস্থা: বাংলা ভাষায় ১ থেকে ৪ নম্বর পাঠ উপলব্ধ।",
       aboutBookBody2:
         "এই পাঠ্য প্রাথমিক নীতি থেকে তাপগতিবিদ্যা বিকশিত করে। প্রমাণগুলি সম্পূর্ণভাবে দেওয়া হয় যখনই তা পদার্থবিজ্ঞানকে স্পষ্ট করে, এবং বহু সমাধানকৃত উদাহরণ তাত্ত্বিক বিবরণের পরিপূরক।",
       translationWarning:
-        "সতর্কতা: এই বইটি মূলত ফরাসি ভাষায় রচিত; এই সংস্করণটি Claude Sonnet 4.6 ব্যবহার করে স্বয়ংক্রিয়ভাবে অনূদিত।",
+        "সতর্কতা: এই বইটি মূলত ফরাসি ভাষায় রচিত; এই সংস্করণটি কৃত্রিম বুদ্ধিমত্তার সহায়তায় স্বয়ংক্রিয়ভাবে অনূদিত।",
       sameAuthorTitle: "একই লেখকের অন্যান্য বই",
       sameAuthorBody:
         "Quantum Mechanics — A Modern Introduction, কোয়ান্টাম বলবিদ্যার উপর একটি সহযোগী কোর্স।",
@@ -2659,11 +2659,11 @@ const partialTranslations: Record<Exclude<Lang, "fr" | "en">, DeepPartial<Transl
       aboutProjectOutlineBody:
         "حرارتی حرکیات کا ایک بتدریج کورس، بنیادی اصولوں سے لے کر مزید اعلیٰ پیش رفتوں تک۔",
       aboutProjectStatusBody:
-        "موجودہ حیثیت: تمام زبانوں میں اسباق 1 سے 3 مکمل۔",
+        "موجودہ حیثیت: اردو میں اسباق 1، 3 اور 4 دستیاب ہیں۔",
       aboutBookBody2:
         "یہ متن حرارتی حرکیات کو بنیادی اصولوں سے شروع کرتے ہوئے آگے بڑھاتا ہے۔ ثبوت مکمل طور پر دیے جاتے ہیں جب بھی وہ طبیعیات کو واضح کرتے ہیں، اور بہت سی حل شدہ مثالیں نظری وضاحت کی تکمیل کرتی ہیں۔",
       translationWarning:
-        "انتباہ: یہ کتاب بنیادی طور پر فرانسیسی زبان میں لکھی گئی ہے؛ یہ نسخہ Claude Sonnet 4.6 کے ذریعے خودکار طور پر ترجمہ کیا گیا ہے۔",
+        "انتباہ: یہ کتاب بنیادی طور پر فرانسیسی زبان میں لکھی گئی ہے؛ یہ نسخہ مصنوعی ذہانت کی مدد سے خودکار طور پر ترجمہ کیا گیا ہے۔",
       sameAuthorTitle: "اسی مصنف کی دیگر تصانیف",
       sameAuthorBody: "Quantum Mechanics — A Modern Introduction، کوانٹم میکانکس پر ایک ہمراہ کورس۔",
       sameAuthorLink: "quantumlectures.org پر پڑھیں",
@@ -2791,11 +2791,11 @@ const partialTranslations: Record<Exclude<Lang, "fr" | "en">, DeepPartial<Transl
       aboutProjectOutlineBody:
         "Kozi inayoendelea ya thermodynamiki, kutoka kanuni za msingi hadi maendeleo ya kina zaidi.",
       aboutProjectStatusBody:
-        "Hali ya sasa: masomo 1 hadi 3 yamekamilika katika lugha zote.",
+        "Hali ya sasa: masomo ya 1 hadi 4 yanapatikana kwa Kiswahili.",
       aboutBookBody2:
         "Maandishi haya yanaendeleza thermodynamiki kutoka kanuni za kwanza. Uthibitisho hutolewa kikamilifu kila unapofafanua fizikia, na mifano mingi iliyofanyiwa kazi inakamilisha maelezo ya kinadharia.",
       translationWarning:
-        "Onyo: kitabu hiki kimeandikwa awali kwa Kifaransa; toleo hili linatafsiriwa kiotomatiki kwa kutumia Claude Sonnet 4.6.",
+        "Onyo: kitabu hiki kiliandikwa awali kwa Kifaransa; toleo hili limetafsiriwa kiotomatiki kwa msaada wa akili bandia.",
       sameAuthorTitle: "Kutoka kwa Mwandishi Huyo Huyo",
       sameAuthorBody:
         "Quantum Mechanics — A Modern Introduction, kozi shirikishi kuhusu mekanika ya kwantamu.",
@@ -2924,11 +2924,11 @@ const partialTranslations: Record<Exclude<Lang, "fr" | "en">, DeepPartial<Transl
       aboutProjectOutlineBody:
         "دوره‌ای تدریجی در ترمودینامیک، از اصول بنیادین تا پیشرفت‌های پیشرفته‌تر.",
       aboutProjectStatusBody:
-        "وضعیت فعلی: درس‌های ۱ تا ۳ در همهٔ زبان‌ها نهایی شده‌اند.",
+        "وضعیت فعلی: درس‌های ۱، ۳ و ۴ به فارسی در دسترس‌اند.",
       aboutBookBody2:
         "این متن ترمودینامیک را از اصول نخستین بسط می‌دهد. اثبات‌ها هر جا که به روشن‌شدن فیزیک کمک کنند به‌طور کامل ارائه می‌شوند، و مثال‌های حل‌شدهٔ فراوان مکمل ارائهٔ نظری هستند.",
       translationWarning:
-        "هشدار: این کتاب در اصل به زبان فرانسه نوشته شده است؛ این نسخه به‌صورت خودکار با Claude Sonnet 4.6 ترجمه شده است.",
+        "هشدار: این کتاب در اصل به زبان فرانسه نوشته شده است؛ این نسخه با کمک هوش مصنوعی به‌صورت خودکار ترجمه شده است.",
       sameAuthorTitle: "از همین نویسنده",
       sameAuthorBody:
         "Quantum Mechanics — A Modern Introduction، دوره‌ای همراه دربارهٔ مکانیک کوانتومی.",
