@@ -277,7 +277,7 @@ export const themes: Theme[] = [
     titleEn: "Application to the Ideal Gas",
     descriptionFr: "Application du premier principe aux transformations du gaz parfait.",
     descriptionEn: "Application of the first law to ideal-gas transformations.",
-    readingTime: "10 min",
+    readingTime: "20 min",
     topicsFr: [
       "Gaz parfait",
       "Premier principe",

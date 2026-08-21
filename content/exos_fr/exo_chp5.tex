@@ -1,0 +1,270 @@
+% Banque d'exercices — chapitre 5
+% Le chapitre est déterminé par le nom de ce fichier.
+
+\begin{exo}[Compression sous pression extérieure constante]{compression-pression-exterieure-constante}
+\seoready{true}
+\keywords{travail des forces de pression, pression extérieure constante, compression, détente, détente dans le vide}
+
+Un gaz est comprimé d'un volume $V_A$ à un volume $V_B<V_A$ sous une
+pression extérieure constante $P_0$.
+
+\begin{enumerate}
+\item Calculer le travail reçu par le gaz.
+\item Le gaz revient de $V_B$ à $V_A$ contre la même pression extérieure
+$P_0$. Calculer le travail reçu et comparer avec celui de la compression.
+\item Reprendre la détente de $V_B$ à $V_A$ lorsque le gaz se détend dans le
+vide. Interpréter les trois signes obtenus.
+\end{enumerate}
+
+\begin{indication}
+Utiliser $W=-\int P_{\mathrm{ext}}\,\mathrm{d}V$. Il faut intégrer la pression
+\emph{extérieure}, y compris lorsque la transformation n'est pas
+quasi-statique.
+\end{indication}
+
+\begin{solution}
+\textbf{Question 1.} La pression extérieure est constante, donc
+\[
+W_{A\to B}=-P_0(V_B-V_A)=P_0(V_A-V_B)>0.
+\]
+Le gaz reçoit du travail lors de la compression.
+
+\textbf{Question 2.} Pour le retour,
+\[
+W_{B\to A}=-P_0(V_A-V_B)<0.
+\]
+Les deux travaux sont opposés parce que les transformations sont effectuées
+contre la même pression extérieure constante.
+
+\textbf{Question 3.} Dans le vide, $P_{\mathrm{ext}}=0$, donc
+\[
+W_{B\to A}^{\mathrm{vide}}=0.
+\]
+Une détente n'implique donc pas automatiquement un travail négatif : il faut
+qu'une force extérieure soit effectivement repoussée.
+\end{solution}
+\end{exo}
+
+
+\begin{exo}[Chauffage isochore d'un gaz monoatomique]{chauffage-isochore-gp-mono}
+\seoready{true}
+\keywords{gaz parfait monoatomique, chauffage isochore, énergie interne, chaleur, premier principe}
+
+Une mole de gaz parfait monoatomique passe, à volume constant, de la
+température $T_A=300\ \mathrm{K}$ à la température
+$T_B=500\ \mathrm{K}$.
+
+Calculer $W$, $\Delta U$ et $Q$, littéralement puis numériquement. On prendra
+$R=8{,}314\ \mathrm{J\,mol^{-1}\,K^{-1}}$.
+
+\begin{indication}
+Pour un gaz parfait monoatomique,
+$\Delta U=\frac32nR(T_B-T_A)$. À volume constant, le travail des forces de
+pression est nul.
+\end{indication}
+
+\begin{solution}
+La transformation est isochore, donc
+\[
+W=0.
+\]
+Avec $n=1\ \mathrm{mol}$ et $\Delta T=200\ \mathrm{K}$,
+\[
+\Delta U
+=\frac32R\Delta T
+=\frac32\times8{,}314\times200
+\simeq2{,}49\ \mathrm{kJ}.
+\]
+Le premier principe donne
+\[
+Q=\Delta U-W=\Delta U\simeq2{,}49\ \mathrm{kJ}.
+\]
+La chaleur est positive : le gaz reçoit l'énergie qui augmente son énergie
+interne.
+\end{solution}
+\end{exo}
+
+
+\begin{exo}[Compression isotherme à la moitié du volume]{compression-isotherme-demi-volume}
+\seoready{true}
+\keywords{gaz parfait, compression isotherme, travail, chaleur, logarithme, convention du banquier}
+
+Une mole de gaz parfait subit une compression isotherme, quasi-statique et
+sans frottement à la température $T_0=300\ \mathrm{K}$, depuis le volume
+$V_A$ jusqu'au volume $V_B=V_A/2$.
+
+Calculer $W$, $\Delta U$ et $Q$. Commenter soigneusement leurs signes. On
+prendra $R=8{,}314\ \mathrm{J\,mol^{-1}\,K^{-1}}$.
+
+\begin{indication}
+Sur une isotherme quasi-statique, remplacer $P$ par $nRT_0/V$ dans
+$W=-\int P\,\mathrm{d}V$.
+\end{indication}
+
+\begin{solution}
+Le travail reçu vaut
+\[
+W
+=-RT_0\ln\!\left(\frac{V_B}{V_A}\right)
+=RT_0\ln2
+\simeq1{,}73\ \mathrm{kJ}>0.
+\]
+Le gaz est comprimé : il reçoit bien du travail. Pour un gaz parfait, l'énergie
+interne ne dépend que de la température. La transformation étant isotherme,
+\[
+\Delta U=0.
+\]
+Le premier principe impose alors
+\[
+Q=-W\simeq-1{,}73\ \mathrm{kJ}.
+\]
+Le gaz cède sous forme de chaleur toute l'énergie reçue sous forme de travail,
+ce qui maintient sa température constante.
+\end{solution}
+\end{exo}
+
+
+\begin{exo}[Deux chemins entre les mêmes états]{deux-chemins-gp-memes-etats}
+\seoready{true}
+\keywords{gaz parfait monoatomique, fonction d'état, dépendance au chemin, isotherme, isochore, isobare}
+
+Une mole de gaz parfait monoatomique passe de l'état
+\[
+A=(P_i,V_i,T_i)
+\]
+à l'état
+\[
+B=(3P_i,V_i/3,T_i)
+\]
+selon deux chemins quasi-statiques :
+\begin{enumerate}
+\item une compression isotherme directe $A\to B$ ;
+\item un chauffage isochore $A\to C$ jusqu'à la pression $3P_i$, suivi d'une
+compression isobare $C\to B$.
+\end{enumerate}
+
+Calculer dans les deux cas $\Delta U$, $W$ et $Q$. Vérifier explicitement que
+la variation d'énergie interne est identique, tandis que le travail et la
+chaleur diffèrent.
+
+\begin{indication}
+L'état intermédiaire est $C=(3P_i,V_i,3T_i)$. Utiliser
+$P_iV_i=RT_i$ et $Q=\Delta U-W$.
+\end{indication}
+
+\begin{solution}
+Les états $A$ et $B$ ont la même température. Pour les deux chemins,
+\[
+\Delta U=\frac32R(T_B-T_A)=0.
+\]
+
+\textbf{Question 1.} Sur la compression isotherme,
+\[
+W_1
+=-RT_i\ln\!\left(\frac{V_i/3}{V_i}\right)
+=RT_i\ln3
+=P_iV_i\ln3,
+\]
+et
+\[
+Q_1=-W_1=-P_iV_i\ln3.
+\]
+
+\textbf{Question 2.} La branche $A\to C$ est isochore :
+\[
+W_{AC}=0,
+\qquad
+\Delta U_{AC}=\frac32R(3T_i-T_i)=3RT_i,
+\qquad
+Q_{AC}=3RT_i.
+\]
+La branche $C\to B$ est isobare à la pression $3P_i$ :
+\[
+W_{CB}
+=-3P_i\left(\frac{V_i}{3}-V_i\right)
+=2P_iV_i
+=2RT_i,
+\]
+\[
+\Delta U_{CB}=\frac32R(T_i-3T_i)=-3RT_i,
+\qquad
+Q_{CB}=\Delta U_{CB}-W_{CB}=-5RT_i.
+\]
+Au total,
+\[
+W_2=2P_iV_i,
+\qquad
+Q_2=-2P_iV_i,
+\qquad
+\Delta U_2=0.
+\]
+On a bien la même variation d'énergie interne, mais
+$P_iV_i\ln3\neq2P_iV_i$ : le travail et la chaleur dépendent du chemin suivi.
+\end{solution}
+\end{exo}
+
+
+\begin{exo}[Cycle rectangulaire dans le diagramme de Clapeyron]{cycle-rectangulaire-gp}
+\seoready{true}
+\keywords{cycle thermodynamique, diagramme de Clapeyron, travail, aire, gaz parfait, cycle moteur}
+
+Un gaz parfait parcourt quasi-statiquement le cycle rectangulaire horaire
+\[
+A(V_1,P_1)\to B(V_1,P_2)\to C(V_2,P_2)
+\to D(V_2,P_1)\to A,
+\]
+avec $V_2>V_1$ et $P_2>P_1$.
+
+\begin{enumerate}
+\item Représenter le cycle dans le plan $(V,P)$.
+\item Calculer le travail reçu sur chacune des quatre branches.
+\item Calculer le travail total et retrouver le résultat à partir de l'aire
+du rectangle.
+\item En déduire la chaleur nette reçue sur le cycle. Le cycle est-il moteur
+ou récepteur ?
+\end{enumerate}
+
+\begin{indication}
+Le travail est nul sur les isochores. Sur une isobare,
+$W=-P\Delta V$. Toute fonction d'état retrouve sa valeur initiale à la fin
+d'un cycle.
+\end{indication}
+
+\begin{solution}
+\textbf{Question 1.} Le point $A$ est en bas à gauche, $B$ en haut à gauche,
+$C$ en haut à droite et $D$ en bas à droite. Le parcours est horaire.
+
+\textbf{Question 2.} Les branches $A\to B$ et $C\to D$ sont isochores :
+\[
+W_{AB}=W_{CD}=0.
+\]
+Sur l'isobare supérieure,
+\[
+W_{BC}=-P_2(V_2-V_1),
+\]
+et sur l'isobare inférieure,
+\[
+W_{DA}=-P_1(V_1-V_2)=P_1(V_2-V_1).
+\]
+
+\textbf{Question 3.} Le travail total reçu est
+\[
+W_{\mathrm{cycle}}
+=-(P_2-P_1)(V_2-V_1)<0.
+\]
+Sa valeur absolue est exactement l'aire du rectangle dans le plan $(V,P)$.
+
+\textbf{Question 4.} L'énergie interne étant une fonction d'état,
+\[
+\Delta U_{\mathrm{cycle}}=0.
+\]
+Le premier principe donne donc
+\[
+Q_{\mathrm{cycle}}
+=-W_{\mathrm{cycle}}
+=(P_2-P_1)(V_2-V_1)>0.
+\]
+Le gaz reçoit globalement de la chaleur et fournit du travail : le cycle est
+moteur.
+\end{solution}
+\end{exo}
