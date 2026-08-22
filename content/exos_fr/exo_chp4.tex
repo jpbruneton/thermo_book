@@ -374,3 +374,47 @@ forme de chaleur. Chaleur et travail sont des modes de transfert distincts,
 mais ils peuvent produire la même variation d'une fonction d'état.
 \end{solution}
 \end{exo}
+
+\begin{exo}[Compression sous pression extérieure constante]{compression-pression-exterieure-constante}
+\seoready{true}
+\keywords{travail des forces de pression, pression extérieure constante, compression, détente, détente dans le vide}
+
+Un gaz est comprimé d'un volume $V_A$ à un volume $V_B<V_A$ sous une
+pression extérieure constante $P_0$.
+
+\begin{enumerate}
+\item Calculer le travail reçu par le gaz.
+\item Le gaz revient de $V_B$ à $V_A$ contre la même pression extérieure
+$P_0$. Calculer le travail reçu et comparer avec celui de la compression.
+\item Reprendre la détente de $V_B$ à $V_A$ lorsque le gaz se détend dans le
+vide. Interpréter les trois signes obtenus.
+\end{enumerate}
+
+\begin{indication}
+Utiliser $W=-\int P_{\mathrm{ext}}\,\mathrm{d}V$. Il faut intégrer la pression
+\emph{extérieure}, y compris lorsque la transformation n'est pas
+quasi-statique.
+\end{indication}
+
+\begin{solution}
+\textbf{Question 1.} La pression extérieure est constante, donc
+\[
+W_{A\to B}=-P_0(V_B-V_A)=P_0(V_A-V_B)>0.
+\]
+Le gaz reçoit du travail lors de la compression.
+
+\textbf{Question 2.} Pour le retour,
+\[
+W_{B\to A}=-P_0(V_A-V_B)<0.
+\]
+Les deux travaux sont opposés parce que les transformations sont effectuées
+contre la même pression extérieure constante.
+
+\textbf{Question 3.} Dans le vide, $P_{\mathrm{ext}}=0$, donc
+\[
+W_{B\to A}^{\mathrm{vide}}=0.
+\]
+Une détente n'implique donc pas automatiquement un travail négatif : il faut
+qu'une force extérieure soit effectivement repoussée.
+\end{solution}
+\end{exo}

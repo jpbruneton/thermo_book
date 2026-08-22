@@ -41,6 +41,66 @@ Grâce au régénérateur, le cycle de Stirling atteint le rendement de Carnot �
 
 \end{exo}
 
+\begin{exo}[Cycle frigorifique de Carnot : coefficient de performance]{cycle-frigorifique-cop}
+\keywords{cycle récepteur, réfrigérateur, coefficient de performance, cycle de Carnot, source froide, source chaude}
+
+Une mole de gaz parfait décrit un cycle de Carnot inversé entre une source froide à $T_f=270$ K et une source chaude à $T_c=300$ K. Le cycle comporte :
+\begin{itemize}
+\item une détente isotherme au contact de la source froide, pendant laquelle le volume double et le gaz reçoit la chaleur $Q_f>0$ ;
+\item une compression adiabatique réversible qui porte le gaz à $T_c$ ;
+\item une compression isotherme au contact de la source chaude, pendant laquelle le gaz lui cède une chaleur de valeur absolue $Q_c>0$ ;
+\item une détente adiabatique réversible qui ramène le gaz à son état initial.
+\end{itemize}
+
+\begin{enumerate}
+\item Représenter qualitativement le cycle dans le diagramme de Clapeyron et justifier qu'il est parcouru dans le sens antihoraire. Quel est le signe du travail total reçu par le gaz ?
+\item Calculer la chaleur $Q_f$ prélevée à la source froide. Montrer, à l'aide des lois de Laplace sur les deux adiabatiques, que le rapport des volumes sur l'isotherme chaude est lui aussi égal à $2$, puis déterminer $Q_c$.
+\item En déduire le travail $W$ reçu par cycle et vérifier le bilan énergétique $Q_f+W=Q_c$.
+\item Le coefficient de performance frigorifique est défini par $\mathrm{COP}=Q_f/W$. Montrer que
+\[
+\mathrm{COP}_{\mathrm{Carnot}}=\frac{T_f}{T_c-T_f},
+\]
+puis calculer sa valeur. Pourquoi peut-elle être supérieure à $1$ sans violer le premier principe ?
+\end{enumerate}
+
+\begin{indication}
+Sur une détente isotherme réversible d'un gaz parfait, la chaleur reçue vaut $nRT\ln(V_f/V_i)$. Les adiabatiques imposent le même rapport volumétrique aux deux isothermes. Sur un cycle, $\Delta U=0$.
+\end{indication}
+
+\begin{solution}
+\textbf{Question 1.} Sur l'isotherme froide, le gaz se détend ; sur l'isotherme chaude, il se comprime. La branche de compression est située au-dessus de la branche de détente : le cycle est donc antihoraire. Il est récepteur et vérifie $W>0$ avec la convention des énergies reçues par le gaz.
+
+\textbf{Question 2.} Sur l'isotherme froide,
+\[
+Q_f=RT_f\ln2.
+\]
+Notons $V_1\to V_2=2V_1$ la détente froide et $V_3\to V_4$ la compression chaude. Les deux lois de Laplace donnent
+\[
+T_fV_2^{\gamma-1}=T_cV_3^{\gamma-1},
+\qquad
+T_cV_4^{\gamma-1}=T_fV_1^{\gamma-1}.
+\]
+En les divisant, on obtient $V_3/V_4=V_2/V_1=2$. La valeur absolue de la chaleur cédée sur l'isotherme chaude vaut donc
+\[
+Q_c=RT_c\ln2.
+\]
+
+\textbf{Question 3.} Comme $\Delta U_{\mathrm{cycle}}=0$, le gaz reçoit $Q_f$ de la source froide, cède $Q_c$ à la source chaude et reçoit le travail
+\[
+W=Q_c-Q_f=R(T_c-T_f)\ln2.
+\]
+On vérifie immédiatement $Q_f+W=Q_c$.
+
+\textbf{Question 4.}
+\[
+\mathrm{COP}=\frac{RT_f\ln2}{R(T_c-T_f)\ln2}
+=\frac{T_f}{T_c-T_f}
+=\frac{270}{300-270}=9.
+\]
+Un joule de travail permet ici de transférer neuf joules depuis la source froide ; dix joules sont alors cédés à la source chaude. Le COP n'est pas un rendement de conversion : l'énergie utile $Q_f$ est déplacée, non créée, et le bilan $Q_f+W=Q_c$ reste satisfait.
+\end{solution}
+\end{exo}
+
 \begin{exo}[Cycle de Carnot complet d'un gaz parfait]{carnot-cycle-complet}
 \keywords{cycle de Carnot, machine thermique, gaz parfait, rendement, isotherme, adiabatique}
 

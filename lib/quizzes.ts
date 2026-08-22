@@ -521,6 +521,25 @@ export const quizQuestions: QuizQuestion[] = [
     ],
     correctIndex: 3,
   },
+  {
+    id: "l5-q9",
+    lecon: 5,
+    question:
+      "Dans un diagramme (P,V), les états C(V_0,2P_0) et B(2V_0,P_0) sont reliés par un segment de droite. Que peut-on affirmer pour un gaz parfait ?",
+    choices: [
+      "Toute la transformation est isotherme, puisque P_CV_C = P_BV_B",
+      "ΔU_C→B = 0, mais la transformation n'est pas isotherme et Q_C→B = -W_C→B",
+      "Le travail est nul, puisque les températures initiale et finale sont égales",
+      "La chaleur et le travail sont tous deux nuls, puisque l'énergie interne ne varie pas",
+    ],
+    explanations: [
+      "Faux : l'égalité P_CV_C = P_BV_B prouve seulement que les températures des deux états extrêmes sont égales. Entre les deux, le produit PV varie le long du segment.",
+      "Exact : pour un gaz parfait, U ne dépend que de T, donc T_C = T_B implique ΔU_C→B = 0. Le premier principe donne alors Q_C→B = -W_C→B, même si la température varie pendant le trajet.",
+      "Faux : ΔU = 0 n'impose pas W = 0. Le gaz change de volume contre une pression non nulle et fournit ici du travail.",
+      "Faux : seule leur somme est nulle. La chaleur reçue compense exactement le travail fourni, comme l'impose ΔU = Q + W = 0.",
+    ],
+    correctIndex: 1,
+  },
 
   // ─── Leçon 6 : Second principe (entropie) ───
   {
