@@ -23,11 +23,12 @@ interface QuestionState {
 
 /** Renders the lightweight underscore/caret notation used in quiz copy. */
 function QuizText({ text }: { text: string }) {
-  const parts = text.split(/(_[0-9A-Za-zÀ-ÖØ-öø-ÿ]+|\^\{[^}]+\}|\^[0-9A-Za-zÀ-ÖØ-öø-ÿ]+)/g);
+  const parts = text.split(/(_\{[^}]+\}|_[0-9A-Za-zÀ-ÖØ-öø-ÿ]+|\^\{[^}]+\}|\^[0-9A-Za-zÀ-ÖØ-öø-ÿ]+)/g);
 
   return (
     <>
       {parts.map((part, index) => {
+        if (part.startsWith("_{")) return <sub key={index}>{part.slice(2, -1)}</sub>;
         if (part.startsWith("_")) return <sub key={index}>{part.slice(1)}</sub>;
         if (part.startsWith("^{")) return <sup key={index}>{part.slice(2, -1)}</sup>;
         if (part.startsWith("^")) return <sup key={index}>{part.slice(1)}</sup>;

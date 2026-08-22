@@ -132,7 +132,7 @@ puis une détente isotherme à $T_2$, de $V_1$ à $V_2$.
 
 \begin{enumerate}
 \item Dans le cas $T_2>T_1$ et $V_2>V_1$, représenter les chemins
-$\Gamma_1$ et $\Gamma_2$ dans le diagramme de Clapeyron $(V,P)$. Indiquer
+$\Gamma_1$ et $\Gamma_2$ dans le diagramme de Clapeyron $(P,V)$. Indiquer
 les états intermédiaires et le sens de parcours.
 \item Calculer le travail reçu $W_1$ et $W_2$ le long de chacun des deux
 chemins. Que vaut leur différence ?
@@ -151,8 +151,7 @@ travail des forces de pression.
 
 \begin{solution}
 \textbf{Question 1.} Notons $C$ l'état intermédiaire du chemin $\Gamma_1$
-et $D$ celui du chemin $\Gamma_2$. Leurs coordonnées dans le diagramme
-$(V,P)$ sont
+et $D$ celui du chemin $\Gamma_2$. Leurs volumes et leurs pressions sont
 \[
 \begin{aligned}
 A&=\left(V_1,\frac{nRT_1}{V_1}\right),&
@@ -248,7 +247,7 @@ C_V = \frac{nR}{\gamma - 1}, \qquad C_P = \frac{\gamma\, nR}{\gamma - 1}.
 puis en déduire que $TV^{\gamma-1} = \text{cste}$ le long de la transformation.
 \item En déduire les deux autres formes de la loi de Laplace : $PV^\gamma = \text{cste}$ et $T^\gamma P^{1-\gamma} = \text{cste}$.
 \item Détente adiabatique réversible qui double le volume, pour un gaz monoatomique ($\gamma = 5/3$), $n = 1$ mol, $T_I = 300$ K. Calculer $T_F$ puis $W$, et commenter les signes.
-\item Dans le diagramme de Clapeyron, comparer en un même point $(V,P)$ la pente d'une adiabatique réversible et celle d'une isotherme.
+\item Dans le diagramme de Clapeyron $(P,V)$, comparer en un même point la pente d'une adiabatique réversible et celle d'une isotherme.
 \end{enumerate}
 
 \begin{indication}
@@ -496,14 +495,14 @@ On considère un système fermé constitué de $n$ moles de gaz parfait monoatom
 \item Compression isotherme $A\to B$ jusqu'à $V_B = V_A/2$. Calculer $P_B$, puis $W$, $\Delta U$ et $Q$ sur cette branche.
 \item Détente isobare $B\to C$ jusqu'à $V_C = V_A$. Calculer $T_C$, puis $W$, $\Delta U$ et $Q$.
 \item Refroidissement isochore $C\to A$ qui referme le cycle. Calculer $W$, $\Delta U$ et $Q$.
-\item Représenter le cycle $A\to B\to C\to A$ dans le diagramme de Clapeyron $(V,P)$. Application numérique pour $n = 1$ mol, $P_A = 1{,}0$ bar, $T_A = 300$ K : donner $(P,V,T)$ en chacun des trois points.
+\item Représenter le cycle $A\to B\to C\to A$ dans le diagramme de Clapeyron $(P,V)$. Application numérique pour $n = 1$ mol, $P_A = 1{,}0$ bar, $T_A = 300$ K : donner $(P,V,T)$ en chacun des trois points.
 \item Comparer $W_{A\to B}$ au travail $W_{A\to C\to B}$ reçu le long du chemin isochore $A\to C$ puis isobare $C\to B$. Commenter.
 \item Le cycle $A\to B\to C\to A$ est-il moteur ou récepteur ? Calculer le travail total et vérifier la cohérence avec le sens de parcours.
 \item Représenter le même cycle dans le diagramme $(T,P)$.
 \end{enumerate}
 
 \begin{indication}
-Sur une isotherme de gaz parfait, remplacer $P$ par $nRT/V$ dans $\delta W = -P\,\mathrm{d}V$ avant d'intégrer. En diagramme $(V,P)$, l'aire du cycle vaut le travail fourni si le parcours est horaire. Convention banquier : tout ce qui entre dans le système est compté positivement.
+Sur une isotherme de gaz parfait, remplacer $P$ par $nRT/V$ dans $\delta W = -P\,\mathrm{d}V$ avant d'intégrer. En diagramme $(P,V)$, l'aire du cycle vaut le travail fourni si le parcours est horaire. Convention banquier : tout ce qui entre dans le système est compté positivement.
 \end{indication}
 
 \begin{solution}
@@ -525,7 +524,7 @@ d'où $Q_{BC} = \Delta U_{BC} - W_{BC} = \tfrac{5}{2}nRT_A$.
 
 \textbf{Question 5.} $W_{A\to C\to B} = 0 + \left[-2P_A\left(\tfrac{V_A}{2} - V_A\right)\right] = P_AV_A = nRT_A \approx 2494$ J, alors que $W_{A\to B} = nRT_A\ln 2 \approx 1729$ J. Mêmes états extrêmes, travaux différents : le travail dépend du chemin suivi, $\delta W$ n'est pas une différentielle exacte.
 
-\textbf{Question 6.} $W_{\text{total}} = nRT_A\ln 2 - nRT_A = nRT_A(\ln 2 - 1) \approx -765$ J $< 0$ : le gaz fournit du travail, le cycle est moteur. C'est cohérent : en diagramme $(V,P)$, le parcours est horaire (isotherme en bas, isobare en haut) et l'aire du cycle vaut le travail fourni.
+\textbf{Question 6.} $W_{\text{total}} = nRT_A\ln 2 - nRT_A = nRT_A(\ln 2 - 1) \approx -765$ J $< 0$ : le gaz fournit du travail, le cycle est moteur. C'est cohérent : en diagramme $(P,V)$, le parcours est horaire (isotherme en bas, isobare en haut) et l'aire du cycle vaut le travail fourni.
 
 \textbf{Question 7.} En diagramme $(T,P)$ : $A\to B$ est un segment vertical à $T = T_A$ (de $P_A$ à $2P_A$) ; $B\to C$ un segment horizontal à $P = 2P_A$ (de $T_A$ à $2T_A$) ; $C\to A$ un segment de la droite passant par l'origine $P = (nR/V_A)\,T$ (isochore).
 \end{solution}
@@ -543,7 +542,7 @@ A(V_1,P_1)\to B(V_1,P_2)\to C(V_2,P_2)
 où $V_2>V_1$ et $P_2>P_1$.
 
 \begin{enumerate}
-\item Représenter le cycle dans le diagramme de Clapeyron $(V,P)$ et préciser la nature de chaque branche.
+\item Représenter le cycle dans le diagramme de Clapeyron $(P,V)$ et préciser la nature de chaque branche.
 \item Calculer le travail reçu sur chacune des quatre branches, puis le travail total. Retrouver sa valeur absolue à partir de l'aire du rectangle.
 \item Exprimer $\Delta U$ et $Q$ sur chaque branche en fonction de $P_1$, $P_2$, $V_1$ et $V_2$ uniquement.
 \item Vérifier que $\Delta U_{\mathrm{cycle}}=0$ et $Q_{\mathrm{cycle}}=-W_{\mathrm{cycle}}$. Le cycle est-il moteur ou récepteur ? Sur quelles branches le gaz reçoit-il de la chaleur ?
@@ -590,6 +589,95 @@ D\to A & 1000 & -2500
 \end{array}
 \]
 Ainsi $W_{\mathrm{cycle}}=-2000$ J, $Q_{\mathrm{cycle}}=+2000$ J et $\Delta U_{\mathrm{cycle}}=0$.
+\end{solution}
+\end{exo}
+
+\begin{exo}[Cycle triangulaire]{cycle-triangulaire-diagonale}
+\keywords{cycle moteur, transformation linéaire, diagramme de Clapeyron, aire du cycle, premier principe}
+
+On considère $n$ moles de gaz parfait, de capacité thermique molaire $c_V$
+constante, décrivant le cycle quasi-statique $A\to B\to C\to A$, avec
+\[
+A=(V_0,P_0),
+\qquad
+B=(V_0,2P_0),
+\qquad
+C=(2V_0,P_0).
+\]
+La branche $A\to B$ est isochore, la branche $B\to C$ est un segment de droite
+dans le plan $(P,V)$ et la branche $C\to A$ est isobare.
+
+\begin{enumerate}
+\item Représenter le cycle dans le diagramme de Clapeyron et préciser son sens
+de parcours. Est-il moteur ou récepteur ?
+\item Déterminer l'équation $P(V)$ de la droite reliant $B$ à $C$.
+\item En posant $T_0=P_0V_0/(nR)$, déterminer les températures $T_A$, $T_B$ et
+$T_C$. Pourquoi $\Delta U_{B\to C}$ est-elle nulle alors que cette branche
+n'est pas isotherme ?
+\item Calculer le travail reçu sur chacune des trois branches, puis sur le cycle
+complet. Retrouver la valeur absolue du travail total à partir de l'aire du
+triangle.
+\item Calculer $\Delta U$ et $Q$ sur chaque branche, puis vérifier que
+$\Delta U_{\mathrm{cycle}}=0$ et $Q_{\mathrm{cycle}}=-W_{\mathrm{cycle}}$.
+\end{enumerate}
+
+\begin{indication}
+Sur $B\to C$, chercher $P(V)=aV+b$ en imposant le passage par $B$ et $C$.
+Pour calculer une variation d'énergie interne, seules les températures aux
+extrémités de la branche sont nécessaires.
+\end{indication}
+
+\begin{solution}
+\textbf{Questions 1--2.} Le cycle est parcouru dans le sens horaire : il est
+moteur. L'équation de la droite $B\to C$ est
+\[
+P(V)=P_0\left(3-\frac{V}{V_0}\right).
+\]
+
+\textbf{Question 3.} L'équation d'état donne
+\[
+T_A=T_0,
+\qquad
+T_B=T_C=2T_0.
+\]
+La température varie le long de $B\to C$, mais elle reprend la même valeur à
+ses deux extrémités. Comme l'énergie interne d'un gaz parfait ne dépend que de
+la température à quantité de matière fixée, $\Delta U_{B\to C}=0$.
+
+\textbf{Question 4.} Les travaux reçus valent
+\[
+W_{AB}=0,
+\qquad
+W_{BC}=-\int_{V_0}^{2V_0}P(V)\,dV=-\frac32P_0V_0,
+\qquad
+W_{CA}=P_0V_0.
+\]
+Ainsi,
+\[
+\boxed{W_{\mathrm{cycle}}=-\frac12P_0V_0}.
+\]
+Sa valeur absolue est bien l'aire du triangle, de base $V_0$ et de hauteur
+$P_0$.
+
+\textbf{Question 5.} Puisque $nRT_0=P_0V_0$,
+\[
+\begin{array}{c|c|c|c}
+\text{Branche} & W & \Delta U & Q=\Delta U-W\\ \hline
+A\to B & 0 & \dfrac{c_V}{R}P_0V_0
+& \dfrac{c_V}{R}P_0V_0\\[4pt]
+B\to C & -\dfrac32P_0V_0 & 0 & \dfrac32P_0V_0\\[4pt]
+C\to A & P_0V_0 & -\dfrac{c_V}{R}P_0V_0
+& -\left(\dfrac{c_V}{R}+1\right)P_0V_0
+\end{array}
+\]
+En sommant les trois branches, on obtient
+\[
+\boxed{
+\Delta U_{\mathrm{cycle}}=0,
+\qquad
+Q_{\mathrm{cycle}}=\frac12P_0V_0=-W_{\mathrm{cycle}}.
+}
+\]
 \end{solution}
 \end{exo}
 

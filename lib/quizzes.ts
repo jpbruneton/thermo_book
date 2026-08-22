@@ -336,7 +336,7 @@ export const quizQuestions: QuizQuestion[] = [
     question:
       "Un système fermé subit une transformation cyclique (A → A). Que peut-on affirmer sur le bilan Q_cycle + W_cycle ?",
     choices: [
-      "Il vaut nécessairement zéro, car Q et W sont eux-mêmes des fonctions d'état lorsqu'on revient à l'état initial.",
+      "Il vaut nécessairement zéro, car Q et W sont des fonctions d'état.",
       "Il vaut zéro car U est une fonction d'état.",
       "Il est toujours strictement positif pour une machine motrice.",
     ],
@@ -418,18 +418,16 @@ export const quizQuestions: QuizQuestion[] = [
     id: "l5-q3",
     lecon: 5,
     question:
-      "Un gaz parfait subit une détente isotherme quasi statique. Avec la convention où les énergies reçues par le gaz sont positives, quel bilan est correct ?",
+      "Un gaz parfait subit une détente isotherme quasi statique. Quel bilan est correct ?",
     choices: [
       "W < 0, Q > 0 et ΔU = 0 : le gaz fournit du travail et reçoit de la chaleur",
       "W > 0, Q < 0 et ΔU = 0 : le gaz reçoit du travail et cède de la chaleur",
       "W < 0, Q < 0 et ΔU < 0 : le gaz fournit du travail, cède de la chaleur et refroidit",
-      "W = 0, Q = 0 et ΔU = 0 : toute détente isotherme est une détente dans le vide",
     ],
     explanations: [
       "Exact : pendant une détente, dV > 0 donc δW = -P dV < 0 : le gaz fournit du travail. Comme T reste constante, ΔU = 0 pour un gaz parfait ; le premier principe impose alors Q = -W > 0 : le gaz reçoit de la chaleur.",
       "Faux : ces signes sont ceux d'une compression isotherme. Une détente fournit du travail à l'extérieur, donc le travail reçu par le gaz est négatif.",
       "Faux : le gaz ne refroidit pas puisque la transformation est isotherme. La chaleur reçue compense exactement le travail fourni : Q = -W > 0.",
-      "Faux : W = 0 caractérise ici une détente contre le vide. Lors d'une détente isotherme quasi statique, le gaz pousse contre une pression extérieure et fournit du travail.",
     ],
     correctIndex: 0,
   },
@@ -511,7 +509,7 @@ export const quizQuestions: QuizQuestion[] = [
       "Le gaz refroidit, car sa pression diminue",
       "Sa température ne change pas, car la baisse de pression compense l'augmentation de volume",
       "Le gaz chauffe et il a nécessairement reçu à la fois de la chaleur et du travail",
-      "Le gaz chauffe : T_B = 3T_A/2 et ΔU > 0, mais on ne peut pas déterminer séparément les signes de Q et W",
+      "Le gaz chauffe, mais on ne peut pas déterminer séparément les signes de Q et W",
     ],
     explanations: [
       "Faux : la température d'un gaz parfait dépend du produit PV, pas de la pression seule. Ici, ce produit augmente.",
@@ -527,18 +525,16 @@ export const quizQuestions: QuizQuestion[] = [
     question:
       "Dans un diagramme (P,V), les états C(V_0,2P_0) et B(2V_0,P_0) sont reliés par un segment de droite. Que peut-on affirmer pour un gaz parfait ?",
     choices: [
-      "Toute la transformation est isotherme, puisque P_CV_C = P_BV_B",
-      "ΔU_C→B = 0, mais la transformation n'est pas isotherme et Q_C→B = -W_C→B",
+      "ΔU_{C→B} = 0, mais la transformation n'est pas isotherme et Q_{C→B} = -W_{C→B}",
       "Le travail est nul, puisque les températures initiale et finale sont égales",
       "La chaleur et le travail sont tous deux nuls, puisque l'énergie interne ne varie pas",
     ],
     explanations: [
-      "Faux : l'égalité P_CV_C = P_BV_B prouve seulement que les températures des deux états extrêmes sont égales. Entre les deux, le produit PV varie le long du segment.",
-      "Exact : pour un gaz parfait, U ne dépend que de T, donc T_C = T_B implique ΔU_C→B = 0. Le premier principe donne alors Q_C→B = -W_C→B, même si la température varie pendant le trajet.",
+      "Exact : pour un gaz parfait, U ne dépend que de T, donc T_C = T_B implique ΔU_{C→B} = 0. Le premier principe donne alors Q_{C→B} = -W_{C→B}, même si la température varie pendant le trajet.",
       "Faux : ΔU = 0 n'impose pas W = 0. Le gaz change de volume contre une pression non nulle et fournit ici du travail.",
       "Faux : seule leur somme est nulle. La chaleur reçue compense exactement le travail fourni, comme l'impose ΔU = Q + W = 0.",
     ],
-    correctIndex: 1,
+    correctIndex: 0,
   },
 
   // ─── Leçon 6 : Second principe (entropie) ───

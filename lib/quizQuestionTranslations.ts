@@ -262,7 +262,7 @@ export const quizQuestionTranslations: Partial<
     "l4-q3": {
       question: "A closed system undergoes a cyclic transformation (A → A). What can we say about the balance Q_cycle + W_cycle?",
       choices: [
-        "It must be zero because Q and W themselves become state functions when the system returns to its initial state.",
+        "It must be zero because Q and W are state functions.",
         "It is zero because U is a state function.",
         "It is always strictly positive for a heat engine.",
       ],
@@ -535,7 +535,7 @@ export const quizQuestionTranslations: Partial<
     "l4-q3": {
       question: "Ein geschlossenes System durchläuft eine Kreisprozessänderung (A → A). Was lässt sich über die Bilanz Q_cycle + W_cycle sagen?",
       choices: [
-        "Sie ist notwendigerweise null, weil Q und W selbst zu Zustandsfunktionen werden, wenn das System in seinen Anfangszustand zurückkehrt.",
+        "Sie ist notwendigerweise null, weil Q und W Zustandsfunktionen sind.",
         "Sie ist null, weil U eine Zustandsfunktion ist.",
         "Für eine Wärmekraftmaschine ist sie immer strikt positiv.",
       ],
@@ -808,7 +808,7 @@ export const quizQuestionTranslations: Partial<
     "l4-q3": {
       question: "Un sistema cerrado experimenta una transformación cíclica (A → A). ¿Qué se puede afirmar sobre el balance Q_cycle + W_cycle?",
       choices: [
-        "Es necesariamente nulo porque Q y W se convierten en funciones de estado cuando se regresa al estado inicial.",
+        "Es necesariamente nulo porque Q y W son funciones de estado.",
         "Es nulo porque U es una función de estado.",
         "Siempre es estrictamente positivo para una máquina térmica motriz.",
       ],
@@ -1081,7 +1081,7 @@ export const quizQuestionTranslations: Partial<
     "l4-q3": {
       question: "Um sistema fechado sofre uma transformação cíclica (A → A). O que se pode afirmar sobre o balanço Q_cycle + W_cycle?",
       choices: [
-        "É necessariamente nulo porque Q e W se tornam funções de estado quando o sistema regressa ao estado inicial.",
+        "É necessariamente nulo porque Q e W são funções de estado.",
         "É nulo porque U é uma função de estado.",
         "É sempre estritamente positivo para uma máquina térmica motora.",
       ],
@@ -1349,7 +1349,7 @@ export const quizQuestionTranslations: Partial<
     "l4-q3": {
       question: "Un sistema chiuso subisce una trasformazione ciclica (A → A). Che cosa si può affermare sul bilancio Q_cycle + W_cycle?",
       choices: [
-        "È necessariamente nullo perché Q e W diventano essi stessi funzioni di stato quando si torna allo stato iniziale.",
+        "È necessariamente nullo perché Q e W sono funzioni di stato.",
         "È nullo perché U è una funzione di stato.",
         "È sempre strettamente positivo per una macchina termica motrice.",
       ],
@@ -1617,7 +1617,7 @@ export const quizQuestionTranslations: Partial<
     "l4-q3": {
       question: "Układ zamknięty przechodzi przemianę cykliczną (A → A). Co można powiedzieć o bilansie Q_cycle + W_cycle?",
       choices: [
-        "Musi być równy zeru, ponieważ po powrocie do stanu początkowego Q i W same stają się funkcjami stanu.",
+        "Musi być równy zeru, ponieważ Q i W są funkcjami stanu.",
         "Jest równy zeru, ponieważ U jest funkcją stanu.",
         "Dla silnika cieplnego jest zawsze ściśle dodatni.",
       ],
@@ -1885,7 +1885,7 @@ export const quizQuestionTranslations: Partial<
     "l4-q3": {
       question: "Закрытая система совершает циклический процесс (A → A). Что можно утверждать о балансе Q_cycle + W_cycle?",
       choices: [
-        "Он обязательно равен нулю, поскольку при возвращении в начальное состояние Q и W сами становятся функциями состояния.",
+        "Он обязательно равен нулю, поскольку Q и W являются функциями состояния.",
         "Он равен нулю, поскольку U является функцией состояния.",
         "Для теплового двигателя он всегда строго положителен.",
       ],
@@ -2153,7 +2153,7 @@ export const quizQuestionTranslations: Partial<
     "l4-q3": {
       question: "一个封闭系统经历循环过程（A → A）。关于能量收支 Q_cycle + W_cycle，可以说什么？",
       choices: [
-        "它必然为零，因为系统回到初态时，Q 和 W 本身会变成状态函数。",
+        "它必然为零，因为 Q 和 W 是状态函数。",
         "它为零，因为 U 是状态函数。",
         "对于热机，它总是严格大于零。",
       ],
@@ -2421,7 +2421,7 @@ export const quizQuestionTranslations: Partial<
     "l4-q3": {
       question: "閉じた系がサイクル変化（A → A）を行う。収支 Q_cycle + W_cycle について何がいえるか？",
       choices: [
-        "初期状態に戻ると Q と W 自体が状態関数になるため、必ずゼロである。",
+        "Q と W は状態関数であるため、必ずゼロである。",
         "U が状態関数なのでゼロである。",
         "熱機関では常に厳密に正である。",
       ],
@@ -2689,7 +2689,7 @@ export const quizQuestionTranslations: Partial<
     "l4-q3": {
       question: "닫힌계가 순환 과정(A → A)을 겪는다. 수지 Q_cycle + W_cycle에 대해 무엇을 말할 수 있는가?",
       choices: [
-        "초기 상태로 돌아오면 Q와 W 자체가 상태함수가 되므로 반드시 0이다.",
+        "Q와 W는 상태함수이므로 반드시 0이다.",
         "U가 상태함수이므로 0이다.",
         "열기관에서는 언제나 엄밀히 양수이다.",
       ],
@@ -2957,7 +2957,7 @@ export const quizQuestionTranslations: Partial<
     "l4-q3": {
       question: "एक बंद निकाय चक्रीय प्रक्रम (A → A) से गुजरता है। ऊर्जा-संतुलन Q_cycle + W_cycle के बारे में क्या कहा जा सकता है?",
       choices: [
-        "यह अनिवार्यतः शून्य है, क्योंकि आरंभिक अवस्था में लौटने पर Q और W स्वयं अवस्था फलन बन जाते हैं।",
+        "यह अनिवार्यतः शून्य है, क्योंकि Q और W अवस्था फलन हैं।",
         "यह शून्य है, क्योंकि U एक अवस्था फलन है।",
         "ऊष्मा इंजन के लिए यह सदैव पूर्णतः धनात्मक होता है।",
       ],
@@ -3225,7 +3225,7 @@ export const quizQuestionTranslations: Partial<
     "l4-q3": {
       question: "Một hệ kín trải qua quá trình theo chu trình (A → A). Có thể khẳng định gì về cân bằng Q_cycle + W_cycle?",
       choices: [
-        "Nó nhất thiết bằng không vì Q và W tự trở thành hàm trạng thái khi hệ trở về trạng thái ban đầu.",
+        "Nó nhất thiết bằng không vì Q và W là hàm trạng thái.",
         "Nó bằng không vì U là một hàm trạng thái.",
         "Nó luôn luôn dương nghiêm ngặt đối với một động cơ nhiệt.",
       ],
@@ -3495,7 +3495,7 @@ export const quizQuestionTranslations: Partial<
     "l4-q3": {
       question: "يخضع نظام مغلق لتحول دوري (A → A). ماذا يمكن أن نقول عن الحصيلة Q_cycle + W_cycle؟",
       choices: [
-        "هي منعدمة بالضرورة لأن Q وW تصبحان بنفسيهما دالتي حالة عند العودة إلى الحالة البدئية.",
+        "هي منعدمة بالضرورة لأن Q وW دالتا حالة.",
         "هي منعدمة لأن U دالة حالة.",
         "هي دائما موجبة تماما بالنسبة إلى آلة حرارية محركة.",
       ],
@@ -3763,7 +3763,7 @@ export const quizQuestionTranslations: Partial<
     "l4-q3": {
       question: "Sebuah sistem tertutup mengalami proses siklik (A → A). Apa yang dapat dikatakan tentang neraca Q_cycle + W_cycle?",
       choices: [
-        "Nilainya pasti nol karena Q dan W sendiri menjadi fungsi keadaan ketika sistem kembali ke keadaan awal.",
+        "Nilainya pasti nol karena Q dan W adalah fungsi keadaan.",
         "Nilainya nol karena U adalah fungsi keadaan.",
         "Nilainya selalu positif secara ketat untuk sebuah mesin kalor.",
       ],
@@ -4031,7 +4031,7 @@ export const quizQuestionTranslations: Partial<
     "l4-q3": {
       question: "Kapalı bir sistem çevrimsel bir dönüşüm (A → A) geçiriyor. Q_cycle + W_cycle bilançosu için ne söylenebilir?",
       choices: [
-        "Mutlaka sıfırdır, çünkü başlangıç durumuna dönülünce Q ile W'nin kendileri durum fonksiyonu olur.",
+        "Mutlaka sıfırdır, çünkü Q ile W durum fonksiyonudur.",
         "U bir durum fonksiyonu olduğu için sıfırdır.",
         "Bir ısı makinesi için her zaman kesinlikle pozitiftir.",
       ],
@@ -4298,7 +4298,7 @@ export const quizQuestionTranslations: Partial<
     "l4-q3": {
       question: "একটি বদ্ধ তন্ত্র চক্রাকার রূপান্তর (A → A) সম্পন্ন করে। Q_cycle + W_cycle হিসাব সম্পর্কে কী বলা যায়?",
       choices: [
-        "এর মান অবশ্যই শূন্য, কারণ প্রাথমিক অবস্থায় ফিরে এলে Q ও W নিজেরাই অবস্থা অপেক্ষক হয়ে যায়।",
+        "এর মান অবশ্যই শূন্য, কারণ Q ও W অবস্থা অপেক্ষক।",
         "এর মান শূন্য, কারণ U একটি অবস্থা অপেক্ষক।",
         "ইঞ্জিন হিসেবে কাজ করা যন্ত্রের ক্ষেত্রে এটি সর্বদা কঠোরভাবে ধনাত্মক।",
       ],
@@ -4565,7 +4565,7 @@ export const quizQuestionTranslations: Partial<
     "l4-q3": {
       question: "ایک بند نظام چکری تبدیلی (A → A) سے گزرتا ہے۔ میزان Q_cycle + W_cycle کے بارے میں کیا کہا جا سکتا ہے؟",
       choices: [
-        "یہ لازماً صفر ہے، کیونکہ ابتدائی حالت میں واپسی پر Q اور W خود حالتی تفاعل بن جاتے ہیں۔",
+        "یہ لازماً صفر ہے، کیونکہ Q اور W حالتی تفاعل ہیں۔",
         "یہ صفر ہے کیونکہ U حالتی تفاعل ہے۔",
         "محرک مشین کے لیے یہ ہمیشہ سختی سے مثبت ہوتا ہے۔",
       ],
@@ -4832,7 +4832,7 @@ export const quizQuestionTranslations: Partial<
     "l4-q3": {
       question: "Mfumo funge unapitia mabadiliko ya mzunguko (A → A). Tunaweza kusema nini kuhusu mizania Q_cycle + W_cycle?",
       choices: [
-        "Lazima iwe sifuri kwa sababu Q na W zenyewe huwa dhima za hali mfumo unaporudi katika hali ya awali.",
+        "Lazima iwe sifuri kwa sababu Q na W ni dhima za hali.",
         "Ni sifuri kwa sababu U ni dhima ya hali.",
         "Daima ni chanya kabisa kwa mashine inayozalisha kazi.",
       ],
@@ -5099,7 +5099,7 @@ export const quizQuestionTranslations: Partial<
     "l4-q3": {
       question: "دستگاه بسته‌ای یک تحول چرخه‌ای (A → A) انجام می‌دهد. دربارهٔ موازنهٔ Q_cycle + W_cycle چه می‌توان گفت؟",
       choices: [
-        "الزاماً صفر است، زیرا با بازگشت به حالت آغازین، Q و W خود به تابع حالت تبدیل می‌شوند.",
+        "الزاماً صفر است، زیرا Q و W تابع حالت‌اند.",
         "صفر است، زیرا U تابع حالت است.",
         "برای یک ماشین محرک همیشه اکیداً مثبت است.",
       ],
