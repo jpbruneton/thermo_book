@@ -1,4 +1,5 @@
 import type { Lang } from "@/lib/i18n";
+import { quizLesson5Translations } from "@/lib/quizLesson5Translations";
 
 /**
  * Translated quiz question content, keyed by question id (`lib/quizzes.ts`).
@@ -11,7 +12,7 @@ import type { Lang } from "@/lib/i18n";
  * (see docs/languages.md: never a silent fallback to French or English).
  *
  * Terminology is aligned on the already-translated lesson text
- * (`content/tex/chp{1,2,3,4}_<lang>/lesson1.tex`) so that each quiz reuses the
+ * (`content/tex/chp{1,2,3,4,5}_<lang>/lesson1.tex`) so that each quiz reuses the
  * same scientific vocabulary as its lesson.
  */
 export interface TranslatedQuizQuestion {
@@ -24,6 +25,7 @@ export const quizQuestionTranslations: Partial<
   Record<Lang, Record<string, TranslatedQuizQuestion>>
 > = {
   en: {
+    ...quizLesson5Translations.en,
     "l1-q1": {
       question: "What is a heat engine, in the thermodynamic sense?",
       choices: [
@@ -244,21 +246,6 @@ export const quizQuestionTranslations: Partial<
         "Wrong: the ‘size’ of the quantities is irrelevant; what matters is their path dependence.",
       ],
     },
-    "l4-q2b": {
-      question: "An ideal gas goes from an equilibrium state A to an equilibrium state B, either by being compressed and then heated, or by being heated and then compressed. What can we say?",
-      choices: [
-        "The change in internal energy ΔU and the heat Q and work W received are the same in both cases.",
-        "ΔU is the same in both cases, but Q and W may differ from one path to the other.",
-        "Q is the same in both cases, but ΔU may differ.",
-        "None of the three quantities depends on the path followed.",
-      ],
-      explanations: [
-        "Wrong: only ΔU is fixed by states A and B; Q and W generally depend on the path followed.",
-        "Correct: U is a state function (dU is an exact differential), so ΔU = U(B) − U(A) depends only on the initial and final states. Q and W are not state functions (δQ and δW are not exact differentials), so they depend on the path; only their sum Q + W = ΔU is fixed by the first law.",
-        "Wrong: the reverse is true—ΔU, not Q, is independent of the path.",
-        "Wrong: ΔU does not depend on the path, but Q and W generally do.",
-      ],
-    },
     "l4-q3": {
       question: "A closed system undergoes a cyclic transformation (A → A). What can we say about the balance Q_cycle + W_cycle?",
       choices: [
@@ -297,6 +284,7 @@ export const quizQuestionTranslations: Partial<
   },
 
   de: {
+    ...quizLesson5Translations.de,
     "l1-q1": {
       question: "Was ist eine Wärmekraftmaschine im thermodynamischen Sinne?",
       choices: [
@@ -517,21 +505,6 @@ export const quizQuestionTranslations: Partial<
         "Falsch: Die ‚Größe‘ der Größen spielt keine Rolle; entscheidend ist die Wegabhängigkeit.",
       ],
     },
-    "l4-q2b": {
-      question: "Ein ideales Gas gelangt vom Gleichgewichtszustand A zum Gleichgewichtszustand B, entweder indem es zuerst komprimiert und dann erwärmt oder zuerst erwärmt und dann komprimiert wird. Was lässt sich sagen?",
-      choices: [
-        "Die Änderung der inneren Energie ΔU sowie die aufgenommene Wärme Q und Arbeit W sind in beiden Fällen gleich.",
-        "ΔU ist in beiden Fällen gleich, Q und W können sich jedoch von Weg zu Weg unterscheiden.",
-        "Q ist in beiden Fällen gleich, ΔU kann sich jedoch unterscheiden.",
-        "Keine der drei Größen hängt vom eingeschlagenen Weg ab.",
-      ],
-      explanations: [
-        "Falsch: Nur ΔU ist durch die Zustände A und B festgelegt; Q und W hängen im Allgemeinen vom Weg ab.",
-        "Richtig: U ist eine Zustandsfunktion (dU ist ein exaktes Differential), daher hängt ΔU = U(B) − U(A) nur vom Anfangs- und Endzustand ab. Q und W sind keine Zustandsfunktionen (δQ und δW sind keine exakten Differentiale) und hängen daher vom Weg ab; nur ihre Summe Q + W = ΔU ist durch den ersten Hauptsatz festgelegt.",
-        "Falsch: Das Gegenteil ist richtig—ΔU ist wegunabhängig, nicht Q.",
-        "Falsch: ΔU hängt nicht vom Weg ab, Q und W dagegen im Allgemeinen schon.",
-      ],
-    },
     "l4-q3": {
       question: "Ein geschlossenes System durchläuft eine Kreisprozessänderung (A → A). Was lässt sich über die Bilanz Q_cycle + W_cycle sagen?",
       choices: [
@@ -570,6 +543,7 @@ export const quizQuestionTranslations: Partial<
   },
 
   es: {
+    ...quizLesson5Translations.es,
     "l1-q1": {
       question: "¿Qué es un motor térmico, en el sentido de la termodinámica?",
       choices: [
@@ -790,21 +764,6 @@ export const quizQuestionTranslations: Partial<
         "Incorrecto: el «tamaño» de las magnitudes no tiene nada que ver; lo importante es la dependencia del camino.",
       ],
     },
-    "l4-q2b": {
-      question: "Un gas ideal pasa de un estado de equilibrio A a otro B, bien comprimiéndolo y después calentándolo, bien calentándolo y después comprimiéndolo. ¿Qué se puede afirmar?",
-      choices: [
-        "La variación de energía interna ΔU y el calor Q y el trabajo W recibidos son iguales en ambos casos.",
-        "ΔU es igual en ambos casos, pero Q y W pueden diferir de un camino a otro.",
-        "Q es igual en ambos casos, pero ΔU puede diferir.",
-        "Ninguna de las tres magnitudes depende del camino seguido.",
-      ],
-      explanations: [
-        "Incorrecto: solo ΔU queda fijada por los estados A y B; Q y W dependen en general del camino seguido.",
-        "Correcto: U es una función de estado (dU es una diferencial exacta), por lo que ΔU = U(B) − U(A) solo depende de los estados inicial y final. Q y W no son funciones de estado (δQ y δW no son diferenciales exactas), así que dependen del camino; solo su suma Q + W = ΔU queda fijada por el primer principio.",
-        "Incorrecto: lo cierto es lo contrario—ΔU, y no Q, es independiente del camino.",
-        "Incorrecto: ΔU no depende del camino, pero Q y W sí dependen en general.",
-      ],
-    },
     "l4-q3": {
       question: "Un sistema cerrado experimenta una transformación cíclica (A → A). ¿Qué se puede afirmar sobre el balance Q_cycle + W_cycle?",
       choices: [
@@ -843,6 +802,7 @@ export const quizQuestionTranslations: Partial<
   },
 
   pt: {
+    ...quizLesson5Translations.pt,
     "l1-q1": {
       question: "O que é um motor térmico, no sentido da termodinâmica?",
       choices: [
@@ -1063,21 +1023,6 @@ export const quizQuestionTranslations: Partial<
         "Errado: o «tamanho» das grandezas é irrelevante; o que está em causa é a dependência do caminho.",
       ],
     },
-    "l4-q2b": {
-      question: "Um gás ideal passa de um estado de equilíbrio A para um estado de equilíbrio B, quer sendo primeiro comprimido e depois aquecido, quer sendo primeiro aquecido e depois comprimido. O que se pode afirmar?",
-      choices: [
-        "A variação da energia interna ΔU e o calor Q e o trabalho W recebidos são iguais nos dois casos.",
-        "ΔU é igual nos dois casos, mas Q e W podem diferir de um caminho para outro.",
-        "Q é igual nos dois casos, mas ΔU pode diferir.",
-        "Nenhuma das três grandezas depende do caminho seguido.",
-      ],
-      explanations: [
-        "Errado: apenas ΔU é fixada pelos estados A e B; Q e W dependem, em geral, do caminho seguido.",
-        "Correto: U é uma função de estado (dU é uma diferencial exata), pelo que ΔU = U(B) − U(A) depende apenas dos estados inicial e final. Q e W não são funções de estado (δQ e δW não são diferenciais exatas), pelo que dependem do caminho; apenas a sua soma Q + W = ΔU é fixada pelo primeiro princípio.",
-        "Errado: é o contrário que é verdade—ΔU, e não Q, é independente do caminho.",
-        "Errado: ΔU não depende do caminho, mas Q e W dependem em geral.",
-      ],
-    },
     "l4-q3": {
       question: "Um sistema fechado sofre uma transformação cíclica (A → A). O que se pode afirmar sobre o balanço Q_cycle + W_cycle?",
       choices: [
@@ -1116,6 +1061,7 @@ export const quizQuestionTranslations: Partial<
   },
 
   it: {
+    ...quizLesson5Translations.it,
     "l1-q1": {
       question: "Che cos'è un motore termico, nel senso della termodinamica?",
       choices: [
@@ -1331,21 +1277,6 @@ export const quizQuestionTranslations: Partial<
         "Falso: la «dimensione» delle grandezze non c'entra; ciò che conta è la dipendenza dal cammino.",
       ],
     },
-    "l4-q2b": {
-      question: "Un gas ideale passa da uno stato di equilibrio A a uno stato di equilibrio B, comprimendolo prima di riscaldarlo oppure riscaldandolo prima di comprimerlo. Che cosa si può affermare?",
-      choices: [
-        "La variazione di energia interna ΔU e il calore Q e il lavoro W ricevuti sono uguali nei due casi.",
-        "ΔU è uguale nei due casi, ma Q e W possono differire da un cammino all'altro.",
-        "Q è uguale nei due casi, ma ΔU può differire.",
-        "Nessuna delle tre grandezze dipende dal cammino seguito.",
-      ],
-      explanations: [
-        "Falso: soltanto ΔU è fissata dagli stati A e B; Q e W dipendono in generale dal cammino seguito.",
-        "Esatto: U è una funzione di stato (dU è un differenziale esatto), quindi ΔU = U(B) − U(A) dipende soltanto dagli stati iniziale e finale. Q e W non sono funzioni di stato (δQ e δW non sono differenziali esatti), perciò dipendono dal cammino; solo la loro somma Q + W = ΔU è fissata dal primo principio.",
-        "Falso: è vero il contrario—ΔU, non Q, è indipendente dal cammino.",
-        "Falso: ΔU non dipende dal cammino, mentre Q e W in generale sì.",
-      ],
-    },
     "l4-q3": {
       question: "Un sistema chiuso subisce una trasformazione ciclica (A → A). Che cosa si può affermare sul bilancio Q_cycle + W_cycle?",
       choices: [
@@ -1384,6 +1315,7 @@ export const quizQuestionTranslations: Partial<
   },
 
   pl: {
+    ...quizLesson5Translations.pl,
     "l1-q1": {
       question: "Czym jest silnik cieplny w sensie termodynamicznym?",
       choices: [
@@ -1599,21 +1531,6 @@ export const quizQuestionTranslations: Partial<
         "Źle: „rozmiar” wielkości nie ma tu znaczenia; chodzi o zależność od drogi.",
       ],
     },
-    "l4-q2b": {
-      question: "Gaz doskonały przechodzi ze stanu równowagi A do stanu równowagi B: albo najpierw jest sprężany, a potem ogrzewany, albo najpierw ogrzewany, a potem sprężany. Co można stwierdzić?",
-      choices: [
-        "Zmiana energii wewnętrznej ΔU oraz pobrane ciepło Q i praca W są w obu przypadkach takie same.",
-        "ΔU jest w obu przypadkach taka sama, lecz Q i W mogą być różne dla różnych dróg.",
-        "Q jest w obu przypadkach takie samo, lecz ΔU może być różna.",
-        "Żadna z tych trzech wielkości nie zależy od obranej drogi.",
-      ],
-      explanations: [
-        "Źle: tylko ΔU jest wyznaczona przez stany A i B; Q i W na ogół zależą od drogi.",
-        "Dobrze: U jest funkcją stanu (dU jest różniczką zupełną), więc ΔU = U(B) − U(A) zależy wyłącznie od stanu początkowego i końcowego. Q i W nie są funkcjami stanu (δQ i δW nie są różniczkami zupełnymi), dlatego zależą od drogi; pierwsza zasada wyznacza tylko ich sumę Q + W = ΔU.",
-        "Źle: prawdziwe jest stwierdzenie odwrotne—to ΔU, a nie Q, jest niezależna od drogi.",
-        "Źle: ΔU nie zależy od drogi, natomiast Q i W na ogół od niej zależą.",
-      ],
-    },
     "l4-q3": {
       question: "Układ zamknięty przechodzi przemianę cykliczną (A → A). Co można powiedzieć o bilansie Q_cycle + W_cycle?",
       choices: [
@@ -1652,6 +1569,7 @@ export const quizQuestionTranslations: Partial<
   },
 
   ru: {
+    ...quizLesson5Translations.ru,
     "l1-q1": {
       question: "Что такое тепловой двигатель с точки зрения термодинамики?",
       choices: [
@@ -1867,21 +1785,6 @@ export const quizQuestionTranslations: Partial<
         "Неверно: «размер» величин здесь ни при чём; важна зависимость от пути.",
       ],
     },
-    "l4-q2b": {
-      question: "Идеальный газ переходит из равновесного состояния A в равновесное состояние B: либо сначала сжимается, а затем нагревается, либо сначала нагревается, а затем сжимается. Что можно утверждать?",
-      choices: [
-        "Изменение внутренней энергии ΔU, полученные теплота Q и работа W одинаковы в обоих случаях.",
-        "ΔU одинаково в обоих случаях, но Q и W могут различаться для разных путей.",
-        "Q одинаково в обоих случаях, но ΔU может различаться.",
-        "Ни одна из трёх величин не зависит от выбранного пути.",
-      ],
-      explanations: [
-        "Неверно: состояниями A и B однозначно задаётся только ΔU; Q и W в общем случае зависят от пути.",
-        "Верно: U — функция состояния (dU является точным дифференциалом), поэтому ΔU = U(B) − U(A) зависит только от начального и конечного состояний. Q и W не являются функциями состояния (δQ и δW — неточные дифференциалы), поэтому зависят от пути; первый закон задаёт лишь их сумму Q + W = ΔU.",
-        "Неверно: верно обратное—от пути не зависит ΔU, а не Q.",
-        "Неверно: ΔU не зависит от пути, а Q и W в общем случае зависят.",
-      ],
-    },
     "l4-q3": {
       question: "Закрытая система совершает циклический процесс (A → A). Что можно утверждать о балансе Q_cycle + W_cycle?",
       choices: [
@@ -1920,6 +1823,7 @@ export const quizQuestionTranslations: Partial<
   },
 
   zh: {
+    ...quizLesson5Translations.zh,
     "l1-q1": {
       question: "在热力学意义上，什么是热机？",
       choices: [
@@ -2135,21 +2039,6 @@ export const quizQuestionTranslations: Partial<
         "错误：这与物理量的“大小”无关，关键在于路径依赖性。",
       ],
     },
-    "l4-q2b": {
-      question: "理想气体从平衡态 A 变到平衡态 B：可以先压缩再加热，也可以先加热再压缩。下列说法哪一项正确？",
-      choices: [
-        "两种情况下，内能变化 ΔU、吸收的热量 Q 和功 W 都相同。",
-        "两种情况下 ΔU 相同，但 Q 和 W 可随路径而不同。",
-        "两种情况下 Q 相同，但 ΔU 可以不同。",
-        "这三个量都与所经过的路径无关。",
-      ],
-      explanations: [
-        "错误：只有 ΔU 由状态 A 和 B 决定；Q 和 W 通常取决于路径。",
-        "正确：U 是状态函数（dU 是全微分），所以 ΔU = U(B) − U(A) 只取决于初态和终态。Q 和 W 不是状态函数（δQ 和 δW 不是全微分），因而与路径有关；第一定律只确定它们的和 Q + W = ΔU。",
-        "错误：事实恰好相反——与路径无关的是 ΔU，而不是 Q。",
-        "错误：ΔU 与路径无关，但 Q 和 W 通常与路径有关。",
-      ],
-    },
     "l4-q3": {
       question: "一个封闭系统经历循环过程（A → A）。关于能量收支 Q_cycle + W_cycle，可以说什么？",
       choices: [
@@ -2188,6 +2077,7 @@ export const quizQuestionTranslations: Partial<
   },
 
   ja: {
+    ...quizLesson5Translations.ja,
     "l1-q1": {
       question: "熱力学でいう熱機関とは何か。",
       choices: [
@@ -2403,21 +2293,6 @@ export const quizQuestionTranslations: Partial<
         "誤り：量の「大きさ」は関係なく、問題は経路依存性である。",
       ],
     },
-    "l4-q2b": {
-      question: "理想気体が平衡状態 A から平衡状態 B へ移る。先に圧縮してから加熱する場合と、先に加熱してから圧縮する場合について、何がいえるか？",
-      choices: [
-        "内部エネルギー変化 ΔU、受け取った熱 Q、仕事 W は、いずれも両方の場合で同じである。",
-        "ΔU は両方の場合で同じだが、Q と W は経路によって異なりうる。",
-        "Q は両方の場合で同じだが、ΔU は異なりうる。",
-        "三つの量はいずれも経路に依存しない。",
-      ],
-      explanations: [
-        "誤り：状態 A と B によって決まるのは ΔU だけであり、Q と W は一般に経路に依存する。",
-        "正解：U は状態関数（dU は完全微分）なので、ΔU = U(B) − U(A) は初期状態と最終状態だけに依存する。Q と W は状態関数ではなく（δQ と δW は完全微分ではない）、経路に依存する。第一法則が定めるのは、その和 Q + W = ΔU だけである。",
-        "誤り：逆であり、経路に依存しないのは Q ではなく ΔU である。",
-        "誤り：ΔU は経路に依存しないが、Q と W は一般に依存する。",
-      ],
-    },
     "l4-q3": {
       question: "閉じた系がサイクル変化（A → A）を行う。収支 Q_cycle + W_cycle について何がいえるか？",
       choices: [
@@ -2456,6 +2331,7 @@ export const quizQuestionTranslations: Partial<
   },
 
   ko: {
+    ...quizLesson5Translations.ko,
     "l1-q1": {
       question: "열역학에서 말하는 열기관이란 무엇인가?",
       choices: [
@@ -2671,21 +2547,6 @@ export const quizQuestionTranslations: Partial<
         "틀림: 양의 ‘크기’는 관계없다. 핵심은 경로 의존성이다.",
       ],
     },
-    "l4-q2b": {
-      question: "이상 기체가 평형 상태 A에서 평형 상태 B로 간다. 먼저 압축한 뒤 가열하거나, 먼저 가열한 뒤 압축할 때 무엇을 말할 수 있는가?",
-      choices: [
-        "내부 에너지 변화 ΔU와 받은 열 Q 및 일 W는 두 경우 모두 같다.",
-        "ΔU는 두 경우 모두 같지만 Q와 W는 경로에 따라 달라질 수 있다.",
-        "Q는 두 경우 모두 같지만 ΔU는 달라질 수 있다.",
-        "세 양 가운데 어느 것도 경로에 의존하지 않는다.",
-      ],
-      explanations: [
-        "틀림: 상태 A와 B로 정해지는 것은 ΔU뿐이며, Q와 W는 일반적으로 경로에 의존한다.",
-        "정답: U는 상태함수이고 dU는 완전미분이므로 ΔU = U(B) − U(A)는 초기 상태와 최종 상태에만 의존한다. Q와 W는 상태함수가 아니며 δQ와 δW는 완전미분이 아니므로 경로에 의존한다. 제1법칙이 정하는 것은 그 합 Q + W = ΔU뿐이다.",
-        "틀림: 반대가 옳다. 경로와 무관한 것은 Q가 아니라 ΔU이다.",
-        "틀림: ΔU는 경로에 의존하지 않지만 Q와 W는 일반적으로 의존한다.",
-      ],
-    },
     "l4-q3": {
       question: "닫힌계가 순환 과정(A → A)을 겪는다. 수지 Q_cycle + W_cycle에 대해 무엇을 말할 수 있는가?",
       choices: [
@@ -2724,6 +2585,7 @@ export const quizQuestionTranslations: Partial<
   },
 
   hi: {
+    ...quizLesson5Translations.hi,
     "l1-q1": {
       question: "ऊष्मागतिकी के अर्थ में ऊष्मा इंजन क्या है?",
       choices: [
@@ -2939,21 +2801,6 @@ export const quizQuestionTranslations: Partial<
         "गलत: राशियों के ‘आकार’ का इससे कोई संबंध नहीं; प्रश्न मार्ग-निर्भरता का है।",
       ],
     },
-    "l4-q2b": {
-      question: "एक आदर्श गैस साम्यावस्था A से साम्यावस्था B तक जाती है: या तो पहले उसे संपीडित करके फिर गर्म किया जाता है, या पहले गर्म करके फिर संपीडित किया जाता है। क्या कहा जा सकता है?",
-      choices: [
-        "आंतरिक ऊर्जा का परिवर्तन ΔU तथा प्राप्त ऊष्मा Q और कार्य W दोनों स्थितियों में समान हैं।",
-        "ΔU दोनों स्थितियों में समान है, किंतु Q और W अलग-अलग मार्गों के लिए भिन्न हो सकते हैं।",
-        "Q दोनों स्थितियों में समान है, किंतु ΔU भिन्न हो सकता है।",
-        "इन तीनों राशियों में से कोई भी अनुसरित मार्ग पर निर्भर नहीं करती।",
-      ],
-      explanations: [
-        "गलत: केवल ΔU अवस्थाओं A और B द्वारा निर्धारित है; Q और W सामान्यतः अनुसरित मार्ग पर निर्भर करते हैं।",
-        "सही: U एक अवस्था फलन है (dU पूर्ण अवकलज है), इसलिए ΔU = U(B) − U(A) केवल आरंभिक और अंतिम अवस्थाओं पर निर्भर करता है। Q और W अवस्था फलन नहीं हैं (δQ और δW पूर्ण अवकलज नहीं हैं), अतः वे मार्ग पर निर्भर करते हैं; प्रथम नियम केवल उनका योग Q + W = ΔU निर्धारित करता है।",
-        "गलत: इसका उलटा सत्य है—मार्ग से स्वतंत्र राशि ΔU है, Q नहीं।",
-        "गलत: ΔU मार्ग पर निर्भर नहीं करता, किंतु Q और W सामान्यतः निर्भर करते हैं।",
-      ],
-    },
     "l4-q3": {
       question: "एक बंद निकाय चक्रीय प्रक्रम (A → A) से गुजरता है। ऊर्जा-संतुलन Q_cycle + W_cycle के बारे में क्या कहा जा सकता है?",
       choices: [
@@ -2992,6 +2839,7 @@ export const quizQuestionTranslations: Partial<
   },
 
   vi: {
+    ...quizLesson5Translations.vi,
     "l1-q1": {
       question: "Động cơ nhiệt là gì, theo nghĩa của nhiệt động lực học?",
       choices: [
@@ -3207,21 +3055,6 @@ export const quizQuestionTranslations: Partial<
         "Sai: ‘độ lớn’ của các đại lượng không liên quan; vấn đề là sự phụ thuộc vào đường đi.",
       ],
     },
-    "l4-q2b": {
-      question: "Một khí lý tưởng đi từ trạng thái cân bằng A đến trạng thái cân bằng B, hoặc được nén rồi nung nóng, hoặc được nung nóng rồi nén. Ta có thể khẳng định điều gì?",
-      choices: [
-        "Độ biến thiên nội năng ΔU, nhiệt Q và công W mà khí nhận được đều như nhau trong hai trường hợp.",
-        "ΔU như nhau trong hai trường hợp, nhưng Q và W có thể khác nhau theo đường đi.",
-        "Q như nhau trong hai trường hợp, nhưng ΔU có thể khác nhau.",
-        "Không đại lượng nào trong ba đại lượng phụ thuộc vào đường đi.",
-      ],
-      explanations: [
-        "Sai: chỉ ΔU được xác định bởi các trạng thái A và B; Q và W nói chung phụ thuộc vào đường đi.",
-        "Đúng: U là một hàm trạng thái (dU là vi phân toàn phần), nên ΔU = U(B) − U(A) chỉ phụ thuộc vào trạng thái đầu và cuối. Q và W không phải là hàm trạng thái (δQ và δW không phải là vi phân toàn phần), nên chúng phụ thuộc vào đường đi; nguyên lý thứ nhất chỉ ấn định tổng Q + W = ΔU.",
-        "Sai: điều ngược lại mới đúng—ΔU, chứ không phải Q, không phụ thuộc vào đường đi.",
-        "Sai: ΔU không phụ thuộc vào đường đi, còn Q và W nói chung thì có.",
-      ],
-    },
     "l4-q3": {
       question: "Một hệ kín trải qua quá trình theo chu trình (A → A). Có thể khẳng định gì về cân bằng Q_cycle + W_cycle?",
       choices: [
@@ -3262,6 +3095,7 @@ export const quizQuestionTranslations: Partial<
   // Arabic is rendered RTL: the hot → cold arrow of the French source is spelled
   // out in words here, since a bare "→" flips visually inside an RTL paragraph.
   ar: {
+    ...quizLesson5Translations.ar,
     "l1-q1": {
       question: "ما المحرك الحراري بالمعنى الترموديناميكي؟",
       choices: [
@@ -3477,21 +3311,6 @@ export const quizQuestionTranslations: Partial<
         "خطأ: لا علاقة لـ«حجم» الكميات بالأمر؛ المسألة هي تعلقها بالمسار.",
       ],
     },
-    "l4-q2b": {
-      question: "ينتقل غاز مثالي من حالة التوازن A إلى حالة التوازن B، إما بضغطه ثم تسخينه، وإما بتسخينه ثم ضغطه. ماذا يمكن أن نؤكد؟",
-      choices: [
-        "تكون قيم تغير الطاقة الداخلية ΔU والحرارة Q والشغل W المتلقاة متساوية في الحالتين.",
-        "يكون ΔU متساويا في الحالتين، لكن Q وW قد يختلفان من مسار إلى آخر.",
-        "تكون Q متساوية في الحالتين، لكن ΔU قد يختلف.",
-        "لا تتعلق أي من الكميات الثلاث بالمسار المتبع.",
-      ],
-      explanations: [
-        "خطأ: لا تحدد الحالتان A وB إلا ΔU؛ أما Q وW فتتعلقان عموما بالمسار المتبع.",
-        "صحيح: U دالة حالة (وdU تفاضل تام)، لذلك لا يتعلق ΔU = U(B) − U(A) إلا بالحالتين البدئية والنهائية. أما Q وW فليستا دالتي حالة (وδQ وδW ليسا تفاضلين تامين)، ولذلك تتعلقان بالمسار؛ ولا يحدد المبدأ الأول إلا مجموعهما Q + W = ΔU.",
-        "خطأ: العكس هو الصحيح—فـΔU، لا Q، هي المستقلة عن المسار.",
-        "خطأ: لا يتعلق ΔU بالمسار، بينما تتعلق به Q وW عموما.",
-      ],
-    },
     "l4-q3": {
       question: "يخضع نظام مغلق لتحول دوري (A → A). ماذا يمكن أن نقول عن الحصيلة Q_cycle + W_cycle؟",
       choices: [
@@ -3530,6 +3349,7 @@ export const quizQuestionTranslations: Partial<
   },
 
   id: {
+    ...quizLesson5Translations.id,
     "l1-q1": {
       question: "Apa itu mesin kalor dalam pengertian termodinamika?",
       choices: [
@@ -3745,21 +3565,6 @@ export const quizQuestionTranslations: Partial<
         "Salah: ‘ukuran’ besaran tidak ada hubungannya; persoalannya adalah ketergantungan pada lintasan.",
       ],
     },
-    "l4-q2b": {
-      question: "Gas ideal berpindah dari keadaan kesetimbangan A ke keadaan kesetimbangan B, baik dengan dimampatkan lalu dipanaskan maupun dipanaskan lalu dimampatkan. Apa yang dapat dinyatakan?",
-      choices: [
-        "Perubahan energi dalam ΔU serta kalor Q dan kerja W yang diterima sama dalam kedua kasus.",
-        "ΔU sama dalam kedua kasus, tetapi Q dan W dapat berbeda dari satu lintasan ke lintasan lain.",
-        "Q sama dalam kedua kasus, tetapi ΔU dapat berbeda.",
-        "Tidak satu pun dari ketiga besaran itu bergantung pada lintasan yang ditempuh.",
-      ],
-      explanations: [
-        "Salah: hanya ΔU yang ditentukan oleh keadaan A dan B; Q dan W pada umumnya bergantung pada lintasan.",
-        "Benar: U adalah fungsi keadaan (dU merupakan diferensial eksak), sehingga ΔU = U(B) − U(A) hanya bergantung pada keadaan awal dan akhir. Q dan W bukan fungsi keadaan (δQ dan δW bukan diferensial eksak), sehingga keduanya bergantung pada lintasan; hukum pertama hanya menentukan jumlahnya, Q + W = ΔU.",
-        "Salah: yang benar adalah kebalikannya—ΔU, bukan Q, tidak bergantung pada lintasan.",
-        "Salah: ΔU tidak bergantung pada lintasan, tetapi Q dan W pada umumnya bergantung.",
-      ],
-    },
     "l4-q3": {
       question: "Sebuah sistem tertutup mengalami proses siklik (A → A). Apa yang dapat dikatakan tentang neraca Q_cycle + W_cycle?",
       choices: [
@@ -3798,6 +3603,7 @@ export const quizQuestionTranslations: Partial<
   },
 
   tr: {
+    ...quizLesson5Translations.tr,
     "l1-q1": {
       question: "Termodinamik anlamda ısı makinesi nedir?",
       choices: [
@@ -4013,21 +3819,6 @@ export const quizQuestionTranslations: Partial<
         "Yanlış: Büyüklüklerin ‘boyutu’ konuyla ilgisizdir; söz konusu olan yola bağımlılıktır.",
       ],
     },
-    "l4-q2b": {
-      question: "İdeal bir gaz, önce sıkıştırılıp sonra ısıtılarak ya da önce ısıtılıp sonra sıkıştırılarak A denge durumundan B denge durumuna geçiyor. Ne söylenebilir?",
-      choices: [
-        "İç enerji değişimi ΔU ile alınan ısı Q ve iş W her iki durumda da aynıdır.",
-        "ΔU her iki durumda da aynıdır, ama Q ile W bir yoldan diğerine farklı olabilir.",
-        "Q her iki durumda da aynıdır, ama ΔU farklı olabilir.",
-        "Üç büyüklüğün hiçbiri izlenen yola bağlı değildir.",
-      ],
-      explanations: [
-        "Yanlış: Yalnızca ΔU, A ve B durumlarınca belirlenir; Q ile W genel olarak izlenen yola bağlıdır.",
-        "Doğru: U bir durum fonksiyonudur (dU tam diferansiyeldir), dolayısıyla ΔU = U(B) − U(A) yalnızca başlangıç ve bitiş durumlarına bağlıdır. Q ile W durum fonksiyonu değildir (δQ ile δW tam diferansiyel değildir), bu yüzden yola bağlıdır; birinci yasa yalnızca toplamlarını, Q + W = ΔU'yu belirler.",
-        "Yanlış: Tersi doğrudur—yoldan bağımsız olan Q değil, ΔU'dur.",
-        "Yanlış: ΔU yola bağlı değildir, ama Q ile W genel olarak bağlıdır.",
-      ],
-    },
     "l4-q3": {
       question: "Kapalı bir sistem çevrimsel bir dönüşüm (A → A) geçiriyor. Q_cycle + W_cycle bilançosu için ne söylenebilir?",
       choices: [
@@ -4065,6 +3856,7 @@ export const quizQuestionTranslations: Partial<
     },
   },
   bn: {
+    ...quizLesson5Translations.bn,
     "l1-q1": {
       question: "তাপগতিবিদ্যার অর্থে তাপ ইঞ্জিন কী?",
       choices: [
@@ -4280,21 +4072,6 @@ export const quizQuestionTranslations: Partial<
         "ভুল: রাশির ‘আকার’ এখানে অপ্রাসঙ্গিক; বিষয়টি হলো পথ-নির্ভরতা।",
       ],
     },
-    "l4-q2b": {
-      question: "একটি আদর্শ গ্যাস সাম্যাবস্থা A থেকে সাম্যাবস্থা B-তে যায়—একবার আগে সংকুচিত করে পরে গরম করা হয়, আরেকবার আগে গরম করে পরে সংকুচিত করা হয়। কী বলা যায়?",
-      choices: [
-        "অভ্যন্তরীণ শক্তির পরিবর্তন ΔU এবং গৃহীত তাপ Q ও কাজ W—তিনটিই উভয় ক্ষেত্রে একই।",
-        "ΔU উভয় ক্ষেত্রে একই, কিন্তু Q ও W পথভেদে আলাদা হতে পারে।",
-        "Q উভয় ক্ষেত্রে একই, কিন্তু ΔU আলাদা হতে পারে।",
-        "তিনটি রাশির কোনোটিই অনুসৃত পথের উপর নির্ভর করে না।",
-      ],
-      explanations: [
-        "ভুল: শুধু ΔU অবস্থা A ও B দ্বারা নির্ধারিত; Q ও W সাধারণত পথের উপর নির্ভর করে।",
-        "সঠিক: U একটি অবস্থা অপেক্ষক (dU সম্পূর্ণ অন্তরক), তাই ΔU = U(B) − U(A) শুধু প্রাথমিক ও চূড়ান্ত অবস্থার উপর নির্ভর করে। Q ও W অবস্থা অপেক্ষক নয় (δQ ও δW সম্পূর্ণ অন্তরক নয়), তাই তারা পথের উপর নির্ভর করে; কেবল তাদের যোগফল Q + W = ΔU প্রথম সূত্র দ্বারা নির্ধারিত।",
-        "ভুল: সত্যটি ঠিক উল্টো—Q নয়, ΔU পথ-নিরপেক্ষ।",
-        "ভুল: ΔU পথের উপর নির্ভর করে না, কিন্তু Q ও W সাধারণত করে।",
-      ],
-    },
     "l4-q3": {
       question: "একটি বদ্ধ তন্ত্র চক্রাকার রূপান্তর (A → A) সম্পন্ন করে। Q_cycle + W_cycle হিসাব সম্পর্কে কী বলা যায়?",
       choices: [
@@ -4332,6 +4109,7 @@ export const quizQuestionTranslations: Partial<
     },
   },
   ur: {
+    ...quizLesson5Translations.ur,
     "l1-q1": {
       question: "حرارتی حرکیات کے مفہوم میں حرارتی انجن کیا ہے؟",
       choices: [
@@ -4547,21 +4325,6 @@ export const quizQuestionTranslations: Partial<
         "غلط: مقداروں کے ’سائز‘ کا اس سے کوئی تعلق نہیں؛ مسئلہ راستے پر انحصار کا ہے۔",
       ],
     },
-    "l4-q2b": {
-      question: "ایک مثالی گیس حالتِ توازن A سے حالتِ توازن B تک جاتی ہے: پہلے دبا کر پھر گرم کی جائے، یا پہلے گرم کر کے پھر دبائی جائے۔ ہم کیا کہہ سکتے ہیں؟",
-      choices: [
-        "اندرونی توانائی کی تبدیلی ΔU، حاصل کردہ حرارت Q اور کام W تینوں دونوں صورتوں میں یکساں ہیں۔",
-        "ΔU دونوں صورتوں میں یکساں ہے، مگر Q اور W راستے کے ساتھ بدل سکتے ہیں۔",
-        "Q دونوں صورتوں میں یکساں ہے، مگر ΔU بدل سکتی ہے۔",
-        "تینوں مقداروں میں سے کوئی بھی اختیار کردہ راستے پر منحصر نہیں۔",
-      ],
-      explanations: [
-        "غلط: صرف ΔU حالتوں A اور B سے متعین ہے؛ Q اور W عموماً اختیار کردہ راستے پر منحصر ہیں۔",
-        "درست: U ایک حالتی تفاعل ہے (dU درست تفرق ہے)، اس لیے ΔU = U(B) − U(A) صرف ابتدائی اور آخری حالت پر منحصر ہے۔ Q اور W حالتی تفاعل نہیں (δQ اور δW درست تفرقات نہیں)، اس لیے راستے پر منحصر ہیں؛ صرف ان کا مجموعہ Q + W = ΔU پہلے اصول سے متعین ہے۔",
-        "غلط: حقیقت اس کے برعکس ہے—راستے سے آزاد مقدار ΔU ہے، Q نہیں۔",
-        "غلط: ΔU راستے پر منحصر نہیں، مگر Q اور W عموماً منحصر ہوتے ہیں۔",
-      ],
-    },
     "l4-q3": {
       question: "ایک بند نظام چکری تبدیلی (A → A) سے گزرتا ہے۔ میزان Q_cycle + W_cycle کے بارے میں کیا کہا جا سکتا ہے؟",
       choices: [
@@ -4599,6 +4362,7 @@ export const quizQuestionTranslations: Partial<
     },
   },
   sw: {
+    ...quizLesson5Translations.sw,
     "l1-q1": {
       question: "Injini ya joto ni nini kwa maana ya thermodynamiki?",
       choices: [
@@ -4814,21 +4578,6 @@ export const quizQuestionTranslations: Partial<
         "Si sahihi: ‘ukubwa’ wa sifa hauhusiki; kinachohusika ni utegemezi kwa njia.",
       ],
     },
-    "l4-q2b": {
-      question: "Gesi bora hutoka hali ya usawa A hadi hali ya usawa B, ama kwa kubanwa kisha kupashwa, au kwa kupashwa kisha kubanwa. Tunaweza kusema nini?",
-      choices: [
-        "Mabadiliko ya nishati ya ndani ΔU, joto Q na kazi W zinazopokelewa ni sawa katika hali zote mbili.",
-        "ΔU ni sawa katika hali zote mbili, lakini Q na W zinaweza kutofautiana kulingana na njia.",
-        "Q ni sawa katika hali zote mbili, lakini ΔU inaweza kutofautiana.",
-        "Hakuna kati ya sifa hizi tatu inayotegemea njia iliyofuatwa.",
-      ],
-      explanations: [
-        "Si sahihi: ΔU pekee ndiyo huamuliwa na hali A na B; Q na W kwa kawaida hutegemea njia iliyofuatwa.",
-        "Sahihi: U ni dhima ya hali (dU ni diferenshali kamili), kwa hiyo ΔU = U(B) − U(A) hutegemea tu hali ya awali na ya mwisho. Q na W si dhima za hali (δQ na δW si diferenshali kamili), hivyo hutegemea njia; jumla yao Q + W = ΔU pekee ndiyo huamuliwa na kanuni ya kwanza.",
-        "Si sahihi: kinyume chake ndicho sahihi—ΔU ndiyo haitegemei njia, si Q.",
-        "Si sahihi: ΔU haitegemei njia, lakini Q na W kwa kawaida huitegemea.",
-      ],
-    },
     "l4-q3": {
       question: "Mfumo funge unapitia mabadiliko ya mzunguko (A → A). Tunaweza kusema nini kuhusu mizania Q_cycle + W_cycle?",
       choices: [
@@ -4866,6 +4615,7 @@ export const quizQuestionTranslations: Partial<
     },
   },
   fa: {
+    ...quizLesson5Translations.fa,
     "l1-q1": {
       question: "موتور حرارتی در معنای ترمودینامیکی چیست؟",
       choices: [
@@ -5079,21 +4829,6 @@ export const quizQuestionTranslations: Partial<
       explanations: [
         "درست: Q و W به مسیر بستگی دارند، برخلاف U که تنها به حالت‌های آغازین و پایانی وابسته است. نوشتن dQ به‌منزلهٔ زنده‌کردن دوبارهٔ نظریهٔ کالریک بود.",
         "نادرست: «اندازهٔ» کمیت‌ها هیچ ارتباطی ندارد؛ مسئله وابستگی به مسیر است.",
-      ],
-    },
-    "l4-q2b": {
-      question: "گاز ایده‌آلی از حالت تعادل A به حالت تعادل B می‌رود؛ یا نخست فشرده و سپس گرم می‌شود، یا نخست گرم و سپس فشرده می‌شود. چه می‌توان گفت؟",
-      choices: [
-        "تغییر انرژی درونی ΔU، گرمای Q و کار W دریافتی در هر دو حالت یکسان‌اند.",
-        "ΔU در هر دو حالت یکسان است، اما Q و W می‌توانند در مسیرهای متفاوت فرق کنند.",
-        "Q در هر دو حالت یکسان است، اما ΔU می‌تواند فرق کند.",
-        "هیچ‌یک از این سه کمیت به مسیر پیموده‌شده بستگی ندارد.",
-      ],
-      explanations: [
-        "نادرست: فقط ΔU با حالت‌های A و B تعیین می‌شود؛ Q و W عموماً به مسیر پیموده‌شده وابسته‌اند.",
-        "درست: U تابع حالت است (dU دیفرانسیل کامل است)، پس ΔU = U(B) − U(A) تنها به حالت‌های آغازین و پایانی بستگی دارد. Q و W تابع حالت نیستند (δQ و δW دیفرانسیل کامل نیستند)، پس به مسیر وابسته‌اند؛ تنها مجموع آن‌ها Q + W = ΔU با قانون اول تعیین می‌شود.",
-        "نادرست: عکس آن درست است—ΔU مستقل از مسیر است، نه Q.",
-        "نادرست: ΔU به مسیر بستگی ندارد، اما Q و W عموماً وابسته‌اند.",
       ],
     },
     "l4-q3": {

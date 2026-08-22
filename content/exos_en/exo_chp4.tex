@@ -1,0 +1,272 @@
+% Exercise bank — Chapter 4
+% The chapter is determined by the name of this file.
+
+\begin{exo}[Integrating a differential form along a path]{integrale-forme-differentielle}
+\keywords{differential form, exact differential, Schwarz criterion, line integral}
+
+Consider the two differential forms
+\[
+\omega_1 = y\,\mathrm{d}x + x\,\mathrm{d}y,
+\qquad
+\omega_2 = y\,\mathrm{d}x,
+\]
+and three paths joining the origin $O(0,0)$ to the point $M(1,1)$: path
+$\gamma_1$, consisting of the horizontal segment $O\to(1,0)$ followed by the
+vertical segment $(1,0)\to M$; path $\gamma_2$, consisting of the vertical
+segment $O\to(0,1)$ followed by the horizontal segment $(0,1)\to M$; and path
+$\gamma_3$, the straight-line segment joining $O$ directly to $M$.
+
+\begin{enumerate}
+\item Show that $\omega_1$ is exact by finding a function $f$ such that $\omega_1 = \mathrm{d}f$.
+\item Calculate $\int_{\gamma_1}\omega_1$ and $\int_{\gamma_2}\omega_1$ by parametrizing each segment. Recover the result without calculation.
+\item Apply Schwarz's criterion to $\omega_2$. What can be concluded?
+\item Calculate $\int_{\gamma_1}\omega_2$, $\int_{\gamma_2}\omega_2$, and $\int_{\gamma_3}\omega_2$. Comment on the results.
+\end{enumerate}
+
+\begin{indication}
+On a horizontal segment $\mathrm{d}y = 0$, and on a vertical segment
+$\mathrm{d}x = 0$: each integral reduces to an ordinary single integral.
+\end{indication}
+
+\begin{solution}
+\textbf{Question 1.} The function $f(x,y) = xy$ works, since $\partial f/\partial x = y$ and $\partial f/\partial y = x$.
+
+\textbf{Question 2.} For a curve parametrized by
+$t\mapsto\bigl(x(t),y(t)\bigr)$, we have
+\[
+\int_\gamma\omega_1
+= \int \left[y(t)x'(t)+x(t)y'(t)\right]\,\mathrm{d}t.
+\]
+
+Path $\gamma_1$ is the union of two segments. On the first,
+$x(t)=t$ and $y(t)=0$, with $t\in[0,1]$; hence $\mathrm{d}x=\mathrm{d}t$
+and $\mathrm{d}y=0$. On the second, $x(t)=1$ and $y(t)=t$, again with
+$t\in[0,1]$; hence $\mathrm{d}x=0$ and $\mathrm{d}y=\mathrm{d}t$. Therefore,
+\[
+\begin{aligned}
+I_1
+= \int_{\gamma_1}\omega_1
+&= \int_0^1\left(0\times 1+t\times 0\right)\,\mathrm{d}t
+ + \int_0^1\left(t\times 0+1\times 1\right)\,\mathrm{d}t \\
+&= 0+\int_0^1\mathrm{d}t = 1.
+\end{aligned}
+\]
+
+For $\gamma_2$, the first segment is parametrized by $x(t)=0$, $y(t)=t$,
+and the second by $x(t)=t$, $y(t)=1$, with $t\in[0,1]$ in both cases.
+We therefore obtain
+\[
+\begin{aligned}
+I_2
+= \int_{\gamma_2}\omega_1
+&= \int_0^1\left(t\times 0+0\times 1\right)\,\mathrm{d}t
+ + \int_0^1\left(1\times 1+t\times 0\right)\,\mathrm{d}t \\
+&= 0+\int_0^1\mathrm{d}t = 1.
+\end{aligned}
+\]
+The two values agree. This could have been predicted without calculation:
+because $\omega_1=\mathrm{d}f$ with $f(x,y)=xy$, its integral depends only on
+the endpoints,
+\[
+\int_\gamma\omega_1=f(M)-f(O)=f(1,1)-f(0,0)=1.
+\]
+
+\textbf{Question 3.} Write $\omega_2=A(x,y)\,\mathrm{d}x+B(x,y)\,\mathrm{d}y$.
+Here $A(x,y)=y$ and $B(x,y)=0$. If the form were exact, Schwarz's criterion
+would give
+\[
+\frac{\partial A}{\partial y}=\frac{\partial B}{\partial x}.
+\]
+However, $\partial A/\partial y=1$, whereas $\partial B/\partial x=0$.
+The mixed derivatives differ, so $\omega_2$ is not exact. Its integral may
+therefore depend on the path followed between $O$ and $M$, as the following
+calculation confirms.
+
+\textbf{Question 4.} Since $\omega_2=y\,\mathrm{d}x$, only a change in $x$
+at a nonzero value of $y$ can contribute to the integral. Using the previous
+parametrizations, on $\gamma_1$ we find
+\[
+\begin{aligned}
+J_1
+=\int_{\gamma_1}\omega_2
+&=\int_0^1 0\times 1\,\mathrm{d}t
+  +\int_0^1 t\times 0\,\mathrm{d}t \\
+&=0.
+\end{aligned}
+\]
+On $\gamma_2$, the first segment satisfies $x(t)=0$, so $\mathrm{d}x=0$;
+on the second, $x(t)=t$, $y(t)=1$, and $\mathrm{d}x=\mathrm{d}t$. Thus
+\[
+\begin{aligned}
+J_2
+=\int_{\gamma_2}\omega_2
+&=\int_0^1 t\times 0\,\mathrm{d}t
+  +\int_0^1 1\times 1\,\mathrm{d}t \\
+&=1.
+\end{aligned}
+\]
+Finally, the diagonal segment $\gamma_3$ is explicitly parametrized by
+\[
+x(t)=t,\qquad y(t)=t,\qquad t\in[0,1],
+\]
+so $\mathrm{d}x=\mathrm{d}t$ and $\mathrm{d}y=\mathrm{d}t$. Hence
+\[
+J_3
+=\int_{\gamma_3}\omega_2
+=\int_0^1 y(t)x'(t)\,\mathrm{d}t
+=\int_0^1 t\,\mathrm{d}t
+=\frac12.
+\]
+The three paths have the same endpoints but yield three different values:
+$J_1=0$, $J_2=1$, and $J_3=1/2$. This is precisely the path dependence
+characteristic of a non-exact differential form.
+\end{solution}
+\end{exo}
+
+\begin{exo}[Same change in internal energy, three modes of transfer]{meme-delta-u-trois-transferts}
+\keywords{first law, internal energy, heat, mechanical work, electrical work, calorimetry, state function}
+
+A liquid, its calorimeter, and a small immersed resistor form a closed system
+that is macroscopically at rest. The container is rigid, and the total heat
+capacity of the system is assumed constant:
+\[
+C=2{,}00\ \mathrm{kJ\,K^{-1}}.
+\]
+The system is to be taken from equilibrium state $A$, at
+$T_A=20{,}0\,^\circ\mathrm{C}$, to equilibrium state $B$, at
+$T_B=25{,}0\,^\circ\mathrm{C}$. It is given that
+\[
+U(B)-U(A)=C(T_B-T_A).
+\]
+The changes in macroscopic kinetic and potential energy are zero. All losses
+to the surroundings are neglected.
+
+The following three protocols are carried out independently, starting from
+the same initial state $A$:
+\begin{itemize}
+\item[Protocol 1] The system is placed in thermal contact with a hot reservoir,
+with no work supplied to it.
+\item[Protocol 2] The walls are thermally insulated. A paddle stirs the liquid
+as a mass $m$ falls through a height $h=5{,}00$ m. The paddle and liquid end
+at rest, and all the mechanical energy lost by the mass is transferred to the
+system. Take $g=9{,}81\ \mathrm{m\,s^{-2}}$.
+\item[Protocol 3] The system receives heat $Q_3=4{,}00$ kJ, and the remaining
+energy is supplied electrically to the resistor. The electrical power received
+is constant and equal to $\mathcal P=300$ W.
+\end{itemize}
+
+\begin{enumerate}
+\item Calculate the change in internal energy $\Delta U=U(B)-U(A)$ common to all three protocols.
+\item For each of the first two protocols, determine the heat $Q$ and work $W$ received by the system. In the second protocol, calculate the required mass $m$.
+\item For the third protocol, calculate the electrical work received and the duration for which the resistor is powered.
+\item The three transformations have the same initial and final states. Explain why their values of $Q$ and $W$ may nevertheless differ. Does the system contain ``heat'' or ``work'' in the final state $B$?
+\end{enumerate}
+
+\begin{indication}
+Apply $\Delta U=Q+W$ using the banker's convention. For the paddle, the work
+received equals the decrease $mgh$ in the potential energy of the mass.
+Electrical energy crossing the boundary through the wires is counted as
+electrical work.
+\end{indication}
+
+\begin{solution}
+\textbf{Question 1.} The temperature difference is $T_B-T_A=5{,}0$ K.
+Therefore,
+\[
+\Delta U=C(T_B-T_A)
+=2{,}00\times5{,}0
+=10{,}0\ \mathrm{kJ}.
+\]
+This value depends only on the two equilibrium states $A$ and $B$.
+
+\textbf{Question 2.} In the first protocol, no work is received: $W_1=0$.
+The first law therefore gives
+\[
+Q_1=\Delta U=10{,}0\ \mathrm{kJ}.
+\]
+The heat is positive because energy enters the system.
+
+In the second protocol, the walls are thermally insulated, so $Q_2=0$.
+The entire change in internal energy comes from the mechanical work of the
+paddle:
+\[
+W_2=\Delta U=10{,}0\ \mathrm{kJ}.
+\]
+Since $W_2=mgh$, it follows that
+\[
+m=\frac{W_2}{gh}
+=\frac{10{,}0\times10^3}{9{,}81\times5{,}00}
+\simeq 204\ \mathrm{kg}.
+\]
+The large order of magnitude is a reminder that even a modest temperature
+rise already corresponds to a substantial amount of mechanical energy.
+
+\textbf{Question 3.} The first law requires
+\[
+W_3=\Delta U-Q_3=10{,}0-4{,}00=6{,}00\ \mathrm{kJ}.
+\]
+This work is positive: the electrical supply provides energy to the system.
+With $W_3=\mathcal P\,\Delta t$,
+\[
+\Delta t=\frac{W_3}{\mathcal P}
+=\frac{6{,}00\times10^3}{300}
+=20{,}0\ \mathrm{s}.
+\]
+
+\textbf{Question 4.} The three paths give, respectively,
+\[
+(Q_1,W_1)=(10{,}0,0)\ \mathrm{kJ},
+\qquad
+(Q_2,W_2)=(0,10{,}0)\ \mathrm{kJ},
+\]
+and
+\[
+(Q_3,W_3)=(4{,}00,6{,}00)\ \mathrm{kJ}.
+\]
+In every case, the sum $Q+W$ is $10{,}0$ kJ and produces the same change
+$\Delta U$. Internal energy is a state function, whereas heat and work
+describe transfers during a transformation. In final state $B$, the system
+has internal energy, but it contains neither ``heat'' nor ``work.''
+\end{solution}
+\end{exo}
+
+\begin{exo}[Compression under constant external pressure]{compression-pression-exterieure-constante}
+\seoready{true}
+\keywords{pressure work, constant external pressure, compression, expansion, free expansion}
+
+A gas is compressed from a volume $V_A$ to a volume $V_B<V_A$ under a
+constant external pressure $P_0$.
+
+\begin{enumerate}
+\item Calculate the work received by the gas.
+\item The gas returns from $V_B$ to $V_A$ against the same external pressure $P_0$. Calculate the work received and compare it with the compression work.
+\item Repeat the expansion from $V_B$ to $V_A$ when the gas expands into a vacuum. Interpret the three signs obtained.
+\end{enumerate}
+
+\begin{indication}
+Use $W=-\int P_{\mathrm{ext}}\,\mathrm{d}V$. The \emph{external} pressure must
+be integrated, including when the transformation is not quasi-static.
+\end{indication}
+
+\begin{solution}
+\textbf{Question 1.} The external pressure is constant, so
+\[
+W_{A\to B}=-P_0(V_B-V_A)=P_0(V_A-V_B)>0.
+\]
+The gas receives work during compression.
+
+\textbf{Question 2.} For the return path,
+\[
+W_{B\to A}=-P_0(V_A-V_B)<0.
+\]
+The two works are opposites because the transformations are carried out
+against the same constant external pressure.
+
+\textbf{Question 3.} In a vacuum, $P_{\mathrm{ext}}=0$, so
+\[
+W_{B\to A}^{\mathrm{vide}}=0.
+\]
+Thus, expansion does not automatically imply negative work: an external
+force must actually be displaced.
+\end{solution}
+\end{exo}

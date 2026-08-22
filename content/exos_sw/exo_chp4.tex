@@ -1,0 +1,257 @@
+% Benki ya mazoezi — sura ya 4
+% Sura hubainishwa na jina la faili hili.
+
+\begin{exo}[Kukokotoa integrali ya umbo tofauti kwenye njia]{integrale-forme-differentielle}
+\keywords{umbo tofauti, diferenshali kamili, kigezo cha Schwarz, integrali ya mstari}
+
+Fikiria maumbo mawili tofauti
+\[
+\omega_1 = y\,\mathrm{d}x + x\,\mathrm{d}y,
+\qquad
+\omega_2 = y\,\mathrm{d}x,
+\]
+na njia tatu zinazounganisha asili $O(0,0)$ na nukta $M(1,1)$: njia
+$\gamma_1$ ni kipande cha mlalo $O\to(1,0)$ kikifuatwa na kipande cha wima
+$(1,0)\to M$; njia $\gamma_2$ ni kipande cha wima $O\to(0,1)$ kikifuatwa
+na kipande cha mlalo $(0,1)\to M$; na njia $\gamma_3$ ni kipande cha mstari
+kinachounganisha $O$ moja kwa moja na $M$.
+
+\begin{enumerate}
+\item Onyesha kuwa $\omega_1$ ni kamili kwa kupata funksioni $f$ ambayo $\omega_1=\mathrm{d}f$.
+\item Kokotoa $\int_{\gamma_1}\omega_1$ na $\int_{\gamma_2}\omega_1$ kwa kuweka parameta kwa kila kipande. Pata tena jibu bila kukokotoa.
+\item Tumia kigezo cha Schwarz kwa $\omega_2$. Tunaweza kuhitimisha nini?
+\item Kokotoa $\int_{\gamma_1}\omega_2$, $\int_{\gamma_2}\omega_2$ na $\int_{\gamma_3}\omega_2$. Toa maoni.
+\end{enumerate}
+
+\begin{indication}
+Kwenye kipande cha mlalo $\mathrm{d}y=0$, na kwenye kipande cha wima
+$\mathrm{d}x=0$: kila integrali hupunguzwa kuwa integrali rahisi.
+\end{indication}
+
+\begin{solution}
+\textbf{Swali la 1.} $f(x,y)=xy$ inafaa, kwa sababu $\partial f/\partial x=y$ na $\partial f/\partial y=x$.
+
+\textbf{Swali la 2.} Kwa mkunjo uliowekewa parameta kwa
+$t\mapsto\bigl(x(t),y(t)\bigr)$, tuna
+\[
+\int_\gamma\omega_1
+= \int \left[y(t)x'(t)+x(t)y'(t)\right]\,\mathrm{d}t.
+\]
+
+Njia $\gamma_1$ ni muungano wa vipande viwili. Kwenye cha kwanza,
+$x(t)=t$ na $y(t)=0$, huku $t\in[0,1]$; hivyo $\mathrm{d}x=\mathrm{d}t$
+na $\mathrm{d}y=0$. Kwenye cha pili, $x(t)=1$ na $y(t)=t$, bado
+$t\in[0,1]$; hivyo $\mathrm{d}x=0$ na $\mathrm{d}y=\mathrm{d}t$. Kwa hiyo,
+\[
+\begin{aligned}
+I_1
+= \int_{\gamma_1}\omega_1
+&= \int_0^1\left(0\times 1+t\times 0\right)\,\mathrm{d}t
+ + \int_0^1\left(t\times 0+1\times 1\right)\,\mathrm{d}t \\
+&= 0+\int_0^1\mathrm{d}t = 1.
+\end{aligned}
+\]
+
+Kwa $\gamma_2$, kipande cha kwanza kina $x(t)=0$, $y(t)=t$, kisha cha pili
+kina $x(t)=t$, $y(t)=1$, huku $t\in[0,1]$ katika hali zote mbili. Hivyo
+\[
+\begin{aligned}
+I_2
+= \int_{\gamma_2}\omega_1
+&= \int_0^1\left(t\times 0+0\times 1\right)\,\mathrm{d}t
+ + \int_0^1\left(1\times 1+t\times 0\right)\,\mathrm{d}t \\
+&= 0+\int_0^1\mathrm{d}t = 1.
+\end{aligned}
+\]
+Thamani hizi mbili ni sawa. Tungeweza kutabiri bila hesabu: kwa kuwa
+$\omega_1=\mathrm{d}f$ na $f(x,y)=xy$, integrali yake hutegemea ncha pekee,
+\[
+\int_\gamma\omega_1=f(M)-f(O)=f(1,1)-f(0,0)=1.
+\]
+
+\textbf{Swali la 3.} Tuandike $\omega_2=A(x,y)\,\mathrm{d}x+B(x,y)\,\mathrm{d}y$.
+Hapa $A(x,y)=y$ na $B(x,y)=0$. Kama umbo lingekuwa kamili, kigezo cha Schwarz kingetoa
+\[
+\frac{\partial A}{\partial y}=\frac{\partial B}{\partial x}.
+\]
+Lakini $\partial A/\partial y=1$ ilhali $\partial B/\partial x=0$.
+Derivativi mseto ni tofauti: kwa hiyo $\omega_2$ si kamili. Integrali yake
+inaweza kutegemea njia kati ya $O$ na $M$, kama hesabu inayofuata inavyoonyesha.
+
+\textbf{Swali la 4.} Kwa kuwa $\omega_2=y\,\mathrm{d}x$, ni badiliko la $x$
+linalofanyika wakati $y$ si sifuri pekee linaloweza kuchangia integrali.
+Kwa kutumia tena uparametishaji wa awali, kwenye $\gamma_1$ tunapata
+\[
+\begin{aligned}
+J_1
+=\int_{\gamma_1}\omega_2
+&=\int_0^1 0\times 1\,\mathrm{d}t
+  +\int_0^1 t\times 0\,\mathrm{d}t \\
+&=0.
+\end{aligned}
+\]
+Kwenye $\gamma_2$, kipande cha kwanza kina $x(t)=0$, hivyo $\mathrm{d}x=0$;
+kwenye cha pili, $x(t)=t$, $y(t)=1$ na $\mathrm{d}x=\mathrm{d}t$. Basi
+\[
+\begin{aligned}
+J_2
+=\int_{\gamma_2}\omega_2
+&=\int_0^1 t\times 0\,\mathrm{d}t
+  +\int_0^1 1\times 1\,\mathrm{d}t \\
+&=1.
+\end{aligned}
+\]
+Hatimaye, kipande cha ulalo $\gamma_3$ kinawekwa parameta waziwazi kwa
+\[
+x(t)=t,\qquad y(t)=t,\qquad t\in[0,1],
+\]
+hivyo $\mathrm{d}x=\mathrm{d}t$ na $\mathrm{d}y=\mathrm{d}t$. Tunapata
+\[
+J_3
+=\int_{\gamma_3}\omega_2
+=\int_0^1 y(t)x'(t)\,\mathrm{d}t
+=\int_0^1 t\,\mathrm{d}t
+=\frac12.
+\]
+Njia zote tatu zina ncha zilezile lakini zinatoa thamani tatu tofauti:
+$J_1=0$, $J_2=1$ na $J_3=1/2$. Huu ndio utegemezi wa njia unaotambulisha
+umbo tofauti lisilo kamili.
+\end{solution}
+\end{exo}
+
+\begin{exo}[Badiliko lilelile la nishati ya ndani, njia tatu za uhamisho]{meme-delta-u-trois-transferts}
+\keywords{kanuni ya kwanza, nishati ya ndani, joto, kazi ya kimakanika, kazi ya umeme, kalorimetria, funksioni ya hali}
+
+Kioevu, kalorimita yake na kinzani kidogo kilichozamishwa vinaunda mfumo
+uliofungwa na ulio katika mapumziko kwa kiwango cha makroskopiki. Chombo ni
+kigumu na uwezo wa jumla wa joto wa mfumo unachukuliwa kuwa thabiti:
+\[
+C=2{,}00\ \mathrm{kJ\,K^{-1}}.
+\]
+Tunataka kuhamisha mfumo kutoka hali ya msawazo $A$, yenye
+$T_A=20{,}0\,^\circ\mathrm{C}$, hadi hali ya msawazo $B$, yenye
+$T_B=25{,}0\,^\circ\mathrm{C}$. Tunakubali kwamba
+\[
+U(B)-U(A)=C(T_B-T_A).
+\]
+Mabadiliko ya nishati ya mwendo na nishati ya uwezo ya makroskopiki ni sifuri.
+Upotevu wote kwenda nje unapuuzwa.
+
+Itifaki tatu zifuatazo zinatekelezwa kila moja peke yake kutoka hali ileile ya mwanzo $A$:
+\begin{itemize}
+\item[Itifaki ya 1] Mfumo unawekwa katika mgusano wa joto na chanzo cha moto bila kupewa kazi yoyote.
+\item[Itifaki ya 2] Kuta zimewekewa kihami joto. Pala inakoroga kioevu kwa kuanguka kwa tungamo $m$ kwa urefu $h=5{,}00$ m. Pala na kioevu huishia katika mapumziko, na nishati yote ya kimakanika iliyopotezwa na tungamo huhamishwa kwa mfumo. Tumia $g=9{,}81\ \mathrm{m\,s^{-2}}$.
+\item[Itifaki ya 3] Mfumo unapokea joto $Q_3=4{,}00$ kJ na nishati iliyobaki inapelekwa kwa kinzani kwa njia ya umeme. Nguvu ya umeme inayopokelewa ni thabiti, $\mathcal P=300$ W.
+\end{itemize}
+
+\begin{enumerate}
+\item Kokotoa badiliko la nishati ya ndani $\Delta U=U(B)-U(A)$ linalofanana kwa itifaki zote tatu.
+\item Kwa kila itifaki mbili za kwanza, bainisha joto $Q$ na kazi $W$ zinazopokelewa na mfumo. Katika itifaki ya pili, kokotoa tungamo $m$ kinachohitajika.
+\item Kwa itifaki ya tatu, kokotoa kazi ya umeme inayopokelewa na muda wa kuipa kinzani umeme.
+\item Mabadiliko yote matatu yana hali zilezile za mwanzo na mwisho. Eleza kwa nini thamani zao za $Q$ na $W$ zinaweza hata hivyo kutofautiana. Je, mfumo una “joto” au “kazi” katika hali ya mwisho $B$?
+\end{enumerate}
+
+\begin{indication}
+Tumia $\Delta U=Q+W$ kwa kanuni ya ishara ya benki. Kwa pala, kazi inayopokelewa
+ni sawa na upungufu $mgh$ wa nishati ya uwezo ya tungamo. Nishati ya umeme
+inayovuka mpaka kupitia nyaya huhesabiwa kama kazi ya umeme.
+\end{indication}
+
+\begin{solution}
+\textbf{Swali la 1.} Tofauti ya halijoto ni $T_B-T_A=5{,}0$ K. Kwa hiyo,
+\[
+\Delta U=C(T_B-T_A)
+=2{,}00\times5{,}0
+=10{,}0\ \mathrm{kJ}.
+\]
+Thamani hii hutegemea hali mbili za msawazo $A$ na $B$ pekee.
+
+\textbf{Swali la 2.} Katika itifaki ya kwanza hakuna kazi inayopokelewa:
+$W_1=0$. Kanuni ya kwanza basi inatoa
+\[
+Q_1=\Delta U=10{,}0\ \mathrm{kJ}.
+\]
+Joto ni chanya kwa sababu nishati inaingia kwenye mfumo.
+
+Katika itifaki ya pili, kuta zimewekewa kihami joto, kwa hiyo $Q_2=0$.
+Badiliko lote la nishati ya ndani linatokana na kazi ya kimakanika ya pala:
+\[
+W_2=\Delta U=10{,}0\ \mathrm{kJ}.
+\]
+Kwa kuwa $W_2=mgh$, tunapata
+\[
+m=\frac{W_2}{gh}
+=\frac{10{,}0\times10^3}{9{,}81\times5{,}00}
+\simeq 204\ \mathrm{kg}.
+\]
+Ukubwa huu mkubwa unatukumbusha kuwa hata ongezeko dogo la halijoto tayari
+linalingana na nishati kubwa ya kimakanika.
+
+\textbf{Swali la 3.} Kanuni ya kwanza inalazimisha
+\[
+W_3=\Delta U-Q_3=10{,}0-4{,}00=6{,}00\ \mathrm{kJ}.
+\]
+Kazi hii ni chanya: ugavi wa umeme unatoa nishati kwa mfumo. Kwa
+$W_3=\mathcal P\,\Delta t$,
+\[
+\Delta t=\frac{W_3}{\mathcal P}
+=\frac{6{,}00\times10^3}{300}
+=20{,}0\ \mathrm{s}.
+\]
+
+\textbf{Swali la 4.} Njia tatu zinatoa mtawalia
+\[
+(Q_1,W_1)=(10{,}0,0)\ \mathrm{kJ},
+\qquad
+(Q_2,W_2)=(0,10{,}0)\ \mathrm{kJ},
+\]
+na
+\[
+(Q_3,W_3)=(4{,}00,6{,}00)\ \mathrm{kJ}.
+\]
+Katika kila hali, jumla $Q+W$ ni $10{,}0$ kJ na hutoa badiliko lilelile
+$\Delta U$. Nishati ya ndani ni funksioni ya hali, ilhali joto na kazi
+hueleza uhamisho wakati wa mabadiliko. Katika hali ya mwisho $B$, mfumo una
+nishati ya ndani, lakini hauna “joto” wala “kazi” ndani yake.
+\end{solution}
+\end{exo}
+
+\begin{exo}[Mbanano chini ya shinikizo la nje lisilobadilika]{compression-pression-exterieure-constante}
+\seoready{true}
+\keywords{kazi ya nguvu za shinikizo, shinikizo la nje lisilobadilika, mbanano, upanuzi, upanuzi kwenye ombwe}
+
+Gesi inabanwa kutoka ujazo $V_A$ hadi ujazo $V_B<V_A$ chini ya shinikizo la nje lisilobadilika $P_0$.
+
+\begin{enumerate}
+\item Kokotoa kazi inayopokelewa na gesi.
+\item Gesi inarudi kutoka $V_B$ hadi $V_A$ dhidi ya shinikizo lilelile la nje $P_0$. Kokotoa kazi inayopokelewa na uilinganishe na kazi ya mbanano.
+\item Rudia upanuzi kutoka $V_B$ hadi $V_A$ wakati gesi inapanuka kwenye ombwe. Fasiri ishara zote tatu zilizopatikana.
+\end{enumerate}
+
+\begin{indication}
+Tumia $W=-\int P_{\mathrm{ext}}\,\mathrm{d}V$. Lazima tukokotoe integrali ya
+shinikizo la \emph{nje}, hata wakati mabadiliko si ya nusu-tuli.
+\end{indication}
+
+\begin{solution}
+\textbf{Swali la 1.} Shinikizo la nje ni thabiti, kwa hiyo
+\[
+W_{A\to B}=-P_0(V_B-V_A)=P_0(V_A-V_B)>0.
+\]
+Gesi inapokea kazi wakati wa mbanano.
+
+\textbf{Swali la 2.} Kwa njia ya kurudi,
+\[
+W_{B\to A}=-P_0(V_A-V_B)<0.
+\]
+Kazi hizi mbili zina ishara kinyume kwa sababu mabadiliko yanafanywa dhidi
+ya shinikizo lilelile la nje lisilobadilika.
+
+\textbf{Swali la 3.} Kwenye ombwe, $P_{\mathrm{ext}}=0$, kwa hiyo
+\[
+W_{B\to A}^{\mathrm{vide}}=0.
+\]
+Kwa hiyo upanuzi haumaanishi kazi hasi moja kwa moja: lazima nguvu ya nje
+isukumwe kweli.
+\end{solution}
+\end{exo}

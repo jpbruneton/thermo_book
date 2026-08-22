@@ -1,0 +1,178 @@
+% Banco de exercícios — capítulo 4
+% O capítulo é determinado pelo nome deste ficheiro.
+
+\begin{exo}[Integrar uma forma diferencial ao longo de um caminho]{integrale-forme-differentielle}
+\keywords{forma diferencial, diferencial exata, critério de Schwarz, integral de linha}
+
+Consideram-se as duas formas diferenciais
+\[\omega_1=y\,\mathrm{d}x+x\,\mathrm{d}y,\qquad \omega_2=y\,\mathrm{d}x,\]
+e três caminhos que ligam a origem $O(0,0)$ ao ponto $M(1,1)$: $\gamma_1$,
+formado pelo segmento horizontal $O\to(1,0)$ seguido do vertical $(1,0)\to M$;
+$\gamma_2$, formado pelo segmento vertical $O\to(0,1)$ seguido do horizontal
+$(0,1)\to M$; e $\gamma_3$, o segmento de reta que liga diretamente $O$ a $M$.
+
+\begin{enumerate}
+\item Mostrar que $\omega_1$ é exata, encontrando uma função $f$ tal que $\omega_1=\mathrm{d}f$.
+\item Calcular $\int_{\gamma_1}\omega_1$ e $\int_{\gamma_2}\omega_1$ parametrizando cada segmento. Recuperar o resultado sem cálculo.
+\item Aplicar o critério de Schwarz a $\omega_2$. Que se pode concluir?
+\item Calcular $\int_{\gamma_1}\omega_2$, $\int_{\gamma_2}\omega_2$ e $\int_{\gamma_3}\omega_2$. Comentar.
+\end{enumerate}
+
+\begin{indication}
+Num segmento horizontal $\mathrm{d}y=0$ e num segmento vertical $\mathrm{d}x=0$:
+cada integral reduz-se a uma integral simples.
+\end{indication}
+
+\begin{solution}
+\textbf{Questão 1.} A função $f(x,y)=xy$ serve, pois $\partial f/\partial x=y$ e $\partial f/\partial y=x$.
+
+\textbf{Questão 2.} Para uma curva parametrizada por $t\mapsto\bigl(x(t),y(t)\bigr)$,
+\[\int_\gamma\omega_1=\int\left[y(t)x'(t)+x(t)y'(t)\right]\,\mathrm{d}t.\]
+O caminho $\gamma_1$ é a união de dois segmentos. No primeiro, $x(t)=t$ e
+$y(t)=0$, com $t\in[0,1]$; logo, $\mathrm{d}x=\mathrm{d}t$ e $\mathrm{d}y=0$.
+No segundo, $x(t)=1$ e $y(t)=t$, também com $t\in[0,1]$; logo,
+$\mathrm{d}x=0$ e $\mathrm{d}y=\mathrm{d}t$. Assim,
+\[
+\begin{aligned}I_1=\int_{\gamma_1}\omega_1
+&=\int_0^1(0\times1+t\times0)\,\mathrm{d}t+\int_0^1(t\times0+1\times1)\,\mathrm{d}t\\
+&=0+\int_0^1\mathrm{d}t=1.\end{aligned}
+\]
+Para $\gamma_2$, o primeiro segmento é parametrizado por $x(t)=0$, $y(t)=t$,
+e o segundo por $x(t)=t$, $y(t)=1$, com $t\in[0,1]$ nos dois casos. Portanto,
+\[
+\begin{aligned}I_2=\int_{\gamma_2}\omega_1
+&=\int_0^1(t\times0+0\times1)\,\mathrm{d}t+\int_0^1(1\times1+t\times0)\,\mathrm{d}t\\
+&=0+\int_0^1\mathrm{d}t=1.\end{aligned}
+\]
+Os valores coincidem. Isto podia prever-se sem cálculo: como
+$\omega_1=\mathrm{d}f$ com $f(x,y)=xy$, o integral depende apenas dos extremos,
+\[\int_\gamma\omega_1=f(M)-f(O)=f(1,1)-f(0,0)=1.\]
+
+\textbf{Questão 3.} Escrevamos $\omega_2=A(x,y)\,\mathrm{d}x+B(x,y)\,\mathrm{d}y$.
+Aqui $A(x,y)=y$ e $B(x,y)=0$. Se a forma fosse exata, o critério de Schwarz daria
+\[\frac{\partial A}{\partial y}=\frac{\partial B}{\partial x}.\]
+Ora, $\partial A/\partial y=1$, ao passo que $\partial B/\partial x=0$. As
+derivadas cruzadas diferem, portanto $\omega_2$ não é exata. O seu integral
+pode depender do caminho seguido entre $O$ e $M$, como confirma o cálculo seguinte.
+
+\textbf{Questão 4.} Como $\omega_2=y\,\mathrm{d}x$, só uma variação de $x$
+efetuada para um valor não nulo de $y$ pode contribuir para o integral. Com as
+parametrizações anteriores, em $\gamma_1$ obtém-se
+\[\begin{aligned}J_1=\int_{\gamma_1}\omega_2&=\int_0^1 0\times1\,\mathrm{d}t+\int_0^1 t\times0\,\mathrm{d}t\\&=0.\end{aligned}\]
+Em $\gamma_2$, o primeiro segmento satisfaz $x(t)=0$, pelo que $\mathrm{d}x=0$;
+no segundo, $x(t)=t$, $y(t)=1$ e $\mathrm{d}x=\mathrm{d}t$. Assim,
+\[\begin{aligned}J_2=\int_{\gamma_2}\omega_2&=\int_0^1 t\times0\,\mathrm{d}t+\int_0^1 1\times1\,\mathrm{d}t\\&=1.\end{aligned}\]
+Por fim, o segmento diagonal $\gamma_3$ é parametrizado por
+\[x(t)=t,\qquad y(t)=t,\qquad t\in[0,1],\]
+donde $\mathrm{d}x=\mathrm{d}t$ e $\mathrm{d}y=\mathrm{d}t$. Vem então
+\[J_3=\int_{\gamma_3}\omega_2=\int_0^1 y(t)x'(t)\,\mathrm{d}t=\int_0^1 t\,\mathrm{d}t=\frac12.\]
+Os três caminhos têm os mesmos extremos, mas dão três valores diferentes:
+$J_1=0$, $J_2=1$ e $J_3=1/2$. É precisamente a dependência do caminho
+característica de uma forma diferencial não exata.
+\end{solution}
+\end{exo}
+
+\begin{exo}[Mesma variação de energia interna, três modos de transferência]{meme-delta-u-trois-transferts}
+\keywords{primeiro princípio, energia interna, calor, trabalho mecânico, trabalho elétrico, calorimetria, função de estado}
+
+Um líquido, o seu calorímetro e uma pequena resistência imersa constituem um
+sistema fechado, macroscopicamente em repouso. O recipiente é rígido e a
+capacidade térmica total do sistema é considerada constante:
+\[C=2{,}00\ \mathrm{kJ\,K^{-1}}.\]
+Pretende-se levar o sistema do estado de equilíbrio $A$, a
+$T_A=20{,}0\,^\circ\mathrm{C}$, ao estado de equilíbrio $B$, a
+$T_B=25{,}0\,^\circ\mathrm{C}$. Admite-se que
+\[U(B)-U(A)=C(T_B-T_A).\]
+As variações das energias cinética e potencial macroscópicas são nulas.
+Desprezam-se todas as perdas para o exterior.
+
+Realizam-se independentemente os três protocolos seguintes, a partir do mesmo
+estado inicial $A$:
+\begin{itemize}
+\item[Protocolo 1] O sistema é colocado em contacto térmico com uma fonte quente, sem que lhe seja fornecido qualquer trabalho.
+\item[Protocolo 2] As paredes estão isoladas termicamente. Uma pá agita o líquido graças à queda de uma massa $m$ de uma altura $h=5{,}00$ m. A pá e o líquido acabam em repouso, e toda a energia mecânica perdida pela massa é transferida para o sistema. Tome-se $g=9{,}81\ \mathrm{m\,s^{-2}}$.
+\item[Protocolo 3] O sistema recebe um calor $Q_3=4{,}00$ kJ, e a energia restante é fornecida eletricamente à resistência. A potência elétrica recebida é constante e vale $\mathcal P=300$ W.
+\end{itemize}
+
+\begin{enumerate}
+\item Calcular a variação de energia interna $\Delta U=U(B)-U(A)$ comum aos três protocolos.
+\item Para cada um dos dois primeiros protocolos, determinar o calor $Q$ e o trabalho $W$ recebidos pelo sistema. No segundo, calcular a massa $m$ necessária.
+\item Para o terceiro protocolo, calcular o trabalho elétrico recebido e a duração da alimentação da resistência.
+\item As três transformações têm os mesmos estados inicial e final. Explicar por que razão os seus valores de $Q$ e $W$ podem, ainda assim, ser diferentes. O sistema contém «calor» ou «trabalho» no estado final $B$?
+\end{enumerate}
+
+\begin{indication}
+Aplicar $\Delta U=Q+W$ com a convenção do banqueiro. Para a pá, o trabalho
+recebido é igual à diminuição $mgh$ da energia potencial da massa. A energia
+elétrica que atravessa a fronteira pelos fios é contabilizada como trabalho elétrico.
+\end{indication}
+
+\begin{solution}
+\textbf{Questão 1.} A diferença de temperatura é $T_B-T_A=5{,}0$ K. Por conseguinte,
+\[\Delta U=C(T_B-T_A)=2{,}00\times5{,}0=10{,}0\ \mathrm{kJ}.\]
+Este valor depende apenas dos dois estados de equilíbrio $A$ e $B$.
+
+\textbf{Questão 2.} No primeiro protocolo não é recebido qualquer trabalho:
+$W_1=0$. O primeiro princípio dá então
+\[Q_1=\Delta U=10{,}0\ \mathrm{kJ}.\]
+O calor é positivo porque a energia entra no sistema.
+
+No segundo protocolo, as paredes estão isoladas termicamente, logo $Q_2=0$.
+Toda a variação de energia interna provém do trabalho mecânico da pá:
+\[W_2=\Delta U=10{,}0\ \mathrm{kJ}.\]
+Como $W_2=mgh$,
+\[m=\frac{W_2}{gh}=\frac{10{,}0\times10^3}{9{,}81\times5{,}00}\simeq204\ \mathrm{kg}.\]
+A elevada ordem de grandeza recorda que mesmo uma subida moderada de temperatura
+já corresponde a uma energia mecânica importante.
+
+\textbf{Questão 3.} O primeiro princípio impõe
+\[W_3=\Delta U-Q_3=10{,}0-4{,}00=6{,}00\ \mathrm{kJ}.\]
+Este trabalho é positivo: a alimentação elétrica fornece energia ao sistema.
+Com $W_3=\mathcal P\,\Delta t$,
+\[\Delta t=\frac{W_3}{\mathcal P}=\frac{6{,}00\times10^3}{300}=20{,}0\ \mathrm{s}.\]
+
+\textbf{Questão 4.} Os três caminhos dão, respetivamente,
+\[(Q_1,W_1)=(10{,}0,0)\ \mathrm{kJ},\qquad(Q_2,W_2)=(0,10{,}0)\ \mathrm{kJ},\]
+e
+\[(Q_3,W_3)=(4{,}00,6{,}00)\ \mathrm{kJ}.\]
+Em todos os casos, a soma $Q+W$ vale $10{,}0$ kJ e produz a mesma variação
+$\Delta U$. A energia interna é uma função de estado, enquanto o calor e o
+trabalho descrevem transferências durante uma transformação. No estado final
+$B$, o sistema possui energia interna, mas não contém «calor» nem «trabalho».
+\end{solution}
+\end{exo}
+
+\begin{exo}[Compressão sob pressão exterior constante]{compression-pression-exterieure-constante}
+\seoready{true}
+\keywords{trabalho das forças de pressão, pressão exterior constante, compressão, expansão, expansão livre}
+
+Um gás é comprimido de um volume $V_A$ para um volume $V_B<V_A$ sob uma
+pressão exterior constante $P_0$.
+
+\begin{enumerate}
+\item Calcular o trabalho recebido pelo gás.
+\item O gás regressa de $V_B$ a $V_A$ contra a mesma pressão exterior $P_0$. Calcular o trabalho recebido e compará-lo com o da compressão.
+\item Repetir a expansão de $V_B$ a $V_A$ quando o gás se expande no vácuo. Interpretar os três sinais obtidos.
+\end{enumerate}
+
+\begin{indication}
+Utilizar $W=-\int P_{\mathrm{ext}}\,\mathrm{d}V$. É necessário integrar a
+pressão \emph{exterior}, mesmo quando a transformação não é quase-estática.
+\end{indication}
+
+\begin{solution}
+\textbf{Questão 1.} A pressão exterior é constante, logo
+\[W_{A\to B}=-P_0(V_B-V_A)=P_0(V_A-V_B)>0.\]
+O gás recebe trabalho durante a compressão.
+
+\textbf{Questão 2.} Para o regresso,
+\[W_{B\to A}=-P_0(V_A-V_B)<0.\]
+Os dois trabalhos são opostos porque as transformações são realizadas contra
+a mesma pressão exterior constante.
+
+\textbf{Questão 3.} No vácuo, $P_{\mathrm{ext}}=0$, logo
+\[W_{B\to A}^{\mathrm{vide}}=0.\]
+Uma expansão não implica, portanto, automaticamente trabalho negativo: é
+necessário que uma força exterior seja efetivamente afastada.
+\end{solution}
+\end{exo}

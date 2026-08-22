@@ -1,0 +1,251 @@
+% Aufgabensammlung — Kapitel 4
+% Das Kapitel wird durch den Namen dieser Datei bestimmt.
+
+\begin{exo}[Integration einer Differentialform entlang eines Weges]{integrale-forme-differentielle}
+\keywords{Differentialform, exaktes Differential, Schwarz-Kriterium, Kurvenintegral}
+
+Gegeben sind die beiden Differentialformen
+\[
+\omega_1 = y\,\mathrm{d}x + x\,\mathrm{d}y,
+\qquad
+\omega_2 = y\,\mathrm{d}x,
+\]
+und drei Wege vom Ursprung $O(0,0)$ zum Punkt $M(1,1)$: der Weg $\gamma_1$
+besteht aus der horizontalen Strecke $O\to(1,0)$ und anschließend der vertikalen
+Strecke $(1,0)\to M$; der Weg $\gamma_2$ aus der vertikalen Strecke
+$O\to(0,1)$ und anschließend der horizontalen Strecke $(0,1)\to M$; und der
+Weg $\gamma_3$ ist die gerade Strecke, die $O$ direkt mit $M$ verbindet.
+
+\begin{enumerate}
+\item Zeigen Sie durch Angabe einer Funktion $f$ mit $\omega_1=\mathrm{d}f$, dass $\omega_1$ exakt ist.
+\item Berechnen Sie $\int_{\gamma_1}\omega_1$ und $\int_{\gamma_2}\omega_1$, indem Sie jede Strecke parametrisieren. Ermitteln Sie das Ergebnis anschließend ohne Rechnung.
+\item Wenden Sie das Schwarz-Kriterium auf $\omega_2$ an. Was folgt daraus?
+\item Berechnen Sie $\int_{\gamma_1}\omega_2$, $\int_{\gamma_2}\omega_2$ und $\int_{\gamma_3}\omega_2$. Kommentieren Sie die Ergebnisse.
+\end{enumerate}
+
+\begin{indication}
+Auf einer horizontalen Strecke gilt $\mathrm{d}y=0$, auf einer vertikalen
+Strecke $\mathrm{d}x=0$: Jedes Integral reduziert sich auf ein einfaches Integral.
+\end{indication}
+
+\begin{solution}
+\textbf{Frage 1.} Die Funktion $f(x,y)=xy$ ist geeignet, denn $\partial f/\partial x=y$ und $\partial f/\partial y=x$.
+
+\textbf{Frage 2.} Für eine durch $t\mapsto\bigl(x(t),y(t)\bigr)$
+parametrisierte Kurve gilt
+\[
+\int_\gamma\omega_1=\int\left[y(t)x'(t)+x(t)y'(t)\right]\,\mathrm{d}t.
+\]
+Der Weg $\gamma_1$ ist die Vereinigung zweier Strecken. Auf der ersten gilt
+$x(t)=t$, $y(t)=0$ mit $t\in[0,1]$; somit sind $\mathrm{d}x=\mathrm{d}t$
+und $\mathrm{d}y=0$. Auf der zweiten gilt $x(t)=1$, $y(t)=t$, ebenfalls mit
+$t\in[0,1]$; somit sind $\mathrm{d}x=0$ und $\mathrm{d}y=\mathrm{d}t$. Daher
+\[
+\begin{aligned}
+I_1=\int_{\gamma_1}\omega_1
+&=\int_0^1\left(0\times1+t\times0\right)\,\mathrm{d}t
++\int_0^1\left(t\times0+1\times1\right)\,\mathrm{d}t\\
+&=0+\int_0^1\mathrm{d}t=1.
+\end{aligned}
+\]
+Für $\gamma_2$ wird die erste Strecke durch $x(t)=0$, $y(t)=t$ und die
+zweite durch $x(t)=t$, $y(t)=1$ parametrisiert, jeweils mit $t\in[0,1]$.
+Damit ergibt sich
+\[
+\begin{aligned}
+I_2=\int_{\gamma_2}\omega_1
+&=\int_0^1\left(t\times0+0\times1\right)\,\mathrm{d}t
++\int_0^1\left(1\times1+t\times0\right)\,\mathrm{d}t\\
+&=0+\int_0^1\mathrm{d}t=1.
+\end{aligned}
+\]
+Die beiden Werte stimmen überein. Dies war ohne Rechnung vorhersehbar: Da
+$\omega_1=\mathrm{d}f$ mit $f(x,y)=xy$ gilt, hängt das Integral nur von den
+Endpunkten ab,
+\[
+\int_\gamma\omega_1=f(M)-f(O)=f(1,1)-f(0,0)=1.
+\]
+
+\textbf{Frage 3.} Schreiben wir
+$\omega_2=A(x,y)\,\mathrm{d}x+B(x,y)\,\mathrm{d}y$. Hier sind $A(x,y)=y$
+und $B(x,y)=0$. Wäre die Form exakt, so würde das Schwarz-Kriterium liefern
+\[
+\frac{\partial A}{\partial y}=\frac{\partial B}{\partial x}.
+\]
+Es gilt jedoch $\partial A/\partial y=1$, während $\partial B/\partial x=0$
+ist. Die gemischten Ableitungen unterscheiden sich; $\omega_2$ ist daher
+nicht exakt. Sein Integral kann also vom zwischen $O$ und $M$ gewählten Weg
+abhängen, wie die folgende Rechnung bestätigt.
+
+\textbf{Frage 4.} Da $\omega_2=y\,\mathrm{d}x$ gilt, kann nur eine Änderung
+von $x$ bei einem von null verschiedenen Wert von $y$ zum Integral beitragen.
+Mit den vorherigen Parametrisierungen erhält man auf $\gamma_1$
+\[
+\begin{aligned}
+J_1=\int_{\gamma_1}\omega_2
+&=\int_0^1 0\times1\,\mathrm{d}t+\int_0^1 t\times0\,\mathrm{d}t\\
+&=0.
+\end{aligned}
+\]
+Auf $\gamma_2$ gilt auf der ersten Strecke $x(t)=0$, also $\mathrm{d}x=0$;
+auf der zweiten sind $x(t)=t$, $y(t)=1$ und $\mathrm{d}x=\mathrm{d}t$. Somit
+\[
+\begin{aligned}
+J_2=\int_{\gamma_2}\omega_2
+&=\int_0^1 t\times0\,\mathrm{d}t+\int_0^1 1\times1\,\mathrm{d}t\\
+&=1.
+\end{aligned}
+\]
+Die diagonale Strecke $\gamma_3$ wird schließlich parametrisiert durch
+\[
+x(t)=t,\qquad y(t)=t,\qquad t\in[0,1],
+\]
+woraus $\mathrm{d}x=\mathrm{d}t$ und $\mathrm{d}y=\mathrm{d}t$ folgen. Daher
+\[
+J_3=\int_{\gamma_3}\omega_2
+=\int_0^1y(t)x'(t)\,\mathrm{d}t
+=\int_0^1t\,\mathrm{d}t=\frac12.
+\]
+Die drei Wege haben dieselben Endpunkte, liefern aber drei verschiedene Werte:
+$J_1=0$, $J_2=1$ und $J_3=1/2$. Genau diese Wegabhängigkeit kennzeichnet eine
+nicht exakte Differentialform.
+\end{solution}
+\end{exo}
+
+\begin{exo}[Gleiche Änderung der inneren Energie, drei Übertragungsarten]{meme-delta-u-trois-transferts}
+\keywords{erster Hauptsatz, innere Energie, Wärme, mechanische Arbeit, elektrische Arbeit, Kalorimetrie, Zustandsfunktion}
+
+Eine Flüssigkeit, ihr Kalorimeter und ein kleiner eingetauchter Widerstand
+bilden ein geschlossenes, makroskopisch ruhendes System. Der Behälter ist
+starr, und die gesamte Wärmekapazität des Systems wird als konstant angenommen:
+\[
+C=2{,}00\ \mathrm{kJ\,K^{-1}}.
+\]
+Das System soll vom Gleichgewichtszustand $A$ bei
+$T_A=20{,}0\,^\circ\mathrm{C}$ in den Gleichgewichtszustand $B$ bei
+$T_B=25{,}0\,^\circ\mathrm{C}$ überführt werden. Es gilt
+\[
+U(B)-U(A)=C(T_B-T_A).
+\]
+Die Änderungen der makroskopischen kinetischen und potenziellen Energie sind
+null. Sämtliche Verluste an die Umgebung werden vernachlässigt.
+
+Ausgehend vom selben Anfangszustand $A$ werden die folgenden drei Protokolle
+unabhängig voneinander durchgeführt:
+\begin{itemize}
+\item[Protokoll 1] Das System wird in thermischen Kontakt mit einem warmen Reservoir gebracht, ohne dass ihm Arbeit zugeführt wird.
+\item[Protokoll 2] Die Wände sind wärmeisoliert. Ein Rührflügel bewegt die Flüssigkeit, indem eine Masse $m$ um die Höhe $h=5{,}00$ m fällt. Rührflügel und Flüssigkeit kommen schließlich zur Ruhe, und die gesamte von der Masse verlorene mechanische Energie wird auf das System übertragen. Es gilt $g=9{,}81\ \mathrm{m\,s^{-2}}$.
+\item[Protokoll 3] Das System erhält die Wärme $Q_3=4{,}00$ kJ; die restliche Energie wird dem Widerstand elektrisch zugeführt. Die aufgenommene elektrische Leistung ist konstant und beträgt $\mathcal P=300$ W.
+\end{itemize}
+
+\begin{enumerate}
+\item Berechnen Sie die allen drei Protokollen gemeinsame Änderung der inneren Energie $\Delta U=U(B)-U(A)$.
+\item Bestimmen Sie für die ersten beiden Protokolle jeweils die vom System aufgenommene Wärme $Q$ und Arbeit $W$. Berechnen Sie im zweiten Protokoll die erforderliche Masse $m$.
+\item Berechnen Sie für das dritte Protokoll die aufgenommene elektrische Arbeit und die Einschaltdauer des Widerstands.
+\item Die drei Zustandsänderungen haben dieselben Anfangs- und Endzustände. Erklären Sie, warum ihre Werte von $Q$ und $W$ dennoch verschieden sein können. Enthält das System im Endzustand $B$ „Wärme“ oder „Arbeit“?
+\end{enumerate}
+
+\begin{indication}
+Wenden Sie $\Delta U=Q+W$ mit der Bankierkonvention an. Beim Rührflügel ist
+die aufgenommene Arbeit gleich der Abnahme $mgh$ der potenziellen Energie der
+Masse. Die durch die Drähte über die Systemgrenze übertragene elektrische
+Energie wird als elektrische Arbeit gezählt.
+\end{indication}
+
+\begin{solution}
+\textbf{Frage 1.} Die Temperaturdifferenz beträgt $T_B-T_A=5{,}0$ K. Daher
+\[
+\Delta U=C(T_B-T_A)=2{,}00\times5{,}0=10{,}0\ \mathrm{kJ}.
+\]
+Dieser Wert hängt nur von den beiden Gleichgewichtszuständen $A$ und $B$ ab.
+
+\textbf{Frage 2.} Im ersten Protokoll wird keine Arbeit aufgenommen:
+$W_1=0$. Der erste Hauptsatz liefert daher
+\[
+Q_1=\Delta U=10{,}0\ \mathrm{kJ}.
+\]
+Die Wärme ist positiv, weil Energie in das System eintritt.
+
+Im zweiten Protokoll sind die Wände wärmeisoliert, also gilt $Q_2=0$.
+Die gesamte Änderung der inneren Energie stammt aus der mechanischen Arbeit
+des Rührflügels:
+\[
+W_2=\Delta U=10{,}0\ \mathrm{kJ}.
+\]
+Aus $W_2=mgh$ folgt
+\[
+m=\frac{W_2}{gh}
+=\frac{10{,}0\times10^3}{9{,}81\times5{,}00}
+\simeq204\ \mathrm{kg}.
+\]
+Die hohe Größenordnung erinnert daran, dass bereits eine geringe
+Temperaturerhöhung einer beträchtlichen mechanischen Energie entspricht.
+
+\textbf{Frage 3.} Der erste Hauptsatz verlangt
+\[
+W_3=\Delta U-Q_3=10{,}0-4{,}00=6{,}00\ \mathrm{kJ}.
+\]
+Diese Arbeit ist positiv: Die Stromversorgung führt dem System Energie zu.
+Mit $W_3=\mathcal P\,\Delta t$ ergibt sich
+\[
+\Delta t=\frac{W_3}{\mathcal P}
+=\frac{6{,}00\times10^3}{300}=20{,}0\ \mathrm{s}.
+\]
+
+\textbf{Frage 4.} Die drei Wege liefern jeweils
+\[
+(Q_1,W_1)=(10{,}0,0)\ \mathrm{kJ},\qquad
+(Q_2,W_2)=(0,10{,}0)\ \mathrm{kJ},
+\]
+und
+\[
+(Q_3,W_3)=(4{,}00,6{,}00)\ \mathrm{kJ}.
+\]
+In allen Fällen beträgt die Summe $Q+W$ genau $10{,}0$ kJ und bewirkt dieselbe
+Änderung $\Delta U$. Die innere Energie ist eine Zustandsfunktion, während
+Wärme und Arbeit Übertragungen während einer Zustandsänderung beschreiben.
+Im Endzustand $B$ besitzt das System innere Energie, enthält aber weder
+„Wärme“ noch „Arbeit“.
+\end{solution}
+\end{exo}
+
+\begin{exo}[Kompression bei konstantem Außendruck]{compression-pression-exterieure-constante}
+\seoready{true}
+\keywords{Druckarbeit, konstanter Außendruck, Kompression, Expansion, freie Expansion}
+
+Ein Gas wird unter einem konstanten Außendruck $P_0$ vom Volumen $V_A$ auf
+ein Volumen $V_B<V_A$ komprimiert.
+
+\begin{enumerate}
+\item Berechnen Sie die vom Gas aufgenommene Arbeit.
+\item Das Gas kehrt gegen denselben Außendruck $P_0$ von $V_B$ nach $V_A$ zurück. Berechnen Sie die aufgenommene Arbeit und vergleichen Sie sie mit der Kompressionsarbeit.
+\item Betrachten Sie erneut die Expansion von $V_B$ nach $V_A$, wenn sich das Gas in ein Vakuum ausdehnt. Deuten Sie die drei erhaltenen Vorzeichen.
+\end{enumerate}
+
+\begin{indication}
+Verwenden Sie $W=-\int P_{\mathrm{ext}}\,\mathrm{d}V$. Zu integrieren ist der
+\emph{Außendruck}, auch wenn die Zustandsänderung nicht quasistatisch ist.
+\end{indication}
+
+\begin{solution}
+\textbf{Frage 1.} Der Außendruck ist konstant, daher
+\[
+W_{A\to B}=-P_0(V_B-V_A)=P_0(V_A-V_B)>0.
+\]
+Bei der Kompression nimmt das Gas Arbeit auf.
+
+\textbf{Frage 2.} Für den Rückweg gilt
+\[
+W_{B\to A}=-P_0(V_A-V_B)<0.
+\]
+Die beiden Arbeiten sind entgegengesetzt, weil die Zustandsänderungen gegen
+denselben konstanten Außendruck durchgeführt werden.
+
+\textbf{Frage 3.} Im Vakuum gilt $P_{\mathrm{ext}}=0$, also
+\[
+W_{B\to A}^{\mathrm{vide}}=0.
+\]
+Eine Expansion bedeutet somit nicht automatisch negative Arbeit: Es muss
+tatsächlich eine äußere Kraft zurückgedrängt werden.
+\end{solution}
+\end{exo}

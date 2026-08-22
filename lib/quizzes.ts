@@ -312,25 +312,6 @@ export const quizQuestions: QuizQuestion[] = [
     correctIndex: 0,
   },
   {
-    id: "l4-q2b",
-    lecon: 4,
-    question:
-      "Un gaz parfait passe d'un état d'équilibre A à un état d'équilibre B, soit en le comprimant puis en le chauffant, soit en le chauffant puis en le comprimant. Que peut-on affirmer ?",
-    choices: [
-      "La variation d'énergie interne ΔU, la chaleur Q et le travail W reçus sont les mêmes dans les deux cas.",
-      "ΔU est la même dans les deux cas, mais Q et W peuvent différer d'un chemin à l'autre.",
-      "Q est la même dans les deux cas, mais ΔU peut différer.",
-      "Aucune des trois grandeurs ne dépend du chemin suivi.",
-    ],
-    explanations: [
-      "Faux : seule ΔU est fixée par les états A et B ; Q et W dépendent en général du chemin suivi.",
-      "Exact : U est une fonction d'état (dU est une différentielle exacte), donc ΔU = U(B) − U(A) ne dépend que des états initial et final. Q et W ne sont pas des fonctions d'état (δQ, δW ne sont pas des différentielles exactes) : ils dépendent du chemin suivi ; seule leur somme Q + W = ΔU est fixée par le premier principe.",
-      "Faux : c'est l'inverse qui est vrai — ΔU est la grandeur indépendante du chemin, pas Q.",
-      "Faux : ΔU ne dépend pas du chemin, mais Q et W, eux, en dépendent en général.",
-    ],
-    correctIndex: 1,
-  },
-  {
     id: "l4-q3",
     lecon: 4,
     question:

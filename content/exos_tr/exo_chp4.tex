@@ -1,0 +1,255 @@
+% Alıştırma bankası — bölüm 4
+% Bölüm, bu dosyanın adına göre belirlenir.
+
+\begin{exo}[Bir diferansiyel formu bir yol boyunca tümlemek]{integrale-forme-differentielle}
+\keywords{diferansiyel form, tam diferansiyel, Schwarz ölçütü, çizgi integrali}
+
+Şu iki diferansiyel formu ele alalım:
+\[
+\omega_1 = y\,\mathrm{d}x + x\,\mathrm{d}y,
+\qquad
+\omega_2 = y\,\mathrm{d}x,
+\]
+Ayrıca başlangıç noktası $O(0,0)$ ile $M(1,1)$ noktasını birleştiren üç yol
+tanımlayalım: $\gamma_1$, yatay $O\to(1,0)$ parçasının ardından dikey
+$(1,0)\to M$ parçasından; $\gamma_2$, dikey $O\to(0,1)$ parçasının ardından
+yatay $(0,1)\to M$ parçasından oluşsun; $\gamma_3$ ise $O$ ile $M$'yi doğrudan
+birleştiren doğru parçası olsun.
+
+\begin{enumerate}
+\item $\omega_1=\mathrm{d}f$ olacak biçimde bir $f$ fonksiyonu bularak $\omega_1$'in tam olduğunu gösterin.
+\item Her parçayı parametreleyerek $\int_{\gamma_1}\omega_1$ ve $\int_{\gamma_2}\omega_1$ integrallerini hesaplayın. Sonucu hesap yapmadan yeniden elde edin.
+\item Schwarz ölçütünü $\omega_2$'ye uygulayın. Ne sonuç çıkarılabilir?
+\item $\int_{\gamma_1}\omega_2$, $\int_{\gamma_2}\omega_2$ ve $\int_{\gamma_3}\omega_2$ integrallerini hesaplayıp yorumlayın.
+\end{enumerate}
+
+\begin{indication}
+Yatay bir parçada $\mathrm{d}y=0$, dikey bir parçada $\mathrm{d}x=0$'dır;
+dolayısıyla her integral basit bir integrale indirgenir.
+\end{indication}
+
+\begin{solution}
+\textbf{Soru 1.} $\partial f/\partial x=y$ ve $\partial f/\partial y=x$ olduğundan $f(x,y)=xy$ uygundur.
+
+\textbf{Soru 2.} $t\mapsto\bigl(x(t),y(t)\bigr)$ ile parametrelenmiş bir eğri için
+\[
+\int_\gamma\omega_1
+= \int \left[y(t)x'(t)+x(t)y'(t)\right]\,\mathrm{d}t.
+\]
+
+$\gamma_1$ yolu iki parçanın birleşimidir. İlk parçada $t\in[0,1]$ için
+$x(t)=t$, $y(t)=0$; dolayısıyla $\mathrm{d}x=\mathrm{d}t$ ve
+$\mathrm{d}y=0$'dır. İkinci parçada yine $t\in[0,1]$ için $x(t)=1$,
+$y(t)=t$; dolayısıyla $\mathrm{d}x=0$ ve $\mathrm{d}y=\mathrm{d}t$'dır. Böylece
+\[
+\begin{aligned}
+I_1
+= \int_{\gamma_1}\omega_1
+&= \int_0^1\left(0\times 1+t\times 0\right)\,\mathrm{d}t
+ + \int_0^1\left(t\times 0+1\times 1\right)\,\mathrm{d}t \\
+&= 0+\int_0^1\mathrm{d}t = 1.
+\end{aligned}
+\]
+
+$\gamma_2$ için ilk parça $x(t)=0$, $y(t)=t$, ikinci parça ise
+$x(t)=t$, $y(t)=1$ ile parametrelenir; her iki durumda da $t\in[0,1]$'dir.
+Bu nedenle
+\[
+\begin{aligned}
+I_2
+= \int_{\gamma_2}\omega_1
+&= \int_0^1\left(t\times 0+0\times 1\right)\,\mathrm{d}t
+ + \int_0^1\left(1\times 1+t\times 0\right)\,\mathrm{d}t \\
+&= 0+\int_0^1\mathrm{d}t = 1.
+\end{aligned}
+\]
+İki değer aynıdır. Bu sonuç hesap yapmadan da öngörülebilirdi: $f(x,y)=xy$
+olmak üzere $\omega_1=\mathrm{d}f$ olduğundan integral yalnız uç noktalara bağlıdır:
+\[
+\int_\gamma\omega_1=f(M)-f(O)=f(1,1)-f(0,0)=1.
+\]
+
+\textbf{Soru 3.} $\omega_2=A(x,y)\,\mathrm{d}x+B(x,y)\,\mathrm{d}y$ yazalım.
+Burada $A(x,y)=y$ ve $B(x,y)=0$'dır. Form tam olsaydı Schwarz ölçütü
+\[
+\frac{\partial A}{\partial y}=\frac{\partial B}{\partial x}.
+\]
+eşitliğini verirdi. Oysa $\partial A/\partial y=1$, buna karşılık
+$\partial B/\partial x=0$'dır. Çapraz türevler farklı olduğundan $\omega_2$
+tam değildir. Bu nedenle integrali $O$ ile $M$ arasında izlenen yola bağlı
+olabilir; aşağıdaki hesap bunu doğrular.
+
+\textbf{Soru 4.} $\omega_2=y\,\mathrm{d}x$ olduğundan integrale yalnızca
+$y$ sıfırdan farklıyken gerçekleşen bir $x$ değişimi katkıda bulunabilir.
+Önceki parametrelemelerle $\gamma_1$ üzerinde
+\[
+\begin{aligned}
+J_1
+=\int_{\gamma_1}\omega_2
+&=\int_0^1 0\times 1\,\mathrm{d}t
+  +\int_0^1 t\times 0\,\mathrm{d}t \\
+&=0.
+\end{aligned}
+\]
+$\gamma_2$'nin ilk parçasında $x(t)=0$, dolayısıyla $\mathrm{d}x=0$;
+ikinci parçasında $x(t)=t$, $y(t)=1$ ve $\mathrm{d}x=\mathrm{d}t$'dır. Böylece
+\[
+\begin{aligned}
+J_2
+=\int_{\gamma_2}\omega_2
+&=\int_0^1 t\times 0\,\mathrm{d}t
+  +\int_0^1 1\times 1\,\mathrm{d}t \\
+&=1.
+\end{aligned}
+\]
+Son olarak köşegen $\gamma_3$ açıkça
+\[
+x(t)=t,\qquad y(t)=t,\qquad t\in[0,1],
+\]
+ile parametrelenir; buradan $\mathrm{d}x=\mathrm{d}t$ ve
+$\mathrm{d}y=\mathrm{d}t$ olur. Sonuç
+\[
+J_3
+=\int_{\gamma_3}\omega_2
+=\int_0^1 y(t)x'(t)\,\mathrm{d}t
+=\int_0^1 t\,\mathrm{d}t
+=\frac12.
+\]
+Üç yol aynı uç noktalara sahipken üç farklı değer verir: $J_1=0$, $J_2=1$
+ve $J_3=1/2$. Bu, tam olmayan bir diferansiyel formun ayırt edici yol bağımlılığıdır.
+\end{solution}
+\end{exo}
+
+\begin{exo}[Aynı iç enerji değişimi, üç aktarım biçimi]{meme-delta-u-trois-transferts}
+\keywords{birinci yasa, iç enerji, ısı, mekanik iş, elektrik işi, kalorimetri, durum fonksiyonu}
+
+Bir sıvı, kalorimetresi ve sıvıya daldırılmış küçük bir direnç, makroskopik
+olarak durgun kapalı bir sistem oluşturmaktadır. Kap rijittir ve sistemin toplam
+ısı kapasitesinin sabit olduğu varsayılmaktadır:
+\[
+C=2{,}00\ \mathrm{kJ\,K^{-1}}.
+\]
+Sistem, $T_A=20{,}0\,^\circ\mathrm{C}$ sıcaklığındaki $A$ denge durumundan
+$T_B=25{,}0\,^\circ\mathrm{C}$ sıcaklığındaki $B$ denge durumuna getirilecektir.
+Şu bağıntı kabul edilsin:
+\[
+U(B)-U(A)=C(T_B-T_A).
+\]
+Makroskopik kinetik ve potansiyel enerji değişimleri sıfırdır. Dışarıya olan
+tüm kayıplar ihmal edilmektedir.
+
+Aynı başlangıç durumu $A$'dan başlayarak aşağıdaki üç protokol ayrı ayrı uygulanır:
+\begin{itemize}
+\item[Protokol 1] Sistem, kendisine hiçbir iş verilmeden sıcak bir kaynakla ısıl temasa sokulur.
+\item[Protokol 2] Duvarlar ısı yalıtımlıdır. Bir palet, $m$ kütlesinin $h=5{,}00$ m yükseklikten düşmesi sayesinde sıvıyı karıştırır. Palet ve sıvı sonunda durur; kütlenin yitirdiği tüm mekanik enerji sisteme aktarılır. $g=9{,}81\ \mathrm{m\,s^{-2}}$ alınacaktır.
+\item[Protokol 3] Sistem $Q_3=4{,}00$ kJ ısı alır ve kalan enerji dirence elektrik yoluyla verilir. Alınan elektrik gücü sabit ve $\mathcal P=300$ W'tır.
+\end{itemize}
+
+\begin{enumerate}
+\item Üç protokol için ortak olan $\Delta U=U(B)-U(A)$ iç enerji değişimini hesaplayın.
+\item İlk iki protokolün her biri için sistemin aldığı ısı $Q$ ile iş $W$'yi belirleyin. İkinci protokolde gerekli $m$ kütlesini hesaplayın.
+\item Üçüncü protokolde alınan elektrik işini ve direncin beslenme süresini hesaplayın.
+\item Üç süreç aynı başlangıç ve son durumlarına sahiptir. Buna rağmen $Q$ ve $W$ değerlerinin neden farklı olabileceğini açıklayın. Sistem son $B$ durumunda “ısı” ya da “iş” içerir mi?
+\end{enumerate}
+
+\begin{indication}
+Bankacı işaret uzlaşımıyla $\Delta U=Q+W$ bağıntısını uygulayın. Palet için
+alınan iş, kütlenin potansiyel enerjisindeki $mgh$ azalmaya eşittir. Tellerden
+sınırı geçen elektrik enerjisi elektrik işi olarak sayılır.
+\end{indication}
+
+\begin{solution}
+\textbf{Soru 1.} Sıcaklık farkı $T_B-T_A=5{,}0$ K'dir. Dolayısıyla
+\[
+\Delta U=C(T_B-T_A)
+=2{,}00\times5{,}0
+=10{,}0\ \mathrm{kJ}.
+\]
+Bu değer yalnızca $A$ ve $B$ denge durumlarına bağlıdır.
+
+\textbf{Soru 2.} Birinci protokolde iş alınmaz: $W_1=0$. Birinci yasa
+\[
+Q_1=\Delta U=10{,}0\ \mathrm{kJ}.
+\]
+sonucunu verir. Enerji sisteme girdiği için ısı pozitiftir.
+
+İkinci protokolde duvarlar ısı yalıtımlı olduğundan $Q_2=0$'dır. İç enerji
+değişiminin tamamı paletin mekanik işinden kaynaklanır:
+\[
+W_2=\Delta U=10{,}0\ \mathrm{kJ}.
+\]
+$W_2=mgh$ olduğuna göre
+\[
+m=\frac{W_2}{gh}
+=\frac{10{,}0\times10^3}{9{,}81\times5{,}00}
+\simeq 204\ \mathrm{kg}.
+\]
+Bu büyük mertebe, küçük bir sıcaklık artışının bile önemli bir mekanik
+enerjiye karşılık geldiğini hatırlatır.
+
+\textbf{Soru 3.} Birinci yasa gereğince
+\[
+W_3=\Delta U-Q_3=10{,}0-4{,}00=6{,}00\ \mathrm{kJ}.
+\]
+Bu iş pozitiftir: elektrik beslemesi sisteme enerji verir. $W_3=\mathcal P\,\Delta t$ ile
+\[
+\Delta t=\frac{W_3}{\mathcal P}
+=\frac{6{,}00\times10^3}{300}
+=20{,}0\ \mathrm{s}.
+\]
+
+\textbf{Soru 4.} Üç yol sırasıyla
+\[
+(Q_1,W_1)=(10{,}0,0)\ \mathrm{kJ},
+\qquad
+(Q_2,W_2)=(0,10{,}0)\ \mathrm{kJ},
+\]
+ve
+\[
+(Q_3,W_3)=(4{,}00,6{,}00)\ \mathrm{kJ}.
+\]
+sonuçlarını verir. Her durumda $Q+W$ toplamı $10{,}0$ kJ'dir ve aynı
+$\Delta U$ değişimini üretir. İç enerji bir durum fonksiyonudur; ısı ve iş ise
+süreç sırasındaki aktarımları betimler. Son $B$ durumunda sistem iç enerjiye
+sahiptir, fakat “ısı” ya da “iş” içermez.
+\end{solution}
+\end{exo}
+
+\begin{exo}[Sabit dış basınç altında sıkıştırma]{compression-pression-exterieure-constante}
+\seoready{true}
+\keywords{basınç kuvvetlerinin işi, sabit dış basınç, sıkıştırma, genleşme, boşluğa genleşme}
+
+Bir gaz, sabit $P_0$ dış basıncı altında $V_A$ hacminden $V_B<V_A$ hacmine sıkıştırılır.
+
+\begin{enumerate}
+\item Gazın aldığı işi hesaplayın.
+\item Gaz aynı $P_0$ dış basıncına karşı $V_B$'den $V_A$'ya geri döner. Alınan işi hesaplayıp sıkıştırmadaki işle karşılaştırın.
+\item Gaz boşluğa genleşirken $V_B$'den $V_A$'ya genleşmeyi yeniden ele alın. Elde edilen üç işaretin anlamını açıklayın.
+\end{enumerate}
+
+\begin{indication}
+$W=-\int P_{\mathrm{ext}}\,\mathrm{d}V$ bağıntısını kullanın. Süreç yarı-statik
+olmadığında bile tümellenmesi gereken basınç \emph{dış} basınçtır.
+\end{indication}
+
+\begin{solution}
+\textbf{Soru 1.} Dış basınç sabittir; dolayısıyla
+\[
+W_{A\to B}=-P_0(V_B-V_A)=P_0(V_A-V_B)>0.
+\]
+Gaz sıkıştırma sırasında iş alır.
+
+\textbf{Soru 2.} Geri dönüş için
+\[
+W_{B\to A}=-P_0(V_A-V_B)<0.
+\]
+İki süreç de aynı sabit dış basınca karşı gerçekleştirildiğinden iki iş birbirinin tersidir.
+
+\textbf{Soru 3.} Boşlukta $P_{\mathrm{ext}}=0$ olduğundan
+\[
+W_{B\to A}^{\mathrm{vide}}=0.
+\]
+Dolayısıyla genleşme otomatik olarak negatif iş anlamına gelmez: gerçekten
+geri itilmiş bir dış kuvvet bulunmalıdır.
+\end{solution}
+\end{exo}
