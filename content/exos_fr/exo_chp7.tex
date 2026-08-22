@@ -220,62 +220,157 @@ donc $\mu = -T\left(\partial S/\partial N\right)_{U,A} = -T\,\dfrac{S}{N} + 2k_B
 \end{solution}
 \end{exo}
 
-\begin{exo}[Transition du second ordre : potentiel de Landau]{landau-transition-second-ordre}
-\keywords{Landau, transition de phase, second ordre, potentiel thermodynamique, superfluide, supraconducteur}
+\begin{exo}[Phonons d'une membrane 2D : refroidir en dilatant]{phonons-membrane-2d}
+\keywords{bosons, phonons, membrane 2D, graphène, relation fondamentale, détente adiabatique, basse température}
 
-Au voisinage de $T_c$, un système est décrit par un paramètre d'ordre $\psi$ (fraction superfluide ou gap supraconducteur) et l'enthalpie libre molaire
+À basse température, les vibrations acoustiques d'une membrane très mince peuvent être modélisées comme un gaz bidimensionnel de phonons. Les phonons sont des excitations bosoniques dont le nombre n'est pas conservé. On ne cherchera pas à établir microscopiquement leurs équations d'état : on admet, pour une membrane de surface $A$,
 \[
-g(T,\psi) = g_0(T) + a(T - T_c)\psi^2 + b\psi^4,
+U=\alpha A T^3,
+\qquad
+\Pi=\frac{U}{2A},
 \]
-avec $a, b > 0$ et $g_0$ indépendant de $\psi$.
+où $\alpha>0$ est une constante et $\Pi$ la pression surfacique exercée par les phonons. La relation thermodynamique fondamentale s'écrit
+\[
+\mathrm dU=T\,\mathrm dS-\Pi\,\mathrm dA.
+\]
 
 \begin{enumerate}
-\item À $T$ fixé, minimiser $g$ par rapport à $\psi$. Montrer que $\psi = 0$ pour $T > T_c$ et $\psi^2 = \dfrac{a(T_c - T)}{2b}$ pour $T < T_c$.
-\item Calculer la chaleur spécifique $c = -T\,\partial^2 g_0/\partial T^2$ côté normal ($\psi = 0$) et montrer qu'une discontinuité de $c$ apparaît à $T_c$ si $g_0$ est régulier (transition du second ordre).
-\item Interpréter $\psi$ pour un superfluide ($^4$He sous 2,17 K) ou un supraconducteur (sous $T_c$).
+\item À partir des deux équations d'état admises, calculer $\mathrm dS$ en fonction de $T$ et $A$, puis déterminer $S(T,A)$ en choisissant $S=0$ à $T=0$.
+\item Éliminer $T$ pour obtenir la relation fondamentale $S(U,A)$. Vérifier son extensivité et retrouver par dérivation les deux relations $1/T=(\partial S/\partial U)_A$ et $\Pi/T=(\partial S/\partial A)_U$.
+\item La membrane subit une dilatation adiabatique réversible. Établir la loi reliant $T$ et $A$. Que devient la température si la surface est multipliée par quatre ?
+\item Pour des bosons sans masse en 3D (photons ou phonons dans un solide massif), on admet $U_3=\beta VT^4$ et $P=U_3/(3V)$. Montrer qu'une détente adiabatique vérifie $TV^{1/3}=\text{cste}$. Comparer les refroidissements 2D et 3D lorsque toutes les longueurs sont doublées.
 \end{enumerate}
 
 \begin{indication}
-$\partial g/\partial\psi = 2a(T-T_c)\psi + 4b\psi^3$. Pour $T < T_c$, la solution $\psi = 0$ est un maximum local.
+Différencier $U=\alpha AT^3$, puis utiliser $T\,\mathrm dS=\mathrm dU+\Pi\,\mathrm dA$. Pour la question 2, remplacer $T$ par $(U/\alpha A)^{1/3}$. Une transformation adiabatique réversible conserve $S$.
 \end{indication}
 
 \begin{solution}
-\textbf{Question 1.} $\partial g/\partial\psi = 2\psi[a(T-T_c) + 2b\psi^2]$. Pour $T > T_c$, le seul minimum est $\psi = 0$. Pour $T < T_c$, $\psi = 0$ est instable et le minimum est $\psi^2 = a(T_c-T)/(2b) > 0$ : brisure spontanée de symétrie.
+\textbf{Question 1.} On a
+\[
+\mathrm dU=\alpha T^3\,\mathrm dA+3\alpha AT^2\,\mathrm dT,
+\qquad
+\Pi\,\mathrm dA=\frac{\alpha T^3}{2}\,\mathrm dA.
+\]
+La relation fondamentale donne donc
+\[
+\mathrm dS=\frac{\mathrm dU+\Pi\,\mathrm dA}{T}
+=\frac{3}{2}\alpha T^2\,\mathrm dA+3\alpha AT\,\mathrm dT
+=\mathrm d\!\left(\frac{3}{2}\alpha AT^2\right).
+\]
+Avec le choix $S(T=0)=0$,
+\[
+\boxed{S(T,A)=\frac{3}{2}\alpha AT^2.}
+\]
 
-\textbf{Question 2.} Pour $T > T_c$, $g = g_0(T)$. Pour $T < T_c$, substituer $\psi^2$ et développer : le terme $-a^2(T_c-T)^2/(4b)$ s'ajoute à $g_0$, modifiant $\partial^2 g/\partial T^2$ à $T_c$ : $c$ peut sauter (second ordre) sans chaleur latente (continuité de $S$).
+\textbf{Question 2.} Puisque $T=(U/\alpha A)^{1/3}$,
+\[
+\boxed{S(U,A)=\frac{3}{2}\alpha^{1/3}A^{1/3}U^{2/3}.}
+\]
+Sous $(U,A)\mapsto(\lambda U,\lambda A)$, le facteur total est $\lambda^{2/3+1/3}=\lambda$ : $S$ est bien extensive. De plus,
+\[
+\left(\frac{\partial S}{\partial U}\right)_A
+=\alpha^{1/3}A^{1/3}U^{-1/3}=\frac1T,
+\]
+et
+\[
+\left(\frac{\partial S}{\partial A}\right)_U
+=\frac12\alpha^{1/3}U^{2/3}A^{-2/3}
+=\frac{\Pi}{T}.
+\]
+La relation fondamentale contient donc bien toute l'information des deux équations d'état.
 
-\textbf{Question 3.} $\psi$ mesure la fraction superfluide ou l'amplitude du condensat de Cooper. Au-dessus de $T_c$, le comportement est normal ($\psi = 0$) ; en dessous, une phase cohérente macroscopique apparaît — modèle phénoménologique L2-compatible sans entrer dans la théorie BCS.
+\textbf{Question 3.} À entropie constante, $AT^2=\text{cste}$, soit
+\[
+\boxed{T\sqrt A=\text{cste}.}
+\]
+Si $A_f=4A_i$, alors $T_f=T_i/2$. Dans ce modèle idéal, la dilatation adiabatique refroidit le gaz de phonons : il fournit du travail surfacique sans recevoir de chaleur.
+
+\textbf{Question 4.} En 3D, le même calcul donne $S_3=4\beta VT^3/3$. Une adiabatique vérifie donc $VT^3=\text{cste}$, ou
+\[
+\boxed{TV^{1/3}=\text{cste}.}
+\]
+Si toutes les longueurs sont doublées, $A$ est multipliée par $4$ en 2D et $V$ par $8$ en 3D. On trouve dans les deux cas $T_f=T_i/2$. Les exposants diffèrent, mais une dilatation géométriquement semblable produit ici le même facteur de refroidissement. Les lois admises constituent un modèle macroscopique pertinent, par exemple pour les modes acoustiques d'une membrane de graphène suspendue ; elles n'exigent aucune dérivation de physique statistique.
 \end{solution}
 \end{exo}
 
-\begin{exo}[Ferromagnétisme : susceptibilité de Curie-Weiss]{curie-weiss-ferromagnetisme}
-\keywords{Curie-Weiss, ferromagnétisme, susceptibilité, transition de phase, aimantation}
+\begin{exo}[Pression de dégénérescence : du cuivre aux naines blanches]{pression-degenerescence-fermions}
+\keywords{fermions, électrons, pression de dégénérescence, métal, naine blanche, relation fondamentale, potentiel chimique}
 
-Un métal ferromagnétique obéit, au-dessus de sa température de Curie $T_c$, à la loi de Curie-Weiss :
+À très basse température devant leur température caractéristique, des fermions non relativistes occupent les états disponibles jusqu'à une énergie appelée énergie de Fermi. On admet ici directement leur loi d'énergie macroscopique, sans chercher à la dériver par la physique statistique :
 \[
-\chi = \frac{C}{T - T_c}, \qquad M = \chi H,
+U(N,V)=K\frac{N^{5/3}}{V^{2/3}},
+\qquad K>0.
 \]
-où $M$ est l'aimantation, $H$ le champ magnétique appliqué, $C$ une constante et $\chi$ la susceptibilité.
+Dans cette limite, la contribution entropique est négligeable et la relation fondamentale en représentation énergie devient
+\[
+\mathrm dU=-P\,\mathrm dV+\mu\,\mathrm dN.
+\]
 
 \begin{enumerate}
-\item Montrer que $\chi \to +\infty$ quand $T \to T_c^+$ : signe d'une transition de phase.
-\item On admet que l'énergie magnétique molaire vaut $u = -\mu_0 M H/2$ à champ fixé (approximation linéaire). Exprimer la contribution magnétique à l'entropie molaire $s_M = -\partial u/\partial T|_H$.
-\item Au voisinage de $T_c$, pourquoi le modèle de Curie-Weiss est-il insuffisant ? Relier à l'exercice sur le potentiel de Landau.
+\item Déterminer $P(N,V)$ et $\mu(N,V)$. Les exprimer en fonction de $U$, $V$ et $N$.
+\item Vérifier que $U$ est extensive et que la relation d'Euler $U=-PV+\mu N$ est satisfaite. Exprimer $P$ en fonction de la densité $n=N/V$ et commenter l'effet d'une compression.
+\item Dans le cuivre, on donne $n=8{,}5\times10^{28}\,\mathrm{m}^{-3}$ et l'énergie de Fermi $\varepsilon_F=7{,}0\,\mathrm{eV}$. On admet aussi $U=(3/5)N\varepsilon_F$. Estimer la pression de dégénérescence électronique. Donnée : $1\,\mathrm{eV}=1{,}60\times10^{-19}\,\mathrm J$.
+\item Dans une naine blanche non relativiste, le nombre d'électrons est proportionnel à la masse $M$ et le volume à $R^3$. Montrer que l'énergie électronique précédente s'écrit $U_{\rm deg}=C M^{5/3}/R^2$, avec $C>0$. L'énergie gravitationnelle est modélisée par $E_g=-DGM^2/R$, avec $D>0$. Minimiser $E(R)=U_{\rm deg}+E_g$ et montrer que le rayon d'équilibre varie comme $M^{-1/3}$. Interpréter.
 \end{enumerate}
 
 \begin{indication}
-$\chi$ diverge : la réponse à un champ infinitésimal devient infinie. Pour $s_M$, dériver $u = -\mu_0 \chi H^2/2$.
+Utiliser $P=-(\partial U/\partial V)_N$ et $\mu=(\partial U/\partial N)_V$. Pour la dernière question, dériver $E(R)=CM^{5/3}R^{-2}-DGM^2R^{-1}$ à masse fixée.
 \end{indication}
 
 \begin{solution}
-\textbf{Question 1.} Quand $T \to T_c^+$, le dénominateur $T - T_c \to 0^+$ : $\chi \to +\infty$. Un infinitésimal $H$ produit une aimantation macroscopique : transition paramagnétique $\to$ ferromagnétique.
-
-\textbf{Question 2.} $u = -\dfrac{\mu_0 H^2}{2}\dfrac{C}{T-T_c}$, donc
+\textbf{Question 1.}
 \[
-s_M = -\left(\frac{\partial u}{\partial T}\right)_H = -\frac{\mu_0 H^2 C}{2(T-T_c)^2} < 0
+P=-\left(\frac{\partial U}{\partial V}\right)_N
+=\frac{2K}{3}\frac{N^{5/3}}{V^{5/3}}
+=\boxed{\frac{2U}{3V}},
 \]
-au-dessus de $T_c$ (contribution magnétique à l'entropie décroît quand $T$ approche $T_c$).
+et
+\[
+\mu=\left(\frac{\partial U}{\partial N}\right)_V
+=\frac{5K}{3}\frac{N^{2/3}}{V^{2/3}}
+=\boxed{\frac{5U}{3N}}.
+\]
+Cette pression existe même lorsque l'agitation thermique ordinaire est négligeable : elle est liée au caractère fermionique des particules, encapsulé ici dans la loi d'énergie admise.
 
-\textbf{Question 3.} Curie-Weiss ne décrit que $T > T_c$ ; en dessous, $M(H)$ n'est plus linéaire. Landau avec $\psi = M$ donne une description unifiée au voisinage de $T_c$ (exposants critiques, second ordre).
+\textbf{Question 2.} Sous $(N,V)\mapsto(\lambda N,\lambda V)$,
+\[
+U\mapsto K\frac{(\lambda N)^{5/3}}{(\lambda V)^{2/3}}=\lambda U :
+\]
+l'énergie est extensive. Par ailleurs,
+\[
+-PV+\mu N=-\frac23U+\frac53U=U.
+\]
+Enfin,
+\[
+\boxed{P=\frac{2K}{3}n^{5/3}.}
+\]
+Une compression augmente $n$ et donc très fortement la pression. On vérifie aussi que $(\partial P/\partial V)_N<0$ : la réponse mécanique est stable.
+
+\textbf{Question 3.} En combinant $P=2U/(3V)$ et $U=(3/5)N\varepsilon_F$,
+\[
+P=\frac25n\varepsilon_F.
+\]
+Numériquement,
+\[
+P=\frac25(8{,}5\times10^{28})(7{,}0\times1{,}60\times10^{-19})
+\simeq3{,}8\times10^{10}\,\mathrm{Pa},
+\]
+soit environ $38\,\mathrm{GPa}$. Cette valeur énorme n'entraîne pas l'explosion du métal : elle est compensée à l'équilibre par les interactions avec le réseau ionique. Elle montre néanmoins que les électrons d'un métal ordinaire constituent déjà un système fermionique fortement dégénéré.
+
+\textbf{Question 4.} Comme $N\propto M$ et $V\propto R^3$,
+\[
+U\propto\frac{M^{5/3}}{(R^3)^{2/3}}=\frac{M^{5/3}}{R^2},
+\]
+d'où $U_{\rm deg}=CM^{5/3}/R^2$. À masse fixée,
+\[
+\frac{\mathrm dE}{\mathrm dR}
+=-\frac{2CM^{5/3}}{R^3}+\frac{DGM^2}{R^2}=0,
+\]
+ce qui donne
+\[
+\boxed{R=\frac{2C}{DG}\,M^{-1/3}.}
+\]
+Le point stationnaire est un minimum : la pression de dégénérescence s'oppose à l'effondrement gravitationnel. Le résultat contre-intuitif est qu'une naine blanche plus massive est plus petite. Le modèle cesse d'être valable lorsque les électrons deviennent relativistes ; cette limite conduit, dans une théorie plus complète, à la masse de Chandrasekhar.
 \end{solution}
 \end{exo}

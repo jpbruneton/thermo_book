@@ -1139,6 +1139,29 @@ a.exercise-index-card-link:focus-visible {
   margin: 0 auto;
 }
 
+.exercise-back-nav {
+  font-family: var(--font-inter);
+  font-size: 0.82rem;
+  font-weight: 600;
+}
+
+.exercise-back-nav-top {
+  margin-bottom: 1rem;
+}
+
+.exercise-back-nav-bottom {
+  margin-top: 2.25rem;
+}
+
+.exercise-back-nav a {
+  color: var(--amber);
+  text-decoration: none;
+}
+
+.exercise-back-nav a:hover {
+  text-decoration: underline;
+}
+
 .exercise-breadcrumb {
   display: flex;
   flex-wrap: wrap;

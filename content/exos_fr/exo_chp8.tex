@@ -115,7 +115,7 @@ T = \left(\frac{\partial H}{\partial S}\right)_{P,N}, \qquad V = \left(\frac{\pa
 \]
 À $T$ et $P$ constants (conditions usuelles d'une paillasse de chimie), $\mathrm{d}G = \mu\,\mathrm{d}N$ : la variation de $G$ ne contient que la chimie, c'est-à-dire les variations des nombres de particules pondérées par les potentiels chimiques.
 
-\textbf{Question 4.} $H = U + PV = \tfrac{3}{2}Nk_BT + Nk_BT = \tfrac{5}{2}Nk_BT$ : comme $U$, l'enthalpie du gaz parfait ne dépend que de $T$ (et de $N$). Donc $\left(\partial H/\partial T\right)_{P,N} = \tfrac{5}{2}Nk_B = C_P$. Et pour une transformation isobare d'un système fermé, $\mathrm{d}H = T\,\mathrm{d}S + V\,\mathrm{d}P = \delta Q$ : la variation d'enthalpie \emph{est} la chaleur reçue — on retrouve l'expérience de la résistance sous piston de la leçon 4, où $Q = \tfrac{5}{2}R\,\Delta T$ par mole.
+\textbf{Question 4.} $H = U + PV = \tfrac{3}{2}Nk_BT + Nk_BT = \tfrac{5}{2}Nk_BT$ : comme $U$, l'enthalpie du gaz parfait ne dépend que de $T$ (et de $N$). Donc $\left(\partial H/\partial T\right)_{P,N} = \tfrac{5}{2}Nk_B = C_P$. Et pour une transformation isobare d'un système fermé, $\mathrm{d}H = T\,\mathrm{d}S + V\,\mathrm{d}P = \delta Q$ : la variation d'enthalpie \emph{est} la chaleur reçue — on retrouve l'expérience de la résistance sous piston de la leçon 5, où $Q = \tfrac{5}{2}R\,\Delta T$ par mole.
 \end{solution}
 \end{exo}
 
@@ -147,6 +147,88 @@ $$\frac{\partial^2 F}{\partial V\,\partial T} = \frac{\partial^2 F}{\partial T\,
 \textbf{4.} $\left(\partial P/\partial T\right)_V$ mesure comment la pression augmente avec la température à volume constant — c'est directement lié au coefficient d'expansion thermique et à la compressibilité du fluide.
 \end{solution}
 
+\end{exo}
+
+\begin{exo}[Du potentiel de Helmholtz à la pression de rayonnement]{helmholtz-photons-voile-solaire}
+\keywords{gaz de photons, énergie libre de Helmholtz, rayonnement du corps noir, pression de rayonnement, voile solaire}
+
+Un rayonnement électromagnétique à l'équilibre dans une cavité constitue un gaz de photons. On admet directement son énergie libre de Helmholtz,
+\[
+F(T,V)=-\frac{a_{\rm r}}{3}VT^4,
+\qquad
+a_{\rm r}=7{,}57\times10^{-16}\,\mathrm{J\,m^{-3}\,K^{-4}}.
+\]
+Le nombre de photons n'étant pas conservé, $F$ ne dépend pas d'une variable $N$. On rappelle
+\[
+\mathrm dF=-S\,\mathrm dT-P\,\mathrm dV.
+\]
+
+\begin{enumerate}
+\item Déduire de $F(T,V)$ l'entropie $S$, la pression $P$, puis l'énergie interne $U=F+TS$. Retrouver $P=U/(3V)$.
+\item Vérifier la relation d'Euler $U=TS-PV$ et montrer que $F=-PV$. Pourquoi aucun terme $\mu N$ n'apparaît-il ?
+\item Estimer la densité d'énergie et la pression du rayonnement d'une cavité à $T=300\,\mathrm K$. Commenter l'ordre de grandeur.
+\item Une voile solaire parfaitement réfléchissante de surface $A=100\,\mathrm{m^2}$ et de masse totale $m=10\,\mathrm{kg}$ reçoit normalement, près de la Terre, un faisceau d'intensité $I=1{,}36\times10^3\,\mathrm{W\,m^{-2}}$. Pour un faisceau dirigé, on admet que la pression vaut $I/c$ s'il est absorbé et $2I/c$ s'il est réfléchi, avec $c=3{,}00\times10^8\,\mathrm{m\,s^{-1}}$. Calculer la force, l'accélération et le gain de vitesse en une journée si l'accélération reste constante. Pourquoi n'utilise-t-on pas ici le facteur $1/3$ de la cavité ?
+\end{enumerate}
+
+\begin{indication}
+Utiliser $S=-(\partial F/\partial T)_V$, $P=-(\partial F/\partial V)_T$ et $U=F+TS$. Pour la voile, la force est la pression multipliée par la surface et une journée vaut $86400\,\mathrm s$.
+\end{indication}
+
+\begin{solution}
+\textbf{Question 1.} Les variables naturelles de $F$ donnent
+\[
+S=-\left(\frac{\partial F}{\partial T}\right)_V
+=\frac{4a_{\rm r}}{3}VT^3,
+\qquad
+P=-\left(\frac{\partial F}{\partial V}\right)_T
+=\frac{a_{\rm r}}{3}T^4.
+\]
+Par conséquent,
+\[
+U=F+TS=-\frac{a_{\rm r}}{3}VT^4
++\frac{4a_{\rm r}}{3}VT^4
+=\boxed{a_{\rm r}VT^4},
+\]
+et donc $P=a_{\rm r}T^4/3=U/(3V)$.
+
+\textbf{Question 2.}
+\[
+TS-PV=\frac{4a_{\rm r}}{3}VT^4-\frac{a_{\rm r}}{3}VT^4
+=a_{\rm r}VT^4=U.
+\]
+De plus, $F=U-TS=-PV$. Le nombre de photons s'ajuste librement à l'équilibre : il n'est pas une variable extensive conservée. Il n'y a donc pas de terme $\mu\,\mathrm dN$ indépendant ; on dit de manière équivalente que le potentiel chimique des photons est nul.
+
+\textbf{Question 3.} La densité d'énergie vaut
+\[
+u=\frac UV=a_{\rm r}T^4
+=7{,}57\times10^{-16}\times300^4
+\simeq6{,}1\times10^{-6}\,\mathrm{J\,m^{-3}}.
+\]
+Ainsi,
+\[
+P=\frac u3\simeq2{,}0\times10^{-6}\,\mathrm{Pa}.
+\]
+À température ambiante, la pression du rayonnement thermique est minuscule devant la pression atmosphérique, de l'ordre de $10^5\,\mathrm{Pa}$. Elle devient toutefois importante à très haute température, notamment à l'intérieur des étoiles.
+
+\textbf{Question 4.} Pour une réflexion parfaite,
+\[
+P_{\rm voile}=\frac{2I}{c}
+\simeq9{,}1\times10^{-6}\,\mathrm{Pa}.
+\]
+La force et l'accélération valent
+\[
+F=P_{\rm voile}A\simeq9{,}1\times10^{-4}\,\mathrm N,
+\qquad
+a=\frac Fm\simeq9{,}1\times10^{-5}\,\mathrm{m\,s^{-2}}.
+\]
+En une journée,
+\[
+\Delta v=a\,\Delta t
+\simeq9{,}1\times10^{-5}\times86400
+\simeq7{,}8\,\mathrm{m\,s^{-1}}.
+\]
+La force instantanée est faible, mais elle agit sans carburant et son effet s'accumule. Le facteur $1/3$ caractérise un rayonnement isotrope en équilibre dans une cavité : les photons arrivent de toutes les directions. La voile reçoit au contraire un faisceau presque unidirectionnel ; le transfert de quantité de mouvement normal vaut $I/c$, doublé par la réflexion.
+\end{solution}
 \end{exo}
 
 \begin{exo}[Le piège du potentiel chimique du gaz parfait]{potentiel-chimique-gp}

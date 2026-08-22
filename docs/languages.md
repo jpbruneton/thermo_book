@@ -26,10 +26,10 @@ ce qui varie entre langues, c'est la profondeur du contenu réellement traduit
 | ar   | Arabe      | 🚧 partiel   | Idem de + RTL (`dir="rtl"` sur `<html>`, mise en page en miroir automatique via flex/grid) |
 | id   | Indonésien | 🚧 partiel   | Accueil, à propos, métadonnées des leçons, glossaire, leçons 1 et 2, exercices du chapitre 2 et quiz 1 à 4 traduits |
 | tr   | Turc       | 🚧 partiel   | Idem id |
-| bn   | Bengali    | 🚧 partiel   | Chrome + leçons 1 à 4 et quiz 1 à 4 traduits ; pas encore d'exercices traduits |
-| ur   | Ourdou     | 🚧 partiel   | Chrome + leçons 1, 3 et 4 et quiz 1 à 4 traduits + RTL (`dir="rtl"` sur `<html>`, mise en page en miroir automatique via flex/grid) |
-| sw   | Swahili    | 🚧 partiel   | Chrome + leçons 1 à 4 et quiz 1 à 4 traduits ; pas encore d'exercices traduits |
-| fa   | Farsi      | 🚧 partiel   | Chrome + leçons 1, 3 et 4 et quiz 1 à 4 traduits + RTL (`dir="rtl"` sur `<html>`, mise en page en miroir automatique via flex/grid) |
+| bn   | Bengali    | 🚧 partiel   | Chrome + leçons 1 à 4, exercices du chapitre 2 et quiz 1 à 4 traduits |
+| ur   | Ourdou     | 🚧 partiel   | Chrome + leçons 1 à 4, exercices du chapitre 2 et quiz 1 à 4 traduits + RTL (`dir="rtl"` sur `<html>`, mise en page en miroir automatique via flex/grid) |
+| sw   | Swahili    | 🚧 partiel   | Chrome + leçons 1 à 4, exercices du chapitre 2 et quiz 1 à 4 traduits |
+| fa   | Farsi      | 🚧 partiel   | Chrome + leçons 1, 3 et 4, exercices du chapitre 2 et quiz 1 à 4 traduits + RTL (`dir="rtl"` sur `<html>`, mise en page en miroir automatique via flex/grid) |
 
 Légende : ✅ en prod (toutes sections) · 🚧 partiel (au moins une section a du
 contenu réel dans cette langue ; jamais de repli silencieux vers fr/en — les
@@ -74,7 +74,7 @@ pages sans contenu affichent un état explicite) · 📋 planifié / pas commenc
   `content/exos_<lang>/exo_chpN.tex` pour n'importe quel `Lang`. La liste, les
   pages détaillées, les métadonnées et le sitemap n'annoncent une langue que
   lorsque ses propres fichiers contiennent réellement des exercices. Le
-  chapitre 2 est traduit dans les 16 langues ; les fichiers vides des chapitres
+  chapitre 2 est traduit dans les 20 langues ; les fichiers vides des chapitres
   1 et 3 réservent seulement la structure et ne créent aucune page factice.
   Les exercices validés du chapitre 2 portent `\seoready{true}` dans chaque
   langue. Eux seuls sont indexables et présents dans le sitemap ; les exercices

@@ -410,9 +410,116 @@ export const quizQuestions: QuizQuestion[] = [
     explanations: [
       "Faux : le gaz reçoit bien du travail, mais il expulse exactement la même quantité d'énergie sous forme de chaleur pour maintenir sa température.",
       "Faux : ΔU = Q ne vaut qu'en isochore (W = 0), pas en isotherme.",
-      "Exact : pour un gaz parfait, U ne dépend que de T ; isotherme ⇒ ΔU = 0, et donc Q = -W (le gaz expulse la chaleur reçue sous forme de travail).",
+      "Exact : pour un gaz parfait, U ne dépend que de T ; isotherme ⇒ ΔU = 0. Lors de la compression, le gaz reçoit du travail (W > 0) et cède exactement autant de chaleur à l'extérieur (Q = -W < 0).",
     ],
     correctIndex: 2,
+  },
+  {
+    id: "l5-q3",
+    lecon: 5,
+    question:
+      "Un gaz parfait subit une détente isotherme quasi statique. Avec la convention où les énergies reçues par le gaz sont positives, quel bilan est correct ?",
+    choices: [
+      "W < 0, Q > 0 et ΔU = 0 : le gaz fournit du travail et reçoit de la chaleur",
+      "W > 0, Q < 0 et ΔU = 0 : le gaz reçoit du travail et cède de la chaleur",
+      "W < 0, Q < 0 et ΔU < 0 : le gaz fournit du travail, cède de la chaleur et refroidit",
+      "W = 0, Q = 0 et ΔU = 0 : toute détente isotherme est une détente dans le vide",
+    ],
+    explanations: [
+      "Exact : pendant une détente, dV > 0 donc δW = -P dV < 0 : le gaz fournit du travail. Comme T reste constante, ΔU = 0 pour un gaz parfait ; le premier principe impose alors Q = -W > 0 : le gaz reçoit de la chaleur.",
+      "Faux : ces signes sont ceux d'une compression isotherme. Une détente fournit du travail à l'extérieur, donc le travail reçu par le gaz est négatif.",
+      "Faux : le gaz ne refroidit pas puisque la transformation est isotherme. La chaleur reçue compense exactement le travail fourni : Q = -W > 0.",
+      "Faux : W = 0 caractérise ici une détente contre le vide. Lors d'une détente isotherme quasi statique, le gaz pousse contre une pression extérieure et fournit du travail.",
+    ],
+    correctIndex: 0,
+  },
+  {
+    id: "l5-q4",
+    lecon: 5,
+    question:
+      "À partir du même état (P,V), on détend quasi statiquement un gaz parfait soit de manière isotherme, soit de manière adiabatique. Quelle affirmation est correcte ?",
+    choices: [
+      "L'isotherme est plus raide que l'adiabatique, car maintenir T constante accélère la baisse de pression",
+      "Les deux courbes ont la même pente au point de départ, mais le gaz refroidit seulement sur l'isotherme",
+      "L'adiabatique est plus raide que l'isotherme dans le diagramme (P,V), la pression y chute plus vite et le gaz refroidit",
+      "Le gaz chauffe pendant la détente adiabatique, car il fournit du travail à l'extérieur",
+    ],
+    explanations: [
+      "Faux : c'est l'adiabatique qui est la plus raide, puisque |−γP/V| > |−P/V| lorsque γ > 1.",
+      "Faux : les pentes diffèrent d'un facteur γ. Sur l'isotherme T ne varie pas ; c'est lors de la détente adiabatique que le gaz refroidit.",
+      "Exact : au même point, la pente vaut -P/V sur l'isotherme et -γP/V sur l'adiabatique. Comme γ > 1, l'adiabatique est plus raide. De plus Q = 0 et W < 0 pendant la détente : ΔU = W < 0, donc T diminue.",
+      "Faux : fournir du travail sans recevoir de chaleur diminue l'énergie interne du gaz. Pour un gaz parfait, U ne dépend que de T : le gaz refroidit. Inversement, une compression adiabatique le chauffe.",
+    ],
+    correctIndex: 2,
+  },
+  {
+    id: "l5-q5",
+    lecon: 5,
+    question:
+      "Dans un diagramme de Clapeyron (P,V), un gaz parfait parcourt un cycle dans le sens horaire. Avec la convention des énergies reçues positives, comment classer ce cycle et quels sont les signes des bilans ?",
+    choices: [
+      "Cycle moteur : W_cycle > 0 et Q_cycle < 0",
+      "Cycle moteur : W_cycle < 0 et Q_cycle > 0",
+      "Cycle récepteur : W_cycle > 0 et Q_cycle < 0",
+      "Cycle récepteur : W_cycle < 0 et Q_cycle > 0",
+    ],
+    explanations: [
+      "Faux : W_cycle > 0 signifie que le gaz reçoit du travail ; ce serait un cycle récepteur, parcouru dans le sens antihoraire.",
+      "Exact : un cycle horaire est moteur : le gaz fournit globalement du travail, donc le travail qu'il reçoit est négatif (W_cycle < 0). Comme ΔU_cycle = 0, Q_cycle = -W_cycle > 0 : il reçoit globalement de la chaleur.",
+      "Faux : ces signes correspondent bien à un cycle récepteur, mais celui-ci est parcouru dans le sens antihoraire, pas horaire.",
+      "Faux : les signes indiqués sont ceux d'un cycle moteur. Un cycle récepteur reçoit du travail : W_cycle > 0 et, puisque ΔU_cycle = 0, Q_cycle < 0.",
+    ],
+    correctIndex: 1,
+  },
+  {
+    id: "l5-vf1",
+    lecon: 5,
+    question:
+      "Lors d'une transformation adiabatique d'un gaz parfait, Q = 0 ; sa température reste donc nécessairement constante.",
+    choices: ["Vrai", "Faux"],
+    explanations: [
+      "Faux : adiabatique signifie seulement qu'aucune chaleur n'est échangée. Le gaz peut néanmoins recevoir ou fournir du travail, ce qui modifie son énergie interne et donc sa température.",
+      "Exact : Q = 0 n'implique pas ΔU = 0. Avec ΔU = Q + W, on a ici ΔU = W. Une détente adiabatique fournit du travail (W < 0) et refroidit le gaz ; une compression adiabatique reçoit du travail (W > 0) et le chauffe.",
+    ],
+    correctIndex: 1,
+  },
+  {
+    id: "l5-q7",
+    lecon: 5,
+    question:
+      "Deux mêmes quantités d'un gaz parfait, initialement à la même température, reçoivent la même chaleur Q > 0. Le premier gaz est chauffé à volume constant, le second à pression constante. Lequel atteint la température finale la plus élevée ?",
+    choices: [
+      "Le gaz chauffé à pression constante, car il peut se dilater",
+      "Les deux atteignent la même température, puisqu'ils reçoivent la même chaleur",
+      "Le gaz chauffé à volume constant, car C_V < C_P",
+      "On ne peut rien conclure sans connaître la pression initiale",
+    ],
+    explanations: [
+      "Faux : lors de la dilatation isobare, une partie de l'énergie reçue est restituée à l'extérieur sous forme de travail. Il reste donc moins d'énergie pour augmenter la température.",
+      "Faux : à volume constant, Q = nC_VΔT, tandis qu'à pression constante, Q = nC_PΔT. Les capacités thermiques ne sont pas les mêmes.",
+      "Exact : pour un même Q > 0, ΔT_V = Q/(nC_V) et ΔT_P = Q/(nC_P). Comme C_P = C_V + R > C_V, on a ΔT_V > ΔT_P : le gaz chauffé à volume constant chauffe davantage.",
+      "Faux : la comparaison dépend de C_V et C_P, pas de la pression initiale. Pour un gaz parfait, C_P > C_V.",
+    ],
+    correctIndex: 2,
+  },
+  {
+    id: "l5-q8",
+    lecon: 5,
+    question:
+      "Un gaz parfait passe de l'état A à l'état B avec P_B = P_A/2 et V_B = 3V_A. Que peut-on affirmer sans connaître le chemin suivi ?",
+    choices: [
+      "Le gaz refroidit, car sa pression diminue",
+      "Sa température ne change pas, car la baisse de pression compense l'augmentation de volume",
+      "Le gaz chauffe et il a nécessairement reçu à la fois de la chaleur et du travail",
+      "Le gaz chauffe : T_B = 3T_A/2 et ΔU > 0, mais on ne peut pas déterminer séparément les signes de Q et W",
+    ],
+    explanations: [
+      "Faux : la température d'un gaz parfait dépend du produit PV, pas de la pression seule. Ici, ce produit augmente.",
+      "Faux : P_BV_B = (P_A/2)(3V_A) = 3P_AV_A/2. Le produit PV n'est donc pas constant.",
+      "Faux : le gaz chauffe bien, mais le premier principe fixe seulement la somme Q + W = ΔU > 0. Selon le chemin suivi, Q ou W peut être négatif.",
+      "Exact : avec PV = nRT, T_B/T_A = P_BV_B/(P_AV_A) = 3/2. Comme U ne dépend que de T pour un gaz parfait, ΔU > 0. En revanche, Q et W dépendent du chemin : leurs signes individuels ne sont pas déterminés par les seuls états A et B.",
+    ],
+    correctIndex: 3,
   },
 
   // ─── Leçon 6 : Second principe (entropie) ───
@@ -453,24 +560,6 @@ export const quizQuestions: QuizQuestion[] = [
     correctIndex: 1,
   },
   {
-    id: "l6-q3",
-    lecon: 6,
-    question: "Pourquoi calcule-t-on souvent ΔS le long d'un « chemin virtuel réversible » plutôt que le long de la transformation réelle, quand celle-ci est irréversible ?",
-    choices: [
-      "Parce que l'entropie n'est mathématiquement définie que le long des transformations réversibles, jamais pour les autres.",
-      "Parce que S est une fonction d'état : ΔS ne dépend que des états initial et final, donc tout chemin réversible commode convient.",
-      "Parce que les transformations irréversibles n'admettent pas d'état final d'équilibre sur lequel évaluer l'entropie.",
-      "Parce que le long d'un chemin réversible, la température reste constante, ce qui simplifie l'intégrale.",
-    ],
-    explanations: [
-      "Faux : l'entropie est définie pour tout état d'équilibre, quel que soit le chemin qui y a mené.",
-      "Exact : c'est « l'astuce fondamentale » du cours ; on choisit un chemin réversible entre les mêmes états A et B pour pouvoir intégrer dS = δQ_rev/T.",
-      "Faux : l'état final d'une transformation irréversible est un état d'équilibre parfaitement défini ; c'est le chemin qui est mal défini.",
-      "Faux : rien n'impose l'isothermie le long d'un chemin réversible.",
-    ],
-    correctIndex: 1,
-  },
-  {
     id: "l6-q4",
     lecon: 6,
     question: "On plonge de l'eau à 20°C dans un four maintenu à 80°C. Pour calculer la variation d'entropie de l'eau, il faut :",
@@ -492,12 +581,12 @@ export const quizQuestions: QuizQuestion[] = [
     question: "L'entropie d'un système non isolé peut-elle décroître au cours d'une transformation ?",
     choices: [
       "Non : l'entropie de tout système, isolé ou non, ne peut jamais décroître ; c'est l'énoncé universel du second principe.",
-      "Oui, si un opérateur extérieur apporte de l'énergie de la bonne façon (ranger une pièce, démêler des câbles, un organisme vivant).",
+      "Oui, s'il y a échange de chaleur.",
       "Oui, mais uniquement pour des systèmes microscopiques soumis à des fluctuations quantiques.",
     ],
     explanations: [
       "Faux : l'interdiction ne porte que sur les systèmes isolés. Refroidir un verre d'eau diminue son entropie, par exemple.",
-      "Exact : l'entropie locale peut décroître au prix d'une création d'entropie ailleurs (opérateur, environnement) qui compense largement. Le vivant fonctionne exactement ainsi.",
+      "Exact : un système non isolé peut céder de la chaleur et donc de l'entropie à son environnement ; lors du refroidissement d'un corps, son entropie diminue tandis que l'entropie totale du système et de l'environnement ne décroît pas.",
       "Faux : nul besoin d'effets quantiques ; refroidir un corps macroscopique suffit à faire décroître son entropie.",
     ],
     correctIndex: 1,
@@ -505,18 +594,18 @@ export const quizQuestions: QuizQuestion[] = [
   {
     id: "l6-q6",
     lecon: 6,
-    question: "Un système passe d'un état A à un état B, une fois par un chemin réversible, une fois par un chemin irréversible. La chaleur échangée Q est-elle la même dans les deux cas ?",
+    question: "Un système passe du même état A au même état B par un chemin réversible ou par un chemin irréversible. Sans hypothèse supplémentaire, quelle comparaison est toujours vraie ?",
     choices: [
-      "Oui, puisque les états initial et final sont identiques, tous les termes du bilan énergétique coïncident.",
-      "Non : ΔS est le même (fonction d'état), mais Q_irr < Q_rev car la création d'entropie remplace une partie de l'échange.",
-      "Oui pour la chaleur, mais pas pour le travail, qui seul dépend du chemin suivi entre A et B.",
+      "Q_irr < Q_rev et W_irr > W_rev.",
+      "Q_irr > Q_rev et W_irr < W_rev.",
+      "Aucune de ces inégalités n'est universelle ; on sait seulement que Q_irr + W_irr = Q_rev + W_rev = ΔU.",
     ],
     explanations: [
-      "Faux : Q et W dépendent du chemin ; seules les fonctions d'état (U, S...) ont la même variation.",
-      "Exact : ΔS = ∫δQ_rev/T = ∫δQ_irr/T + S_créée avec S_créée > 0, donc les chaleurs échangées diffèrent nécessairement. Les indices « rev » et « irr » comptent !",
-      "Faux : chaleur et travail dépendent tous deux du chemin ; seule leur somme ΔU = Q + W est fixée.",
+      "Faux en général : ces inégalités peuvent être obtenues dans des situations particulières, avec des contraintes précises sur l'environnement, mais pas pour deux chemins arbitraires.",
+      "Faux en général : le sens opposé n'est pas davantage universel.",
+      "Exact : Q et W dépendent du chemin, tandis que ΔU est fixé par A et B. On a donc aussi Q_irr - Q_rev = -(W_irr - W_rev), sans pouvoir fixer le signe de ces écarts.",
     ],
-    correctIndex: 1,
+    correctIndex: 2,
   },
   {
     id: "l6-q7",

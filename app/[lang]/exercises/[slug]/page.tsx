@@ -248,6 +248,10 @@ export default function ExerciseDetailPage({ params }: Props) {
 
       <article className="exercise-detail-page">
         <div className="exercise-detail-inner">
+          <nav className="exercise-back-nav exercise-back-nav-top" aria-label={t.exercises}>
+            <Link href={sectionHref(lang, "exercises")}>{t.back}</Link>
+          </nav>
+
           <nav className="exercise-breadcrumb" aria-label={t.breadcrumbLabel}>
             <Link href={`/${lang}`}>{siteT.nav.home}</Link>
             <span aria-hidden="true">/</span>
@@ -318,6 +322,10 @@ export default function ExerciseDetailPage({ params }: Props) {
                 {exerciseTitleToPlainText(nextExercise.titleTex)}
               </Link>
             ) : <span />}
+          </nav>
+
+          <nav className="exercise-back-nav exercise-back-nav-bottom" aria-label={t.exercises}>
+            <Link href={sectionHref(lang, "exercises")}>{t.back}</Link>
           </nav>
         </div>
       </article>

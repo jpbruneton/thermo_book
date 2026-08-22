@@ -2,9 +2,9 @@
 % Le chapitre est déterminé par le nom de ce fichier.
 
 \begin{exo}[Intégrer une forme différentielle le long d'un chemin]{integrale-forme-differentielle}
-\keywords{forme différentielle, différentielle exacte, critère de Schwarz, intégrale curviligne, travail des forces de pression, gaz parfait}
+\keywords{forme différentielle, différentielle exacte, critère de Schwarz, intégrale curviligne}
 
-\textbf{Partie A — dans le plan.} On considère les deux formes différentielles
+On considère les deux formes différentielles
 \[
 \omega_1 = y\,\mathrm{d}x + x\,\mathrm{d}y,
 \qquad
@@ -23,564 +23,354 @@ joignant directement $O$ à $M$.
 \item Calculer $\int_{\gamma_1}\omega_2$, $\int_{\gamma_2}\omega_2$ et $\int_{\gamma_3}\omega_2$. Commenter.
 \end{enumerate}
 
-\textbf{Partie B — le travail des forces de pression.} On reprend $n$ moles de gaz
-parfait monoatomique ($U = \frac{3}{2}nRT$), décrit par les variables $(T,V)$, et
-l'on joint l'état $A(T_1,V_1)$ à l'état $B(T_2,V_2)$ par deux chemins
-quasi-statiques, avec $P_{\mathrm{ext}} = P$ à chaque instant : le chemin
-$\Gamma_1$, isotherme à $T_1$ de $V_1$ à $V_2$ puis isochore à $V_2$ de $T_1$ à
-$T_2$ ; et le chemin $\Gamma_2$, isochore à $V_1$ puis isotherme à $T_2$.
-
-\begin{enumerate}
-\setcounter{enumi}{4}
-\item Calculer le travail reçu $W_1$ et $W_2$ le long de chacun des deux chemins. Que vaut leur différence ?
-\item Calculer $\Delta U$ le long de chacun des deux chemins, puis en déduire $Q_1$ et $Q_2$. Conclure sur la nature de $\delta Q$.
-\item Application numérique : $n = 1$ mol, $T_1 = 300$ K, $T_2 = 600$ K, $V_2 = 2V_1$.
-\end{enumerate}
-
 \begin{indication}
-Sur un segment horizontal $\mathrm{d}y = 0$, sur un segment vertical $\mathrm{d}x = 0$ : chaque intégrale se réduit à une intégrale simple. Pour la partie B, une isochore ne contribue pas au travail des forces de pression, et sur une isotherme on remplace $P$ par $nRT/V$ avant d'intégrer.
+Sur un segment horizontal $\mathrm{d}y = 0$, sur un segment vertical
+$\mathrm{d}x = 0$ : chaque intégrale se réduit à une intégrale simple.
 \end{indication}
 
 \begin{solution}
 \textbf{Question 1.} $f(x,y) = xy$ convient, puisque $\partial f/\partial x = y$ et $\partial f/\partial y = x$.
 
-\textbf{Question 2.} Sur $\gamma_1$ : le premier segment porte $y = 0$ et $\mathrm{d}y = 0$, sa contribution est nulle ; le second porte $x = 1$ et $\mathrm{d}x = 0$, il donne $\int_0^1 1\,\mathrm{d}y = 1$. Total : $1$. Sur $\gamma_2$, par symétrie : $0 + \int_0^1 1\,\mathrm{d}x = 1$. Les deux valeurs coïncident, ce qui était acquis d'avance : $\omega_1$ étant exacte, $\int_\gamma \omega_1 = f(M) - f(O) = 1 - 0 = 1$ quel que soit le chemin.
-
-\textbf{Question 3.} Ici $A = y$ et $B = 0$, donc $\partial A/\partial y = 1$ tandis que $\partial B/\partial x = 0$. Les dérivées croisées diffèrent : $\omega_2$ n'est pas exacte, et son intégrale doit dépendre du chemin.
-
-\textbf{Question 4.} Sur $\gamma_1$ : $y = 0$ sur le premier segment et $\mathrm{d}x = 0$ sur le second, donc $\int_{\gamma_1}\omega_2 = 0$. Sur $\gamma_2$ : $\mathrm{d}x = 0$ sur le premier segment, puis $y = 1$ sur le second, donc $\int_{\gamma_2}\omega_2 = \int_0^1 \mathrm{d}x = 1$. Sur $\gamma_3$, paramétré par $x = y = t$ avec $t\in[0,1]$ : $\int_0^1 t\,\mathrm{d}t = \tfrac12$. Trois chemins, trois valeurs, pour les mêmes extrémités : c'est exactement ce que signifie « ne pas être exacte ».
-
-\textbf{Question 5.} Une isochore ne contribue pas, et sur une isotherme à température $T$,
+\textbf{Question 2.} Pour une courbe paramétrée par
+$t\mapsto\bigl(x(t),y(t)\bigr)$, on a
 \[
-W = -\int_{V_1}^{V_2}\frac{nRT}{V}\,\mathrm{d}V = -nRT\ln\frac{V_2}{V_1}.
+\int_\gamma\omega_1
+= \int \left[y(t)x'(t)+x(t)y'(t)\right]\,\mathrm{d}t.
 \]
-D'où $W_1 = -nRT_1\ln(V_2/V_1)$ et $W_2 = -nRT_2\ln(V_2/V_1)$, puis
-\[
-W_1 - W_2 = nR\,(T_2-T_1)\ln\frac{V_2}{V_1} \neq 0 .
-\]
-Mêmes états extrêmes, travaux différents : $\delta W$ n'est pas une différentielle exacte, conformément au critère appliqué dans la leçon.
 
-\textbf{Question 6.} $U$ ne dépend que de $T$, donc $\Delta U = \frac{3}{2}nR(T_2-T_1)$ sur les deux chemins : $\mathrm{d}U$ est exacte. Il vient $Q = \Delta U - W$, soit
+Le chemin $\gamma_1$ est la réunion de deux segments. Sur le premier,
+$x(t)=t$ et $y(t)=0$, avec $t\in[0,1]$ ; ainsi $\mathrm{d}x=\mathrm{d}t$
+et $\mathrm{d}y=0$. Sur le second, $x(t)=1$ et $y(t)=t$, toujours avec
+$t\in[0,1]$ ; ainsi $\mathrm{d}x=0$ et $\mathrm{d}y=\mathrm{d}t$. Par
+conséquent,
 \[
-Q_1 = \tfrac{3}{2}nR(T_2-T_1) + nRT_1\ln\frac{V_2}{V_1},
-\qquad
-Q_2 = \tfrac{3}{2}nR(T_2-T_1) + nRT_2\ln\frac{V_2}{V_1}.
+\begin{aligned}
+I_1
+= \int_{\gamma_1}\omega_1
+&= \int_0^1\left(0\times 1+t\times 0\right)\,\mathrm{d}t
+ + \int_0^1\left(t\times 0+1\times 1\right)\,\mathrm{d}t \\
+&= 0+\int_0^1\mathrm{d}t = 1.
+\end{aligned}
 \]
-Différence d'une quantité exacte et d'une quantité qui ne l'est pas, $\delta Q$ n'est pas exacte non plus.
 
-\textbf{Question 7.} Avec $\ln 2 \simeq 0{,}693$ : $W_1 \simeq -1{,}73$ kJ, $W_2 \simeq -3{,}46$ kJ, $\Delta U \simeq 3{,}74$ kJ, $Q_1 \simeq 5{,}47$ kJ et $Q_2 \simeq 7{,}20$ kJ. Le gaz fournit deux fois plus de travail par le second chemin, et reçoit la chaleur correspondante en plus.
+Pour $\gamma_2$, le premier segment est paramétré par $x(t)=0$, $y(t)=t$,
+puis le second par $x(t)=t$, $y(t)=1$, avec $t\in[0,1]$ dans les deux cas.
+On obtient donc
+\[
+\begin{aligned}
+I_2
+= \int_{\gamma_2}\omega_1
+&= \int_0^1\left(t\times 0+0\times 1\right)\,\mathrm{d}t
+ + \int_0^1\left(1\times 1+t\times 0\right)\,\mathrm{d}t \\
+&= 0+\int_0^1\mathrm{d}t = 1.
+\end{aligned}
+\]
+Les deux valeurs coïncident. On pouvait le prévoir sans calcul : puisque
+$\omega_1=\mathrm{d}f$ avec $f(x,y)=xy$, son intégrale ne dépend que des
+extrémités,
+\[
+\int_\gamma\omega_1=f(M)-f(O)=f(1,1)-f(0,0)=1.
+\]
+
+\textbf{Question 3.} Écrivons $\omega_2=A(x,y)\,\mathrm{d}x+B(x,y)\,\mathrm{d}y$.
+Ici $A(x,y)=y$ et $B(x,y)=0$. Le critère de Schwarz donnerait, si la forme
+était exacte,
+\[
+\frac{\partial A}{\partial y}=\frac{\partial B}{\partial x}.
+\]
+Or $\partial A/\partial y=1$ tandis que $\partial B/\partial x=0$. Les
+dérivées croisées diffèrent : $\omega_2$ n'est donc pas exacte. Son intégrale
+peut alors dépendre du chemin suivi entre $O$ et $M$, ce que vérifie le calcul
+suivant.
+
+\textbf{Question 4.} Comme $\omega_2=y\,\mathrm{d}x$, seule une variation de
+$x$ effectuée à une valeur non nulle de $y$ peut contribuer à l'intégrale.
+En reprenant les paramétrisations précédentes, on trouve sur $\gamma_1$
+\[
+\begin{aligned}
+J_1
+=\int_{\gamma_1}\omega_2
+&=\int_0^1 0\times 1\,\mathrm{d}t
+  +\int_0^1 t\times 0\,\mathrm{d}t \\
+&=0.
+\end{aligned}
+\]
+Sur $\gamma_2$, le premier segment vérifie $x(t)=0$, donc
+$\mathrm{d}x=0$ ; sur le second, $x(t)=t$, $y(t)=1$ et
+$\mathrm{d}x=\mathrm{d}t$. Ainsi
+\[
+\begin{aligned}
+J_2
+=\int_{\gamma_2}\omega_2
+&=\int_0^1 t\times 0\,\mathrm{d}t
+  +\int_0^1 1\times 1\,\mathrm{d}t \\
+&=1.
+\end{aligned}
+\]
+Enfin, le segment diagonal $\gamma_3$ est paramétré explicitement par
+\[
+x(t)=t,\qquad y(t)=t,\qquad t\in[0,1],
+\]
+d'où $\mathrm{d}x=\mathrm{d}t$ et $\mathrm{d}y=\mathrm{d}t$. Il vient
+\[
+J_3
+=\int_{\gamma_3}\omega_2
+=\int_0^1 y(t)x'(t)\,\mathrm{d}t
+=\int_0^1 t\,\mathrm{d}t
+=\frac12.
+\]
+Les trois chemins ont les mêmes extrémités, mais donnent trois valeurs
+différentes : $J_1=0$, $J_2=1$ et $J_3=1/2$. C'est précisément la dépendance
+au chemin caractéristique d'une forme différentielle non exacte.
 \end{solution}
 \end{exo}
 
-\begin{exo}[Travail et chaleur le long de trois chemins élémentaires]{travail-trois-chemins}
-\keywords{travail des forces de pression, isotherme, isobare, isochore, diagramme de Clapeyron, premier principe}
+\begin{exo}[Même variation d'énergie interne, trois modes de transfert]{meme-delta-u-trois-transferts}
+\keywords{premier principe, énergie interne, chaleur, travail mécanique, travail électrique, calorimétrie, fonction d'état}
 
-On considère un système fermé constitué de $n$ moles de gaz parfait monoatomique ($U = \frac{3}{2}nRT$), initialement dans l'état $A(P_A, V_A, T_A)$. Toutes les transformations sont quasi-statiques.
-
-\begin{enumerate}
-\item Compression isotherme $A\to B$ jusqu'à $V_B = V_A/2$. Calculer $P_B$, puis $W$, $\Delta U$ et $Q$ sur cette branche.
-\item Détente isobare $B\to C$ jusqu'à $V_C = V_A$. Calculer $T_C$, puis $W$, $\Delta U$ et $Q$.
-\item Refroidissement isochore $C\to A$ qui referme le cycle. Calculer $W$, $\Delta U$ et $Q$.
-\item Représenter le cycle $A\to B\to C\to A$ dans le diagramme de Clapeyron $(V,P)$. Application numérique pour $n = 1$ mol, $P_A = 1{,}0$ bar, $T_A = 300$ K : donner $(P,V,T)$ en chacun des trois points.
-\item Comparer $W_{A\to B}$ au travail $W_{A\to C\to B}$ reçu le long du chemin isochore $A\to C$ puis isobare $C\to B$. Commenter.
-\item Le cycle $A\to B\to C\to A$ est-il moteur ou récepteur ? Calculer le travail total et vérifier la cohérence avec le sens de parcours.
-\item Représenter le même cycle dans le diagramme $(T,P)$.
-\end{enumerate}
-
-\begin{indication}
-Sur une isotherme de gaz parfait, remplacer $P$ par $nRT/V$ dans $\delta W = -P\,\mathrm{d}V$ avant d'intégrer. En diagramme $(V,P)$, l'aire du cycle vaut le travail fourni si le parcours est horaire. Convention banquier : tout ce qui entre dans le système est compté positivement.
-\end{indication}
-
-\begin{solution}
-\textbf{Question 1.} Isotherme : $T_B = T_A$, et $P_AV_A = P_BV_B$ donne $P_B = 2P_A$.
+Un liquide, son calorimètre et une petite résistance immergée constituent un
+système fermé, macroscopiquement au repos. Le récipient est rigide et la
+capacité thermique totale du système est supposée constante :
 \[
-W_{AB} = -\int_{V_A}^{V_A/2}\frac{nRT_A}{V}\,\mathrm{d}V = -nRT_A\ln\frac{V_B}{V_A} = nRT_A\ln 2 > 0.
+C=2{,}00\ \mathrm{kJ\,K^{-1}}.
 \]
-$U$ ne dépend que de $T$ : $\Delta U = 0$, donc $Q_{AB} = -W_{AB} = -nRT_A\ln 2 < 0$ (le gaz évacue la chaleur de compression).
-
-\textbf{Question 2.} $P_CV_C = 2P_AV_A = 2nRT_A$ donc $T_C = 2T_A$. À pression constante $P_B = 2P_A$ :
+On veut faire passer le système de l'état d'équilibre
+$A$, à $T_A=20{,}0\,^\circ\mathrm{C}$, à l'état d'équilibre
+$B$, à $T_B=25{,}0\,^\circ\mathrm{C}$. On admet que
 \[
-W_{BC} = -2P_A\left(V_A - \tfrac{V_A}{2}\right) = -P_AV_A = -nRT_A, \qquad \Delta U_{BC} = \tfrac{3}{2}nR(T_C - T_A) = \tfrac{3}{2}nRT_A,
+U(B)-U(A)=C(T_B-T_A).
 \]
-d'où $Q_{BC} = \Delta U_{BC} - W_{BC} = \tfrac{5}{2}nRT_A$.
-
-\textbf{Question 3.} Isochore : $W_{CA} = 0$ et $Q_{CA} = \Delta U_{CA} = \tfrac{3}{2}nR(T_A - 2T_A) = -\tfrac{3}{2}nRT_A$.
-
-\textbf{Question 4.} $V_A = RT_A/P_A \approx 24{,}9$ L. Donc $A$ : $(1$ bar, $24{,}9$ L, $300$ K$)$, $B$ : $(2$ bar, $12{,}5$ L, $300$ K$)$, $C$ : $(2$ bar, $24{,}9$ L, $600$ K$)$.
-
-\textbf{Question 5.} $W_{A\to C\to B} = 0 + \left[-2P_A\left(\tfrac{V_A}{2} - V_A\right)\right] = P_AV_A = nRT_A \approx 2494$ J, alors que $W_{A\to B} = nRT_A\ln 2 \approx 1729$ J. Mêmes états extrêmes, travaux différents : le travail dépend du chemin suivi, $\delta W$ n'est pas une différentielle exacte.
-
-\textbf{Question 6.} $W_{\text{total}} = nRT_A\ln 2 - nRT_A = nRT_A(\ln 2 - 1) \approx -765$ J $< 0$ : le gaz fournit du travail, le cycle est moteur. C'est cohérent : en diagramme $(V,P)$, le parcours est horaire (isotherme en bas, isobare en haut) et l'aire du cycle vaut le travail fourni.
-
-\textbf{Question 7.} En diagramme $(T,P)$ : $A\to B$ est un segment vertical à $T = T_A$ (de $P_A$ à $2P_A$) ; $B\to C$ un segment horizontal à $P = 2P_A$ (de $T_A$ à $2T_A$) ; $C\to A$ un segment de la droite passant par l'origine $P = (nR/V_A)\,T$ (isochore).
-\end{solution}
-\end{exo}
-
-\begin{exo}[Chauffage à pression constante : découverte de $C_P$]{decouverte-cp}
-\keywords{capacité thermique, pression constante, relation de Mayer, chauffage isobare, gaz parfait}
-
-Une mole de gaz parfait monoatomique ($C_V = \frac{3}{2}R$) est enfermée dans une enceinte de volume initial $V_0 = 25$ L, fermée par un piston mobile sans frottement soumis à la pression atmosphérique $P_0 = 1{,}0\times10^5$ Pa, supposée constante. Le système est initialement à l'équilibre. Une petite résistance électrique placée dans l'enceinte apporte une chaleur $Q = 1000$ J de façon quasi-statique.
-
-\begin{enumerate}
-\item Déterminer numériquement la température initiale $T_0$.
-\item Déterminer l'état final (température, pression, volume) de façon littérale puis numérique. Calculer $W$ et $\Delta U$. Quelle fraction de la chaleur apportée sert à repousser l'atmosphère ?
-\item Ce calcul permet de définir la capacité thermique molaire à pression constante, $C_P = \left(\delta Q/\mathrm{d}T\right)_P$. Exprimer $C_P$ en fonction de $C_V$ et $R$. Cette formule est un cas particulier d'une relation générale que l'on démontrera plus tard (relation de Mayer).
-\end{enumerate}
-
-\begin{indication}
-La transformation est isobare : $W = -P_0\,\Delta V$, et l'équation d'état donne $P_0\,\Delta V = R\,\Delta T$. Injecter dans le premier principe pour obtenir une équation sur $\Delta T$ seul.
-\end{indication}
-
-\begin{solution}
-\textbf{Question 1.} $T_0 = \dfrac{P_0V_0}{R} = \dfrac{10^5 \times 25\times10^{-3}}{8{,}314} \approx 301$ K.
-
-\textbf{Question 2.} La pression finale vaut $P_0$ (équilibre mécanique du piston). Premier principe :
-\[
-\Delta U = Q + W = Q - P_0\,\Delta V.
-\]
-Or $\Delta U = \tfrac{3}{2}R\,\Delta T$ et $P_0\,\Delta V = R\,\Delta T$ (isobare), donc
-\[
-\tfrac{3}{2}R\,\Delta T = Q - R\,\Delta T \implies \Delta T = \frac{2Q}{5R} \approx 48\ \text{K}.
-\]
-D'où $T_f \approx 349$ K et $V_f = V_0\,T_f/T_0 \approx 29{,}0$ L. On en tire les valeurs exactes
-\[
-W = -P_0\,\Delta V = -\tfrac{2}{5}Q = -400\ \text{J}, \qquad \Delta U = \tfrac{3}{5}Q = +600\ \text{J}.
-\]
-Les $2/5$ de la chaleur fournie repartent en travail pour repousser l'atmosphère ; seuls les $3/5$ restants chauffent le gaz.
-
-\textbf{Question 3.} À pression constante, $\delta Q = \mathrm{d}U + P\,\mathrm{d}V = C_V\,\mathrm{d}T + R\,\mathrm{d}T$, donc
-\[
-C_P = C_V + R = \tfrac{5}{2}R \approx 20{,}8\ \text{J·K}^{-1}\text{mol}^{-1}.
-\]
-On retrouve bien $Q/\Delta T = 1000/48{,}1 \approx 20{,}8$ J/K. $C_P > C_V$ : il faut plus de chaleur pour élever la température à pression constante, car une partie de l'énergie s'échappe en travail.
-\end{solution}
-\end{exo}
-
-\begin{exo}[Détente de Joule-Gay-Lussac : irréversibilité et dépendance au chemin]{detente-joule-gay-lussac}
-\keywords{detente dans le vide, transformation irreversible, differentielle inexacte, gaz parfait, premier principe}
-
-Un récipient rigide et calorifugé est séparé en deux compartiments de même volume $V_0$ par une paroi amovible. Le compartiment de gauche contient $n$ moles de gaz parfait dans l'état $(P_0, V_0, T_0)$ ; celui de droite est vide. On retire brusquement la paroi (détente dite de Joule--Gay-Lussac, étudiée par Gay-Lussac en 1807 puis reprise plus précisément par Joule en 1845).
-
-\begin{enumerate}
-\item Justifier que $W = 0$, puis que $Q = 0$. En déduire $\Delta U$, puis la température finale $T_f$ pour ce gaz parfait.
-\item Pourquoi est-il impossible de représenter cette transformation par un chemin continu dans le diagramme de Clapeyron $(P,V)$ ?
-\item On réalise, à partir du même état initial, une détente \emph{isotherme quasi-statique} (piston déplacé lentement) vers l'état $(T_0, 2V_0)$. Calculer le travail $W'$ et le transfert thermique $Q'$ pour cette seconde transformation.
-\item Comparer les résultats des questions 1 et 3, alors que l'état final (même température $T_0$, même volume $2V_0$) est identique dans les deux cas. Qu'en conclure sur la nature de $W$ et de $Q$ ?
-\item Peut-on conclure de $Q = 0$ que la détente de la question 1 ne comporte aucune irréversibilité ? Sur quel argument simple, indépendant de tout calcul, peut-on déjà affirmer le contraire ?
-\end{enumerate}
-
-\begin{indication}
-Le gaz se détend dans le vide : aucune paroi mobile à pousser, $W = 0$ sans qu'il soit besoin d'aucune formule. Une transformation quasi-statique exige l'équilibre à chaque instant intermédiaire. Pour la question 5, penser au caractère spontané (ou non) du processus inverse.
-\end{indication}
-
-\begin{solution}
-\textbf{Question 1.} $W = 0$ (pas de paroi à pousser), $Q = 0$ (parois adiabatiques). Donc $\Delta U = 0$, et pour un gaz parfait dont l'énergie interne ne dépend que de $T$, cela impose $T_f = T_0$.
-
-\textbf{Question 2.} Pendant la détente, le système n'est à aucun instant à l'équilibre : la pression n'y est pas définie uniformément (le gaz se rue dans le vide de façon chaotique). Seuls les états initial et final, une fois l'équilibre revenu, sont représentables dans le diagramme de Clapeyron ; aucun chemin continu ne peut les relier.
-
-\textbf{Question 3.} Détente isotherme quasi-statique de $V_0$ à $2V_0$, à $T_0$ constante :
-\[
-W' = -nRT_0\ln 2 < 0, \qquad Q' = -W' = nRT_0\ln 2 > 0
-\]
-(le gaz reçoit un travail négatif -- il en fournit -- et doit recevoir de la chaleur pour maintenir $T_0$ constante malgré la détente).
-
-\textbf{Question 4.} Les états initial et final sont identiques dans les deux scénarios ($\Delta U = 0$ dans les deux cas, puisque $U$ ne dépend que de l'état via $T$), mais $W = Q = 0$ d'un côté, tandis que $W' \neq 0$ et $Q' \neq 0$ de l'autre. Contrairement à $\Delta U$, qui ne dépend que des états extrêmes, $W$ et $Q$ dépendent donc du \emph{chemin} suivi entre ces deux états : $\delta W$ et $\delta Q$ ne sont pas des différentielles exactes.
-
-\textbf{Question 5.} Non : $Q = 0$ signifie seulement qu'aucune chaleur n'est \emph{échangée avec l'extérieur}, pas que la transformation soit exempte d'irréversibilité interne. Le signe de cette irréversibilité est déjà visible sans aucun calcul : on n'observe jamais le gaz occupant $2V_0$ se reconcentrer spontanément dans le compartiment de gauche, alors que rien dans le premier principe seul ne l'interdirait (l'énergie totale resterait inchangée). La leçon 6 permettra de quantifier précisément cette irréversibilité à l'aide de l'entropie -- \emph{qui n'est pas nulle bien que $Q$ le soit}, un résultat en apparence paradoxal traité en détail dans l'exercice « Détente de Joule et l'astuce fondamentale ».
-\end{solution}
-\end{exo}
-
-\begin{exo}[Deux gaz séparés par une paroi interne]{equilibre-deux-gaz-paroi}
-\keywords{premier principe, système isolé, paroi diatherme, paroi mobile, équilibre thermique, équilibre mécanique}
-
-Un récipient rigide, isolé de l'extérieur, contient deux gaz parfaits monoatomiques séparés par une paroi interne initialement fixe, étanche et adiabatique. Le compartiment 1 contient $n_1$ moles à la température $T_1$ ; le compartiment 2 contient $n_2 = 4n_1$ moles à $T_2 = T_1/2$. Les deux compartiments ont le même volume $V$.
-
-\begin{enumerate}
-\item Exprimer les pressions initiales $P_1$ et $P_2$ et montrer que $P_2 = 2P_1$.
-\item À $t=0$, la paroi devient diatherme (mais reste fixe et étanche). En appliquant le premier principe au système global, déterminer la température finale $T_f$ et les pressions finales de chaque compartiment, en fonction de $T_1$ et $P_1$.
-\item Quelle énergie a été échangée entre les deux compartiments (en fonction de $n_1$, $R$, $T_1$) ? Sous quelle forme ?
-\item On suppose maintenant qu'à $t=0$ la paroi devient diatherme \emph{et} mobile. Déterminer la température, la pression commune et les volumes finaux. Comparer les variations d'énergie interne de chaque gaz à celles de la question 2 et commenter la forme des échanges d'énergie.
-\item Application numérique pour $n_1 = 1$ mol, $T_1 = 600$ K.
-\end{enumerate}
-
-\begin{indication}
-Le système global est isolé (parois externes rigides et adiabatiques) : $\Delta U_1 + \Delta U_2 = 0$ dans tous les cas. Pour la question 4, l'équilibre impose l'égalité des températures \emph{et} des pressions.
-\end{indication}
-
-\begin{solution}
-\textbf{Question 1.} $P_1 = \dfrac{n_1RT_1}{V}$ et $P_2 = \dfrac{4n_1R\,(T_1/2)}{V} = 2P_1$.
-
-\textbf{Question 2.} Le système global n'échange ni travail (parois externes rigides) ni chaleur (parois adiabatiques) : $\Delta U_1 + \Delta U_2 = 0$, soit
-\[
-\tfrac{3}{2}n_1R(T_f - T_1) + \tfrac{3}{2}\,4n_1R\!\left(T_f - \tfrac{T_1}{2}\right) = 0 \implies 5T_f = 3T_1 \implies T_f = \tfrac{3}{5}T_1.
-\]
-Les volumes n'ont pas changé, donc $P_1^f = P_1\,\dfrac{T_f}{T_1} = \tfrac{3}{5}P_1$ et $P_2^f = 2P_1\,\dfrac{T_f}{T_2} = \tfrac{12}{5}P_1$.
-
-\textbf{Question 3.} Le gaz 2 (le plus froid) reçoit
-\[
-Q = \Delta U_2 = 6n_1R\!\left(\tfrac{3}{5}T_1 - \tfrac{1}{2}T_1\right) = \tfrac{3}{5}n_1RT_1,
-\]
-et le gaz 1 cède exactement l'opposé. La paroi étant fixe, aucun travail n'est échangé : ce transfert se fait intégralement sous forme de chaleur.
-
-\textbf{Question 4.} Le bilan global est inchangé : $\Delta U_1 + \Delta U_2 = 0$, et comme $U$ ne dépend que de $T$ pour un gaz parfait, on retrouve \emph{la même température finale} $T_f = \tfrac{3}{5}T_1$. L'équilibre mécanique impose de plus une pression commune :
-\[
-P = \frac{(n_1+n_2)RT_f}{2V} = \frac{5n_1R\cdot\tfrac{3}{5}T_1}{2V} = \tfrac{3}{2}P_1,
-\]
-avec $V_1^f = \dfrac{n_1RT_f}{P} = \tfrac{2V}{5}$ et $V_2^f = \tfrac{8V}{5}$ : la paroi s'est déplacée vers le gaz 1. Les variations d'énergie interne sont \emph{identiques} à celles de la question 2 ($\Delta U_i = \tfrac{3}{2}n_iR\,\Delta T_i$, mêmes températures extrêmes), mais cette fois l'énergie s'est échangée à la fois sous forme de chaleur et de travail : seul le bilan $Q + W = \Delta U$ est contraint, pas la répartition.
-
-\textbf{Question 5.} $T_f = 360$ K et $|Q| = \tfrac{3}{5}\times 8{,}314 \times 600 \approx 3{,}0$ kJ.
-\end{solution}
-\end{exo}
-
-\begin{exo}[Adiabatique réversible d'un gaz parfait : lois de Laplace]{lois-de-laplace}
-\keywords{loi de Laplace, adiabatique réversible, indice adiabatique, gamma, détente adiabatique, premier principe différentiel}
-
-On considère $n$ moles de gaz parfait d'indice adiabatique $\gamma = C_P/C_V$ supposé constant. On admet la relation de Mayer $C_P - C_V = nR$ (voir l'exercice sur la découverte de $C_P$).
-
-\begin{enumerate}
-\item Montrer que
-\[
-C_V = \frac{nR}{\gamma - 1}, \qquad C_P = \frac{\gamma\, nR}{\gamma - 1}.
-\]
-\item Le gaz subit une transformation adiabatique réversible. En partant du premier principe sous forme différentielle, montrer que
-\[
-\frac{\mathrm{d}T}{T} + (\gamma - 1)\frac{\mathrm{d}V}{V} = 0,
-\]
-puis en déduire que $TV^{\gamma-1} = \text{cste}$ le long de la transformation.
-\item En déduire les deux autres formes de la loi de Laplace : $PV^\gamma = \text{cste}$ et $T^\gamma P^{1-\gamma} = \text{cste}$.
-\item Détente adiabatique réversible qui double le volume, pour un gaz monoatomique ($\gamma = 5/3$), $n = 1$ mol, $T_I = 300$ K. Calculer $T_F$ puis $W$, et commenter les signes.
-\item Dans le diagramme de Clapeyron, comparer en un même point $(V,P)$ la pente d'une adiabatique réversible et celle d'une isotherme.
-\end{enumerate}
-
-\begin{indication}
-Pour la question 2 : $\mathrm{d}U = C_V\,\mathrm{d}T$ et $\delta W = -P\,\mathrm{d}V$ avec $P = nRT/V$, puis séparer les variables. Pour la question 5, différencier $PV^\gamma = \text{cste}$ et $PV = \text{cste}$.
-\end{indication}
-
-\begin{solution}
-\textbf{Question 1.} De $C_P = \gamma C_V$ et $C_P - C_V = nR$ : $C_V(\gamma - 1) = nR$, d'où les deux formules.
-
-\textbf{Question 2.} Adiabatique : $\delta Q = 0$, donc $\mathrm{d}U = \delta W$, soit $C_V\,\mathrm{d}T = -P\,\mathrm{d}V = -\dfrac{nRT}{V}\mathrm{d}V$. Avec $C_V = nR/(\gamma-1)$ :
-\[
-\frac{\mathrm{d}T}{T} = -(\gamma-1)\frac{\mathrm{d}V}{V}.
-\]
-En intégrant : $\ln T + (\gamma-1)\ln V = \text{cste}$, c'est-à-dire $TV^{\gamma-1} = \text{cste}$.
-
-\textbf{Question 3.} En substituant $T = PV/(nR)$ : $PV^\gamma = \text{cste}$. En substituant $V = nRT/P$ : $T^\gamma P^{1-\gamma} = \text{cste}$.
-
-\textbf{Question 4.} $T_F = T_I\,2^{-(\gamma-1)} = 300 \times 2^{-2/3} \approx 189$ K. Comme $Q = 0$ :
-\[
-W = \Delta U = \tfrac{3}{2}R(T_F - T_I) \approx \tfrac{3}{2}\times 8{,}314 \times (-111) \approx -1{,}4\ \text{kJ}.
-\]
-$W < 0$ : le gaz fournit du travail à l'extérieur. Ne pouvant le prélever sur aucune source de chaleur ($Q=0$), il puise dans son énergie interne : d'où le refroidissement $\Delta T < 0$.
-
-\textbf{Question 5.} En différenciant $PV = \text{cste}$ : $\left(\frac{\mathrm{d}P}{\mathrm{d}V}\right)_{\text{isoT}} = -\dfrac{P}{V}$. En différenciant $PV^\gamma = \text{cste}$ : $\left(\frac{\mathrm{d}P}{\mathrm{d}V}\right)_{\text{adiab}} = -\gamma\dfrac{P}{V}$. L'adiabatique est $\gamma$ fois plus pentue que l'isotherme : comprimer sans évacuer la chaleur fait monter la pression plus vite, car la température augmente aussi.
-\end{solution}
-\end{exo}
-
-\begin{exo}[Travail d'une transformation polytropique $PV^k=\text{cste}$]{transformation-polytropique}
-\keywords{transformation polytropique, travail des forces de pression, adiabatique reversible, loi de Laplace}
-
-On considere une transformation quasi-statique d'un gaz parfait telle que $PV^k=\text{cste}$, $k\in\mathbb{R}$, $k\neq1$.
-
-\begin{enumerate}
-\item Calculer $W_{A\to B}$ en fonction de $P_A,V_A,P_B,V_B$ et $k$.
-\item Retrouver le resultat pour une isobare ($k=0$).
-\item Conclure directement pour une isochore sans utiliser la formule generale.
-\item Expliquer pourquoi $k=1$ est exclu, puis retrouver $W=-nRT\ln(V_B/V_A)$.
-\item Pour $k=\gamma=5/3$ (adiabatique reversible, monoatomique), montrer que $W=\Delta U$.
-\end{enumerate}
-
-\begin{indication}
-Poser $P(V)=CV^{-k}$ avec $C=P_AV_A^k$, integrer, puis utiliser $CV^{1-k}=PV$.
-\end{indication}
-
-\begin{solution}
-\textbf{Question 1.}
-\[
-W = \frac{P_AV_A - P_BV_B}{1-k}
-\]
-
-\textbf{Question 2.} $k=0$, $P_A=P_B=P$ : $W=P(V_A-V_B)=-P\Delta V$. \checkmark
-
-\textbf{Question 3.} Isochore : $\mathrm{d}V=0$ a chaque instant, donc $W=0$. La formule polytropique ne s'applique pas ($k\to\infty$).
-
-\textbf{Question 4.} Pour $k=1$ le facteur $1/(1-k)$ diverge (primitive logarithmique). Avec $PV=nRT=\text{cste}$ :
-\[
-W = -nRT\ln\!\tfrac{V_B}{V_A}.
-\]
-
-\textbf{Question 5.} $k=5/3$ :
-\[
-W = \tfrac{3}{2}(P_BV_B-P_AV_A) = \tfrac{3}{2}nR(T_B-T_A) = \Delta U.
-\]
-Coherent avec le premier principe ($Q=0$). \checkmark
-\end{solution}
-\end{exo}
-
-\begin{exo}[Compression adiabatique : progressive ou brutale]{compression-progressive-brutale}
-\keywords{compression adiabatique, transformation réversible, transformation irréversible, loi de Laplace, pression extérieure constante}
-
-Un cylindre vertical de section $S = 200\ \text{cm}^2$, aux parois calorifugées, est fermé par un piston calorifugé de masse négligeable, mobile sans frottement. Il contient $m = 2{,}0$ g d'hélium (gaz parfait monoatomique, $M = 4{,}0$ g/mol, $\gamma = 5/3$) dans les conditions initiales $T_0 = 300$ K, $P_0 = 1{,}0$ bar. On prendra $g = 10\ \text{m·s}^{-2}$.
-
-\begin{enumerate}
-\item Calculer le nombre de moles $n$ et le volume initial $V_0$.
-\item On dépose très progressivement, grain par grain, une masse totale $M_s = 100$ kg de sable sur le piston. Justifier que la transformation peut être considérée comme réversible, et calculer le taux de compression $x = P_1/P_0$. La valeur de $x$ dépend-elle de la façon de déposer le sable ?
-\item Calculer $T_1$ et $V_1$ dans l'état final.
-\item On repart de l'état initial et on dépose cette fois les 100 kg d'un seul coup : le gaz subit brutalement la pression extérieure constante $P_1$. En appliquant le premier principe, montrer que
-\[
-T_2 = T_0\,\frac{1 + (\gamma-1)\,x}{\gamma},
-\]
-et calculer $T_2$ et $V_2$.
-\item Comparer $T_1$ et $T_2$. Laquelle des deux compressions échauffe le plus le gaz ? Interpréter.
-\item Depuis l'état de la question 4, on retire brutalement tout le sable. Déterminer l'état final $(T_3, V_3)$. Revient-on à l'état initial ? Conclure.
-\end{enumerate}
-
-\begin{indication}
-Question 2 : équilibre des forces sur le piston. Question 4 : $W = -P_1(V_2 - V_0)$ car la pression extérieure est constante, et à l'équilibre final $P_2 = P_1$ ; éliminer les volumes avec l'équation d'état. Question 6 : refaire le même raisonnement avec $P_{\text{ext}} = P_0$ depuis $(T_2, P_1)$.
-\end{indication}
-
-\begin{solution}
-\textbf{Question 1.} $n = m/M = 0{,}50$ mol et $V_0 = nRT_0/P_0 \approx 12{,}5$ L.
-
-\textbf{Question 2.} Chaque grain ne déséquilibre le piston que de façon infinitésimale : le gaz passe par une succession continue d'états d'équilibre (transformation quasi-statique sans frottement, donc réversible). L'équilibre final du piston donne
-\[
-P_1 = P_0 + \frac{M_s\,g}{S} = 10^5 + \frac{1000}{2\times10^{-2}} = 1{,}5\times10^5\ \text{Pa}, \qquad x = 1{,}5.
-\]
-$x$ ne dépend que de l'équilibre des forces, pas du chemin : il serait le même en déposant la masse d'un coup.
-
-\textbf{Question 3.} Loi de Laplace $T^\gamma P^{1-\gamma} = \text{cste}$ :
-\[
-T_1 = T_0\,x^{(\gamma-1)/\gamma} = 300\times 1{,}5^{2/5} \approx 353\ \text{K}, \qquad V_1 = V_0\,x^{-1/\gamma} \approx 9{,}8\ \text{L}.
-\]
-
-\textbf{Question 4.} La transformation est brutale : seule la pression extérieure $P_1$ est définie, et $W = -P_1(V_2 - V_0)$, $Q = 0$. Premier principe :
-\[
-\tfrac{3}{2}nR(T_2 - T_0) = -P_1\!\left(\frac{nRT_2}{P_1} - \frac{nRT_0}{P_0}\right) = -nRT_2 + x\,nRT_0.
-\]
-D'où $\tfrac{5}{2}T_2 = \left(\tfrac{3}{2} + x\right)T_0$, ce qui est bien $T_2 = T_0\,\dfrac{1 + (\gamma-1)x}{\gamma}$ pour $\gamma = 5/3$. Numériquement $T_2 = \tfrac{6}{5}T_0 = 360$ K et $V_2 = nRT_2/P_1 \approx 10{,}0$ L.
-
-\textbf{Question 5.} $T_2 = 360\ \text{K} > T_1 \approx 353\ \text{K}$ : la compression brutale échauffe davantage, à taux de compression identique. Pendant la transformation brutale, le gaz est hors équilibre et la totalité du travail $-P_1\Delta V$ (calculé avec la pression finale, la plus élevée) lui est fournie : il reçoit plus de travail que dans le cas réversible. Cette différence est la signature de l'irréversibilité, que le second principe quantifiera à la leçon suivante.
-
-\textbf{Question 6.} Même raisonnement depuis $(T_2, P_1)$ avec $P_{\text{ext}} = P_0$, soit un rapport $P_0/P_1 = 2/3$ :
-\[
-T_3 = T_2\,\frac{1 + (\gamma-1)\cdot\tfrac{2}{3}}{\gamma} = 360\times\frac{13}{15} = 312\ \text{K}, \qquad V_3 = \frac{nRT_3}{P_0} \approx 13{,}0\ \text{L}.
-\]
-On ne revient pas à l'état initial : après un aller-retour brutal, le gaz est plus chaud ($312$ K au lieu de $300$ K) et plus dilaté. Le cycle de manipulations est identique, mais l'histoire ne s'efface pas : les transformations brutales sont irréversibles.
-\end{solution}
-\end{exo}
-
-\begin{exo}[Cycle biisobare-biisochore : bilan energetique complet]{cycle-biisobare-biisochore}
-\keywords{cycle thermodynamique, diagramme de Clapeyron, moteur thermique, gaz parfait}
-
-On considere $n$ moles de gaz parfait monoatomique ($U=\frac{3}{2}nRT$) decrivant, dans le plan de Clapeyron $(V,P)$, le cycle a deux isochores et deux isobares, parcouru dans le sens horaire :
-\[
-1(V_1,P_1)\ \xrightarrow{\text{isochore}}\ 3(V_1,P_2)\ \xrightarrow{\text{isobare}}\ 2(V_2,P_2)\ \xrightarrow{\text{isochore}}\ 4(V_2,P_1)\ \xrightarrow{\text{isobare}}\ 1(V_1,P_1)
-\]
-avec $P_2>P_1$ et $V_2>V_1$.
-
-\begin{enumerate}
-\item Exprimer $\Delta U$, $W$ et $Q$ sur chacune des quatre branches, en fonction de $P_1,P_2,V_1,V_2$ uniquement.
-\item Verifier que $\Delta U_{\text{total}}=0$ et que $Q_{\text{total}}=-W_{\text{total}}$.
-\item Application numerique : $P_1=1{,}0$ bar, $P_2=3{,}0$ bar, $V_1=5{,}0$ L, $V_2=15{,}0$ L.
-\item Sur quelles branches le systeme recoit-il de la chaleur ? Commenter.
-\end{enumerate}
-
-\begin{indication}
-Utiliser $PV=nRT$ pour eliminer $T$ : sur une isochore $nR\,\Delta T = V\,\Delta P$, sur une isobare $nR\,\Delta T = P\,\Delta V$. Le travail elementaire vaut $\delta W = -P_{\text{ext}}\mathrm{d}V = -P\,\mathrm{d}V$ (quasi-statique). Convention banquier.
-\end{indication}
-
-\begin{solution}
-\textbf{Branche $1\to3$ (isochore, $V=V_1$).}
-\[
-W=0,\qquad \Delta U = \tfrac{3}{2}(P_2-P_1)V_1,\qquad Q=\Delta U
-\]
-
-\textbf{Branche $3\to2$ (isobare, $P=P_2$).}
-\[
-W=-P_2(V_2-V_1),\qquad \Delta U=\tfrac{3}{2}P_2(V_2-V_1),\qquad Q=\tfrac{5}{2}P_2(V_2-V_1)
-\]
-
-\textbf{Branche $2\to4$ (isochore, $V=V_2$).}
-\[
-W=0,\qquad \Delta U=-\tfrac{3}{2}(P_2-P_1)V_2,\qquad Q=\Delta U
-\]
-
-\textbf{Branche $4\to1$ (isobare, $P=P_1$).}
-\[
-W=P_1(V_2-V_1),\qquad \Delta U=-\tfrac{3}{2}P_1(V_2-V_1),\qquad Q=-\tfrac{5}{2}P_1(V_2-V_1)
-\]
-
-En sommant : $\Delta U_{\text{total}}=0$ et $W_{\text{total}}=-(P_2-P_1)(V_2-V_1)<0$, $Q_{\text{total}}=(P_2-P_1)(V_2-V_1)>0$.
-
-\textbf{Application numerique} ($\Delta P=2{,}0\times10^5$ Pa, $\Delta V=1{,}0\times10^{-2}$ m$^3$) :
-\begin{align*}
-1\to3:\ & W=0,\ Q=1500\text{ J}\\
-3\to2:\ & W=-3000\text{ J},\ Q=7500\text{ J}\\
-2\to4:\ & W=0,\ Q=-4500\text{ J}\\
-4\to1:\ & W=1000\text{ J},\ Q=-2500\text{ J}
-\end{align*}
-Total : $\Delta U=0$, $W=-2000$ J, $Q=+2000$ J.
-
-Le systeme recoit de la chaleur sur les branches $1\to3$ et $3\to2$ (montee en pression puis detente a haute pression). Sur le reste du cycle, il restitue de la chaleur.
-\end{solution}
-\end{exo}
-
-\begin{exo}[Cycle triangulaire]{cycle-triangulaire-diagonale}
-\keywords{cycle moteur, transformation lineaire P(V), diagramme de Clapeyron, aire du cycle}
-
-On considere $n$ moles de gaz parfait monoatomique decrivant le cycle $A\to C\to B\to A$, avec
-\[
-A(V_0,P_0),\quad C(V_0,2P_0),\quad B(2V_0,P_0),
-\]
-$A\to C$ isochore, $B\to A$ isobare, $C\to B$ segment de droite dans le plan $(V,P)$.
-
-\begin{enumerate}
-\item Verifier que le sens $A\to C\to B\to A$ est bien horaire.
-\item Determiner $P(V)$ de la droite $C\to B$.
-\item Calculer $\Delta U$, $W$ et $Q$ sur chacune des trois branches.
-\item Verifier $\Delta U_{\text{total}}=0$ et que $W_{\text{total}}$ egale l'aire du triangle.
-\item Montrer que $\Delta U_{C\to B}=0$ bien que la transformation ne soit pas isotherme.
-\end{enumerate}
-
-\begin{indication}
-Pour $C\to B$, chercher $P(V)=aV+b$ en imposant le passage par $C$ et $B$. Pour la question 5, $\Delta U$ ne depend que des etats initial et final.
-\end{indication}
-
-\begin{solution}
-\textbf{Questions 1--2.} Cycle horaire (moteur). Droite $C\to B$ : $P(V) = P_0(3-V/V_0)$.
-
-\textbf{Branche $A\to C$.} $W=0$, $\Delta U=\tfrac32P_0V_0$, $Q=\tfrac32P_0V_0$.
-
-\textbf{Branche $C\to B$.}
-\[
-W = -\int_{V_0}^{2V_0}P_0\!\left(3-\tfrac{V}{V_0}\right)\mathrm{d}V = -\tfrac{3}{2}P_0V_0.
-\]
-$P_CV_C=2P_0V_0=P_BV_B \Rightarrow T_B=T_C \Rightarrow \Delta U=0$, donc $Q=\tfrac32P_0V_0$.
-
-\textbf{Branche $B\to A$.} $W=P_0V_0$, $\Delta U=-\tfrac32P_0V_0$, $Q=-\tfrac52P_0V_0$.
-
-\textbf{Questions 4--5.} $\Delta U_{\text{total}}=0$, $W_{\text{total}}=-\tfrac12P_0V_0=$ aire du triangle. $\Delta U_{C\to B}=0$ car $U$ est une fonction d'etat : seuls les etats extremes comptent, et ici $T_C=T_B$ par coincidence geometrique.
-\end{solution}
-\end{exo}
-
-\begin{exo}[Cycle de Lenoir]{cycle-lenoir}
-\keywords{cycle de Lenoir, isobare, isotherme, isochore, diagramme de Clapeyron, cycle récepteur, gaz diatomique}
-
-Une mole de gaz parfait diatomique ($C_V = \frac{5}{2}R$, $C_P = \frac{7}{2}R$) est initialement dans l'état $A$ de coordonnées $P_0 = 2{,}0\times10^5$ Pa et $V_0 = 14$ L dans le diagramme de Clapeyron. On lui fait subir successivement :
+Les variations d'énergie cinétique et d'énergie potentielle macroscopiques
+sont nulles. Toutes les pertes vers l'extérieur sont négligées.
+
+On réalise indépendamment les trois protocoles suivants, à partir du même
+état initial $A$ :
 \begin{itemize}
-\item une détente isobare $A\to B$ qui triple son volume ;
-\item une compression isotherme quasi-statique $B\to C$ qui le ramène au volume initial ;
-\item un refroidissement isochore $C\to A$ qui le ramène à l'état initial.
+\item[Protocole 1] Le système est mis en contact thermique avec une source chaude, sans
+qu'aucun travail ne lui soit fourni.
+\item[Protocole 2] Les parois sont calorifugées. Une palette agite le liquide grâce à la
+chute d'une masse $m$ sur une hauteur $h=5{,}00$ m. La palette et le liquide
+finissent au repos, et toute l'énergie mécanique perdue par la masse est
+transmise au système. On prendra $g=9{,}81\ \mathrm{m\,s^{-2}}$.
+\item[Protocole 3] Le système reçoit une chaleur $Q_3=4{,}00$ kJ et le complément
+d'énergie est apporté à la résistance par voie électrique. La puissance
+électrique reçue est constante et vaut $\mathcal P=300$ W.
 \end{itemize}
 
 \begin{enumerate}
-\item Représenter le cycle $ABCA$ dans le diagramme de Clapeyron. Calculer $T_A$, la température $T_B$ de l'isotherme, et la pression maximale $P_C$ atteinte.
-\item Calculer $W$ et $Q$ sur chacune des trois branches, puis sur le cycle complet. On remarquera que $RT_A = P_0V_0$.
-\item Le cycle ainsi parcouru est-il moteur ou récepteur ? Retrouver ce résultat à partir du sens de parcours dans le diagramme. Comment faudrait-il le parcourir pour en faire un moteur ?
+\item Calculer la variation d'énergie interne $\Delta U=U(B)-U(A)$ commune
+aux trois protocoles.
+\item Pour chacun des deux premiers protocoles, déterminer la chaleur $Q$ et
+le travail $W$ reçus par le système. Dans le deuxième protocole, calculer la
+masse $m$ nécessaire.
+\item Pour le troisième protocole, calculer le travail électrique reçu et la
+durée d'alimentation de la résistance.
+\item Les trois transformations ont les mêmes états initial et final.
+Expliquer pourquoi leurs valeurs de $Q$ et de $W$ peuvent néanmoins être
+différentes. Le système contient-il de la « chaleur » ou du « travail » dans
+l'état final $B$ ?
 \end{enumerate}
 
 \begin{indication}
-$T_A = P_0V_0/R$ et sur l'isobare $T \propto V$. Sur l'isotherme, $\Delta U = 0$ et $W = -nRT\ln(V_f/V_i)$. Le sens antihoraire correspond à un cycle récepteur.
+Appliquer $\Delta U=Q+W$ avec la convention du banquier. Pour la palette,
+le travail reçu est égal à la diminution $mgh$ de l'énergie potentielle de la
+masse. L'énergie électrique traversant la frontière par les fils est comptée
+comme un travail électrique.
 \end{indication}
 
 \begin{solution}
-\textbf{Question 1.} $T_A = \dfrac{P_0V_0}{R} = \dfrac{2\times10^5 \times 14\times10^{-3}}{8{,}314} \approx 337$ K. Sur l'isobare, $T_B = 3T_A \approx 1010$ K. Sur l'isotherme $B\to C$ : $P_CV_0 = RT_B = 3P_0V_0$, donc $P_C = 3P_0 = 6{,}0\times10^5$ Pa. Le cycle est bordé par l'isobare $P_0$ en bas, l'isotherme $T_B$ en haut, et l'isochore $V_0$ à gauche.
-
-\textbf{Question 2.} On pose $P_0V_0 = RT_A = 2800$ J.
-
-$A\to B$ (isobare, $\Delta V = 2V_0$) :
+\textbf{Question 1.} La différence de température vaut
+$T_B-T_A=5{,}0$ K. Par conséquent,
 \[
-W_{AB} = -P_0\cdot 2V_0 = -5600\ \text{J},\quad \Delta U_{AB} = \tfrac{5}{2}R\cdot 2T_A = 5RT_A = 14\,000\ \text{J},\quad Q_{AB} = \tfrac{7}{2}R\cdot2T_A = 19\,600\ \text{J}.
+\Delta U=C(T_B-T_A)
+=2{,}00\times5{,}0
+=10{,}0\ \mathrm{kJ}.
+\]
+Cette valeur ne dépend que des deux états d'équilibre $A$ et $B$.
+
+\textbf{Question 2.} Dans le premier protocole, aucun travail n'est reçu :
+$W_1=0$. Le premier principe donne donc
+\[
+Q_1=\Delta U=10{,}0\ \mathrm{kJ}.
+\]
+La chaleur est positive puisque l'énergie entre dans le système.
+
+Dans le deuxième protocole, les parois sont calorifugées, donc $Q_2=0$.
+Toute la variation d'énergie interne provient du travail mécanique de la
+palette :
+\[
+W_2=\Delta U=10{,}0\ \mathrm{kJ}.
+\]
+Or $W_2=mgh$, d'où
+\[
+m=\frac{W_2}{gh}
+=\frac{10{,}0\times10^3}{9{,}81\times5{,}00}
+\simeq 204\ \mathrm{kg}.
+\]
+L'ordre de grandeur élevé rappelle qu'une élévation modeste de température
+correspond déjà à une énergie mécanique importante.
+
+\textbf{Question 3.} Le premier principe impose
+\[
+W_3=\Delta U-Q_3=10{,}0-4{,}00=6{,}00\ \mathrm{kJ}.
+\]
+Ce travail est positif : l'alimentation électrique fournit de l'énergie au
+système. Avec $W_3=\mathcal P\,\Delta t$,
+\[
+\Delta t=\frac{W_3}{\mathcal P}
+=\frac{6{,}00\times10^3}{300}
+=20{,}0\ \mathrm{s}.
 \]
 
-$B\to C$ (isotherme à $3T_A$) : $\Delta U = 0$ et
+\textbf{Question 4.} Les trois chemins donnent respectivement
 \[
-W_{BC} = -3RT_A\ln\frac{V_0}{3V_0} = 3RT_A\ln 3 \approx +9230\ \text{J}, \qquad Q_{BC} = -W_{BC} \approx -9230\ \text{J}.
+(Q_1,W_1)=(10{,}0,0)\ \mathrm{kJ},
+\qquad
+(Q_2,W_2)=(0,10{,}0)\ \mathrm{kJ},
 \]
-
-$C\to A$ (isochore) : $W_{CA} = 0$ et $Q_{CA} = \Delta U_{CA} = \tfrac{5}{2}R(T_A - 3T_A) = -5RT_A = -14\,000$ J.
-
-Cycle complet : $\Delta U = 0$, $W_{\text{total}} = -5600 + 9230 \approx +3630$ J et $Q_{\text{total}} \approx -3630$ J.
-
-\textbf{Question 3.} $W_{\text{total}} > 0$ : le gaz reçoit du travail et rejette de la chaleur, le cycle est récepteur. C'est cohérent avec le sens de parcours : on parcourt l'isobare (branche basse) de gauche à droite et l'isotherme (branche haute) de droite à gauche, soit un parcours antihoraire. Parcouru dans l'autre sens ($A\to C\to B\to A$), le même cycle fournirait $3630$ J de travail par cycle : c'est le principe du moteur de Lenoir, l'un des premiers moteurs à combustion interne (1860).
+et
+\[
+(Q_3,W_3)=(4{,}00,6{,}00)\ \mathrm{kJ}.
+\]
+Dans tous les cas, la somme $Q+W$ vaut $10{,}0$ kJ et produit la même
+variation $\Delta U$. L'énergie interne est une fonction d'état, tandis que
+la chaleur et le travail décrivent des transferts au cours d'une
+transformation. Dans l'état final $B$, le système possède une énergie interne,
+mais il ne contient ni « chaleur » ni « travail ».
 \end{solution}
 \end{exo}
 
-\begin{exo}[Cycle frigorifique : le meme cycle parcouru a l'envers]{cycle-frigorifique-cop}
-\keywords{cycle recepteur, refrigerateur, coefficient de performance, machine thermique}
+\begin{exo}[Énergie interne ou énergie macroscopique ?]{energie-interne-ou-macroscopique}
+\keywords{énergie interne, énergie cinétique macroscopique, énergie potentielle, premier principe, travail, chaleur, système fermé}
 
-On reprend le cycle biisobare-biisochore de l'exercice \textit{cycle-biisobare-biisochore} (memes valeurs numeriques), mais parcouru dans le sens \textbf{antihoraire} : $1\to4\to2\to3\to1$.
+Une enceinte rigide et le liquide qu'elle contient forment un système fermé
+de masse totale $M=20{,}0$ kg et de capacité thermique totale constante
+\[
+C=4{,}00\ \mathrm{kJ\,K^{-1}}.
+\]
+Dans l'état initial, le système est au repos, son centre de masse se trouve
+à l'altitude $z=0$ et sa température uniforme vaut
+$T_0=20{,}0\,^\circ\mathrm{C}$. On néglige toute déformation de l'enceinte.
+
+On réalise séparément, à partir de cet état initial, les quatre opérations
+suivantes :
+\begin{itemize}
+\item[Opération 1] Dans une enceinte calorifugée, un opérateur accélère l'ensemble jusqu'à
+la vitesse $v=3{,}00\ \mathrm{m\,s^{-1}}$, sans agitation interne ;
+\item[Opération 2] Dans une enceinte calorifugée, l'ensemble est soulevé lentement d'une
+hauteur $h=5{,}00$ m et se trouve au repos à l'arrivée ;
+\item[Opération 3] L'enceinte reste immobile et calorifugée, mais le liquide est agité par
+une palette qui lui fournit un travail de $10{,}0$ kJ ; après l'agitation, le
+liquide revient au repos macroscopique ;
+\item[Opération 4] L'enceinte reste immobile et reçoit une chaleur de $10{,}0$ kJ, sans
+recevoir de travail.
+\end{itemize}
+On prendra $g=9{,}81\ \mathrm{m\,s^{-2}}$ et
+$\Delta U=C\,\Delta T$.
 
 \begin{enumerate}
-\item Justifier que chaque $W$ et $Q$ change de signe. Nature de ce cycle ?
-\item Identifier les branches ou le systeme absorbe / cede de la chaleur.
-\item Calculer $Q_c$, $|Q_h|$ et $W$.
-\item En deduire le $\text{COP}=Q_c/W$. Commenter.
+\item Écrire le bilan énergétique général en faisant apparaître
+$\Delta E_c^{\mathrm{macro}}$, $\Delta E_p^{\mathrm{ext}}$ et $\Delta U$.
+\item Pour chacune des quatre opérations, déterminer $Q$, $W$,
+$\Delta E_c^{\mathrm{macro}}$, $\Delta E_p^{\mathrm{ext}}$ et $\Delta U$.
+\item Calculer la température finale dans chaque cas.
+\item Comparer en particulier les opérations 1 et 3. Pourquoi un travail reçu
+par le système n'entraîne-t-il pas toujours une augmentation de son énergie
+interne ?
+\item Comparer les opérations 3 et 4. Que montrent-elles sur la chaleur et le
+travail ?
 \end{enumerate}
 
 \begin{indication}
-Parcourir un cycle a l'envers change le signe de $W$ et $Q$ sur chaque branche. Reutiliser les resultats numeriques de l'exercice precedent.
+Utiliser le bilan complet
+\[
+\Delta E_{\mathrm{tot}}
+=\Delta E_c^{\mathrm{macro}}
+ +\Delta E_p^{\mathrm{ext}}
+ +\Delta U
+=Q+W.
+\]
+Dans l'opération 3, la palette et le liquide sont au repos dans les états
+initial et final : le mouvement désordonné produit par l'agitation se retrouve
+alors dans l'énergie interne.
 \end{indication}
 
 \begin{solution}
-\textbf{Question 1.} Le cycle antihoraire est recepteur : $W_{\text{total}}=+2000$ J recu, $Q_{\text{total}}=-2000$ J cede. C'est le principe d'un refrigerateur.
-
-\textbf{Question 2.}
-\begin{align*}
-1\to4 &: Q=+2500\text{ J (absorbee, source froide)}\\
-4\to2 &: Q=+4500\text{ J (absorbee, source froide)}\\
-2\to3 &: Q=-7500\text{ J (cedee, source chaude)}\\
-3\to1 &: Q=-1500\text{ J (cedee, source chaude)}
-\end{align*}
-
-\textbf{Question 3.} $Q_c=7000$ J, $|Q_h|=9000$ J, $W=2000$ J. Verification : $7000-9000+2000=0$. \checkmark
-
-\textbf{Question 4.} $\text{COP}=7000/2000=3{,}5$. Pour chaque joule fourni au compresseur, $3{,}5$ J sont extraits de la source froide --- un COP superieur a 1 est normal pour un refrigerateur, contrairement au rendement d'un moteur thermique.
-\end{solution}
-\end{exo}
-
-\begin{exo}[Résistance chauffante dans un cylindre cloisonné]{resistance-chauffante-cloison}
-\keywords{premier principe, piston adiabatique, loi de Laplace, compression adiabatique réversible, bilan d'énergie, hélium}
-
-Un cylindre horizontal rigide, aux parois calorifugées, est divisé en deux compartiments $C_1$ et $C_2$ par un piston mobile sans frottement, lui aussi calorifugé. Chaque compartiment contient de l'hélium (gaz parfait monoatomique, $\gamma = 5/3$) dans le même état initial : $P_0 = 1{,}0\times10^5$ Pa, $V_0 = 1{,}0$ L, $T_0 = 300$ K. Une résistance électrique placée dans $C_1$ lui apporte de la chaleur très lentement, jusqu'à ce que la pression commune atteigne $P_1 = 1{,}5\times10^5$ Pa. On supposera toutes les transformations quasi-statiques.
-
-\begin{enumerate}
-\item Quelle transformation subit le gaz de $C_2$ ? En déduire son volume $V_2$ et sa température $T_2$ finaux.
-\item En déduire le volume $V_1$ et la température $T_1$ finaux du gaz de $C_1$.
-\item Calculer les variations d'énergie interne $\Delta U_1$ et $\Delta U_2$. On remarquera que pour un gaz parfait monoatomique, $U = \frac{3}{2}PV$.
-\item En appliquant le premier principe au système global $\{C_1 + C_2\}$, déterminer la chaleur $Q$ fournie par la résistance. Vérifier la cohérence en appliquant le premier principe à $C_2$ seul, puis à $C_1$ seul.
-\end{enumerate}
-
-\begin{indication}
-Le gaz de $C_2$ n'échange aucune chaleur (piston et parois calorifugés) et est comprimé de façon quasi-statique : c'est une adiabatique réversible, la loi de Laplace $PV^\gamma = \text{cste}$ s'applique. Le volume total $V_1 + V_2 = 2V_0$ est fixé. Pour le système global, les parois externes sont rigides : seul $Q$ entre.
-\end{indication}
-
-\begin{solution}
-\textbf{Question 1.} Le gaz de $C_2$ est comprimé lentement, sans frottement et sans échange de chaleur : il subit une compression adiabatique réversible. Loi de Laplace :
+\textbf{Question 1.} Pour ce système fermé,
 \[
-V_2 = V_0\!\left(\frac{P_0}{P_1}\right)^{1/\gamma} = 1{,}0\times\left(\frac{1}{1{,}5}\right)^{3/5} \approx 0{,}78\ \text{L},
-\qquad
-T_2 = T_0\,\frac{P_1V_2}{P_0V_0} \approx 353\ \text{K}.
+\Delta E_c^{\mathrm{macro}}
++\Delta E_p^{\mathrm{ext}}
++\Delta U
+=Q+W.
+\]
+La forme simplifiée $\Delta U=Q+W$ ne peut être utilisée que lorsque les
+énergies cinétique et potentielle macroscopiques ne varient pas.
+
+\textbf{Question 2.} Pour l'accélération, les parois sont calorifugées et
+l'absence d'agitation interne implique $Q_1=0$ et $\Delta U_1=0$. Le travail
+reçu devient entièrement de l'énergie cinétique macroscopique :
+\[
+W_1=\Delta E_{c,1}^{\mathrm{macro}}
+=\frac12 Mv^2
+=\frac12\times20{,}0\times(3{,}00)^2
+=90{,}0\ \mathrm{J}.
+\]
+On a $\Delta E_{p,1}^{\mathrm{ext}}=0$.
+
+Pour l'élévation lente, le système est au repos au départ et à l'arrivée :
+\[
+Q_2=0,\qquad
+\Delta E_{c,2}^{\mathrm{macro}}=0,\qquad
+\Delta U_2=0.
+\]
+Le travail reçu augmente uniquement l'énergie potentielle extérieure :
+\[
+W_2=\Delta E_{p,2}^{\mathrm{ext}}
+=Mgh
+=20{,}0\times9{,}81\times5{,}00
+=981\ \mathrm{J}.
 \]
 
-\textbf{Question 2.} Le cylindre est rigide : $V_1 = 2V_0 - V_2 \approx 1{,}22$ L, et l'équation d'état donne
+Pour l'agitation, $Q_3=0$ et les énergies macroscopiques sont identiques dans
+les états initial et final. Le travail reçu devient donc de l'énergie interne :
 \[
-T_1 = T_0\,\frac{P_1V_1}{P_0V_0} = 300 \times 1{,}5 \times 1{,}22 \approx 547\ \text{K}.
+\Delta U_3=W_3=10{,}0\ \mathrm{kJ}.
 \]
 
-\textbf{Question 3.} Avec $U = \tfrac{3}{2}PV$ :
+Enfin, lors du chauffage sans travail,
 \[
-\Delta U_1 = \tfrac{3}{2}(P_1V_1 - P_0V_0) \approx \tfrac{3}{2}(182{,}4 - 100) \approx 124\ \text{J},
-\qquad
-\Delta U_2 = \tfrac{3}{2}(P_1V_2 - P_0V_0) \approx \tfrac{3}{2}(117{,}6 - 100) \approx 26\ \text{J}.
+W_4=0,\qquad
+\Delta E_{c,4}^{\mathrm{macro}}=0,\qquad
+\Delta E_{p,4}^{\mathrm{ext}}=0,
+\]
+et
+\[
+\Delta U_4=Q_4=10{,}0\ \mathrm{kJ}.
 \]
 
-\textbf{Question 4.} Le système global n'échange aucun travail (parois externes rigides) et reçoit uniquement $Q$ :
+\textbf{Question 3.} Dans les opérations 1 et 2, $\Delta U=0$, donc la
+température reste $T_0=20{,}0\,^\circ\mathrm{C}$. Dans les opérations 3 et 4,
 \[
-Q = \Delta U_1 + \Delta U_2 = \tfrac{3}{2}(P_1 - P_0)(2V_0) = \tfrac{3}{2}\times 0{,}5\times10^5 \times 2\times10^{-3} = 150\ \text{J}.
+\Delta T=\frac{\Delta U}{C}
+=\frac{10{,}0}{4{,}00}
+=2{,}50\ \mathrm{K},
 \]
-Cohérence : $C_2$ est adiabatique, donc $W_2 = \Delta U_2 \approx 26$ J est le travail que lui fournit le piston. Le gaz de $C_1$ reçoit $Q$ de la résistance et cède ce travail au piston : $\Delta U_1 = Q - W_2 \approx 150 - 26 = 124$ J. \checkmark
+d'où
+\[
+T_f=22{,}5\,^\circ\mathrm{C}.
+\]
 
-On note l'efficacité du bilan global : nul besoin de connaître le détail des échanges internes pour trouver $Q$.
+\textbf{Question 4.} Dans l'opération 1, le travail produit un mouvement
+ordonné du système tout entier : il augmente
+$E_c^{\mathrm{macro}}$, pas $U$. Dans l'opération 3, l'enceinte et le liquide
+sont au repos dans les états extrêmes ; le travail de la palette est finalement
+converti en agitation microscopique et augmente $U$. Connaître le travail total
+ne suffit donc pas : il faut savoir quel terme du bilan énergétique varie.
+
+\textbf{Question 5.} Les opérations 3 et 4 conduisent au même état final et à
+la même variation $\Delta U=10{,}0$ kJ. Dans la première, l'énergie traverse
+la frontière sous forme de travail ; dans la seconde, elle la traverse sous
+forme de chaleur. Chaleur et travail sont des modes de transfert distincts,
+mais ils peuvent produire la même variation d'une fonction d'état.
 \end{solution}
 \end{exo}

@@ -209,7 +209,9 @@ export function getExerciseById(lang: Lang, id: string): ExerciseEntry | undefin
  * URLs are percent-encoded when shared, while the language prefix and page
  * content remain fully localized.
  */
-const SOURCE_ID_SLUG_LANGS = new Set<Lang>(["fr", "ru", "zh", "ja", "ko", "hi", "ar"]);
+const SOURCE_ID_SLUG_LANGS = new Set<Lang>([
+  "fr", "ru", "zh", "ja", "ko", "hi", "ar", "bn", "ur", "fa",
+]);
 
 function asciiSlug(value: string): string {
   return value

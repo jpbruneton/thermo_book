@@ -1,4 +1,64 @@
 
+\begin{exo}[Transition du second ordre : potentiel de Landau]{landau-transition-second-ordre}
+\keywords{Landau, transition de phase, second ordre, potentiel thermodynamique, superfluide, supraconducteur}
+
+Au voisinage de $T_c$, un système est décrit par un paramètre d'ordre $\psi$ (fraction superfluide ou gap supraconducteur) et l'enthalpie libre molaire
+\[
+g(T,\psi) = g_0(T) + a(T - T_c)\psi^2 + b\psi^4,
+\]
+avec $a, b > 0$ et $g_0$ indépendant de $\psi$.
+
+\begin{enumerate}
+\item À $T$ fixé, minimiser $g$ par rapport à $\psi$. Montrer que $\psi = 0$ pour $T > T_c$ et $\psi^2 = \dfrac{a(T_c - T)}{2b}$ pour $T < T_c$.
+\item Calculer la chaleur spécifique $c = -T\,\partial^2 g_0/\partial T^2$ côté normal ($\psi = 0$) et montrer qu'une discontinuité de $c$ apparaît à $T_c$ si $g_0$ est régulier (transition du second ordre).
+\item Interpréter $\psi$ pour un superfluide ($^4$He sous 2,17 K) ou un supraconducteur (sous $T_c$).
+\end{enumerate}
+
+\begin{indication}
+$\partial g/\partial\psi = 2a(T-T_c)\psi + 4b\psi^3$. Pour $T < T_c$, la solution $\psi = 0$ est un maximum local.
+\end{indication}
+
+\begin{solution}
+\textbf{Question 1.} $\partial g/\partial\psi = 2\psi[a(T-T_c) + 2b\psi^2]$. Pour $T > T_c$, le seul minimum est $\psi = 0$. Pour $T < T_c$, $\psi = 0$ est instable et le minimum est $\psi^2 = a(T_c-T)/(2b) > 0$ : brisure spontanée de symétrie.
+
+\textbf{Question 2.} Pour $T > T_c$, $g = g_0(T)$. Pour $T < T_c$, substituer $\psi^2$ et développer : le terme $-a^2(T_c-T)^2/(4b)$ s'ajoute à $g_0$, modifiant $\partial^2 g/\partial T^2$ à $T_c$ : $c$ peut sauter (second ordre) sans chaleur latente (continuité de $S$).
+
+\textbf{Question 3.} $\psi$ mesure la fraction superfluide ou l'amplitude du condensat de Cooper. Au-dessus de $T_c$, le comportement est normal ($\psi = 0$) ; en dessous, une phase cohérente macroscopique apparaît — modèle phénoménologique L2-compatible sans entrer dans la théorie BCS.
+\end{solution}
+\end{exo}
+
+\begin{exo}[Ferromagnétisme : susceptibilité de Curie-Weiss]{curie-weiss-ferromagnetisme}
+\keywords{Curie-Weiss, ferromagnétisme, susceptibilité, transition de phase, aimantation}
+
+Un métal ferromagnétique obéit, au-dessus de sa température de Curie $T_c$, à la loi de Curie-Weiss :
+\[
+\chi = \frac{C}{T - T_c}, \qquad M = \chi H,
+\]
+où $M$ est l'aimantation, $H$ le champ magnétique appliqué, $C$ une constante et $\chi$ la susceptibilité.
+
+\begin{enumerate}
+\item Montrer que $\chi \to +\infty$ quand $T \to T_c^+$ : signe d'une transition de phase.
+\item On admet que l'énergie magnétique molaire vaut $u = -\mu_0 M H/2$ à champ fixé (approximation linéaire). Exprimer la contribution magnétique à l'entropie molaire $s_M = -\partial u/\partial T|_H$.
+\item Au voisinage de $T_c$, pourquoi le modèle de Curie-Weiss est-il insuffisant ? Relier à l'exercice sur le potentiel de Landau.
+\end{enumerate}
+
+\begin{indication}
+$\chi$ diverge : la réponse à un champ infinitésimal devient infinie. Pour $s_M$, dériver $u = -\mu_0 \chi H^2/2$.
+\end{indication}
+
+\begin{solution}
+\textbf{Question 1.} Quand $T \to T_c^+$, le dénominateur $T - T_c \to 0^+$ : $\chi \to +\infty$. Un infinitésimal $H$ produit une aimantation macroscopique : transition paramagnétique $\to$ ferromagnétique.
+
+\textbf{Question 2.} $u = -\dfrac{\mu_0 H^2}{2}\dfrac{C}{T-T_c}$, donc
+\[
+s_M = -\left(\frac{\partial u}{\partial T}\right)_H = -\frac{\mu_0 H^2 C}{2(T-T_c)^2} < 0
+\]
+au-dessus de $T_c$ (contribution magnétique à l'entropie décroît quand $T$ approche $T_c$).
+
+\textbf{Question 3.} Curie-Weiss ne décrit que $T > T_c$ ; en dessous, $M(H)$ n'est plus linéaire. Landau avec $\psi = M$ donne une description unifiée au voisinage de $T_c$ (exposants critiques, second ordre).
+\end{solution}
+\end{exo}
+
 \begin{exo}[Einstein (1907) : la chaleur spécifique du solide]{einstein-chaleur-specifique}
 \keywords{Einstein, chaleur spécifique, solide, capacité calorifique, Dulong-Petit, quantique, histoire}
 

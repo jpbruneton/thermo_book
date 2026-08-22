@@ -1449,6 +1449,16 @@ function normalizeLatexBlocks(
   // Render itemized/enumerated lists.
   result = result.replace(/\\begin\{itemize\}/g, "\n\n<ul class=\"latex-list\">\n");
   result = result.replace(/\\end\{itemize\}/g, "\n</ul>\n\n");
+  // LaTeX's counter value is the number preceding the next item. Translate a
+  // leading \setcounter{enumi}{n} to HTML's start=n+1 instead of displaying
+  // the unsupported command as plain text.
+  result = result.replace(
+    /\\begin\{enumerate\}\s*\\setcounter\s*\{enumi\}\s*\{(-?\d+)\}/g,
+    (_m, counterValue: string) => {
+      const start = Number.parseInt(counterValue, 10) + 1;
+      return `\n\n<ol class="latex-list" start="${start}">\n`;
+    }
+  );
   result = result.replace(/\\begin\{enumerate\}/g, "\n\n<ol class=\"latex-list\">\n");
   result = result.replace(/\\end\{enumerate\}/g, "\n</ol>\n\n");
   result = result.replace(/^\s*\\item(?:\s*\[([^\]]+)\])?\s*/gm, (_m, label: string) => {
