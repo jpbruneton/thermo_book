@@ -84,7 +84,7 @@ Une mole de gaz parfait monoatomique ($C_V = \frac{3}{2}R$) est enfermée dans u
 
 \begin{enumerate}
 \item Déterminer numériquement la température initiale $T_0$.
-\item Déterminer l'état final (température, pression, volume) de façon littérale puis numérique. Calculer $W$ et $\Delta U$. Quelle fraction de la chaleur apportée sert à repousser l'atmosphère ?
+\item Déterminer l'état final (pression, volume, température) de façon littérale puis numérique. Calculer $W$ et $\Delta U$. Quelle fraction de la chaleur apportée sert à repousser l'atmosphère ?
 \item Ce calcul permet de définir la capacité thermique molaire à pression constante, $C_P = \left(\delta Q/\mathrm{d}T\right)_P$. Exprimer $C_P$ en fonction de $C_V$ et $R$. Cette formule est un cas particulier d'une relation générale que l'on démontrera plus tard (relation de Mayer).
 \end{enumerate}
 
@@ -151,13 +151,13 @@ travail des forces de pression.
 
 \begin{solution}
 \textbf{Question 1.} Notons $C$ l'état intermédiaire du chemin $\Gamma_1$
-et $D$ celui du chemin $\Gamma_2$. Leurs volumes et leurs pressions sont
+et $D$ celui du chemin $\Gamma_2$. Leurs pressions et leurs volumes sont
 \[
 \begin{aligned}
-A&=\left(V_1,\frac{nRT_1}{V_1}\right),&
-C&=\left(V_2,\frac{nRT_1}{V_2}\right),\\
-D&=\left(V_1,\frac{nRT_2}{V_1}\right),&
-B&=\left(V_2,\frac{nRT_2}{V_2}\right).
+A&=\left(\frac{nRT_1}{V_1},V_1\right),&
+C&=\left(\frac{nRT_1}{V_2},V_2\right),\\
+D&=\left(\frac{nRT_2}{V_1},V_1\right),&
+B&=\left(\frac{nRT_2}{V_2},V_2\right).
 \end{aligned}
 \]
 Puisque $T_2>T_1$, l'isotherme $T_2$ est au-dessus de l'isotherme $T_1$.
@@ -365,7 +365,7 @@ et calculer $T_2$ et $V_2$.
 \end{enumerate}
 
 \begin{indication}
-Question 2 : équilibre des forces sur le piston. Question 4 : $W = -P_1(V_2 - V_0)$ car la pression extérieure est constante, et à l'équilibre final $P_2 = P_1$ ; éliminer les volumes avec l'équation d'état. Question 6 : refaire le même raisonnement avec $P_{\text{ext}} = P_0$ depuis $(T_2, P_1)$.
+Question 2 : équilibre des forces sur le piston. Question 4 : $W = -P_1(V_2 - V_0)$ car la pression extérieure est constante, et à l'équilibre final $P_2 = P_1$ ; éliminer les volumes avec l'équation d'état. Question 6 : refaire le même raisonnement avec $P_{\text{ext}} = P_0$ depuis $(P_1, T_2)$.
 \end{indication}
 
 \begin{solution}
@@ -390,7 +390,7 @@ D'où $\tfrac{5}{2}T_2 = \left(\tfrac{3}{2} + x\right)T_0$, ce qui est bien $T_2
 
 \textbf{Question 5.} $T_2 = 360\ \text{K} > T_1 \approx 353\ \text{K}$ : la compression brutale échauffe davantage, à taux de compression identique. Pendant la transformation brutale, le gaz est hors équilibre et la totalité du travail $-P_1\Delta V$ (calculé avec la pression finale, la plus élevée) lui est fournie : il reçoit plus de travail que dans le cas réversible. Cette différence est la signature de l'irréversibilité, que le second principe quantifiera à la leçon suivante.
 
-\textbf{Question 6.} Même raisonnement depuis $(T_2, P_1)$ avec $P_{\text{ext}} = P_0$, soit un rapport $P_0/P_1 = 2/3$ :
+\textbf{Question 6.} Même raisonnement depuis $(P_1, T_2)$ avec $P_{\text{ext}} = P_0$, soit un rapport $P_0/P_1 = 2/3$ :
 \[
 T_3 = T_2\,\frac{1 + (\gamma-1)\cdot\tfrac{2}{3}}{\gamma} = 360\times\frac{13}{15} = 312\ \text{K}, \qquad V_3 = \frac{nRT_3}{P_0} \approx 13{,}0\ \text{L}.
 \]
@@ -536,8 +536,8 @@ d'où $Q_{BC} = \Delta U_{BC} - W_{BC} = \tfrac{5}{2}nRT_A$.
 
 On considère $n$ moles de gaz parfait monoatomique, avec $U=\frac{3}{2}nRT$, parcourant quasi-statiquement le cycle rectangulaire horaire
 \[
-A(V_1,P_1)\to B(V_1,P_2)\to C(V_2,P_2)
-\to D(V_2,P_1)\to A,
+A(P_1,V_1)\to B(P_2,V_1)\to C(P_2,V_2)
+\to D(P_1,V_2)\to A,
 \]
 où $V_2>V_1$ et $P_2>P_1$.
 
@@ -598,11 +598,11 @@ Ainsi $W_{\mathrm{cycle}}=-2000$ J, $Q_{\mathrm{cycle}}=+2000$ J et $\Delta U_{\
 On considère $n$ moles de gaz parfait, de capacité thermique molaire $c_V$
 constante, décrivant le cycle quasi-statique $A\to B\to C\to A$, avec
 \[
-A=(V_0,P_0),
+A=(P_0,V_0),
 \qquad
-B=(V_0,2P_0),
+B=(2P_0,V_0),
 \qquad
-C=(2V_0,P_0).
+C=(P_0,2V_0).
 \]
 La branche $A\to B$ est isochore, la branche $B\to C$ est un segment de droite
 dans le plan $(P,V)$ et la branche $C\to A$ est isobare.
