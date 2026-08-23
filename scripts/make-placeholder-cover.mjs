@@ -1,4 +1,4 @@
-// Generates a dependency-free placeholder book cover at public/figs/front.png.
+// Generates a dependency-free placeholder book cover at public/figs/fr/front.png.
 // Dark vertical gradient with a thin amber border, matching the site palette.
 // Run: node scripts/make-placeholder-cover.mjs
 import { deflateSync } from "node:zlib";
@@ -74,7 +74,7 @@ const png = Buffer.concat([
   chunk("IEND", Buffer.alloc(0)),
 ]);
 
-const outDir = join(process.cwd(), "public", "figs");
+const outDir = join(process.cwd(), "public", "figs", "fr");
 mkdirSync(outDir, { recursive: true });
 const outPath = join(outDir, "front.png");
 writeFileSync(outPath, png);

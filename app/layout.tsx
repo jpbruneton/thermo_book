@@ -30,7 +30,7 @@ function bookJsonLd(lang: Lang) {
     datePublished: bookMeta.year,
     inLanguage: [...SUPPORTED_LANGS],
     url: SITE_URL,
-    image: `${SITE_URL}/figs/front.png`,
+    image: `${SITE_URL}/figs/fr/front.png`,
   };
 }
 
@@ -80,7 +80,7 @@ export const metadata: Metadata = {
     url: SITE_URL,
     images: [
       {
-        url: "/figs/front.png",
+        url: "/figs/fr/front.png",
         width: 800,
         height: 1100,
         alt: bookMetaDisplayTitle(),
@@ -91,7 +91,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: bookMetaDisplayTitle(),
     description: bookMeta.description,
-    images: ["/figs/front.png"],
+    images: ["/figs/fr/front.png"],
   },
 };
 

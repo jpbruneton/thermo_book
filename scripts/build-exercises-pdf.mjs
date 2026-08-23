@@ -156,7 +156,7 @@ const tex = `\\documentclass[11pt,a4paper]{article}
 \\geometry{margin=2.5cm}
 \\usepackage{enumitem}
 \\usepackage{graphicx}
-\\graphicspath{{public/figs/}}
+\\graphicspath{{public/figs/fr/}}
 \\setlength{\\parskip}{0.4em}
 \\setcounter{tocdepth}{2}
 \\usepackage{hyperref}

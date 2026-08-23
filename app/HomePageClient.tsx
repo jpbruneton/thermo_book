@@ -235,7 +235,7 @@ export default function HomePageClient() {
               }}
             >
               <Image
-                src="/figs/front.png"
+                src="/figs/fr/front.png"
                 alt={book.title}
                 fill
                 priority
