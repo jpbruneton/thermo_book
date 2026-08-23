@@ -493,6 +493,16 @@ body::before {
   cursor: zoom-in;
 }
 
+.prose-content .latex-figure-textwidth .latex-figure-zoom-link {
+  width: 80%;
+}
+
+.prose-content .latex-figure-textwidth img {
+  width: 100%;
+  max-width: 100%;
+  max-height: none;
+}
+
 .prose-content .latex-figure figcaption {
   margin-top: 0.65rem;
   font-family: var(--font-inter);
@@ -526,6 +536,10 @@ body::before {
   .prose-content .latex-figure img,
   .prose-content .latex-figure-pdf {
     max-width: 100%;
+  }
+
+  .prose-content .latex-figure-textwidth .latex-figure-zoom-link {
+    width: 100%;
   }
 }
 

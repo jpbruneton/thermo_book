@@ -88,7 +88,18 @@ export const chapterTranslations: Record<Exclude<Lang, "fr" | "en">, ThemeTransl
     "application-gaz-parfait": {
       title: "Anwendung auf das ideale Gas",
       description: "Anwendung des ersten Hauptsatzes auf Zustandsänderungen des idealen Gases.",
-      topics: ["Ideales Gas", "Erster Hauptsatz", "Innere Energie", "Isotherme Zustandsänderung", "Adiabatische Zustandsänderung", "Joule-Expansion"],
+      topics: [
+        "Ideales Gas",
+        "Joule-Gay-Lussac-Expansion",
+        "Joulesches Gesetz",
+        "Isotherme Zustandsänderungen",
+        "Isochore Zustandsänderungen",
+        "Isobare Zustandsänderungen",
+        "Adiabatische Zustandsänderungen",
+        "Clapeyron-Diagramme",
+        "Kraftmaschinenkreisprozesse",
+        "Kältekreisprozesse",
+      ],
     },
     "second-principe": {
       title: "Reversibilität und Irreversibilität: der zweite Hauptsatz",
@@ -276,7 +287,18 @@ export const chapterTranslations: Record<Exclude<Lang, "fr" | "en">, ThemeTransl
     "application-gaz-parfait": {
       title: "Aplicación al gas ideal",
       description: "Aplicación del primer principio a las transformaciones del gas ideal.",
-      topics: ["Gas ideal", "Primer principio", "Energía interna", "Transformación isotérmica", "Transformación adiabática", "Expansión de Joule"],
+      topics: [
+        "Gas ideal",
+        "Expansión de Joule-Gay-Lussac",
+        "Ley de Joule",
+        "Transformaciones isotérmicas",
+        "Transformaciones isocóricas",
+        "Transformaciones isobáricas",
+        "Transformaciones adiabáticas",
+        "Diagramas de Clapeyron",
+        "Ciclos de potencia",
+        "Ciclos de refrigeración",
+      ],
     },
     "second-principe": {
       title: "Reversibilidad e irreversibilidad: el segundo principio",
@@ -457,7 +479,18 @@ export const chapterTranslations: Record<Exclude<Lang, "fr" | "en">, ThemeTransl
     "application-gaz-parfait": {
       title: "Aplicação ao gás ideal",
       description: "Aplicação do primeiro princípio às transformações do gás ideal.",
-      topics: ["Gás ideal", "Primeiro princípio", "Energia interna", "Transformação isotérmica", "Transformação adiabática", "Expansão de Joule"],
+      topics: [
+        "Gás ideal",
+        "Expansão de Joule-Gay-Lussac",
+        "Lei de Joule",
+        "Transformações isotérmicas",
+        "Transformações isocóricas",
+        "Transformações isobáricas",
+        "Transformações adiabáticas",
+        "Diagramas de Clapeyron",
+        "Ciclos de potência",
+        "Ciclos de refrigeração",
+      ],
     },
     "second-principe": {
       title: "Reversibilidade e irreversibilidade: o segundo princípio",
@@ -638,7 +671,18 @@ export const chapterTranslations: Record<Exclude<Lang, "fr" | "en">, ThemeTransl
     "application-gaz-parfait": {
       title: "Applicazione al gas ideale",
       description: "Applicazione del primo principio alle trasformazioni del gas ideale.",
-      topics: ["Gas ideale", "Primo principio", "Energia interna", "Trasformazione isoterma", "Trasformazione adiabatica", "Espansione di Joule"],
+      topics: [
+        "Gas ideale",
+        "Espansione di Joule-Gay-Lussac",
+        "Legge di Joule",
+        "Trasformazioni isoterme",
+        "Trasformazioni isocore",
+        "Trasformazioni isobare",
+        "Trasformazioni adiabatiche",
+        "Diagrammi di Clapeyron",
+        "Cicli motori",
+        "Cicli frigoriferi",
+      ],
     },
     "second-principe": {
       title: "Reversibilità e irreversibilità: il secondo principio",
@@ -819,7 +863,18 @@ export const chapterTranslations: Record<Exclude<Lang, "fr" | "en">, ThemeTransl
     "application-gaz-parfait": {
       title: "Zastosowanie do gazu doskonałego",
       description: "Zastosowanie pierwszej zasady do przemian gazu doskonałego.",
-      topics: ["Gaz doskonały", "Pierwsza zasada", "Energia wewnętrzna", "Przemiana izotermiczna", "Przemiana adiabatyczna", "Rozprężanie Joule’a"],
+      topics: [
+        "Gaz doskonały",
+        "Rozprężanie Joule’a-Gay-Lussaca",
+        "Prawo Joule’a",
+        "Przemiany izotermiczne",
+        "Przemiany izochoryczne",
+        "Przemiany izobaryczne",
+        "Przemiany adiabatyczne",
+        "Wykresy Clapeyrona",
+        "Obiegi silnikowe",
+        "Obiegi chłodnicze",
+      ],
     },
     "second-principe": {
       title: "Odwracalność i nieodwracalność: druga zasada",
@@ -1000,7 +1055,18 @@ export const chapterTranslations: Record<Exclude<Lang, "fr" | "en">, ThemeTransl
     "application-gaz-parfait": {
       title: "Применение к идеальному газу",
       description: "Применение первого начала к процессам идеального газа.",
-      topics: ["Идеальный газ", "Первое начало", "Внутренняя энергия", "Изотермический процесс", "Адиабатический процесс", "Расширение Джоуля"],
+      topics: [
+        "Идеальный газ",
+        "Расширение Жоуля-Гей-Люссака",
+        "Закон Жоуля",
+        "Изотермические процессы",
+        "Изохорические процессы",
+        "Изобарические процессы",
+        "Адиабатические процессы",
+        "Диаграммы Клапейрона",
+        "Циклы тепловых двигателей",
+        "Обратные циклы",
+      ],
     },
     "second-principe": {
       title: "Обратимость и необратимость: второе начало",
@@ -1149,7 +1215,18 @@ export const chapterTranslations: Record<Exclude<Lang, "fr" | "en">, ThemeTransl
     "application-gaz-parfait": {
       title: "理想气体的应用",
       description: "将热力学第一定律应用于理想气体过程。",
-      topics: ["理想气体", "热力学第一定律", "内能", "等温过程", "绝热过程", "焦耳膨胀"],
+      topics: [
+        "理想气体",
+        "焦耳–盖-吕萨克膨胀",
+        "焦耳定律",
+        "等温过程",
+        "等容过程",
+        "等压过程",
+        "绝热过程",
+        "克拉佩龙图",
+        "动力循环",
+        "制冷循环",
+      ],
     },
     "second-principe": {
       title: "可逆与不可逆：热力学第二定律",
@@ -1278,7 +1355,18 @@ export const chapterTranslations: Record<Exclude<Lang, "fr" | "en">, ThemeTransl
     "application-gaz-parfait": {
       title: "理想気体への応用",
       description: "熱力学第一法則を理想気体の過程に適用します。",
-      topics: ["理想気体", "熱力学第一法則", "内部エネルギー", "等温過程", "断熱過程", "ジュール膨張"],
+      topics: [
+        "理想気体",
+        "ジュール–ゲイ＝リュサック膨張",
+        "ジュールの法則",
+        "等温変化",
+        "定積変化",
+        "定圧変化",
+        "断熱変化",
+        "クラペイロン線図",
+        "動力サイクル",
+        "冷凍サイクル",
+      ],
     },
     "second-principe": {
       title: "可逆性と不可逆性：熱力学第二法則",
@@ -1407,7 +1495,18 @@ export const chapterTranslations: Record<Exclude<Lang, "fr" | "en">, ThemeTransl
     "application-gaz-parfait": {
       title: "이상 기체에의 응용",
       description: "열역학 제1법칙을 이상 기체의 과정에 적용합니다.",
-      topics: ["이상 기체", "열역학 제1법칙", "내부 에너지", "등온 과정", "단열 과정", "줄 팽창"],
+      topics: [
+        "이상 기체",
+        "줄–게이뤼삭 팽창",
+        "줄의 법칙",
+        "등온 과정",
+        "등적 과정",
+        "정압 과정",
+        "단열 과정",
+        "클라페롱 선도",
+        "동력 사이클",
+        "냉동 사이클",
+      ],
     },
     "second-principe": {
       title: "가역성과 비가역성: 열역학 제2법칙",
@@ -1555,7 +1654,18 @@ export const chapterTranslations: Record<Exclude<Lang, "fr" | "en">, ThemeTransl
     "application-gaz-parfait": {
       title: "आदर्श गैस पर अनुप्रयोग",
       description: "ऊष्मागतिकी के प्रथम नियम का आदर्श गैस के प्रक्रमों पर अनुप्रयोग।",
-      topics: ["आदर्श गैस", "प्रथम नियम", "आंतरिक ऊर्जा", "समतापी प्रक्रम", "रुद्धोष्म प्रक्रम", "जूल प्रसार"],
+      topics: [
+        "आदर्श गैस",
+        "जूल-गे-लुसाक प्रसार",
+        "जूल का नियम",
+        "समतापी प्रक्रम",
+        "समआयतनिक प्रक्रम",
+        "समदाबी प्रक्रम",
+        "रुद्धोष्म प्रक्रम",
+        "क्लैपेरॉन आरेख",
+        "शक्ति चक्र",
+        "प्रशीतन चक्र",
+      ],
     },
     "second-principe": {
       title: "प्रतिवर्तनीयता और अप्रतिवर्तनीयता: द्वितीय नियम",
@@ -1722,7 +1832,18 @@ export const chapterTranslations: Record<Exclude<Lang, "fr" | "en">, ThemeTransl
     "application-gaz-parfait": {
       title: "Ứng dụng cho khí lý tưởng",
       description: "Áp dụng nguyên lý thứ nhất cho các quá trình của khí lý tưởng.",
-      topics: ["Khí lý tưởng", "Nguyên lý thứ nhất", "Nội năng", "Quá trình đẳng nhiệt", "Quá trình đoạn nhiệt", "Giãn nở Joule"],
+      topics: [
+        "Khí lý tưởng",
+        "Giãn nở Joule-Gay-Lussac",
+        "Định luật Joule",
+        "Quá trình đẳng nhiệt",
+        "Quá trình đẳng tích",
+        "Quá trình đẳng áp",
+        "Quá trình đoạn nhiệt",
+        "Đồ thị Clapeyron",
+        "Chu trình sinh công",
+        "Chu trình làm lạnh",
+      ],
     },
     "second-principe": {
       title: "Thuận nghịch và bất thuận nghịch: định luật thứ hai",
@@ -1889,7 +2010,18 @@ export const chapterTranslations: Record<Exclude<Lang, "fr" | "en">, ThemeTransl
     "application-gaz-parfait": {
       title: "تطبيق على الغاز المثالي",
       description: "تطبيق المبدأ الأول على تحولات الغاز المثالي.",
-      topics: ["الغاز المثالي", "المبدأ الأول", "الطاقة الداخلية", "تحول متساوي الحرارة", "تحول كظوم", "تمدد جول"],
+      topics: [
+        "الغاز المثالي",
+        "تمدد جول-غاي لوساك",
+        "قانون جول",
+        "تحولات ثابتة درجة الحرارة",
+        "تحولات ثابتة الحجم",
+        "تحولات ثابتة الضغط",
+        "تحولات كظومية",
+        "مخططات كلابيرون",
+        "دورات القدرة",
+        "دورات التبريد",
+      ],
     },
     "second-principe": {
       title: "العكوسية واللاعكوسية: المبدأ الثاني",
@@ -2057,7 +2189,18 @@ export const chapterTranslations: Record<Exclude<Lang, "fr" | "en">, ThemeTransl
     "application-gaz-parfait": {
       title: "Penerapan pada gas ideal",
       description: "Penerapan hukum pertama pada proses-proses gas ideal.",
-      topics: ["Gas ideal", "Hukum pertama", "Energi dalam", "Proses isotermal", "Proses adiabatik", "Ekspansi Joule"],
+      topics: [
+        "Gas ideal",
+        "Ekspansi Joule-Gay-Lussac",
+        "Hukum Joule",
+        "Proses isotermal",
+        "Proses isokhorik",
+        "Proses isobarik",
+        "Proses adiabatik",
+        "Diagram Clapeyron",
+        "Siklus daya",
+        "Siklus refrigerasi",
+      ],
     },
     "second-principe": {
       title: "Reversibilitas dan Irreversibilitas: Hukum Kedua",
@@ -2245,7 +2388,18 @@ export const chapterTranslations: Record<Exclude<Lang, "fr" | "en">, ThemeTransl
     "application-gaz-parfait": {
       title: "İdeal gaza uygulama",
       description: "Birinci yasanın ideal gaz süreçlerine uygulanması.",
-      topics: ["İdeal gaz", "Birinci yasa", "İç enerji", "İzotermal süreç", "Adyabatik süreç", "Joule genleşmesi"],
+      topics: [
+        "İdeal gaz",
+        "Joule-Gay-Lussac genleşmesi",
+        "Joule yasası",
+        "İzotermal süreçler",
+        "İzokorik süreçler",
+        "İzobarik süreçler",
+        "Adyabatik süreçler",
+        "Clapeyron diyagramları",
+        "Güç çevrimleri",
+        "Soğutma çevrimleri",
+      ],
     },
     "second-principe": {
       title: "Tersinirlik ve Tersinmezlik: İkinci Yasa",
@@ -2384,7 +2538,18 @@ export const chapterTranslations: Record<Exclude<Lang, "fr" | "en">, ThemeTransl
     "application-gaz-parfait": {
       title: "আদর্শ গ্যাসে প্রয়োগ",
       description: "আদর্শ গ্যাসের রূপান্তরে প্রথম সূত্রের প্রয়োগ।",
-      topics: ["আদর্শ গ্যাস", "প্রথম সূত্র", "অভ্যন্তরীণ শক্তি", "সমোষ্ণ প্রক্রিয়া", "রুদ্ধতাপীয় প্রক্রিয়া", "জুল সম্প্রসারণ"],
+      topics: [
+        "আদর্শ গ্যাস",
+        "জুল-গে-লুসাক প্রসারণ",
+        "জুলের সূত্র",
+        "সমতাপ রূপান্তর",
+        "সমআয়তন রূপান্তর",
+        "সমচাপ রূপান্তর",
+        "রুদ্ধতাপীয় রূপান্তর",
+        "ক্লাপেরন লেখচিত্র",
+        "শক্তি-উৎপাদক চক্র",
+        "শীতলীকরণ চক্র",
+      ],
     },
     "second-principe": {
       title: "প্রত্যাবর্তনযোগ্যতা ও অপ্রত্যাবর্তনযোগ্যতা: দ্বিতীয় সূত্র",
@@ -2479,7 +2644,18 @@ export const chapterTranslations: Record<Exclude<Lang, "fr" | "en">, ThemeTransl
     "application-gaz-parfait": {
       title: "مثالی گیس پر اطلاق",
       description: "مثالی گیس کی تبدیلیوں پر پہلے اصول کا اطلاق۔",
-      topics: ["مثالی گیس", "پہلا اصول", "داخلی توانائی", "ہم حرارت عمل", "ایڈیا بیٹک عمل", "جول پھیلاؤ"],
+      topics: [
+        "مثالی گیس",
+        "ژول-گے-لوساک کا پھیلاؤ",
+        "ژول کا قانون",
+        "ہم دما تبدیلیاں",
+        "ہم حجمی تبدیلیاں",
+        "ہم فشاری تبدیلیاں",
+        "ادیابیاتی تبدیلیاں",
+        "کلیپیرون نقشے",
+        "طاقت پیدا کرنے والے چکر",
+        "تبریدی چکر",
+      ],
     },
     "second-principe": {
       title: "برگشت پذیری اور ناقابلِ برگشت پذیری: دوسرا اصول",
@@ -2574,7 +2750,18 @@ export const chapterTranslations: Record<Exclude<Lang, "fr" | "en">, ThemeTransl
     "application-gaz-parfait": {
       title: "Matumizi kwa Gesi Bora",
       description: "Matumizi ya kanuni ya kwanza kwa mabadiliko ya gesi bora.",
-      topics: ["Gesi bora", "Kanuni ya kwanza", "Nishati ya ndani", "Mchakato wa isothermal", "Mchakato wa adiabatic", "Upanuzi wa Joule"],
+      topics: [
+        "Gesi bora",
+        "Upanuzi wa Joule-Gay-Lussac",
+        "Kanuni ya Joule",
+        "Mabadiliko ya halijoto thabiti",
+        "Mabadiliko ya isokori",
+        "Mabadiliko ya isobari",
+        "Mabadiliko ya adiabatiki",
+        "Michoro ya Clapeyron",
+        "Mizunguko ya injini",
+        "Mizunguko ya majokofu",
+      ],
     },
     "second-principe": {
       title: "Uwezekano wa Kurudi na Kutorudi: Kanuni ya Pili",
@@ -2669,7 +2856,18 @@ export const chapterTranslations: Record<Exclude<Lang, "fr" | "en">, ThemeTransl
     "application-gaz-parfait": {
       title: "کاربرد در گاز ایده‌آل",
       description: "کاربرد قانون اول در فرایندهای گاز ایده‌آل.",
-      topics: ["گاز ایده‌آل", "قانون اول", "انرژی درونی", "فرایندهای هم‌دما", "فرایندهای بی‌دررو", "انبساط ژول"],
+      topics: [
+        "گاز ایده‌آل",
+        "انبساط ژول-گی لوساک",
+        "قانون ژول",
+        "تحول‌های هم‌دما",
+        "تحول‌های هم‌حجم",
+        "تحول‌های هم‌فشار",
+        "تحول‌های بی‌دررو",
+        "نمودارهای کلاپیرون",
+        "چرخه‌های توان",
+        "چرخه‌های تبرید",
+      ],
     },
     "second-principe": {
       title: "برگشت‌پذیری و برگشت‌ناپذیری: قانون دوم",

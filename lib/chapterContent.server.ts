@@ -443,6 +443,12 @@ function extractFigureHtml(figureBlock: string, figureNumber: number, lang: Lang
   if (!includeGraphicsMatch) return "";
 
   const imagePath = normalizeFigurePath(includeGraphicsMatch[1].trim());
+  const includeGraphicsOptionsMatch = figureBlock.match(/\\includegraphics(?:\[([^\]]*)\])?/);
+  const graphicsOptions = includeGraphicsOptionsMatch?.[1] ?? "";
+  const usesTextWidth = /(?:^|,)\s*width\s*=\s*\\textwidth\s*(?:,|$)/.test(graphicsOptions);
+  const figureClass = usesTextWidth
+    ? "latex-figure latex-figure-textwidth"
+    : "latex-figure";
   let captionRaw = "";
   const captionCommandIndex = figureBlock.search(/\\caption\s*\{/);
   if (captionCommandIndex !== -1) {
@@ -465,10 +471,10 @@ function extractFigureHtml(figureBlock: string, figureNumber: number, lang: Lang
   const figCaption = `<figcaption>${captionWithNumber}${sourceHtml}</figcaption>`;
   const isPdfFigure = imagePath.toLowerCase().endsWith(".pdf");
   if (isPdfFigure) {
-    return `<figure class="latex-figure"><object class="latex-figure-pdf" data="${imagePath}" type="application/pdf"><a class="latex-figure-pdf-link" href="${imagePath}" target="_blank" rel="noreferrer">${labels.openFigurePdf}</a></object>${figCaption}</figure>`;
+    return `<figure class="${figureClass}"><object class="latex-figure-pdf" data="${imagePath}" type="application/pdf"><a class="latex-figure-pdf-link" href="${imagePath}" target="_blank" rel="noreferrer">${labels.openFigurePdf}</a></object>${figCaption}</figure>`;
   }
 
-  return `<figure class="latex-figure"><a class="latex-figure-zoom-link" href="${imagePath}" target="_blank" rel="noreferrer"><img src="${imagePath}" alt="${altText}" loading="lazy" /></a>${figCaption}</figure>`;
+  return `<figure class="${figureClass}"><a class="latex-figure-zoom-link" href="${imagePath}" target="_blank" rel="noreferrer"><img src="${imagePath}" alt="${altText}" loading="lazy" /></a>${figCaption}</figure>`;
 }
 
 /**
