@@ -1,6 +1,94 @@
 % Banque d'exercices — chapitre 11
 % Le chapitre est déterminé par le nom de ce fichier.
 
+\begin{exo}[Cycle isotherme--isobare--isochore : bilan de synthèse]{travail-trois-chemins}
+\keywords{travail des forces de pression, isotherme, isobare, isochore, diagramme de Clapeyron, premier principe}
+
+On considère un système fermé constitué de $n$ moles de gaz parfait monoatomique ($U = \frac{3}{2}nRT$), initialement dans l'état $A(P_A, V_A, T_A)$. Toutes les transformations sont quasi-statiques.
+
+\begin{enumerate}
+\item Compression isotherme $A\to B$ jusqu'à $V_B = V_A/2$. Calculer $P_B$, puis $W$, $\Delta U$ et $Q$ sur cette branche.
+\item Détente isobare $B\to C$ jusqu'à $V_C = V_A$. Calculer $T_C$, puis $W$, $\Delta U$ et $Q$.
+\item Refroidissement isochore $C\to A$ qui referme le cycle. Calculer $W$, $\Delta U$ et $Q$.
+\item Représenter le cycle $A\to B\to C\to A$ dans le diagramme de Clapeyron $(P,V)$. Application numérique pour $n = 1$ mol, $P_A = 1{,}0$ bar, $T_A = 300$ K : donner $(P,V,T)$ en chacun des trois points.
+\item Comparer $W_{A\to B}$ au travail $W_{A\to C\to B}$ reçu le long du chemin isochore $A\to C$ puis isobare $C\to B$. Commenter.
+\item Le cycle $A\to B\to C\to A$ est-il moteur ou récepteur ? Calculer le travail total et vérifier la cohérence avec le sens de parcours.
+\item Représenter le même cycle dans le diagramme $(T,P)$.
+\end{enumerate}
+
+\begin{indication}
+Sur une isotherme de gaz parfait, remplacer $P$ par $nRT/V$ dans $\delta W = -P\,\mathrm{d}V$ avant d'intégrer. En diagramme $(P,V)$, l'aire du cycle vaut le travail fourni si le parcours est horaire. Convention banquier : tout ce qui entre dans le système est compté positivement.
+\end{indication}
+
+\begin{solution}
+\textbf{Question 1.} Isotherme : $T_B = T_A$, et $P_AV_A = P_BV_B$ donne $P_B = 2P_A$.
+\[
+W_{AB} = -\int_{V_A}^{V_A/2}\frac{nRT_A}{V}\,\mathrm{d}V = -nRT_A\ln\frac{V_B}{V_A} = nRT_A\ln 2 > 0.
+\]
+$U$ ne dépend que de $T$ : $\Delta U = 0$, donc $Q_{AB} = -W_{AB} = -nRT_A\ln 2 < 0$ (le gaz évacue la chaleur de compression).
+
+\textbf{Question 2.} $P_CV_C = 2P_AV_A = 2nRT_A$ donc $T_C = 2T_A$. À pression constante $P_B = 2P_A$ :
+\[
+W_{BC} = -2P_A\left(V_A - \tfrac{V_A}{2}\right) = -P_AV_A = -nRT_A, \qquad \Delta U_{BC} = \tfrac{3}{2}nR(T_C - T_A) = \tfrac{3}{2}nRT_A,
+\]
+d'où $Q_{BC} = \Delta U_{BC} - W_{BC} = \tfrac{5}{2}nRT_A$.
+
+\textbf{Question 3.} Isochore : $W_{CA} = 0$ et $Q_{CA} = \Delta U_{CA} = \tfrac{3}{2}nR(T_A - 2T_A) = -\tfrac{3}{2}nRT_A$.
+
+\textbf{Question 4.} $V_A = RT_A/P_A \approx 24{,}9$ L. Donc $A$ : $(1$ bar, $24{,}9$ L, $300$ K$)$, $B$ : $(2$ bar, $12{,}5$ L, $300$ K$)$, $C$ : $(2$ bar, $24{,}9$ L, $600$ K$)$.
+
+\textbf{Question 5.} $W_{A\to C\to B} = 0 + \left[-2P_A\left(\tfrac{V_A}{2} - V_A\right)\right] = P_AV_A = nRT_A \approx 2494$ J, alors que $W_{A\to B} = nRT_A\ln 2 \approx 1729$ J. Mêmes états extrêmes, travaux différents : le travail dépend du chemin suivi, $\delta W$ n'est pas une différentielle exacte.
+
+\textbf{Question 6.} $W_{\text{total}} = nRT_A\ln 2 - nRT_A = nRT_A(\ln 2 - 1) \approx -765$ J $< 0$ : le gaz fournit du travail, le cycle est moteur. C'est cohérent : en diagramme $(P,V)$, le parcours est horaire (isotherme en bas, isobare en haut) et l'aire du cycle vaut le travail fourni.
+
+\textbf{Question 7.} En diagramme $(T,P)$ : $A\to B$ est un segment vertical à $T = T_A$ (de $P_A$ à $2P_A$) ; $B\to C$ un segment horizontal à $P = 2P_A$ (de $T_A$ à $2T_A$) ; $C\to A$ un segment de la droite passant par l'origine $P = (nR/V_A)\,T$ (isochore).
+\end{solution}
+\end{exo}
+
+\begin{exo}[Cycle isobare--isotherme--isochore : un exemple récepteur]{cycle-isobare-isotherme-isochore}
+\seoready{true}
+\keywords{cycle thermodynamique, isobare, isotherme, isochore, diagramme de Clapeyron, cycle récepteur, gaz diatomique}
+
+Une mole de gaz parfait diatomique ($C_V = \frac{5}{2}R$, $C_P = \frac{7}{2}R$) est initialement dans l'état $A$ de coordonnées $P_0 = 2{,}0\times10^5$ Pa et $V_0 = 14$ L dans le diagramme de Clapeyron. On lui fait subir successivement :
+\begin{itemize}
+\item une détente isobare $A\to B$ qui triple son volume ;
+\item une compression isotherme quasi-statique $B\to C$ qui le ramène au volume initial ;
+\item un refroidissement isochore $C\to A$ qui le ramène à l'état initial.
+\end{itemize}
+
+\begin{enumerate}
+\item Représenter le cycle $ABCA$ dans le diagramme de Clapeyron. Calculer $T_A$, la température $T_B$ de l'isotherme, et la pression maximale $P_C$ atteinte.
+\item Calculer $W$ et $Q$ sur chacune des trois branches, puis sur le cycle complet. On remarquera que $RT_A = P_0V_0$.
+\item Le cycle ainsi parcouru est-il moteur ou récepteur ? Retrouver ce résultat à partir du sens de parcours dans le diagramme. Comment faudrait-il le parcourir pour en faire un moteur ?
+\end{enumerate}
+
+\begin{indication}
+$T_A = P_0V_0/R$ et sur l'isobare $T \propto V$. Sur l'isotherme, $\Delta U = 0$ et $W = -nRT\ln(V_f/V_i)$. Le sens antihoraire correspond à un cycle récepteur.
+\end{indication}
+
+\begin{solution}
+\textbf{Question 1.} $T_A = \dfrac{P_0V_0}{R} = \dfrac{2\times10^5 \times 14\times10^{-3}}{8{,}314} \approx 337$ K. Sur l'isobare, $T_B = 3T_A \approx 1010$ K. Sur l'isotherme $B\to C$ : $P_CV_0 = RT_B = 3P_0V_0$, donc $P_C = 3P_0 = 6{,}0\times10^5$ Pa. Le cycle est bordé par l'isobare $P_0$ en bas, l'isotherme $T_B$ en haut, et l'isochore $V_0$ à gauche.
+
+\textbf{Question 2.} On pose $P_0V_0 = RT_A = 2800$ J.
+
+$A\to B$ (isobare, $\Delta V = 2V_0$) :
+\[
+W_{AB} = -P_0\cdot 2V_0 = -5600\ \text{J},\quad \Delta U_{AB} = \tfrac{5}{2}R\cdot 2T_A = 5RT_A = 14\,000\ \text{J},\quad Q_{AB} = \tfrac{7}{2}R\cdot2T_A = 19\,600\ \text{J}.
+\]
+
+$B\to C$ (isotherme à $3T_A$) : $\Delta U = 0$ et
+\[
+W_{BC} = -3RT_A\ln\frac{V_0}{3V_0} = 3RT_A\ln 3 \approx +9230\ \text{J}, \qquad Q_{BC} = -W_{BC} \approx -9230\ \text{J}.
+\]
+
+$C\to A$ (isochore) : $W_{CA} = 0$ et $Q_{CA} = \Delta U_{CA} = \tfrac{5}{2}R(T_A - 3T_A) = -5RT_A = -14\,000$ J.
+
+Cycle complet : $\Delta U = 0$, $W_{\text{total}} = -5600 + 9230 \approx +3630$ J et $Q_{\text{total}} \approx -3630$ J.
+
+\textbf{Question 3.} $W_{\text{total}} > 0$ : le gaz reçoit du travail et rejette de la chaleur, le cycle est récepteur. C'est cohérent avec le sens de parcours : on parcourt l'isobare (branche basse) de gauche à droite et l'isotherme (branche haute) de droite à gauche, soit un parcours antihoraire. Parcouru dans l'autre sens ($A\to C\to B\to A$), le même cycle fournirait $3630$ J de travail par cycle et deviendrait moteur.
+\end{solution}
+\end{exo}
+
 \begin{exo}[Cycle de Stirling et régénérateur]{stirling-regenerateur}
 \keywords{machines thermiques, cycle de Stirling, régénérateur, rendement de Carnot, isotherme, isochore}
 
