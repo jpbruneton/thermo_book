@@ -444,40 +444,123 @@ $W < 0$ : le gaz fournit du travail à l'extérieur. Ne pouvant le prélever sur
 \begin{exo}[Travail d'une transformation polytropique $PV^k=\text{cste}$]{transformation-polytropique}
 \keywords{transformation polytropique, travail des forces de pression, adiabatique reversible, loi de Laplace}
 
-On considere une transformation quasi-statique d'un gaz parfait telle que $PV^k=\text{cste}$, $k\in\mathbb{R}$, $k\neq1$.
+On considère une transformation quasi-statique d'un gaz parfait telle que
+$PV^k=\text{cste}$, avec $k\in\mathbb{R}$ et $k\neq1$.
 
 \begin{enumerate}
 \item Calculer $W_{A\to B}$ en fonction de $P_A,V_A,P_B,V_B$ et $k$.
-\item Retrouver le resultat pour une isobare ($k=0$).
-\item Conclure directement pour une isochore sans utiliser la formule generale.
+\item Retrouver le résultat pour une isobare ($k=0$).
+\item Conclure directement pour une isochore sans utiliser la formule générale.
 \item Expliquer pourquoi $k=1$ est exclu, puis retrouver $W=-nRT\ln(V_B/V_A)$.
-\item Pour $k=\gamma=5/3$ (adiabatique reversible, monoatomique), montrer que $W=\Delta U$.
+\item Pour $k=\gamma=5/3$ (adiabatique réversible, gaz monoatomique), montrer que $W=\Delta U$.
 \end{enumerate}
 
 \begin{indication}
-Poser $P(V)=CV^{-k}$ avec $C=P_AV_A^k$, integrer, puis utiliser $CV^{1-k}=PV$.
+Poser $P(V)=CV^{-k}$ avec $C=P_AV_A^k$, intégrer, puis utiliser
+$CV^{1-k}=PV$.
 \end{indication}
 
 \begin{solution}
-\textbf{Question 1.}
+\textbf{Question 1.} La relation polytropique s'écrit
 \[
-W = \frac{P_AV_A - P_BV_B}{1-k}
+PV^k=C,
+\qquad
+P(V)=CV^{-k},
+\qquad
+C=P_AV_A^k=P_BV_B^k.
 \]
-
-\textbf{Question 2.} $k=0$, $P_A=P_B=P$ : $W=P(V_A-V_B)=-P\Delta V$. \checkmark
-
-\textbf{Question 3.} Isochore : $\mathrm{d}V=0$ a chaque instant, donc $W=0$. La formule polytropique ne s'applique pas ($k\to\infty$).
-
-\textbf{Question 4.} Pour $k=1$ le facteur $1/(1-k)$ diverge (primitive logarithmique). Avec $PV=nRT=\text{cste}$ :
+Le travail reçu par le gaz vaut, avec la convention du banquier,
 \[
-W = -nRT\ln\!\tfrac{V_B}{V_A}.
+W_{A\to B}
+=-\int_{V_A}^{V_B}P(V)\,\mathrm{d}V
+=-C\int_{V_A}^{V_B}V^{-k}\,\mathrm{d}V.
 \]
-
-\textbf{Question 5.} $k=5/3$ :
+Pour $k\neq1$, une primitive de $V^{-k}$ est
+$V^{1-k}/(1-k)$. Ainsi,
 \[
-W = \tfrac{3}{2}(P_BV_B-P_AV_A) = \tfrac{3}{2}nR(T_B-T_A) = \Delta U.
+W_{A\to B}
+=-\frac{C}{1-k}
+\left(V_B^{1-k}-V_A^{1-k}\right)
+=\frac{CV_A^{1-k}-CV_B^{1-k}}{1-k}.
 \]
-Coherent avec le premier principe ($Q=0$). \checkmark
+Or
+\[
+CV_A^{1-k}=P_AV_A,
+\qquad
+CV_B^{1-k}=P_BV_B.
+\]
+Finalement,
+\[
+\boxed{
+W_{A\to B}
+=\frac{P_AV_A-P_BV_B}{1-k}
+=\frac{P_BV_B-P_AV_A}{k-1}
+}.
+\]
+Lors d'une compression, le travail reçu est positif ; lors d'une détente, il
+est négatif. La formule ci-dessus respecte bien cette convention.
+
+\textbf{Question 2.} Pour $k=0$, la relation $PV^0=C$ devient
+$P=C$ : la transformation est isobare. Comme $P_A=P_B=P$,
+\[
+W_{A\to B}
+=P_AV_A-P_BV_B
+=P(V_A-V_B)
+=-P(V_B-V_A)
+=-P\Delta V.
+\]
+On retrouve bien l'expression directe du travail isobare.
+
+\textbf{Question 3.} Pour une transformation isochore,
+$V_B=V_A$ et $\mathrm{d}V=0$ à chaque instant. Par conséquent,
+\[
+W_{A\to B}=-\int_A^B P\,\mathrm{d}V=0.
+\]
+Une isochore non triviale ne correspond à aucune valeur finie de $k$ : si
+$V$ est constant, la relation $PV^k=\text{cste}$ imposerait aussi $P$ constant.
+On peut seulement voir l'isochore comme une limite formelle $k\to\infty$.
+
+\textbf{Question 4.} Pour $k=1$, l'intégrande est proportionnel à $1/V$ :
+la primitive n'est plus une puissance, mais un logarithme. Il faut donc
+reprendre l'intégration séparément. La relation polytropique devient
+\[
+PV=C.
+\]
+Pour un gaz parfait fermé, $PV=nRT$ ; la température est donc constante et
+$C=nRT$. Le travail reçu est alors
+\[
+W_{A\to B}
+=-\int_{V_A}^{V_B}\frac{nRT}{V}\,\mathrm{d}V
+=-nRT\ln\!\left(\frac{V_B}{V_A}\right).
+\]
+Pour une compression, $V_B/V_A<1$, donc le logarithme est négatif et
+$W_{A\to B}>0$, comme attendu.
+
+\textbf{Question 5.} Pour une adiabatique réversible,
+$k=\gamma$. La formule générale devient
+\[
+W_{A\to B}
+=\frac{P_BV_B-P_AV_A}{\gamma-1}.
+\]
+Pour un gaz monoatomique, $\gamma=5/3$, donc
+\[
+W_{A\to B}
+=\frac32(P_BV_B-P_AV_A).
+\]
+Avec $PV=nRT$,
+\[
+W_{A\to B}
+=\frac32nR(T_B-T_A).
+\]
+Or l'énergie interne d'un gaz parfait monoatomique vaut
+$U=\frac32nRT$. Par conséquent,
+\[
+\Delta U_{A\to B}
+=\frac32nR(T_B-T_A)
+=W_{A\to B}.
+\]
+Ce résultat est cohérent avec le premier principe : la transformation étant
+adiabatique, $Q=0$, donc $\Delta U=Q+W=W$.
 \end{solution}
 \end{exo}
 
@@ -521,13 +604,13 @@ T_1 = T_0\,\frac{P_1V_1}{P_0V_0} = 300 \times 1{,}5 \times 1{,}22 \approx 547\ \
 \[
 Q = \Delta U_1 + \Delta U_2 = \tfrac{3}{2}(P_1 - P_0)(2V_0) = \tfrac{3}{2}\times 0{,}5\times10^5 \times 2\times10^{-3} = 150\ \text{J}.
 \]
-Cohérence : $C_2$ est adiabatique, donc $W_2 = \Delta U_2 \approx 26$ J est le travail que lui fournit le piston. Le gaz de $C_1$ reçoit $Q$ de la résistance et cède ce travail au piston : $\Delta U_1 = Q - W_2 \approx 150 - 26 = 124$ J. \checkmark
+Cohérence : $C_2$ est adiabatique, donc $W_2 = \Delta U_2 \approx 26$ J est le travail que lui fournit le piston. Le gaz de $C_1$ reçoit $Q$ de la résistance et cède ce travail au piston : $\Delta U_1 = Q - W_2 \approx 150 - 26 = 124$ J.
 
 On note l'efficacité du bilan global : nul besoin de connaître le détail des échanges internes pour trouver $Q$.
 \end{solution}
 \end{exo}
 
-\begin{exo}[Cycle rectangulaire biisobare-biisochore : bilan complet]{cycle-biisobare-biisochore}
+\begin{exo}[Cycle isobares--isochores]{cycle-biisobare-biisochore}
 \seoready{true}
 \keywords{cycle thermodynamique, diagramme de Clapeyron, travail, chaleur, aire, gaz parfait, cycle moteur}
 
