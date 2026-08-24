@@ -101,6 +101,51 @@ $T_f-T_i=200\ \mathrm{K}$ :
 \end{solution}
 \end{exo}
 
+\begin{exo}[Exercice de cours : lois de Laplace]{lois-de-laplace}
+\keywords{exercice de cours, loi de Laplace, adiabatique réversible, indice adiabatique, gamma, détente adiabatique, premier principe différentiel}
+
+On considère $n$ moles de gaz parfait d'indice adiabatique $\gamma = C_P/C_V$ supposé constant. On admet la relation de Mayer $C_P - C_V = nR$ (voir l'exercice sur la découverte de $C_P$).
+
+\begin{enumerate}
+\item Montrer que
+\[
+C_V = \frac{nR}{\gamma - 1}, \qquad C_P = \frac{\gamma\, nR}{\gamma - 1}.
+\]
+\item Le gaz subit une transformation adiabatique réversible. En partant du premier principe sous forme différentielle, montrer que
+\[
+\frac{\mathrm{d}T}{T} + (\gamma - 1)\frac{\mathrm{d}V}{V} = 0,
+\]
+puis en déduire que $TV^{\gamma-1} = \text{cste}$ le long de la transformation.
+\item En déduire les deux autres formes de la loi de Laplace : $PV^\gamma = \text{cste}$ et $T^\gamma P^{1-\gamma} = \text{cste}$.
+\item Détente adiabatique réversible qui double le volume, pour un gaz monoatomique ($\gamma = 5/3$), $n = 1$ mol, $T_I = 300$ K. Calculer $T_F$ puis $W$, et commenter les signes.
+\item Dans le diagramme de Clapeyron $(P,V)$, comparer en un même point la pente d'une adiabatique réversible et celle d'une isotherme.
+\end{enumerate}
+
+\begin{indication}
+Pour la question 2 : $\mathrm{d}U = C_V\,\mathrm{d}T$ et $\delta W = -P\,\mathrm{d}V$ avec $P = nRT/V$, puis séparer les variables. Pour la question 5, différencier $PV^\gamma = \text{cste}$ et $PV = \text{cste}$.
+\end{indication}
+
+\begin{solution}
+\textbf{Question 1.} De $C_P = \gamma C_V$ et $C_P - C_V = nR$ : $C_V(\gamma - 1) = nR$, d'où les deux formules.
+
+\textbf{Question 2.} Adiabatique : $\delta Q = 0$, donc $\mathrm{d}U = \delta W$, soit $C_V\,\mathrm{d}T = -P\,\mathrm{d}V = -\dfrac{nRT}{V}\mathrm{d}V$. Avec $C_V = nR/(\gamma-1)$ :
+\[
+\frac{\mathrm{d}T}{T} = -(\gamma-1)\frac{\mathrm{d}V}{V}.
+\]
+En intégrant : $\ln T + (\gamma-1)\ln V = \text{cste}$, c'est-à-dire $TV^{\gamma-1} = \text{cste}$.
+
+\textbf{Question 3.} En substituant $T = PV/(nR)$ : $PV^\gamma = \text{cste}$. En substituant $V = nRT/P$ : $T^\gamma P^{1-\gamma} = \text{cste}$.
+
+\textbf{Question 4.} $T_F = T_I\,2^{-(\gamma-1)} = 300 \times 2^{-2/3} \approx 189$ K. Comme $Q = 0$ :
+\[
+W = \Delta U = \tfrac{3}{2}R(T_F - T_I) \approx \tfrac{3}{2}\times 8{,}314 \times (-111) \approx -1{,}4\ \text{kJ}.
+\]
+$W < 0$ : le gaz fournit du travail à l'extérieur. Ne pouvant le prélever sur aucune source de chaleur ($Q=0$), il puise dans son énergie interne : d'où le refroidissement $\Delta T < 0$.
+
+\textbf{Question 5.} En différenciant $PV = \text{cste}$ : $\left(\frac{\mathrm{d}P}{\mathrm{d}V}\right)_{\text{isoT}} = -\dfrac{P}{V}$. En différenciant $PV^\gamma = \text{cste}$ : $\left(\frac{\mathrm{d}P}{\mathrm{d}V}\right)_{\text{adiab}} = -\gamma\dfrac{P}{V}$. L'adiabatique est $\gamma$ fois plus pentue que l'isotherme : comprimer sans évacuer la chaleur fait monter la pression plus vite, car la température augmente aussi.
+\end{solution}
+\end{exo}
+
 \begin{exo}[Travail et chaleur entre deux états par deux chemins]{travail-chaleur-deux-chemins}
 \keywords{travail des forces de pression, chaleur, isotherme, isochore, diagramme de Clapeyron, différentielle exacte, gaz parfait}
 
@@ -393,51 +438,6 @@ W=-400\ \mathrm{J},\qquad
 \]
 La fraction de chaleur utilisée pour repousser l'atmosphère est
 $-W/Q=2/5$, soit $40\,\%$.
-\end{solution}
-\end{exo}
-
-\begin{exo}[Exercice de cours : lois de Laplace]{lois-de-laplace}
-\keywords{exercice de cours, loi de Laplace, adiabatique réversible, indice adiabatique, gamma, détente adiabatique, premier principe différentiel}
-
-On considère $n$ moles de gaz parfait d'indice adiabatique $\gamma = C_P/C_V$ supposé constant. On admet la relation de Mayer $C_P - C_V = nR$ (voir l'exercice sur la découverte de $C_P$).
-
-\begin{enumerate}
-\item Montrer que
-\[
-C_V = \frac{nR}{\gamma - 1}, \qquad C_P = \frac{\gamma\, nR}{\gamma - 1}.
-\]
-\item Le gaz subit une transformation adiabatique réversible. En partant du premier principe sous forme différentielle, montrer que
-\[
-\frac{\mathrm{d}T}{T} + (\gamma - 1)\frac{\mathrm{d}V}{V} = 0,
-\]
-puis en déduire que $TV^{\gamma-1} = \text{cste}$ le long de la transformation.
-\item En déduire les deux autres formes de la loi de Laplace : $PV^\gamma = \text{cste}$ et $T^\gamma P^{1-\gamma} = \text{cste}$.
-\item Détente adiabatique réversible qui double le volume, pour un gaz monoatomique ($\gamma = 5/3$), $n = 1$ mol, $T_I = 300$ K. Calculer $T_F$ puis $W$, et commenter les signes.
-\item Dans le diagramme de Clapeyron $(P,V)$, comparer en un même point la pente d'une adiabatique réversible et celle d'une isotherme.
-\end{enumerate}
-
-\begin{indication}
-Pour la question 2 : $\mathrm{d}U = C_V\,\mathrm{d}T$ et $\delta W = -P\,\mathrm{d}V$ avec $P = nRT/V$, puis séparer les variables. Pour la question 5, différencier $PV^\gamma = \text{cste}$ et $PV = \text{cste}$.
-\end{indication}
-
-\begin{solution}
-\textbf{Question 1.} De $C_P = \gamma C_V$ et $C_P - C_V = nR$ : $C_V(\gamma - 1) = nR$, d'où les deux formules.
-
-\textbf{Question 2.} Adiabatique : $\delta Q = 0$, donc $\mathrm{d}U = \delta W$, soit $C_V\,\mathrm{d}T = -P\,\mathrm{d}V = -\dfrac{nRT}{V}\mathrm{d}V$. Avec $C_V = nR/(\gamma-1)$ :
-\[
-\frac{\mathrm{d}T}{T} = -(\gamma-1)\frac{\mathrm{d}V}{V}.
-\]
-En intégrant : $\ln T + (\gamma-1)\ln V = \text{cste}$, c'est-à-dire $TV^{\gamma-1} = \text{cste}$.
-
-\textbf{Question 3.} En substituant $T = PV/(nR)$ : $PV^\gamma = \text{cste}$. En substituant $V = nRT/P$ : $T^\gamma P^{1-\gamma} = \text{cste}$.
-
-\textbf{Question 4.} $T_F = T_I\,2^{-(\gamma-1)} = 300 \times 2^{-2/3} \approx 189$ K. Comme $Q = 0$ :
-\[
-W = \Delta U = \tfrac{3}{2}R(T_F - T_I) \approx \tfrac{3}{2}\times 8{,}314 \times (-111) \approx -1{,}4\ \text{kJ}.
-\]
-$W < 0$ : le gaz fournit du travail à l'extérieur. Ne pouvant le prélever sur aucune source de chaleur ($Q=0$), il puise dans son énergie interne : d'où le refroidissement $\Delta T < 0$.
-
-\textbf{Question 5.} En différenciant $PV = \text{cste}$ : $\left(\frac{\mathrm{d}P}{\mathrm{d}V}\right)_{\text{isoT}} = -\dfrac{P}{V}$. En différenciant $PV^\gamma = \text{cste}$ : $\left(\frac{\mathrm{d}P}{\mathrm{d}V}\right)_{\text{adiab}} = -\gamma\dfrac{P}{V}$. L'adiabatique est $\gamma$ fois plus pentue que l'isotherme : comprimer sans évacuer la chaleur fait monter la pression plus vite, car la température augmente aussi.
 \end{solution}
 \end{exo}
 
