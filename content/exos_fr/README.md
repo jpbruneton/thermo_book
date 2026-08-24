@@ -27,6 +27,13 @@ Dans un chapitre, les exercices restent classés par difficulté croissante.
 Une version traduite conserve le même nom de fichier et les mêmes identifiants
 dans le dossier correspondant, par exemple `content/exos_en/exo_chp2.tex`.
 
+Pour les nouveaux exercices, demander d'abord un calcul formel, puis regrouper
+les valeurs dans une question finale d'application numérique. La solution doit
+respecter le même ordre. Lorsque la situation physique s'y prête, la première
+question demande un schéma simple et annoté du système ou de la transformation.
+Ces règles n'imposent pas de reprendre rétroactivement les chapitres déjà
+rédigés.
+
 L'ancien fichier monolithique `content/tex/exercises_fr.tex`, conservé dans le
 sous-module LaTeX pour son historique, n'est plus lu par le site ni par le
 générateur PDF.

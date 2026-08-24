@@ -39,6 +39,157 @@ qui s'intègre en $\Delta S = nC_v\ln(T_F/T_I) + nR\ln(V_F/V_I)$. Comme $S$ est 
 \end{solution}
 \end{exo}
 
+\begin{exo}[Deux gaz séparés par une paroi interne]{equilibre-deux-gaz-paroi}
+\keywords{second principe, maximum d'entropie, système isolé, paroi diatherme, paroi mobile, équilibre thermique, équilibre mécanique}
+
+Un récipient rigide et isolé de l'extérieur contient deux gaz parfaits
+monoatomiques, séparés par une paroi interne initialement fixe, étanche et
+adiabatique. Le compartiment 1 contient $n_1$ moles à la température $T_1$ ;
+le compartiment 2 contient $n_2=3n_1$ moles à la température $T_2=T_1/2$.
+Les deux compartiments ont initialement le même volume $V$. On pose
+$P_0=n_1RT_1/V$.
+
+\begin{enumerate}
+\item Faire un schéma simple du récipient. Indiquer les deux gaz, la paroi
+interne, les quantités de matière, les températures, les volumes et les
+pressions initiales.
+\item Exprimer formellement les deux pressions initiales en fonction de $P_0$.
+\item La paroi devient diatherme, mais reste fixe et étanche. À l'aide des deux
+principes, justifier la condition d'équilibre thermique, puis déterminer la
+température et les pressions finales.
+\item Calculer l'énergie échangée entre les gaz et préciser sa forme. Établir
+le bilan entropique du système global et vérifier que l'entropie créée est
+positive.
+\item La paroi devient maintenant diatherme et mobile. En maximisant l'entropie
+du système isolé, justifier les conditions d'équilibre thermique et mécanique.
+Déterminer la température, la pression et les volumes finaux, puis effectuer
+le bilan entropique. Comparer avec le cas de la paroi fixe.
+\item Application numérique pour $n_1=1\ \mathrm{mol}$,
+$T_1=600\ \mathrm{K}$ et
+$R=8{,}314\ \mathrm{J\,mol^{-1}\,K^{-1}}$.
+\end{enumerate}
+
+\begin{indication}
+Le système global est isolé : son énergie interne est conservée et son
+entropie est maximale à l'équilibre. Pour un gaz parfait,
+\[
+\mathrm{d}S=\frac{\mathrm{d}U}{T}+\frac{P}{T}\,\mathrm{d}V.
+\]
+\end{indication}
+
+\begin{solution}
+\textbf{Question 1.} Le schéma représente un récipient rigide de volume total
+$2V$, partagé par une paroi. À gauche : $(n_1,T_1,V,P_0)$ ; à droite :
+$(3n_1,T_1/2,V,P_{2,i})$. Les parois extérieures sont adiabatiques.
+
+\textbf{Question 2 --- Calcul formel.} L'équation des gaz parfaits donne
+\[
+P_{1,i}=\frac{n_1RT_1}{V}=P_0,
+\qquad
+P_{2,i}=\frac{3n_1R(T_1/2)}{V}=\frac32P_0.
+\]
+
+\textbf{Question 3 --- Paroi fixe et diatherme.} Lors d'un petit transfert
+d'énergie avec $\mathrm{d}U_2=-\mathrm{d}U_1$, les volumes restent constants :
+\[
+\mathrm{d}S_{\mathrm{tot}}
+=\left(\frac1{T_1}-\frac1{T_2}\right)\mathrm{d}U_1.
+\]
+À l'équilibre, l'entropie est maximale ; le coefficient de
+$\mathrm{d}U_1$ doit donc s'annuler, ce qui impose
+$T_{1,f}=T_{2,f}=T_f$. La conservation de l'énergie donne
+\[
+n_1\frac32R(T_f-T_1)
++3n_1\frac32R\left(T_f-\frac{T_1}{2}\right)=0,
+\]
+d'où
+\[
+T_f=\frac58T_1,
+\qquad
+P_{1,f}=\frac58P_0,
+\qquad
+P_{2,f}=\frac{15}{8}P_0.
+\]
+La paroi étant fixe, l'équilibre mécanique n'est pas requis : les pressions
+finales peuvent être différentes.
+
+\textbf{Question 4 --- Bilan entropique.} Le gaz 2 reçoit uniquement sous
+forme de chaleur l'énergie
+\[
+Q_{1\to2}=\Delta U_2
+=3n_1\frac32R\left(\frac58T_1-\frac12T_1\right)
+=\frac9{16}n_1RT_1.
+\]
+Le système global est isolé, donc $S_e=0$ et $S_c=\Delta S_{\mathrm{tot}}$.
+Comme les volumes sont constants,
+\[
+S_c
+=\frac32n_1R\left[
+\ln\!\left(\frac58\right)
++3\ln\!\left(\frac54\right)
+\right]>0.
+\]
+Cette création d'entropie traduit le transfert spontané de chaleur entre deux
+gaz initialement à des températures différentes.
+
+\textbf{Question 5 --- Paroi mobile et diatherme.} Avec
+$\mathrm{d}U_2=-\mathrm{d}U_1$ et $\mathrm{d}V_2=-\mathrm{d}V_1$,
+\[
+\mathrm{d}S_{\mathrm{tot}}
+=\left(\frac1{T_1}-\frac1{T_2}\right)\mathrm{d}U_1
++\left(\frac{P_1}{T_1}-\frac{P_2}{T_2}\right)\mathrm{d}V_1.
+\]
+La maximisation de l'entropie impose donc $T_{1,f}=T_{2,f}$ puis
+$P_{1,f}=P_{2,f}$. La conservation de l'énergie donne encore
+$T_f=5T_1/8$. À pression et température communes, les volumes sont
+proportionnels aux quantités de matière. Comme leur somme vaut $2V$,
+\[
+V_{1,f}=\frac V2,
+\qquad
+V_{2,f}=\frac{3V}{2},
+\qquad
+P_f=\frac54P_0.
+\]
+Les variations d'énergie interne sont les mêmes que pour la paroi fixe, mais
+l'énergie s'échange ici sous forme de chaleur et de travail. Le bilan
+entropique vaut
+\[
+S_c=\Delta S_{\mathrm{tot}}
+=\frac32n_1R\left[
+\ln\!\left(\frac58\right)+3\ln\!\left(\frac54\right)
+\right]
++n_1R\left[
+\ln\!\left(\frac12\right)+3\ln\!\left(\frac32\right)
+\right]>0.
+\]
+
+\textbf{Question 6 --- Application numérique.} On obtient
+\[
+T_f=375\ \mathrm{K},
+\qquad
+Q_{1\to2}\simeq2{,}81\ \mathrm{kJ}.
+\]
+Pour la paroi fixe,
+\[
+P_{1,f}=0{,}625P_0,
+\qquad
+P_{2,f}=1{,}875P_0,
+\qquad
+S_c\simeq2{,}49\ \mathrm{J\,K^{-1}}.
+\]
+Pour la paroi mobile,
+\[
+P_f=1{,}25P_0,
+\qquad
+V_{1,f}=0{,}50V,
+\qquad
+V_{2,f}=1{,}50V,
+\qquad
+S_c\simeq6{,}84\ \mathrm{J\,K^{-1}}.
+\]
+\end{solution}
+\end{exo}
+
 \begin{exo}[Chauffage d'une masse d'eau : un, deux, puis $N$ thermostats]{chauffage-eau-thermostats}
 \keywords{bilan d'entropie, thermostat, source de chaleur, entropie de l'univers, réversibilité, chauffage}
 
@@ -179,45 +330,120 @@ Total du chemin en deux étapes : $0 + nR\ln 2 = nR\ln 2$. \checkmark\ C'est l'a
 \end{exo}
 
 \begin{exo}[Retour sur la compression brutale : bilans d'entropie]{compression-brutale-entropie}
-\keywords{création d'entropie, compression adiabatique, irréversibilité, isentropique, hélium, bilan entropique}
+\keywords{création d'entropie, compression adiabatique, irréversibilité, isentropique, bilan entropique, comparaison formelle}
 
-On reprend l'exercice \textit{Compression adiabatique : progressive ou brutale} de la leçon 5 : $n = 0{,}50$ mol d'hélium ($\gamma = 5/3$) dans un cylindre calorifugé, initialement à $T_0 = 300$ K, $P_0 = 1{,}0$ bar, $V_0 = 12{,}5$ L. On rappelle les résultats :
-\begin{itemize}
-\item compression réversible jusqu'à $P_1 = 1{,}5P_0$ : $T_1 \approx 353$ K ;
-\item compression brutale jusqu'à $P_1$ : $T_2 = 360$ K, $V_2 = 0{,}8\,V_0$ ;
-\item puis retrait brutal de la surcharge : $T_3 = 312$ K, $V_3 = 1{,}04\,V_0$.
-\end{itemize}
+On reprend les états de l'exercice \textit{Compression adiabatique :
+progressive ou brutale} de la leçon 5. On pose
+\[
+x=\frac{P_1}{P_0}>1,
+\qquad
+\theta=\frac{1+(\gamma-1)x}{\gamma},
+\qquad
+\phi=\frac{1+(\gamma-1)/x}{\gamma}.
+\]
+La compression progressive conduit de $A$ à $B$. La compression brutale
+conduit de $A$ à $B'$, puis le retrait brutal de la surcharge conduit de $B'$
+à $B''$. On rappelle
+\[
+\frac{T_{B'}}{T_A}=\theta,
+\qquad
+\frac{V_{B'}}{V_A}=\frac{\theta}{x},
+\qquad
+\frac{T_{B''}}{T_A}
+=\frac{V_{B''}}{V_A}
+=\theta\phi>1.
+\]
 
 \begin{enumerate}
-\item Sans calcul : que vaut $\Delta S$ du gaz pour la compression réversible ? Le vérifier avec la formule de l'entropie du gaz parfait.
-\item Calculer $\Delta S$ pour la compression brutale. Pourquoi peut-on affirmer que ce résultat mesure directement l'entropie créée $S_c$ ?
-\item Calculer $\Delta S$ pour le retour brutal, puis pour l'aller-retour complet. Vérifier la cohérence en calculant directement $\Delta S$ entre l'état initial et l'état final $(T_3, V_3)$.
-\item Commenter : que reste-t-il de l'aller-retour dans l'état du gaz ?
+\item Calculer la variation d'entropie sur la compression réversible
+$A\to B$.
+\item Calculer formellement $\Delta S_{AB'}$. Montrer qu'elle est strictement
+positive et expliquer pourquoi elle est égale à l'entropie créée.
+\item Faire de même pour le retrait brutal $B'\to B''$.
+\item Calculer directement la variation d'entropie entre $A$ et $B''$ et
+vérifier qu'elle est égale à la somme des deux créations précédentes.
+\item Comparer les bilans énergétiques et entropiques des deux expériences.
 \end{enumerate}
 
 \begin{indication}
-Parois calorifugées : $Q = 0$ dans tous les cas, donc $\Delta S = S_c$. Utiliser $\Delta S = nC_v\ln(T_f/T_i) + nR\ln(V_f/V_i)$ avec $nC_v = \frac{3}{2}nR \approx 6{,}24$ J/K et $nR \approx 4{,}16$ J/K. Les rapports de volumes sont exacts : $V_2/V_0 = 0{,}8$, $V_3/V_2 = 1{,}3$, $V_3/V_0 = 1{,}04$.
+Pour un gaz parfait à capacités thermiques constantes,
+\[
+\Delta S=nC_V\ln\frac{T_f}{T_i}
++nR\ln\frac{V_f}{V_i},
+\qquad
+R=(\gamma-1)C_V.
+\]
+Toutes les transformations sont adiabatiques : l'entropie échangée est nulle.
 \end{indication}
 
 \begin{solution}
-\textbf{Question 1.} Adiabatique ($\delta Q = 0$) et réversible : $\mathrm{d}S = \delta Q_{\text{rev}}/T = 0$, donc $\Delta S = 0$. Vérification : la loi de Laplace donne précisément $T_1V_1^{\gamma-1} = T_0V_0^{\gamma-1}$, ce qui annule $nC_v\ln(T_1/T_0) + nR\ln(V_1/V_0)$. \checkmark
-
-\textbf{Question 2.} Avec $T_2/T_0 = 1{,}2$ et $V_2/V_0 = 0{,}8$ :
+\textbf{Question 1.} La transformation $A\to B$ est adiabatique et
+réversible :
 \[
-\Delta S = 6{,}24\ln 1{,}2 + 4{,}16\ln 0{,}8 \approx 1{,}14 - 0{,}93 \approx +0{,}21\ \text{J/K}.
+\Delta S_{AB}=0.
 \]
-Le gaz n'a rien échangé ($Q = 0$), donc le terme d'échange $\int\delta Q/T$ est nul : tout ce $\Delta S$ est de la création, $S_c \approx 0{,}21$ J/K $> 0$, signature de la brutalité de la compression.
+On retrouve ce résultat en injectant
+$T_B/T_A=x^{(\gamma-1)/\gamma}$ et $V_B/V_A=x^{-1/\gamma}$ dans la formule
+de $\Delta S$.
 
-\textbf{Question 3.} Retour ($T_3/T_2 = 312/360$, $V_3/V_2 = 1{,}3$) :
+\textbf{Question 2.} Pour la compression brutale,
 \[
-\Delta S = 6{,}24\ln\frac{312}{360} + 4{,}16\ln 1{,}3 \approx -0{,}89 + 1{,}09 \approx +0{,}20\ \text{J/K}.
+\Delta S_{AB'}
+=nC_V\ln\theta+nR\ln\frac{\theta}{x}
+=nC_V\ln\left(\frac{\theta^\gamma}{x^{\gamma-1}}\right).
 \]
-Aller-retour : $\Delta S_{\text{total}} \approx 0{,}21 + 0{,}20 = 0{,}41$ J/K. Vérification directe entre $(T_0, V_0)$ et $(T_3 = 1{,}04\,T_0,\ V_3 = 1{,}04\,V_0)$ :
+L'inégalité des moyennes établie à la leçon 5 donne
+$\theta>x^{(\gamma-1)/\gamma}$, donc
 \[
-\Delta S = (6{,}24 + 4{,}16)\ln 1{,}04 \approx 10{,}4 \times 0{,}0392 \approx +0{,}41\ \text{J/K}. \checkmark
+\Delta S_{AB'}>0.
+\]
+Comme $Q=0$, l'entropie échangée est nulle :
+$S_{c,AB'}=\Delta S_{AB'}>0$.
+
+\textbf{Question 3.} Sur le retour brutal,
+\[
+\frac{T_{B''}}{T_{B'}}=\phi,
+\qquad
+\frac{V_{B''}}{V_{B'}}=x\phi.
+\]
+Ainsi,
+\[
+\Delta S_{B'B''}
+=nC_V\ln\phi+nR\ln(x\phi)
+=nC_V\ln\left(\phi^\gamma x^{\gamma-1}\right).
+\]
+La moyenne arithmétique pondérée
+$\phi=[1+(\gamma-1)/x]/\gamma$ est strictement supérieure à la moyenne
+géométrique pondérée $x^{-(\gamma-1)/\gamma}$. Par conséquent,
+\[
+\Delta S_{B'B''}=S_{c,B'B''}>0.
 \]
 
-\textbf{Question 4.} Les manipulations extérieures forment un cycle (on pose puis on retire la même masse), mais le gaz, lui, ne revient pas : il est plus chaud, plus dilaté, et son entropie a augmenté de $0{,}41$ J/K. Chaque étape brutale a créé de l'entropie, et cette création ne peut jamais être annulée : c'est la flèche du temps thermodynamique, quantifiée.
+\textbf{Question 4.} Les états $A$ et $B''$ ont la même pression et vérifient
+$T_{B''}/T_A=V_{B''}/V_A=\theta\phi$. Le calcul direct donne
+\[
+\Delta S_{AB''}
+=n(C_V+R)\ln(\theta\phi)
+=nC_P\ln(\theta\phi)>0.
+\]
+Comme l'entropie est une fonction d'état,
+\[
+\Delta S_{AB''}
+=\Delta S_{AB'}+\Delta S_{B'B''}.
+\]
+Toute cette augmentation est de l'entropie créée.
+
+\textbf{Question 5.} Pour $A\to B$, le gaz reçoit du travail et augmente son
+énergie interne, mais ne crée pas d'entropie. Pour
+$A\to B'\to B''$, il reçoit un travail net
+\[
+W_{\mathrm{tot}}=\Delta U_{\mathrm{tot}}
+=nC_VT_A(\theta\phi-1)>0
+\]
+et crée de l'entropie à chacune des deux étapes. L'état final $B''$ reste plus
+chaud, plus volumineux et plus entropique que $A$ : le second principe
+quantifie ainsi l'irréversibilité que le premier principe seul avait seulement
+mise en évidence.
 \end{solution}
 \end{exo}
 

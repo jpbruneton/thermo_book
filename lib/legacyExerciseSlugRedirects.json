@@ -1,5 +1,6 @@
 {
   "cycle-lenoir": "cycle-isobare-isotherme-isochore",
   "cycle-rectangulaire-gp": "cycle-biisobare-biisochore",
+  "detente-joule-gay-lussac": "detente-joule-astuce",
   "deux-chemins-gp-memes-etats": "travail-chaleur-deux-chemins"
 }

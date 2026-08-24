@@ -1,119 +1,60 @@
 % Banque d'exercices — chapitre 5
 % Le chapitre est déterminé par le nom de ce fichier.
 
-\begin{exo}[Chauffage isochore d'un gaz monoatomique]{chauffage-isochore-gp-mono}
+\begin{exo}[Chauffage isochore puis compression isotherme]{chauffage-isochore-gp-mono}
 \seoready{true}
-\keywords{gaz parfait monoatomique, chauffage isochore, énergie interne, chaleur, premier principe}
+\keywords{gaz parfait monoatomique, chauffage isochore, compression isotherme, énergie interne, travail, chaleur, premier principe}
 
-Une mole de gaz parfait monoatomique passe, à volume constant, de la
-température $T_A=300\ \mathrm{K}$ à la température
-$T_B=500\ \mathrm{K}$.
+Une mole de gaz parfait monoatomique subit deux transformations successives :
+\begin{enumerate}
+\item un chauffage à volume constant de $T_A=300\ \mathrm{K}$ à
+$T_B=500\ \mathrm{K}$ ;
+\item une compression isotherme, à $T_B$, du volume $V_B$ au volume
+$V_C=V_B/2$.
+\end{enumerate}
 
-Calculer $W$, $\Delta U$ et $Q$, littéralement puis numériquement. On prendra
-$R=8{,}314\ \mathrm{J\,mol^{-1}\,K^{-1}}$.
+Calculer simplement $W$, $\Delta U$ et $Q$ pour chaque transformation. On
+prendra $R=8{,}314\ \mathrm{J\,mol^{-1}\,K^{-1}}$.
 
 \begin{indication}
-Pour un gaz parfait monoatomique,
-$\Delta U=\frac32nR(T_B-T_A)$. À volume constant, le travail des forces de
-pression est nul.
+À volume constant, le travail est nul. Pour la compression isotherme, utiliser
+$W=-nRT_B\ln(V_C/V_B)$.
 \end{indication}
 
 \begin{solution}
-La transformation est isochore, donc
+\textbf{1. Chauffage isochore.} Le volume est constant, donc
 \[
-W=0.
+W_{AB}=0.
 \]
 Avec $n=1\ \mathrm{mol}$ et $\Delta T=200\ \mathrm{K}$,
 \[
-\Delta U
+\Delta U_{AB}
 =\frac32R\Delta T
 =\frac32\times8{,}314\times200
 \simeq2{,}49\ \mathrm{kJ}.
 \]
 Le premier principe donne
 \[
-Q=\Delta U-W=\Delta U\simeq2{,}49\ \mathrm{kJ}.
+Q_{AB}=\Delta U_{AB}-W_{AB}\simeq2{,}49\ \mathrm{kJ}.
 \]
-La chaleur est positive : le gaz reçoit l'énergie qui augmente son énergie
-interne.
-\end{solution}
-\end{exo}
-
-\begin{exo}[Compression isotherme à la moitié du volume]{compression-isotherme-demi-volume}
-\seoready{true}
-\keywords{gaz parfait, compression isotherme, travail, chaleur, logarithme, convention du banquier}
-
-Une mole de gaz parfait subit une compression isotherme, quasi-statique et
-sans frottement à la température $T_0=300\ \mathrm{K}$, depuis le volume
-$V_A$ jusqu'au volume $V_B=V_A/2$.
-
-Calculer $W$, $\Delta U$ et $Q$. Commenter soigneusement leurs signes. On
-prendra $R=8{,}314\ \mathrm{J\,mol^{-1}\,K^{-1}}$.
-
-\begin{indication}
-Sur une isotherme quasi-statique, remplacer $P$ par $nRT_0/V$ dans
-$W=-\int P\,\mathrm{d}V$.
-\end{indication}
-
-\begin{solution}
-Le travail reçu vaut
+\textbf{2. Compression isotherme.} La température reste égale à
+$T_B=500\ \mathrm{K}$, donc
 \[
-W
-=-RT_0\ln\!\left(\frac{V_B}{V_A}\right)
-=RT_0\ln2
-\simeq1{,}73\ \mathrm{kJ}>0.
+W_{BC}
+=-RT_B\ln\!\left(\frac{V_C}{V_B}\right)
+=RT_B\ln2
+\simeq2{,}88\ \mathrm{kJ}.
 \]
-Le gaz est comprimé : il reçoit bien du travail. Pour un gaz parfait, l'énergie
-interne ne dépend que de la température. La transformation étant isotherme,
+Pour un gaz parfait, l'énergie interne ne dépend que de la température :
 \[
-\Delta U=0.
+\Delta U_{BC}=0.
 \]
-Le premier principe impose alors
+Ainsi,
 \[
-Q=-W\simeq-1{,}73\ \mathrm{kJ}.
+Q_{BC}=-W_{BC}\simeq-2{,}88\ \mathrm{kJ}.
 \]
-Le gaz cède sous forme de chaleur toute l'énergie reçue sous forme de travail,
-ce qui maintient sa température constante.
-\end{solution}
-\end{exo}
-
-\begin{exo}[Chauffage à pression constante : découverte de $C_P$]{decouverte-cp}
-\keywords{capacité thermique, pression constante, relation de Mayer, chauffage isobare, gaz parfait}
-
-Une mole de gaz parfait monoatomique ($C_V = \frac{3}{2}R$) est enfermée dans une enceinte de volume initial $V_0 = 25$ L, fermée par un piston mobile sans frottement soumis à la pression atmosphérique $P_0 = 1{,}0\times10^5$ Pa, supposée constante. Le système est initialement à l'équilibre. Une petite résistance électrique placée dans l'enceinte apporte une chaleur $Q = 1000$ J de façon quasi-statique.
-
-\begin{enumerate}
-\item Déterminer numériquement la température initiale $T_0$.
-\item Déterminer l'état final (pression, volume, température) de façon littérale puis numérique. Calculer $W$ et $\Delta U$. Quelle fraction de la chaleur apportée sert à repousser l'atmosphère ?
-\item Ce calcul permet de définir la capacité thermique molaire à pression constante, $C_P = \left(\delta Q/\mathrm{d}T\right)_P$. Exprimer $C_P$ en fonction de $C_V$ et $R$. Cette formule est un cas particulier d'une relation générale que l'on démontrera plus tard (relation de Mayer).
-\end{enumerate}
-
-\begin{indication}
-La transformation est isobare : $W = -P_0\,\Delta V$, et l'équation d'état donne $P_0\,\Delta V = R\,\Delta T$. Injecter dans le premier principe pour obtenir une équation sur $\Delta T$ seul.
-\end{indication}
-
-\begin{solution}
-\textbf{Question 1.} $T_0 = \dfrac{P_0V_0}{R} = \dfrac{10^5 \times 25\times10^{-3}}{8{,}314} \approx 301$ K.
-
-\textbf{Question 2.} La pression finale vaut $P_0$ (équilibre mécanique du piston). Premier principe :
-\[
-\Delta U = Q + W = Q - P_0\,\Delta V.
-\]
-Or $\Delta U = \tfrac{3}{2}R\,\Delta T$ et $P_0\,\Delta V = R\,\Delta T$ (isobare), donc
-\[
-\tfrac{3}{2}R\,\Delta T = Q - R\,\Delta T \implies \Delta T = \frac{2Q}{5R} \approx 48\ \text{K}.
-\]
-D'où $T_f \approx 349$ K et $V_f = V_0\,T_f/T_0 \approx 29{,}0$ L. On en tire les valeurs exactes
-\[
-W = -P_0\,\Delta V = -\tfrac{2}{5}Q = -400\ \text{J}, \qquad \Delta U = \tfrac{3}{5}Q = +600\ \text{J}.
-\]
-Les $2/5$ de la chaleur fournie repartent en travail pour repousser l'atmosphère ; seuls les $3/5$ restants chauffent le gaz.
-
-\textbf{Question 3.} À pression constante, $\delta Q = \mathrm{d}U + P\,\mathrm{d}V = C_V\,\mathrm{d}T + R\,\mathrm{d}T$, donc
-\[
-C_P = C_V + R = \tfrac{5}{2}R \approx 20{,}8\ \text{J·K}^{-1}\text{mol}^{-1}.
-\]
-On retrouve bien $Q/\Delta T = 1000/48{,}1 \approx 20{,}8$ J/K. $C_P > C_V$ : il faut plus de chaleur pour élever la température à pression constante, car une partie de l'énergie s'échappe en travail.
+Pendant la compression, le gaz reçoit du travail et cède la même énergie sous
+forme de chaleur.
 \end{solution}
 \end{exo}
 
@@ -230,6 +171,188 @@ la chaleur supplémentaire correspondante.
 \end{solution}
 \end{exo}
 
+\begin{exo}[Cycle triangulaire]{cycle-triangulaire-diagonale}
+\keywords{cycle moteur, transformation linéaire, diagramme de Clapeyron, aire du cycle, premier principe}
+
+On considère $n$ moles de gaz parfait, de capacité thermique molaire $c_V$
+constante, décrivant le cycle quasi-statique $A\to B\to C\to A$, avec
+\[
+A=(P_0,V_0),
+\qquad
+B=(2P_0,V_0),
+\qquad
+C=(P_0,2V_0).
+\]
+La branche $A\to B$ est isochore, la branche $B\to C$ est un segment de droite
+dans le plan $(P,V)$ et la branche $C\to A$ est isobare.
+
+\begin{enumerate}
+\item Représenter le cycle dans le diagramme de Clapeyron et préciser son sens
+de parcours. Est-il moteur ou récepteur ?
+\item Déterminer l'équation $P(V)$ de la droite reliant $B$ à $C$.
+\item En posant $T_0=P_0V_0/(nR)$, déterminer les températures $T_A$, $T_B$ et
+$T_C$. Pourquoi $\Delta U_{B\to C}$ est-elle nulle alors que cette branche
+n'est pas isotherme ?
+\item Calculer le travail reçu sur chacune des trois branches, puis sur le cycle
+complet. Retrouver la valeur absolue du travail total à partir de l'aire du
+triangle.
+\item Calculer $\Delta U$ et $Q$ sur chaque branche, puis vérifier que
+$\Delta U_{\mathrm{cycle}}=0$ et $Q_{\mathrm{cycle}}=-W_{\mathrm{cycle}}$.
+\end{enumerate}
+
+\begin{indication}
+Sur $B\to C$, chercher $P(V)=aV+b$ en imposant le passage par $B$ et $C$.
+Pour calculer une variation d'énergie interne, seules les températures aux
+extrémités de la branche sont nécessaires.
+\end{indication}
+
+\begin{solution}
+\textbf{Questions 1--2.} Le cycle est parcouru dans le sens horaire : il est
+moteur. L'équation de la droite $B\to C$ est
+\[
+P(V)=P_0\left(3-\frac{V}{V_0}\right).
+\]
+
+\textbf{Question 3.} L'équation d'état donne
+\[
+T_A=T_0,
+\qquad
+T_B=T_C=2T_0.
+\]
+La température varie le long de $B\to C$, mais elle reprend la même valeur à
+ses deux extrémités. Comme l'énergie interne d'un gaz parfait ne dépend que de
+la température à quantité de matière fixée, $\Delta U_{B\to C}=0$.
+
+\textbf{Question 4.} Les travaux reçus valent
+\[
+W_{AB}=0,
+\qquad
+W_{BC}=-\int_{V_0}^{2V_0}P(V)\,dV=-\frac32P_0V_0,
+\qquad
+W_{CA}=P_0V_0.
+\]
+Ainsi,
+\[
+\boxed{W_{\mathrm{cycle}}=-\frac12P_0V_0}.
+\]
+Sa valeur absolue est bien l'aire du triangle, de base $V_0$ et de hauteur
+$P_0$.
+
+\textbf{Question 5.} Puisque $nRT_0=P_0V_0$,
+\[
+\begin{array}{c|c|c|c}
+\text{Branche} & W & \Delta U & Q=\Delta U-W\\ \hline
+A\to B & 0 & \dfrac{c_V}{R}P_0V_0
+& \dfrac{c_V}{R}P_0V_0\\[4pt]
+B\to C & -\dfrac32P_0V_0 & 0 & \dfrac32P_0V_0\\[4pt]
+C\to A & P_0V_0 & -\dfrac{c_V}{R}P_0V_0
+& -\left(\dfrac{c_V}{R}+1\right)P_0V_0
+\end{array}
+\]
+En sommant les trois branches, on obtient
+\[
+\boxed{
+\Delta U_{\mathrm{cycle}}=0,
+\qquad
+Q_{\mathrm{cycle}}=\frac12P_0V_0=-W_{\mathrm{cycle}}.
+}
+\]
+\end{solution}
+\end{exo}
+
+\begin{exo}[Chauffage à pression constante : découverte de $C_P$]{decouverte-cp}
+\keywords{capacité thermique, pression constante, relation de Mayer, chauffage isobare, gaz parfait}
+
+Une mole de gaz parfait, de capacité thermique molaire $C_V$, est enfermée
+dans un cylindre de volume initial $V_0$. Le cylindre est fermé par un piston
+mobile sans frottement, soumis à une pression extérieure constante $P_0$.
+Une résistance électrique apporte au gaz une chaleur $Q>0$ de façon
+quasi-statique.
+
+\begin{enumerate}
+\item Faire un schéma simple du dispositif. Indiquer le gaz, le piston, la
+résistance, la pression extérieure $P_0$ et les échanges d'énergie.
+\item Sans utiliser de valeurs numériques, exprimer la température initiale
+$T_0$, puis déterminer l'état final $(P_f,V_f,T_f)$, le travail $W$ reçu par
+le gaz et sa variation d'énergie interne $\Delta U$. Quelle fraction de $Q$
+sert à repousser l'atmosphère ?
+\item En déduire la capacité thermique molaire à pression constante
+$C_P=(\delta Q/\mathrm{d}T)_P$ en fonction de $C_V$ et de $R$.
+\item Application numérique pour un gaz parfait monoatomique :
+$C_V=\frac32R$, $V_0=25\ \mathrm{L}$,
+$P_0=1{,}0\times10^5\ \mathrm{Pa}$, $Q=1000\ \mathrm{J}$ et
+$R=8{,}314\ \mathrm{J\,mol^{-1}\,K^{-1}}$.
+\end{enumerate}
+
+\begin{indication}
+La transformation est isobare : $W=-P_0\,\Delta V$. Pour une mole de gaz
+parfait, $P_0\,\Delta V=R\,\Delta T$. Injecter ces relations dans le premier
+principe.
+\end{indication}
+
+\begin{solution}
+\textbf{Question 1.} Le schéma doit montrer le gaz dans un cylindre fermé par
+un piston mobile. Une flèche entrante représente la chaleur $Q$ apportée par
+la résistance. La pression extérieure $P_0$ s'exerce sur le piston, qui se
+déplace vers le haut lorsque le gaz se dilate.
+
+\textbf{Question 2 --- Calcul formel.} L'équation d'état initiale donne
+\[
+T_0=\frac{P_0V_0}{R}.
+\]
+La pression reste constante, donc $P_f=P_0$. De plus,
+$W=-P_0\Delta V=-R\Delta T$. Le premier principe donne alors
+\[
+\Delta U=C_V\Delta T=Q+W=Q-R\Delta T,
+\]
+d'où
+\[
+\Delta T=\frac{Q}{C_V+R}.
+\]
+L'état final est donc
+\[
+P_f=P_0,\qquad
+T_f=T_0+\frac{Q}{C_V+R},\qquad
+V_f=V_0+\frac{RQ}{P_0(C_V+R)}.
+\]
+Enfin,
+\[
+W=-\frac{RQ}{C_V+R},
+\qquad
+\Delta U=\frac{C_VQ}{C_V+R}.
+\]
+La fraction de la chaleur servant à repousser l'atmosphère vaut
+\[
+\frac{-W}{Q}=\frac{R}{C_V+R}.
+\]
+
+\textbf{Question 3.} Comme $Q=(C_V+R)\Delta T$ à pression constante,
+\[
+C_P=C_V+R.
+\]
+C'est la relation de Mayer.
+
+\textbf{Question 4 --- Application numérique.} Pour un gaz monoatomique,
+\[
+C_P=\frac52R\simeq20{,}8\ \mathrm{J\,mol^{-1}\,K^{-1}}.
+\]
+On obtient
+\[
+T_0\simeq301\ \mathrm{K},\qquad
+\Delta T\simeq48{,}1\ \mathrm{K},\qquad
+T_f\simeq349\ \mathrm{K},\qquad
+V_f=29{,}0\ \mathrm{L}.
+\]
+Enfin,
+\[
+W=-400\ \mathrm{J},\qquad
+\Delta U=600\ \mathrm{J}.
+\]
+La fraction de chaleur utilisée pour repousser l'atmosphère est
+$-W/Q=2/5$, soit $40\,\%$.
+\end{solution}
+\end{exo}
+
 \begin{exo}[Adiabatique réversible d'un gaz parfait : lois de Laplace]{lois-de-laplace}
 \keywords{loi de Laplace, adiabatique réversible, indice adiabatique, gamma, détente adiabatique, premier principe différentiel}
 
@@ -315,130 +438,6 @@ Coherent avec le premier principe ($Q=0$). \checkmark
 \end{solution}
 \end{exo}
 
-\begin{exo}[Détente de Joule-Gay-Lussac : irréversibilité et dépendance au chemin]{detente-joule-gay-lussac}
-\keywords{detente dans le vide, transformation irreversible, differentielle inexacte, gaz parfait, premier principe}
-
-Un récipient rigide et calorifugé est séparé en deux compartiments de même volume $V_0$ par une paroi amovible. Le compartiment de gauche contient $n$ moles de gaz parfait dans l'état $(P_0, V_0, T_0)$ ; celui de droite est vide. On retire brusquement la paroi (détente dite de Joule--Gay-Lussac, étudiée par Gay-Lussac en 1807 puis reprise plus précisément par Joule en 1845).
-
-\begin{enumerate}
-\item Justifier que $W = 0$, puis que $Q = 0$. En déduire $\Delta U$, puis la température finale $T_f$ pour ce gaz parfait.
-\item Pourquoi est-il impossible de représenter cette transformation par un chemin continu dans le diagramme de Clapeyron $(P,V)$ ?
-\item On réalise, à partir du même état initial, une détente \emph{isotherme quasi-statique} (piston déplacé lentement) vers l'état $(T_0, 2V_0)$. Calculer le travail $W'$ et le transfert thermique $Q'$ pour cette seconde transformation.
-\item Comparer les résultats des questions 1 et 3, alors que l'état final (même température $T_0$, même volume $2V_0$) est identique dans les deux cas. Qu'en conclure sur la nature de $W$ et de $Q$ ?
-\end{enumerate}
-
-\begin{indication}
-Le gaz se détend dans le vide : aucune paroi mobile à pousser, $W = 0$ sans qu'il soit besoin d'aucune formule. Une transformation quasi-statique exige l'équilibre à chaque instant intermédiaire.
-\end{indication}
-
-\begin{solution}
-\textbf{Question 1.} $W = 0$ (pas de paroi à pousser), $Q = 0$ (parois adiabatiques). Donc $\Delta U = 0$, et pour un gaz parfait dont l'énergie interne ne dépend que de $T$, cela impose $T_f = T_0$.
-
-\textbf{Question 2.} Pendant la détente, le système n'est à aucun instant à l'équilibre : la pression n'y est pas définie uniformément (le gaz se rue dans le vide de façon chaotique). Seuls les états initial et final, une fois l'équilibre revenu, sont représentables dans le diagramme de Clapeyron ; aucun chemin continu ne peut les relier.
-
-\textbf{Question 3.} Détente isotherme quasi-statique de $V_0$ à $2V_0$, à $T_0$ constante :
-\[
-W' = -nRT_0\ln 2 < 0, \qquad Q' = -W' = nRT_0\ln 2 > 0
-\]
-(le gaz reçoit un travail négatif -- il en fournit -- et doit recevoir de la chaleur pour maintenir $T_0$ constante malgré la détente).
-
-\textbf{Question 4.} Les états initial et final sont identiques dans les deux scénarios ($\Delta U = 0$ dans les deux cas, puisque $U$ ne dépend que de l'état via $T$), mais $W = Q = 0$ d'un côté, tandis que $W' \neq 0$ et $Q' \neq 0$ de l'autre. Contrairement à $\Delta U$, qui ne dépend que des états extrêmes, $W$ et $Q$ dépendent donc du \emph{chemin} suivi entre ces deux états : $\delta W$ et $\delta Q$ ne sont pas des différentielles exactes.
-\end{solution}
-\end{exo}
-
-\begin{exo}[Compression adiabatique : progressive ou brutale]{compression-progressive-brutale}
-\keywords{compression adiabatique, transformation réversible, transformation irréversible, loi de Laplace, pression extérieure constante}
-
-Un cylindre vertical de section $S = 200\ \text{cm}^2$, aux parois calorifugées, est fermé par un piston calorifugé de masse négligeable, mobile sans frottement. Il contient $m = 2{,}0$ g d'hélium (gaz parfait monoatomique, $M = 4{,}0$ g/mol, $\gamma = 5/3$) dans les conditions initiales $T_0 = 300$ K, $P_0 = 1{,}0$ bar. On prendra $g = 10\ \text{m·s}^{-2}$.
-
-\begin{enumerate}
-\item Calculer le nombre de moles $n$ et le volume initial $V_0$.
-\item On dépose très progressivement, grain par grain, une masse totale $M_s = 100$ kg de sable sur le piston. Justifier que la transformation peut être considérée comme réversible, et calculer le taux de compression $x = P_1/P_0$. La valeur de $x$ dépend-elle de la façon de déposer le sable ?
-\item Calculer $T_1$ et $V_1$ dans l'état final.
-\item On repart de l'état initial et on dépose cette fois les 100 kg d'un seul coup : le gaz subit brutalement la pression extérieure constante $P_1$. En appliquant le premier principe, montrer que
-\[
-T_2 = T_0\,\frac{1 + (\gamma-1)\,x}{\gamma},
-\]
-et calculer $T_2$ et $V_2$.
-\item Comparer $T_1$ et $T_2$. Laquelle des deux compressions échauffe le plus le gaz ? Interpréter.
-\item Depuis l'état de la question 4, on retire brutalement tout le sable. Déterminer l'état final $(T_3, V_3)$. Revient-on à l'état initial ? Conclure.
-\end{enumerate}
-
-\begin{indication}
-Question 2 : équilibre des forces sur le piston. Question 4 : $W = -P_1(V_2 - V_0)$ car la pression extérieure est constante, et à l'équilibre final $P_2 = P_1$ ; éliminer les volumes avec l'équation d'état. Question 6 : refaire le même raisonnement avec $P_{\text{ext}} = P_0$ depuis $(P_1, T_2)$.
-\end{indication}
-
-\begin{solution}
-\textbf{Question 1.} $n = m/M = 0{,}50$ mol et $V_0 = nRT_0/P_0 \approx 12{,}5$ L.
-
-\textbf{Question 2.} Chaque grain ne déséquilibre le piston que de façon infinitésimale : le gaz passe par une succession continue d'états d'équilibre (transformation quasi-statique sans frottement, donc réversible). L'équilibre final du piston donne
-\[
-P_1 = P_0 + \frac{M_s\,g}{S} = 10^5 + \frac{1000}{2\times10^{-2}} = 1{,}5\times10^5\ \text{Pa}, \qquad x = 1{,}5.
-\]
-$x$ ne dépend que de l'équilibre des forces, pas du chemin : il serait le même en déposant la masse d'un coup.
-
-\textbf{Question 3.} Loi de Laplace $T^\gamma P^{1-\gamma} = \text{cste}$ :
-\[
-T_1 = T_0\,x^{(\gamma-1)/\gamma} = 300\times 1{,}5^{2/5} \approx 353\ \text{K}, \qquad V_1 = V_0\,x^{-1/\gamma} \approx 9{,}8\ \text{L}.
-\]
-
-\textbf{Question 4.} La transformation est brutale : seule la pression extérieure $P_1$ est définie, et $W = -P_1(V_2 - V_0)$, $Q = 0$. Premier principe :
-\[
-\tfrac{3}{2}nR(T_2 - T_0) = -P_1\!\left(\frac{nRT_2}{P_1} - \frac{nRT_0}{P_0}\right) = -nRT_2 + x\,nRT_0.
-\]
-D'où $\tfrac{5}{2}T_2 = \left(\tfrac{3}{2} + x\right)T_0$, ce qui est bien $T_2 = T_0\,\dfrac{1 + (\gamma-1)x}{\gamma}$ pour $\gamma = 5/3$. Numériquement $T_2 = \tfrac{6}{5}T_0 = 360$ K et $V_2 = nRT_2/P_1 \approx 10{,}0$ L.
-
-\textbf{Question 5.} $T_2 = 360\ \text{K} > T_1 \approx 353\ \text{K}$ : la compression brutale échauffe davantage, à taux de compression identique. Pendant la transformation brutale, le gaz est hors équilibre et la totalité du travail $-P_1\Delta V$ (calculé avec la pression finale, la plus élevée) lui est fournie : il reçoit plus de travail que dans le cas réversible. Cette différence est la signature de l'irréversibilité, que le second principe quantifiera à la leçon suivante.
-
-\textbf{Question 6.} Même raisonnement depuis $(P_1, T_2)$ avec $P_{\text{ext}} = P_0$, soit un rapport $P_0/P_1 = 2/3$ :
-\[
-T_3 = T_2\,\frac{1 + (\gamma-1)\cdot\tfrac{2}{3}}{\gamma} = 360\times\frac{13}{15} = 312\ \text{K}, \qquad V_3 = \frac{nRT_3}{P_0} \approx 13{,}0\ \text{L}.
-\]
-On ne revient pas à l'état initial : après un aller-retour brutal, le gaz est plus chaud ($312$ K au lieu de $300$ K) et plus dilaté. Le cycle de manipulations est identique, mais l'histoire ne s'efface pas : les transformations brutales sont irréversibles.
-\end{solution}
-\end{exo}
-
-\begin{exo}[Deux gaz séparés par une paroi interne]{equilibre-deux-gaz-paroi}
-\keywords{premier principe, système isolé, paroi diatherme, paroi mobile, équilibre thermique, équilibre mécanique}
-
-Un récipient rigide, isolé de l'extérieur, contient deux gaz parfaits monoatomiques séparés par une paroi interne initialement fixe, étanche et adiabatique. Le compartiment 1 contient $n_1$ moles à la température $T_1$ ; le compartiment 2 contient $n_2 = 4n_1$ moles à $T_2 = T_1/2$. Les deux compartiments ont le même volume $V$.
-
-\begin{enumerate}
-\item Exprimer les pressions initiales $P_1$ et $P_2$ et montrer que $P_2 = 2P_1$.
-\item À $t=0$, la paroi devient diatherme (mais reste fixe et étanche). En appliquant le premier principe au système global, déterminer la température finale $T_f$ et les pressions finales de chaque compartiment, en fonction de $T_1$ et $P_1$.
-\item Quelle énergie a été échangée entre les deux compartiments (en fonction de $n_1$, $R$, $T_1$) ? Sous quelle forme ?
-\item On suppose maintenant qu'à $t=0$ la paroi devient diatherme \emph{et} mobile. Déterminer la température, la pression commune et les volumes finaux. Comparer les variations d'énergie interne de chaque gaz à celles de la question 2 et commenter la forme des échanges d'énergie.
-\item Application numérique pour $n_1 = 1$ mol, $T_1 = 600$ K.
-\end{enumerate}
-
-\begin{indication}
-Le système global est isolé (parois externes rigides et adiabatiques) : $\Delta U_1 + \Delta U_2 = 0$ dans tous les cas. Pour la question 4, l'équilibre impose l'égalité des températures \emph{et} des pressions.
-\end{indication}
-
-\begin{solution}
-\textbf{Question 1.} $P_1 = \dfrac{n_1RT_1}{V}$ et $P_2 = \dfrac{4n_1R\,(T_1/2)}{V} = 2P_1$.
-
-\textbf{Question 2.} Le système global n'échange ni travail (parois externes rigides) ni chaleur (parois adiabatiques) : $\Delta U_1 + \Delta U_2 = 0$, soit
-\[
-\tfrac{3}{2}n_1R(T_f - T_1) + \tfrac{3}{2}\,4n_1R\!\left(T_f - \tfrac{T_1}{2}\right) = 0 \implies 5T_f = 3T_1 \implies T_f = \tfrac{3}{5}T_1.
-\]
-Les volumes n'ont pas changé, donc $P_1^f = P_1\,\dfrac{T_f}{T_1} = \tfrac{3}{5}P_1$ et $P_2^f = 2P_1\,\dfrac{T_f}{T_2} = \tfrac{12}{5}P_1$.
-
-\textbf{Question 3.} Le gaz 2 (le plus froid) reçoit
-\[
-Q = \Delta U_2 = 6n_1R\!\left(\tfrac{3}{5}T_1 - \tfrac{1}{2}T_1\right) = \tfrac{3}{5}n_1RT_1,
-\]
-et le gaz 1 cède exactement l'opposé. La paroi étant fixe, aucun travail n'est échangé : ce transfert se fait intégralement sous forme de chaleur.
-
-\textbf{Question 4.} Le bilan global est inchangé : $\Delta U_1 + \Delta U_2 = 0$, et comme $U$ ne dépend que de $T$ pour un gaz parfait, on retrouve \emph{la même température finale} $T_f = \tfrac{3}{5}T_1$. L'équilibre mécanique impose de plus une pression commune :
-\[
-P = \frac{(n_1+n_2)RT_f}{2V} = \frac{5n_1R\cdot\tfrac{3}{5}T_1}{2V} = \tfrac{3}{2}P_1,
-\]
-avec $V_1^f = \dfrac{n_1RT_f}{P} = \tfrac{2V}{5}$ et $V_2^f = \tfrac{8V}{5}$ : la paroi s'est déplacée vers le gaz 1. Les variations d'énergie interne sont \emph{identiques} à celles de la question 2 ($\Delta U_i = \tfrac{3}{2}n_iR\,\Delta T_i$, mêmes températures extrêmes), mais cette fois l'énergie s'est échangée à la fois sous forme de chaleur et de travail : seul le bilan $Q + W = \Delta U$ est contraint, pas la répartition.
-
-\textbf{Question 5.} $T_f = 360$ K et $|Q| = \tfrac{3}{5}\times 8{,}314 \times 600 \approx 3{,}0$ kJ.
-\end{solution}
-\end{exo}
 
 \begin{exo}[Résistance chauffante dans un cylindre cloisonné]{resistance-chauffante-cloison}
 \keywords{premier principe, piston adiabatique, loi de Laplace, compression adiabatique réversible, bilan d'énergie, hélium}
@@ -592,95 +591,6 @@ Ainsi $W_{\mathrm{cycle}}=-2000$ J, $Q_{\mathrm{cycle}}=+2000$ J et $\Delta U_{\
 \end{solution}
 \end{exo}
 
-\begin{exo}[Cycle triangulaire]{cycle-triangulaire-diagonale}
-\keywords{cycle moteur, transformation linéaire, diagramme de Clapeyron, aire du cycle, premier principe}
-
-On considère $n$ moles de gaz parfait, de capacité thermique molaire $c_V$
-constante, décrivant le cycle quasi-statique $A\to B\to C\to A$, avec
-\[
-A=(P_0,V_0),
-\qquad
-B=(2P_0,V_0),
-\qquad
-C=(P_0,2V_0).
-\]
-La branche $A\to B$ est isochore, la branche $B\to C$ est un segment de droite
-dans le plan $(P,V)$ et la branche $C\to A$ est isobare.
-
-\begin{enumerate}
-\item Représenter le cycle dans le diagramme de Clapeyron et préciser son sens
-de parcours. Est-il moteur ou récepteur ?
-\item Déterminer l'équation $P(V)$ de la droite reliant $B$ à $C$.
-\item En posant $T_0=P_0V_0/(nR)$, déterminer les températures $T_A$, $T_B$ et
-$T_C$. Pourquoi $\Delta U_{B\to C}$ est-elle nulle alors que cette branche
-n'est pas isotherme ?
-\item Calculer le travail reçu sur chacune des trois branches, puis sur le cycle
-complet. Retrouver la valeur absolue du travail total à partir de l'aire du
-triangle.
-\item Calculer $\Delta U$ et $Q$ sur chaque branche, puis vérifier que
-$\Delta U_{\mathrm{cycle}}=0$ et $Q_{\mathrm{cycle}}=-W_{\mathrm{cycle}}$.
-\end{enumerate}
-
-\begin{indication}
-Sur $B\to C$, chercher $P(V)=aV+b$ en imposant le passage par $B$ et $C$.
-Pour calculer une variation d'énergie interne, seules les températures aux
-extrémités de la branche sont nécessaires.
-\end{indication}
-
-\begin{solution}
-\textbf{Questions 1--2.} Le cycle est parcouru dans le sens horaire : il est
-moteur. L'équation de la droite $B\to C$ est
-\[
-P(V)=P_0\left(3-\frac{V}{V_0}\right).
-\]
-
-\textbf{Question 3.} L'équation d'état donne
-\[
-T_A=T_0,
-\qquad
-T_B=T_C=2T_0.
-\]
-La température varie le long de $B\to C$, mais elle reprend la même valeur à
-ses deux extrémités. Comme l'énergie interne d'un gaz parfait ne dépend que de
-la température à quantité de matière fixée, $\Delta U_{B\to C}=0$.
-
-\textbf{Question 4.} Les travaux reçus valent
-\[
-W_{AB}=0,
-\qquad
-W_{BC}=-\int_{V_0}^{2V_0}P(V)\,dV=-\frac32P_0V_0,
-\qquad
-W_{CA}=P_0V_0.
-\]
-Ainsi,
-\[
-\boxed{W_{\mathrm{cycle}}=-\frac12P_0V_0}.
-\]
-Sa valeur absolue est bien l'aire du triangle, de base $V_0$ et de hauteur
-$P_0$.
-
-\textbf{Question 5.} Puisque $nRT_0=P_0V_0$,
-\[
-\begin{array}{c|c|c|c}
-\text{Branche} & W & \Delta U & Q=\Delta U-W\\ \hline
-A\to B & 0 & \dfrac{c_V}{R}P_0V_0
-& \dfrac{c_V}{R}P_0V_0\\[4pt]
-B\to C & -\dfrac32P_0V_0 & 0 & \dfrac32P_0V_0\\[4pt]
-C\to A & P_0V_0 & -\dfrac{c_V}{R}P_0V_0
-& -\left(\dfrac{c_V}{R}+1\right)P_0V_0
-\end{array}
-\]
-En sommant les trois branches, on obtient
-\[
-\boxed{
-\Delta U_{\mathrm{cycle}}=0,
-\qquad
-Q_{\mathrm{cycle}}=\frac12P_0V_0=-W_{\mathrm{cycle}}.
-}
-\]
-\end{solution}
-\end{exo}
-
 \begin{exo}[Cycle isobare--isotherme--isochore : un exemple récepteur]{cycle-isobare-isotherme-isochore}
 \seoready{true}
 \keywords{cycle thermodynamique, isobare, isotherme, isochore, diagramme de Clapeyron, cycle récepteur, gaz diatomique}
@@ -722,5 +632,182 @@ $C\to A$ (isochore) : $W_{CA} = 0$ et $Q_{CA} = \Delta U_{CA} = \tfrac{5}{2}R(T_
 Cycle complet : $\Delta U = 0$, $W_{\text{total}} = -5600 + 9230 \approx +3630$ J et $Q_{\text{total}} \approx -3630$ J.
 
 \textbf{Question 3.} $W_{\text{total}} > 0$ : le gaz reçoit du travail et rejette de la chaleur, le cycle est récepteur. C'est cohérent avec le sens de parcours : on parcourt l'isobare (branche basse) de gauche à droite et l'isotherme (branche haute) de droite à gauche, soit un parcours antihoraire. Parcouru dans l'autre sens ($A\to C\to B\to A$), le même cycle fournirait $3630$ J de travail par cycle et deviendrait moteur.
+\end{solution}
+\end{exo}
+
+\begin{exo}[Compression adiabatique : progressive ou brutale]{compression-progressive-brutale}
+\keywords{compression adiabatique, transformation réversible, transformation irréversible, pression extérieure constante, travail, comparaison d'états}
+
+$n$ moles de gaz parfait, de capacités thermiques constantes et de rapport
+$\gamma=C_P/C_V>1$, sont enfermées dans un cylindre calorifugé fermé par un
+piston mobile sans frottement. L'état initial est
+\[
+A=(P_0,V_0,T_0).
+\]
+On veut porter la pression extérieure de $P_0$ à $P_1=xP_0$, avec $x>1$,
+puis la ramener à $P_0$.
+
+\begin{enumerate}
+\item Faire un schéma du cylindre et représenter la suite des états étudiés :
+la compression progressive $A\to B$, puis, dans une autre expérience, la
+compression brutale $A\to B'$ suivie du retrait brutal de la surcharge
+$B'\to B''$.
+\item La pression est augmentée très progressivement de $P_0$ à $P_1$.
+Justifier que $A\to B$ est une adiabatique réversible. Déterminer
+$P_B$, $T_B$, $V_B$, $W_{AB}$, $Q_{AB}$ et $\Delta U_{AB}$.
+\item On repart de $A$ et on impose brutalement la pression extérieure
+constante $P_1$. Déterminer complètement l'état final $B'$ ainsi que
+$W_{AB'}$, $Q_{AB'}$ et $\Delta U_{AB'}$.
+\item Comparer formellement $T_{B'}$ à $T_B$, puis $V_{B'}$ à $V_B$.
+Laquelle des deux compressions échauffe le plus le gaz et laquelle le comprime
+le plus ?
+\item Depuis $B'$, on retire brutalement la surcharge : la pression extérieure
+redevient $P_0$. Déterminer l'état final $B''$. Montrer si $T_{B''}$ et
+$V_{B''}$ sont plus grands ou plus petits que leurs valeurs initiales.
+\item Effectuer le bilan énergétique de $B'\to B''$, puis de l'aller-retour
+$A\to B'\to B''$. Expliquer ce que la leçon 6 ajoutera à cette comparaison.
+\end{enumerate}
+
+\begin{indication}
+Pour la transformation brutale, utiliser
+$W=-P_{\mathrm{ext}}(V_f-V_i)$ et seulement l'équation d'état aux états
+d'équilibre initial et final. Pour comparer $B$ et $B'$, utiliser l'inégalité
+entre moyenne arithmétique pondérée et moyenne géométrique pondérée.
+\end{indication}
+
+\begin{solution}
+On rappelle que
+\[
+C_V=\frac{R}{\gamma-1}.
+\]
+
+\textbf{Question 1.} Le schéma doit faire apparaître le piston calorifugé et
+les deux expériences distinctes :
+\[
+A\longrightarrow B,
+\qquad
+A\longrightarrow B'\longrightarrow B''.
+\]
+Les états $B$ et $B'$ ont la même pression $P_1=xP_0$, tandis que $A$ et
+$B''$ ont la même pression $P_0$.
+
+\textbf{Question 2 --- Compression progressive.} L'évolution est
+quasi-statique, sans frottement et sans échange thermique : elle est
+adiabatique réversible. Les lois de Laplace donnent
+\[
+P_B=xP_0,
+\qquad
+T_B=T_0x^{(\gamma-1)/\gamma},
+\qquad
+V_B=V_0x^{-1/\gamma}.
+\]
+Comme $Q_{AB}=0$,
+\[
+W_{AB}=\Delta U_{AB}
+=nC_VT_0\left[x^{(\gamma-1)/\gamma}-1\right]>0.
+\]
+
+\textbf{Question 3 --- Compression brutale.} Pendant l'évolution, seule la
+pression extérieure constante $P_1$ intervient dans le travail :
+\[
+W_{AB'}=-P_1(V_{B'}-V_0).
+\]
+À l'équilibre final, $P_{B'}=P_1$. En utilisant
+$P_0V_0=nRT_0$, $P_1V_{B'}=nRT_{B'}$, $Q_{AB'}=0$ et
+$\Delta U_{AB'}=nC_V(T_{B'}-T_0)$, le premier principe donne
+\[
+T_{B'}=T_0\frac{1+(\gamma-1)x}{\gamma}.
+\]
+Posons
+\[
+\theta=\frac{1+(\gamma-1)x}{\gamma}.
+\]
+Alors
+\[
+P_{B'}=xP_0,
+\qquad
+T_{B'}=\theta T_0,
+\qquad
+V_{B'}=\frac{\theta}{x}V_0,
+\]
+et
+\[
+W_{AB'}=\Delta U_{AB'}
+=nC_VT_0(\theta-1)
+=\frac{nRT_0}{\gamma}(x-1)>0.
+\]
+
+\textbf{Question 4 --- Comparaison.} Le nombre $\theta$ est la moyenne
+arithmétique pondérée de $1$ et de $x$. La moyenne géométrique pondérée
+associée vaut $x^{(\gamma-1)/\gamma}$. Comme $x>1$,
+\[
+\theta>x^{(\gamma-1)/\gamma}.
+\]
+Ainsi,
+\[
+T_{B'}>T_B.
+\]
+Les deux états ont la même pression $P_1$ ; l'équation des gaz parfaits impose
+donc également
+\[
+V_{B'}>V_B.
+\]
+La compression brutale échauffe davantage le gaz, mais le comprime moins que
+la compression progressive. Elle lui fournit aussi davantage de travail :
+$W_{AB'}>W_{AB}$.
+
+\textbf{Question 5 --- Retrait brutal.} Pour le passage de $P_1$ à $P_0$,
+le même calcul donne
+\[
+\frac{T_{B''}}{T_{B'}}
+=\frac{1+(\gamma-1)/x}{\gamma}.
+\]
+En posant
+\[
+\phi=\frac{1+(\gamma-1)/x}{\gamma},
+\]
+on obtient
+\[
+P_{B''}=P_0,
+\qquad
+T_{B''}=\theta\phi\,T_0,
+\qquad
+V_{B''}=\theta\phi\,V_0.
+\]
+Or
+\[
+\theta\phi-1
+=\frac{\gamma-1}{\gamma^2}
+\left(x+\frac1x-2\right)>0
+\qquad (x>1).
+\]
+Par conséquent,
+\[
+\boxed{T_{B''}>T_0},
+\qquad
+\boxed{V_{B''}>V_0}.
+\]
+Après l'aller-retour de la pression extérieure, le gaz ne revient donc pas à
+l'état $A$.
+
+\textbf{Question 6 --- Bilans énergétiques.} La détente brutale est
+adiabatique :
+\[
+Q_{B'B''}=0,
+\qquad
+W_{B'B''}=\Delta U_{B'B''}
+=nC_VT_0\theta(\phi-1)<0.
+\]
+Sur l'aller-retour complet,
+\[
+Q_{\mathrm{tot}}=0,
+\qquad
+W_{\mathrm{tot}}=\Delta U_{\mathrm{tot}}
+=nC_VT_0(\theta\phi-1)>0.
+\]
+Les manipulations extérieures ramènent la pression à sa valeur initiale, mais
+le gaz a reçu un travail net et reste plus chaud et plus dilaté. La leçon 6
+reprendra les mêmes états pour montrer que la compression réversible ne crée
+pas d'entropie, tandis que chacune des deux transformations brutales en crée.
 \end{solution}
 \end{exo}
