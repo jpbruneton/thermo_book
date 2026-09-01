@@ -71,7 +71,7 @@ pages sans contenu affichent un état explicite) · 📋 planifié / pas commenc
   (voir `docs/translation-prompt.md` + `scripts/translate-lesson.mjs`), rien
   d'autre à changer.
 - **Exercices sans repli silencieux.** `lib/exercisesLibrary.server.ts` charge
-  `content/exos_<lang>/exo_chpN.tex` pour n'importe quel `Lang`. La liste, les
+  `content/tex/exos_<lang>/exo_chpN.tex` pour n'importe quel `Lang`. La liste, les
   pages détaillées, les métadonnées et le sitemap n'annoncent une langue que
   lorsque ses propres fichiers contiennent réellement des exercices. Les
   chapitres 2 et 4 sont traduits dans les 20 langues ; les fichiers vides des
@@ -140,7 +140,7 @@ leçon supplémentaire ne demande **aucun changement de code** — juste dépose
 détecte automatiquement.
 
 Pour ajouter des exercices, déposer `exo_chpN.tex` dans le dossier
-`content/exos_<code>` correspondant. Le chargeur les détecte sans changement
+`content/tex/exos_<code>` correspondant. Le chargeur les détecte sans changement
 de code. Pour les quiz, ajouter les questions traduites dans
 `lib/quizQuestionTranslations.ts` (voir plus haut) : les leçons 6 à 10 restent
 à faire dans toutes les langues hors français.

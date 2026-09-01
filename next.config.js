@@ -78,7 +78,7 @@ const nextConfig = {
     // through a server function on Vercel. Keep the authored TeX bank available
     // to that function as well as to the build-time prerenderer.
     outputFileTracingIncludes: {
-      "*": ["./content/exos_*/**/*.tex"],
+      "*": ["./content/tex/exos_*/**/*.tex"],
     },
   },
   async redirects() {

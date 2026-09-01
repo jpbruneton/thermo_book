@@ -30,7 +30,7 @@ interface ExerciseSourceFile {
 }
 
 function exercisesDirectory(lang: Lang): string {
-  return join(process.cwd(), "content", `exos_${lang}`);
+  return join(process.cwd(), "content", "tex", `exos_${lang}`);
 }
 
 /** Return chapter files in numeric order (exo_chp2 before exo_chp10). */
@@ -168,7 +168,7 @@ function parseExoBlock(rawBlock: string, counter: number, chapter: number): Exer
   return { number: counter, id, titleTex, lecon, keywords, enonceTex, seoReady, indicationTex, solutionTex };
 }
 
-/** Load and parse every chapter file from content/exos_<lang>/exo_chpN.tex. */
+/** Load and parse every chapter file from content/tex/exos_<lang>/exo_chpN.tex. */
 export function loadExercises(lang: Lang): ExerciseEntry[] {
   const results: ExerciseEntry[] = [];
   const beginTag = "\\begin{exo}";

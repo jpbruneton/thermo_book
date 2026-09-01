@@ -22,7 +22,7 @@ const args = process.argv.slice(2);
 const lang = args.includes("en") ? "en" : "fr";
 const sansSolutions = args.includes("--sans-solutions");
 
-const srcDir = join(repoRoot, "content", `exos_${lang}`);
+const srcDir = join(repoRoot, "content", "tex", `exos_${lang}`);
 const srcFiles = existsSync(srcDir)
   ? readdirSync(srcDir)
       .map((name) => {
