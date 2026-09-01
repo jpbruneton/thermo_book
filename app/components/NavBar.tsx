@@ -35,6 +35,20 @@ const MORE_LABELS: Partial<Record<Lang, string>> = {
   tr: "Daha fazla…",
 };
 
+function localizedPagePath(lang: Lang): string | null | undefined {
+  if (typeof document === "undefined") return undefined;
+  const page = document.querySelector<HTMLElement>("[data-localized-paths]");
+  if (!page) return undefined;
+
+  try {
+    const paths = JSON.parse(page.dataset.localizedPaths ?? "{}") as Partial<Record<Lang, unknown>>;
+    const path = paths[lang];
+    return typeof path === "string" && path.startsWith("/") ? path : null;
+  } catch {
+    return null;
+  }
+}
+
 function MoreLanguagesMenu({
   lang,
   onSelect,
@@ -195,11 +209,14 @@ export function NavBar() {
           if (remainingSegments.length > 0) localizedRest += `/${remainingSegments.join("/")}`;
         }
       }
+      const localizedPage = rest ? localizedPagePath(l) : undefined;
       const queryAndHash = typeof window === "undefined"
         ? ""
         : `${window.location.search}${window.location.hash}`;
       const swapped = section
-        ? sectionHref(l, section) + localizedRest + queryAndHash
+        ? (localizedPage === undefined
+            ? sectionHref(l, section) + localizedRest
+            : localizedPage ?? sectionHref(l, section)) + queryAndHash
         : `/${l}`;
       setLang(l);
       router.push(swapped);

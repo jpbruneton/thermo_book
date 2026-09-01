@@ -22,6 +22,16 @@ interface Props {
   params: { lang: string; slug: string };
 }
 
+function exerciseLanguagePaths(exerciseId: string): Partial<Record<Lang, string>> {
+  const paths: Partial<Record<Lang, string>> = {};
+  for (const lang of SUPPORTED_LANGS) {
+    const exercise = getExerciseById(lang, exerciseId);
+    if (!exercise) continue;
+    paths[lang] = sectionHref(lang, "exercises", getExerciseUrlSlug(lang, exercise));
+  }
+  return paths;
+}
+
 export function generateStaticParams({ params }: { params: { lang: string } }) {
   if (!isLang(params.lang)) return [];
   const lang = params.lang;
@@ -66,13 +76,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const url = absoluteUrl(sectionHref(lang, "exercises", getExerciseUrlSlug(lang, exercise)));
   const metadataTitle = `${title} — ${t.metadataSuffix}`;
   const languages: Record<string, string> = {};
-  for (const availableLang of SUPPORTED_LANGS) {
-    const candidate = getExerciseById(availableLang, exercise.id);
-    if (candidate?.seoReady) {
-      languages[availableLang] = absoluteUrl(
-        sectionHref(availableLang, "exercises", getExerciseUrlSlug(availableLang, candidate))
-      );
-    }
+  for (const [availableLang, path] of Object.entries(exerciseLanguagePaths(exercise.id))) {
+    const candidate = getExerciseById(availableLang as Lang, exercise.id);
+    if (candidate?.seoReady && path) languages[availableLang] = absoluteUrl(path);
   }
   if (languages.fr) languages["x-default"] = languages.fr;
 
@@ -204,6 +210,7 @@ export default function ExerciseDetailPage({ params }: Props) {
     exercise.keywords,
     Boolean(exercise.solutionTex)
   );
+  const localizedPaths = exerciseLanguagePaths(exercise.id);
 
   const statementHtml = processLatex(getTexWebHtmlFromSource(exercise.enonceTex, lang, []));
   const hintHtml = exercise.indicationTex
@@ -246,7 +253,10 @@ export default function ExerciseDetailPage({ params }: Props) {
         )
       )}
 
-      <article className="exercise-detail-page">
+      <article
+        className="exercise-detail-page"
+        data-localized-paths={JSON.stringify(localizedPaths)}
+      >
         <div className="exercise-detail-inner">
           <nav className="exercise-back-nav exercise-back-nav-top" aria-label={t.exercises}>
             <Link href={sectionHref(lang, "exercises")}>{t.back}</Link>
