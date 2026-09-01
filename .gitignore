@@ -39,5 +39,14 @@ next-env.d.ts
 # local LaTeX source (not deployed)
 thermosource/
 
+# generated multilingual LaTeX books (content/tex is a nested Git repository)
+/content/tex/maincompiler/build/
+/content/tex/maincompiler/**/*.pdf
+
+# private source and generated/publication assets kept outside the public repository
+/content/tex/
+/public/figs/
+*.pdf
+
 .vercel
 .env*
