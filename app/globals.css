@@ -402,6 +402,11 @@ body::before {
   text-justify: inter-word;
 }
 
+/* Keep a comma, full stop or ellipsis attached to the inline formula before it. */
+.latex-inline-math-punctuation {
+  white-space: nowrap;
+}
+
 .prose-content .latex-footnote-ref {
   font-size: 0.65em;
   vertical-align: super;

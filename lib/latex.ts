@@ -105,19 +105,25 @@ export function processLatex(html: string): string {
   });
 
   // 2. Inline math: $...$ — allow newlines inside (e.g. \begin{pmatrix} 1\n i \end{pmatrix}).
-  result = result.replace(/\$([^$]+?)\$/g, (match, math) => {
+  result = result.replace(/\$([^$]+?)\$([.,…]+)?/g, (match, math, trailingPunctuation: string | undefined) => {
     if (/<\/?[a-z][^>]*>/i.test(math)) return match;
 
     let body = math.trim();
     body = normalizeMultilineMatrixEnvironmentsInMathFragment(body);
 
     try {
-      return katex.renderToString(sanitizeMathCommon(body), {
+      const renderedMath = katex.renderToString(sanitizeMathCommon(body), {
         displayMode: false,
         throwOnError: false,
         trust: false,
         macros: KATEX_MACROS,
       });
+      // KaTeX's root is an inline element with its own line-box boundary. Without
+      // a shared no-wrap wrapper, browsers may put punctuation on the next line,
+      // especially inside narrower cards and on mobile.
+      return trailingPunctuation
+        ? `<span class="latex-inline-math-punctuation">${renderedMath}${trailingPunctuation}</span>`
+        : renderedMath;
     } catch {
       return match;
     }
