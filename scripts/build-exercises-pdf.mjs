@@ -71,6 +71,13 @@ const exercises = [];
 const beginTag = "\\begin{exo}", endTag = "\\end{exo}";
 let cursor = 0, counter = 1;
 
+function stripMetadata(text) {
+  return text
+    .replace(/\\lecon\{[^}]*\}/g, "")
+    .replace(/\\keywords\{[^}]*\}/g, "")
+    .replace(/\\seoready\{[^}]*\}/g, "");
+}
+
 while (cursor < source.length) {
   const bStart = source.indexOf(beginTag, cursor);
   if (bStart === -1) break;
@@ -89,13 +96,20 @@ while (cursor < source.length) {
   const solutionBlock = extractEnv(body, "solution");
 
   let enonce = body;
-  enonce = enonce.replace(/\\lecon\{[^}]*\}/g, "").replace(/\\keywords\{[^}]*\}/g, "");
+  enonce = stripMetadata(enonce);
   const ind2 = extractEnv(enonce, "indication");
   if (ind2) enonce = enonce.slice(0, ind2.start) + enonce.slice(ind2.end);
   const sol2 = extractEnv(enonce, "solution");
   if (sol2) enonce = enonce.slice(0, sol2.start) + enonce.slice(sol2.end);
 
-  exercises.push({ number: counter, id, title, enonce: enonce.trim(), indication: indicationBlock?.content ?? null, solution: solutionBlock?.content ?? null });
+  exercises.push({
+    number: counter,
+    id,
+    title,
+    enonce: enonce.trim(),
+    indication: indicationBlock ? stripMetadata(indicationBlock.content) : null,
+    solution: solutionBlock ? stripMetadata(solutionBlock.content) : null,
+  });
   counter++;
   cursor = eEnd + endTag.length;
 }
