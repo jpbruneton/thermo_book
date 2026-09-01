@@ -402,7 +402,7 @@ body::before {
   text-justify: inter-word;
 }
 
-/* Keep a comma, full stop or ellipsis attached to the inline formula before it. */
+/* Keep closing parentheses and punctuation attached to the inline formula before them. */
 .latex-inline-math-punctuation {
   white-space: nowrap;
 }
