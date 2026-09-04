@@ -1,17 +1,9 @@
-@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;0,9..144,900;1,9..144,400;1,9..144,600&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&family=JetBrains+Mono:wght@400;500&family=Inter:wght@300;400;500;600&family=Cookie&display=swap');
-@import url('https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css');
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 /* ─── Light mode (default) — warm paper & ember ─── */
 :root {
-  --font-playfair: 'Fraunces', serif;
-  --font-crimson: 'Crimson Pro', serif;
-  --font-jetbrains: 'JetBrains Mono', monospace;
-  --font-inter: 'Inter', sans-serif;
-
   /* Backgrounds — warm paper instead of cold slate */
   --bg-primary: #fdfcf9;
   --bg-secondary: #f3eee4;

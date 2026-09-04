@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
+import "katex/dist/katex.min.css";
 import "@/app/globals.css";
+import { fontVariables } from "@/app/fonts";
 import { NavBar } from "./NavBar";
 import { Footer } from "./Footer";
 import { Providers } from "@/app/providers";
@@ -94,7 +96,7 @@ export function SiteDocument({
   lang: Lang;
 }) {
   return (
-    <html lang={lang} dir={isRtlLang(lang) ? "rtl" : "ltr"} suppressHydrationWarning>
+    <html lang={lang} dir={isRtlLang(lang) ? "rtl" : "ltr"} className={fontVariables} suppressHydrationWarning>
       <head>
         <script
           type="application/ld+json"

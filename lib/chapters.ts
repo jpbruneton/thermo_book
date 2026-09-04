@@ -604,7 +604,7 @@ function slugifyThemeTitle(value: string): string {
 }
 
 /** Public, language-aware URL segment for a theme. */
-export function getThemeUrlSlug(theme: Theme, lang: Lang): string {
+export function getThemeUrlSlug(theme: Pick<Theme, "slug" | "titleFr" | "titleEn">, lang: Lang): string {
   // Existing French slugs are already localized and remain stable.
   if (lang === "fr") return theme.slug;
   const title = LATIN_SCRIPT_THEME_SLUG_LANGS.has(lang)
@@ -639,13 +639,13 @@ export function getTotalLessonsCount(): number {
  * translated yet), falling back to English only if that specific theme is somehow
  * missing from the dictionary.
  */
-export function getThemeTitle(theme: Theme, lang: Lang): string {
+export function getThemeTitle(theme: Pick<Theme, "slug" | "titleFr" | "titleEn">, lang: Lang): string {
   if (lang === "fr") return theme.titleFr;
   if (lang === "en") return theme.titleEn;
   return chapterTranslations[lang]?.[theme.slug]?.title ?? theme.titleEn;
 }
 
-export function getThemeDescription(theme: Theme, lang: Lang): string {
+export function getThemeDescription(theme: Pick<Theme, "slug" | "descriptionFr" | "descriptionEn">, lang: Lang): string {
   if (lang === "fr") return theme.descriptionFr;
   if (lang === "en") return theme.descriptionEn;
   return chapterTranslations[lang]?.[theme.slug]?.description ?? theme.descriptionEn;

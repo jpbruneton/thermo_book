@@ -3,7 +3,7 @@ import { getWebThemeFromUrlSlug, getWebThemes, getThemeTitle, getThemeDescriptio
 import { ChapterPageClient } from "./ChapterPageClient";
 import type { Metadata } from "next";
 import { getLessonReferences, getLessonWebContent, getTexFilePathForLang, hasLessonWebContent } from "@/lib/chapterContent.server";
-import { processLatex } from "@/lib/latex";
+import { prepareLessonPresentation } from "@/lib/lessonPresentation.server";
 import { absoluteUrl, getSiteUrl } from "@/lib/siteUrl";
 import { getTranslations, sectionHref, SUPPORTED_LANGS, type Lang } from "@/lib/i18n";
 import {
@@ -134,18 +134,16 @@ export default function ChapterPage({ params, searchParams }: Props) {
     permanentRedirect(lesson ? `${destination}?lesson=${encodeURIComponent(lesson)}` : destination);
   }
 
-  const themeWithDynamicContent = {
+  const themeWithRenderedContent = {
     ...theme,
     lessons: theme.lessons.map((lesson) => {
+      const { content: fallbackContent, ...lessonMetadata } = lesson;
       const resolvedReferences = getLessonReferences(theme.number, lesson.number, lesson.references);
       const langTexFile = getTexFilePathForLang(lesson.texFile, params.lang);
-      const langContent = getLessonWebContent(langTexFile, -1, resolvedReferences) || (params.lang === "fr" ? lesson.content : "");
-      const renderedLang = langContent ? processLatex(langContent) : "";
+      const langContent = getLessonWebContent(langTexFile, -1, resolvedReferences) || (params.lang === "fr" ? fallbackContent : "");
       return {
-        ...lesson,
-        content: langContent,
-        contentLang: langContent,
-        renderedLang,
+        ...lessonMetadata,
+        ...prepareLessonPresentation(langContent, params.lang),
         topicsLang: getThemeTopics(theme.slug, lesson, params.lang),
         references: resolvedReferences,
       };
@@ -184,7 +182,7 @@ export default function ChapterPage({ params, searchParams }: Props) {
         />
       ))}
       <ChapterPageClient
-        theme={themeWithDynamicContent}
+        theme={themeWithRenderedContent}
         prev={prev}
         next={next}
         relatedExercises={relatedExercises}

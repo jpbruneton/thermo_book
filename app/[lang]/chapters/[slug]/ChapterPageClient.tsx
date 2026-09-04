@@ -4,20 +4,15 @@ import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import type { CSSProperties } from "react";
 import { Suspense, useMemo, useTransition } from "react";
 import type { Theme } from "@/lib/chapters";
+import type { LessonPresentation } from "@/lib/lessonPresentation";
 import { getThemeTitle, getThemeDescription, getThemeUrlSlug } from "@/lib/chapters";
 import { ChapterContent } from "../ChapterContent";
 import { useLang } from "@/app/context/LangContext";
 import { sectionHref } from "@/lib/i18n";
 import { getExerciseTranslations } from "@/lib/exerciseTranslations";
 
-type LocalizedLesson = Theme["lessons"][number] & {
-  contentLang: string;
-  renderedLang: string;
-  topicsLang: string[];
-};
-
 type ThemeWithLocalizedLessonContent = Omit<Theme, "lessons"> & {
-  lessons: LocalizedLesson[];
+  lessons: LessonPresentation[];
 };
 
 interface Props {

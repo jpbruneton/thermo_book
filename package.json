@@ -7,6 +7,7 @@
     "prebuild": "node scripts/sync-private-assets.mjs",
     "build": "next build",
     "check:static": "node scripts/check-static-pages.mjs",
+    "check:assets": "node scripts/check-page-assets.mjs",
     "start": "next start",
     "lint": "next lint",
     "build:exo-pdf": "node scripts/build-exercises-pdf.mjs",

@@ -32,7 +32,7 @@ export function DonateButton({ compact = false, lang }: { compact?: boolean; lan
         width: compact ? "34px" : undefined,
         height: compact ? "34px" : undefined,
         padding: compact ? 0 : "0.4rem 0.9rem",
-        fontFamily: "'Cookie', cursive",
+        fontFamily: "var(--font-cookie)",
         fontSize: "1.15rem",
         lineHeight: 1,
         textDecoration: "none",

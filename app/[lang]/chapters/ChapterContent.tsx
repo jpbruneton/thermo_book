@@ -2,30 +2,18 @@
 import Link from "next/link";
 import type { ReactNode } from "react";
 import { useEffect, useMemo, useState } from "react";
-import type { Lesson } from "@/lib/chapters";
+import type { LessonPresentation } from "@/lib/lessonPresentation";
 import { useLang } from "@/app/context/LangContext";
 import { sectionHref } from "@/lib/i18n";
 
 interface Props {
-  lesson: LessonWithLocalizedContent;
+  lesson: LessonPresentation;
   hideHeader?: boolean;
   /** Rendered after the keyword bubbles, just above the lesson's first section. */
   topNav?: ReactNode;
 }
 
-interface LessonWithLocalizedContent extends Lesson {
-  contentLang: string;
-  renderedLang: string;
-  topicsLang: string[];
-}
-
-interface TocEntry {
-  id: string;
-  text: string;
-  level: 2 | 3 | 4;
-}
-
-function getLessonPdfRelativePath(lesson: Lesson, lang: "fr" | "en"): string {
+function getLessonPdfRelativePath(lesson: LessonPresentation, lang: "fr" | "en"): string {
   const ficheMatch = lesson.texFile.match(/(?:theme|chp)(\d+)_(?:fr|en)\/(fiche\d+)\.tex$/);
   if (ficheMatch) {
     const themeNumber = ficheMatch[1];
@@ -39,54 +27,6 @@ function getLessonPdfRelativePath(lesson: Lesson, lang: "fr" | "en"): string {
   const directory = `chp${themeNumber}_${lang}`;
   const fileName = lang === "fr" ? `lecon${lessonNumber}.pdf` : `lesson${lessonNumber}.pdf`;
   return `${directory}/${fileName}`;
-}
-
-function simplifyLatexForToc(value: string): string {
-  let result = value;
-  result = result.replace(/\\mathbb\{([^{}]+)\}/g, "$1");
-  result = result.replace(/\\mathcal\{([^{}]+)\}/g, "$1");
-  result = result.replace(/\\ell/g, "ℓ");
-  result = result.replace(/\\C/g, "C");
-  result = result.replace(/\\N/g, "N");
-  result = result.replace(/\\R/g, "R");
-  result = result.replace(/\\to/g, "→");
-  result = result.replace(/\\rightarrow/g, "→");
-  result = result.replace(/[_^]\{([^{}]+)\}/g, "$1");
-  result = result.replace(/[_^]([A-Za-z0-9]+)/g, "$1");
-  result = result.replace(/\\[a-zA-Z]+/g, "");
-  result = result.replace(/[{}]/g, "");
-  result = result.replace(/\s*([()])/g, "$1").replace(/([()])\s*/g, "$1");
-  result = result.replace(/([A-Za-zℓ])\s+(\d)/g, "$1$2");
-  result = result.replace(/(\d)\s+([A-Za-z])/g, "$1$2");
-  return result.replace(/\s+/g, " ").trim();
-}
-
-function stripHtmlForToc(value: string): string {
-  const withoutKatexMathMl = value.replace(
-    /<span class="katex-mathml">[\s\S]*?<\/span>/g,
-    ""
-  );
-  const htmlStripped = withoutKatexMathMl.replace(/<[^>]+>/g, " ");
-  const withoutInlineMathDelimiters = htmlStripped.replace(/\$+([\s\S]*?)\$+/g, (_m, math: string) =>
-    simplifyLatexForToc(math)
-  );
-  const compact = withoutInlineMathDelimiters
-    .replace(/\s*([()])/g, "$1")
-    .replace(/([()])\s*/g, "$1")
-    .replace(/([A-Za-zℓ])\s+(\d)/g, "$1$2")
-    .replace(/(\d)\s+([A-Za-z])/g, "$1$2");
-  return compact.replace(/\s+/g, " ").trim();
-}
-
-function slugify(value: string): string {
-  const normalized = value
-    .toLowerCase()
-    .normalize("NFD")
-    .replace(/[\u0300-\u036f]/g, "")
-    .replace(/[^a-z0-9\s-]/g, "")
-    .trim()
-    .replace(/\s+/g, "-");
-  return normalized || "section";
 }
 
 export function ChapterContent({ lesson, hideHeader = false, topNav }: Props) {
@@ -105,13 +45,12 @@ export function ChapterContent({ lesson, hideHeader = false, topNav }: Props) {
       : lang === "fr"
         ? englishReferences
         : frenchReferences;
-  const lessonContent = lesson.contentLang;
   const pdfLang = lang === "fr" ? "fr" : "en";
   const pdfRelativePath = useMemo(() => getLessonPdfRelativePath(lesson, pdfLang), [lesson, pdfLang]);
   const pdfFileLabel = pdfRelativePath.includes("/")
     ? pdfRelativePath.slice(pdfRelativePath.lastIndexOf("/") + 1)
     : pdfRelativePath;
-  const hasLessonContent = lessonContent.trim().length > 0;
+  const hasLessonContent = lesson.renderedLang.trim().length > 0;
   const lessonHeadingFr = lesson.subtitleFr.trim() || lesson.titleFr;
   const lessonHeadingEn = lesson.subtitleEn.trim() || lesson.titleEn;
   const lessonHeading = lang === "fr" ? lessonHeadingFr : lessonHeadingEn;
@@ -120,7 +59,6 @@ export function ChapterContent({ lesson, hideHeader = false, topNav }: Props) {
     window.scrollTo({ top: 0, left: 0, behavior: "auto" });
   }, [lesson.slug]);
 
-  const renderedContent = lesson.renderedLang;
   const splitReferenceLabel = (label: string, fallbackUrl: string) => {
     const normalizedLabel = label.replace(/\s+/g, " ").trim();
     const inlineUrlMatch = normalizedLabel.match(/https?:\/\/[^\s]+/i);
@@ -172,59 +110,10 @@ export function ChapterContent({ lesson, hideHeader = false, topNav }: Props) {
       description,
     };
   };
-  const localizedRenderedContent = useMemo(() => {
-    return renderedContent.replace(
-      /<sup class="lesson-cite" data-cite-en="([^"]*)" data-cite-fr="([^"]*)">\[[^\]]*\]<\/sup>/g,
-      (_match, enRaw: string, frRaw: string) => {
-        const preferred = lang === "fr" ? frRaw : enRaw;
-        const fallback = lang === "fr" ? enRaw : frRaw;
-        const value = preferred && preferred !== "?" ? preferred : fallback && fallback !== "?" ? fallback : "?";
-        return `<sup class="lesson-cite">[${value}]</sup>`;
-      }
-    );
-  }, [renderedContent, lang]);
-  const sourceHeadingTexts = useMemo(() => {
-    const sourceHeadingRegex = /<(h[2-4])>([\s\S]*?)<\/\1>/g;
-    const headings: string[] = [];
-    lessonContent.replace(sourceHeadingRegex, (_fullMatch, _tag: string, headingInner: string) => {
-      const withoutInlineMathDelimiters = headingInner.replace(/\$+([\s\S]*?)\$+/g, (_m, math: string) =>
-        simplifyLatexForToc(math)
-      );
-      const text = stripHtmlForToc(withoutInlineMathDelimiters);
-      headings.push(text);
-      return "";
-    });
-    return headings;
-  }, [lessonContent]);
-  const webContentWithToc = useMemo(() => {
-    const toc: TocEntry[] = [];
-    const usedIds: Record<string, number> = {};
-    const headingRegex = /<(h[2-4])>([\s\S]*?)<\/\1>/g;
-    let headingIndex = 0;
-
-    const content = localizedRenderedContent.replace(
-      headingRegex,
-      (_fullMatch, tag: string, headingInner: string) => {
-        const level = Number(tag.slice(1)) as 2 | 3 | 4;
-        const text = sourceHeadingTexts[headingIndex] || stripHtmlForToc(headingInner);
-        headingIndex += 1;
-        const baseId = slugify(text);
-        const current = usedIds[baseId] ?? 0;
-        usedIds[baseId] = current + 1;
-        const id = current > 0 ? `${baseId}-${current + 1}` : baseId;
-
-        toc.push({ id, text, level });
-        return `<${tag} id="${id}">${headingInner}</${tag}>`;
-      }
-    );
-
-    return { content, toc };
-  }, [localizedRenderedContent, sourceHeadingTexts]);
-
   useEffect(() => {
-    if (tab !== "web" || webContentWithToc.toc.length === 0) return;
+    if (tab !== "web" || lesson.toc.length === 0) return;
 
-    const orderedIds = webContentWithToc.toc.map((entry) => entry.id);
+    const orderedIds = lesson.toc.map((entry) => entry.id);
     const activateFromViewport = () => {
       const offset = 120;
       let current = orderedIds[0];
@@ -248,7 +137,7 @@ export function ChapterContent({ lesson, hideHeader = false, topNav }: Props) {
       window.removeEventListener("scroll", activateFromViewport);
       window.removeEventListener("resize", activateFromViewport);
     };
-  }, [tab, webContentWithToc.toc]);
+  }, [tab, lesson.toc]);
 
   useEffect(() => {
     const onScroll = () => {
@@ -349,7 +238,7 @@ export function ChapterContent({ lesson, hideHeader = false, topNav }: Props) {
                 {topNav && <div style={{ marginBottom: "1.5rem" }}>{topNav}</div>}
                 <div
                   className="prose-content"
-                  dangerouslySetInnerHTML={{ __html: webContentWithToc.content }}
+                  dangerouslySetInnerHTML={{ __html: lesson.renderedLang }}
                 />
                 {currentReferences.length > 0 && (
                   <ol
@@ -375,7 +264,7 @@ export function ChapterContent({ lesson, hideHeader = false, topNav }: Props) {
                   </ol>
                 )}
               </div>
-              {webContentWithToc.toc.length > 0 && (
+              {lesson.toc.length > 0 && (
                 <aside className="lesson-toc lesson-toc-sticky">
                   <div className="lesson-toc-header">
                     {tocVisible && <h3 className="lesson-toc-title">{t.chapter.tocTitle}</h3>}
@@ -388,7 +277,7 @@ export function ChapterContent({ lesson, hideHeader = false, topNav }: Props) {
                   </div>
                   {tocVisible && (
                     <ul className="lesson-toc-list">
-                      {webContentWithToc.toc.map((entry) => (
+                      {lesson.toc.map((entry) => (
                         <li
                           key={entry.id}
                           className="lesson-toc-item"
