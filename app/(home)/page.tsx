@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import HomePageClient from "./HomePageClient";
+import HomePageClient from "@/app/HomePageClient";
 import { getSiteUrl } from "@/lib/siteUrl";
 import { SUPPORTED_LANGS } from "@/lib/i18n";
 

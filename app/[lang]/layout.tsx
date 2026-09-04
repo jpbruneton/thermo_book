@@ -2,14 +2,14 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { isLang, SUPPORTED_LANGS, type Lang } from "@/lib/i18n";
 import { localizedSiteTitle } from "@/lib/chapters";
+import { SiteDocument, siteMetadata } from "@/app/components/SiteDocument";
 
 export function generateStaticParams() {
   return SUPPORTED_LANGS.map((lang) => ({ lang }));
 }
 
-// Overrides the root layout's French title template ("%s | Thermodynamique
-// Élémentaire et Avancée") so the <title> suffix matches the page's own
-// language instead of always appending the French site name.
+// The language is part of the route, so both the document and its metadata
+// can be generated at build time without reading request headers.
 export async function generateMetadata({
   params,
 }: {
@@ -18,6 +18,7 @@ export async function generateMetadata({
   const lang: Lang = isLang(params.lang) ? params.lang : "fr";
   const siteTitle = localizedSiteTitle(lang);
   return {
+    ...siteMetadata,
     title: {
       template: `%s | ${siteTitle}`,
       default: siteTitle,
@@ -39,5 +40,5 @@ export default function LangLayout({
     notFound();
   }
 
-  return <>{children}</>;
+  return <SiteDocument lang={params.lang}>{children}</SiteDocument>;
 }

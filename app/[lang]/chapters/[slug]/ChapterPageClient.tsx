@@ -237,9 +237,8 @@ function ChapterLessonTabButtons({ theme }: { theme: ThemeWithLocalizedLessonCon
   );
 }
 
-function ChapterContentAndPrevNext({ theme, prev, next, relatedExercises }: Props) {
-  const { t, lang } = useLang();
-  const exerciseT = getExerciseTranslations(lang);
+function ChapterContentWithSearchParams(props: Props) {
+  const { theme } = props;
   const pathname = usePathname();
   const router = useRouter();
   const searchParams = useSearchParams();
@@ -264,6 +263,28 @@ function ChapterContentAndPrevNext({ theme, prev, next, relatedExercises }: Prop
     });
   };
 
+  return (
+    <ChapterContentAndPrevNext
+      {...props}
+      activeLessonIndex={activeLessonIndex}
+      navigateToLesson={navigateToLesson}
+    />
+  );
+}
+
+function ChapterContentAndPrevNext({
+  theme,
+  prev,
+  next,
+  relatedExercises,
+  activeLessonIndex = 0,
+  navigateToLesson,
+}: Props & {
+  activeLessonIndex?: number;
+  navigateToLesson?: (lessonIndex: number) => void;
+}) {
+  const { t, lang } = useLang();
+  const exerciseT = getExerciseTranslations(lang);
   const activeLesson = useMemo(
     () => theme.lessons[activeLessonIndex] || null,
     [theme.lessons, activeLessonIndex]
@@ -307,8 +328,8 @@ function ChapterContentAndPrevNext({ theme, prev, next, relatedExercises }: Prop
   const nextHref = !nextLesson && next
     ? sectionHref(lang, "chapters", getThemeUrlSlug(next, lang))
     : undefined;
-  const previousOnClick = previousLesson ? () => navigateToLesson(activeLessonIndex - 1) : undefined;
-  const nextOnClick = nextLesson ? () => navigateToLesson(activeLessonIndex + 1) : undefined;
+  const previousOnClick = previousLesson && navigateToLesson ? () => navigateToLesson(activeLessonIndex - 1) : undefined;
+  const nextOnClick = nextLesson && navigateToLesson ? () => navigateToLesson(activeLessonIndex + 1) : undefined;
 
   const compactNavRow = (
     <LessonNavRow
@@ -556,26 +577,30 @@ function LessonNavRow({
   );
 }
 
-function ChapterPageView({ theme, prev, next, relatedExercises }: Props) {
+function ChapterPageView(props: Props) {
+  const { theme } = props;
+  const defaultContent = <ChapterContentAndPrevNext {...props} />;
+
   return (
     <div style={{ position: "relative", zIndex: 1 }}>
       <div style={headerBoxStyle}>
         <div style={maxWStyle}>
           <ChapterThemeHeadingBlock theme={theme} />
-          <Suspense fallback={null}>
-            <ChapterLessonTabButtons theme={theme} />
-          </Suspense>
+          {theme.lessons.length > 1 && (
+            <Suspense fallback={null}>
+              <ChapterLessonTabButtons theme={theme} />
+            </Suspense>
+          )}
         </div>
       </div>
 
-      <Suspense fallback={null}>
-        <ChapterContentAndPrevNext
-          theme={theme}
-          prev={prev}
-          next={next}
-          relatedExercises={relatedExercises}
-        />
-      </Suspense>
+      {/* A normal lesson must include its full text in the static HTML.
+          Only multi-body pages need the query-dependent lesson selector. */}
+      {theme.lessons.length > 1 ? (
+        <Suspense fallback={defaultContent}>
+          <ChapterContentWithSearchParams {...props} />
+        </Suspense>
+      ) : defaultContent}
     </div>
   );
 }

@@ -1,13 +1,12 @@
 import type { Metadata } from "next";
-import { headers } from "next/headers";
-import "./globals.css";
-import { NavBar } from "./components/NavBar";
-import { Footer } from "./components/Footer";
-import { Providers } from "./providers";
-import { VercelInstrumentation } from "./components/VercelInstrumentation";
+import "@/app/globals.css";
+import { NavBar } from "./NavBar";
+import { Footer } from "./Footer";
+import { Providers } from "@/app/providers";
+import { VercelInstrumentation } from "./VercelInstrumentation";
 import { bookMeta, bookMetaDisplayTitle, localizedSiteTitle } from "@/lib/chapters";
 import { getSiteUrl } from "@/lib/siteUrl";
-import { getTranslations, isLang, isRtlLang, SUPPORTED_LANGS, type Lang } from "@/lib/i18n";
+import { getTranslations, isRtlLang, SUPPORTED_LANGS, type Lang } from "@/lib/i18n";
 
 const SITE_URL = getSiteUrl();
 
@@ -44,20 +43,12 @@ function websiteJsonLd(lang: Lang) {
   };
 }
 
-function resolveHtmlLang(): Lang {
-  const siteLang = headers().get("x-site-lang");
-  if (siteLang && isLang(siteLang)) {
-    return siteLang;
-  }
-  return "fr";
-}
-
 // Set GOOGLE_SITE_VERIFICATION / BING_SITE_VERIFICATION in Vercel env vars once
 // each search console property is created; no code change needed after that.
 const googleSiteVerification = process.env.GOOGLE_SITE_VERIFICATION;
 const bingSiteVerification = process.env.BING_SITE_VERIFICATION;
 
-export const metadata: Metadata = {
+export const siteMetadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
     default: bookMetaDisplayTitle(),
@@ -95,23 +86,23 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
+export function SiteDocument({
   children,
+  lang,
 }: {
   children: React.ReactNode;
+  lang: Lang;
 }) {
-  const htmlLang = resolveHtmlLang();
-
   return (
-    <html lang={htmlLang} dir={isRtlLang(htmlLang) ? "rtl" : "ltr"} suppressHydrationWarning>
+    <html lang={lang} dir={isRtlLang(lang) ? "rtl" : "ltr"} suppressHydrationWarning>
       <head>
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(bookJsonLd(htmlLang)) }}
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(bookJsonLd(lang)) }}
         />
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd(htmlLang)) }}
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd(lang)) }}
         />
       </head>
       <body>

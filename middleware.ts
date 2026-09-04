@@ -1,17 +1,8 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 import legacyExerciseSlugRedirects from "@/lib/legacyExerciseSlugRedirects.json";
-import { SUPPORTED_LANGS } from "@/lib/i18n";
 
 const legacy = legacyExerciseSlugRedirects as Record<string, string>;
-
-const siteLangRegex = new RegExp(`^/(${SUPPORTED_LANGS.join("|")})(?:/|$)`);
-
-function withSiteLangHeader(response: NextResponse, pathname: string): NextResponse {
-  const match = siteLangRegex.exec(pathname);
-  response.headers.set("x-site-lang", match ? match[1] : "fr");
-  return response;
-}
 
 export function middleware(request: NextRequest) {
   const pathname = request.nextUrl.pathname;
@@ -30,9 +21,14 @@ export function middleware(request: NextRequest) {
     }
   }
 
-  return withSiteLangHeader(NextResponse.next(), pathname);
+  return NextResponse.next();
 }
 
 export const config = {
-  matcher: ["/((?!_next|api|favicon.ico|figs|pdfs).*)"],
+  matcher: [
+    "/exercises/:path*",
+    "/exercices/:path*",
+    "/:lang(en|fr)/exercises/:path*",
+    "/:lang(en|fr)/exercices/:path*",
+  ],
 };
