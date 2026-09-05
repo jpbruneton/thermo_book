@@ -101,6 +101,22 @@ function ChapterThemeHeadingBlock({ theme }: { theme: ThemeWithLocalizedLessonCo
       >
         {getThemeDescription(theme, lang)}
       </p>
+      {lang === "fr" && theme.number >= 6 && (
+        <p
+          style={{
+            marginTop: "1rem",
+            marginBottom: 0,
+            padding: "0.65rem 1rem",
+            borderLeft: "3px solid var(--amber)",
+            background: "var(--accent-bg-xs)",
+            color: "var(--text-heading)",
+            fontFamily: "var(--font-inter)",
+            fontSize: "0.9rem",
+          }}
+        >
+          Leçon en cours de réécriture
+        </p>
+      )}
     </>
   );
 }
