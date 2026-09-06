@@ -133,6 +133,35 @@ pages sans contenu affichent un état explicite) · 📋 planifié / pas commenc
 
 ## Prochaine étape : traduire davantage de leçons, d'exercices et de quiz
 
+### Figures TikZ de la leçon 6
+
+Les 7 figures de la leçon 6 disposent de sources dans les 20 langues du site.
+Les traductions ont été rédigées directement, sans appel à une API externe.
+Les libellés sont conservés dans `content/tex/figs-src/chp6-translations.json` ;
+les sources françaises restent la référence pour la géométrie et les équations,
+y compris les indices `ch` et `fr`.
+
+- Sources : `content/tex/figs-src/<lang>/fig_*.tex`.
+- Images PNG à 600 dpi : `content/tex/site-assets/figs/<lang>/fig_*.png`,
+  recopiées dans `public/figs/<lang>/` pour le site.
+- Régénérer les 19 traductions et leurs images localement :
+  `node scripts/generate-chp6-figures.mjs`.
+- Limiter à une langue : `node scripts/generate-chp6-figures.mjs ar`.
+  Ajouter `--sources-only` pour produire uniquement les fichiers TikZ.
+- Recompiler des sources déjà éditées :
+  `node scripts/build-chp6-figures.mjs en ar` (sans argument : français).
+
+La compilation utilise LuaLaTeX, XeLaTeX pour ar/fa/ur, et `pdftoppm`, avec
+les mêmes polices locales que les figures précédentes. Elle vérifie l'absence
+de glyphes manquants et de débordements de texte. Le générateur vérifie aussi
+que les formules restent identiques à celles de la source française.
+
+Les textes de la leçon 6 restent à traduire. Dans les futures versions
+`chp6_<lang>/lesson1.tex`, référencer les images du dossier de la langue,
+par exemple `\includegraphics{figs/en/fig_preuve_carnot.png}`.
+
+### Contenu des leçons, exercices et quiz
+
 Le prompt de traduction et la convention de fichiers restent dans
 [`translation-prompt.md`](translation-prompt.md) et le script
 [`scripts/translate-lesson.mjs`](../scripts/translate-lesson.mjs). Traduire une
