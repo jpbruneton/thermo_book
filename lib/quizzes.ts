@@ -769,23 +769,6 @@ export const quizQuestions: QuizQuestion[] = [
     ],
     correctIndex: 0,
   },
-  // Compléments « Pour aller plus loin » de la leçon.
-  {
-    id: "l6-q20",
-    lecon: 6,
-    question: "Complément — À l'équilibre, N particules indépendantes se répartissent dans deux moitiés égales d'une enceinte. Quelle est la probabilité de les trouver toutes dans la moitié gauche lors d'une observation ?",
-    choices: [
-      "1/2, quel que soit N.",
-      "2^{−N}, y compris à l'instant initial où elles viennent d'être préparées toutes à gauche.",
-      "2^{−N} à l'équilibre ; cette formule ne décrit pas la relaxation depuis l'état initial préparé.",
-    ],
-    explanations: [
-      "Faux : 1/2 est la probabilité pour une seule particule. Pour N positions indépendantes, on multiplie ces probabilités.",
-      "Faux : juste après la préparation à gauche, la probabilité conditionnelle de les y trouver vaut 1. La distribution d'équilibre ne décrit pas chaque instant de la relaxation.",
-      "Exact : la probabilité vaut (1/2)^N. Pour la détente de v à 2v, ΔS = Nk_B ln 2, donc 2^{−N} = exp(−ΔS/k_B). Cette probabilité d'équilibre ne fournit pas une loi temporelle.",
-    ],
-    correctIndex: 2,
-  },
 
   // ─── Leçon 7 : Relations fondamentales ───
   {
