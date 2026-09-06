@@ -541,11 +541,11 @@ export const quizQuestions: QuizQuestion[] = [
   {
     id: "l6-q2",
     lecon: 6,
-    question: "Quelle affirmation décrit correctement la réversibilité locale et son lien avec la réversibilité globale ?",
+    question: "Quelle affirmation décrit correctement la réversibilité locale ?",
     choices: [
-      "Elle demande uniquement que les états initial et final du système soient des états d'équilibre.",
+      "Elle demande que les états initial et final du système soient des états d'équilibre.",
       "Elle découle automatiquement de tout procédé qui restaure globalement le système et son extérieur.",
-      "Elle permet d'inverser chaque étape d'une succession d'états d'équilibre par une modification infinitésimale des contraintes ; elle implique la réversibilité globale.",
+      "Elle demande d'inverser chaque étape d'une succession d'états d'équilibre par une modification infinitésimale des contraintes.",
       "Elle permet de retracer le chemin du système, tout en conservant les mêmes signes pour les échanges de chaleur et de travail.",
     ],
     explanations: [
@@ -559,10 +559,10 @@ export const quizQuestions: QuizQuestion[] = [
   {
     id: "l6-vf1",
     lecon: 6,
-    question: "Une compression quasi-statique est nécessairement localement réversible, même si le piston présente des frottements.",
+    question: "Une compression quasi-statique est nécessairement localement réversible.",
     choices: ["Vrai", "Faux"],
     explanations: [
-      "Faux : les frottements dissipent de l'énergie et laissent une trace dans le gaz ou son extérieur, même si le gaz reste proche de l'équilibre.",
+      "Faux : une compression quasi-statique peut, par exemple, s'effectuer avec des frottements. Ceux-ci dissipent de l'énergie et laissent une trace dans le gaz ou son extérieur, même si le gaz reste proche de l'équilibre.",
       "Exact : le caractère quasi-statique ne suffit pas. Il faut aussi supprimer les dissipations et conduire les échanges avec des différences infinitésimales de pression, de température ou de potentiel chimique.",
     ],
     correctIndex: 1,
@@ -602,36 +602,20 @@ export const quizQuestions: QuizQuestion[] = [
     correctIndex: 3,
   },
   {
-    id: "l6-q5",
-    lecon: 6,
-    question: "Dans la preuve d'équivalence des deux énoncés, on suppose qu'une machine viole Kelvin–Planck et on utilise tout son travail pour alimenter un réfrigérateur ordinaire. Quel est le seul effet de l'ensemble sur un cycle ?",
-    choices: [
-      "Un transfert de chaleur du chaud vers le froid avec un travail net fourni.",
-      "Un transfert de chaleur du froid vers le chaud sans travail extérieur net.",
-      "Une augmentation de l'énergie interne des deux fluides de travail.",
-    ],
-    explanations: [
-      "Faux : tout le travail de la machine supposée alimente le réfrigérateur. Le travail extérieur net est nul et le transfert thermique net va du froid vers le chaud.",
-      "Exact : les travaux se compensent et les deux fluides reviennent à leurs états initiaux. Le seul effet restant viole Clausius, ce qui établit ce sens de l'implication.",
-      "Faux : chaque fluide décrit un cycle, donc sa variation d'énergie interne est nulle. Le bilan concerne les modifications des thermostats.",
-    ],
-    correctIndex: 1,
-  },
-  {
     id: "l6-q6",
     lecon: 6,
     question: "Un moteur ditherme fonctionne entre 600 K et 300 K et reçoit Q_ch = 1 000 J par cycle. Quelle est la valeur maximale du travail fourni |W| ?",
     choices: [
       "1 000 J, puisque ΔU = 0 sur un cycle.",
       "300 J, puisque l'écart de température vaut 300 K.",
-      "500 J, valeur atteinte par une machine ditherme localement réversible.",
-      "Une valeur impossible à déterminer sans connaître le fluide de travail.",
+      "500 J.",
+      "On n'a pas assez d'informations pour répondre.",
     ],
     explanations: [
-      "Faux : ΔU = 0 impose Q_ch + Q_fr + W = 0, sans autoriser la conversion intégrale de Q_ch en travail. Il faut aussi respecter le second principe.",
+      "Faux : on ne peut pas convertir toute la chaleur reçue du thermostat chaud en travail sur un cycle. Le second principe impose d'en céder une partie au thermostat froid, même si ΔU = 0.",
       "Faux : une différence de température ne donne pas directement une énergie. Le rendement utilise le rapport des températures absolues.",
-      "Exact : η_max = 1 − T_fr/T_ch = 1/2, donc |W|_max = 500 J. La convention du cours donne alors W = −500 J et Q_fr = −500 J. Un cycle globalement irréversible fournit strictement moins de travail pour ce même Q_ch.",
-      "Faux : les théorèmes de Carnot fixent le même rendement à toutes les machines dithermes localement réversibles entre ces thermostats, indépendamment du fluide.",
+      "Exact : le rendement maximal est celui de Carnot, η_max = 1 − T_fr/T_ch = 1 − 300/600 = 1/2. Ainsi, |W|_max = η_max Q_ch = 500 J. Cette valeur est atteinte par une machine ditherme localement réversible.",
+      "Faux : les températures des deux thermostats et la chaleur reçue suffisent pour calculer le travail maximal : |W|_max = Q_ch (1 − T_fr/T_ch). Il n'est pas nécessaire de connaître le fluide ni les détails du moteur.",
     ],
     correctIndex: 2,
   },
@@ -675,7 +659,7 @@ export const quizQuestions: QuizQuestion[] = [
     question: "Comment la leçon construit-elle l'entropie à partir de l'égalité ∮ δQ_rev/T = 0 sur les cycles localement réversibles ?",
     choices: [
       "Elle en déduit que la chaleur Q est une fonction d'état.",
-      "Elle définit S(B) − S(A) par l'intégrale de δQ_rev/T, indépendante du chemin localement réversible choisi entre A et B.",
+      "Elle définit S(B) − S(A) par l'intégrale de δQ_rev/T.",
       "Elle définit l'entropie absolue de tout état par S = U/T.",
     ],
     explanations: [
@@ -684,22 +668,6 @@ export const quizQuestions: QuizQuestion[] = [
       "Faux : la construction définit des différences d'entropie et laisse une constante additive libre. Elle ne donne pas la formule générale S = U/T.",
     ],
     correctIndex: 1,
-  },
-  {
-    id: "l6-q10",
-    lecon: 6,
-    question: "Pour un système simple fermé de composition fixée, la relation fondamentale donne dS = dU/T + (P/T) dV. Que signifie (∂S/∂U)_{V,N} = 1/T ?",
-    choices: [
-      "L'entropie ne dépend que de l'énergie interne, même lorsque le volume varie.",
-      "La température est égale à l'entropie divisée par l'énergie interne.",
-      "À volume et quantité de matière fixés, l'entropie croît avec l'énergie interne dans le domaine T > 0 considéré ici.",
-    ],
-    explanations: [
-      "Faux : la dérivée est prise à V et N fixés. Elle n'efface pas la dépendance de S envers ces variables ; le terme (P/T) dV décrit précisément celle envers le volume.",
-      "Faux : 1/T est une dérivée de S par rapport à U, pas le rapport S/U. On ne peut pas confondre ces deux opérations.",
-      "Exact : à V et N fixés, la pente de S en fonction de U vaut 1/T. Elle est donc positive pour les températures absolues positives étudiées dans la leçon.",
-    ],
-    correctIndex: 2,
   },
   {
     id: "l6-q11",
@@ -722,16 +690,16 @@ export const quizQuestions: QuizQuestion[] = [
   {
     id: "l6-q12",
     lecon: 6,
-    question: "Une transformation irréversible relie deux états d'équilibre A et B, mais ses états intermédiaires sont loin de l'équilibre. Comment calculer ΔS et la production d'entropie ?",
+    question: "Une transformation irréversible relie deux états d'équilibre A et B, mais ses états intermédiaires sont loin de l'équilibre.",
     choices: [
-      "Imposer une température uniforme au système à chaque instant et intégrer la chaleur réelle divisée par cette température.",
-      "Calculer ΔS sur un chemin localement réversible entre A et B, puis utiliser les échanges du processus réel pour calculer S_e et S_i = ΔS − S_e.",
-      "Utiliser la chaleur du chemin réversible aussi pour S_e, puisque A et B sont les mêmes.",
+      "La variation d'entropie vaut ΔS = Q_réel/T, avec une température T constante pendant tout le processus.",
+      "La variation d'entropie ΔS peut être calculée sur un chemin localement réversible entre A et B, tandis que S_e et S_i dépendent du processus réel.",
+      "Les états A et B déterminent à eux seuls l'entropie échangée S_e et l'entropie produite S_i.",
     ],
     explanations: [
-      "Faux : une température unique du système n'est pas nécessairement définie pendant une transformation loin de l'équilibre. On conserve alors le bilan intégré entre les états d'équilibre.",
-      "Exact : ΔS dépend seulement des extrémités. En revanche, S_e = ∫ δQ/T_ext et S_i dépendent du processus réel ; seuls les échanges de ce processus permettent d'en établir le bilan.",
-      "Faux : la chaleur du chemin de calcul peut différer de la chaleur réellement échangée. Remplacer l'une par l'autre ferait disparaître artificiellement la production d'entropie.",
+      "Faux : rien ne garantit que T_A = T_B ; on ne peut donc pas supposer une température constante. Même si ces températures étaient égales, cela ne justifierait pas ΔS = Q_réel/T pour une transformation irréversible. On calcule ΔS sur un chemin localement réversible reliant les mêmes états.",
+      "Exact : S est une fonction d'état, donc ΔS = ∫ δQ_rev/T peut être calculée sur un chemin localement réversible reliant les mêmes états. On revient ensuite aux échanges réels pour déterminer S_e = ∫ δQ_réel/T_ext et S_i = ΔS − S_e.",
+      "Faux : les états A et B fixent ΔS, mais pas sa décomposition en entropie échangée et entropie produite. S_e dépend des chaleurs réellement échangées et des températures extérieures ; S_i se déduit alors du bilan ΔS = S_e + S_i.",
     ],
     correctIndex: 1,
   },
@@ -740,34 +708,18 @@ export const quizQuestions: QuizQuestion[] = [
     lecon: 6,
     question: "Un gaz parfait de n moles subit une détente de Joule–Gay-Lussac du volume v au volume V > v dans une enceinte rigide et adiabatique. Le retrait de la cloison ne modifie pas l'extérieur. Quel bilan est correct ?",
     choices: [
-      "Q = W = 0, donc ΔS_gaz = 0.",
-      "ΔU = 0, mais la température du gaz parfait diminue nécessairement.",
-      "ΔS_gaz = nR ln(v/V) < 0, car le gaz se dilue.",
-      "Q = W = ΔU = 0, la température reste la même entre les états initial et final et ΔS_tot = nR ln(V/v) > 0.",
+      "Q = W = 0, donc ΔU_gaz = 0 et ΔS_gaz = 0.",
+      "ΔU_gaz = 0, mais la température du gaz diminue nécessairement, et son entropie aussi.",
+      "ΔU_gaz = 0 et ΔS_gaz = nR ln(v/V) < 0, car le gaz se dilue.",
+      "Q = W = ΔU_gaz = 0 et ΔS_tot = nR ln(V/v) > 0.",
     ],
     explanations: [
-      "Faux : l'absence d'échange thermique n'interdit pas la production d'entropie. On ne peut pas appliquer dS = δQ_rev/T à la chaleur réelle de cette détente irréversible.",
-      "Faux : pour un gaz parfait, l'énergie interne ne dépend que de la température. ΔU = 0 implique donc la même température aux deux états d'équilibre.",
+      "Faux : Q = W = 0 implique bien ΔU_gaz = 0, mais pas ΔS_gaz = 0. L'absence d'échange thermique n'interdit pas la production d'entropie : la relation dS = δQ_rev/T ne s'applique pas à la chaleur réelle de cette détente irréversible.",
+      "Faux : pour un gaz parfait, l'énergie interne ne dépend que de la température. ΔU_gaz = 0 implique donc la même température aux deux états d'équilibre. L'entropie augmente néanmoins, car elle dépend aussi du volume.",
       "Faux : le rapport est V/v > 1. Une détente isotherme localement réversible entre les mêmes états donne ΔS_gaz = nR ln(V/v) > 0.",
-      "Exact : le premier principe ne distingue pas les sens possibles, mais l'augmentation d'entropie totale prouve qu'aucun retour ne peut restaurer le gaz et son extérieur sans laisser une trace ailleurs.",
+      "Exact : Q = W = 0 donne ΔU_gaz = 0. L'extérieur n'étant pas modifié, ΔS_tot = ΔS_gaz = nR ln(V/v) > 0. Cette augmentation prouve qu'aucun retour ne peut restaurer le gaz et son extérieur sans laisser une trace ailleurs.",
     ],
     correctIndex: 3,
-  },
-  {
-    id: "l6-q14",
-    lecon: 6,
-    question: "Après cette détente libre, une compression isotherme localement réversible ramène le gaz parfait de V à v à sa température initiale T. Pourquoi n'est-ce pas un retour global de la détente libre ?",
-    choices: [
-      "Parce qu'une compression ne peut jamais être localement réversible.",
-      "Parce que le gaz ne retrouve pas son entropie initiale malgré le retour au même état.",
-      "Parce que le thermostat a reçu nRT ln(V/v) de chaleur et gagné nR ln(V/v) d'entropie : l'extérieur garde la trace de la détente libre.",
-    ],
-    explanations: [
-      "Faux : une compression isotherme conduite sans dissipation et avec des déséquilibres infinitésimaux peut être localement réversible. Cela ne fait pas d'elle l'inverse global de la détente libre.",
-      "Faux : S est une fonction d'état. Le gaz retrouve bien son entropie initiale, en perdant nR ln(V/v) pendant la compression.",
-      "Exact : le gaz est restauré, mais la source mécanique a fourni du travail et le thermostat a reçu de la chaleur. La compression réversible n'ajoute pas de production totale d'entropie ; elle transfère au thermostat la trace créée par la détente libre.",
-    ],
-    correctIndex: 2,
   },
   {
     id: "l6-q15",
@@ -788,71 +740,24 @@ export const quizQuestions: QuizQuestion[] = [
     correctIndex: 0,
   },
   {
-    id: "l6-q16",
-    lecon: 6,
-    question: "Quelle hypothèse permet de déduire le maximum d'entropie à l'équilibre stable à partir de ΔS ≥ 0 pour un système isolé ?",
-    choices: [
-      "Il suffit de comparer l'équilibre à tous les états, même si leurs énergies ou leurs volumes diffèrent.",
-      "Chaque macroconfiguration comparée peut relaxer vers le même équilibre stable, à grandeurs conservées et contraintes extérieures identiques.",
-      "Toute configuration stationnaire est accessible instantanément depuis n'importe quelle autre.",
-    ],
-    explanations: [
-      "Faux : le maximum est recherché sous contraintes, notamment à U, V et N fixés. Changer ces valeurs change l'ensemble des états comparés.",
-      "Exact : pour chaque état accessible X, la relaxation isolée X → E donne S(E) ≥ S(X). L'hypothèse d'une même classe accessible est nécessaire à ce raisonnement.",
-      "Faux : l'accessibilité et le temps de relaxation sont des questions distinctes. Des barrières peuvent notamment maintenir le système dans un état métastable.",
-    ],
-    correctIndex: 1,
-  },
-  {
-    id: "l6-q17",
-    lecon: 6,
-    question: "La leçon obtient S(λX + (1 − λ)Y) ≥ λS(X) + (1 − λ)S(Y), avec 0 ≤ λ ≤ 1. Qu'en déduit-on pour la stabilité ?",
-    choices: [
-      "L'entropie est convexe ; l'équilibre stable minimise S à contraintes fixées.",
-      "L'entropie est strictement concave partout ; l'équilibre est donc toujours unique.",
-      "L'entropie est concave dans ses variables extensives ; sur un ensemble convexe à contraintes linéaires, un état stationnaire de S est un maximum global.",
-    ],
-    explanations: [
-      "Faux : le sens de l'inégalité définit la concavité, et le principe d'équilibre d'un système isolé recherche un maximum d'entropie.",
-      "Faux : la concavité n'est pas nécessairement stricte, notamment dans les domaines de coexistence de phases. On ne peut pas en déduire systématiquement l'unicité.",
-      "Exact : l'état contraint a l'entropie λS(X) + (1 − λ)S(Y) par additivité et extensivité. La relaxation vers l'état homogène ne la diminue pas, ce qui donne la concavité et le critère de maximum sous les contraintes indiquées.",
-    ],
-    correctIndex: 2,
-  },
-  {
     id: "l6-q18",
     lecon: 6,
-    question: "Deux sous-systèmes de composition fixée peuvent échanger indépendamment de l'énergie et du volume dans un ensemble isolé. Que donne la stationnarité de S_tot pour toutes les redistributions autorisées ?",
+    question: "Deux sous-systèmes de composition fixée peuvent échanger indépendamment de l'énergie et du volume dans un ensemble isolé. Que peut-on dire de leur état d'équilibre ?",
     choices: [
       "U_1 = U_2 et V_1 = V_2, quelles que soient les tailles des sous-systèmes.",
       "S_1 = S_2, sans condition sur leurs températures.",
-      "T_1 = T_2 seulement ; la pression ne joue aucun rôle dans le bilan entropique.",
+      "T_1 = T_2, mais les pressions ne sont pas nécessairement égales.",
       "T_1 = T_2 et P_1 = P_2.",
     ],
     explanations: [
       "Faux : l'équilibre n'impose pas l'égalité des grandeurs extensives. Deux sous-systèmes de tailles différentes peuvent avoir des énergies et des volumes différents à l'équilibre.",
-      "Faux : on annule les variations de l'entropie totale, pas la différence des entropies des deux parties.",
-      "Faux : les variations de volume sont autorisées. Le coefficient P_1/T_1 − P_2/T_2 doit donc s'annuler lui aussi.",
-      "Exact : dS_tot = (1/T_1 − 1/T_2) dU_1 + (P_1/T_1 − P_2/T_2) dV_1. Les deux coefficients s'annulent, ce qui donne les équilibres thermique et mécanique.",
+      "Faux : l'équilibre maximise l'entropie totale sous les contraintes imposées ; il n'exige pas que les deux sous-systèmes aient la même entropie.",
+      "Faux : puisque les échanges de volume sont aussi autorisés, l'équilibre doit être mécanique autant que thermique. Les pressions doivent donc également être égales.",
+      "Exact : à l'équilibre, l'entropie totale est stationnaire pour toutes les redistributions autorisées : dS_tot = (1/T_1 − 1/T_2) dU_1 + (P_1/T_1 − P_2/T_2) dV_1 = 0. Les échanges d'énergie et de volume étant indépendants, les deux coefficients s'annulent : T_1 = T_2 et P_1 = P_2.",
     ],
     correctIndex: 3,
   },
-  {
-    id: "l6-q19",
-    lecon: 6,
-    question: "Dans l'expérience du piston et des grains de sable, quelle limite conduit à une compression localement réversible ?",
-    choices: [
-      "Ajouter les mêmes grosses masses en attendant simplement plus longtemps entre deux ajouts.",
-      "Faire tendre la masse de chaque grain vers zéro en écartant les autres dissipations, notamment les frottements.",
-      "Isoler thermiquement le gaz, sans condition sur les déséquilibres mécaniques.",
-    ],
-    explanations: [
-      "Faux : chaque grosse masse crée encore une relaxation finie et une production positive d'entropie. Attendre davantage n'efface pas cette production.",
-      "Exact : les déséquilibres de chaque étape et la production totale d'entropie tendent alors vers zéro. Le retrait des grains dans l'ordre inverse permet de retracer le chemin du gaz, du piston et des grains.",
-      "Faux : l'adiabaticité interdit les échanges de chaleur, pas les dissipations ni la production d'entropie. Elle ne suffit donc pas à assurer la réversibilité.",
-    ],
-    correctIndex: 1,
-  },
+
   {
     id: "l6-vf2",
     lecon: 6,
@@ -880,24 +785,6 @@ export const quizQuestions: QuizQuestion[] = [
       "Exact : la probabilité vaut (1/2)^N. Pour la détente de v à 2v, ΔS = Nk_B ln 2, donc 2^{−N} = exp(−ΔS/k_B). Cette probabilité d'équilibre ne fournit pas une loi temporelle.",
     ],
     correctIndex: 2,
-  },
-  {
-    id: "l6-q21",
-    lecon: 6,
-    question: "Complément — Quelle conclusion respecte la discussion de la réversibilité microscopique et de la récurrence de Poincaré ?",
-    choices: [
-      "La réversibilité des équations microscopiques permet de restaurer une détente libre en remettant simplement la cloison.",
-      "Le théorème garantit le retour exact de tout micro-état au bout d'un temps court.",
-      "Le temps 2^N τ_mix est une formule générale exacte pour la récurrence du micro-état complet.",
-      "Sous les hypothèses du théorème, presque tout micro-état revient arbitrairement près de son état initial, sans garantie de retour exact ni rapide.",
-    ],
-    explanations: [
-      "Faux : remettre une cloison ne renverse pas toutes les vitesses ni les corrélations microscopiques. Un contrôle de quelques variables macroscopiques ne réalise pas l'inversion microscopique exacte.",
-      "Faux : le théorème porte sur presque tout micro-état, pour un mouvement dans une région de volume de phase fini. Il affirme un retour arbitrairement proche, sans imposer un délai court.",
-      "Faux : cette estimation suppose des observations indépendantes séparées par τ_mix et concerne une fluctuation vers un macro-état particulier. Elle n'est pas une formule générale de récurrence du micro-état complet.",
-      "Exact : la récurrence apporte une nuance microscopique, sans rendre les détentes macroscopiques réversibles par les moyens thermodynamiques usuels. Les temps de retour peuvent dépasser toutes les durées expérimentales.",
-    ],
-    correctIndex: 3,
   },
 
   // ─── Leçon 7 : Relations fondamentales ───
