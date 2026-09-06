@@ -51,6 +51,9 @@ export function ChapterContent({ lesson, hideHeader = false, topNav }: Props) {
     ? pdfRelativePath.slice(pdfRelativePath.lastIndexOf("/") + 1)
     : pdfRelativePath;
   const hasLessonContent = lesson.renderedLang.trim().length > 0;
+  // Scroll updates the active TOC entry. Keep the HTML prop stable so React
+  // does not replace the lesson DOM and reset user-opened <details> blocks.
+  const lessonHtml = useMemo(() => ({ __html: lesson.renderedLang }), [lesson.renderedLang]);
   const lessonHeadingFr = lesson.subtitleFr.trim() || lesson.titleFr;
   const lessonHeadingEn = lesson.subtitleEn.trim() || lesson.titleEn;
   const lessonHeading = lang === "fr" ? lessonHeadingFr : lessonHeadingEn;
@@ -238,7 +241,7 @@ export function ChapterContent({ lesson, hideHeader = false, topNav }: Props) {
                 {topNav && <div style={{ marginBottom: "1.5rem" }}>{topNav}</div>}
                 <div
                   className="prose-content"
-                  dangerouslySetInnerHTML={{ __html: lesson.renderedLang }}
+                  dangerouslySetInnerHTML={lessonHtml}
                 />
                 {currentReferences.length > 0 && (
                   <ol
