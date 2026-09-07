@@ -11,8 +11,8 @@ ce qui varie entre langues, c'est la profondeur du contenu réellement traduit
 | Code | Langue     | Statut       | Notes |
 |------|------------|--------------|-------|
 | fr   | Français   | ✅ en prod   | Langue source, contenu de référence, toutes sections |
-| en   | Anglais    | 🚧 partiel   | Chrome UI + leçons 1 à 5, exercices des chapitres 2, 4 et 5 et quiz 1 à 5 traduits |
-| de   | Allemand   | 🚧 partiel   | Accueil, à propos, métadonnées des leçons, glossaire, leçons 1 à 5, exercices des chapitres 2, 4 et 5 et quiz 1 à 5 traduits |
+| en   | Anglais    | 🚧 partiel   | Chrome UI + leçons 1 à 6, exercices des chapitres 2, 4 et 5 et quiz 1 à 5 traduits |
+| de   | Allemand   | 🚧 partiel   | Accueil, à propos, métadonnées des leçons, glossaire, leçons 1 à 6, exercices des chapitres 2, 4 et 5 et quiz 1 à 5 traduits |
 | es   | Espagnol   | 🚧 partiel   | Idem de |
 | pt   | Portugais  | 🚧 partiel   | Idem de |
 | it   | Italien    | 🚧 partiel   | Idem de |
@@ -24,12 +24,12 @@ ce qui varie entre langues, c'est la profondeur du contenu réellement traduit
 | hi   | Hindi      | 🚧 partiel   | Idem de |
 | vi   | Vietnamien | 🚧 partiel   | Idem de |
 | ar   | Arabe      | 🚧 partiel   | Idem de + RTL (`dir="rtl"` sur `<html>`, mise en page en miroir automatique via flex/grid) |
-| id   | Indonésien | 🚧 partiel   | Accueil, à propos, métadonnées des leçons, glossaire, leçons 1 à 5, exercices des chapitres 2, 4 et 5 et quiz 1 à 5 traduits |
+| id   | Indonésien | 🚧 partiel   | Accueil, à propos, métadonnées des leçons, glossaire, leçons 1 à 6, exercices des chapitres 2, 4 et 5 et quiz 1 à 5 traduits |
 | tr   | Turc       | 🚧 partiel   | Idem id |
-| bn   | Bengali    | 🚧 partiel   | Chrome + leçons 1 à 5, exercices des chapitres 2, 4 et 5 et quiz 1 à 5 traduits |
-| ur   | Ourdou     | 🚧 partiel   | Chrome + leçons 1 à 5, exercices des chapitres 2, 4 et 5 et quiz 1 à 5 traduits + RTL (`dir="rtl"` sur `<html>`, mise en page en miroir automatique via flex/grid) |
-| sw   | Swahili    | 🚧 partiel   | Chrome + leçons 1 à 5, exercices des chapitres 2, 4 et 5 et quiz 1 à 5 traduits |
-| fa   | Farsi      | 🚧 partiel   | Chrome + leçons 1, 3, 4 et 5, exercices des chapitres 2, 4 et 5 et quiz 1 à 5 traduits + RTL (`dir="rtl"` sur `<html>`, mise en page en miroir automatique via flex/grid) |
+| bn   | Bengali    | 🚧 partiel   | Chrome + leçons 1 à 6, exercices des chapitres 2, 4 et 5 et quiz 1 à 5 traduits |
+| ur   | Ourdou     | 🚧 partiel   | Chrome + leçons 1 à 6, exercices des chapitres 2, 4 et 5 et quiz 1 à 5 traduits + RTL (`dir="rtl"` sur `<html>`, mise en page en miroir automatique via flex/grid) |
+| sw   | Swahili    | 🚧 partiel   | Chrome + leçons 1 à 6, exercices des chapitres 2, 4 et 5 et quiz 1 à 5 traduits |
+| fa   | Farsi      | 🚧 partiel   | Chrome + leçons 1, 3, 4, 5 et 6, exercices des chapitres 2, 4 et 5 et quiz 1 à 5 traduits + RTL (`dir="rtl"` sur `<html>`, mise en page en miroir automatique via flex/grid) |
 
 Légende : ✅ en prod (toutes sections) · 🚧 partiel (au moins une section a du
 contenu réel dans cette langue ; jamais de repli silencieux vers fr/en — les
@@ -138,8 +138,9 @@ pages sans contenu affichent un état explicite) · 📋 planifié / pas commenc
 Les 7 figures de la leçon 6 disposent de sources dans les 20 langues du site.
 Les traductions ont été rédigées directement, sans appel à une API externe.
 Les libellés sont conservés dans `content/tex/figs-src/chp6-translations.json` ;
-les sources françaises restent la référence pour la géométrie et les équations,
-y compris les indices `ch` et `fr`.
+les sources françaises restent la référence pour la géométrie et les équations.
+Dans toutes les traductions, les indices descriptifs suivent la convention
+commune de `docs/translation-prompt.md`, notamment `H`/`C` pour chaud/froid.
 
 - Sources : `content/tex/figs-src/<lang>/fig_*.tex`.
 - Images PNG à 600 dpi : `content/tex/site-assets/figs/<lang>/fig_*.png`,
@@ -154,10 +155,11 @@ y compris les indices `ch` et `fr`.
 La compilation utilise LuaLaTeX, XeLaTeX pour ar/fa/ur, et `pdftoppm`, avec
 les mêmes polices locales que les figures précédentes. Elle vérifie l'absence
 de glyphes manquants et de débordements de texte. Le générateur vérifie aussi
-que les formules restent identiques à celles de la source française.
+que les formules restent identiques à celles de la source française après
+normalisation des indices descriptifs.
 
-Les textes de la leçon 6 restent à traduire. Dans les futures versions
-`chp6_<lang>/lesson1.tex`, référencer les images du dossier de la langue,
+Les textes de la leçon 6 sont traduits dans les 19 langues cibles. Les fichiers
+`chp6_<lang>/lesson1.tex` référencent les images du dossier de leur langue,
 par exemple `\includegraphics{figs/en/fig_preuve_carnot.png}`.
 
 ### Contenu des leçons, exercices et quiz

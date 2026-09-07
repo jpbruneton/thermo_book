@@ -1,9 +1,10 @@
 import { execFileSync } from "node:child_process";
 import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { join, resolve } from "node:path";
+import { normalizeTranslatedNotation } from "./lib/translation-notation.mjs";
 
 // These translations were written directly, without a translation service/API.
-// French diagrams remain the geometry and mathematical-notation reference.
+// French diagrams remain the geometry reference; mnemonic indices are normalized.
 const root = resolve(import.meta.dirname, "..");
 const sourceRoot = join(root, "content/tex/figs-src");
 const translations = JSON.parse(readFileSync(join(sourceRoot, "chp6-translations.json"), "utf8"));
@@ -53,7 +54,8 @@ function translate(source, lang, name) {
     throw new Error(`Untranslated label in ${lang}/${name}`);
   }
   const math = (text) => [...text.matchAll(/\$([^$]+)\$/g)].map((match) => match[1]);
-  if (JSON.stringify(math(source)) !== JSON.stringify(math(result))) {
+  result = normalizeTranslatedNotation(result, lang);
+  if (JSON.stringify(math(normalizeTranslatedNotation(source, lang))) !== JSON.stringify(math(result))) {
     throw new Error(`Mathematical notation changed in ${lang}/${name}`);
   }
   return result;

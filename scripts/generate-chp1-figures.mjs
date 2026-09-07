@@ -2,6 +2,7 @@ import { execFileSync } from "node:child_process";
 import { mkdtempSync, mkdirSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join, resolve } from "node:path";
+import { normalizeTranslatedNotation } from "./lib/translation-notation.mjs";
 
 const translations = {
   ar: {
@@ -281,7 +282,8 @@ for (const lang of languages) {
     "organigramme-thermodynamique": flowchartFigure(lang, data),
   };
 
-  for (const [name, source] of Object.entries(figures)) {
+  for (const [name, rawSource] of Object.entries(figures)) {
+    const source = normalizeTranslatedNotation(rawSource, lang, { legacyReservoirIndices: true });
     const sourcePath = join(sourceDir, `${name}.tex`);
     writeFileSync(sourcePath, source, "utf8");
     const buildDir = mkdtempSync(join(tmpdir(), `thermo-${lang}-${name}-`));

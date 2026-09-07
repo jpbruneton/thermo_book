@@ -19,6 +19,7 @@
  */
 
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
+import { normalizeTranslatedNotation } from "./lib/translation-notation.mjs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 import Anthropic from "@anthropic-ai/sdk";
@@ -61,9 +62,9 @@ LaTeX structure — do not alter — Preserve all LaTeX commands, environments, 
 
 Custom commands and macros — do not alter — The document may contain user-defined commands (e.g. \\newcommand, \\DeclareMathOperator, or shorthand macros). Keep them strictly as-is, both in their definitions and wherever they are used in the text.
 
-Equations and math — do not alter — Translate only the surrounding prose. Leave all mathematical content, symbols, and notation completely unchanged.
+Equations and math — Preserve mathematical content, signs, variables and structure. Use shared Latin mnemonic labels in all translations: H/C for hot/cold, other, press, elec, gas, kin for kinetic energy, const for a constant. Use A-to-B/B-to-A arrows for forward/return superscripts. Keep tot, ext, int, rev and other established abbreviations. The local notation normalizer also applies these substitutions consistently after translation.
 
-Figures, tables, captions — Translate captions and labels written in natural language, but do not touch filenames, \\includegraphics paths, or numerical/symbolic content.
+Figures, tables, captions — Translate captions and labels written in natural language. Keep filenames, numerical content and mathematical relations unchanged; use the same mnemonic-index convention as in the text and the matching localized figure assets.
 
 Do not add, remove, or reorder content — The translated document must reflect exactly the same information as the original. No summarizing, no commentary, no additions. Dont use -- characters unless there are some in the original text.
 
@@ -168,7 +169,7 @@ async function main() {
     try {
       const translated = await translateOne(client, sourceText, code, LANGUAGES[code]);
       mkdirSync(dirname(destPath), { recursive: true });
-      writeFileSync(destPath, translated, "utf-8");
+      writeFileSync(destPath, normalizeTranslatedNotation(translated, code, { legacyReservoirIndices: chapterNumber === 1 }), "utf-8");
       console.log(` -> ✓ ${destPath}`);
       results.push({ code, status: "ok", path: destPath });
     } catch (error) {

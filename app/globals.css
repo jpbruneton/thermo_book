@@ -1034,6 +1034,8 @@ a.exercise-index-card-link:focus-visible {
 }
 
 .katex {
+  direction: ltr;
+  unicode-bidi: isolate;
   font-size: 1.05em;
   line-height: 1.2;
   overflow: visible;

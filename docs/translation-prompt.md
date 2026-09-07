@@ -33,9 +33,9 @@ LaTeX structure — do not alter — Preserve all LaTeX commands, environments, 
 
 Custom commands and macros — do not alter — The document may contain user-defined commands (e.g. \newcommand, \DeclareMathOperator, or shorthand macros). Keep them strictly as-is, both in their definitions and wherever they are used in the text.
 
-Equations and math — do not alter — Translate only the surrounding prose. Leave all mathematical content, symbols, and notation completely unchanged.
+Equations and math — Preserve mathematical content, signs, variables and structure. Use the shared Latin mnemonic labels specified below, consistently in equations, prose and figures, including for non-Latin languages. Do not translate symbolic indices such as state labels, summation indices or heat-capacity subscripts.
 
-Figures, tables, captions — Translate captions and labels written in natural language, but do not touch filenames, \includegraphics paths, or numerical/symbolic content.
+Figures, tables, captions — Translate captions and labels written in natural language. Keep filenames, numerical content and mathematical relations unchanged; apply the same mnemonic-index convention as in the text, and use the matching localized figure assets.
 
 Do not add, remove, or reorder content — The translated document must reflect exactly the same information as the original. No summarizing, no commentary, no additions. Dont use -- characters unless there are some in the original text.
 
@@ -65,6 +65,41 @@ Output only the translated LaTeX source, with no explanation or preamble.
 | tr   | Turkish    |
 
 ## Terminologie thermodynamique contrôlée
+
+### Indices et exposants descriptifs
+
+Toutes les traductions utilisent les mêmes libellés latins courts, fondés sur
+l'anglais, y compris dans les langues non latines. La version française garde
+sa notation. Le sens de `H` et `C` est donné par le texte et les légendes dans
+la langue cible ; les définitions doivent rester cohérentes avec les figures.
+
+| Notation française | Notation des traductions | Sens |
+|---|---|---|
+| `ch`, ou `c` sur `Q`/`T` en leçon 1 | `H` | chaud (*hot*) |
+| `fr`, ou `f` sur `Q`/`T` en leçon 1 | `C` | froid (*cold*) |
+| `autres` | `other` | autres contributions |
+| `pression` | `press` | travail des forces de pression |
+| `élec` | `elec` | électrique |
+| `gaz` | `gas` | gaz |
+| `c` sur l'énergie cinétique `E_c` | `kin` | énergie cinétique |
+| exposants `aller` / `retour` | `A\to B` / `B\to A` | sens du processus |
+| `cste`, `constante` dans une formule | `const` | valeur constante |
+
+Les libellés alphabétiques sont en caractères droits (`\mathrm{...}` ou
+`\rm ...`). Conserver `tot`, `ext`, `int`, `rev`, `cycle`, `macro`, `micro`,
+`th`, `ad`, etc., ainsi que les indices symboliques : `c_V`, `C_P`, les
+sommets `A`, `B`, `C`, `D`, les indices de sommation et les noms propres.
+Ne jamais remplacer globalement `_c` : il n'a pas le même sens dans `Q_c`
+et `E_c`. Ne pas modifier les identifiants LaTeX, citations et chemins de fichiers.
+
+La règle est implémentée dans
+[`scripts/lib/translation-notation.mjs`](../scripts/lib/translation-notation.mjs)
+et appliquée aussi aux générateurs de figures concernés. L'outil local
+`node scripts/normalize-lesson-notation.mjs` inventorie les corrections
+nécessaires dans les leçons et leurs sources TikZ ; `--write` les applique.
+Il ne fait appel à aucun fournisseur de traduction.
+
+### Vocabulaire thermique
 
 Ces équivalents doivent être utilisés dans les leçons. Ils évitent notamment les
 faux amis entre travail, puissance, rendement et chaleur. Dans une expression
