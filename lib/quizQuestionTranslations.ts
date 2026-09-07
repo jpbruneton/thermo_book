@@ -48,12 +48,12 @@ export const quizQuestionTranslations: Partial<
       choices: [
         "Because without a temperature difference no heat flows, and there is nothing to convert into work.",
         "Because mechanical work can only be produced from a reservoir whose temperature exceeds a minimum threshold, specific to each working fluid.",
-        "Because the pressure of the working fluid must stay above atmospheric pressure throughout the cycle.",
+        "Because the cold reservoir must necessarily condense the working fluid so that the engine can begin another cycle.",
       ],
       explanations: [
         "Correct: the engine is a toll on the hot → cold heat flow; no flow, no work. The temperature gradient is the real “fuel”.",
         "Wrong: there is no temperature threshold; even a small difference is enough (see OTEC plants exploiting a few degrees of difference in the ocean).",
-        "Wrong: pressure is not the criterion; what matters is the temperature difference between the two reservoirs.",
+        "Wrong: a heat engine can operate without a phase change of the working fluid. Condensation is not a general requirement.",
       ],
     },
     "l1-vf1": {
@@ -82,12 +82,12 @@ export const quizQuestionTranslations: Partial<
       choices: [
         "Rumford's observation of cannon boring: friction produces an apparently unlimited amount of heat.",
         "Joseph Black's measurement of the latent heat absorbed by ice as it melts at constant temperature.",
-        "Clapeyron's synthesis of the laws of Boyle, Charles, and Gay-Lussac into a single equation of state for ideal gases.",
+        "The observation that bodies of equal mass require different amounts of heat for the same temperature rise.",
       ],
       explanations: [
         "Correct: if heat were a finite, conserved fluid, continuous boring could not produce it indefinitely. Rumford (1798) concluded that heat is related to motion.",
         "Wrong: latent heat was, on the contrary, well explained by caloric theory (the fluid supposedly “combines” with matter during a change of state).",
-        "Wrong: Clapeyron (1834) unified the gas laws, with no direct connection to the nature of heat.",
+        "Wrong: different heat capacities are compatible with caloric theory; this observation does not refute it.",
       ],
     },
     "l2-vf1": {
@@ -101,14 +101,14 @@ export const quizQuestionTranslations: Partial<
     "l2-q4": {
       question: "In the relation Q = m c ΔT identified by Joseph Black, what does the coefficient c represent?",
       choices: [
-        "The total quantity of heat exchanged by the body, expressed in joules.",
+        "The heat needed to raise the temperature of the entire body by one degree.",
         "The quantity of heat that must be supplied per unit mass of the body to raise its temperature by one degree.",
-        "The ratio of the work supplied to the body to the heat it receives.",
+        "The heat needed to melt a unit mass of the body at constant temperature.",
       ],
       explanations: [
-        "Wrong: Q itself is the total heat exchanged, not c; Q also depends on the mass and the temperature difference.",
+        "Wrong: that defines the heat capacity C = mc of the entire body; c is per unit mass.",
         "Correct: it is the specific heat capacity (or specific heat), the coefficient characteristic of each material that Black identified.",
-        "Wrong: this relation has nothing to do with such a ratio; c involves only heat and temperature.",
+        "Wrong: that defines the specific latent heat of fusion L, not the specific heat capacity c.",
       ],
     },
     "l2-q5": {
@@ -116,23 +116,23 @@ export const quizQuestionTranslations: Partial<
       choices: [
         "Approximately 1 J per calorie",
         "Approximately 4,18 J per calorie",
-        "Approximately 100 J per calorie",
+        "Approximately 4,180 J per calorie",
         "Approximately 0,24 J per calorie",
       ],
       explanations: [
         "Wrong: this would be the case if the calorie and the joule already measured the same thing without conversion.",
         "Correct: 1 cal ≈ 4,18 J; this value, measured with increasing precision between 1843 and 1849, established the equivalence of heat and work.",
-        "Wrong: this value is too large by a factor of about 24 compared with Joule's measurement.",
+        "Wrong: approximately 4,180 J corresponds to one kilocalorie, or 1,000 calories.",
         "Wrong: this is approximately the reciprocal (1/4,18 ≈ 0,24).",
       ],
     },
     "l2-q6": {
-      question: "A food package displays “250 cal”. Approximately how many joules does this represent?",
+      question: "A food package displays “250 kcal”. Approximately how many joules does this represent?",
       choices: ["≈ 250 J", "≈ 1046 kJ", "≈ 1046 J", "≈ 250 kJ"],
       explanations: [
         "Wrong: this would confuse the stated unit with the joule.",
-        "Correct: a food calorie is actually 1 kcal, normally written Cal with a capital letter. 250 kcal × 4,18 kJ/kcal ≈ 1046 kJ.",
-        "Wrong: this would overlook the fact that a food calorie is actually a kilocalorie.",
+        "Correct: 1 kcal = 1,000 cal. The stated energy is approximately 1,046 kJ.",
+        "Wrong: that corresponds to 250 cal, not 250 kcal. The prefix kilo represents a factor of 1,000.",
         "Wrong: this would confuse the food calorie with the kilojoule.",
       ],
     },
@@ -145,16 +145,16 @@ export const quizQuestionTranslations: Partial<
       ],
     },
     "l2-q7": {
-      question: "An ice cube at 0°C is heated until it becomes liquid water at 20°C. How should the total heat received be calculated?",
+      question: "An ice cube of mass m at 0°C is heated to liquid water at 20°C. Let L be the specific latent heat of fusion, c_water and c_ice the specific heat capacities of liquid water and ice, and ΔT = 20°C. Which expression gives the total heat received Q?",
       choices: [
-        "Q = m c_eau ΔT, with ΔT = 20°C and c_eau the specific heat capacity of liquid water.",
-        "Q = m L + m c_eau ΔT, with L the specific latent heat of fusion, c_eau the specific heat capacity of liquid water, and ΔT = 20°C.",
-        "Q = m c_glace ΔT + m c_eau ΔT with ΔT = 20°C.",
+        "Q = m c_water ΔT",
+        "Q = m L + m c_water ΔT",
+        "Q = m L + m c_ice ΔT",
       ],
       explanations: [
         "Wrong: this calculation omits the latent heat of fusion, absorbed at 0°C without any change in temperature; this was precisely Black's second discovery, distinct from heat capacity.",
         "Correct: the latent heat (melting at constant temperature) and the relation Q = mcΔT (heating within a single phase) are added together, but each applies to a distinct stage of the process.",
-        "Wrong: once the ice has melted, the specific heat capacity of liquid water applies to heating from 0°C to 20°C, not that of ice.",
+        "Wrong: melting is included, but heating from 0°C to 20°C concerns liquid water. Use c_water, not c_ice.",
       ],
     },
     "l2-vf4": {
@@ -166,18 +166,18 @@ export const quizQuestionTranslations: Partial<
       ],
     },
     "l3-q1": {
-      question: "An isolated system is a system whose walls are:",
+      question: "Only pressure-volume work is considered. Which wall properties ensure that the system is isolated?",
       choices: [
-        "Diathermanous, movable, and permeable.",
+        "Rigid, adiabatic, and permeable.",
         "Rigid, adiabatic, and impermeable.",
         "Rigid, diathermanous, and impermeable.",
-        "Movable, adiabatic, and permeable.",
+        "Movable, adiabatic, and impermeable.",
       ],
       explanations: [
-        "Wrong: on the contrary, these properties permit all exchanges (heat, work, and matter).",
+        "Wrong: permeable walls allow matter exchange, even if they are rigid and adiabatic.",
         "Correct: rigidity prevents work exchange, an adiabatic wall prevents heat exchange, and impermeability prevents matter exchange.",
         "Wrong: diathermanous walls permit heat transfer, so the system would not be isolated.",
-        "Wrong: movable and permeable walls permit exchanges of work and matter.",
+        "Wrong: movable walls allow pressure-volume work, even if they are adiabatic and impermeable.",
       ],
     },
     "l3-vf2": {
@@ -241,11 +241,11 @@ export const quizQuestionTranslations: Partial<
       question: "Why do we write δQ and δW rather than dQ and dW?",
       choices: [
         "Because they are inexact differentials: their integrals depend on the path followed.",
-        "Because Q and W are quantities too small to be described by ordinary differentials.",
+        "Because heat and work are not conserved, whereas the system's internal energy is conserved in every process.",
       ],
       explanations: [
         "Correct: Q and W depend on the path, unlike U, which depends only on the initial and final states. Writing dQ would amount to reviving caloric theory.",
-        "Wrong: the ‘size’ of the quantities is irrelevant; what matters is their path dependence.",
+        "Wrong: U can change. U is a state function, whereas Q and W depend on the path; the notation expresses this distinction.",
       ],
     },
     "l4-q3": {
@@ -253,12 +253,12 @@ export const quizQuestionTranslations: Partial<
       choices: [
         "It must be zero because Q and W are state functions.",
         "It is zero because U is a state function.",
-        "It is always strictly positive for a heat engine.",
+        "It is zero only if the cycle is quasi-static.",
       ],
       explanations: [
         "Wrong: the reverse is true—Q and W are not state functions; they are transfers, not properties of the system. Only their sum is constrained to vanish over a cycle through ΔU_cycle = 0.",
         "Correct: over a cycle, the system returns to its initial state. Since U is a state function, ΔU_cycle = U(A) − U(A) = 0, so the first law requires Q_cycle + W_cycle = 0.",
-        "Wrong: it is the sum Q_cycle + W_cycle that is zero, not each term separately; Q_cycle and W_cycle may each be nonzero and have opposite signs in a heat engine.",
+        "Wrong: every cycle returns the system to its initial state. ΔU_cycle = 0 requires Q_cycle + W_cycle = 0, even for a cycle that is not quasi-static.",
       ],
     },
     "l4-q4": {
@@ -275,10 +275,10 @@ export const quizQuestionTranslations: Partial<
       ],
     },
     "l4-q6": {
-      question: "During an isochoric transformation of a closed system, we always have:",
+      question: "During an isochoric transformation of a closed system, with pressure-volume work as the only form of work, we always have:",
       choices: ["W = 0, so ΔU = Q", "Q = 0, so ΔU = W", "ΔU = 0, so Q = −W"],
       explanations: [
-        "Correct: at constant volume, δW = −P dV = 0; the entire change in internal energy comes from heat.",
+        "Correct: at constant volume, pressure-volume work is zero. It is the only form of work here, so W = 0 and ΔU = Q.",
         "Wrong: this is the balance for an adiabatic transformation, not an isochoric one.",
         "Wrong: this is the balance for an isothermal transformation of an ideal gas, since U depends only on T.",
       ],
@@ -308,12 +308,12 @@ export const quizQuestionTranslations: Partial<
       choices: [
         "Weil ohne Temperaturdifferenz kein Wärmestrom fließt und es nichts gibt, was sich in Arbeit umwandeln ließe.",
         "Weil mechanische Arbeit nur aus einem Reservoir gewonnen werden kann, dessen Temperatur einen Mindestwert überschreitet, der für jedes Arbeitsmedium verschieden ist.",
-        "Weil der Druck des Arbeitsmediums während des gesamten Kreisprozesses über dem Atmosphärendruck bleiben muss.",
+        "Weil das kalte Reservoir das Arbeitsmedium zwangsläufig kondensieren muss, damit die Maschine ihren Kreisprozess erneut beginnen kann.",
       ],
       explanations: [
         "Richtig: Die Maschine erhebt gewissermaßen eine Maut auf den Wärmestrom heiß → kalt; ohne Strom keine Arbeit. Das Temperaturgefälle ist der eigentliche „Treibstoff“.",
         "Falsch: Es gibt keine Temperaturschwelle; schon eine kleine Differenz genügt (vgl. OTEC-Kraftwerke, die wenige Grad Unterschied im Ozean nutzen).",
-        "Falsch: Der Druck ist nicht das Kriterium; entscheidend ist die Temperaturdifferenz zwischen den beiden Reservoiren.",
+        "Falsch: Eine Wärmekraftmaschine kann ohne Phasenwechsel des Arbeitsmediums arbeiten. Kondensation ist keine allgemeine Voraussetzung.",
       ],
     },
     "l1-vf1": {
@@ -342,12 +342,12 @@ export const quizQuestionTranslations: Partial<
       choices: [
         "Das von Rumford beobachtete Bohren von Kanonenrohren: Durch Reibung entsteht scheinbar unbegrenzt Wärme.",
         "Joseph Blacks Messung der latenten Wärme, die Eis beim Schmelzen bei konstanter Temperatur aufnimmt.",
-        "Clapeyrons Zusammenfassung der Gesetze von Boyle, Charles und Gay-Lussac zu einer einzigen Zustandsgleichung des idealen Gases.",
+        "Die Beobachtung, dass Körper gleicher Masse für dieselbe Temperaturerhöhung unterschiedliche Wärmemengen benötigen.",
       ],
       explanations: [
         "Richtig: Wäre Wärme ein endliches, erhaltenes Fluid, könnte fortgesetztes Bohren nicht unbegrenzt Wärme erzeugen. Rumford (1798) schloss daraus, dass Wärme mit Bewegung zusammenhängt.",
         "Falsch: Die latente Wärme ließ sich im Gegenteil durch die Kaloriktheorie gut erklären (das Fluid „verbindet“ sich beim Phasenübergang mit der Materie).",
-        "Falsch: Clapeyron (1834) vereinheitlichte die Gasgesetze, ohne direkten Bezug zur Natur der Wärme.",
+        "Falsch: Unterschiedliche Wärmekapazitäten sind mit der Kaloriktheorie vereinbar; diese Beobachtung widerlegt sie nicht.",
       ],
     },
     "l2-vf1": {
@@ -361,14 +361,14 @@ export const quizQuestionTranslations: Partial<
     "l2-q4": {
       question: "Wofür steht der Koeffizient c in der von Joseph Black nachgewiesenen Beziehung Q = m c ΔT?",
       choices: [
-        "Für die gesamte vom Körper ausgetauschte Wärmemenge, angegeben in Joule.",
+        "Die Wärme, die benötigt wird, um die Temperatur des gesamten Körpers um ein Grad zu erhöhen.",
         "Für die Wärmemenge, die einer Masseneinheit des Körpers zugeführt werden muss, um ihre Temperatur um ein Grad zu erhöhen.",
-        "Für das Verhältnis zwischen der dem Körper zugeführten Arbeit und der von ihm aufgenommenen Wärme.",
+        "Die Wärme, die benötigt wird, um eine Masseneinheit des Körpers bei konstanter Temperatur zu schmelzen.",
       ],
       explanations: [
-        "Falsch: Q selbst ist die insgesamt ausgetauschte Wärme, nicht c; Q hängt außerdem von der Masse und der Temperaturdifferenz ab.",
+        "Falsch: Das definiert die Wärmekapazität C = mc des gesamten Körpers; c ist auf eine Masseneinheit bezogen.",
         "Richtig: c ist die spezifische Wärmekapazität (oder spezifische Wärme), also der von Black nachgewiesene materialspezifische Koeffizient.",
-        "Falsch: Diese Beziehung hat mit einem solchen Verhältnis nichts zu tun; in c gehen nur Wärme und Temperatur ein.",
+        "Falsch: Das definiert die spezifische Schmelzwärme L, nicht die spezifische Wärmekapazität c.",
       ],
     },
     "l2-q5": {
@@ -376,23 +376,23 @@ export const quizQuestionTranslations: Partial<
       choices: [
         "Etwa 1 J pro Kalorie",
         "Etwa 4,18 J pro Kalorie",
-        "Etwa 100 J pro Kalorie",
+        "Etwa 4 180 J pro Kalorie",
         "Etwa 0,24 J pro Kalorie",
       ],
       explanations: [
         "Falsch: Das wäre der Fall, wenn Kalorie und Joule bereits ohne Umrechnung dasselbe messen würden.",
         "Richtig: 1 cal ≈ 4,18 J; dieser zwischen 1843 und 1849 mit wachsender Genauigkeit gemessene Wert begründete die Äquivalenz von Wärme und Arbeit.",
-        "Falsch: Dieser Wert ist gegenüber Joules Messung um einen Faktor von etwa 24 zu groß.",
+        "Falsch: Etwa 4 180 J entsprechen einer Kilokalorie, also 1 000 Kalorien.",
         "Falsch: Das ist ungefähr der Kehrwert (1/4,18 ≈ 0,24).",
       ],
     },
     "l2-q6": {
-      question: "Auf einer Lebensmittelverpackung steht „250 cal“. Wie vielen Joule entspricht dies ungefähr?",
+      question: "Auf einer Lebensmittelverpackung steht „250 kcal“. Wie vielen Joule entspricht dies ungefähr?",
       choices: ["≈ 250 J", "≈ 1046 kJ", "≈ 1046 J", "≈ 250 kJ"],
       explanations: [
         "Falsch: Dabei würde die angegebene Einheit mit dem Joule verwechselt.",
-        "Richtig: Eine Lebensmittelkalorie ist tatsächlich 1 kcal und wird üblicherweise mit einem großen C als Cal geschrieben. 250 kcal × 4,18 kJ/kcal ≈ 1046 kJ.",
-        "Falsch: Dabei würde übersehen, dass eine Lebensmittelkalorie tatsächlich eine Kilokalorie ist.",
+        "Richtig: 1 kcal = 1 000 cal. Die angegebene Energie beträgt etwa 1 046 kJ.",
+        "Falsch: Das entspricht 250 cal, nicht 250 kcal. Die Vorsilbe Kilo steht für den Faktor 1 000.",
         "Falsch: Dabei würde die Lebensmittelkalorie mit dem Kilojoule verwechselt.",
       ],
     },
@@ -405,16 +405,16 @@ export const quizQuestionTranslations: Partial<
       ],
     },
     "l2-q7": {
-      question: "Ein Eiswürfel bei 0°C wird erwärmt, bis flüssiges Wasser bei 20°C entsteht. Wie lässt sich die insgesamt aufgenommene Wärme richtig berechnen?",
+      question: "Ein Eiswürfel der Masse m bei 0°C wird zu flüssigem Wasser bei 20°C erwärmt. L bezeichnet die spezifische Schmelzwärme, c_water und c_ice die spezifischen Wärmekapazitäten von flüssigem Wasser und Eis; ΔT = 20°C. Welcher Ausdruck ergibt die insgesamt aufgenommene Wärme Q?",
       choices: [
-        "Q = m c_eau ΔT, mit ΔT = 20°C und c_eau als spezifischer Wärmekapazität flüssigen Wassers.",
-        "Q = m L + m c_eau ΔT, wobei L die spezifische Schmelzwärme und c_eau die spezifische Wärmekapazität des flüssigen Wassers bezeichnen; dabei gilt ΔT = 20°C.",
-        "Q = m c_glace ΔT + m c_eau ΔT mit ΔT = 20°C.",
+        "Q = m c_water ΔT",
+        "Q = m L + m c_water ΔT",
+        "Q = m L + m c_ice ΔT",
       ],
       explanations: [
         "Falsch: Diese Rechnung lässt die latente Schmelzwärme außer Acht, die bei 0°C ohne Temperaturänderung aufgenommen wird; genau dies war Blacks zweite Entdeckung, die von der Wärmekapazität zu unterscheiden ist.",
         "Richtig: Die latente Wärme (Schmelzen bei konstanter Temperatur) und die Beziehung Q = mcΔT (Erwärmung innerhalb einer Phase) werden addiert, gelten aber jeweils für einen eigenen Schritt des Vorgangs.",
-        "Falsch: Nach dem Schmelzen des Eises gilt für die Erwärmung von 0°C auf 20°C die spezifische Wärmekapazität des flüssigen Wassers, nicht diejenige des Eises.",
+        "Falsch: Das Schmelzen ist berücksichtigt, aber von 0°C auf 20°C wird flüssiges Wasser erwärmt. Daher ist c_water statt c_ice zu verwenden.",
       ],
     },
     "l2-vf4": {
@@ -426,18 +426,18 @@ export const quizQuestionTranslations: Partial<
       ],
     },
     "l3-q1": {
-      question: "Die Wände eines isolierten Systems sind:",
+      question: "Es wird nur Volumenarbeit betrachtet. Welche Wandeigenschaften gewährleisten die Isolation des Systems?",
       choices: [
-        "Diatherman, beweglich und durchlässig.",
+        "Starr, adiabatisch und durchlässig.",
         "Starr, adiabatisch und undurchlässig.",
         "Starr, diatherman und undurchlässig.",
-        "Beweglich, adiabatisch und durchlässig.",
+        "Beweglich, adiabatisch und undurchlässig.",
       ],
       explanations: [
-        "Falsch: Diese Eigenschaften erlauben im Gegenteil alle Austauschvorgänge (Wärme, Arbeit und Materie).",
+        "Falsch: Durchlässige Wände erlauben Stoffaustausch, auch wenn sie starr und adiabatisch sind.",
         "Richtig: Eine starre Wand verhindert den Austausch von Arbeit, eine adiabatische den Austausch von Wärme und eine undurchlässige den Austausch von Materie.",
         "Falsch: Diathermane Wände lassen Wärme hindurch; das System wäre nicht isoliert.",
-        "Falsch: Bewegliche und durchlässige Wände lassen den Austausch von Arbeit und Materie zu.",
+        "Falsch: Bewegliche Wände erlauben Volumenarbeit, auch wenn sie adiabatisch und undurchlässig sind.",
       ],
     },
     "l3-vf2": {
@@ -501,11 +501,11 @@ export const quizQuestionTranslations: Partial<
       question: "Warum schreibt man δQ und δW statt dQ und dW?",
       choices: [
         "Weil es sich um nicht exakte Differentiale handelt: Ihre Integrale hängen vom eingeschlagenen Weg ab.",
-        "Weil Q und W zu kleine Größen sind, um mit gewöhnlichen Differentialen beschrieben zu werden.",
+        "Weil Wärme und Arbeit nicht erhalten bleiben, während die innere Energie des Systems bei jedem Prozess erhalten bleibt.",
       ],
       explanations: [
         "Richtig: Q und W hängen vom Weg ab, anders als U, das nur vom Anfangs- und Endzustand abhängt. dQ zu schreiben hieße, die Wärmestofftheorie wiederzubeleben.",
-        "Falsch: Die ‚Größe‘ der Größen spielt keine Rolle; entscheidend ist die Wegabhängigkeit.",
+        "Falsch: U kann sich ändern. U ist eine Zustandsfunktion, während Q und W vom Weg abhängen; diesen Unterschied drückt die Schreibweise aus.",
       ],
     },
     "l4-q3": {
@@ -513,12 +513,12 @@ export const quizQuestionTranslations: Partial<
       choices: [
         "Sie ist notwendigerweise null, weil Q und W Zustandsfunktionen sind.",
         "Sie ist null, weil U eine Zustandsfunktion ist.",
-        "Für eine Wärmekraftmaschine ist sie immer strikt positiv.",
+        "Sie ist nur dann null, wenn der Kreisprozess quasistatisch ist.",
       ],
       explanations: [
         "Falsch: Das Gegenteil ist richtig—Q und W sind keine Zustandsfunktionen, sondern Übertragungen und keine Größen des Systems. Nur ihre Summe muss wegen ΔU_cycle = 0 über einen Kreisprozess verschwinden.",
         "Richtig: Nach einem Kreisprozess befindet sich das System wieder im Anfangszustand. Da U eine Zustandsfunktion ist, gilt ΔU_cycle = U(A) − U(A) = 0; der erste Hauptsatz fordert daher Q_cycle + W_cycle = 0.",
-        "Falsch: Die Summe Q_cycle + W_cycle ist null, nicht jeder Term einzeln; bei einer Wärmekraftmaschine können Q_cycle und W_cycle beide ungleich null sein und entgegengesetzte Vorzeichen haben.",
+        "Falsch: Jeder Kreisprozess führt zum Anfangszustand zurück. ΔU_cycle = 0 erzwingt Q_cycle + W_cycle = 0, auch bei einem nicht quasistatischen Kreisprozess.",
       ],
     },
     "l4-q4": {
@@ -535,10 +535,10 @@ export const quizQuestionTranslations: Partial<
       ],
     },
     "l4-q6": {
-      question: "Bei einer isochoren Zustandsänderung eines geschlossenen Systems gilt stets:",
+      question: "Bei einer isochoren Zustandsänderung eines geschlossenen Systems, bei der nur Volumenarbeit möglich ist, gilt stets:",
       choices: ["W = 0, also ΔU = Q", "Q = 0, also ΔU = W", "ΔU = 0, also Q = −W"],
       explanations: [
-        "Richtig: Bei konstantem Volumen ist δW = −P dV = 0; die gesamte Änderung der inneren Energie stammt aus der Wärme.",
+        "Richtig: Bei konstantem Volumen ist die Volumenarbeit null. Andere Arbeitsformen sind hier ausgeschlossen, also W = 0 und ΔU = Q.",
         "Falsch: Das ist die Bilanz einer adiabatischen, nicht einer isochoren Zustandsänderung.",
         "Falsch: Das ist die Bilanz einer isothermen Zustandsänderung eines idealen Gases, da U nur von T abhängt.",
       ],
@@ -568,12 +568,12 @@ export const quizQuestionTranslations: Partial<
       choices: [
         "Porque sin diferencia de temperatura no circula ningún flujo de calor, y no hay nada que convertir en trabajo.",
         "Porque el trabajo mecánico solo puede producirse a partir de un foco cuya temperatura supere un umbral mínimo, propio de cada fluido de trabajo.",
-        "Porque la presión del fluido de trabajo debe mantenerse siempre por encima de la presión atmosférica durante todo el ciclo.",
+        "Porque el foco frío debe necesariamente condensar el fluido de trabajo para que el motor pueda comenzar otro ciclo.",
       ],
       explanations: [
         "Correcto: el motor es un peaje sobre el flujo de calor caliente → frío; sin flujo, no hay trabajo. El gradiente de temperatura es el verdadero «combustible».",
         "Falso: no existe ningún umbral de temperatura; basta una diferencia incluso pequeña (véanse las centrales OTEC, que aprovechan unos pocos grados de diferencia en el océano).",
-        "Falso: la presión no es el criterio; lo que cuenta es la diferencia de temperatura entre los dos focos.",
+        "Falso: un motor térmico puede funcionar sin que el fluido cambie de fase. La condensación no es una condición general.",
       ],
     },
     "l1-vf1": {
@@ -602,12 +602,12 @@ export const quizQuestionTranslations: Partial<
       choices: [
         "La perforación de cañones observada por Rumford: el rozamiento produce calor sin límite aparente.",
         "La medición de Joseph Black del calor latente absorbido por el hielo durante su fusión a temperatura constante.",
-        "La síntesis de Clapeyron de las leyes de Boyle, Charles y Gay-Lussac en una única ecuación de estado de los gases ideales.",
+        "La observación de que cuerpos de igual masa requieren cantidades de calor distintas para un mismo aumento de temperatura.",
       ],
       explanations: [
         "Correcto: si el calor fuera un fluido conservado y finito, la perforación continua no podría producirlo indefinidamente. Rumford (1798) concluyó que estaba relacionado con el movimiento.",
         "Falso: por el contrario, la teoría del calórico explicaba bien el calor latente (el fluido se «combina» con la materia durante el cambio de estado).",
-        "Falso: Clapeyron (1834) unificó las leyes de los gases, sin relación directa con la naturaleza del calor.",
+        "Falso: distintas capacidades caloríficas son compatibles con la teoría del calórico; esta observación no la refuta.",
       ],
     },
     "l2-vf1": {
@@ -621,14 +621,14 @@ export const quizQuestionTranslations: Partial<
     "l2-q4": {
       question: "En la relación Q = m c ΔT puesta de manifiesto por Joseph Black, ¿qué representa el coeficiente c?",
       choices: [
-        "La cantidad total de calor intercambiada por el cuerpo, expresada en julios.",
+        "El calor necesario para elevar un grado la temperatura del cuerpo entero.",
         "La cantidad de calor que debe suministrarse por unidad de masa del cuerpo para elevar su temperatura un grado.",
-        "La relación entre el trabajo suministrado al cuerpo y el calor que recibe.",
+        "El calor necesario para fundir una unidad de masa del cuerpo a temperatura constante.",
       ],
       explanations: [
-        "Falso: Q es la cantidad total de calor intercambiada, no c; además, Q depende de la masa y de la diferencia de temperatura.",
+        "Falso: eso define la capacidad térmica C = mc del cuerpo entero; c se refiere a una unidad de masa.",
         "Correcto: es la capacidad térmica específica (o calor específico), el coeficiente propio de cada material que Black puso de manifiesto.",
-        "Falso: esta relación no tiene nada que ver con tal cociente; c solo relaciona el calor y la temperatura.",
+        "Falso: eso define el calor latente específico de fusión L, no la capacidad térmica específica c.",
       ],
     },
     "l2-q5": {
@@ -636,23 +636,23 @@ export const quizQuestionTranslations: Partial<
       choices: [
         "Aproximadamente 1 J por caloría",
         "Aproximadamente 4,18 J por caloría",
-        "Aproximadamente 100 J por caloría",
+        "Aproximadamente 4 180 J por caloría",
         "Aproximadamente 0,24 J por caloría",
       ],
       explanations: [
         "Falso: así sería si la caloría y el julio ya midieran lo mismo sin necesidad de conversión.",
         "Correcto: 1 cal ≈ 4,18 J; este valor, medido con precisión creciente entre 1843 y 1849, estableció la equivalencia entre calor y trabajo.",
-        "Falso: este valor es unas 24 veces mayor que el valor medido por Joule.",
+        "Falso: unos 4 180 J corresponden a una kilocaloría, es decir, 1 000 calorías.",
         "Falso: es aproximadamente el inverso (1/4,18 ≈ 0,24).",
       ],
     },
     "l2-q6": {
-      question: "Un envase alimentario indica «250 cal». ¿A cuántos julios corresponde aproximadamente?",
+      question: "Un envase alimentario indica «250 kcal». ¿A cuántos julios corresponde aproximadamente?",
       choices: ["≈ 250 J", "≈ 1046 kJ", "≈ 1046 J", "≈ 250 kJ"],
       explanations: [
         "Falso: esto equivaldría a confundir la unidad indicada con el julio.",
-        "Correcto: la caloría alimentaria es en realidad 1 kcal, que normalmente se escribe Cal con mayúscula. 250 kcal × 4,18 kJ/kcal ≈ 1046 kJ.",
-        "Falso: esto equivaldría a olvidar que una caloría alimentaria es en realidad una kilocaloría.",
+        "Correcto: 1 kcal = 1 000 cal. La energía indicada es de aproximadamente 1 046 kJ.",
+        "Falso: eso corresponde a 250 cal, no a 250 kcal. El prefijo kilo representa un factor de 1 000.",
         "Falso: esto equivaldría a confundir la caloría alimentaria con el kilojulio.",
       ],
     },
@@ -665,16 +665,16 @@ export const quizQuestionTranslations: Partial<
       ],
     },
     "l2-q7": {
-      question: "Se calienta un cubito de hielo a 0°C hasta obtener agua líquida a 20°C. ¿Cómo debe calcularse correctamente el calor total recibido?",
+      question: "Un cubito de hielo de masa m a 0°C se calienta hasta obtener agua líquida a 20°C. L es el calor latente específico de fusión, c_water y c_ice son las capacidades térmicas específicas del agua líquida y del hielo, y ΔT = 20°C. ¿Qué expresión da el calor total recibido Q?",
       choices: [
-        "Q = m c_eau ΔT, con ΔT = 20°C y c_eau la capacidad térmica específica del agua líquida.",
-        "Q = m L + m c_eau ΔT, con L el calor latente específico de fusión, c_eau la capacidad térmica específica del agua líquida y ΔT = 20°C.",
-        "Q = m c_glace ΔT + m c_eau ΔT con ΔT = 20°C.",
+        "Q = m c_water ΔT",
+        "Q = m L + m c_water ΔT",
+        "Q = m L + m c_ice ΔT",
       ],
       explanations: [
         "Falso: este cálculo omite el calor latente de fusión, absorbido a 0°C sin que cambie la temperatura; esta fue precisamente la segunda aportación de Black, distinta de la capacidad térmica.",
         "Correcto: el calor latente (fusión a temperatura constante) y la relación Q = mcΔT (calentamiento dentro de una sola fase) se suman, pero cada uno se aplica a una etapa distinta del proceso.",
-        "Falso: una vez fundido el hielo, para calentar de 0°C a 20°C se aplica la capacidad térmica específica del agua líquida, no la del hielo.",
+        "Falso: se incluye la fusión, pero el calentamiento de 0°C a 20°C corresponde al agua líquida. Hay que usar c_water, no c_ice.",
       ],
     },
     "l2-vf4": {
@@ -686,18 +686,18 @@ export const quizQuestionTranslations: Partial<
       ],
     },
     "l3-q1": {
-      question: "Un sistema aislado es un sistema cuyas paredes son:",
+      question: "Solo se considera el trabajo de las fuerzas de presión. ¿Qué propiedades de las paredes aseguran que el sistema esté aislado?",
       choices: [
-        "Diatermanas, móviles y permeables.",
+        "Rígidas, adiabáticas y permeables.",
         "Rígidas, adiabáticas e impermeables.",
         "Rígidas, diatermanas e impermeables.",
-        "Móviles, adiabáticas y permeables.",
+        "Móviles, adiabáticas e impermeables.",
       ],
       explanations: [
-        "Falso: por el contrario, estas propiedades permiten todos los intercambios (calor, trabajo y materia).",
+        "Falso: las paredes permeables permiten intercambiar materia, aunque sean rígidas y adiabáticas.",
         "Correcto: una pared rígida impide el intercambio de trabajo, una adiabática el de calor y una impermeable el de materia.",
         "Falso: las paredes diatermanas permiten el paso del calor; el sistema no estaría aislado.",
-        "Falso: las paredes móviles y permeables permiten intercambios de trabajo y materia.",
+        "Falso: las paredes móviles permiten intercambiar trabajo de las fuerzas de presión, aunque sean adiabáticas e impermeables.",
       ],
     },
     "l3-vf2": {
@@ -761,11 +761,11 @@ export const quizQuestionTranslations: Partial<
       question: "¿Por qué se escriben δQ y δW en lugar de dQ y dW?",
       choices: [
         "Porque son diferenciales inexactas: sus integrales dependen del camino seguido.",
-        "Porque Q y W son magnitudes demasiado pequeñas para describirse mediante diferenciales ordinarias.",
+        "Porque el calor y el trabajo no se conservan, mientras que la energía interna del sistema se conserva en toda transformación.",
       ],
       explanations: [
         "Correcto: Q y W dependen del camino, a diferencia de U, que solo depende de los estados inicial y final. Escribir dQ equivaldría a resucitar la teoría del calórico.",
-        "Incorrecto: el «tamaño» de las magnitudes no tiene nada que ver; lo importante es la dependencia del camino.",
+        "Falso: U puede variar. U es una función de estado, mientras que Q y W dependen del camino; la notación expresa esta diferencia.",
       ],
     },
     "l4-q3": {
@@ -773,12 +773,12 @@ export const quizQuestionTranslations: Partial<
       choices: [
         "Es necesariamente nulo porque Q y W son funciones de estado.",
         "Es nulo porque U es una función de estado.",
-        "Siempre es estrictamente positivo para una máquina térmica motriz.",
+        "Solo es nulo si el ciclo es cuasiestático.",
       ],
       explanations: [
         "Incorrecto: ocurre lo contrario—Q y W no son funciones de estado, sino transferencias, no magnitudes del sistema. Solo su suma debe anularse en un ciclo mediante ΔU_cycle = 0.",
         "Correcto: al terminar un ciclo, el sistema recupera su estado inicial. Como U es una función de estado, ΔU_cycle = U(A) − U(A) = 0; por tanto, el primer principio impone Q_cycle + W_cycle = 0.",
-        "Incorrecto: es la suma Q_cycle + W_cycle la que es nula, no cada término por separado; Q_cycle y W_cycle pueden ser ambos no nulos y de signos opuestos en una máquina térmica.",
+        "Falso: todo ciclo devuelve el sistema a su estado inicial. ΔU_cycle = 0 impone Q_cycle + W_cycle = 0, aunque el ciclo no sea cuasiestático.",
       ],
     },
     "l4-q4": {
@@ -795,10 +795,10 @@ export const quizQuestionTranslations: Partial<
       ],
     },
     "l4-q6": {
-      question: "Durante una transformación isócora de un sistema cerrado, siempre se cumple:",
+      question: "Durante una transformación isócora de un sistema cerrado, siendo el único trabajo el de las fuerzas de presión, siempre se cumple:",
       choices: ["W = 0, por tanto ΔU = Q", "Q = 0, por tanto ΔU = W", "ΔU = 0, por tanto Q = −W"],
       explanations: [
-        "Correcto: a volumen constante, δW = −P dV = 0; toda la variación de energía interna procede del calor.",
+        "Correcto: a volumen constante, el trabajo de las fuerzas de presión es nulo. Aquí es el único trabajo, por lo que W = 0 y ΔU = Q.",
         "Incorrecto: este es el balance de una transformación adiabática, no isócora.",
         "Incorrecto: este es el balance de una transformación isotérmica de un gas ideal, pues U solo depende de T.",
       ],
@@ -828,12 +828,12 @@ export const quizQuestionTranslations: Partial<
       choices: [
         "Porque sem diferença de temperatura não circula nenhum fluxo de calor, e não há nada para converter em trabalho.",
         "Porque o trabalho mecânico só pode ser produzido a partir de uma fonte cuja temperatura ultrapasse um limiar mínimo, próprio de cada fluido de trabalho.",
-        "Porque a pressão do fluido de trabalho tem de se manter sempre acima da pressão atmosférica durante todo o ciclo.",
+        "Porque a fonte fria tem necessariamente de condensar o fluido de trabalho para que o motor possa iniciar outro ciclo.",
       ],
       explanations: [
         "Correto: o motor é uma portagem sobre o fluxo de calor quente → frio; sem fluxo, não há trabalho. O gradiente de temperatura é o verdadeiro «combustível».",
         "Falso: não existe qualquer limiar de temperatura; basta uma diferença mesmo pequena (ver as centrais OTEC, que exploram alguns graus de diferença no oceano).",
-        "Falso: a pressão não é o critério; o que conta é a diferença de temperatura entre as duas fontes.",
+        "Falso: um motor térmico pode funcionar sem mudança de fase do fluido. A condensação não é uma condição geral.",
       ],
     },
     "l1-vf1": {
@@ -862,12 +862,12 @@ export const quizQuestionTranslations: Partial<
       choices: [
         "A perfuração de canhões observada por Rumford: o atrito produz calor sem limite aparente.",
         "A medição por Joseph Black do calor latente absorvido pelo gelo durante a fusão, a temperatura constante.",
-        "A síntese por Clapeyron das leis de Boyle, Charles e Gay-Lussac numa única equação de estado dos gases ideais.",
+        "A observação de que corpos de igual massa necessitam de quantidades de calor diferentes para o mesmo aumento de temperatura.",
       ],
       explanations: [
         "Correto: se o calor fosse um fluido conservado e finito, a perfuração contínua não poderia produzi-lo indefinidamente. Rumford (1798) concluiu que estava relacionado com o movimento.",
         "Falso: pelo contrário, a teoria do calórico explicava bem o calor latente (o fluido «combina-se» com a matéria durante a mudança de estado).",
-        "Falso: Clapeyron (1834) unificou as leis dos gases, sem relação direta com a natureza do calor.",
+        "Falso: capacidades térmicas diferentes são compatíveis com a teoria do calórico; esta observação não a refuta.",
       ],
     },
     "l2-vf1": {
@@ -881,14 +881,14 @@ export const quizQuestionTranslations: Partial<
     "l2-q4": {
       question: "Na relação Q = m c ΔT evidenciada por Joseph Black, o que representa o coeficiente c?",
       choices: [
-        "A quantidade total de calor trocada pelo corpo, expressa em joules.",
+        "O calor necessário para elevar um grau a temperatura do corpo inteiro.",
         "A quantidade de calor que é necessário fornecer por unidade de massa do corpo para elevar a sua temperatura um grau.",
-        "A razão entre o trabalho fornecido ao corpo e o calor que este recebe.",
+        "O calor necessário para fundir uma unidade de massa do corpo a temperatura constante.",
       ],
       explanations: [
-        "Falso: Q é a quantidade total de calor trocada, não c; além disso, Q depende da massa e da diferença de temperatura.",
+        "Falso: isso define a capacidade térmica C = mc do corpo inteiro; c é referida à unidade de massa.",
         "Correto: é a capacidade térmica mássica (ou calor específico), o coeficiente próprio de cada material que Black pôs em evidência.",
-        "Falso: esta relação nada tem que ver com essa razão; c relaciona apenas o calor e a temperatura.",
+        "Falso: isso define o calor latente mássico de fusão L, não a capacidade térmica mássica c.",
       ],
     },
     "l2-q5": {
@@ -896,23 +896,23 @@ export const quizQuestionTranslations: Partial<
       choices: [
         "Cerca de 1 J por caloria",
         "Cerca de 4,18 J por caloria",
-        "Cerca de 100 J por caloria",
+        "Cerca de 4 180 J por caloria",
         "Cerca de 0,24 J por caloria",
       ],
       explanations: [
         "Falso: seria esse o caso se a caloria e o joule já medissem a mesma coisa sem conversão.",
         "Correto: 1 cal ≈ 4,18 J; este valor, medido com precisão crescente entre 1843 e 1849, estabeleceu a equivalência entre calor e trabalho.",
-        "Falso: este valor é cerca de 24 vezes superior ao valor medido por Joule.",
+        "Falso: cerca de 4 180 J correspondem a uma quilocaloria, ou seja, 1 000 calorias.",
         "Falso: é aproximadamente o inverso (1/4,18 ≈ 0,24).",
       ],
     },
     "l2-q6": {
-      question: "Uma embalagem alimentar indica «250 cal». A quantos joules corresponde aproximadamente?",
+      question: "Uma embalagem alimentar indica «250 kcal». A quantos joules corresponde aproximadamente?",
       choices: ["≈ 250 J", "≈ 1046 kJ", "≈ 1046 J", "≈ 250 kJ"],
       explanations: [
         "Falso: isso equivaleria a confundir a unidade indicada com o joule.",
-        "Correto: a caloria alimentar é, na realidade, 1 kcal, normalmente indicada por Cal com maiúscula. 250 kcal × 4,18 kJ/kcal ≈ 1046 kJ.",
-        "Falso: isso equivaleria a esquecer que uma caloria alimentar é, na realidade, uma quilocaloria.",
+        "Correto: 1 kcal = 1 000 cal. A energia indicada é de cerca de 1 046 kJ.",
+        "Falso: isso corresponde a 250 cal, não a 250 kcal. O prefixo quilo representa um fator de 1 000.",
         "Falso: isso equivaleria a confundir a caloria alimentar com o quilojoule.",
       ],
     },
@@ -925,16 +925,16 @@ export const quizQuestionTranslations: Partial<
       ],
     },
     "l2-q7": {
-      question: "Aquece-se um cubo de gelo a 0°C até obter água líquida a 20°C. Como se deve calcular corretamente o calor total recebido?",
+      question: "Um cubo de gelo de massa m a 0°C é aquecido até se obter água líquida a 20°C. L é o calor latente mássico de fusão, c_water e c_ice são as capacidades térmicas mássicas da água líquida e do gelo, e ΔT = 20°C. Que expressão dá o calor total recebido Q?",
       choices: [
-        "Q = m c_eau ΔT, com ΔT = 20°C e c_eau a capacidade térmica mássica da água líquida.",
-        "Q = m L + m c_eau ΔT, com L o calor latente mássico de fusão, c_eau a capacidade térmica mássica da água líquida e ΔT = 20°C.",
-        "Q = m c_glace ΔT + m c_eau ΔT com ΔT = 20°C.",
+        "Q = m c_water ΔT",
+        "Q = m L + m c_water ΔT",
+        "Q = m L + m c_ice ΔT",
       ],
       explanations: [
         "Falso: este cálculo omite o calor latente de fusão, absorvido a 0°C sem que a temperatura se altere; foi precisamente esta a segunda descoberta de Black, distinta da capacidade térmica.",
         "Correto: o calor latente (fusão a temperatura constante) e a relação Q = mcΔT (aquecimento numa única fase) somam-se, mas cada um se aplica a uma etapa distinta do processo.",
-        "Falso: depois de o gelo fundir, é a capacidade térmica mássica da água líquida que se aplica ao aquecimento de 0°C a 20°C, não a do gelo.",
+        "Falso: a fusão está incluída, mas o aquecimento de 0°C a 20°C diz respeito à água líquida. Deve usar-se c_water, não c_ice.",
       ],
     },
     "l2-vf4": {
@@ -946,18 +946,18 @@ export const quizQuestionTranslations: Partial<
       ],
     },
     "l3-q1": {
-      question: "Um sistema isolado é um sistema cujas paredes são:",
+      question: "Considera-se apenas o trabalho das forças de pressão. Que propriedades das paredes garantem o isolamento do sistema?",
       choices: [
-        "Diatermanas, móveis e permeáveis.",
+        "Rígidas, adiabáticas e permeáveis.",
         "Rígidas, adiabáticas e impermeáveis.",
         "Rígidas, diatermanas e impermeáveis.",
-        "Móveis, adiabáticas e permeáveis.",
+        "Móveis, adiabáticas e impermeáveis.",
       ],
       explanations: [
-        "Falso: pelo contrário, estas propriedades permitem todas as trocas (calor, trabalho e matéria).",
+        "Falso: paredes permeáveis permitem trocar matéria, mesmo sendo rígidas e adiabáticas.",
         "Correto: uma parede rígida impede a troca de trabalho, uma adiabática a troca de calor e uma impermeável a troca de matéria.",
         "Falso: as paredes diatermanas permitem a passagem do calor; o sistema não estaria isolado.",
-        "Falso: as paredes móveis e permeáveis permitem trocas de trabalho e matéria.",
+        "Falso: paredes móveis permitem trocar trabalho das forças de pressão, mesmo sendo adiabáticas e impermeáveis.",
       ],
     },
     "l3-vf2": {
@@ -1021,11 +1021,11 @@ export const quizQuestionTranslations: Partial<
       question: "Por que se escreve δQ e δW em vez de dQ e dW?",
       choices: [
         "Porque são diferenciais inexatas: os seus integrais dependem do caminho seguido.",
-        "Porque Q e W são grandezas demasiado pequenas para serem descritas por diferenciais ordinárias.",
+        "Porque o calor e o trabalho não se conservam, enquanto a energia interna do sistema se conserva em qualquer transformação.",
       ],
       explanations: [
         "Correto: Q e W dependem do caminho, ao contrário de U, que depende apenas dos estados inicial e final. Escrever dQ equivaleria a ressuscitar a teoria do calórico.",
-        "Errado: o «tamanho» das grandezas é irrelevante; o que está em causa é a dependência do caminho.",
+        "Falso: U pode variar. U é uma função de estado, enquanto Q e W dependem do caminho; a notação exprime esta diferença.",
       ],
     },
     "l4-q3": {
@@ -1033,12 +1033,12 @@ export const quizQuestionTranslations: Partial<
       choices: [
         "É necessariamente nulo porque Q e W são funções de estado.",
         "É nulo porque U é uma função de estado.",
-        "É sempre estritamente positivo para uma máquina térmica motora.",
+        "Só é nulo se o ciclo for quase-estático.",
       ],
       explanations: [
         "Errado: é o contrário—Q e W não são funções de estado; são transferências, não grandezas do sistema. Apenas a sua soma é obrigada a anular-se num ciclo por ΔU_cycle = 0.",
         "Correto: num ciclo, o sistema regressa ao estado inicial. Como U é uma função de estado, ΔU_cycle = U(A) − U(A) = 0; o primeiro princípio impõe, portanto, Q_cycle + W_cycle = 0.",
-        "Errado: é a soma Q_cycle + W_cycle que é nula, não cada termo separadamente; Q_cycle e W_cycle podem ser ambos não nulos e ter sinais opostos numa máquina térmica.",
+        "Falso: qualquer ciclo devolve o sistema ao estado inicial. ΔU_cycle = 0 impõe Q_cycle + W_cycle = 0, mesmo que o ciclo não seja quase-estático.",
       ],
     },
     "l4-q4": {
@@ -1055,10 +1055,10 @@ export const quizQuestionTranslations: Partial<
       ],
     },
     "l4-q6": {
-      question: "Durante uma transformação isocórica de um sistema fechado, tem-se sempre:",
+      question: "Durante uma transformação isocórica de um sistema fechado, sendo o único trabalho o das forças de pressão, tem-se sempre:",
       choices: ["W = 0, logo ΔU = Q", "Q = 0, logo ΔU = W", "ΔU = 0, logo Q = −W"],
       explanations: [
-        "Correto: a volume constante, δW = −P dV = 0; toda a variação da energia interna provém do calor.",
+        "Correto: a volume constante, o trabalho das forças de pressão é nulo. Aqui é o único trabalho, logo W = 0 e ΔU = Q.",
         "Errado: este é o balanço de uma transformação adiabática, não isocórica.",
         "Errado: este é o balanço de uma transformação isotérmica de um gás ideal, pois U depende apenas de T.",
       ],
@@ -1088,12 +1088,12 @@ export const quizQuestionTranslations: Partial<
       choices: [
         "Perché senza differenza di temperatura non scorre alcun flusso di calore, e non c'è nulla da convertire in lavoro.",
         "Perché il lavoro meccanico può essere prodotto solo a partire da una sorgente la cui temperatura superi una soglia minima, propria di ciascun fluido di lavoro.",
-        "Perché la pressione del fluido di lavoro deve restare sempre superiore alla pressione atmosferica per tutto il ciclo.",
+        "Perché la sorgente fredda deve necessariamente condensare il fluido di lavoro affinché il motore possa iniziare un nuovo ciclo.",
       ],
       explanations: [
         "Esatto: il motore è un pedaggio sul flusso di calore caldo → freddo; senza flusso, niente lavoro. Il gradiente di temperatura è il vero «carburante».",
         "Falso: non esiste alcuna soglia di temperatura; basta una differenza anche piccola (cfr. le centrali OTEC, che sfruttano pochi gradi di scarto nell'oceano).",
-        "Falso: la pressione non è il criterio; ciò che conta è lo scarto di temperatura fra le due sorgenti.",
+        "Falso: un motore termico può funzionare senza cambiamenti di fase del fluido. La condensazione non è una condizione generale.",
       ],
     },
     "l1-vf1": {
@@ -1122,12 +1122,12 @@ export const quizQuestionTranslations: Partial<
       choices: [
         "La perforazione dei cannoni osservata da Rumford: l'attrito produce calore senza un limite apparente.",
         "La misura di Joseph Black del calore latente assorbito dal ghiaccio durante la fusione, a temperatura costante.",
-        "La sintesi, da parte di Clapeyron, delle leggi di Boyle, Charles e Gay-Lussac in un'unica equazione di stato dei gas ideali.",
+        "L'osservazione che corpi di uguale massa richiedono quantità di calore diverse per lo stesso aumento di temperatura.",
       ],
       explanations: [
         "Esatto: se il calore fosse stato un fluido conservato e finito, una perforazione continua non avrebbe potuto produrne indefinitamente. Nel 1798 Rumford concluse che il calore è legato al movimento.",
         "Falso: il calore latente era invece ben spiegato dalla teoria del calorico (il fluido si «combina» con la materia durante il cambiamento di stato).",
-        "Falso: nel 1834 Clapeyron riunì le leggi dei gas, senza un rapporto diretto con la natura del calore.",
+        "Falso: capacità termiche diverse sono compatibili con la teoria del calorico; questa osservazione non la confuta.",
       ],
     },
     "l2-vf1": {
@@ -1141,33 +1141,33 @@ export const quizQuestionTranslations: Partial<
     "l2-q4": {
       question: "Nella relazione Q = m c ΔT messa in evidenza da Joseph Black, che cosa rappresenta il coefficiente c?",
       choices: [
-        "La quantità totale di calore scambiata dal corpo, espressa in joule.",
+        "Il calore necessario per aumentare di un grado la temperatura dell'intero corpo.",
         "La quantità di calore che occorre fornire a un'unità di massa del corpo per aumentarne la temperatura di un grado.",
-        "Il rapporto tra il lavoro fornito al corpo e il calore che esso riceve.",
+        "Il calore necessario per fondere un'unità di massa del corpo a temperatura costante.",
       ],
       explanations: [
-        "Falso: è Q a rappresentare il calore totale scambiato, non c; Q dipende inoltre dalla massa e dalla variazione di temperatura.",
+        "Falso: questa è la capacità termica C = mc dell'intero corpo; c è riferita all'unità di massa.",
         "Esatto: è la capacità termica massica (o calore specifico), il coefficiente proprio di ciascun materiale messo in evidenza da Black.",
-        "Falso: questa relazione non ha nulla a che vedere con c; c riguarda soltanto il calore e la temperatura.",
+        "Falso: questo è il calore latente specifico di fusione L, non la capacità termica massica c.",
       ],
     },
     "l2-q5": {
       question: "Qual è, nelle unità moderne, il valore della caloria misurato da Joule?",
-      choices: ["Circa 1 J per caloria", "Circa 4,18 J per caloria", "Circa 100 J per caloria", "Circa 0,24 J per caloria"],
+      choices: ["Circa 1 J per caloria", "Circa 4,18 J per caloria", "Circa 4 180 J per caloria", "Circa 0,24 J per caloria"],
       explanations: [
         "Falso: sarebbe così se la caloria e il joule misurassero già la stessa cosa senza conversione.",
         "Esatto: 1 cal ≈ 4,18 J; è il valore, misurato con precisione crescente tra il 1843 e il 1849, che stabilì l'equivalenza tra calore e lavoro.",
-        "Falso: questo valore è circa 24 volte maggiore di quello misurato da Joule.",
+        "Falso: circa 4 180 J corrispondono a una chilocaloria, cioè 1 000 calorie.",
         "Falso: è approssimativamente l'inverso (1/4,18 ≈ 0,24).",
       ],
     },
     "l2-q6": {
-      question: "Su una confezione alimentare è indicato «250 cal». A quanti joule corrispondono approssimativamente?",
+      question: "Su una confezione alimentare è indicato «250 kcal». A quanti joule corrispondono approssimativamente?",
       choices: ["≈ 250 J", "≈ 1046 kJ", "≈ 1046 J", "≈ 250 kJ"],
       explanations: [
         "Falso: ciò equivarrebbe a confondere l'unità indicata con il joule.",
-        "Esatto: la caloria alimentare è in realtà 1 kcal, normalmente indicata con Cal maiuscola. 250 kcal × 4,18 kJ/kcal ≈ 1046 kJ.",
-        "Falso: ciò equivarrebbe a dimenticare che una caloria alimentare è in realtà una chilocaloria.",
+        "Esatto: 1 kcal = 1 000 cal. L'energia indicata è di circa 1 046 kJ.",
+        "Falso: questo corrisponde a 250 cal, non a 250 kcal. Il prefisso chilo rappresenta un fattore 1 000.",
         "Falso: ciò equivarrebbe a confondere la caloria alimentare con il kilojoule.",
       ],
     },
@@ -1180,16 +1180,16 @@ export const quizQuestionTranslations: Partial<
       ],
     },
     "l2-q7": {
-      question: "Si riscalda un cubetto di ghiaccio a 0°C fino a ottenere acqua liquida a 20°C. Come si calcola correttamente il calore totale ricevuto?",
+      question: "Un cubetto di ghiaccio di massa m a 0°C viene riscaldato fino a ottenere acqua liquida a 20°C. L è il calore latente specifico di fusione, c_water e c_ice sono le capacità termiche massiche dell'acqua liquida e del ghiaccio, e ΔT = 20°C. Quale espressione dà il calore totale ricevuto Q?",
       choices: [
-        "Q = m c_eau ΔT, con ΔT = 20°C e c_eau capacità termica massica dell'acqua liquida.",
-        "Q = m L + m c_eau ΔT, con L calore latente massico di fusione, c_eau capacità termica massica dell'acqua liquida e ΔT = 20°C.",
-        "Q = m c_glace ΔT + m c_eau ΔT con ΔT = 20°C.",
+        "Q = m c_water ΔT",
+        "Q = m L + m c_water ΔT",
+        "Q = m L + m c_ice ΔT",
       ],
       explanations: [
         "Falso: questo calcolo dimentica il calore latente di fusione, assorbito a 0°C senza variazione di temperatura; è proprio la seconda scoperta di Black, distinta dalla capacità termica.",
         "Esatto: il calore latente (fusione a temperatura costante) si somma al calore Q = mcΔT (riscaldamento senza cambiamento di fase), ma i due contributi si riferiscono a tappe distinte del processo.",
-        "Falso: una volta fuso il ghiaccio, al riscaldamento da 0°C a 20°C si applica la capacità termica dell'acqua liquida, non quella del ghiaccio.",
+        "Falso: la fusione è inclusa, ma il riscaldamento da 0°C a 20°C riguarda l'acqua liquida. Occorre usare c_water, non c_ice.",
       ],
     },
     "l2-vf4": {
@@ -1201,18 +1201,18 @@ export const quizQuestionTranslations: Partial<
       ],
     },
     "l3-q1": {
-      question: "Un sistema isolato è un sistema le cui pareti sono:",
+      question: "Si considera soltanto il lavoro delle forze di pressione. Quali proprietà delle pareti garantiscono l'isolamento del sistema?",
       choices: [
-        "Diatermane, mobili e permeabili.",
+        "Rigide, adiabatiche e permeabili.",
         "Rigide, adiabatiche e impermeabili.",
         "Rigide, diatermane e impermeabili.",
-        "Mobili, adiabatiche e permeabili.",
+        "Mobili, adiabatiche e impermeabili.",
       ],
       explanations: [
-        "Falso: sono, al contrario, le proprietà che consentono tutti gli scambi (calore, lavoro, materia).",
+        "Falso: pareti permeabili consentono scambi di materia, anche se rigide e adiabatiche.",
         "Esatto: una parete rigida impedisce lo scambio di lavoro, una parete adiabatica lo scambio di calore e una parete impermeabile lo scambio di materia.",
         "Falso: le pareti diatermane lasciano passare il calore; il sistema non sarebbe isolato.",
-        "Falso: pareti mobili e permeabili consentono il passaggio di lavoro e materia.",
+        "Falso: pareti mobili consentono scambi di lavoro delle forze di pressione, anche se adiabatiche e impermeabili.",
       ],
     },
     "l3-vf2": {
@@ -1276,11 +1276,11 @@ export const quizQuestionTranslations: Partial<
       question: "Perché si scrivono δQ e δW anziché dQ e dW?",
       choices: [
         "Perché sono differenziali inesatti: i loro integrali dipendono dal cammino seguito.",
-        "Perché Q e W sono grandezze troppo piccole per essere descritte con differenziali ordinari.",
+        "Perché calore e lavoro non si conservano, mentre l'energia interna del sistema si conserva in ogni trasformazione.",
       ],
       explanations: [
         "Esatto: Q e W dipendono dal cammino, a differenza di U, che dipende soltanto dagli stati iniziale e finale. Scrivere dQ equivarrebbe a resuscitare la teoria del calorico.",
-        "Falso: la «dimensione» delle grandezze non c'entra; ciò che conta è la dipendenza dal cammino.",
+        "Falso: U può variare. U è una funzione di stato, mentre Q e W dipendono dal percorso; la notazione esprime questa distinzione.",
       ],
     },
     "l4-q3": {
@@ -1288,12 +1288,12 @@ export const quizQuestionTranslations: Partial<
       choices: [
         "È necessariamente nullo perché Q e W sono funzioni di stato.",
         "È nullo perché U è una funzione di stato.",
-        "È sempre strettamente positivo per una macchina termica motrice.",
+        "È nullo soltanto se il ciclo è quasi-statico.",
       ],
       explanations: [
         "Falso: è vero il contrario—Q e W non sono funzioni di stato, ma trasferimenti, non grandezze del sistema. Solo la loro somma deve annullarsi su un ciclo tramite ΔU_cycle = 0.",
         "Esatto: al termine di un ciclo il sistema ritrova lo stato iniziale. Poiché U è una funzione di stato, ΔU_cycle = U(A) − U(A) = 0; il primo principio impone quindi Q_cycle + W_cycle = 0.",
-        "Falso: è la somma Q_cycle + W_cycle a essere nulla, non ciascun termine separatamente; Q_cycle e W_cycle possono essere entrambi non nulli e di segno opposto in una macchina termica.",
+        "Falso: ogni ciclo riporta il sistema allo stato iniziale. ΔU_cycle = 0 impone Q_cycle + W_cycle = 0, anche se il ciclo non è quasi-statico.",
       ],
     },
     "l4-q4": {
@@ -1310,10 +1310,10 @@ export const quizQuestionTranslations: Partial<
       ],
     },
     "l4-q6": {
-      question: "Durante una trasformazione isocora di un sistema chiuso si ha sempre:",
+      question: "Durante una trasformazione isocora di un sistema chiuso, con il solo lavoro delle forze di pressione, si ha sempre:",
       choices: ["W = 0, quindi ΔU = Q", "Q = 0, quindi ΔU = W", "ΔU = 0, quindi Q = −W"],
       explanations: [
-        "Esatto: a volume costante, δW = −P dV = 0; l'intera variazione di energia interna proviene dal calore.",
+        "Esatto: a volume costante, il lavoro delle forze di pressione è nullo. Qui è l'unico lavoro, quindi W = 0 e ΔU = Q.",
         "Falso: questo è il bilancio di una trasformazione adiabatica, non isocora.",
         "Falso: questo è il bilancio di una trasformazione isoterma di un gas ideale, poiché U dipende soltanto da T.",
       ],
@@ -1343,12 +1343,12 @@ export const quizQuestionTranslations: Partial<
       choices: [
         "Ponieważ bez różnicy temperatur nie płynie żaden strumień ciepła i nie ma czego zamieniać w pracę.",
         "Ponieważ pracę mechaniczną można uzyskać tylko ze źródła, którego temperatura przekracza pewien próg minimalny, właściwy dla każdego czynnika roboczego.",
-        "Ponieważ ciśnienie czynnika roboczego musi przez cały cykl pozostawać wyższe od ciśnienia atmosferycznego.",
+        "Ponieważ zimne źródło musi koniecznie skroplić czynnik roboczy, aby silnik mógł rozpocząć kolejny cykl.",
       ],
       explanations: [
         "Dobrze: silnik pobiera myto od strumienia ciepła gorące → zimne; bez strumienia nie ma pracy. Prawdziwym „paliwem” jest gradient temperatury.",
         "Źle: nie istnieje żaden próg temperatury; wystarczy nawet niewielka różnica (por. elektrownie OTEC, wykorzystujące kilka stopni różnicy w oceanie).",
-        "Źle: kryterium nie jest ciśnienie; liczy się różnica temperatur między dwoma źródłami.",
+        "Źle: silnik cieplny może działać bez przemiany fazowej czynnika roboczego. Skraplanie nie jest ogólnym warunkiem jego działania.",
       ],
     },
     "l1-vf1": {
@@ -1377,12 +1377,12 @@ export const quizQuestionTranslations: Partial<
       choices: [
         "Wiercenie luf armatnich obserwowane przez Rumforda: tarcie wydziela pozornie niewyczerpaną ilość ciepła.",
         "Pomiar przez Josepha Blacka ciepła utajonego pochłanianego przez lód podczas topnienia w stałej temperaturze.",
-        "Połączenie przez Clapeyrona praw Boyle'a, Charles'a i Gay-Lussaca w jedno równanie stanu gazu doskonałego.",
+        "Obserwacja, że ciała o jednakowej masie potrzebują różnych ilości ciepła do takiego samego wzrostu temperatury.",
       ],
       explanations: [
         "Dobrze: gdyby ciepło było skończonym, zachowywanym płynem, ciągłe wiercenie nie mogłoby wytwarzać go bez końca. W 1798 roku Rumford wywnioskował, że ciepło wiąże się z ruchem.",
         "Źle: ciepło utajone teoria cieplika wyjaśniała wręcz dobrze (płyn «wiąże się» z materią podczas przemiany fazowej).",
-        "Źle: w 1834 roku Clapeyron połączył prawa gazowe, co nie miało bezpośredniego związku z naturą ciepła.",
+        "Źle: różne pojemności cieplne są zgodne z teorią cieplika; ta obserwacja jej nie obala.",
       ],
     },
     "l2-vf1": {
@@ -1396,33 +1396,33 @@ export const quizQuestionTranslations: Partial<
     "l2-q4": {
       question: "Co oznacza współczynnik c w zależności Q = m c ΔT wykazanej przez Josepha Blacka?",
       choices: [
-        "Całkowitą ilość ciepła wymienioną przez ciało, wyrażoną w dżulach.",
+        "Ciepło potrzebne do podniesienia temperatury całego ciała o jeden stopień.",
         "Ilość ciepła, którą należy dostarczyć jednostce masy ciała, aby podnieść jego temperaturę o jeden stopień.",
-        "Stosunek pracy dostarczonej ciału do otrzymanego przez nie ciepła.",
+        "Ciepło potrzebne do stopienia jednostki masy ciała w stałej temperaturze.",
       ],
       explanations: [
-        "Źle: całkowitą ilością wymienionego ciepła jest samo Q, a nie c; Q zależy ponadto od masy i zmiany temperatury.",
+        "Źle: to definiuje pojemność cieplną C = mc całego ciała; c odnosi się do jednostki masy.",
         "Dobrze: jest to ciepło właściwe (dawniej także pojemność cieplna właściwa), współczynnik charakterystyczny dla każdego materiału, który wykazał Black.",
-        "Źle: zależność ta nie ma nic wspólnego z c; c wiąże jedynie ciepło i temperaturę.",
+        "Źle: to definiuje ciepło topnienia na jednostkę masy L, a nie ciepło właściwe c.",
       ],
     },
     "l2-q5": {
       question: "Ile w nowoczesnych jednostkach wynosi kaloria zgodnie z pomiarem Joule'a?",
-      choices: ["Około 1 J na kalorię", "Około 4,18 J na kalorię", "Około 100 J na kalorię", "Około 0,24 J na kalorię"],
+      choices: ["Około 1 J na kalorię", "Około 4,18 J na kalorię", "Około 4 180 J na kalorię", "Około 0,24 J na kalorię"],
       explanations: [
         "Źle: tak byłoby, gdyby kaloria i dżul już bez przeliczania mierzyły to samo.",
         "Dobrze: 1 cal ≈ 4,18 J; wartość ta, mierzona z coraz większą dokładnością w latach 1843–1849, ustaliła równoważność ciepła i pracy.",
-        "Źle: wartość ta jest około 24 razy większa od pomiaru Joule'a.",
+        "Źle: około 4 180 J odpowiada jednej kilokalorii, czyli 1 000 kalorii.",
         "Źle: jest to w przybliżeniu odwrotność (1/4,18 ≈ 0,24).",
       ],
     },
     "l2-q6": {
-      question: "Na opakowaniu żywności widnieje «250 cal». Ilu dżulom odpowiada to w przybliżeniu?",
+      question: "Na opakowaniu żywności widnieje «250 kcal». Ilu dżulom odpowiada to w przybliżeniu?",
       choices: ["≈ 250 J", "≈ 1046 kJ", "≈ 1046 J", "≈ 250 kJ"],
       explanations: [
         "Źle: oznaczałoby to pomylenie podanej jednostki z dżulem.",
-        "Dobrze: kaloria żywieniowa jest w rzeczywistości kilokalorią (1 kcal), zwykle oznaczaną wielką literą jako Cal. 250 kcal × 4,18 kJ/kcal ≈ 1046 kJ.",
-        "Źle: oznaczałoby to pominięcie faktu, że kaloria żywieniowa jest w rzeczywistości kilokalorią.",
+        "Dobrze: 1 kcal = 1 000 cal. Podana energia wynosi około 1 046 kJ.",
+        "Źle: odpowiada to 250 cal, a nie 250 kcal. Przedrostek kilo oznacza mnożnik 1 000.",
         "Źle: oznaczałoby to pomylenie kalorii żywieniowej z kilodżulem.",
       ],
     },
@@ -1435,16 +1435,16 @@ export const quizQuestionTranslations: Partial<
       ],
     },
     "l2-q7": {
-      question: "Ogrzewamy kostkę lodu o temperaturze 0°C aż do otrzymania ciekłej wody o temperaturze 20°C. Jak poprawnie obliczyć całkowite otrzymane ciepło?",
+      question: "Kostkę lodu o masie m i temperaturze 0°C ogrzewamy do otrzymania ciekłej wody o temperaturze 20°C. L oznacza ciepło topnienia na jednostkę masy, c_water i c_ice są ciepłami właściwymi ciekłej wody i lodu, a ΔT = 20°C. Które wyrażenie daje całkowite otrzymane ciepło Q?",
       choices: [
-        "Q = m c_eau ΔT, gdzie ΔT = 20°C, a c_eau jest ciepłem właściwym ciekłej wody.",
-        "Q = m L + m c_eau ΔT, gdzie L jest właściwym ciepłem utajonym topnienia, c_eau ciepłem właściwym ciekłej wody, a ΔT = 20°C.",
-        "Q = m c_glace ΔT + m c_eau ΔT, gdzie ΔT = 20°C.",
+        "Q = m c_water ΔT",
+        "Q = m L + m c_water ΔT",
+        "Q = m L + m c_ice ΔT",
       ],
       explanations: [
         "Źle: obliczenie pomija ciepło utajone topnienia, pochłaniane w 0°C bez zmiany temperatury; było to właśnie drugie odkrycie Blacka, odrębne od pojemności cieplnej.",
         "Dobrze: ciepło utajone (topnienie w stałej temperaturze) i ciepło Q = mcΔT (ogrzewanie bez przemiany fazowej) sumują się, lecz odnoszą się do odrębnych etapów procesu.",
-        "Źle: po stopieniu lodu do ogrzewania od 0°C do 20°C stosuje się ciepło właściwe ciekłej wody, a nie lodu.",
+        "Źle: topnienie jest uwzględnione, ale ogrzewanie od 0°C do 20°C dotyczy ciekłej wody. Należy użyć c_water, a nie c_ice.",
       ],
     },
     "l2-vf4": {
@@ -1456,18 +1456,18 @@ export const quizQuestionTranslations: Partial<
       ],
     },
     "l3-q1": {
-      question: "Układ izolowany jest układem, którego ścianki są:",
+      question: "Rozpatrujemy tylko pracę sił ciśnienia. Jakie właściwości ścian zapewniają izolację układu?",
       choices: [
-        "Diatermiczne, ruchome i przepuszczalne.",
+        "Sztywne, adiabatyczne i przepuszczalne.",
         "Sztywne, adiabatyczne i nieprzepuszczalne.",
         "Sztywne, diatermiczne i nieprzepuszczalne.",
-        "Ruchome, adiabatyczne i przepuszczalne.",
+        "Ruchome, adiabatyczne i nieprzepuszczalne.",
       ],
       explanations: [
-        "Źle: są to wręcz właściwości umożliwiające wszystkie rodzaje wymiany (ciepła, pracy i materii).",
+        "Źle: ściany przepuszczalne umożliwiają wymianę materii, nawet jeśli są sztywne i adiabatyczne.",
         "Dobrze: sztywność uniemożliwia wymianę pracy, adiabatyczność wymianę ciepła, a nieprzepuszczalność wymianę materii.",
         "Źle: ścianki diatermiczne przepuszczają ciepło, więc układ nie byłby izolowany.",
-        "Źle: ścianki ruchome i przepuszczalne umożliwiają wymianę pracy i materii.",
+        "Źle: ściany ruchome umożliwiają wymianę pracy sił ciśnienia, nawet jeśli są adiabatyczne i nieprzepuszczalne.",
       ],
     },
     "l3-vf2": {
@@ -1531,11 +1531,11 @@ export const quizQuestionTranslations: Partial<
       question: "Dlaczego zapisujemy δQ i δW zamiast dQ i dW?",
       choices: [
         "Ponieważ są to różniczki niezupełne: ich całki zależą od obranej drogi.",
-        "Ponieważ Q i W są wielkościami zbyt małymi, aby opisać je zwykłymi różniczkami.",
+        "Ponieważ ciepło i praca nie są zachowane, natomiast energia wewnętrzna układu jest zachowana w każdej przemianie.",
       ],
       explanations: [
         "Dobrze: Q i W zależą od drogi, w przeciwieństwie do U, które zależy wyłącznie od stanu początkowego i końcowego. Zapis dQ oznaczałby wskrzeszenie teorii cieplika.",
-        "Źle: „rozmiar” wielkości nie ma tu znaczenia; chodzi o zależność od drogi.",
+        "Źle: U może się zmieniać. U jest funkcją stanu, a Q i W zależą od drogi; zapis wyraża właśnie tę różnicę.",
       ],
     },
     "l4-q3": {
@@ -1543,12 +1543,12 @@ export const quizQuestionTranslations: Partial<
       choices: [
         "Musi być równy zeru, ponieważ Q i W są funkcjami stanu.",
         "Jest równy zeru, ponieważ U jest funkcją stanu.",
-        "Dla silnika cieplnego jest zawsze ściśle dodatni.",
+        "Jest równy zeru tylko wtedy, gdy cykl jest quasi-statyczny.",
       ],
       explanations: [
         "Źle: jest odwrotnie—Q i W nie są funkcjami stanu; są przekazami energii, a nie wielkościami układu. Tylko ich suma musi zniknąć w cyklu na mocy ΔU_cycle = 0.",
         "Dobrze: po zakończeniu cyklu układ wraca do stanu początkowego. Ponieważ U jest funkcją stanu, ΔU_cycle = U(A) − U(A) = 0, zatem pierwsza zasada wymaga Q_cycle + W_cycle = 0.",
-        "Źle: zerowa jest suma Q_cycle + W_cycle, a nie każdy składnik z osobna; w silniku cieplnym Q_cycle i W_cycle mogą być niezerowe i mieć przeciwne znaki.",
+        "Źle: każdy cykl przywraca stan początkowy układu. ΔU_cycle = 0 wymaga Q_cycle + W_cycle = 0, nawet jeśli cykl nie jest quasi-statyczny.",
       ],
     },
     "l4-q4": {
@@ -1565,10 +1565,10 @@ export const quizQuestionTranslations: Partial<
       ],
     },
     "l4-q6": {
-      question: "Podczas przemiany izochorycznej układu zamkniętego zawsze zachodzi:",
+      question: "Podczas przemiany izochorycznej układu zamkniętego, gdy jedyną formą pracy jest praca sił ciśnienia, zawsze zachodzi:",
       choices: ["W = 0, zatem ΔU = Q", "Q = 0, zatem ΔU = W", "ΔU = 0, zatem Q = −W"],
       explanations: [
-        "Dobrze: przy stałej objętości δW = −P dV = 0; cała zmiana energii wewnętrznej pochodzi z ciepła.",
+        "Dobrze: przy stałej objętości praca sił ciśnienia jest zerowa. Tutaj jest to jedyna forma pracy, więc W = 0 i ΔU = Q.",
         "Źle: jest to bilans przemiany adiabatycznej, a nie izochorycznej.",
         "Źle: jest to bilans przemiany izotermicznej gazu doskonałego, ponieważ U zależy wyłącznie od T.",
       ],
@@ -1598,12 +1598,12 @@ export const quizQuestionTranslations: Partial<
       choices: [
         "Потому что без разности температур тепловой поток не течёт, и превращать в работу нечего.",
         "Потому что механическую работу можно получить лишь от источника, температура которого превышает некоторый минимальный порог, свой для каждого рабочего тела.",
-        "Потому что давление рабочего тела должно на протяжении всего цикла оставаться выше атмосферного.",
+        "Потому что холодный источник обязательно должен конденсировать рабочее тело, чтобы двигатель мог начать новый цикл.",
       ],
       explanations: [
         "Верно: двигатель берёт своего рода пошлину с теплового потока горячее → холодное; нет потока — нет работы. Настоящее «топливо» — это перепад температур.",
         "Неверно: никакого температурного порога не существует; достаточно даже небольшой разности (ср. станции OTEC, использующие в океане разницу в несколько градусов).",
-        "Неверно: дело не в давлении; важна именно разность температур между двумя источниками.",
+        "Неверно: тепловой двигатель может работать без фазовых переходов рабочего тела. Конденсация не является общим условием.",
       ],
     },
     "l1-vf1": {
@@ -1632,12 +1632,12 @@ export const quizQuestionTranslations: Partial<
       choices: [
         "Наблюдавшееся Румфордом сверление пушечных стволов: трение производит, по-видимому, неограниченное количество теплоты.",
         "Измерение Джозефом Блэком скрытой теплоты, поглощаемой льдом при плавлении без изменения температуры.",
-        "Объединение Клапейроном законов Бойля, Шарля и Гей-Люссака в единое уравнение состояния идеального газа.",
+        "Наблюдение, что телам одинаковой массы для одинакового повышения температуры нужны разные количества теплоты.",
       ],
       explanations: [
         "Верно: если бы теплота была конечной сохраняющейся жидкостью, непрерывное сверление не могло бы производить её бесконечно. В 1798 году Румфорд заключил, что теплота связана с движением.",
         "Неверно: скрытая теплота, напротив, хорошо объяснялась теорией теплорода (жидкость «связывается» с веществом при изменении агрегатного состояния).",
-        "Неверно: в 1834 году Клапейрон объединил газовые законы, что не имело прямого отношения к природе теплоты.",
+        "Неверно: разные теплоёмкости совместимы с теорией теплорода; это наблюдение её не опровергает.",
       ],
     },
     "l2-vf1": {
@@ -1651,33 +1651,33 @@ export const quizQuestionTranslations: Partial<
     "l2-q4": {
       question: "Что означает коэффициент c в установленном Джозефом Блэком соотношении Q = m c ΔT?",
       choices: [
-        "Полное количество теплоты, которым обменивается тело, выраженное в джоулях.",
+        "Количество теплоты, необходимое для повышения температуры всего тела на один градус.",
         "Количество теплоты, которое нужно сообщить единице массы тела, чтобы повысить его температуру на один градус.",
-        "Отношение работы, совершённой над телом, к полученной им теплоте.",
+        "Количество теплоты, необходимое для плавления единицы массы тела при постоянной температуре.",
       ],
       explanations: [
-        "Неверно: полное количество переданной теплоты обозначается самим Q, а не c; кроме того, Q зависит от массы и изменения температуры.",
+        "Неверно: это теплоёмкость C = mc всего тела; c относится к единице массы.",
         "Верно: это удельная теплоёмкость (или, в более старой терминологии, удельная теплота) — свойственный каждому материалу коэффициент, обнаруженный Блэком.",
-        "Неверно: это соотношение не имеет ничего общего с c; коэффициент c связывает только теплоту и температуру.",
+        "Неверно: это удельная теплота плавления L, а не удельная теплоёмкость c.",
       ],
     },
     "l2-q5": {
       question: "Чему в современных единицах равна калория согласно измерениям Джоуля?",
-      choices: ["Около 1 J на калорию", "Около 4,18 J на калорию", "Около 100 J на калорию", "Около 0,24 J на калорию"],
+      choices: ["Около 1 J на калорию", "Около 4,18 J на калорию", "Около 4 180 Дж на калорию", "Около 0,24 J на калорию"],
       explanations: [
         "Неверно: так было бы, если бы калория и джоуль уже без пересчёта измеряли одно и то же.",
         "Верно: 1 cal ≈ 4,18 J; это значение, измеренное со всё большей точностью в 1843–1849 годах, установило эквивалентность теплоты и работы.",
-        "Неверно: это значение примерно в 24 раза превышает результат измерений Джоуля.",
+        "Неверно: около 4 180 Дж соответствует одной килокалории, то есть 1 000 калорий.",
         "Неверно: это приблизительно обратная величина (1/4,18 ≈ 0,24).",
       ],
     },
     "l2-q6": {
-      question: "На упаковке продукта указано «250 cal». Скольким джоулям это приблизительно соответствует?",
+      question: "На упаковке продукта указано «250 kcal». Скольким джоулям это приблизительно соответствует?",
       choices: ["≈ 250 J", "≈ 1046 kJ", "≈ 1046 J", "≈ 250 kJ"],
       explanations: [
         "Неверно: это означало бы, что указанную единицу перепутали с джоулем.",
-        "Верно: пищевая калория в действительности равна 1 kcal и обычно обозначается прописной буквой как Cal. 250 kcal × 4,18 kJ/kcal ≈ 1046 kJ.",
-        "Неверно: здесь забыто, что пищевая калория в действительности является килокалорией.",
+        "Верно: 1 kcal = 1 000 cal. Указанная энергия составляет около 1 046 кДж.",
+        "Неверно: это соответствует 250 cal, а не 250 kcal. Приставка кило означает множитель 1 000.",
         "Неверно: здесь пищевая калория перепутана с килоджоулем.",
       ],
     },
@@ -1690,16 +1690,16 @@ export const quizQuestionTranslations: Partial<
       ],
     },
     "l2-q7": {
-      question: "Кусок льда при 0°C нагревают до получения жидкой воды при 20°C. Как правильно вычислить полное количество полученной теплоты?",
+      question: "Кусок льда массой m при 0°C нагревают до получения жидкой воды при 20°C. L — удельная теплота плавления, c_water и c_ice — удельные теплоёмкости жидкой воды и льда, ΔT = 20°C. Какое выражение даёт полное количество полученной теплоты Q?",
       choices: [
-        "Q = m c_eau ΔT, где ΔT = 20°C, а c_eau — удельная теплоёмкость жидкой воды.",
-        "Q = m L + m c_eau ΔT, где L — удельная скрытая теплота плавления, c_eau — удельная теплоёмкость жидкой воды, а ΔT = 20°C.",
-        "Q = m c_glace ΔT + m c_eau ΔT, где ΔT = 20°C.",
+        "Q = m c_water ΔT",
+        "Q = m L + m c_water ΔT",
+        "Q = m L + m c_ice ΔT",
       ],
       explanations: [
         "Неверно: в этом расчёте не учтена скрытая теплота плавления, поглощаемая при 0°C без изменения температуры; это как раз второе открытие Блэка, отличное от теплоёмкости.",
         "Верно: скрытая теплота (плавление при постоянной температуре) и соотношение Q = mcΔT (нагревание без изменения фазы) складываются, но относятся к разным этапам процесса.",
-        "Неверно: после плавления льда для нагревания от 0°C до 20°C применяется удельная теплоёмкость жидкой воды, а не льда.",
+        "Неверно: плавление учтено, но от 0°C до 20°C нагревается жидкая вода. Нужно использовать c_water, а не c_ice.",
       ],
     },
     "l2-vf4": {
@@ -1711,18 +1711,18 @@ export const quizQuestionTranslations: Partial<
       ],
     },
     "l3-q1": {
-      question: "Стенки изолированной системы являются:",
+      question: "Рассматривается только работа сил давления. Какими должны быть стенки, чтобы обеспечить изоляцию системы?",
       choices: [
-        "Диатермическими, подвижными и проницаемыми.",
+        "Жёсткими, адиабатическими и проницаемыми.",
         "Жёсткими, адиабатическими и непроницаемыми.",
         "Жёсткими, диатермическими и непроницаемыми.",
-        "Подвижными, адиабатическими и проницаемыми.",
+        "Подвижными, адиабатическими и непроницаемыми.",
       ],
       explanations: [
-        "Неверно: это, напротив, свойства, допускающие все виды обмена — теплотой, работой и веществом.",
+        "Неверно: проницаемые стенки допускают обмен веществом, даже если они жёсткие и адиабатические.",
         "Верно: жёсткость исключает обмен работой, адиабатичность — обмен теплотой, а непроницаемость — обмен веществом.",
         "Неверно: диатермические стенки пропускают теплоту, поэтому система не была бы изолированной.",
-        "Неверно: подвижные и проницаемые стенки допускают обмен работой и веществом.",
+        "Неверно: подвижные стенки допускают обмен энергией в форме работы сил давления, даже если они адиабатические и непроницаемые.",
       ],
     },
     "l3-vf2": {
@@ -1786,11 +1786,11 @@ export const quizQuestionTranslations: Partial<
       question: "Почему записывают δQ и δW, а не dQ и dW?",
       choices: [
         "Потому что это неточные дифференциалы: их интегралы зависят от выбранного пути.",
-        "Потому что Q и W слишком малы, чтобы описывать их обычными дифференциалами.",
+        "Потому что теплота и работа не сохраняются, а внутренняя энергия системы сохраняется при любом процессе.",
       ],
       explanations: [
         "Верно: Q и W зависят от пути, в отличие от U, которое зависит только от начального и конечного состояний. Запись dQ означала бы возрождение теории теплорода.",
-        "Неверно: «размер» величин здесь ни при чём; важна зависимость от пути.",
+        "Неверно: U может изменяться. U — функция состояния, а Q и W зависят от пути; обозначения отражают именно это различие.",
       ],
     },
     "l4-q3": {
@@ -1798,12 +1798,12 @@ export const quizQuestionTranslations: Partial<
       choices: [
         "Он обязательно равен нулю, поскольку Q и W являются функциями состояния.",
         "Он равен нулю, поскольку U является функцией состояния.",
-        "Для теплового двигателя он всегда строго положителен.",
+        "Он равен нулю только для квазистатического цикла.",
       ],
       explanations: [
         "Неверно: всё наоборот—Q и W не являются функциями состояния; это способы передачи энергии, а не величины системы. Только их сумма обязана обратиться в нуль за цикл благодаря ΔU_cycle = 0.",
         "Верно: по завершении цикла система возвращается в начальное состояние. Поскольку U — функция состояния, ΔU_cycle = U(A) − U(A) = 0; следовательно, первый закон требует Q_cycle + W_cycle = 0.",
-        "Неверно: равна нулю сумма Q_cycle + W_cycle, а не каждый член по отдельности; в тепловом двигателе Q_cycle и W_cycle могут быть ненулевыми и иметь противоположные знаки.",
+        "Неверно: любой цикл возвращает систему в исходное состояние. ΔU_cycle = 0 требует Q_cycle + W_cycle = 0, даже если цикл не квазистатический.",
       ],
     },
     "l4-q4": {
@@ -1820,10 +1820,10 @@ export const quizQuestionTranslations: Partial<
       ],
     },
     "l4-q6": {
-      question: "При изохорном процессе в закрытой системе всегда выполняется:",
+      question: "При изохорном процессе в закрытой системе, если возможна только работа сил давления, всегда выполняется:",
       choices: ["W = 0, поэтому ΔU = Q", "Q = 0, поэтому ΔU = W", "ΔU = 0, поэтому Q = −W"],
       explanations: [
-        "Верно: при постоянном объёме δW = −P dV = 0; всё изменение внутренней энергии обусловлено теплотой.",
+        "Верно: при постоянном объёме работа сил давления равна нулю. Здесь это единственный вид работы, поэтому W = 0 и ΔU = Q.",
         "Неверно: это баланс адиабатического, а не изохорного процесса.",
         "Неверно: это баланс изотермического процесса идеального газа, поскольку U зависит только от T.",
       ],
@@ -1853,12 +1853,12 @@ export const quizQuestionTranslations: Partial<
       choices: [
         "因为没有温差就没有热流，也就没有可以转化为功的东西。",
         "因为机械功只能从温度超过某个最低阈值的热源中获得，而该阈值取决于工质。",
-        "因为在整个循环中，工质的压强必须始终高于大气压。",
+        "因为低温热源必须使工质凝结，热机才能开始下一个循环。",
       ],
       explanations: [
         "正确：热机就像在高温 → 低温的热流上设卡收费；没有热流就没有功。真正的「燃料」是温度梯度。",
         "错误：并不存在温度阈值；哪怕温差很小也足够（参见利用海洋中几度温差的 OTEC 电站）。",
-        "错误：判据不是压强，而是两个热源之间的温差。",
+        "错误：热机可以在工质不发生相变的情况下运行。凝结并不是一般性的必要条件。",
       ],
     },
     "l1-vf1": {
@@ -1887,12 +1887,12 @@ export const quizQuestionTranslations: Partial<
       choices: [
         "伦福德观察到的炮管镗削实验：摩擦似乎可以无止境地产生热。",
         "约瑟夫·布莱克测量冰在恒温熔化时吸收的潜热。",
-        "克拉佩龙把波义耳、查理和盖-吕萨克定律统一为一个理想气体状态方程。",
+        "观察到质量相同的物体升高相同温度所需的热量不同。",
       ],
       explanations: [
         "正确：如果热是一种总量有限且守恒的流体，持续镗削就不可能无止境地产生热。伦福德于1798年由此得出结论：热与运动有关。",
         "错误：热质说反而能很好地解释潜热（状态变化时，这种流体与物质“结合”）。",
-        "错误：克拉佩龙于1834年统一了气体定律，这与热的本质没有直接关系。",
+        "错误：热容不同与热质说并不矛盾，因此这一观察不能反驳热质说。",
       ],
     },
     "l2-vf1": {
@@ -1906,33 +1906,33 @@ export const quizQuestionTranslations: Partial<
     "l2-q4": {
       question: "在约瑟夫·布莱克揭示的关系 Q = m c ΔT 中，系数 c 表示什么？",
       choices: [
-        "物体交换的总热量，以焦耳表示。",
+        "使整个物体的温度升高一度所需的热量。",
         "使单位质量物体的温度升高一度所需提供的热量。",
-        "物体所获得的功与所吸收热量之比。",
+        "使单位质量的物体在恒温下熔化所需的热量。",
       ],
       explanations: [
-        "错误：交换的总热量是 Q 本身，而不是 c；Q 还取决于质量和温差。",
+        "错误：这定义的是整个物体的热容 C = mc；c 则按单位质量计。",
         "正确：它是比热容（旧称比热），即布莱克揭示的、每种材料所特有的系数。",
-        "错误：这一比值与 c 无关；c 只联系热量与温度。",
+        "错误：这定义的是单位质量的熔化潜热 L，而不是比热容 c。",
       ],
     },
     "l2-q5": {
       question: "用现代单位表示，焦耳测得的一卡路里等于多少？",
-      choices: ["约1 J/卡路里", "约4,18 J/卡路里", "约100 J/卡路里", "约0,24 J/卡路里"],
+      choices: ["约1 J/卡路里", "约4,18 J/卡路里", "每卡约 4 180 J", "约0,24 J/卡路里"],
       explanations: [
         "错误：只有在卡路里与焦耳无需换算就表示同一数值时才会如此。",
         "正确：1 cal ≈ 4,18 J；焦耳在1843年至1849年间以越来越高的精度测得这一数值，从而确立了热与功的等价关系。",
-        "错误：这一数值约为焦耳测量值的24倍，过大了。",
+        "错误：约 4 180 J 对应一千卡，也就是 1 000 卡。",
         "错误：这大约是其倒数（1/4,18 ≈ 0,24）。",
       ],
     },
     "l2-q6": {
-      question: "食品包装上标有“250 cal”。这大约相当于多少焦耳？",
+      question: "食品包装上标有“250 kcal”。这大约相当于多少焦耳？",
       choices: ["≈ 250 J", "≈ 1046 kJ", "≈ 1046 J", "≈ 250 kJ"],
       explanations: [
         "错误：这相当于把标示的单位误当成焦耳。",
-        "正确：食品中的一卡路里实际上是1 kcal，通常以大写的 Cal 表示。250 kcal × 4,18 kJ/kcal ≈ 1046 kJ。",
-        "错误：这忽略了食品中的一卡路里实际上是一千卡。",
+        "正确：1 kcal = 1 000 cal。标注的能量约为 1 046 kJ。",
+        "错误：这对应 250 cal，而不是 250 kcal。前缀 kilo 表示 1 000 倍。",
         "错误：这相当于把食品卡路里与千焦耳混为一谈。",
       ],
     },
@@ -1945,16 +1945,16 @@ export const quizQuestionTranslations: Partial<
       ],
     },
     "l2-q7": {
-      question: "把0°C的冰块加热，直至得到20°C的液态水。应如何正确计算其吸收的总热量？",
+      question: "将质量为 m、温度为 0°C 的冰块加热，直至得到 20°C 的液态水。L 为单位质量的熔化潜热，c_water 和 c_ice 分别为液态水和冰的比热容，ΔT = 20°C。哪个表达式给出吸收的总热量 Q？",
       choices: [
-        "Q = m c_eau ΔT，其中 ΔT = 20°C，c_eau 为液态水的比热容。",
-        "Q = m L + m c_eau ΔT，其中 L 为熔化比潜热，c_eau 为液态水的比热容，且 ΔT = 20°C。",
-        "Q = m c_glace ΔT + m c_eau ΔT，其中 ΔT = 20°C。",
+        "Q = m c_water ΔT",
+        "Q = m L + m c_water ΔT",
+        "Q = m L + m c_ice ΔT",
       ],
       explanations: [
         "错误：这一计算漏掉了冰在0°C熔化时吸收、但不引起温度变化的潜热；这正是布莱克继热容之后的第二项发现。",
         "正确：潜热（恒温熔化）与关系 Q = mcΔT（同一物态内升温）需要相加，但二者分别适用于过程中的不同阶段。",
-        "错误：冰熔化后，从0°C升温至20°C时应使用液态水的比热容，而不是冰的比热容。",
+        "错误：虽然计入了熔化，但从 0°C 升温到 20°C 的是液态水。应使用 c_water，而不是 c_ice。",
       ],
     },
     "l2-vf4": {
@@ -1966,18 +1966,18 @@ export const quizQuestionTranslations: Partial<
       ],
     },
     "l3-q1": {
-      question: "孤立系的壁必须是：",
+      question: "仅考虑压力所做的体积功。下列哪组边界性质能保证系统孤立？",
       choices: [
-        "透热、可动且可渗透的。",
+        "刚性、绝热且可渗透的。",
         "刚性、绝热且不可渗透的。",
         "刚性、透热且不可渗透的。",
-        "可动、绝热且可渗透的。",
+        "可动、绝热且不可渗透的。",
       ],
       explanations: [
-        "错误：这些性质反而允许所有交换，即热、功和物质的交换。",
+        "错误：可渗透的边界允许物质交换，即使它是刚性且绝热的。",
         "正确：刚性阻止功的交换，绝热阻止热交换，不可渗透则阻止物质交换。",
         "错误：透热壁允许热通过，因此该系统并非孤立系。",
-        "错误：可动且可渗透的壁允许功和物质的交换。",
+        "错误：可动的边界允许通过体积功交换能量，即使它是绝热且不可渗透的。",
       ],
     },
     "l3-vf2": {
@@ -2041,11 +2041,11 @@ export const quizQuestionTranslations: Partial<
       question: "为什么写作 δQ 和 δW，而不是 dQ 和 dW？",
       choices: [
         "因为它们是非全微分：其积分取决于所经过的路径。",
-        "因为 Q 和 W 太小，无法用普通微分来描述。",
+        "因为热量和功不守恒，而系统的内能在任何过程中都守恒。",
       ],
       explanations: [
         "正确：Q 和 W 与路径有关，而 U 只取决于初态和终态。写成 dQ 就等于让热质说死灰复燃。",
-        "错误：这与物理量的“大小”无关，关键在于路径依赖性。",
+        "错误：U 可以改变。U 是状态函数，而 Q 和 W 依赖路径；记号体现的是这一区别。",
       ],
     },
     "l4-q3": {
@@ -2053,12 +2053,12 @@ export const quizQuestionTranslations: Partial<
       choices: [
         "它必然为零，因为 Q 和 W 是状态函数。",
         "它为零，因为 U 是状态函数。",
-        "对于热机，它总是严格大于零。",
+        "只有准静态循环的这一能量收支才为零。",
       ],
       explanations: [
         "错误：事实恰好相反——Q 和 W 不是状态函数；它们是能量传递，而不是系统自身的物理量。由于 ΔU_cycle = 0，只有它们的和在一个循环中必须为零。",
         "正确：一个循环结束后，系统回到初态。由于 U 是状态函数，ΔU_cycle = U(A) − U(A) = 0，因此第一定律要求 Q_cycle + W_cycle = 0。",
-        "错误：为零的是 Q_cycle + W_cycle 之和，而不是每一项分别为零；对于热机，Q_cycle 和 W_cycle 都可以不为零且符号相反。",
+        "错误：任何循环都会使系统回到初态。ΔU_cycle = 0 要求 Q_cycle + W_cycle = 0，即使循环不是准静态的。",
       ],
     },
     "l4-q4": {
@@ -2075,10 +2075,10 @@ export const quizQuestionTranslations: Partial<
       ],
     },
     "l4-q6": {
-      question: "封闭系统经历等容过程时，总有：",
+      question: "封闭系统经历等容过程，且只可能有压力所做的体积功时，总有：",
       choices: ["W = 0，因此 ΔU = Q", "Q = 0，因此 ΔU = W", "ΔU = 0，因此 Q = −W"],
       explanations: [
-        "正确：体积不变时，δW = −P dV = 0；内能的全部变化都来自热量。",
+        "正确：体积恒定时，体积功为零。这里不存在其他形式的功，因此 W = 0，ΔU = Q。",
         "错误：这是绝热过程的能量收支，而不是等容过程。",
         "错误：这是理想气体等温过程的能量收支，因为 U 只依赖于 T。",
       ],
@@ -2108,12 +2108,12 @@ export const quizQuestionTranslations: Partial<
       choices: [
         "温度差がなければ熱流が生じず、仕事に変換すべきものが存在しないから。",
         "力学的仕事は、作業物質ごとに決まる最低温度を超えた熱源からしか取り出せないから。",
-        "サイクルの全過程を通じて、作業物質の圧力が常に大気圧より高くなければならないから。",
+        "低温熱源が必ず作業物質を凝縮させなければ、熱機関は次のサイクルを始められないから。",
       ],
       explanations: [
         "正解：熱機関は高温 → 低温の熱流に課される通行料のようなものである。流れがなければ仕事もない。本当の「燃料」は温度勾配である。",
         "誤り：温度のしきい値は存在しない。わずかな差でも十分である（海洋の数度の温度差を利用する OTEC 発電を参照）。",
-        "誤り：判断基準は圧力ではなく、二つの熱源のあいだの温度差である。",
+        "誤り：熱機関は作業物質の相変化がなくても動作する。凝縮は一般的な必要条件ではない。",
       ],
     },
     "l1-vf1": {
@@ -2142,12 +2142,12 @@ export const quizQuestionTranslations: Partial<
       choices: [
         "ランフォードが観察した大砲の砲身の加工。摩擦によって見かけ上限りなく熱が生じた。",
         "ジョゼフ・ブラックによる、氷が一定温度で融解するときに吸収する潜熱の測定。",
-        "ボイル、シャルル、ゲイ＝リュサックの法則を、クラペイロンが理想気体の一つの状態方程式に統合したこと。",
+        "質量が等しい物体でも、同じ温度上昇に必要な熱量が異なるという観察。",
       ],
       explanations: [
         "正解：熱が有限量の保存流体なら、加工を続けても無限に生み出されることはない。ランフォードは1798年、熱は運動と関係していると結論した。",
         "誤り：潜熱はむしろ熱素説でうまく説明された。状態変化の際に流体が物質と「結合する」と考えられたのである。",
-        "誤り：クラペイロンは1834年に気体の法則を統合したが、これは熱の本質とは直接関係しない。",
+        "誤り：熱容量が異なることはカロリック説と両立する。この観察はその反証にはならない。",
       ],
     },
     "l2-vf1": {
@@ -2161,33 +2161,33 @@ export const quizQuestionTranslations: Partial<
     "l2-q4": {
       question: "ジョゼフ・ブラックが明らかにした関係 Q = m c ΔT において、係数 c は何を表すか。",
       choices: [
-        "物体が交換した熱の総量。単位はジュール。",
+        "物体全体の温度を一度上げるために必要な熱量。",
         "物体の単位質量の温度を1度上昇させるために供給すべき熱量。",
-        "物体に供給された仕事と物体が受け取った熱との比。",
+        "単位質量の物体を一定温度で融解させるために必要な熱量。",
       ],
       explanations: [
-        "誤り：交換された熱の総量は c ではなく Q である。さらに Q は質量と温度差にも依存する。",
+        "誤り：これは物体全体の熱容量 C = mc の定義である。c は単位質量あたりの量である。",
         "正解：これは比熱容量（または比熱）であり、ブラックが明らかにした物質ごとに固有の係数である。",
-        "誤り：この比は c と関係がない。c に関係するのは熱と温度だけである。",
+        "誤り：これは単位質量あたりの融解潜熱 L の定義であり、比熱容量 c ではない。",
       ],
     },
     "l2-q5": {
       question: "ジュールが測定したカロリーの値は、現代の単位ではいくらか。",
-      choices: ["1カロリー当たり約1 J", "1カロリー当たり約4,18 J", "1カロリー当たり約100 J", "1カロリー当たり約0,24 J"],
+      choices: ["1カロリー当たり約1 J", "1カロリー当たり約4,18 J", "1 カロリーあたり約 4 180 J", "1カロリー当たり約0,24 J"],
       explanations: [
         "誤り：これはカロリーとジュールが換算なしですでに同じ量を表す場合の値である。",
         "正解：1 cal ≈ 4,18 J である。1843年から1849年にかけて精度を高めながら測定されたこの値により、熱と仕事の等価性が確立された。",
-        "誤り：この値はジュールの測定値より約24倍も大きすぎる。",
+        "誤り：約 4 180 J は 1 キロカロリー、すなわち 1 000 カロリーに相当する。",
         "誤り：これはおよそ逆数である（1/4,18 ≈ 0,24）。",
       ],
     },
     "l2-q6": {
-      question: "食品の包装に「250 cal」と表示されている。これはおよそ何ジュールに相当するか。",
+      question: "食品の包装に「250 kcal」と表示されている。これはおよそ何ジュールに相当するか。",
       choices: ["≈ 250 J", "≈ 1046 kJ", "≈ 1046 J", "≈ 250 kJ"],
       explanations: [
         "誤り：これは表示された単位をジュールと取り違えた計算である。",
-        "正解：食品表示の1カロリーは実際には1 kcalであり、本来は大文字の Cal と表記される。250 kcal × 4,18 kJ/kcal ≈ 1046 kJ である。",
-        "誤り：食品表示の1 calが実際には1キロカロリーであることを見落としている。",
+        "正解：1 kcal = 1 000 cal。表示されたエネルギーは約 1 046 kJ である。",
+        "誤り：これは 250 kcal ではなく 250 cal に相当する。接頭語キロは 1 000 倍を表す。",
         "誤り：食品表示のカロリーをキロジュールと取り違えている。",
       ],
     },
@@ -2200,16 +2200,16 @@ export const quizQuestionTranslations: Partial<
       ],
     },
     "l2-q7": {
-      question: "0°Cの氷を加熱し、20°Cの液体の水にする。受け取った総熱量を正しく計算するにはどうすればよいか。",
+      question: "質量 m、温度 0°C の氷を加熱し、20°C の液体の水にする。L は単位質量あたりの融解潜熱、c_water と c_ice は液体の水と氷の比熱容量、ΔT = 20°C とする。受け取った総熱量 Q を表す式はどれか。",
       choices: [
-        "Q = m c_eau ΔT。ここで ΔT = 20°C、c_eau は液体の水の比熱容量である。",
-        "Q = m L + m c_eau ΔT。ここで L は融解の比潜熱、c_eau は液体の水の比熱容量、ΔT = 20°C である。",
-        "Q = m c_glace ΔT + m c_eau ΔT。ここで ΔT = 20°C である。",
+        "Q = m c_water ΔT",
+        "Q = m L + m c_water ΔT",
+        "Q = m L + m c_ice ΔT",
       ],
       explanations: [
         "誤り：この計算では、温度を変えずに0°Cで吸収される融解の潜熱を忘れている。これは熱容量とは異なるブラックの第二の発見である。",
         "正解：潜熱（一定温度での融解）と関係 Q = mcΔT（相が一定のままの加熱）は加算されるが、それぞれ過程の異なる段階に適用される。",
-        "誤り：氷が融けた後、0°Cから20°Cまでの加熱に適用されるのは液体の水の比熱容量であり、氷の比熱容量ではない。",
+        "誤り：融解は含まれているが、0°C から 20°C に加熱されるのは液体の水である。c_ice ではなく c_water を使う必要がある。",
       ],
     },
     "l2-vf4": {
@@ -2221,18 +2221,18 @@ export const quizQuestionTranslations: Partial<
       ],
     },
     "l3-q1": {
-      question: "孤立系の壁がもつ性質はどれか。",
+      question: "圧力による体積仕事だけを考える。系を孤立させる壁の性質の組合せはどれか。",
       choices: [
-        "透熱性、可動、透過性。",
+        "剛体、断熱性、透過性。",
         "剛体、断熱性、不透過性。",
         "剛体、透熱性、不透過性。",
-        "可動、断熱性、透過性。",
+        "可動、断熱性、不透過性。",
       ],
       explanations: [
-        "誤り：これらは逆に、あらゆる交換（熱、仕事、物質）を許す性質である。",
+        "誤り：透過性の壁は、剛体かつ断熱性であっても物質の交換を許す。",
         "正解：剛体壁は仕事の交換を、断熱壁は熱の交換を、不透過性の壁は物質の交換をそれぞれ妨げる。",
         "誤り：透熱壁は熱を通すため、系は孤立していない。",
-        "誤り：可動で透過性の壁は、仕事と物質を通す。",
+        "誤り：可動壁は、断熱性かつ不透過性であっても体積仕事によるエネルギー交換を許す。",
       ],
     },
     "l3-vf2": {
@@ -2296,11 +2296,11 @@ export const quizQuestionTranslations: Partial<
       question: "なぜ dQ、dW ではなく δQ、δW と書くのか？",
       choices: [
         "これらは不完全微分であり、その積分が経路に依存するから。",
-        "Q と W は通常の微分で表すには小さすぎる量だから。",
+        "熱と仕事は保存されないが、系の内部エネルギーはどの過程でも保存されるから。",
       ],
       explanations: [
         "正解：Q と W は経路に依存するが、U は初期状態と最終状態だけに依存する。dQ と書けば、熱素説を復活させることになる。",
-        "誤り：量の「大きさ」は関係なく、問題は経路依存性である。",
+        "誤り：U は変化し得る。U は状態関数だが、Q と W は経路に依存する。記号はこの違いを表す。",
       ],
     },
     "l4-q3": {
@@ -2308,12 +2308,12 @@ export const quizQuestionTranslations: Partial<
       choices: [
         "Q と W は状態関数であるため、必ずゼロである。",
         "U が状態関数なのでゼロである。",
-        "熱機関では常に厳密に正である。",
+        "サイクルが準静的な場合に限りゼロになる。",
       ],
       explanations: [
         "誤り：逆である。Q と W は状態関数ではなく、系の量ではなくエネルギーの移動である。ΔU_cycle = 0 により、サイクルでゼロになるよう制約されるのはその和だけである。",
         "正解：サイクルの終わりに系は初期状態へ戻る。U は状態関数なので ΔU_cycle = U(A) − U(A) = 0 となり、第一法則から Q_cycle + W_cycle = 0 である。",
-        "誤り：ゼロなのは Q_cycle + W_cycle の和であり、各項ではない。熱機関では Q_cycle と W_cycle はともにゼロでなく、互いに逆符号になりうる。",
+        "誤り：どのサイクルでも系は初期状態に戻る。ΔU_cycle = 0 より Q_cycle + W_cycle = 0 となり、準静的である必要はない。",
       ],
     },
     "l4-q4": {
@@ -2330,10 +2330,10 @@ export const quizQuestionTranslations: Partial<
       ],
     },
     "l4-q6": {
-      question: "閉じた系の等積変化では、常に次が成り立つ：",
+      question: "閉じた系の等積変化で、仕事が圧力による体積仕事に限られる場合、常に次が成り立つ：",
       choices: ["W = 0、したがって ΔU = Q", "Q = 0、したがって ΔU = W", "ΔU = 0、したがって Q = −W"],
       explanations: [
-        "正解：体積一定では δW = −P dV = 0 であり、内部エネルギーの変化はすべて熱による。",
+        "正解：体積一定では体積仕事はゼロである。ここでは他の仕事はないので、W = 0 かつ ΔU = Q となる。",
         "誤り：これは断熱変化の収支であり、等積変化ではない。",
         "誤り：U は T のみに依存するので、これは理想気体の等温変化の収支である。",
       ],
@@ -2363,12 +2363,12 @@ export const quizQuestionTranslations: Partial<
       choices: [
         "온도 차이가 없으면 열류가 흐르지 않아 일로 바꿀 것이 없기 때문이다.",
         "역학적 일은 작업 물질마다 정해진 최소 문턱을 넘는 온도의 열원에서만 얻을 수 있기 때문이다.",
-        "사이클 내내 작업 물질의 압력이 항상 대기압보다 높아야 하기 때문이다.",
+        "기관이 다음 사이클을 시작하려면 저온 열원이 반드시 작업 물질을 응축시켜야 하기 때문이다.",
       ],
       explanations: [
         "정답: 기관은 고온 → 저온 열류에 매기는 통행료와 같다. 흐름이 없으면 일도 없다. 진짜 '연료'는 온도 기울기다.",
         "틀림: 온도 문턱 같은 것은 없다. 작은 차이만 있어도 충분하다(바다의 몇 도 차이를 이용하는 OTEC 발전 참조).",
-        "틀림: 기준은 압력이 아니라 두 열원 사이의 온도 차이다.",
+        "틀림: 열기관은 작업 물질의 상변화 없이도 작동할 수 있다. 응축은 일반적인 필수 조건이 아니다.",
       ],
     },
     "l1-vf1": {
@@ -2397,12 +2397,12 @@ export const quizQuestionTranslations: Partial<
       choices: [
         "럼퍼드가 관찰한 대포 포신의 천공. 마찰이 겉보기에는 한없이 열을 만들어 냈다.",
         "조지프 블랙이 얼음이 일정한 온도에서 녹을 때 흡수하는 잠열을 측정한 실험.",
-        "클라페롱이 보일, 샤를, 게이뤼삭의 법칙을 하나의 이상기체 상태 방정식으로 종합한 것.",
+        "질량이 같은 물체라도 온도를 같은 만큼 높이는 데 필요한 열량이 다르다는 관찰.",
       ],
       explanations: [
         "정답: 열이 유한하고 보존되는 유체라면 천공을 계속해도 무한히 생겨날 수는 없다. 럼퍼드는 1798년에 열이 운동과 관련되어 있다고 결론지었다.",
         "틀림: 잠열은 오히려 열소설로 잘 설명되었다. 상태 변화 때 유체가 물질에 '결합한다'고 보았기 때문이다.",
-        "틀림: 클라페롱은 1834년에 기체 법칙들을 통합했지만, 이는 열의 본질과 직접 관련이 없다.",
+        "틀림: 열용량이 서로 다른 것은 열소설과 양립한다. 이 관찰은 열소설을 반박하지 않는다.",
       ],
     },
     "l2-vf1": {
@@ -2416,33 +2416,33 @@ export const quizQuestionTranslations: Partial<
     "l2-q4": {
       question: "조지프 블랙이 밝힌 관계 Q = m c ΔT에서 계수 c는 무엇을 나타내는가?",
       choices: [
-        "물체가 교환한 총열량으로, 단위는 줄이다.",
+        "물체 전체의 온도를 1도 높이는 데 필요한 열량.",
         "물체의 단위 질량의 온도를 1도 높이는 데 공급해야 하는 열량.",
-        "물체에 공급된 일과 물체가 받은 열의 비.",
+        "단위 질량의 물체를 일정한 온도에서 녹이는 데 필요한 열량.",
       ],
       explanations: [
-        "틀림: 교환된 총열량은 c가 아니라 Q이다. Q는 질량과 온도 차에도 의존한다.",
+        "틀림: 이는 물체 전체의 열용량 C = mc를 정의한다. c는 단위 질량당 값이다.",
         "정답: 비열용량(또는 비열)으로, 블랙이 밝혀낸 물질마다 고유한 계수이다.",
-        "틀림: 이 비는 c와 아무 관련이 없다. c에는 열과 온도만 관여한다.",
+        "틀림: 이는 단위 질량당 융해 잠열 L을 정의하며, 비열용량 c가 아니다.",
       ],
     },
     "l2-q5": {
       question: "줄이 측정한 칼로리의 값은 현대 단위로 얼마인가?",
-      choices: ["1칼로리당 약 1 J", "1칼로리당 약 4,18 J", "1칼로리당 약 100 J", "1칼로리당 약 0,24 J"],
+      choices: ["1칼로리당 약 1 J", "1칼로리당 약 4,18 J", "1칼로리당 약 4 180 J", "1칼로리당 약 0,24 J"],
       explanations: [
         "틀림: 칼로리와 줄이 환산 없이 이미 같은 양을 나타낸다면 이 값이 될 것이다.",
         "정답: 1 cal ≈ 4,18 J이다. 1843년부터 1849년까지 점점 더 정밀하게 측정된 이 값이 열과 일의 등가성을 확립했다.",
-        "틀림: 이 값은 줄의 측정값보다 약 24배나 크다.",
+        "틀림: 약 4 180 J은 1킬로칼로리, 즉 1 000칼로리에 해당한다.",
         "틀림: 이는 대략 그 역수이다(1/4,18 ≈ 0,24).",
       ],
     },
     "l2-q6": {
-      question: "식품 포장에 '250 cal'이라고 적혀 있다. 이는 대략 몇 줄에 해당하는가?",
+      question: "식품 포장에 '250 kcal'이라고 적혀 있다. 이는 대략 몇 줄에 해당하는가?",
       choices: ["≈ 250 J", "≈ 1046 kJ", "≈ 1046 J", "≈ 250 kJ"],
       explanations: [
         "틀림: 표시된 단위를 줄과 혼동한 계산이다.",
-        "정답: 식품 칼로리 1 cal은 실제로 1 kcal이며, 원래는 대문자 Cal로 표기한다. 250 kcal × 4,18 kJ/kcal ≈ 1046 kJ이다.",
-        "틀림: 식품의 1 cal이 실제로는 1킬로칼로리라는 점을 빠뜨린 계산이다.",
+        "정답: 1 kcal = 1 000 cal이다. 표시된 에너지는 약 1 046 kJ이다.",
+        "틀림: 이는 250 kcal가 아니라 250 cal에 해당한다. 접두어 킬로는 1 000배를 뜻한다.",
         "틀림: 식품 칼로리를 킬로줄과 혼동한 계산이다.",
       ],
     },
@@ -2455,16 +2455,16 @@ export const quizQuestionTranslations: Partial<
       ],
     },
     "l2-q7": {
-      question: "0°C의 얼음을 가열하여 20°C의 액체 물로 만든다. 받은 총열량을 올바르게 계산하려면 어떻게 해야 하는가?",
+      question: "질량 m, 온도 0°C인 얼음을 가열하여 20°C의 액체 물로 만든다. L은 단위 질량당 융해 잠열, c_water와 c_ice는 액체 물과 얼음의 비열용량이며 ΔT = 20°C이다. 받은 총열량 Q를 나타내는 식은 어느 것인가?",
       choices: [
-        "Q = m c_eau ΔT. 여기서 ΔT = 20°C이고 c_eau는 액체 물의 비열용량이다.",
-        "Q = m L + m c_eau ΔT. 여기서 L은 융해의 비잠열, c_eau는 액체 물의 비열용량이며 ΔT = 20°C이다.",
-        "Q = m c_glace ΔT + m c_eau ΔT. 여기서 ΔT = 20°C이다.",
+        "Q = m c_water ΔT",
+        "Q = m L + m c_water ΔT",
+        "Q = m L + m c_ice ΔT",
       ],
       explanations: [
         "틀림: 이 계산은 온도가 변하지 않은 채 0°C에서 흡수되는 융해 잠열을 빠뜨린다. 이것이 열용량과 구별되는 블랙의 두 번째 발견이다.",
         "정답: 잠열(일정 온도에서의 융해)과 관계 Q = mcΔT(상이 일정한 상태에서의 가열)는 더해지지만, 각각 과정의 서로 다른 단계에 적용된다.",
-        "틀림: 얼음이 녹은 뒤 0°C에서 20°C까지 가열할 때 적용되는 것은 액체 물의 비열용량이지 얼음의 비열용량이 아니다.",
+        "틀림: 융해는 포함되어 있지만 0°C에서 20°C로 가열되는 것은 액체 물이다. c_ice가 아니라 c_water를 사용해야 한다.",
       ],
     },
     "l2-vf4": {
@@ -2476,18 +2476,18 @@ export const quizQuestionTranslations: Partial<
       ],
     },
     "l3-q1": {
-      question: "고립계의 벽이 갖는 성질은 무엇인가?",
+      question: "압력에 의한 부피 일만 고려한다. 계를 고립시키는 벽의 성질은 어느 것인가?",
       choices: [
-        "투열성, 가동성, 투과성.",
+        "강체, 단열성, 투과성.",
         "강체, 단열성, 불투과성.",
         "강체, 투열성, 불투과성.",
-        "가동성, 단열성, 투과성.",
+        "가동성, 단열성, 불투과성.",
       ],
       explanations: [
-        "틀림: 이는 오히려 모든 교환(열, 일, 물질)을 허용하는 성질이다.",
+        "틀림: 투과성 벽은 강체이면서 단열성이어도 물질 교환을 허용한다.",
         "정답: 강체 벽은 일의 교환을, 단열벽은 열의 교환을, 불투과성 벽은 물질의 교환을 막는다.",
         "틀림: 투열벽은 열을 통과시키므로 계가 고립되어 있지 않다.",
-        "틀림: 가동성이고 투과성인 벽은 일과 물질을 통과시킨다.",
+        "틀림: 움직이는 벽은 단열성이면서 불투과성이어도 부피 일을 통한 에너지 교환을 허용한다.",
       ],
     },
     "l3-vf2": {
@@ -2551,11 +2551,11 @@ export const quizQuestionTranslations: Partial<
       question: "왜 dQ와 dW 대신 δQ와 δW라고 쓰는가?",
       choices: [
         "불완전미분이기 때문이다. 그 적분은 어떤 경로를 따랐는지에 따라 달라진다.",
-        "Q와 W는 너무 작은 양이라서 보통의 미분으로 나타낼 수 없기 때문이다.",
+        "열과 일은 보존되지 않지만 계의 내부 에너지는 모든 과정에서 보존되기 때문이다.",
       ],
       explanations: [
         "정답: Q와 W는 경로에 의존하지만 U는 초기 상태와 최종 상태에만 의존한다. dQ라고 쓰는 것은 열소 이론을 되살리는 것과 같다.",
-        "틀림: 양의 ‘크기’는 관계없다. 핵심은 경로 의존성이다.",
+        "틀림: U는 변할 수 있다. U는 상태 함수이고 Q와 W는 경로에 의존한다. 표기는 이 차이를 나타낸다.",
       ],
     },
     "l4-q3": {
@@ -2563,12 +2563,12 @@ export const quizQuestionTranslations: Partial<
       choices: [
         "Q와 W는 상태함수이므로 반드시 0이다.",
         "U가 상태함수이므로 0이다.",
-        "열기관에서는 언제나 엄밀히 양수이다.",
+        "사이클이 준정적일 때만 영이다.",
       ],
       explanations: [
         "틀림: 반대이다. Q와 W는 상태함수가 아니라 계의 양이 아닌 에너지 전달이다. ΔU_cycle = 0이므로 한 순환에서 0이 되도록 제한되는 것은 그 합뿐이다.",
         "정답: 한 순환이 끝나면 계는 초기 상태로 돌아온다. U는 상태함수이므로 ΔU_cycle = U(A) − U(A) = 0이고, 따라서 제1법칙에 의해 Q_cycle + W_cycle = 0이다.",
-        "틀림: 0인 것은 Q_cycle + W_cycle의 합이지 각 항이 아니다. 열기관에서는 Q_cycle과 W_cycle이 각각 0이 아니면서 부호가 반대일 수 있다.",
+        "틀림: 모든 사이클은 계를 초기 상태로 되돌린다. ΔU_cycle = 0이므로 Q_cycle + W_cycle = 0이며, 준정적 사이클일 필요는 없다.",
       ],
     },
     "l4-q4": {
@@ -2585,10 +2585,10 @@ export const quizQuestionTranslations: Partial<
       ],
     },
     "l4-q6": {
-      question: "닫힌계의 등적 과정에서는 언제나 다음이 성립한다:",
+      question: "닫힌계의 등적 과정에서 압력에 의한 부피 일만 가능하다면 언제나 다음이 성립한다:",
       choices: ["W = 0, 따라서 ΔU = Q", "Q = 0, 따라서 ΔU = W", "ΔU = 0, 따라서 Q = −W"],
       explanations: [
-        "정답: 부피가 일정하면 δW = −P dV = 0이며, 내부 에너지 변화 전체가 열에서 온다.",
+        "정답: 부피가 일정하면 부피 일은 영이다. 여기서는 다른 형태의 일이 없으므로 W = 0이고 ΔU = Q이다.",
         "틀림: 이는 단열 과정의 수지이지 등적 과정의 수지가 아니다.",
         "틀림: U는 T에만 의존하므로 이는 이상 기체의 등온 과정에 대한 수지이다.",
       ],
@@ -2618,12 +2618,12 @@ export const quizQuestionTranslations: Partial<
       choices: [
         "क्योंकि तापांतर के बिना कोई ऊष्मा प्रवाह नहीं होता, और कार्य में बदलने को कुछ बचता ही नहीं।",
         "क्योंकि यांत्रिक कार्य केवल ऐसे स्रोत से मिल सकता है जिसका ताप किसी न्यूनतम सीमा से ऊपर हो, जो हर कार्यकारी द्रव के लिए अलग होती है।",
-        "क्योंकि पूरे चक्र के दौरान कार्यकारी द्रव का दाब सदैव वायुमंडलीय दाब से अधिक रहना चाहिए।",
+        "क्योंकि इंजन के अगले चक्र को शुरू करने के लिए शीत स्रोत को कार्यकारी द्रव का संघनन करना अनिवार्य है।",
       ],
       explanations: [
         "सही: इंजन उष्ण → शीत ऊष्मा प्रवाह पर वसूले गए कर जैसा है; प्रवाह नहीं तो कार्य नहीं। असली “ईंधन” तापप्रवणता है।",
         "गलत: कोई ताप-सीमा नहीं होती; थोड़ा-सा अंतर भी पर्याप्त है (समुद्र में कुछ ही डिग्री के अंतर का उपयोग करने वाले OTEC संयंत्र देखें)।",
-        "गलत: कसौटी दाब नहीं है; महत्त्व दोनों स्रोतों के बीच के तापांतर का है।",
+        "गलत: ऊष्मा इंजन कार्यकारी द्रव के प्रावस्था परिवर्तन के बिना भी चल सकता है। संघनन कोई सामान्य अनिवार्य शर्त नहीं है।",
       ],
     },
     "l1-vf1": {
@@ -2652,12 +2652,12 @@ export const quizQuestionTranslations: Partial<
       choices: [
         "रम्फ़ोर्ड द्वारा देखी गई तोपों की बोरिंग: घर्षण से प्रतीततः असीमित ऊष्मा उत्पन्न होती थी।",
         "जोज़ेफ़ ब्लैक द्वारा स्थिर तापमान पर बर्फ़ के गलने में अवशोषित गुप्त ऊष्मा का मापन।",
-        "क्लैपेरॉन द्वारा बॉयल, शार्ल और गे-लुसाक के नियमों को आदर्श गैस की एक अवस्था-समीकरण में संयोजित करना।",
+        "यह प्रेक्षण कि समान द्रव्यमान वाले पिंडों का ताप समान मात्रा में बढ़ाने के लिए अलग-अलग ऊष्मा की आवश्यकता होती है।",
       ],
       explanations: [
         "सही: यदि ऊष्मा कोई सीमित और संरक्षित द्रव होती, तो लगातार बोरिंग करने से वह अनिश्चित काल तक उत्पन्न नहीं हो सकती थी। रम्फ़ोर्ड ने 1798 में निष्कर्ष निकाला कि उसका संबंध गति से है।",
         "गलत: गुप्त ऊष्मा को कैलोरिक सिद्धांत उलटे अच्छी तरह समझाता था—अवस्था परिवर्तन में द्रव को पदार्थ से 'बंधा' हुआ माना जाता था।",
-        "गलत: क्लैपेरॉन ने 1834 में गैस के नियमों को एकीकृत किया, जिसका ऊष्मा की प्रकृति से सीधा संबंध नहीं है।",
+        "गलत: अलग-अलग ऊष्मा धारिताएँ कैलोरिक सिद्धांत के अनुकूल हैं; यह प्रेक्षण उसका खंडन नहीं करता।",
       ],
     },
     "l2-vf1": {
@@ -2671,33 +2671,33 @@ export const quizQuestionTranslations: Partial<
     "l2-q4": {
       question: "जोज़ेफ़ ब्लैक द्वारा स्पष्ट किए गए संबंध Q = m c ΔT में गुणांक c क्या दर्शाता है?",
       choices: [
-        "पिंड द्वारा विनिमय की गई कुल ऊष्मा, जूल में।",
+        "पूरे पिंड का ताप एक डिग्री बढ़ाने के लिए आवश्यक ऊष्मा।",
         "पिंड के इकाई द्रव्यमान का तापमान एक केल्विन बढ़ाने के लिए आवश्यक ऊष्मा।",
-        "पिंड को दिए गए कार्य और उसके द्वारा प्राप्त ऊष्मा का अनुपात।",
+        "स्थिर ताप पर पिंड के इकाई द्रव्यमान को पिघलाने के लिए आवश्यक ऊष्मा।",
       ],
       explanations: [
-        "गलत: कुल विनिमय की गई ऊष्मा स्वयं Q है, c नहीं। Q द्रव्यमान और तापांतर पर भी निर्भर करता है।",
+        "गलत: यह पूरे पिंड की ऊष्मा धारिता C = mc है; c प्रति इकाई द्रव्यमान की राशि है।",
         "सही: यह विशिष्ट ऊष्मा धारिता (या विशिष्ट ऊष्मा) है, अर्थात प्रत्येक पदार्थ का वह विशिष्ट गुणांक जिसे ब्लैक ने उजागर किया।",
-        "गलत: इस अनुपात का c से कोई संबंध नहीं है; c में केवल ऊष्मा और तापमान आते हैं।",
+        "गलत: यह गलन की विशिष्ट गुप्त ऊष्मा L है, विशिष्ट ऊष्मा धारिता c नहीं।",
       ],
     },
     "l2-q5": {
       question: "जूल द्वारा मापी गई कैलोरी का मान आधुनिक इकाइयों में कितना है?",
-      choices: ["लगभग 1 J प्रति कैलोरी", "लगभग 4,18 J प्रति कैलोरी", "लगभग 100 J प्रति कैलोरी", "लगभग 0,24 J प्रति कैलोरी"],
+      choices: ["लगभग 1 J प्रति कैलोरी", "लगभग 4,18 J प्रति कैलोरी", "लगभग 4 180 J प्रति कैलोरी", "लगभग 0,24 J प्रति कैलोरी"],
       explanations: [
         "गलत: यह तब होता यदि कैलोरी और जूल बिना रूपांतरण के पहले से एक ही मान मापते।",
         "सही: 1 cal ≈ 4,18 J। 1843 से 1849 के बीच बढ़ती परिशुद्धता से मापे गए इसी मान ने ऊष्मा और कार्य की तुल्यता स्थापित की।",
-        "गलत: यह मान जूल के मापन से लगभग 24 गुना अधिक है।",
+        "गलत: लगभग 4 180 J एक किलोकैलोरी, यानी 1 000 कैलोरी के बराबर हैं।",
         "गलत: यह लगभग उसका व्युत्क्रम है (1/4,18 ≈ 0,24)।",
       ],
     },
     "l2-q6": {
-      question: "किसी खाद्य पैकेट पर '250 cal' लिखा है। यह लगभग कितने जूल के बराबर है?",
+      question: "किसी खाद्य पैकेट पर '250 kcal' लिखा है। यह लगभग कितने जूल के बराबर है?",
       choices: ["≈ 250 J", "≈ 1046 kJ", "≈ 1046 J", "≈ 250 kJ"],
       explanations: [
         "गलत: इसमें लिखी हुई इकाई को जूल समझ लिया गया है।",
-        "सही: खाद्य कैलोरी वास्तव में 1 kcal होती है, जिसे सामान्यतः बड़े अक्षर से Cal लिखना चाहिए। 250 kcal × 4,18 kJ/kcal ≈ 1046 kJ।",
-        "गलत: इसमें यह भूल गए हैं कि एक खाद्य cal वास्तव में एक किलोकैलोरी होती है।",
+        "सही: 1 kcal = 1 000 cal। दर्शाई गई ऊर्जा लगभग 1 046 kJ है।",
+        "गलत: यह 250 cal के बराबर है, 250 kcal के नहीं। उपसर्ग किलो का अर्थ 1 000 का गुणक है।",
         "गलत: इसमें खाद्य कैलोरी को किलोजूल समझ लिया गया है।",
       ],
     },
@@ -2710,16 +2710,16 @@ export const quizQuestionTranslations: Partial<
       ],
     },
     "l2-q7": {
-      question: "0°C की बर्फ़ को गरम करके 20°C का द्रव पानी बनाया जाता है। प्राप्त कुल ऊष्मा की सही गणना कैसे होगी?",
+      question: "द्रव्यमान m की 0°C की बर्फ़ को गरम करके 20°C का द्रव पानी बनाया जाता है। L गलन की विशिष्ट गुप्त ऊष्मा है, c_water और c_ice द्रव पानी और बर्फ़ की विशिष्ट ऊष्मा धारिताएँ हैं, तथा ΔT = 20°C है। प्राप्त कुल ऊष्मा Q का सही व्यंजक कौन-सा है?",
       choices: [
-        "Q = m c_eau ΔT, जहाँ ΔT = 20°C और c_eau द्रव पानी की विशिष्ट ऊष्मा धारिता है।",
-        "Q = m L + m c_eau ΔT, जहाँ L गलन की विशिष्ट गुप्त ऊष्मा, c_eau द्रव पानी की विशिष्ट ऊष्मा धारिता और ΔT = 20°C है।",
-        "Q = m c_glace ΔT + m c_eau ΔT, जहाँ ΔT = 20°C है।",
+        "Q = m c_water ΔT",
+        "Q = m L + m c_water ΔT",
+        "Q = m L + m c_ice ΔT",
       ],
       explanations: [
         "गलत: इस गणना में गलन की गुप्त ऊष्मा छूट जाती है, जो तापमान बदले बिना 0°C पर अवशोषित होती है। ऊष्मा धारिता से अलग यह ब्लैक की दूसरी खोज थी।",
         "सही: गुप्त ऊष्मा (स्थिर तापमान पर गलन) और संबंध Q = mcΔT (एक ही अवस्था में तापन) जोड़े जाते हैं, पर दोनों प्रक्रम के अलग-अलग चरणों पर लागू होते हैं।",
-        "गलत: बर्फ़ गलने के बाद 0°C से 20°C तक तापन में द्रव पानी की विशिष्ट ऊष्मा धारिता लागू होती है, बर्फ़ की नहीं।",
+        "गलत: गलन शामिल है, लेकिन 0°C से 20°C तक तापन द्रव पानी का होता है। c_ice के बजाय c_water का उपयोग करना चाहिए।",
       ],
     },
     "l2-vf4": {
@@ -2731,18 +2731,18 @@ export const quizQuestionTranslations: Partial<
       ],
     },
     "l3-q1": {
-      question: "विलगित निकाय की दीवारें कैसी होती हैं?",
+      question: "केवल दाब बलों द्वारा किया गया कार्य माना जाता है। दीवारों के कौन-से गुण निकाय का विलगन सुनिश्चित करते हैं?",
       choices: [
-        "ऊष्मापारगम्य, गतिशील और पारगम्य।",
+        "दृढ़, रुद्धोष्म और पारगम्य।",
         "दृढ़, रुद्धोष्म और अपारगम्य।",
         "दृढ़, ऊष्मापारगम्य और अपारगम्य।",
-        "गतिशील, रुद्धोष्म और पारगम्य।",
+        "गतिशील, रुद्धोष्म और अपारगम्य।",
       ],
       explanations: [
-        "गलत: ये इसके विपरीत वे गुण हैं जो सभी विनिमय—ऊष्मा, कार्य और पदार्थ—होने देते हैं।",
+        "गलत: पारगम्य दीवारें पदार्थ का आदान-प्रदान होने देती हैं, भले ही वे दृढ़ और रुद्धोष्म हों।",
         "सही: दृढ़ दीवार कार्य का, रुद्धोष्म दीवार ऊष्मा का और अपारगम्य दीवार पदार्थ का विनिमय रोकती है।",
         "गलत: ऊष्मापारगम्य दीवारें ऊष्मा को पार होने देती हैं; निकाय विलगित नहीं होगा।",
-        "गलत: गतिशील और पारगम्य दीवारें कार्य और पदार्थ को पार होने देती हैं।",
+        "गलत: गतिशील दीवारें दाब बलों के कार्य का आदान-प्रदान होने देती हैं, भले ही वे रुद्धोष्म और अपारगम्य हों।",
       ],
     },
     "l3-vf2": {
@@ -2806,11 +2806,11 @@ export const quizQuestionTranslations: Partial<
       question: "हम dQ और dW के बजाय δQ और δW क्यों लिखते हैं?",
       choices: [
         "क्योंकि ये अयथार्थ अवकल रूप हैं: इनके समाकल अनुसरित मार्ग पर निर्भर करते हैं।",
-        "क्योंकि Q और W इतनी छोटी राशियाँ हैं कि उन्हें सामान्य अवकलजों से वर्णित नहीं किया जा सकता।",
+        "क्योंकि ऊष्मा और कार्य संरक्षित नहीं रहते, जबकि निकाय की आंतरिक ऊर्जा हर प्रक्रम में संरक्षित रहती है।",
       ],
       explanations: [
         "सही: Q और W मार्ग पर निर्भर करते हैं, जबकि U केवल आरंभिक और अंतिम अवस्थाओं पर निर्भर करता है। dQ लिखना कैलरिक सिद्धांत को पुनर्जीवित करने के समान होता।",
-        "गलत: राशियों के ‘आकार’ का इससे कोई संबंध नहीं; प्रश्न मार्ग-निर्भरता का है।",
+        "गलत: U बदल सकती है। U अवस्था फलन है, जबकि Q और W पथ पर निर्भर हैं; संकेत इसी अंतर को दर्शाते हैं।",
       ],
     },
     "l4-q3": {
@@ -2818,12 +2818,12 @@ export const quizQuestionTranslations: Partial<
       choices: [
         "यह अनिवार्यतः शून्य है, क्योंकि Q और W अवस्था फलन हैं।",
         "यह शून्य है, क्योंकि U एक अवस्था फलन है।",
-        "ऊष्मा इंजन के लिए यह सदैव पूर्णतः धनात्मक होता है।",
+        "यह केवल तभी शून्य होता है जब चक्र अर्धस्थैतिक हो।",
       ],
       explanations: [
         "गलत: उलटा सत्य है—Q और W अवस्था फलन नहीं, बल्कि ऊर्जा-अंतरण हैं, निकाय की राशियाँ नहीं। ΔU_cycle = 0 के कारण केवल उनका योग ही किसी चक्र पर शून्य होना आवश्यक है।",
         "सही: चक्र के अंत में निकाय अपनी आरंभिक अवस्था में लौट आता है। चूँकि U अवस्था फलन है, ΔU_cycle = U(A) − U(A) = 0; इसलिए प्रथम नियम Q_cycle + W_cycle = 0 अनिवार्य करता है।",
-        "गलत: शून्य उनका योग Q_cycle + W_cycle है, प्रत्येक पद अलग-अलग नहीं; ऊष्मा इंजन में Q_cycle और W_cycle दोनों अशून्य तथा विपरीत चिह्नों वाले हो सकते हैं।",
+        "गलत: हर चक्र निकाय को प्रारंभिक अवस्था में लौटाता है। ΔU_cycle = 0 से Q_cycle + W_cycle = 0 अनिवार्य है, भले ही चक्र अर्धस्थैतिक न हो।",
       ],
     },
     "l4-q4": {
@@ -2840,10 +2840,10 @@ export const quizQuestionTranslations: Partial<
       ],
     },
     "l4-q6": {
-      question: "बंद निकाय के समआयतनी प्रक्रम में सदैव होता है:",
+      question: "बंद निकाय के समआयतनी प्रक्रम में, जब कार्य केवल दाब बलों द्वारा हो सकता है, सदैव होता है:",
       choices: ["W = 0, अतः ΔU = Q", "Q = 0, अतः ΔU = W", "ΔU = 0, अतः Q = −W"],
       explanations: [
-        "सही: नियत आयतन पर δW = −P dV = 0; आंतरिक ऊर्जा का पूरा परिवर्तन ऊष्मा से आता है।",
+        "सही: स्थिर आयतन पर दाब बलों का कार्य शून्य है। यहाँ यही एकमात्र कार्य है, इसलिए W = 0 और ΔU = Q।",
         "गलत: यह रुद्धोष्म प्रक्रम का संतुलन है, समआयतनी प्रक्रम का नहीं।",
         "गलत: यह आदर्श गैस के समतापी प्रक्रम का संतुलन है, क्योंकि U केवल T पर निर्भर करता है।",
       ],
@@ -2873,12 +2873,12 @@ export const quizQuestionTranslations: Partial<
       choices: [
         "Vì không có chênh lệch nhiệt độ thì không có dòng nhiệt nào chảy, và cũng chẳng có gì để biến thành công.",
         "Vì công cơ học chỉ có thể sinh ra từ một nguồn có nhiệt độ vượt quá một ngưỡng tối thiểu, riêng cho từng môi chất công tác.",
-        "Vì áp suất của môi chất công tác phải luôn cao hơn áp suất khí quyển trong suốt chu trình.",
+        "Vì nguồn lạnh nhất thiết phải làm ngưng tụ môi chất công tác để động cơ có thể bắt đầu chu trình tiếp theo.",
       ],
       explanations: [
         "Đúng: động cơ giống như một trạm thu phí đặt trên dòng nhiệt nóng → lạnh; không có dòng thì không có công. “Nhiên liệu” thật sự chính là gradien nhiệt độ.",
         "Sai: không tồn tại ngưỡng nhiệt độ nào; một chênh lệch dù nhỏ cũng đủ (xem các nhà máy OTEC khai thác vài độ chênh lệch trong đại dương).",
-        "Sai: tiêu chí không phải là áp suất; điều quan trọng là chênh lệch nhiệt độ giữa hai nguồn.",
+        "Sai: động cơ nhiệt có thể hoạt động mà môi chất không chuyển pha. Sự ngưng tụ không phải là điều kiện bắt buộc chung.",
       ],
     },
     "l1-vf1": {
@@ -2907,12 +2907,12 @@ export const quizQuestionTranslations: Partial<
       choices: [
         "Việc khoan nòng đại bác do Rumford quan sát: ma sát sinh ra nhiệt dường như không có giới hạn.",
         "Phép đo của Joseph Black về ẩn nhiệt mà băng hấp thụ khi nóng chảy ở nhiệt độ không đổi.",
-        "Việc Clapeyron tổng hợp các định luật Boyle, Charles và Gay-Lussac thành một phương trình trạng thái duy nhất của khí lý tưởng.",
+        "Quan sát cho thấy các vật có cùng khối lượng cần những lượng nhiệt khác nhau để tăng nhiệt độ một lượng như nhau.",
       ],
       explanations: [
         "Đúng: nếu nhiệt là một lưu chất hữu hạn và được bảo toàn thì việc khoan liên tục không thể sinh nhiệt mãi mãi. Năm 1798, Rumford kết luận rằng nhiệt gắn với chuyển động.",
         "Sai: ngược lại, thuyết chất nhiệt giải thích tốt ẩn nhiệt bằng cách cho rằng lưu chất 'liên kết' với vật chất khi chuyển trạng thái.",
-        "Sai: năm 1834, Clapeyron thống nhất các định luật khí, không liên quan trực tiếp đến bản chất của nhiệt.",
+        "Sai: các nhiệt dung khác nhau vẫn phù hợp với thuyết nhiệt chất; quan sát này không bác bỏ thuyết đó.",
       ],
     },
     "l2-vf1": {
@@ -2926,33 +2926,33 @@ export const quizQuestionTranslations: Partial<
     "l2-q4": {
       question: "Trong hệ thức Q = m c ΔT do Joseph Black làm sáng tỏ, hệ số c biểu thị điều gì?",
       choices: [
-        "Tổng nhiệt lượng mà vật trao đổi, tính bằng joule.",
+        "Nhiệt lượng cần để tăng nhiệt độ của toàn bộ vật lên một độ.",
         "Nhiệt lượng cần cung cấp để làm nhiệt độ của một đơn vị khối lượng vật tăng một độ.",
-        "Tỉ số giữa công cung cấp cho vật và nhiệt mà vật nhận.",
+        "Nhiệt lượng cần để làm nóng chảy một đơn vị khối lượng của vật ở nhiệt độ không đổi.",
       ],
       explanations: [
-        "Sai: chính Q mới là tổng nhiệt lượng trao đổi, không phải c; Q còn phụ thuộc vào khối lượng và độ chênh nhiệt độ.",
+        "Sai: đó là nhiệt dung C = mc của toàn bộ vật; c được tính trên một đơn vị khối lượng.",
         "Đúng: đó là nhiệt dung riêng (hay nhiệt riêng), hệ số đặc trưng cho từng vật liệu mà Black đã làm rõ.",
-        "Sai: tỉ số này không liên quan gì đến c; c chỉ liên hệ nhiệt và nhiệt độ.",
+        "Sai: đó là nhiệt nóng chảy riêng L, không phải nhiệt dung riêng c.",
       ],
     },
     "l2-q5": {
       question: "Theo đơn vị hiện đại, giá trị của calo mà Joule đo được là bao nhiêu?",
-      choices: ["Khoảng 1 J mỗi calo", "Khoảng 4,18 J mỗi calo", "Khoảng 100 J mỗi calo", "Khoảng 0,24 J mỗi calo"],
+      choices: ["Khoảng 1 J mỗi calo", "Khoảng 4,18 J mỗi calo", "Khoảng 4 180 J mỗi calo", "Khoảng 0,24 J mỗi calo"],
       explanations: [
         "Sai: điều này chỉ đúng nếu calo và joule vốn đo cùng một giá trị mà không cần chuyển đổi.",
         "Đúng: 1 cal ≈ 4,18 J; giá trị này, được đo ngày càng chính xác từ năm 1843 đến 1849, đã xác lập sự tương đương giữa nhiệt và công.",
-        "Sai: giá trị này lớn hơn phép đo của Joule khoảng 24 lần.",
+        "Sai: khoảng 4 180 J tương ứng với một kilocalo, tức 1 000 calo.",
         "Sai: đây xấp xỉ là giá trị nghịch đảo (1/4,18 ≈ 0,24).",
       ],
     },
     "l2-q6": {
-      question: "Một bao bì thực phẩm ghi '250 cal'. Giá trị này xấp xỉ bao nhiêu joule?",
+      question: "Một bao bì thực phẩm ghi '250 kcal'. Giá trị này xấp xỉ bao nhiêu joule?",
       choices: ["≈ 250 J", "≈ 1046 kJ", "≈ 1046 J", "≈ 250 kJ"],
       explanations: [
         "Sai: cách tính này nhầm đơn vị ghi trên bao bì với joule.",
-        "Đúng: một calo thực phẩm thực chất là 1 kcal, thường phải viết là Cal với chữ hoa. 250 kcal × 4,18 kJ/kcal ≈ 1046 kJ.",
-        "Sai: cách tính này quên rằng một cal thực phẩm thực chất là một kilocalo.",
+        "Đúng: 1 kcal = 1 000 cal. Năng lượng ghi trên bao bì xấp xỉ 1 046 kJ.",
+        "Sai: giá trị này tương ứng với 250 cal, không phải 250 kcal. Tiền tố kilo biểu thị hệ số 1 000.",
         "Sai: cách tính này nhầm calo thực phẩm với kilojoule.",
       ],
     },
@@ -2965,16 +2965,16 @@ export const quizQuestionTranslations: Partial<
       ],
     },
     "l2-q7": {
-      question: "Ta làm nóng một viên nước đá ở 0°C cho đến khi thu được nước lỏng ở 20°C. Phải tính tổng nhiệt lượng nhận được như thế nào?",
+      question: "Một viên nước đá khối lượng m ở 0°C được làm nóng thành nước lỏng ở 20°C. L là nhiệt nóng chảy riêng, c_water và c_ice là nhiệt dung riêng của nước lỏng và nước đá, còn ΔT = 20°C. Biểu thức nào cho tổng nhiệt lượng nhận được Q?",
       choices: [
-        "Q = m c_eau ΔT, với ΔT = 20°C và c_eau là nhiệt dung riêng của nước lỏng.",
-        "Q = m L + m c_eau ΔT, với L là ẩn nhiệt riêng của sự nóng chảy, c_eau là nhiệt dung riêng của nước lỏng và ΔT = 20°C.",
-        "Q = m c_glace ΔT + m c_eau ΔT, với ΔT = 20°C.",
+        "Q = m c_water ΔT",
+        "Q = m L + m c_water ΔT",
+        "Q = m L + m c_ice ΔT",
       ],
       explanations: [
         "Sai: phép tính này bỏ qua ẩn nhiệt nóng chảy, được hấp thụ ở 0°C mà nhiệt độ không đổi; đó chính là khám phá thứ hai của Black, khác với nhiệt dung.",
         "Đúng: ẩn nhiệt (nóng chảy ở nhiệt độ không đổi) và hệ thức Q = mcΔT (làm nóng trong cùng một pha) được cộng lại, nhưng mỗi phần áp dụng cho một giai đoạn riêng của quá trình.",
-        "Sai: sau khi băng tan, nhiệt dung riêng của nước lỏng mới áp dụng cho sự tăng nhiệt từ 0°C đến 20°C, không phải nhiệt dung riêng của băng.",
+        "Sai: đã tính phần nóng chảy, nhưng từ 0°C đến 20°C là nước lỏng được làm nóng. Phải dùng c_water, không phải c_ice.",
       ],
     },
     "l2-vf4": {
@@ -2986,18 +2986,18 @@ export const quizQuestionTranslations: Partial<
       ],
     },
     "l3-q1": {
-      question: "Vách của một hệ cô lập có các tính chất nào?",
+      question: "Chỉ xét công của lực áp suất. Những tính chất nào của vách bảo đảm hệ cô lập?",
       choices: [
-        "Dẫn nhiệt, di động và thấm.",
+        "Cứng, đoạn nhiệt và thấm.",
         "Cứng, đoạn nhiệt và không thấm.",
         "Cứng, dẫn nhiệt và không thấm.",
-        "Di động, đoạn nhiệt và thấm.",
+        "Di động, đoạn nhiệt và không thấm.",
       ],
       explanations: [
-        "Sai: ngược lại, đây là các tính chất cho phép mọi trao đổi—nhiệt, công và vật chất.",
+        "Sai: vách thấm cho phép trao đổi vật chất, dù cứng và đoạn nhiệt.",
         "Đúng: vách cứng ngăn trao đổi công, vách đoạn nhiệt ngăn trao đổi nhiệt và vách không thấm ngăn trao đổi vật chất.",
         "Sai: vách dẫn nhiệt cho nhiệt đi qua nên hệ sẽ không cô lập.",
-        "Sai: vách di động và thấm cho phép công và vật chất đi qua.",
+        "Sai: vách di động cho phép trao đổi công của lực áp suất, dù đoạn nhiệt và không thấm.",
       ],
     },
     "l3-vf2": {
@@ -3061,11 +3061,11 @@ export const quizQuestionTranslations: Partial<
       question: "Tại sao ta viết δQ và δW thay vì dQ và dW?",
       choices: [
         "Vì chúng là các vi phân không đúng: tích phân của chúng phụ thuộc vào đường đi.",
-        "Vì Q và W là những đại lượng quá nhỏ để có thể mô tả bằng các vi phân thông thường.",
+        "Vì nhiệt lượng và công không được bảo toàn, còn nội năng của hệ được bảo toàn trong mọi quá trình.",
       ],
       explanations: [
         "Đúng: Q và W phụ thuộc vào đường đi, khác với U chỉ phụ thuộc vào trạng thái đầu và cuối. Viết dQ chẳng khác nào làm sống lại thuyết chất nhiệt.",
-        "Sai: ‘độ lớn’ của các đại lượng không liên quan; vấn đề là sự phụ thuộc vào đường đi.",
+        "Sai: U có thể thay đổi. U là hàm trạng thái, còn Q và W phụ thuộc đường đi; ký hiệu thể hiện sự khác biệt này.",
       ],
     },
     "l4-q3": {
@@ -3073,12 +3073,12 @@ export const quizQuestionTranslations: Partial<
       choices: [
         "Nó nhất thiết bằng không vì Q và W là hàm trạng thái.",
         "Nó bằng không vì U là một hàm trạng thái.",
-        "Nó luôn luôn dương nghiêm ngặt đối với một động cơ nhiệt.",
+        "Chỉ bằng không nếu chu trình là tựa tĩnh.",
       ],
       explanations: [
         "Sai: điều ngược lại mới đúng—Q và W không phải là hàm trạng thái; chúng là các truyền năng lượng, không phải đại lượng của hệ. Chỉ tổng của chúng bị buộc phải bằng không trên một chu trình thông qua ΔU_cycle = 0.",
         "Đúng: sau một chu trình, hệ trở lại trạng thái ban đầu. Vì U là hàm trạng thái nên ΔU_cycle = U(A) − U(A) = 0; do đó nguyên lý thứ nhất áp đặt Q_cycle + W_cycle = 0.",
-        "Sai: chính tổng Q_cycle + W_cycle bằng không, chứ không phải từng số hạng riêng lẻ; trong một động cơ nhiệt, Q_cycle và W_cycle đều có thể khác không và trái dấu.",
+        "Sai: mọi chu trình đều đưa hệ về trạng thái ban đầu. ΔU_cycle = 0 đòi hỏi Q_cycle + W_cycle = 0, dù chu trình không tựa tĩnh.",
       ],
     },
     "l4-q4": {
@@ -3095,10 +3095,10 @@ export const quizQuestionTranslations: Partial<
       ],
     },
     "l4-q6": {
-      question: "Trong một quá trình đẳng tích của hệ kín, ta luôn có:",
+      question: "Trong một quá trình đẳng tích của hệ kín, khi công duy nhất là công của lực áp suất, ta luôn có:",
       choices: ["W = 0, nên ΔU = Q", "Q = 0, nên ΔU = W", "ΔU = 0, nên Q = −W"],
       explanations: [
-        "Đúng: ở thể tích không đổi, δW = −P dV = 0; toàn bộ độ biến thiên nội năng đến từ nhiệt.",
+        "Đúng: ở thể tích không đổi, công của lực áp suất bằng không. Đây là dạng công duy nhất, nên W = 0 và ΔU = Q.",
         "Sai: đây là cân bằng của một quá trình đoạn nhiệt, không phải đẳng tích.",
         "Sai: đây là cân bằng của một quá trình đẳng nhiệt của khí lý tưởng, vì U chỉ phụ thuộc vào T.",
       ],
@@ -3130,12 +3130,12 @@ export const quizQuestionTranslations: Partial<
       choices: [
         "لأنه من دون فرق في درجة الحرارة لا يجري أي تدفق حراري، فلا يبقى شيء يحول إلى شغل.",
         "لأن الشغل الميكانيكي لا ينتج إلا من مصدر تتجاوز درجة حرارته عتبة دنيا خاصة بكل مائع عامل.",
-        "لأن ضغط المائع العامل يجب أن يبقى دائما أعلى من الضغط الجوي طوال الدورة.",
+        "لأن المصدر البارد يجب بالضرورة أن يكثف المائع العامل كي يتمكن المحرك من بدء دورة جديدة.",
       ],
       explanations: [
         "صحيح: المحرك أشبه برسم مرور يفرض على التدفق الحراري من الساخن إلى البارد؛ فلا شغل من دون تدفق. و«الوقود» الحقيقي هو تدرج درجة الحرارة.",
-        "خطأ: لا وجود لأي عتبة حرارية؛ يكفي فرق ولو ضئيل (انظر محطات OTEC التي تستثمر فرقا من بضع درجات في المحيط).",
-        "خطأ: المعيار ليس الضغط، بل الفرق في درجة الحرارة بين المصدرين.",
+        "خطأ: لا وجود لأي عتبة حرارية؛ يكفي فرق ولو ضئيل (انظر محطات \u2066OTEC\u2069 التي تستثمر فرقا من بضع درجات في المحيط).",
+        "خطأ: يمكن للمحرك الحراري أن يعمل دون تغير طور المائع العامل. التكاثف ليس شرطا عاما.",
       ],
     },
     "l1-vf1": {
@@ -3164,12 +3164,12 @@ export const quizQuestionTranslations: Partial<
       choices: [
         "حفر المدافع الذي لاحظه رمفورد: يولد الاحتكاك حرارة بلا حد ظاهر.",
         "قياس جوزيف بلاك للحرارة الكامنة التي يمتصها الجليد عند انصهاره في درجة حرارة ثابتة.",
-        "جمع كلابيرون قوانين بويل وشارل وغاي-لوساك في معادلة حالة واحدة للغاز المثالي.",
+        "ملاحظة أن أجساما متساوية الكتلة تحتاج إلى كميات مختلفة من الحرارة لرفع درجة حرارتها بالمقدار نفسه.",
       ],
       explanations: [
-        "صحيح: لو كانت الحرارة مائعا محفوظا ومحدودا لما أمكن للحفر المستمر أن يولدها إلى ما لا نهاية. واستنتج رمفورد سنة 1798 أنها مرتبطة بالحركة.",
+        "صحيح: لو كانت الحرارة مائعا محفوظا ومحدودا لما أمكن للحفر المستمر أن يولدها إلى ما لا نهاية. واستنتج رمفورد سنة \u20661798\u2069 أنها مرتبطة بالحركة.",
         "خطأ: على العكس، كانت نظرية السيال الحراري تفسر الحرارة الكامنة تفسيرا جيدا، إذ يفترض أن المائع «يرتبط» بالمادة أثناء تغير الحالة.",
-        "خطأ: وحد كلابيرون سنة 1834 قوانين الغازات، من دون صلة مباشرة بطبيعة الحرارة.",
+        "خطأ: اختلاف السعات الحرارية متوافق مع نظرية السيال الحراري؛ هذه الملاحظة لا تدحضها.",
       ],
     },
     "l2-vf1": {
@@ -3181,35 +3181,35 @@ export const quizQuestionTranslations: Partial<
       ],
     },
     "l2-q4": {
-      question: "في العلاقة Q = m c ΔT التي أبرزها جوزيف بلاك، ماذا يمثل المعامل c؟",
+      question: "في العلاقة \u2066Q = m c ΔT\u2069 التي أبرزها جوزيف بلاك، ماذا يمثل المعامل \u2066c\u2069؟",
       choices: [
-        "كمية الحرارة الكلية التي يتبادلها الجسم، معبرا عنها بالجول.",
+        "الحرارة اللازمة لرفع درجة حرارة الجسم كله درجة واحدة.",
         "كمية الحرارة اللازم تزويد وحدة كتلة من الجسم بها لرفع درجة حرارتها درجة واحدة.",
-        "النسبة بين الشغل المقدم إلى الجسم والحرارة التي يتلقاها.",
+        "الحرارة اللازمة لصهر وحدة كتلة من الجسم عند درجة حرارة ثابتة.",
       ],
       explanations: [
-        "خطأ: Q نفسها هي الحرارة الكلية المتبادلة، لا c؛ كما أن Q تعتمد على الكتلة وعلى فرق درجة الحرارة.",
+        "خطأ: هذا تعريف السعة الحرارية \u2066C = mc\u2069 للجسم كله؛ أما \u2066c\u2069 فهي لكل وحدة كتلة.",
         "صحيح: إنها السعة الحرارية النوعية (أو الحرارة النوعية)، أي المعامل المميز لكل مادة الذي أبرزه بلاك.",
-        "خطأ: لا صلة لهذه النسبة بالمعامل c؛ فهو لا يربط إلا الحرارة بدرجة الحرارة.",
+        "خطأ: هذا تعريف الحرارة الكامنة النوعية للانصهار \u2066L\u2069، وليس السعة الحرارية النوعية \u2066c.\u2069",
       ],
     },
     "l2-q5": {
       question: "ما قيمة السعر الحراري التي قاسها جول، بالوحدات الحديثة؟",
-      choices: ["نحو 1 J لكل سعر حراري", "نحو 4,18 J لكل سعر حراري", "نحو 100 J لكل سعر حراري", "نحو 0,24 J لكل سعر حراري"],
+      choices: ["نحو \u20661 J\u2069 لكل سعر حراري", "نحو \u20664,18 J\u2069 لكل سعر حراري", "نحو \u20664 180 J\u2069 لكل سعرة حرارية", "نحو \u20660,24 J\u2069 لكل سعر حراري"],
       explanations: [
         "خطأ: لا يصح ذلك إلا لو كان السعر الحراري والجول يقيسان الشيء نفسه من دون تحويل.",
-        "صحيح: 1 cal ≈ 4,18 J؛ وهذه القيمة، التي قيست بدقة متزايدة بين 1843 و1849، هي التي أثبتت تكافؤ الحرارة والشغل.",
-        "خطأ: هذه القيمة أكبر من قياس جول بنحو 24 مرة.",
-        "خطأ: هذه تقريبا القيمة العكسية (1/4,18 ≈ 0,24).",
+        "صحيح: \u20661 cal ≈ 4,18 J\u2069؛ وهذه القيمة، التي قيست بدقة متزايدة بين \u20661843\u2069 و\u20661849\u2069، هي التي أثبتت تكافؤ الحرارة والشغل.",
+        "خطأ: نحو \u20664 180 J\u2069 يقابل سعرة حرارية كبيرة واحدة، أي \u20661 000\u2069 سعرة حرارية صغيرة.",
+        "خطأ: هذه تقريبا القيمة العكسية \u2066(1/4,18 ≈ 0,24).\u2069",
       ],
     },
     "l2-q6": {
-      question: "كتب على عبوة غذائية «250 cal». فكم تساوي هذه القيمة تقريبا بالجول؟",
-      choices: ["≈ 250 J", "≈ 1046 kJ", "≈ 1046 J", "≈ 250 kJ"],
+      question: "كتب على عبوة غذائية «\u2066250 kcal\u2069». فكم تساوي هذه القيمة تقريبا بالجول؟",
+      choices: ["\u2066≈ 250 J\u2069", "\u2066≈ 1046 kJ\u2069", "\u2066≈ 1046 J\u2069", "\u2066≈ 250 kJ\u2069"],
       explanations: [
         "خطأ: يعني ذلك الخلط بين الوحدة المبينة والجول.",
-        "صحيح: السعر الغذائي هو في الواقع 1 kcal، ويرمز إليه عادة بـ Cal بحرف كبير. ومن ثم 250 kcal × 4,18 kJ/kcal ≈ 1046 kJ.",
-        "خطأ: يعني ذلك نسيان أن السعر الغذائي يعادل في الواقع كيلو سعرة حرارية.",
+        "صحيح: \u20661 kcal = 1 000 cal.\u2069 الطاقة المذكورة تقارب \u20661 046 kJ.\u2069",
+        "خطأ: هذا يقابل \u2066250 cal\u2069 وليس \u2066250 kcal.\u2069 تمثل البادئة كيلو عامل ضرب مقداره \u20661 000.\u2069",
         "خطأ: يعني ذلك الخلط بين السعر الغذائي والكيلوجول.",
       ],
     },
@@ -3222,16 +3222,16 @@ export const quizQuestionTranslations: Partial<
       ],
     },
     "l2-q7": {
-      question: "نسخن مكعبا من الجليد عند 0°C حتى نحصل على ماء سائل عند 20°C. كيف نحسب الحرارة الكلية التي تلقاها حسابا صحيحا؟",
+      question: "نسخن مكعب جليد كتلته \u2066m\u2069 عند \u20660°C\u2069 حتى يصبح ماء سائلا عند \u206620°C.\u2069 نرمز بالرمز \u2066L\u2069 إلى الحرارة الكامنة النوعية للانصهار، وبالرمزين \u2066c_water\u2069 و\u2066c_ice\u2069 إلى السعتين الحراريتين النوعيتين للماء السائل والجليد، ونعتمد \u2066ΔT = 20°C.\u2069 أي تعبير يعطي الحرارة الكلية المتلقاة \u2066Q\u2069؟",
       choices: [
-        "Q = m c_eau ΔT، حيث ΔT = 20°C وc_eau السعة الحرارية النوعية للماء السائل.",
-        "Q = m L + m c_eau ΔT، حيث L الحرارة الكامنة النوعية للانصهار، وc_eau السعة الحرارية النوعية للماء السائل، وΔT = 20°C.",
-        "Q = m c_glace ΔT + m c_eau ΔT، حيث ΔT = 20°C.",
+        "\u2066Q = m c_water ΔT\u2069",
+        "\u2066Q = m L + m c_water ΔT\u2069",
+        "\u2066Q = m L + m c_ice ΔT\u2069",
       ],
       explanations: [
-        "خطأ: يهمل هذا الحساب الحرارة الكامنة للانصهار التي تمتص عند 0°C من دون تغير في درجة الحرارة؛ وهذا تحديدا هو اكتشاف بلاك الثاني المتميز عن السعة الحرارية.",
-        "صحيح: تجمع الحرارة الكامنة (الانصهار عند درجة حرارة ثابتة) والعلاقة Q = mcΔT (التسخين من دون تغير في الطور)، لكن كل منهما يطبق على مرحلة مختلفة من العملية.",
-        "خطأ: بعد انصهار الجليد تطبق السعة الحرارية للماء السائل على تسخينه من 0°C إلى 20°C، لا السعة الحرارية للجليد.",
+        "خطأ: يهمل هذا الحساب الحرارة الكامنة للانصهار التي تمتص عند \u20660°C\u2069 من دون تغير في درجة الحرارة؛ وهذا تحديدا هو اكتشاف بلاك الثاني المتميز عن السعة الحرارية.",
+        "صحيح: تجمع الحرارة الكامنة (الانصهار عند درجة حرارة ثابتة) والعلاقة \u2066Q = mcΔT (\u2069التسخين من دون تغير في الطور)، لكن كل منهما يطبق على مرحلة مختلفة من العملية.",
+        "خطأ: الانصهار محسوب، لكن التسخين من \u20660°C\u2069 إلى \u206620°C\u2069 يخص الماء السائل. يجب استخدام \u2066c_water\u2069 وليس \u2066c_ice.\u2069",
       ],
     },
     "l2-vf4": {
@@ -3243,18 +3243,18 @@ export const quizQuestionTranslations: Partial<
       ],
     },
     "l3-q1": {
-      question: "النظام المعزول هو نظام تكون جدرانه:",
+      question: "نعتبر شغل قوى الضغط وحده. ما خصائص الجدران التي تضمن عزل النظام؟",
       choices: [
-        "نافذة للحرارة ومتحركة ونافذة للمادة.",
+        "صلبة وكظومة ونافذة للمادة.",
         "صلبة وكظومة وغير نافذة للمادة.",
         "صلبة ونافذة للحرارة وغير نافذة للمادة.",
-        "متحركة وكظومة ونافذة للمادة.",
+        "متحركة وكظومة وغير نافذة للمادة.",
       ],
       explanations: [
-        "خطأ: هذه، على العكس، هي الخصائص التي تسمح بجميع المبادلات: الحرارة والشغل والمادة.",
+        "خطأ: الجدران النافذة للمادة تسمح بتبادلها، حتى إن كانت صلبة وكظومة.",
         "صحيح: يمنع الجدار الصلب تبادل الشغل، ويمنع الجدار الكظوم تبادل الحرارة، ويمنع الجدار غير النافذ تبادل المادة.",
         "خطأ: تسمح الجدران النافذة للحرارة بمرور الحرارة، فلا يكون النظام معزولا.",
-        "خطأ: تسمح الجدران المتحركة والنافذة للمادة بانتقال الشغل والمادة.",
+        "خطأ: الجدران المتحركة تسمح بتبادل شغل قوى الضغط، حتى إن كانت كظومة وغير نافذة للمادة.",
       ],
     },
     "l3-vf2": {
@@ -3315,27 +3315,27 @@ export const quizQuestionTranslations: Partial<
       ],
     },
     "l4-q2": {
-      question: "لماذا نكتب δQ وδW بدلا من dQ وdW؟",
+      question: "لماذا نكتب \u2066δQ\u2069 و\u2066δW\u2069 بدلا من \u2066dQ\u2069 و\u2066dW\u2069؟",
       choices: [
         "لأنهما تفاضلان غير تامين: فتكاملهما يتعلق بالمسار المتبع.",
-        "لأن Q وW كميتان أصغر من أن توصفا بتفاضلات عادية.",
+        "لأن الحرارة والشغل لا ينحفظان، بينما تنحفظ الطاقة الداخلية للنظام في كل تحول.",
       ],
       explanations: [
-        "صحيح: تتعلق Q وW بالمسار، خلافا لـU التي لا تتعلق إلا بالحالتين البدئية والنهائية. وكتابة dQ تعني إحياء نظرية السيال الحراري.",
-        "خطأ: لا علاقة لـ«حجم» الكميات بالأمر؛ المسألة هي تعلقها بالمسار.",
+        "صحيح: تتعلق \u2066Q\u2069 و\u2066W\u2069 بالمسار، خلافا لـ\u2066U\u2069 التي لا تتعلق إلا بالحالتين البدئية والنهائية. وكتابة \u2066dQ\u2069 تعني إحياء نظرية السيال الحراري.",
+        "خطأ: يمكن أن تتغير \u2066U.\u2069 فهي دالة حالة، بينما يعتمد \u2066Q\u2069 و\u2066W\u2069 على المسار؛ والترميز يعبر عن هذا الفرق.",
       ],
     },
     "l4-q3": {
-      question: "يخضع نظام مغلق لتحول دوري (A → A). ماذا يمكن أن نقول عن الحصيلة Q_cycle + W_cycle؟",
+      question: "يخضع نظام مغلق لتحول دوري \u2066(A → A).\u2069 ماذا يمكن أن نقول عن الحصيلة \u2066Q_cycle + W_cycle\u2069؟",
       choices: [
-        "هي منعدمة بالضرورة لأن Q وW دالتا حالة.",
-        "هي منعدمة لأن U دالة حالة.",
-        "هي دائما موجبة تماما بالنسبة إلى آلة حرارية محركة.",
+        "هي منعدمة بالضرورة لأن \u2066Q\u2069 و\u2066W\u2069 دالتا حالة.",
+        "هي منعدمة لأن \u2066U\u2069 دالة حالة.",
+        "يساوي صفرا فقط إذا كانت الدورة شبه ساكنة.",
       ],
       explanations: [
-        "خطأ: العكس هو الصحيح—فـQ وW ليستا دالتي حالة؛ إنهما انتقالان للطاقة لا كميتان للنظام. ولا يلزم أن ينعدم على دورة، بفعل ΔU_cycle = 0، إلا مجموعهما.",
-        "صحيح: في نهاية الدورة يعود النظام إلى حالته البدئية. وبما أن U دالة حالة فإن ΔU_cycle = U(A) − U(A) = 0؛ ومن ثم يفرض المبدأ الأول Q_cycle + W_cycle = 0.",
-        "خطأ: المنعدم هو المجموع Q_cycle + W_cycle لا كل حد على حدة؛ ويمكن أن يكون كل من Q_cycle وW_cycle غير منعدم وبإشارتين متعاكستين في آلة حرارية.",
+        "خطأ: العكس هو الصحيح—فـ\u2066Q\u2069 و\u2066W\u2069 ليستا دالتي حالة؛ إنهما انتقالان للطاقة لا كميتان للنظام. ولا يلزم أن ينعدم على دورة، بفعل \u2066ΔU_cycle = 0\u2069، إلا مجموعهما.",
+        "صحيح: في نهاية الدورة يعود النظام إلى حالته البدئية. وبما أن \u2066U\u2069 دالة حالة فإن \u2066ΔU_cycle = U(A) − U(A) = 0\u2069؛ ومن ثم يفرض المبدأ الأول \u2066Q_cycle + W_cycle = 0.\u2069",
+        "خطأ: كل دورة تعيد النظام إلى حالته الابتدائية. يفرض \u2066ΔU_cycle = 0\u2069 أن يكون \u2066Q_cycle + W_cycle = 0\u2069، حتى إن لم تكن الدورة شبه ساكنة.",
       ],
     },
     "l4-q4": {
@@ -3352,12 +3352,12 @@ export const quizQuestionTranslations: Partial<
       ],
     },
     "l4-q6": {
-      question: "في تحول ثابت الحجم لنظام مغلق، يكون لدينا دائما:",
-      choices: ["W = 0، ومن ثم ΔU = Q", "Q = 0، ومن ثم ΔU = W", "ΔU = 0، ومن ثم Q = −W"],
+      question: "في تحول ثابت الحجم لنظام مغلق، إذا كان الشغل الوحيد هو شغل قوى الضغط، يكون لدينا دائما:",
+      choices: ["\u2066W = 0\u2069، ومن ثم \u2066ΔU = Q\u2069", "\u2066Q = 0\u2069، ومن ثم \u2066ΔU = W\u2069", "\u2066ΔU = 0\u2069، ومن ثم \u2066Q = −W\u2069"],
       explanations: [
-        "صحيح: عند ثبات الحجم يكون δW = −P dV = 0؛ ويأتي تغير الطاقة الداخلية كله من الحرارة.",
+        "صحيح: عند ثبات الحجم ينعدم شغل قوى الضغط. وهو الشغل الوحيد هنا، لذا \u2066W = 0\u2069 و\u2066ΔU = Q.\u2069",
         "خطأ: هذه حصيلة تحول كظوم، لا تحول ثابت الحجم.",
-        "خطأ: هذه حصيلة تحول متساوي الحرارة لغاز مثالي، لأن U لا تتعلق إلا بـT.",
+        "خطأ: هذه حصيلة تحول متساوي الحرارة لغاز مثالي، لأن \u2066U\u2069 لا تتعلق إلا بـ\u2066T.\u2069",
       ],
     },
   },
@@ -3385,12 +3385,12 @@ export const quizQuestionTranslations: Partial<
       choices: [
         "Karena tanpa perbedaan suhu tidak ada aliran kalor yang mengalir, sehingga tidak ada yang dapat diubah menjadi kerja.",
         "Karena kerja mekanis hanya dapat dihasilkan dari reservoir yang suhunya melampaui ambang minimum tertentu, khas bagi setiap fluida kerja.",
-        "Karena tekanan fluida kerja harus selalu tetap di atas tekanan atmosfer sepanjang siklus.",
+        "Karena reservoir dingin harus mengembunkan fluida kerja agar mesin dapat memulai siklus berikutnya.",
       ],
       explanations: [
         "Benar: mesin ibarat gerbang tol pada aliran kalor panas → dingin; tanpa aliran, tidak ada kerja. “Bahan bakar” yang sebenarnya adalah gradien suhu.",
         "Salah: tidak ada ambang suhu apa pun; perbedaan yang kecil pun sudah cukup (lih. pembangkit OTEC yang memanfaatkan selisih beberapa derajat di laut).",
-        "Salah: kriterianya bukan tekanan, melainkan selisih suhu antara kedua reservoir.",
+        "Salah: mesin kalor dapat bekerja tanpa perubahan fase fluida kerja. Pengembunan bukan syarat umum.",
       ],
     },
     "l1-vf1": {
@@ -3419,12 +3419,12 @@ export const quizQuestionTranslations: Partial<
       choices: [
         "Pengeboran meriam yang diamati Rumford: gesekan menghasilkan kalor dalam jumlah yang tampaknya tidak terbatas.",
         "Pengukuran Joseph Black atas kalor laten yang diserap es ketika mencair pada suhu konstan.",
-        "Penyatuan hukum Boyle, Charles, dan Gay-Lussac oleh Clapeyron menjadi satu persamaan keadaan gas ideal.",
+        "Pengamatan bahwa benda bermassa sama memerlukan jumlah kalor berbeda untuk kenaikan suhu yang sama.",
       ],
       explanations: [
         "Benar: jika kalor merupakan fluida kekal yang jumlahnya terbatas, pengeboran terus-menerus tidak mungkin menghasilkannya tanpa henti. Pada 1798 Rumford menyimpulkan bahwa kalor berkaitan dengan gerak.",
         "Salah: sebaliknya, teori kalorik menjelaskan kalor laten dengan baik—fluida tersebut dianggap “terikat” pada materi selama perubahan wujud.",
-        "Salah: pada 1834 Clapeyron menyatukan hukum-hukum gas, tanpa hubungan langsung dengan hakikat kalor.",
+        "Salah: kapasitas kalor yang berbeda sesuai dengan teori kalorik; pengamatan ini tidak membantahnya.",
       ],
     },
     "l2-vf1": {
@@ -3438,33 +3438,33 @@ export const quizQuestionTranslations: Partial<
     "l2-q4": {
       question: "Dalam hubungan Q = m c ΔT yang ditunjukkan oleh Joseph Black, apakah yang dinyatakan oleh koefisien c?",
       choices: [
-        "Jumlah kalor total yang dipertukarkan benda, dinyatakan dalam joule.",
+        "Kalor yang diperlukan untuk menaikkan suhu seluruh benda sebesar satu derajat.",
         "Jumlah kalor yang harus diberikan kepada satu satuan massa benda untuk menaikkan suhunya satu derajat.",
-        "Perbandingan antara kerja yang diberikan kepada benda dan kalor yang diterimanya.",
+        "Kalor yang diperlukan untuk melebur satu satuan massa benda pada suhu tetap.",
       ],
       explanations: [
-        "Salah: Q-lah yang merupakan kalor total yang dipertukarkan, bukan c; Q juga bergantung pada massa dan selisih suhu.",
+        "Salah: itu mendefinisikan kapasitas kalor C = mc seluruh benda; c adalah besaran per satuan massa.",
         "Benar: c adalah kalor jenis, yakni koefisien khas setiap bahan yang ditunjukkan Black.",
-        "Salah: perbandingan tersebut tidak berkaitan dengan c; c hanya menghubungkan kalor dengan suhu.",
+        "Salah: itu mendefinisikan kalor laten peleburan per satuan massa L, bukan kalor jenis c.",
       ],
     },
     "l2-q5": {
       question: "Dalam satuan modern, berapakah nilai kalori yang diukur oleh Joule?",
-      choices: ["Sekitar 1 J per kalori", "Sekitar 4,18 J per kalori", "Sekitar 100 J per kalori", "Sekitar 0,24 J per kalori"],
+      choices: ["Sekitar 1 J per kalori", "Sekitar 4,18 J per kalori", "Sekitar 4 180 J per kalori", "Sekitar 0,24 J per kalori"],
       explanations: [
         "Salah: ini hanya benar jika kalori dan joule sudah mengukur hal yang sama tanpa konversi.",
         "Benar: 1 cal ≈ 4,18 J; nilai yang diukur dengan ketelitian yang terus meningkat antara 1843 dan 1849 inilah yang menetapkan kesetaraan antara kalor dan kerja.",
-        "Salah: nilai ini sekitar 24 kali lebih besar daripada hasil pengukuran Joule.",
+        "Salah: sekitar 4 180 J setara dengan satu kilokalori, yaitu 1 000 kalori.",
         "Salah: ini kira-kira nilai kebalikannya (1/4,18 ≈ 0,24).",
       ],
     },
     "l2-q6": {
-      question: "Sebuah kemasan makanan mencantumkan “250 cal”. Kira-kira berapa joule nilai itu?",
+      question: "Sebuah kemasan makanan mencantumkan “250 kcal”. Kira-kira berapa joule nilai itu?",
       choices: ["≈ 250 J", "≈ 1046 kJ", "≈ 1046 J", "≈ 250 kJ"],
       explanations: [
         "Salah: ini berarti menyamakan satuan yang dicantumkan dengan joule.",
-        "Benar: kalori makanan sebenarnya adalah 1 kcal, yang biasanya ditulis Cal dengan huruf besar. Jadi, 250 kcal × 4,18 kJ/kcal ≈ 1046 kJ.",
-        "Salah: ini berarti melupakan bahwa satu kalori makanan sebenarnya adalah satu kilokalori.",
+        "Benar: 1 kcal = 1 000 cal. Energi yang tercantum sekitar 1 046 kJ.",
+        "Salah: itu setara dengan 250 cal, bukan 250 kcal. Awalan kilo menyatakan faktor 1 000.",
         "Salah: ini berarti menyamakan kalori makanan dengan kilojoule.",
       ],
     },
@@ -3477,16 +3477,16 @@ export const quizQuestionTranslations: Partial<
       ],
     },
     "l2-q7": {
-      question: "Sebongkah es pada 0°C dipanaskan hingga menjadi air cair pada 20°C. Bagaimana cara menghitung dengan benar kalor total yang diterimanya?",
+      question: "Es bermassa m pada 0°C dipanaskan hingga menjadi air cair pada 20°C. L adalah kalor laten peleburan per satuan massa, c_water dan c_ice adalah kalor jenis air cair dan es, dan ΔT = 20°C. Manakah ungkapan kalor total yang diterima Q?",
       choices: [
-        "Q = m c_eau ΔT, dengan ΔT = 20°C dan c_eau adalah kalor jenis air cair.",
-        "Q = m L + m c_eau ΔT, dengan L adalah kalor laten jenis peleburan, c_eau adalah kalor jenis air cair, dan ΔT = 20°C.",
-        "Q = m c_glace ΔT + m c_eau ΔT dengan ΔT = 20°C.",
+        "Q = m c_water ΔT",
+        "Q = m L + m c_water ΔT",
+        "Q = m L + m c_ice ΔT",
       ],
       explanations: [
         "Salah: perhitungan ini melupakan kalor laten peleburan, yang diserap pada 0°C tanpa perubahan suhu; inilah tepatnya penemuan kedua Black, yang berbeda dari kalor jenis.",
         "Benar: kalor laten (peleburan pada suhu konstan) dan hubungan Q = mcΔT (pemanasan tanpa perubahan fase) dijumlahkan, tetapi masing-masing berlaku pada tahap proses yang berbeda.",
-        "Salah: setelah es mencair, kalor jenis air cairlah yang berlaku untuk pemanasan dari 0°C hingga 20°C, bukan kalor jenis es.",
+        "Salah: peleburan sudah dihitung, tetapi yang dipanaskan dari 0°C ke 20°C adalah air cair. Gunakan c_water, bukan c_ice.",
       ],
     },
     "l2-vf4": {
@@ -3498,18 +3498,18 @@ export const quizQuestionTranslations: Partial<
       ],
     },
     "l3-q1": {
-      question: "Sistem terisolasi adalah sistem yang dindingnya bersifat:",
+      question: "Hanya kerja oleh gaya tekanan yang dipertimbangkan. Sifat dinding manakah yang memastikan sistem terisolasi?",
       choices: [
-        "Diatermal, bergerak, dan permeabel.",
+        "Kaku, adiabatik, dan permeabel.",
         "Kaku, adiabatik, dan impermeabel.",
         "Kaku, diatermal, dan impermeabel.",
-        "Bergerak, adiabatik, dan permeabel.",
+        "Bergerak, adiabatik, dan impermeabel.",
       ],
       explanations: [
-        "Salah: sebaliknya, sifat-sifat ini memungkinkan semua pertukaran—kalor, kerja, dan materi.",
+        "Salah: dinding permeabel memungkinkan pertukaran materi, meskipun kaku dan adiabatik.",
         "Benar: dinding kaku mencegah pertukaran kerja, dinding adiabatik mencegah pertukaran kalor, dan dinding impermeabel mencegah pertukaran materi.",
         "Salah: dinding diatermal memungkinkan perpindahan kalor; sistemnya tidak akan terisolasi.",
-        "Salah: dinding bergerak dan permeabel memungkinkan pertukaran kerja dan materi.",
+        "Salah: dinding yang dapat bergerak memungkinkan pertukaran kerja oleh gaya tekanan, meskipun adiabatik dan impermeabel.",
       ],
     },
     "l3-vf2": {
@@ -3573,11 +3573,11 @@ export const quizQuestionTranslations: Partial<
       question: "Mengapa kita menulis δQ dan δW, bukan dQ dan dW?",
       choices: [
         "Karena keduanya adalah diferensial tak eksak: integralnya bergantung pada lintasan yang ditempuh.",
-        "Karena Q dan W merupakan besaran yang terlalu kecil untuk dijelaskan dengan diferensial biasa.",
+        "Karena kalor dan kerja tidak kekal, sedangkan energi dalam sistem kekal dalam setiap proses.",
       ],
       explanations: [
         "Benar: Q dan W bergantung pada lintasan, berbeda dengan U yang hanya bergantung pada keadaan awal dan akhir. Menulis dQ sama saja dengan menghidupkan kembali teori kalorik.",
-        "Salah: ‘ukuran’ besaran tidak ada hubungannya; persoalannya adalah ketergantungan pada lintasan.",
+        "Salah: U dapat berubah. U adalah fungsi keadaan, sedangkan Q dan W bergantung pada lintasan; notasi menyatakan perbedaan ini.",
       ],
     },
     "l4-q3": {
@@ -3585,12 +3585,12 @@ export const quizQuestionTranslations: Partial<
       choices: [
         "Nilainya pasti nol karena Q dan W adalah fungsi keadaan.",
         "Nilainya nol karena U adalah fungsi keadaan.",
-        "Nilainya selalu positif secara ketat untuk sebuah mesin kalor.",
+        "Nilainya nol hanya jika siklus bersifat kuasistatik.",
       ],
       explanations: [
         "Salah: justru kebalikannya—Q dan W bukan fungsi keadaan; keduanya adalah perpindahan energi, bukan besaran sistem. Hanya jumlah keduanya yang harus nol dalam satu siklus melalui ΔU_cycle = 0.",
         "Benar: pada akhir siklus sistem kembali ke keadaan awal. Karena U adalah fungsi keadaan, ΔU_cycle = U(A) − U(A) = 0; maka hukum pertama mensyaratkan Q_cycle + W_cycle = 0.",
-        "Salah: yang nol adalah jumlah Q_cycle + W_cycle, bukan setiap suku secara terpisah; pada mesin kalor, Q_cycle dan W_cycle dapat sama-sama tak nol dan bertanda berlawanan.",
+        "Salah: setiap siklus mengembalikan sistem ke keadaan awal. ΔU_cycle = 0 mengharuskan Q_cycle + W_cycle = 0, meskipun siklus tidak kuasistatik.",
       ],
     },
     "l4-q4": {
@@ -3607,10 +3607,10 @@ export const quizQuestionTranslations: Partial<
       ],
     },
     "l4-q6": {
-      question: "Dalam proses isokhorik pada sistem tertutup, selalu berlaku:",
+      question: "Dalam proses isokhorik pada sistem tertutup, jika satu-satunya kerja adalah kerja oleh gaya tekanan, selalu berlaku:",
       choices: ["W = 0, sehingga ΔU = Q", "Q = 0, sehingga ΔU = W", "ΔU = 0, sehingga Q = −W"],
       explanations: [
-        "Benar: pada volume konstan, δW = −P dV = 0; seluruh perubahan energi dalam berasal dari kalor.",
+        "Benar: pada volume tetap, kerja oleh gaya tekanan adalah nol. Di sini tidak ada bentuk kerja lain, sehingga W = 0 dan ΔU = Q.",
         "Salah: ini adalah neraca proses adiabatik, bukan proses isokhorik.",
         "Salah: ini adalah neraca proses isotermal gas ideal, karena U hanya bergantung pada T.",
       ],
@@ -3640,12 +3640,12 @@ export const quizQuestionTranslations: Partial<
       choices: [
         "Çünkü sıcaklık farkı olmadan hiçbir ısı akışı gerçekleşmez ve işe dönüştürülecek bir şey kalmaz.",
         "Çünkü mekanik iş, ancak sıcaklığı her çalışma akışkanına özgü bir asgari eşiği aşan bir rezervuardan üretilebilir.",
-        "Çünkü çalışma akışkanının basıncı çevrim boyunca daima atmosfer basıncının üzerinde kalmalıdır.",
+        "Çünkü makinenin yeni bir çevrime başlayabilmesi için soğuk rezervuarın çalışma akışkanını mutlaka yoğuşturması gerekir.",
       ],
       explanations: [
         "Doğru: makine, sıcak → soğuk ısı akışından alınan bir geçiş ücreti gibidir; akış yoksa iş de yoktur. Gerçek “yakıt” sıcaklık farkıdır.",
         "Yanlış: hiçbir sıcaklık eşiği yoktur; küçük bir fark bile yeterlidir (okyanustaki birkaç derecelik farkı kullanan OTEC santrallerine bakınız).",
-        "Yanlış: ölçüt basınç değildir; önemli olan iki rezervuar arasındaki sıcaklık farkıdır.",
+        "Yanlış: bir ısı makinesi, çalışma akışkanı faz değiştirmeden de çalışabilir. Yoğuşma genel bir zorunluluk değildir.",
       ],
     },
     "l1-vf1": {
@@ -3674,12 +3674,12 @@ export const quizQuestionTranslations: Partial<
       choices: [
         "Rumford'un gözlemlediği top namlusu delme işlemi: sürtünme, görünürde sınırsız miktarda ısı üretir.",
         "Joseph Black'in, buzun sabit sıcaklıkta erirken soğurduğu gizli ısıyı ölçmesi.",
-        "Clapeyron'un Boyle, Charles ve Gay-Lussac yasalarını tek bir ideal gaz durum denkleminde birleştirmesi.",
+        "Eşit kütleli cisimlerin aynı sıcaklık artışı için farklı miktarlarda ısıya ihtiyaç duyduğunun gözlenmesi.",
       ],
       explanations: [
         "Doğru: ısı sonlu ve korunan bir akışkan olsaydı, sürekli delme işlemi onu sonsuza dek üretemezdi. Rumford 1798'de ısının hareketle ilişkili olduğu sonucuna vardı.",
         "Yanlış: tersine, gizli ısı kalori teorisiyle iyi açıklanıyordu; akışkanın hal değişimi sırasında maddeye “bağlandığı” düşünülüyordu.",
-        "Yanlış: Clapeyron 1834'te gaz yasalarını birleştirdi; bunun ısının doğasıyla doğrudan ilgisi yoktur.",
+        "Yanlış: farklı ısı kapasiteleri kalorik kuramıyla uyumludur; bu gözlem kuramı çürütmez.",
       ],
     },
     "l2-vf1": {
@@ -3693,33 +3693,33 @@ export const quizQuestionTranslations: Partial<
     "l2-q4": {
       question: "Joseph Black'in ortaya koyduğu Q = m c ΔT bağıntısında c katsayısı neyi temsil eder?",
       choices: [
-        "Cismin alışveriş ettiği ve joule cinsinden ifade edilen toplam ısı miktarını.",
+        "Cismin tamamının sıcaklığını bir derece artırmak için gereken ısı.",
         "Cismin birim kütlesinin sıcaklığını bir derece yükseltmek için verilmesi gereken ısı miktarını.",
-        "Cisme verilen işin cismin aldığı ısıya oranını.",
+        "Cismin birim kütlesini sabit sıcaklıkta eritmek için gereken ısı.",
       ],
       explanations: [
-        "Yanlış: alışveriş edilen toplam ısı c değil, Q'dur; ayrıca Q kütleye ve sıcaklık farkına bağlıdır.",
+        "Yanlış: bu, cismin tamamının ısı kapasitesi C = mc'yi tanımlar; c birim kütle başınadır.",
         "Doğru: bu, Black'in her malzemeye özgü olduğunu gösterdiği katsayı, yani özgül ısı kapasitesidir (ya da özgül ısıdır).",
-        "Yanlış: bu oranın c ile ilgisi yoktur; c yalnızca ısı ile sıcaklığı ilişkilendirir.",
+        "Yanlış: bu, özgül erime gizli ısısı L'yi tanımlar; özgül ısı kapasitesi c'yi değil.",
       ],
     },
     "l2-q5": {
       question: "Joule'ün ölçtüğü kalorinin modern birimlerdeki değeri nedir?",
-      choices: ["Kalori başına yaklaşık 1 J", "Kalori başına yaklaşık 4,18 J", "Kalori başına yaklaşık 100 J", "Kalori başına yaklaşık 0,24 J"],
+      choices: ["Kalori başına yaklaşık 1 J", "Kalori başına yaklaşık 4,18 J", "Kalori başına yaklaşık 4 180 J", "Kalori başına yaklaşık 0,24 J"],
       explanations: [
         "Yanlış: kalori ile joule herhangi bir dönüşüm gerektirmeden aynı şeyi ölçseydi bu doğru olurdu.",
         "Doğru: 1 cal ≈ 4,18 J; 1843 ile 1849 arasında giderek artan hassasiyetle ölçülen bu değer, ısı ile işin eşdeğerliğini ortaya koymuştur.",
-        "Yanlış: bu değer Joule'ün ölçümünden yaklaşık 24 kat daha büyüktür.",
+        "Yanlış: yaklaşık 4 180 J bir kilokaloriye, yani 1 000 kaloriye karşılık gelir.",
         "Yanlış: bu yaklaşık olarak tersidir (1/4,18 ≈ 0,24).",
       ],
     },
     "l2-q6": {
-      question: "Bir gıda ambalajında “250 cal” yazıyor. Bu yaklaşık kaç joule'e karşılık gelir?",
+      question: "Bir gıda ambalajında “250 kcal” yazıyor. Bu yaklaşık kaç joule'e karşılık gelir?",
       choices: ["≈ 250 J", "≈ 1046 kJ", "≈ 1046 J", "≈ 250 kJ"],
       explanations: [
         "Yanlış: bu, belirtilen birimi joule ile karıştırmak olurdu.",
-        "Doğru: gıda kalorisi aslında 1 kcal'dir ve normalde büyük harfle Cal olarak yazılır. Dolayısıyla 250 kcal × 4,18 kJ/kcal ≈ 1046 kJ.",
-        "Yanlış: bu, bir gıda kalorisinin aslında bir kilokalori olduğunu unutmak olurdu.",
+        "Doğru: 1 kcal = 1 000 cal. Belirtilen enerji yaklaşık 1 046 kJ'dür.",
+        "Yanlış: bu, 250 kcal değil 250 cal değerine karşılık gelir. Kilo öneki 1 000 çarpanını ifade eder.",
         "Yanlış: bu, gıda kalorisini kilojoule ile karıştırmak olurdu.",
       ],
     },
@@ -3732,16 +3732,16 @@ export const quizQuestionTranslations: Partial<
       ],
     },
     "l2-q7": {
-      question: "0°C'deki bir buz parçası, 20°C'de sıvı su elde edilene kadar ısıtılıyor. Alınan toplam ısı nasıl doğru hesaplanır?",
+      question: "Kütlesi m olan 0°C'deki bir buz parçası, 20°C'de sıvı su elde edilene kadar ısıtılıyor. L özgül erime gizli ısısı, c_water ve c_ice sıvı suyun ve buzun özgül ısı kapasiteleri, ΔT = 20°C'dir. Alınan toplam ısı Q'yu hangi ifade verir?",
       choices: [
-        "Q = m c_eau ΔT; burada ΔT = 20°C ve c_eau sıvı suyun özgül ısı kapasitesidir.",
-        "Q = m L + m c_eau ΔT; burada L erimenin spesifik gizli ısısı, c_eau sıvı suyun özgül ısı kapasitesi ve ΔT = 20°C'dir.",
-        "Q = m c_glace ΔT + m c_eau ΔT; burada ΔT = 20°C'dir.",
+        "Q = m c_water ΔT",
+        "Q = m L + m c_water ΔT",
+        "Q = m L + m c_ice ΔT",
       ],
       explanations: [
         "Yanlış: bu hesap, sıcaklık değişmeden 0°C'de soğurulan erime gizli ısısını unutur; bu, Black'in özgül ısı kapasitesinden ayrı olan ikinci keşfidir.",
         "Doğru: gizli ısı (sabit sıcaklıkta erime) ile Q = mcΔT bağıntısı (faz değişimi olmadan ısınma) toplanır, ancak her biri sürecin farklı bir aşamasına uygulanır.",
-        "Yanlış: buz eridikten sonra 0°C'den 20°C'ye ısınmada buzun değil, sıvı suyun özgül ısı kapasitesi kullanılır.",
+        "Yanlış: erime hesaba katılmıştır, ancak 0°C'den 20°C'ye ısıtılan sıvı sudur. c_ice yerine c_water kullanılmalıdır.",
       ],
     },
     "l2-vf4": {
@@ -3753,18 +3753,18 @@ export const quizQuestionTranslations: Partial<
       ],
     },
     "l3-q1": {
-      question: "Yalıtılmış bir sistemin duvarları:",
+      question: "Yalnızca basınç kuvvetlerinin yaptığı iş ele alınıyor. Hangi duvar özellikleri sistemin yalıtılmış olmasını sağlar?",
       choices: [
-        "Diyatermik, hareketli ve geçirgendir.",
+        "Rijit, adyabatik ve geçirgendir.",
         "Rijit, adyabatik ve geçirimsizdir.",
         "Rijit, diyatermik ve geçirimsizdir.",
-        "Hareketli, adyabatik ve geçirgendir.",
+        "Hareketli, adyabatik ve geçirimsizdir.",
       ],
       explanations: [
-        "Yanlış: bunlar tam tersine bütün alışverişlere—ısı, iş ve madde alışverişlerine—izin veren özelliklerdir.",
+        "Yanlış: geçirgen duvarlar, rijit ve adyabatik olsalar bile madde alışverişine izin verir.",
         "Doğru: rijitlik iş alışverişini, adyabatiklik ısı alışverişini, geçirimsizlik ise madde alışverişini engeller.",
         "Yanlış: diyatermik duvarlar ısıyı geçirir; sistem yalıtılmış olmaz.",
-        "Yanlış: hareketli ve geçirgen duvarlar iş ve madde alışverişine izin verir.",
+        "Yanlış: hareketli duvarlar, adyabatik ve geçirimsiz olsalar bile basınç kuvvetleri aracılığıyla iş alışverişine izin verir.",
       ],
     },
     "l3-vf2": {
@@ -3828,11 +3828,11 @@ export const quizQuestionTranslations: Partial<
       question: "Neden dQ ve dW yerine δQ ve δW yazılır?",
       choices: [
         "Çünkü bunlar tam olmayan diferansiyellerdir: integralleri izlenen yola bağlıdır.",
-        "Çünkü Q ve W, sıradan diferansiyellerle betimlenemeyecek kadar küçük büyüklüklerdir.",
+        "Çünkü ısı ve iş korunmazken sistemin iç enerjisi her süreçte korunur.",
       ],
       explanations: [
         "Doğru: Yalnızca başlangıç ve bitiş durumlarına bağlı olan U'nun tersine Q ile W yola bağlıdır. dQ yazmak kalorik teorisini yeniden diriltmek olurdu.",
-        "Yanlış: Büyüklüklerin ‘boyutu’ konuyla ilgisizdir; söz konusu olan yola bağımlılıktır.",
+        "Yanlış: U değişebilir. U bir durum fonksiyonudur; Q ve W ise izlenen yola bağlıdır. Gösterim bu ayrımı ifade eder.",
       ],
     },
     "l4-q3": {
@@ -3840,12 +3840,12 @@ export const quizQuestionTranslations: Partial<
       choices: [
         "Mutlaka sıfırdır, çünkü Q ile W durum fonksiyonudur.",
         "U bir durum fonksiyonu olduğu için sıfırdır.",
-        "Bir ısı makinesi için her zaman kesinlikle pozitiftir.",
+        "Yalnızca çevrim yarı-statik ise sıfırdır.",
       ],
       explanations: [
         "Yanlış: Tersi doğrudur—Q ile W durum fonksiyonu değildir; sistemin büyüklükleri değil, enerji aktarımlarıdır. ΔU_cycle = 0 aracılığıyla bir çevrimde yalnızca toplamlarının sıfır olması gerekir.",
         "Doğru: Çevrimin sonunda sistem başlangıç durumuna döner. U bir durum fonksiyonu olduğundan ΔU_cycle = U(A) − U(A) = 0'dır; bu nedenle birinci yasa Q_cycle + W_cycle = 0'ı gerektirir.",
-        "Yanlış: Sıfır olan, her terim ayrı ayrı değil, Q_cycle + W_cycle toplamıdır; bir ısı makinesinde Q_cycle ile W_cycle sıfırdan farklı ve zıt işaretli olabilir.",
+        "Yanlış: her çevrim sistemi başlangıç hâline döndürür. ΔU_cycle = 0, çevrim yarı-statik olmasa bile Q_cycle + W_cycle = 0 olmasını gerektirir.",
       ],
     },
     "l4-q4": {
@@ -3862,10 +3862,10 @@ export const quizQuestionTranslations: Partial<
       ],
     },
     "l4-q6": {
-      question: "Kapalı bir sistemin izokorik dönüşümünde her zaman:",
+      question: "Kapalı bir sistemin izokorik dönüşümünde, yalnızca basınç kuvvetlerinin işi söz konusuysa her zaman:",
       choices: ["W = 0, dolayısıyla ΔU = Q", "Q = 0, dolayısıyla ΔU = W", "ΔU = 0, dolayısıyla Q = −W"],
       explanations: [
-        "Doğru: Sabit hacimde δW = −P dV = 0'dır; iç enerji değişiminin tamamı ısıdan gelir.",
+        "Doğru: sabit hacimde basınç kuvvetlerinin işi sıfırdır. Burada başka iş türü yoktur; dolayısıyla W = 0 ve ΔU = Q.",
         "Yanlış: Bu, izokorik değil adyabatik bir dönüşümün bilançosudur.",
         "Yanlış: U yalnızca T'ye bağlı olduğundan bu, ideal gazın izotermal dönüşümünün bilançosudur.",
       ],
@@ -3894,12 +3894,12 @@ export const quizQuestionTranslations: Partial<
       choices: [
         "কারণ তাপমাত্রার পার্থক্য না থাকলে তাপপ্রবাহ থাকে না, ফলে কাজে রূপান্তর করার মতো কিছুই থাকে না।",
         "কারণ যান্ত্রিক কাজ কেবল এমন উৎস থেকে উৎপন্ন করা যায় যার তাপমাত্রা কার্যকরী তরলের নিজস্ব একটি ন্যূনতম সীমার চেয়ে বেশি।",
-        "কারণ পুরো চক্রে কার্যকরী তরলের চাপ বায়ুমণ্ডলীয় চাপের চেয়ে বেশি থাকতে হয়।",
+        "কারণ ইঞ্জিনের পরবর্তী চক্র শুরু করতে শীতল উৎসকে অবশ্যই কার্যকরী তরলের ঘনীভবন ঘটাতে হয়।",
       ],
       explanations: [
         "সঠিক: ইঞ্জিন উষ্ণ → শীতল তাপপ্রবাহের উপর আরোপিত একটি ‘টোল’; প্রবাহ না থাকলে কাজও নেই। তাপমাত্রার ঢালই প্রকৃত ‘জ্বালানি’।",
         "ভুল: এমন কোনো ন্যূনতম তাপমাত্রা নেই; অল্প পার্থক্যও যথেষ্ট (সমুদ্রে কয়েক ডিগ্রির পার্থক্য কাজে লাগানো OTEC কেন্দ্র দেখুন)।",
-        "ভুল: চাপ এখানে নির্ণায়ক নয়; দুটি উৎসের তাপমাত্রার পার্থক্যই গুরুত্বপূর্ণ।",
+        "ভুল: কার্যকরী তরলের দশা পরিবর্তন ছাড়াও তাপ ইঞ্জিন চলতে পারে। ঘনীভবন কোনো সাধারণ আবশ্যিক শর্ত নয়।",
       ],
     },
     "l1-vf1": {
@@ -3928,12 +3928,12 @@ export const quizQuestionTranslations: Partial<
       choices: [
         "রামফোর্ডের কামান ছিদ্র করার পর্যবেক্ষণ: ঘর্ষণ আপাতদৃষ্টিতে সীমাহীন তাপ উৎপন্ন করে।",
         "জোসেফ ব্ল্যাকের ধ্রুব তাপমাত্রায় বরফ গলার সময় শোষিত সুপ্ত তাপের পরিমাপ।",
-        "বয়েল, চার্লস ও গে-লুসাকের সূত্রকে ক্ল্যাপেরঁর একটি আদর্শ-গ্যাস অবস্থা সমীকরণে একীভূত করা।",
+        "সমান ভরের বস্তুগুলির তাপমাত্রা একই পরিমাণ বাড়াতে ভিন্ন পরিমাণ তাপ লাগে—এই পর্যবেক্ষণ।",
       ],
       explanations: [
         "সঠিক: তাপ যদি সীমিত ও সংরক্ষিত তরল হতো, অবিরাম ছিদ্রকরণ অনির্দিষ্টকাল তাপ উৎপন্ন করতে পারত না। রামফোর্ড (১৭৯৮) সিদ্ধান্ত নেন যে তাপ গতির সঙ্গে সম্পর্কিত।",
         "ভুল: সুপ্ত তাপ বরং ক্যালরিক তত্ত্বে ভালোভাবেই ব্যাখ্যা করা হতো—দশা পরিবর্তনের সময় তরলটি পদার্থের সঙ্গে ‘যুক্ত’ হয়।",
-        "ভুল: ক্ল্যাপেরঁ (১৮৩৪) গ্যাসের সূত্রগুলিকে একীভূত করেন; তাপের প্রকৃতির সঙ্গে এর সরাসরি সম্পর্ক নেই।",
+        "ভুল: ভিন্ন তাপধারণ ক্ষমতা ক্যালোরিক তত্ত্বের সঙ্গে সামঞ্জস্যপূর্ণ; এই পর্যবেক্ষণ তত্ত্বটিকে খণ্ডন করে না।",
       ],
     },
     "l2-vf1": {
@@ -3947,33 +3947,33 @@ export const quizQuestionTranslations: Partial<
     "l2-q4": {
       question: "জোসেফ ব্ল্যাকের প্রদর্শিত Q = m c ΔT সম্পর্কে c সহগটি কী বোঝায়?",
       choices: [
-        "বস্তুটির মোট বিনিময় করা তাপ, জুলে প্রকাশিত।",
+        "সম্পূর্ণ বস্তুর তাপমাত্রা এক ডিগ্রি বাড়াতে প্রয়োজনীয় তাপ।",
         "একক ভরের বস্তুটির তাপমাত্রা এক ডিগ্রি বাড়াতে যে তাপ দিতে হয়।",
-        "বস্তুটিকে দেওয়া কাজ ও তার পাওয়া তাপের অনুপাত।",
+        "স্থির তাপমাত্রায় বস্তুর একক ভর গলাতে প্রয়োজনীয় তাপ।",
       ],
       explanations: [
-        "ভুল: মোট বিনিময় করা তাপ হলো Q, c নয়; Q ভর ও তাপমাত্রার পার্থক্যের উপরও নির্ভর করে।",
+        "ভুল: এটি সম্পূর্ণ বস্তুর তাপ ধারণক্ষমতা C = mc; c হলো একক ভরপ্রতি রাশি।",
         "সঠিক: এটি ভর-নির্দিষ্ট তাপ ধারণক্ষমতা (বা বিশিষ্ট তাপ), ব্ল্যাকের চিহ্নিত প্রতিটি পদার্থের নিজস্ব সহগ।",
-        "ভুল: এই সম্পর্কের সঙ্গে c-এর কোনো যোগ নেই; c শুধু তাপ ও তাপমাত্রাকে যুক্ত করে।",
+        "ভুল: এটি গলনের ভর-নির্দিষ্ট লীন তাপ L, ভর-নির্দিষ্ট তাপ ধারণক্ষমতা c নয়।",
       ],
     },
     "l2-q5": {
       question: "আধুনিক এককে জুলের পরিমাপ অনুযায়ী এক ক্যালরির মান কত?",
-      choices: ["প্রতি ক্যালরিতে প্রায় 1 J", "প্রতি ক্যালরিতে প্রায় 4.18 J", "প্রতি ক্যালরিতে প্রায় 100 J", "প্রতি ক্যালরিতে প্রায় 0.24 J"],
+      choices: ["প্রতি ক্যালরিতে প্রায় 1 J", "প্রতি ক্যালরিতে প্রায় 4.18 J", "প্রতি ক্যালোরিতে প্রায় 4 180 J", "প্রতি ক্যালরিতে প্রায় 0.24 J"],
       explanations: [
         "ভুল: ক্যালরি ও জুল কোনো রূপান্তর ছাড়াই একই একক হলে তবেই এটি সত্য হতো।",
         "সঠিক: 1 cal ≈ 4.18 J; ১৮৪৩ থেকে ১৮৪৯ সালের মধ্যে ক্রমবর্ধমান নির্ভুলতায় মাপা এই মানই তাপ ও কাজের সমতুল্যতা প্রতিষ্ঠা করে।",
-        "ভুল: জুলের পরিমাপের তুলনায় এই মান প্রায় ২৪ গুণ বেশি।",
+        "ভুল: প্রায় 4 180 J হলো এক কিলোক্যালোরি, অর্থাৎ 1 000 ক্যালোরি।",
         "ভুল: এটি মোটামুটি বিপরীত মান (1/4.18 ≈ 0.24)।",
       ],
     },
     "l2-q6": {
-      question: "একটি খাদ্যের মোড়কে ‘250 cal’ লেখা আছে। এটি আনুমানিক কত জুল?",
+      question: "একটি খাদ্যের মোড়কে ‘250 kcal’ লেখা আছে। এটি আনুমানিক কত জুল?",
       choices: ["≈ 250 J", "≈ 1046 kJ", "≈ 1046 J", "≈ 250 kJ"],
       explanations: [
         "ভুল: এতে লেখা এককটিকে জুলের সঙ্গে গুলিয়ে ফেলা হয়।",
-        "সঠিক: খাদ্য-ক্যালরি আসলে 1 kcal, যা নিয়মমতো বড় হাতের Cal দিয়ে লেখা হয়। 250 kcal × 4.18 kJ/kcal ≈ 1046 kJ।",
-        "ভুল: এতে ভুলে যাওয়া হয় যে একটি খাদ্য-ক্যালরি আসলে এক কিলোক্যালরি।",
+        "সঠিক: 1 kcal = 1 000 cal। উল্লিখিত শক্তি প্রায় 1 046 kJ।",
+        "ভুল: এটি 250 cal-এর সমান, 250 kcal-এর নয়। কিলো উপসর্গের অর্থ 1 000 গুণ।",
         "ভুল: এতে খাদ্য-ক্যালরিকে কিলোজুলের সঙ্গে গুলিয়ে ফেলা হয়।",
       ],
     },
@@ -3986,16 +3986,16 @@ export const quizQuestionTranslations: Partial<
       ],
     },
     "l2-q7": {
-      question: "0°C তাপমাত্রার একটি বরফখণ্ডকে গরম করে 20°C তাপমাত্রার তরল জল করা হলো। মোট গৃহীত তাপ কীভাবে সঠিকভাবে হিসাব করা হবে?",
+      question: "m ভরের 0°C তাপমাত্রার বরফখণ্ডকে গরম করে 20°C তাপমাত্রার তরল জল করা হয়। L হলো গলনের ভর-নির্দিষ্ট সুপ্ত তাপ, c_water ও c_ice হলো তরল জল ও বরফের ভর-নির্দিষ্ট তাপ ধারণক্ষমতা, এবং ΔT = 20°C। কোন রাশিটি মোট গৃহীত তাপ Q দেয়?",
       choices: [
-        "Q = m c_জল ΔT, যেখানে ΔT = 20°C এবং c_জল তরল জলের ভর-নির্দিষ্ট তাপ ধারণক্ষমতা।",
-        "Q = m L + m c_জল ΔT, যেখানে L গলনের ভর-নির্দিষ্ট সুপ্ত তাপ, c_জল তরল জলের ভর-নির্দিষ্ট তাপ ধারণক্ষমতা এবং ΔT = 20°C।",
-        "Q = m c_বরফ ΔT + m c_জল ΔT, যেখানে ΔT = 20°C।",
+        "Q = m c_water ΔT",
+        "Q = m L + m c_water ΔT",
+        "Q = m L + m c_ice ΔT",
       ],
       explanations: [
         "ভুল: এতে 0°C তাপমাত্রায় তাপমাত্রা না বদলে শোষিত গলনের সুপ্ত তাপ বাদ পড়ে; তাপ ধারণক্ষমতা থেকে আলাদা এটিই ব্ল্যাকের দ্বিতীয় আবিষ্কার।",
         "সঠিক: সুপ্ত তাপ (ধ্রুব তাপমাত্রায় গলন) ও Q = mcΔT সম্পর্ক (একই দশায় উত্তাপন) যোগ হয়, তবে প্রক্রিয়ার পৃথক ধাপে প্রযোজ্য।",
-        "ভুল: বরফ গলে যাওয়ার পর 0°C থেকে 20°C পর্যন্ত উত্তাপনে বরফের নয়, তরল জলের তাপ ধারণক্ষমতাই প্রযোজ্য।",
+        "ভুল: গলন ধরা হয়েছে, কিন্তু 0°C থেকে 20°C পর্যন্ত উত্তাপন তরল জলের হয়। c_ice নয়, c_water ব্যবহার করতে হবে।",
       ],
     },
     "l2-vf4": {
@@ -4007,18 +4007,18 @@ export const quizQuestionTranslations: Partial<
       ],
     },
     "l3-q1": {
-      question: "একটি বিচ্ছিন্ন তন্ত্রের দেয়াল কেমন হয়?",
+      question: "কেবল চাপ বলের কাজ বিবেচনা করা হচ্ছে। দেয়ালের কোন বৈশিষ্ট্যগুলি সিস্টেমের বিচ্ছিন্নতা নিশ্চিত করে?",
       choices: [
-        "ডায়াথার্মিক, চলনশীল ও ভেদ্য।",
+        "দৃঢ়, রুদ্ধতাপীয় ও ভেদ্য।",
         "দৃঢ়, রুদ্ধতাপীয় ও অভেদ্য।",
         "দৃঢ়, ডায়াথার্মিক ও অভেদ্য।",
-        "চলনশীল, রুদ্ধতাপীয় ও ভেদ্য।",
+        "চলনশীল, রুদ্ধতাপীয় ও অভেদ্য।",
       ],
       explanations: [
-        "ভুল: এগুলি বরং সব ধরনের বিনিময়—তাপ, কাজ ও পদার্থ—সম্ভব করে।",
+        "ভুল: ভেদ্য দেয়াল দৃঢ় ও রুদ্ধতাপীয় হলেও পদার্থের আদান-প্রদান হতে দেয়।",
         "সঠিক: দৃঢ়তা কাজের বিনিময়, রুদ্ধতাপীয়তা তাপের বিনিময় এবং অভেদ্যতা পদার্থের বিনিময় রোধ করে।",
         "ভুল: ডায়াথার্মিক দেয়াল তাপ যেতে দেয়; তন্ত্রটি বিচ্ছিন্ন হতো না।",
-        "ভুল: চলনশীল ও ভেদ্য দেয়াল কাজ ও পদার্থের বিনিময় সম্ভব করে।",
+        "ভুল: চলনশীল দেয়াল রুদ্ধতাপীয় ও অভেদ্য হলেও চাপ বলের কাজের আদান-প্রদান হতে দেয়।",
       ],
     },
     "l3-vf2": {
@@ -4082,11 +4082,11 @@ export const quizQuestionTranslations: Partial<
       question: "dQ ও dW না লিখে δQ ও δW লেখা হয় কেন?",
       choices: [
         "কারণ এগুলি অসম্পূর্ণ অন্তরক: এদের সমাকল পথের উপর নির্ভর করে।",
-        "কারণ Q ও W এত ছোট রাশি যে সাধারণ অন্তরক দিয়ে তাদের বর্ণনা করা যায় না।",
+        "কারণ তাপ ও কাজ সংরক্ষিত থাকে না, অথচ সিস্টেমের অভ্যন্তরীণ শক্তি প্রতিটি প্রক্রিয়ায় সংরক্ষিত থাকে।",
       ],
       explanations: [
         "সঠিক: Q ও W পথের উপর নির্ভর করে, কিন্তু U শুধু প্রাথমিক ও চূড়ান্ত অবস্থার উপর নির্ভর করে। dQ লেখা ক্যালরিক তত্ত্বকে পুনরুজ্জীবিত করার সমতুল্য হতো।",
-        "ভুল: রাশির ‘আকার’ এখানে অপ্রাসঙ্গিক; বিষয়টি হলো পথ-নির্ভরতা।",
+        "ভুল: U বদলাতে পারে। U একটি অবস্থা অপেক্ষক, কিন্তু Q ও W পথের উপর নির্ভরশীল; প্রতীক এই পার্থক্য বোঝায়।",
       ],
     },
     "l4-q3": {
@@ -4094,12 +4094,12 @@ export const quizQuestionTranslations: Partial<
       choices: [
         "এর মান অবশ্যই শূন্য, কারণ Q ও W অবস্থা অপেক্ষক।",
         "এর মান শূন্য, কারণ U একটি অবস্থা অপেক্ষক।",
-        "ইঞ্জিন হিসেবে কাজ করা যন্ত্রের ক্ষেত্রে এটি সর্বদা কঠোরভাবে ধনাত্মক।",
+        "চক্রটি কোয়াসি-স্থিতিশীল হলেই কেবল এটি শূন্য হয়।",
       ],
       explanations: [
         "ভুল: ঠিক উল্টো—Q ও W অবস্থা অপেক্ষক নয়; এগুলি স্থানান্তর, তন্ত্রের রাশি নয়। তাই ΔU_cycle = 0-এর মাধ্যমে কেবল তাদের যোগফলই একটি চক্রে শূন্য হতে বাধ্য।",
         "সঠিক: একটি চক্র শেষে তন্ত্রটি প্রাথমিক অবস্থায় ফেরে। U অবস্থা অপেক্ষক বলে ΔU_cycle = U(A) − U(A) = 0, তাই প্রথম সূত্রে Q_cycle + W_cycle = 0।",
-        "ভুল: Q_cycle + W_cycle যোগফলটি শূন্য; প্রতিটি পদ আলাদাভাবে নয়। ইঞ্জিনে Q_cycle ও W_cycle উভয়ই অশূন্য ও বিপরীত চিহ্নের হতে পারে।",
+        "ভুল: প্রতিটি চক্র সিস্টেমকে প্রাথমিক অবস্থায় ফেরায়। ΔU_cycle = 0 থেকে Q_cycle + W_cycle = 0 আবশ্যক, চক্রটি কোয়াসি-স্থিতিশীল না হলেও।",
       ],
     },
     "l4-q4": {
@@ -4116,10 +4116,10 @@ export const quizQuestionTranslations: Partial<
       ],
     },
     "l4-q6": {
-      question: "একটি বদ্ধ তন্ত্রের সমআয়তনিক রূপান্তরে সবসময় কোনটি সত্য?",
+      question: "একটি বদ্ধ তন্ত্রের সমআয়তনিক রূপান্তরে, কেবল চাপ বলের কাজ সম্ভব হলে, সবসময় কোনটি সত্য?",
       choices: ["W = 0, তাই ΔU = Q", "Q = 0, তাই ΔU = W", "ΔU = 0, তাই Q = -W"],
       explanations: [
-        "সঠিক: ধ্রুব আয়তনে δW = -P dV = 0; অভ্যন্তরীণ শক্তির সব পরিবর্তন তাপ থেকে আসে।",
+        "সঠিক: স্থির আয়তনে চাপ বলের কাজ শূন্য। এখানে এটিই একমাত্র কাজ, তাই W = 0 এবং ΔU = Q।",
         "ভুল: এটি রুদ্ধতাপীয় রূপান্তরের হিসাব, সমআয়তনিক রূপান্তরের নয়।",
         "ভুল: এটি আদর্শ গ্যাসের সমোষ্ণ রূপান্তরের হিসাব, কারণ U শুধু T-এর উপর নির্ভর করে।",
       ],
@@ -4148,12 +4148,12 @@ export const quizQuestionTranslations: Partial<
       choices: [
         "کیونکہ درجۂ حرارت کے فرق کے بغیر حرارت بہتی ہی نہیں، اس لیے کام میں بدلنے کو کچھ نہیں ہوتا۔",
         "کیونکہ میکانی کام صرف ایسے منبع سے پیدا ہو سکتا ہے جس کا درجۂ حرارت ہر عامل سیال کے مخصوص کم از کم حد سے زیادہ ہو۔",
-        "کیونکہ پورے چکر میں عامل سیال کا دباؤ لازماً فضائی دباؤ سے زیادہ رہنا چاہیے۔",
+        "کیونکہ انجن کا اگلا چکر شروع کرنے کے لیے ٹھنڈے منبع کو عامل سیال کی تکثیف کرنا لازمی ہے۔",
       ],
       explanations: [
         "درست: انجن گرم → ٹھنڈے حرارتی بہاؤ پر ایک محصول کی مانند ہے؛ بہاؤ نہیں تو کام بھی نہیں۔ درجۂ حرارت کا میلان ہی اصل ’ایندھن‘ ہے۔",
-        "غلط: درجۂ حرارت کی کوئی کم از کم حد نہیں؛ معمولی فرق بھی کافی ہے (سمندر میں چند درجوں کا فرق استعمال کرنے والے OTEC پلانٹ دیکھیے)۔",
-        "غلط: دباؤ معیار نہیں؛ دونوں منابع کے درمیان درجۂ حرارت کا فرق اہم ہے۔",
+        "غلط: درجۂ حرارت کی کوئی کم از کم حد نہیں؛ معمولی فرق بھی کافی ہے (سمندر میں چند درجوں کا فرق استعمال کرنے والے \u2066OTEC\u2069 پلانٹ دیکھیے)۔",
+        "غلط: حرارتی انجن عامل سیال کی حالتِ مادہ بدلے بغیر بھی چل سکتا ہے۔ تکثیف کوئی عمومی لازمی شرط نہیں ہے۔",
       ],
     },
     "l1-vf1": {
@@ -4182,12 +4182,12 @@ export const quizQuestionTranslations: Partial<
       choices: [
         "رمفورڈ کا توپوں کی نالیں کھودنے کا مشاہدہ: رگڑ بظاہر لامحدود حرارت پیدا کرتی ہے۔",
         "جوزف بلیک کی مستقل درجۂ حرارت پر برف پگھلنے کے دوران جذب شدہ پوشیدہ حرارت کی پیمائش۔",
-        "کلاپیرون کا بوائل، چارلس اور گے-لیوساک کے قوانین کو مثالی گیس کی ایک حالتی مساوات میں یکجا کرنا۔",
+        "یہ مشاہدہ کہ یکساں کمیت والے اجسام کا درجۂ حرارت ایک ہی مقدار سے بڑھانے کے لیے مختلف مقدار میں حرارت درکار ہوتی ہے۔",
       ],
       explanations: [
-        "درست: اگر حرارت ایک محدود اور محفوظ سیال ہوتی تو مسلسل کھدائی غیر معینہ مدت تک اسے پیدا نہ کر سکتی۔ رمفورڈ (1798) نے نتیجہ اخذ کیا کہ حرارت حرکت سے وابستہ ہے۔",
+        "درست: اگر حرارت ایک محدود اور محفوظ سیال ہوتی تو مسلسل کھدائی غیر معینہ مدت تک اسے پیدا نہ کر سکتی۔ رمفورڈ \u2066(1798)\u2069 نے نتیجہ اخذ کیا کہ حرارت حرکت سے وابستہ ہے۔",
         "غلط: پوشیدہ حرارت کی وضاحت کیلورک نظریے میں الٹا اچھی طرح ہو جاتی تھی—مرحلہ بدلتے وقت سیال مادے کے ساتھ ’مل‘ جاتا ہے۔",
-        "غلط: کلاپیرون (1834) نے گیسوں کے قوانین یکجا کیے؛ اس کا حرارت کی نوعیت سے براہِ راست تعلق نہیں۔",
+        "غلط: مختلف حرارتی گنجائشیں کیلورک نظریے سے مطابقت رکھتی ہیں؛ یہ مشاہدہ اس کی تردید نہیں کرتا۔",
       ],
     },
     "l2-vf1": {
@@ -4199,35 +4199,35 @@ export const quizQuestionTranslations: Partial<
       ],
     },
     "l2-q4": {
-      question: "جوزف بلیک کے قائم کردہ تعلق Q = m c ΔT میں ضریب c کیا ظاہر کرتا ہے؟",
+      question: "جوزف بلیک کے قائم کردہ تعلق \u2066Q = m c ΔT\u2069 میں ضریب \u2066c\u2069 کیا ظاہر کرتا ہے؟",
       choices: [
-        "جسم کی تبادلہ کردہ کل حرارت، جسے جول میں ظاہر کیا جاتا ہے۔",
+        "پورے جسم کا درجۂ حرارت ایک درجہ بڑھانے کے لیے درکار حرارت۔",
         "جسم کی اکائی کمیت کا درجۂ حرارت ایک درجہ بڑھانے کے لیے درکار حرارت۔",
-        "جسم کو دیے گئے کام اور اس کی حاصل کردہ حرارت کا تناسب۔",
+        "مستقل درجۂ حرارت پر جسم کی اکائی کمیت کو پگھلانے کے لیے درکار حرارت۔",
       ],
       explanations: [
-        "غلط: کل تبادلہ شدہ حرارت Q ہے، c نہیں؛ Q کمیت اور درجۂ حرارت کے فرق پر بھی منحصر ہے۔",
+        "غلط: یہ پورے جسم کی حرارتی گنجائش \u2066C = mc\u2069 ہے؛ \u2066c\u2069 فی اکائی کمیت کی مقدار ہے۔",
         "درست: یہ مخصوص حرارتی گنجائش ہے، یعنی ہر مادے کا وہ مخصوص ضریب جسے بلیک نے نمایاں کیا۔",
-        "غلط: اس تعلق کا c سے کوئی واسطہ نہیں؛ c صرف حرارت اور درجۂ حرارت کو ملاتا ہے۔",
+        "غلط: یہ پگھلنے کی مخصوص پوشیدہ حرارت \u2066L\u2069 ہے، مخصوص حرارتی گنجائش \u2066c\u2069 نہیں۔",
       ],
     },
     "l2-q5": {
       question: "جدید اکائیوں میں جول کی پیمائش کے مطابق ایک کیلوری کی قدر کیا ہے؟",
-      choices: ["تقریباً 1 J فی کیلوری", "تقریباً 4.18 J فی کیلوری", "تقریباً 100 J فی کیلوری", "تقریباً 0.24 J فی کیلوری"],
+      choices: ["تقریباً \u20661 J\u2069 فی کیلوری", "تقریباً \u20664.18 J\u2069 فی کیلوری", "تقریباً \u20664 180 J\u2069 فی کیلوری", "تقریباً \u20660.24 J\u2069 فی کیلوری"],
       explanations: [
         "غلط: یہ صرف تب درست ہوتا اگر کیلوری اور جول بغیر تبدیلی کے ایک ہی چیز ناپتے۔",
-        "درست: 1 cal ≈ 4.18 J؛ 1843 سے 1849 کے درمیان بڑھتی صحت کے ساتھ ناپی گئی اسی قدر نے حرارت اور کام کی مساوات قائم کی۔",
-        "غلط: یہ قدر جول کی پیمائش سے تقریباً 24 گنا زیادہ ہے۔",
-        "غلط: یہ تقریباً اس کا معکوس ہے (1/4.18 ≈ 0.24)۔",
+        "درست: \u20661 cal ≈ 4.18 J\u2069؛ \u20661843\u2069 سے \u20661849\u2069 کے درمیان بڑھتی صحت کے ساتھ ناپی گئی اسی قدر نے حرارت اور کام کی مساوات قائم کی۔",
+        "غلط: تقریباً \u20664 180 J\u2069 ایک کلوکیلوری، یعنی \u20661 000\u2069 کیلوریز کے برابر ہیں۔",
+        "غلط: یہ تقریباً اس کا معکوس ہے \u2066(1/4.18 ≈ 0.24)\u2069۔",
       ],
     },
     "l2-q6": {
-      question: "خوراک کے ایک پیکٹ پر ’250 cal‘ لکھا ہے۔ یہ تقریباً کتنے جول کے برابر ہے؟",
-      choices: ["≈ 250 J", "≈ 1046 kJ", "≈ 1046 J", "≈ 250 kJ"],
+      question: "خوراک کے ایک پیکٹ پر ’\u2066250 kcal\u2069‘ لکھا ہے۔ یہ تقریباً کتنے جول کے برابر ہے؟",
+      choices: ["\u2066≈ 250 J\u2069", "\u2066≈ 1046 kJ\u2069", "\u2066≈ 1046 J\u2069", "\u2066≈ 250 kJ\u2069"],
       explanations: [
         "غلط: اس میں لکھی ہوئی اکائی کو جول سمجھ لیا گیا ہے۔",
-        "درست: غذائی کیلوری دراصل 1 kcal ہوتی ہے اور اسے اصولاً بڑے C کے ساتھ Cal لکھتے ہیں۔ 250 kcal × 4.18 kJ/kcal ≈ 1046 kJ۔",
-        "غلط: اس میں یہ بھلا دیا گیا ہے کہ ایک غذائی کیلوری دراصل ایک کلوکیلوری ہے۔",
+        "درست: \u20661 kcal = 1 000 cal\u2069۔ درج شدہ توانائی تقریباً \u20661 046 kJ\u2069 ہے۔",
+        "غلط: یہ \u2066250 cal\u2069 کے برابر ہے، \u2066250 kcal\u2069 کے نہیں۔ سابقہ کلو کا مطلب \u20661 000\u2069 کا عامل ہے۔",
         "غلط: اس میں غذائی کیلوری کو کلو جول سمجھ لیا گیا ہے۔",
       ],
     },
@@ -4240,16 +4240,16 @@ export const quizQuestionTranslations: Partial<
       ],
     },
     "l2-q7": {
-      question: "0°C کی برف کو گرم کر کے 20°C کا مائع پانی بنایا جاتا ہے۔ حاصل کردہ کل حرارت کا درست حساب کیسے ہو گا؟",
+      question: "\u2066m\u2069 کمیت کی \u20660°C\u2069 پر موجود برف کو گرم کر کے \u206620°C\u2069 کا مائع پانی بنایا جاتا ہے۔ \u2066L\u2069 پگھلنے کی مخصوص پوشیدہ حرارت، \u2066c_water\u2069 اور \u2066c_ice\u2069 مائع پانی اور برف کی مخصوص حرارتی گنجائشیں ہیں، اور \u2066ΔT = 20°C\u2069 ہے۔ کون سا اظہار کل حاصل کردہ حرارت \u2066Q\u2069 دیتا ہے؟",
       choices: [
-        "Q = m c_پانی ΔT، جہاں ΔT = 20°C اور c_پانی مائع پانی کی مخصوص حرارتی گنجائش ہے۔",
-        "Q = m L + m c_پانی ΔT، جہاں L پگھلاؤ کی مخصوص پوشیدہ حرارت، c_پانی مائع پانی کی مخصوص حرارتی گنجائش، اور ΔT = 20°C ہے۔",
-        "Q = m c_برف ΔT + m c_پانی ΔT، جہاں ΔT = 20°C ہے۔",
+        "\u2066Q = m c_water ΔT\u2069",
+        "\u2066Q = m L + m c_water ΔT\u2069",
+        "\u2066Q = m L + m c_ice ΔT\u2069",
       ],
       explanations: [
-        "غلط: یہ حساب 0°C پر درجۂ حرارت بدلے بغیر جذب ہونے والی پگھلاؤ کی پوشیدہ حرارت بھول جاتا ہے؛ یہی حرارتی گنجائش سے الگ بلیک کی دوسری دریافت تھی۔",
-        "درست: پوشیدہ حرارت (مستقل درجۂ حرارت پر پگھلاؤ) اور Q = mcΔT (ایک ہی مرحلے میں گرم کرنا) جمع ہوتی ہیں، مگر عمل کے الگ الگ حصوں پر لاگو ہوتی ہیں۔",
-        "غلط: برف پگھلنے کے بعد 0°C سے 20°C تک گرم کرنے کے لیے برف نہیں بلکہ مائع پانی کی حرارتی گنجائش استعمال ہوتی ہے۔",
+        "غلط: یہ حساب \u20660°C\u2069 پر درجۂ حرارت بدلے بغیر جذب ہونے والی پگھلاؤ کی پوشیدہ حرارت بھول جاتا ہے؛ یہی حرارتی گنجائش سے الگ بلیک کی دوسری دریافت تھی۔",
+        "درست: پوشیدہ حرارت (مستقل درجۂ حرارت پر پگھلاؤ) اور \u2066Q = mcΔT (\u2069ایک ہی مرحلے میں گرم کرنا) جمع ہوتی ہیں، مگر عمل کے الگ الگ حصوں پر لاگو ہوتی ہیں۔",
+        "غلط: پگھلنا شامل ہے، مگر \u20660°C\u2069 سے \u206620°C\u2069 تک مائع پانی گرم ہوتا ہے۔ \u2066c_ice\u2069 کی جگہ \u2066c_water\u2069 استعمال کرنا چاہیے۔",
       ],
     },
     "l2-vf4": {
@@ -4261,18 +4261,18 @@ export const quizQuestionTranslations: Partial<
       ],
     },
     "l3-q1": {
-      question: "ایک معزول نظام کی دیواریں کیسی ہوتی ہیں؟",
+      question: "صرف دباؤ کی قوتوں کا کام زیرِ غور ہے۔ دیواروں کی کون سی خصوصیات نظام کی تنہائی یقینی بناتی ہیں؟",
       choices: [
-        "حرارت گزار، متحرک اور نفوذ پذیر۔",
+        "صلب، ادیابیاتی اور نفوذ پذیر۔",
         "صلب، ادیابیاتی اور ناقابلِ نفوذ۔",
         "صلب، حرارت گزار اور ناقابلِ نفوذ۔",
-        "متحرک، ادیابیاتی اور نفوذ پذیر۔",
+        "متحرک، ادیابیاتی اور ناقابلِ نفوذ۔",
       ],
       explanations: [
-        "غلط: یہ خواص الٹا تمام تبادلوں—حرارت، کام اور مادے—کی اجازت دیتے ہیں۔",
+        "غلط: نفوذ پذیر دیواریں مادے کا تبادلہ ہونے دیتی ہیں، چاہے وہ صلب اور ادیابیاتی ہوں۔",
         "درست: صلب ہونا کام کے، ادیابیاتی ہونا حرارت کے، اور ناقابلِ نفوذ ہونا مادے کے تبادلے کو روکتا ہے۔",
         "غلط: حرارت گزار دیواریں حرارت گزرنے دیتی ہیں؛ نظام معزول نہ ہوتا۔",
-        "غلط: متحرک اور نفوذ پذیر دیواریں کام اور مادے کے تبادلے کی اجازت دیتی ہیں۔",
+        "غلط: متحرک دیواریں دباؤ کی قوتوں کے کام کا تبادلہ ہونے دیتی ہیں، چاہے وہ ادیابیاتی اور ناقابلِ نفوذ ہوں۔",
       ],
     },
     "l3-vf2": {
@@ -4333,27 +4333,27 @@ export const quizQuestionTranslations: Partial<
       ],
     },
     "l4-q2": {
-      question: "dQ اور dW کے بجائے δQ اور δW کیوں لکھتے ہیں؟",
+      question: "\u2066dQ\u2069 اور \u2066dW\u2069 کے بجائے \u2066δQ\u2069 اور \u2066δW\u2069 کیوں لکھتے ہیں؟",
       choices: [
         "کیونکہ یہ نادرست تفرقات ہیں: ان کا تکمل اختیار کردہ راستے پر منحصر ہے۔",
-        "کیونکہ Q اور W اتنی چھوٹی مقداریں ہیں کہ انہیں معمول کے تفرقات سے بیان نہیں کیا جا سکتا۔",
+        "کیونکہ حرارت اور کام محفوظ نہیں رہتے، جبکہ نظام کی اندرونی توانائی ہر عمل میں محفوظ رہتی ہے۔",
       ],
       explanations: [
-        "درست: Q اور W راستے پر منحصر ہیں، جبکہ U صرف ابتدائی اور آخری حالت پر منحصر ہے۔ dQ لکھنا کیلورک نظریے کو دوبارہ زندہ کرنے کے مترادف ہوتا۔",
-        "غلط: مقداروں کے ’سائز‘ کا اس سے کوئی تعلق نہیں؛ مسئلہ راستے پر انحصار کا ہے۔",
+        "درست: \u2066Q\u2069 اور \u2066W\u2069 راستے پر منحصر ہیں، جبکہ \u2066U\u2069 صرف ابتدائی اور آخری حالت پر منحصر ہے۔ \u2066dQ\u2069 لکھنا کیلورک نظریے کو دوبارہ زندہ کرنے کے مترادف ہوتا۔",
+        "غلط: \u2066U\u2069 بدل سکتی ہے۔ \u2066U\u2069 ایک حالتی تفاعل ہے، جبکہ \u2066Q\u2069 اور \u2066W\u2069 راستے پر منحصر ہیں؛ علامتیں یہی فرق ظاہر کرتی ہیں۔",
       ],
     },
     "l4-q3": {
-      question: "ایک بند نظام چکری تبدیلی (A → A) سے گزرتا ہے۔ میزان Q_cycle + W_cycle کے بارے میں کیا کہا جا سکتا ہے؟",
+      question: "ایک بند نظام چکری تبدیلی \u2066(A → A)\u2069 سے گزرتا ہے۔ میزان \u2066Q_cycle + W_cycle\u2069 کے بارے میں کیا کہا جا سکتا ہے؟",
       choices: [
-        "یہ لازماً صفر ہے، کیونکہ Q اور W حالتی تفاعل ہیں۔",
-        "یہ صفر ہے کیونکہ U حالتی تفاعل ہے۔",
-        "محرک مشین کے لیے یہ ہمیشہ سختی سے مثبت ہوتا ہے۔",
+        "یہ لازماً صفر ہے، کیونکہ \u2066Q\u2069 اور \u2066W\u2069 حالتی تفاعل ہیں۔",
+        "یہ صفر ہے کیونکہ \u2066U\u2069 حالتی تفاعل ہے۔",
+        "یہ صرف اسی صورت میں صفر ہے جب چکر نیم سکونی ہو۔",
       ],
       explanations: [
-        "غلط: حقیقت الٹ ہے—Q اور W حالتی تفاعل نہیں؛ یہ انتقالات ہیں، نظام کی مقداریں نہیں۔ اسی لیے ΔU_cycle = 0 کے ذریعے چکر میں صرف ان کا مجموعہ صفر ہونے کا پابند ہے۔",
-        "درست: چکر کے آخر میں نظام اپنی ابتدائی حالت میں لوٹتا ہے۔ U حالتی تفاعل ہے، اس لیے ΔU_cycle = U(A) − U(A) = 0، اور پہلا اصول Q_cycle + W_cycle = 0 عائد کرتا ہے۔",
-        "غلط: مجموعہ Q_cycle + W_cycle صفر ہے، ہر جزو الگ الگ نہیں؛ محرک مشین میں Q_cycle اور W_cycle دونوں غیر صفر اور مخالف علامتوں کے ہو سکتے ہیں۔",
+        "غلط: حقیقت الٹ ہے—\u2066Q\u2069 اور \u2066W\u2069 حالتی تفاعل نہیں؛ یہ انتقالات ہیں، نظام کی مقداریں نہیں۔ اسی لیے \u2066ΔU_cycle = 0\u2069 کے ذریعے چکر میں صرف ان کا مجموعہ صفر ہونے کا پابند ہے۔",
+        "درست: چکر کے آخر میں نظام اپنی ابتدائی حالت میں لوٹتا ہے۔ \u2066U\u2069 حالتی تفاعل ہے، اس لیے \u2066ΔU_cycle = U(A) − U(A) = 0\u2069، اور پہلا اصول \u2066Q_cycle + W_cycle = 0\u2069 عائد کرتا ہے۔",
+        "غلط: ہر چکر نظام کو ابتدائی حالت میں واپس لاتا ہے۔ \u2066ΔU_cycle = 0\u2069 سے \u2066Q_cycle + W_cycle = 0\u2069 لازم ہے، چاہے چکر نیم سکونی نہ ہو۔",
       ],
     },
     "l4-q4": {
@@ -4370,12 +4370,12 @@ export const quizQuestionTranslations: Partial<
       ],
     },
     "l4-q6": {
-      question: "بند نظام کی ہم حجمی تبدیلی میں ہمیشہ کیا ہوتا ہے؟",
-      choices: ["W = 0، لہٰذا ΔU = Q", "Q = 0، لہٰذا ΔU = W", "ΔU = 0، لہٰذا Q = -W"],
+      question: "بند نظام کی ہم حجمی تبدیلی میں، اگر کام صرف دباؤ کی قوتوں کا ہو، تو ہمیشہ کیا ہوتا ہے؟",
+      choices: ["\u2066W = 0\u2069، لہٰذا \u2066ΔU = Q\u2069", "\u2066Q = 0\u2069، لہٰذا \u2066ΔU = W\u2069", "\u2066ΔU = 0\u2069، لہٰذا \u2066Q = -W\u2069"],
       explanations: [
-        "درست: مستقل حجم پر δW = -P dV = 0؛ اندرونی توانائی کی تمام تبدیلی حرارت سے آتی ہے۔",
+        "درست: مستقل حجم پر دباؤ کی قوتوں کا کام صفر ہے۔ یہاں یہی واحد کام ہے، اس لیے \u2066W = 0\u2069 اور \u2066ΔU = Q\u2069۔",
         "غلط: یہ ادیابیاتی تبدیلی کا میزان ہے، ہم حجمی تبدیلی کا نہیں۔",
-        "غلط: یہ مثالی گیس کی ہم حرارت تبدیلی کا میزان ہے، کیونکہ U صرف T پر منحصر ہے۔",
+        "غلط: یہ مثالی گیس کی ہم حرارت تبدیلی کا میزان ہے، کیونکہ \u2066U\u2069 صرف \u2066T\u2069 پر منحصر ہے۔",
       ],
     },
   },
@@ -4402,12 +4402,12 @@ export const quizQuestionTranslations: Partial<
       choices: [
         "Kwa sababu pasipo tofauti ya halijoto hakuna mtiririko wa joto, hivyo hakuna kitu cha kugeuzwa kuwa kazi.",
         "Kwa sababu kazi ya kimekanika inaweza kuzalishwa tu kutoka chanzo ambacho halijoto yake inazidi kiwango fulani cha chini kinachotegemea kiowevu tendaji.",
-        "Kwa sababu shinikizo la kiowevu tendaji lazima libaki juu ya shinikizo la anga katika mzunguko wote.",
+        "Kwa sababu chanzo baridi lazima kifanye mvuke wa kiowevu tendaji uwe kioevu ili injini ianze mzunguko mwingine.",
       ],
       explanations: [
         "Sahihi: injini ni kama ushuru unaotozwa kwenye mtiririko wa joto kutoka moto → baridi; hakuna mtiririko, hakuna kazi. Mteremko wa halijoto ndio ‘mafuta’ halisi.",
         "Si sahihi: hakuna kiwango cha chini cha halijoto; hata tofauti ndogo inatosha (tazama mitambo ya OTEC inayotumia tofauti ya digrii chache baharini).",
-        "Si sahihi: shinikizo si kigezo; muhimu ni tofauti ya halijoto kati ya vyanzo viwili.",
+        "Si sahihi: injini ya joto inaweza kufanya kazi bila kiowevu tendaji kubadilisha awamu. Kufanya mvuke uwe kioevu si sharti la jumla.",
       ],
     },
     "l1-vf1": {
@@ -4436,12 +4436,12 @@ export const quizQuestionTranslations: Partial<
       choices: [
         "Uchunguzi wa Rumford wa uchimbaji wa mizinga: msuguano huzalisha joto linaloonekana kutokuwa na kikomo.",
         "Kipimo cha Joseph Black cha joto fiche linalofyonzwa na barafu inapoyeyuka katika halijoto isiyobadilika.",
-        "Clapeyron kuunganisha sheria za Boyle, Charles na Gay-Lussac kuwa mlinganyo mmoja wa hali wa gesi bora.",
+        "Uchunguzi kwamba miili yenye masi sawa inahitaji kiasi tofauti cha joto kwa ongezeko lilelile la halijoto.",
       ],
       explanations: [
         "Sahihi: kama joto lingekuwa kiowevu finyu kinachohifadhiwa, uchimbaji unaoendelea usingeweza kulizalisha bila kikomo. Rumford (1798) alihitimisha kuwa linahusiana na mwendo.",
         "Si sahihi: joto fiche lilielezwa vizuri na nadharia ya kaloriki—kiowevu kilidhaniwa ‘kuungana’ na mata wakati wa mabadiliko ya hali.",
-        "Si sahihi: Clapeyron (1834) aliunganisha sheria za gesi bila kuhusiana moja kwa moja na asili ya joto.",
+        "Si sahihi: uwezo tofauti wa joto unaendana na nadharia ya kaloriki; uchunguzi huu hauikanushi.",
       ],
     },
     "l2-vf1": {
@@ -4455,33 +4455,33 @@ export const quizQuestionTranslations: Partial<
     "l2-q4": {
       question: "Katika uhusiano Q = m c ΔT ulioonyeshwa na Joseph Black, kigawo c kinawakilisha nini?",
       choices: [
-        "Kiasi chote cha joto kilichobadilishwa na mwili, kikionyeshwa kwa joule.",
+        "Joto linalohitajika kuongeza halijoto ya mwili mzima kwa digrii moja.",
         "Kiasi cha joto kinachohitajika kuongeza halijoto ya kitengo kimoja cha misa ya mwili kwa digrii moja.",
-        "Uwiano kati ya kazi inayotolewa kwa mwili na joto linalopokelewa nao.",
+        "Joto linalohitajika kuyeyusha kipimo kimoja cha masi ya mwili katika halijoto isiyobadilika.",
       ],
       explanations: [
-        "Si sahihi: Q yenyewe ndiyo joto lote lililobadilishwa, si c; Q pia hutegemea misa na tofauti ya halijoto.",
+        "Si sahihi: huu ni uwezo wa joto C = mc wa mwili mzima; c ni kwa kila kipimo cha masi.",
         "Sahihi: huu ni uwezo mahususi wa joto, kigawo cha kila nyenzo ambacho Black alibainisha.",
-        "Si sahihi: uhusiano huo hauhusiani na c; c huhusisha joto na halijoto pekee.",
+        "Si sahihi: hili ni joto fiche mahususi la kuyeyuka L, si uwezo mahususi wa joto c.",
       ],
     },
     "l2-q5": {
       question: "Katika vitengo vya kisasa, kalori moja kama ilivyopimwa na Joule ina thamani gani?",
-      choices: ["Takriban 1 J kwa kalori", "Takriban 4.18 J kwa kalori", "Takriban 100 J kwa kalori", "Takriban 0.24 J kwa kalori"],
+      choices: ["Takriban 1 J kwa kalori", "Takriban 4.18 J kwa kalori", "Takriban 4 180 J kwa kalori", "Takriban 0.24 J kwa kalori"],
       explanations: [
         "Si sahihi: hilo lingekuwa kweli kama kalori na joule zingepima kitu kilekile bila ubadilishaji.",
         "Sahihi: 1 cal ≈ 4.18 J; thamani hii, iliyopimwa kwa usahihi unaoongezeka kati ya 1843 na 1849, ndiyo iliyoanzisha usawa kati ya joto na kazi.",
-        "Si sahihi: thamani hii ni kubwa mno, kwa takriban mara 24, kuliko kipimo cha Joule.",
+        "Si sahihi: takriban 4 180 J ni kilokalori moja, yaani kalori 1 000.",
         "Si sahihi: hii ni takriban kinyume chake (1/4.18 ≈ 0.24).",
       ],
     },
     "l2-q6": {
-      question: "Kifungashio cha chakula kinaonyesha ‘250 cal’. Hii ni sawa na joule ngapi takriban?",
+      question: "Kifungashio cha chakula kinaonyesha ‘250 kcal’. Hii ni sawa na joule ngapi takriban?",
       choices: ["≈ 250 J", "≈ 1046 kJ", "≈ 1046 J", "≈ 250 kJ"],
       explanations: [
         "Si sahihi: hii ingechanganya kitengo kilichoandikwa na joule.",
-        "Sahihi: kalori ya chakula kwa kweli ni 1 kcal, ambayo kwa kawaida huandikwa Cal kwa herufi kubwa. 250 kcal × 4.18 kJ/kcal ≈ 1046 kJ.",
-        "Si sahihi: hii ingesahau kwamba kalori moja ya chakula kwa kweli ni kilokalori moja.",
+        "Sahihi: 1 kcal = 1 000 cal. Nishati iliyoandikwa ni takriban 1 046 kJ.",
+        "Si sahihi: hii ni sawa na 250 cal, si 250 kcal. Kiambishi kilo kinawakilisha kizidishi cha 1 000.",
         "Si sahihi: hii ingechanganya kalori ya chakula na kilojoule.",
       ],
     },
@@ -4494,16 +4494,16 @@ export const quizQuestionTranslations: Partial<
       ],
     },
     "l2-q7": {
-      question: "Kipande cha barafu cha 0°C kinapashwa hadi kuwa maji ya kioevu ya 20°C. Joto lote linalopokelewa linahesabiwaje kwa usahihi?",
+      question: "Kipande cha barafu chenye masi m katika 0°C kinapashwa hadi kuwa maji ya kioevu katika 20°C. L ni joto fiche mahususi la kuyeyuka, c_water na c_ice ni uwezo mahususi wa joto wa maji ya kioevu na barafu, na ΔT = 20°C. Ni usemi upi unaotoa joto lote linalopokelewa Q?",
       choices: [
-        "Q = m c_maji ΔT, ambapo ΔT = 20°C na c_maji ni uwezo mahususi wa joto wa maji ya kioevu.",
-        "Q = m L + m c_maji ΔT, ambapo L ni joto fiche kwa kila kitengo cha misa la kuyeyuka, c_maji ni uwezo mahususi wa joto wa maji ya kioevu, na ΔT = 20°C.",
-        "Q = m c_barafu ΔT + m c_maji ΔT, ambapo ΔT = 20°C.",
+        "Q = m c_water ΔT",
+        "Q = m L + m c_water ΔT",
+        "Q = m L + m c_ice ΔT",
       ],
       explanations: [
         "Si sahihi: hesabu hii inasahau joto fiche la kuyeyuka linalofyonzwa kwa 0°C bila halijoto kubadilika; hili ndilo ugunduzi wa pili wa Black, tofauti na uwezo wa joto.",
         "Sahihi: joto fiche (kuyeyuka katika halijoto isiyobadilika) na uhusiano Q = mcΔT (kupasha bila kubadili awamu) hujumlishwa, lakini kila mmoja hutumika katika hatua tofauti ya mchakato.",
-        "Si sahihi: baada ya barafu kuyeyuka, uwezo wa joto wa maji ya kioevu ndio hutumika kuyapasha kutoka 0°C hadi 20°C, si ule wa barafu.",
+        "Si sahihi: kuyeyuka kumehesabiwa, lakini kinachopashwa kutoka 0°C hadi 20°C ni maji ya kioevu. Tumia c_water, si c_ice.",
       ],
     },
     "l2-vf4": {
@@ -4515,18 +4515,18 @@ export const quizQuestionTranslations: Partial<
       ],
     },
     "l3-q1": {
-      question: "Kuta za mfumo uliotengwa kabisa ni:",
+      question: "Tunazingatia kazi ya nguvu za shinikizo pekee. Ni sifa zipi za kuta zinazohakikisha mfumo umetengwa?",
       choices: [
-        "Za diathermiki, zinazosogea na penyevu.",
+        "Ngumu, za adiabatiki na penyevu.",
         "Ngumu, za adiabatiki na zisizopenyeza.",
         "Ngumu, za diathermiki na zisizopenyeza.",
-        "Zinazosogea, za adiabatiki na penyevu.",
+        "Zinazosogea, za adiabatiki na zisizopenyeza.",
       ],
       explanations: [
-        "Si sahihi: hizi ndizo sifa zinazoruhusu ubadilishanaji wote—joto, kazi na mada.",
+        "Si sahihi: kuta penyevu huruhusu ubadilishanaji wa mata hata zikiwa ngumu na za adiabatiki.",
         "Sahihi: ugumu huzuia ubadilishanaji wa kazi, adiabatiki huzuia wa joto, na kutopenyeza huzuia wa mada.",
         "Si sahihi: kuta za diathermiki huruhusu joto kupita; mfumo usingekuwa umetengwa kabisa.",
-        "Si sahihi: kuta zinazosogea na penyevu huruhusu ubadilishanaji wa kazi na mada.",
+        "Si sahihi: kuta zinazosogea huruhusu ubadilishanaji wa kazi ya nguvu za shinikizo hata zikiwa za adiabatiki na zisizopenyeza.",
       ],
     },
     "l3-vf2": {
@@ -4590,11 +4590,11 @@ export const quizQuestionTranslations: Partial<
       question: "Kwa nini tunaandika δQ na δW badala ya dQ na dW?",
       choices: [
         "Kwa sababu ni diferenshali zisizo kamili: integrali zake hutegemea njia iliyofuatwa.",
-        "Kwa sababu Q na W ni sifa ndogo mno kuweza kuelezwa kwa diferenshali za kawaida.",
+        "Kwa sababu joto na kazi havihifadhiwi, lakini nishati ya ndani ya mfumo huhifadhiwa katika kila mchakato.",
       ],
       explanations: [
         "Sahihi: Q na W hutegemea njia, tofauti na U inayotegemea tu hali ya awali na ya mwisho. Kuandika dQ kungekuwa kuifufua nadharia ya kaloriki.",
-        "Si sahihi: ‘ukubwa’ wa sifa hauhusiki; kinachohusika ni utegemezi kwa njia.",
+        "Si sahihi: U inaweza kubadilika. U ni fonksia ya hali, lakini Q na W hutegemea njia; alama zinaonyesha tofauti hiyo.",
       ],
     },
     "l4-q3": {
@@ -4602,12 +4602,12 @@ export const quizQuestionTranslations: Partial<
       choices: [
         "Lazima iwe sifuri kwa sababu Q na W ni dhima za hali.",
         "Ni sifuri kwa sababu U ni dhima ya hali.",
-        "Daima ni chanya kabisa kwa mashine inayozalisha kazi.",
+        "Ni sifuri tu ikiwa mzunguko ni nusutuli.",
       ],
       explanations: [
         "Si sahihi: kinyume chake—Q na W si dhima za hali; ni uhamisho, si sifa za mfumo. Ndiyo maana ni jumla yao pekee inayolazimika kuwa sifuri katika mzunguko kupitia ΔU_cycle = 0.",
         "Sahihi: baada ya mzunguko mfumo hurudia hali yake ya awali. Kwa kuwa U ni dhima ya hali, ΔU_cycle = U(A) − U(A) = 0, hivyo kanuni ya kwanza inalazimisha Q_cycle + W_cycle = 0.",
-        "Si sahihi: jumla Q_cycle + W_cycle ndiyo sifuri, si kila neno peke yake; Q_cycle na W_cycle zinaweza zote kuwa si sifuri na kuwa na ishara tofauti katika mashine inayozalisha kazi.",
+        "Si sahihi: kila mzunguko hurudisha mfumo katika hali ya awali. ΔU_cycle = 0 hulazimisha Q_cycle + W_cycle = 0, hata mzunguko usipokuwa nusutuli.",
       ],
     },
     "l4-q4": {
@@ -4624,10 +4624,10 @@ export const quizQuestionTranslations: Partial<
       ],
     },
     "l4-q6": {
-      question: "Katika mabadiliko ya isokori ya mfumo funge, daima tuna:",
+      question: "Katika mabadiliko ya isokori ya mfumo funge, ikiwa kazi pekee ni ya nguvu za shinikizo, daima tuna:",
       choices: ["W = 0, kwa hiyo ΔU = Q", "Q = 0, kwa hiyo ΔU = W", "ΔU = 0, kwa hiyo Q = -W"],
       explanations: [
-        "Sahihi: kwa ujazo usiobadilika, δW = -P dV = 0; mabadiliko yote ya nishati ya ndani hutokana na joto.",
+        "Sahihi: katika ujazo usiobadilika, kazi ya nguvu za shinikizo ni sifuri. Hapa hakuna aina nyingine ya kazi, hivyo W = 0 na ΔU = Q.",
         "Si sahihi: hii ni mizania ya mabadiliko ya adiabatiki, si ya isokori.",
         "Si sahihi: hii ni mizania ya mabadiliko ya isothermali ya gesi bora, kwa kuwa U hutegemea T pekee.",
       ],
@@ -4656,12 +4656,12 @@ export const quizQuestionTranslations: Partial<
       choices: [
         "زیرا بدون اختلاف دما هیچ شار گرمایی برقرار نمی‌شود و چیزی برای تبدیل به کار وجود ندارد.",
         "زیرا کار مکانیکی تنها از منبعی تولید می‌شود که دمایش از آستانهٔ کمینهٔ ویژهٔ هر سیال عامل بیشتر باشد.",
-        "زیرا فشار سیال عامل باید در سراسر چرخه از فشار جو بیشتر بماند.",
+        "زیرا منبع سرد باید حتماً سیال عامل را چگالیده کند تا موتور بتواند چرخهٔ بعدی را آغاز کند.",
       ],
       explanations: [
         "درست: موتور مانند عوارضی بر شار گرما از گرم → سرد است؛ بدون شار، کاری هم نیست. گرادیان دما «سوخت» واقعی است.",
-        "نادرست: هیچ آستانهٔ دمایی وجود ندارد؛ حتی اختلافی اندک کافی است (نیروگاه‌های OTEC را ببینید که از اختلاف چند درجه‌ای اقیانوس بهره می‌گیرند).",
-        "نادرست: فشار معیار نیست؛ اختلاف دمای دو منبع اهمیت دارد.",
+        "نادرست: هیچ آستانهٔ دمایی وجود ندارد؛ حتی اختلافی اندک کافی است (نیروگاه‌های \u2066OTEC\u2069 را ببینید که از اختلاف چند درجه‌ای اقیانوس بهره می‌گیرند).",
+        "نادرست: موتور حرارتی می‌تواند بدون تغییر فاز سیال عامل کار کند. چگالش شرطی عمومی نیست.",
       ],
     },
     "l1-vf1": {
@@ -4690,12 +4690,12 @@ export const quizQuestionTranslations: Partial<
       choices: [
         "مشاهدهٔ رامفورد از سوراخ‌کاری توپ‌ها: اصطکاک ظاهراً مقدار نامحدودی گرما تولید می‌کند.",
         "اندازه‌گیری جوزف بلک از گرمای نهان جذب‌شده هنگام ذوب یخ در دمای ثابت.",
-        "یکپارچه‌کردن قوانین بویل، شارل و گی-لوساک در یک معادلهٔ حالت گاز ایده‌آل به‌دست کلاپیرون.",
+        "مشاهدهٔ اینکه جسم‌های هم‌جرم برای افزایش دمای یکسان به مقدارهای متفاوتی گرما نیاز دارند.",
       ],
       explanations: [
         "درست: اگر گرما سیالی محدود و پایسته بود، سوراخ‌کاری پیوسته نمی‌توانست آن را بی‌پایان تولید کند. رامفورد (۱۷۹۸) نتیجه گرفت گرما با حرکت مرتبط است.",
         "نادرست: گرمای نهان برعکس در نظریهٔ کالریک به‌خوبی توضیح داده می‌شد—سیال هنگام تغییر حالت با ماده «ترکیب» می‌شد.",
-        "نادرست: کلاپیرون (۱۸۳۴) قوانین گازها را یکپارچه کرد و این کار ارتباط مستقیمی با ماهیت گرما نداشت.",
+        "نادرست: ظرفیت‌های گرمایی متفاوت با نظریهٔ کالریک سازگارند؛ این مشاهده آن را رد نمی‌کند.",
       ],
     },
     "l2-vf1": {
@@ -4707,35 +4707,35 @@ export const quizQuestionTranslations: Partial<
       ],
     },
     "l2-q4": {
-      question: "در رابطهٔ Q = m c ΔT که جوزف بلک نشان داد، ضریب c نمایانگر چیست؟",
+      question: "در رابطهٔ \u2066Q = m c ΔT\u2069 که جوزف بلک نشان داد، ضریب \u2066c\u2069 نمایانگر چیست؟",
       choices: [
-        "کل مقدار گرمای مبادله‌شده با جسم، برحسب ژول.",
+        "گرمای لازم برای افزایش دمای کل جسم به اندازهٔ یک درجه.",
         "مقدار گرمای لازم برای افزایش دمای یک واحد جرم جسم به‌اندازهٔ یک درجه.",
-        "نسبت کار داده‌شده به جسم به گرمای دریافتی آن.",
+        "گرمای لازم برای ذوب واحد جرم جسم در دمای ثابت.",
       ],
       explanations: [
-        "نادرست: Q خودِ گرمای کل مبادله‌شده است، نه c؛ Q همچنین به جرم و اختلاف دما بستگی دارد.",
+        "نادرست: این ظرفیت گرمایی \u2066C = mc\u2069 کل جسم است؛ \u2066c\u2069 به واحد جرم مربوط می‌شود.",
         "درست: این ظرفیت گرمایی ویژه است، یعنی ضریب خاص هر ماده که بلک آن را آشکار کرد.",
-        "نادرست: این نسبت ارتباطی با c ندارد؛ c تنها گرما و دما را به هم مربوط می‌کند.",
+        "نادرست: این گرمای نهان ویژهٔ ذوب \u2066L\u2069 است، نه ظرفیت گرمایی ویژه \u2066c.\u2069",
       ],
     },
     "l2-q5": {
       question: "در یکاهای امروزی، مقدار یک کالری طبق اندازه‌گیری ژول چقدر است؟",
-      choices: ["حدود 1 J به‌ازای هر کالری", "حدود 4.18 J به‌ازای هر کالری", "حدود 100 J به‌ازای هر کالری", "حدود 0.24 J به‌ازای هر کالری"],
+      choices: ["حدود \u20661 J\u2069 به‌ازای هر کالری", "حدود \u20664.18 J\u2069 به‌ازای هر کالری", "حدود \u20664 180 J\u2069 به ازای هر کالری", "حدود \u20660.24 J\u2069 به‌ازای هر کالری"],
       explanations: [
         "نادرست: این تنها هنگامی درست بود که کالری و ژول بدون تبدیل یک چیز را اندازه می‌گرفتند.",
-        "درست: 1 cal ≈ 4.18 J؛ همین مقدار که میان ۱۸۴۳ و ۱۸۴۹ با دقت روزافزون اندازه‌گیری شد، هم‌ارزی گرما و کار را برقرار کرد.",
-        "نادرست: این مقدار در مقایسه با اندازه‌گیری ژول حدود ۲۴ برابر بیش از حد بزرگ است.",
-        "نادرست: این تقریباً معکوس مقدار درست است (1/4.18 ≈ 0.24).",
+        "درست: \u20661 cal ≈ 4.18 J\u2069؛ همین مقدار که میان ۱۸۴۳ و ۱۸۴۹ با دقت روزافزون اندازه‌گیری شد، هم‌ارزی گرما و کار را برقرار کرد.",
+        "نادرست: حدود \u20664 180 J\u2069 برابر یک کیلوکالری، یعنی \u20661 000\u2069 کالری است.",
+        "نادرست: این تقریباً معکوس مقدار درست است \u2066(1/4.18 ≈ 0.24).\u2069",
       ],
     },
     "l2-q6": {
-      question: "روی بسته‌بندی یک مادهٔ غذایی «250 cal» نوشته شده است. این مقدار تقریباً چند ژول است؟",
-      choices: ["≈ 250 J", "≈ 1046 kJ", "≈ 1046 J", "≈ 250 kJ"],
+      question: "روی بسته‌بندی یک مادهٔ غذایی «\u2066250 kcal\u2069» نوشته شده است. این مقدار تقریباً چند ژول است؟",
+      choices: ["\u2066≈ 250 J\u2069", "\u2066≈ 1046 kJ\u2069", "\u2066≈ 1046 J\u2069", "\u2066≈ 250 kJ\u2069"],
       explanations: [
         "نادرست: این پاسخ یکای نوشته‌شده را با ژول اشتباه می‌گیرد.",
-        "درست: کالری غذایی در واقع 1 kcal است و معمولاً با C بزرگ به‌شکل Cal نوشته می‌شود. 250 kcal × 4.18 kJ/kcal ≈ 1046 kJ.",
-        "نادرست: این پاسخ فراموش می‌کند که یک کالری غذایی در واقع یک کیلوکالری است.",
+        "درست: \u20661 kcal = 1 000 cal.\u2069 انرژی درج‌شده حدود \u20661 046 kJ\u2069 است.",
+        "نادرست: این مقدار برابر \u2066250 cal\u2069 است، نه \u2066250 kcal.\u2069 پیشوند کیلو ضریب \u20661 000\u2069 را نشان می‌دهد.",
         "نادرست: این پاسخ کالری غذایی را با کیلوژول اشتباه می‌گیرد.",
       ],
     },
@@ -4748,16 +4748,16 @@ export const quizQuestionTranslations: Partial<
       ],
     },
     "l2-q7": {
-      question: "تکه‌ای یخ در 0°C گرم می‌شود تا آب مایع در 20°C به دست آید. گرمای کل دریافتی را چگونه باید درست محاسبه کرد؟",
+      question: "تکه‌ای یخ با جرم \u2066m\u2069 در \u20660°C\u2069 گرم می‌شود تا آب مایع در \u206620°C\u2069 به دست آید\u2066. L\u2069 گرمای نهان ویژهٔ ذوب، \u2066c_water\u2069 و \u2066c_ice\u2069 ظرفیت‌های گرمایی ویژهٔ آب مایع و یخ هستند و \u2066ΔT = 20°C\u2069 است. کدام عبارت گرمای کل دریافتی \u2066Q\u2069 را می‌دهد؟",
       choices: [
-        "Q = m c_آب ΔT، که در آن ΔT = 20°C و c_آب ظرفیت گرمایی ویژهٔ آب مایع است.",
-        "Q = m L + m c_آب ΔT، که در آن L گرمای نهان ویژهٔ ذوب، c_آب ظرفیت گرمایی ویژهٔ آب مایع و ΔT = 20°C است.",
-        "Q = m c_یخ ΔT + m c_آب ΔT، که در آن ΔT = 20°C است.",
+        "\u2066Q = m c_water ΔT\u2069",
+        "\u2066Q = m L + m c_water ΔT\u2069",
+        "\u2066Q = m L + m c_ice ΔT\u2069",
       ],
       explanations: [
-        "نادرست: این محاسبه گرمای نهان ذوب را که در 0°C بدون تغییر دما جذب می‌شود نادیده می‌گیرد؛ این همان کشف دوم بلک و متمایز از ظرفیت گرمایی است.",
-        "درست: گرمای نهان (ذوب در دمای ثابت) و رابطهٔ Q = mcΔT (گرم‌شدن بدون تغییر فاز) با هم جمع می‌شوند، اما هرکدام در مرحله‌ای جدا از فرایند به کار می‌روند.",
-        "نادرست: پس از ذوب یخ، ظرفیت گرمایی آب مایع برای گرم‌شدن از 0°C تا 20°C به کار می‌رود، نه ظرفیت گرمایی یخ.",
+        "نادرست: این محاسبه گرمای نهان ذوب را که در \u20660°C\u2069 بدون تغییر دما جذب می‌شود نادیده می‌گیرد؛ این همان کشف دوم بلک و متمایز از ظرفیت گرمایی است.",
+        "درست: گرمای نهان (ذوب در دمای ثابت) و رابطهٔ \u2066Q = mcΔT (\u2069گرم‌شدن بدون تغییر فاز) با هم جمع می‌شوند، اما هرکدام در مرحله‌ای جدا از فرایند به کار می‌روند.",
+        "نادرست: ذوب لحاظ شده، اما گرم‌شدن از \u20660°C\u2069 تا \u206620°C\u2069 مربوط به آب مایع است. باید از \u2066c_water\u2069 استفاده کرد، نه \u2066c_ice.\u2069",
       ],
     },
     "l2-vf4": {
@@ -4769,18 +4769,18 @@ export const quizQuestionTranslations: Partial<
       ],
     },
     "l3-q1": {
-      question: "دیواره‌های یک دستگاه منزوی چگونه‌اند؟",
+      question: "فقط کار نیروهای فشار را در نظر می‌گیریم. کدام ویژگی‌های دیواره‌ها منزوی‌بودن سیستم را تضمین می‌کنند؟",
       choices: [
-        "دیاترمی، متحرک و تراوا.",
+        "صلب، بی‌دررو و تراوا.",
         "صلب، بی‌دررو و ناتراوا.",
         "صلب، دیاترمی و ناتراوا.",
-        "متحرک، بی‌دررو و تراوا.",
+        "متحرک، بی‌دررو و ناتراوا.",
       ],
       explanations: [
-        "نادرست: این ویژگی‌ها برعکس همهٔ مبادله‌ها—گرما، کار و ماده—را ممکن می‌کنند.",
+        "نادرست: دیواره‌های تراوا تبادل ماده را ممکن می‌کنند، حتی اگر صلب و بی‌دررو باشند.",
         "درست: صلب‌بودن مبادلهٔ کار، بی‌درروبودن مبادلهٔ گرما و ناتراوابودن مبادلهٔ ماده را منع می‌کند.",
         "نادرست: دیوارهٔ دیاترمی گرما را عبور می‌دهد؛ دستگاه منزوی نمی‌بود.",
-        "نادرست: دیواره‌های متحرک و تراوا مبادلهٔ کار و ماده را ممکن می‌کنند.",
+        "نادرست: دیواره‌های متحرک تبادل کار نیروهای فشار را ممکن می‌کنند، حتی اگر بی‌دررو و ناتراوا باشند.",
       ],
     },
     "l3-vf2": {
@@ -4841,27 +4841,27 @@ export const quizQuestionTranslations: Partial<
       ],
     },
     "l4-q2": {
-      question: "چرا به‌جای dQ و dW از δQ و δW استفاده می‌کنیم؟",
+      question: "چرا به‌جای \u2066dQ\u2069 و \u2066dW\u2069 از \u2066δQ\u2069 و \u2066δW\u2069 استفاده می‌کنیم؟",
       choices: [
         "زیرا آن‌ها دیفرانسیل‌های ناکامل‌اند: انتگرالشان به مسیر پیموده‌شده بستگی دارد.",
-        "زیرا Q و W کمیت‌هایی بیش از حد کوچک‌اند که با دیفرانسیل‌های معمولی توصیف شوند.",
+        "زیرا گرما و کار پایسته نیستند، اما انرژی درونی سیستم در هر فرایندی پایسته می‌ماند.",
       ],
       explanations: [
-        "درست: Q و W به مسیر بستگی دارند، برخلاف U که تنها به حالت‌های آغازین و پایانی وابسته است. نوشتن dQ به‌منزلهٔ زنده‌کردن دوبارهٔ نظریهٔ کالریک بود.",
-        "نادرست: «اندازهٔ» کمیت‌ها هیچ ارتباطی ندارد؛ مسئله وابستگی به مسیر است.",
+        "درست: \u2066Q\u2069 و \u2066W\u2069 به مسیر بستگی دارند، برخلاف \u2066U\u2069 که تنها به حالت‌های آغازین و پایانی وابسته است. نوشتن \u2066dQ\u2069 به‌منزلهٔ زنده‌کردن دوبارهٔ نظریهٔ کالریک بود.",
+        "نادرست: \u2066U\u2069 می‌تواند تغییر کند\u2066. U\u2069 تابع حالت است، اما \u2066Q\u2069 و \u2066W\u2069 به مسیر بستگی دارند؛ نمادگذاری این تفاوت را بیان می‌کند.",
       ],
     },
     "l4-q3": {
-      question: "دستگاه بسته‌ای یک تحول چرخه‌ای (A → A) انجام می‌دهد. دربارهٔ موازنهٔ Q_cycle + W_cycle چه می‌توان گفت؟",
+      question: "دستگاه بسته‌ای یک تحول چرخه‌ای \u2066(A → A)\u2069 انجام می‌دهد. دربارهٔ موازنهٔ \u2066Q_cycle + W_cycle\u2069 چه می‌توان گفت؟",
       choices: [
-        "الزاماً صفر است، زیرا Q و W تابع حالت‌اند.",
-        "صفر است، زیرا U تابع حالت است.",
-        "برای یک ماشین محرک همیشه اکیداً مثبت است.",
+        "الزاماً صفر است، زیرا \u2066Q\u2069 و \u2066W\u2069 تابع حالت‌اند.",
+        "صفر است، زیرا \u2066U\u2069 تابع حالت است.",
+        "فقط اگر چرخه شبه‌ساکن باشد، صفر است.",
       ],
       explanations: [
-        "نادرست: عکس آن درست است—Q و W تابع حالت نیستند؛ انتقال‌اند، نه کمیت‌های دستگاه. دقیقاً به همین دلیل تنها مجموع آن‌ها از راه ΔU_cycle = 0 ناگزیر است در چرخه صفر شود.",
-        "درست: در پایان چرخه دستگاه به حالت آغازین بازمی‌گردد. چون U تابع حالت است، ΔU_cycle = U(A) − U(A) = 0؛ پس قانون اول Q_cycle + W_cycle = 0 را ایجاب می‌کند.",
-        "نادرست: مجموع Q_cycle + W_cycle صفر است، نه هر جمله به‌تنهایی؛ در ماشین محرک Q_cycle و W_cycle می‌توانند هردو ناصفر و دارای علامت‌های مخالف باشند.",
+        "نادرست: عکس آن درست است—\u2066Q\u2069 و \u2066W\u2069 تابع حالت نیستند؛ انتقال‌اند، نه کمیت‌های دستگاه. دقیقاً به همین دلیل تنها مجموع آن‌ها از راه \u2066ΔU_cycle = 0\u2069 ناگزیر است در چرخه صفر شود.",
+        "درست: در پایان چرخه دستگاه به حالت آغازین بازمی‌گردد. چون \u2066U\u2069 تابع حالت است، \u2066ΔU_cycle = U(A) − U(A) = 0\u2069؛ پس قانون اول \u2066Q_cycle + W_cycle = 0\u2069 را ایجاب می‌کند.",
+        "نادرست: هر چرخه سیستم را به حالت آغازین برمی‌گرداند\u2066. ΔU_cycle = 0\u2069 مستلزم \u2066Q_cycle + W_cycle = 0\u2069 است، حتی اگر چرخه شبه‌ساکن نباشد.",
       ],
     },
     "l4-q4": {
@@ -4878,12 +4878,12 @@ export const quizQuestionTranslations: Partial<
       ],
     },
     "l4-q6": {
-      question: "در تحول هم‌حجم یک دستگاه بسته همیشه داریم:",
-      choices: ["W = 0، پس ΔU = Q", "Q = 0، پس ΔU = W", "ΔU = 0، پس Q = -W"],
+      question: "در تحول هم‌حجم یک دستگاه بسته، اگر تنها کار ممکن کار نیروهای فشار باشد، همیشه داریم:",
+      choices: ["\u2066W = 0\u2069، پس \u2066ΔU = Q\u2069", "\u2066Q = 0\u2069، پس \u2066ΔU = W\u2069", "\u2066ΔU = 0\u2069، پس \u2066Q = -W\u2069"],
       explanations: [
-        "درست: در حجم ثابت δW = -P dV = 0؛ تمام تغییر انرژی درونی از گرما ناشی می‌شود.",
+        "درست: در حجم ثابت، کار نیروهای فشار صفر است. اینجا کار دیگری وجود ندارد، پس \u2066W = 0\u2069 و \u2066ΔU = Q.\u2069",
         "نادرست: این موازنهٔ تحول بی‌دررو است، نه هم‌حجم.",
-        "نادرست: این موازنهٔ تحول هم‌دمای گاز ایده‌آل است، زیرا U تنها به T بستگی دارد.",
+        "نادرست: این موازنهٔ تحول هم‌دمای گاز ایده‌آل است، زیرا \u2066U\u2069 تنها به \u2066T\u2069 بستگی دارد.",
       ],
     },
   },
