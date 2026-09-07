@@ -519,7 +519,7 @@ export const quizQuestions: QuizQuestion[] = [
   },
 
   // ─── Leçon 6 : Le second principe ───
-  // Source : content/tex/chp6_fr/lecon1.tex ; ordre varié des thèmes, puis compléments.
+  // Source : content/tex/chp6_fr/lecon1.tex ; distracteurs fondés sur les confusions usuelles.
   {
     id: "l6-q1",
     lecon: 6,
@@ -528,51 +528,51 @@ export const quizQuestions: QuizQuestion[] = [
       "Que le système seul puisse retrouver son état initial, quels que soient les changements de son extérieur.",
       "Qu'un retour puisse restaurer le système et tout son extérieur, sans laisser aucun autre changement.",
       "Que le retour parcoure obligatoirement le même chemin en sens inverse.",
-      "Que la transformation soit suffisamment lente pour que ses échanges d'énergie deviennent nuls.",
+      "Que la transformation soit quasi-statique et que le système reste proche de l'équilibre à chaque étape."
     ],
     explanations: [
       "Faux : restaurer le système seul peut laisser une trace dans un thermostat ou une source de travail. Il faut aussi restaurer tout l'extérieur.",
       "Exact : il suffit qu'au moins un procédé de retour efface toutes les modifications du système et de son extérieur. La définition globale n'impose pas le chemin de ce retour.",
       "Faux : retracer le chemin relève de la réversibilité locale. La définition globale autorise un autre chemin de retour.",
-      "Faux : la lenteur ne garantit pas la réversibilité et ne rend pas nécessairement les chaleurs et les travaux échangés nuls.",
+      "Faux : le caractère quasi-statique ne suffit pas. Des frottements peuvent subsister et empêcher la restauration complète du système et de son extérieur."
     ],
-    correctIndex: 1,
+    correctIndex: 1
   },
   {
     id: "l6-q11",
     lecon: 6,
     question: "Un système fermé cède 2 400 J à un thermostat à 300 K. Sa variation d'entropie est ΔS = −6 J/K. Quels sont son entropie échangée S_e et son entropie produite S_i ?",
     choices: [
-      "S_e = −8 J/K et S_i = +2 J/K : le bilan est compatible avec le second principe.",
-      "S_e = +8 J/K et S_i = −14 J/K : céder de la chaleur compte positivement.",
-      "S_e = −8 J/K et S_i = −6 J/K : l'entropie produite est égale à ΔS.",
-      "Ce processus est nécessairement impossible, puisque l'entropie du système diminue.",
+      "S_e = −8 J/K et S_i = +2 J/K.",
+      "S_e = +8 J/K et S_i = +2 J/K.",
+      "S_e = −6 J/K et S_i = 0 J/K.",
+      "S_e = −8 J/K et S_i = +14 J/K."
     ],
     explanations: [
       "Exact : Q = −2 400 J, donc S_e = Q/T_ext = −8 J/K. Le bilan ΔS = S_e + S_i donne S_i = +2 J/K. Le thermostat gagne 8 J/K : l'entropie totale augmente de 2 J/K si les autres dispositifs ne changent pas d'entropie.",
-      "Faux : la convention du banquier compte négativement la chaleur cédée par le système. De plus, une production d'entropie négative serait interdite.",
-      "Faux : la production est S_i = ΔS − S_e, et non ΔS. L'entropie du système peut diminuer tout en produisant de l'entropie, s'il en cède davantage qu'il n'en produit.",
-      "Faux : le système n'est pas isolé. Le second principe impose S_i ≥ 0 et la non-décroissance de l'entropie de l'ensemble complet, pas celle de chaque partie.",
+      "Faux : S_e est comptée du point de vue du système, qui cède la chaleur : S_e = −2 400/300 = −8 J/K. Les +8 J/K correspondent au gain du thermostat.",
+      "Faux : S_e est fixée par Q/T_ext = −8 J/K, pas par ΔS. Leur différence est l'entropie produite : S_i = ΔS − S_e = +2 J/K.",
+      "Faux : il faut conserver le signe de ΔS : S_i = (−6) − (−8) = +2 J/K. Additionner les valeurs absolues 6 et 8 ne donne pas la production d'entropie."
     ],
-    correctIndex: 0,
+    correctIndex: 0
   },
   {
     id: "l6-q15",
     lecon: 6,
     question: "Une chaleur Q = 1 200 J passe directement d'un thermostat à 600 K vers un thermostat à 300 K. Quelle est la variation d'entropie totale des deux thermostats ?",
     choices: [
-      "+2 J/K ; rendre le transfert plus lent ne change pas cette valeur pour la même chaleur transférée.",
-      "0 J/K, puisque la chaleur perdue par l'un est égale à celle reçue par l'autre.",
-      "−2 J/K, puisque le thermostat chaud perd de l'entropie.",
-      "+4 J/K, car seule l'entropie du thermostat froid doit être comptée.",
+      "+2 J/K.",
+      "0 J/K.",
+      "+6 J/K.",
+      "+4 J/K."
     ],
     explanations: [
       "Exact : ΔS_tot = −1 200/600 + 1 200/300 = +2 J/K. La durée ne figure pas dans ce bilan ; une paroi peu conductrice ralentit le transfert sans supprimer l'irréversibilité due à l'écart fini de température.",
       "Faux : l'énergie est conservée, mais les variations d'entropie sont pondérées par les inverses des températures, qui diffèrent.",
-      "Faux : le thermostat chaud perd 2 J/K, mais le thermostat froid en gagne 4. Leur somme est positive.",
-      "Faux : +4 J/K est seulement la variation du thermostat froid. Le bilan total inclut aussi les −2 J/K du thermostat chaud.",
+      "Faux : ce résultat additionne les valeurs absolues. Le thermostat chaud perd 1 200/600 = 2 J/K, tandis que le froid gagne 1 200/300 = 4 J/K : il faut faire −2 + 4.",
+      "Faux : +4 J/K est seulement la variation du thermostat froid. Le bilan total inclut aussi les −2 J/K du thermostat chaud."
     ],
-    correctIndex: 0,
+    correctIndex: 0
   },
   {
     id: "l6-q3",
@@ -580,15 +580,15 @@ export const quizQuestions: QuizQuestion[] = [
     question: "Pourquoi un réfrigérateur ordinaire ne contredit-il pas l'énoncé de Clausius ?",
     choices: [
       "Parce que le transfert de chaleur du froid vers le chaud s'accompagne d'un apport de travail extérieur.",
-      "Parce que l'énoncé de Clausius ne s'applique qu'aux gaz parfaits.",
-      "Parce que le premier principe suffit à autoriser toute machine dont le bilan énergétique est équilibré.",
+      "Parce que le fluide retrouve son état initial à chaque cycle, ce qui annule les effets sur les deux thermostats.",
+      "Parce que la somme algébrique des chaleurs et du travail est nulle sur un cycle, ce qui suffit à autoriser ce transfert."
     ],
     explanations: [
       "Exact : Clausius interdit une transformation cyclique dont le seul effet serait ce transfert du froid vers le chaud. Le réfrigérateur reçoit du travail : ce transfert n'est donc pas son seul effet.",
-      "Faux : cet énoncé ne dépend pas du fluide de travail. Il porte sur le bilan global d'une transformation cyclique.",
-      "Faux : la conservation de l'énergie est nécessaire mais ne suffit pas. Le second principe impose une contrainte physique supplémentaire.",
+      "Faux : le fluide revient à son état initial, mais les thermostats ont échangé de l'énergie. Le caractère cyclique ne supprime pas ces changements extérieurs.",
+      "Faux : la conservation de l'énergie est nécessaire mais ne suffit pas. Le second principe impose une contrainte physique supplémentaire."
     ],
-    correctIndex: 0,
+    correctIndex: 0
   },
   {
     id: "l6-q13",
@@ -596,35 +596,35 @@ export const quizQuestions: QuizQuestion[] = [
     question: "Un gaz parfait de n moles subit une détente de Joule–Gay-Lussac du volume v au volume V > v dans une enceinte rigide et adiabatique. Le retrait de la cloison ne modifie pas l'extérieur. Quel bilan est correct ?",
     choices: [
       "Q = W = 0, donc ΔU_gaz = 0 et ΔS_gaz = 0.",
-      "ΔU_gaz = 0, mais la température du gaz diminue nécessairement, et son entropie aussi.",
-      "ΔU_gaz = 0 et ΔS_gaz = nR ln(v/V) < 0, car le gaz se dilue.",
-      "Q = W = ΔU_gaz = 0 et ΔS_tot = nR ln(V/v) > 0.",
+      "Q = 0, W = ΔU_gaz < 0 et ΔS_gaz > 0.",
+      "Q = W = ΔU_gaz = 0 et ΔS_tot = 0, bien que ΔS_gaz > 0.",
+      "Q = W = ΔU_gaz = 0 et ΔS_tot = nR ln(V/v) > 0."
     ],
     explanations: [
       "Faux : Q = W = 0 implique bien ΔU_gaz = 0, mais pas ΔS_gaz = 0. L'absence d'échange thermique n'interdit pas la production d'entropie : la relation dS = δQ_rev/T ne s'applique pas à la chaleur réelle de cette détente irréversible.",
-      "Faux : pour un gaz parfait, l'énergie interne ne dépend que de la température. ΔU_gaz = 0 implique donc la même température aux deux états d'équilibre. L'entropie augmente néanmoins, car elle dépend aussi du volume.",
-      "Faux : le rapport est V/v > 1. Une détente isotherme localement réversible entre les mêmes états donne ΔS_gaz = nR ln(V/v) > 0.",
-      "Exact : Q = W = 0 donne ΔU_gaz = 0. L'extérieur n'étant pas modifié, ΔS_tot = ΔS_gaz = nR ln(V/v) > 0. Cette augmentation prouve qu'aucun retour ne peut restaurer le gaz et son extérieur sans laisser une trace ailleurs.",
+      "Faux : le gaz se détend contre le vide ; il ne fournit donc aucun travail, W = 0. Avec Q = 0, on a ΔU_gaz = 0. L'entropie augmente sans apport d'énergie.",
+      "Faux : l'extérieur reste inchangé, donc ΔS_ext = 0. Aucune diminution extérieure ne compense l'augmentation d'entropie du gaz : ΔS_tot = ΔS_gaz > 0.",
+      "Exact : Q = W = 0 donne ΔU_gaz = 0. L'extérieur n'étant pas modifié, ΔS_tot = ΔS_gaz = nR ln(V/v) > 0. Cette augmentation prouve qu'aucun retour ne peut restaurer le gaz et son extérieur sans laisser une trace ailleurs."
     ],
-    correctIndex: 3,
+    correctIndex: 3
   },
   {
     id: "l6-q6",
     lecon: 6,
     question: "Un moteur ditherme fonctionne entre 600 K et 300 K et reçoit Q_ch = 1 000 J par cycle. Quelle est la valeur maximale du travail fourni |W| ?",
     choices: [
-      "1 000 J, puisque ΔU = 0 sur un cycle.",
-      "300 J, puisque l'écart de température vaut 300 K.",
+      "1 000 J.",
+      "Environ 667 J.",
       "500 J.",
-      "On n'a pas assez d'informations pour répondre.",
+      "Impossible à déterminer sans connaître le fluide de travail."
     ],
     explanations: [
       "Faux : on ne peut pas convertir toute la chaleur reçue du thermostat chaud en travail sur un cycle. Le second principe impose d'en céder une partie au thermostat froid, même si ΔU = 0.",
-      "Faux : une différence de température ne donne pas directement une énergie. Le rendement utilise le rapport des températures absolues.",
+      "Faux : 667 J correspond environ à Q_ch T_ch/(T_ch + T_fr). Or le rendement de Carnot vaut 1 − T_fr/T_ch, et non T_ch/(T_ch + T_fr).",
       "Exact : le rendement maximal est celui de Carnot, η_max = 1 − T_fr/T_ch = 1 − 300/600 = 1/2. Ainsi, |W|_max = η_max Q_ch = 500 J. Cette valeur est atteinte par une machine ditherme localement réversible.",
-      "Faux : les températures des deux thermostats et la chaleur reçue suffisent pour calculer le travail maximal : |W|_max = Q_ch (1 − T_fr/T_ch). Il n'est pas nécessaire de connaître le fluide ni les détails du moteur.",
+      "Faux : les températures des deux thermostats et la chaleur reçue suffisent pour calculer le travail maximal : |W|_max = Q_ch (1 − T_fr/T_ch). Il n'est pas nécessaire de connaître le fluide ni les détails du moteur."
     ],
-    correctIndex: 2,
+    correctIndex: 2
   },
   {
     id: "l6-q18",
@@ -632,35 +632,35 @@ export const quizQuestions: QuizQuestion[] = [
     question: "Deux sous-systèmes de composition fixée peuvent échanger indépendamment de l'énergie et du volume dans un ensemble isolé. Que peut-on dire de leur état d'équilibre ?",
     choices: [
       "U_1 = U_2 et V_1 = V_2, quelles que soient les tailles des sous-systèmes.",
-      "S_1 = S_2, sans condition sur leurs températures.",
+      "P_1/T_1 = P_2/T_2, sans égalité nécessaire des températures.",
       "T_1 = T_2, mais les pressions ne sont pas nécessairement égales.",
-      "T_1 = T_2 et P_1 = P_2.",
+      "T_1 = T_2 et P_1 = P_2."
     ],
     explanations: [
       "Faux : l'équilibre n'impose pas l'égalité des grandeurs extensives. Deux sous-systèmes de tailles différentes peuvent avoir des énergies et des volumes différents à l'équilibre.",
-      "Faux : l'équilibre maximise l'entropie totale sous les contraintes imposées ; il n'exige pas que les deux sous-systèmes aient la même entropie.",
+      "Faux : cette égalité annule seulement le coefficient de dV_1. L'énergie pouvant aussi être redistribuée indépendamment, le coefficient de dU_1 doit s'annuler : T_1 = T_2. Le critère utilisé est la stationnarité de l'entropie totale.",
       "Faux : puisque les échanges de volume sont aussi autorisés, l'équilibre doit être mécanique autant que thermique. Les pressions doivent donc également être égales.",
-      "Exact : à l'équilibre, l'entropie totale est stationnaire pour toutes les redistributions autorisées : dS_tot = (1/T_1 − 1/T_2) dU_1 + (P_1/T_1 − P_2/T_2) dV_1 = 0. Les échanges d'énergie et de volume étant indépendants, les deux coefficients s'annulent : T_1 = T_2 et P_1 = P_2.",
+      "Exact : à l'équilibre, l'entropie totale est stationnaire pour toutes les redistributions autorisées : dS_tot = (1/T_1 − 1/T_2) dU_1 + (P_1/T_1 − P_2/T_2) dV_1 = 0. Les échanges d'énergie et de volume étant indépendants, les deux coefficients s'annulent : T_1 = T_2 et P_1 = P_2."
     ],
-    correctIndex: 3,
+    correctIndex: 3
   },
   {
     id: "l6-q8",
     lecon: 6,
-    question: "Une machine cyclique reçoit les chaleurs algébriques Q_k de thermostats à T_k > 0. Quelle affirmation respecte l'inégalité de Clausius et les définitions de la leçon ?",
+    question: "Une machine cyclique reçoit les chaleurs algébriques Q_k de thermostats à T_k > 0 et échange du travail avec une source idéale. Quelle affirmation respecte l'inégalité de Clausius et les définitions de la leçon ?",
     choices: [
       "Σ_k Q_k/T_k ≥ 0, avec une valeur strictement positive pour un cycle globalement irréversible.",
       "Σ_k Q_k/T_k = 0 pour tout cycle, puisque l'entropie de la machine retrouve sa valeur initiale.",
       "Σ_k Q_k/T_k ≤ 0, et l'égalité prouve à elle seule que le chemin initial est localement réversible.",
-      "Σ_k Q_k/T_k ≤ 0 ; l'égalité caractérise ici la réversibilité globale, sans prouver à elle seule la réversibilité locale du chemin initial.",
+      "Σ_k Q_k/T_k ≤ 0 ; l'égalité caractérise la réversibilité globale, sans prouver la réversibilité locale."
     ],
     explanations: [
       "Faux : les Q_k sont comptés positivement lorsqu'ils sont reçus par la machine. Avec cette convention, la somme est négative ou nulle.",
       "Faux : ΔS_machine = 0 sur un cycle, mais l'entropie échangée peut être négative et compensée par une production positive d'entropie.",
       "Faux : le signe est correct, mais le cas d'égalité construit un retour global à l'aide de machines auxiliaires. Il ne montre pas que la machine initiale peut retracer son propre chemin.",
-      "Exact : un cycle localement réversible réalise l'égalité. Réciproquement, une somme nulle permet de restaurer les sources par des machines auxiliaires ; une somme strictement négative signale un cycle globalement irréversible.",
+      "Exact : un cycle localement réversible réalise l'égalité. Réciproquement, une somme nulle permet de restaurer les sources par des machines auxiliaires ; une somme strictement négative signale un cycle globalement irréversible."
     ],
-    correctIndex: 3,
+    correctIndex: 3
   },
   {
     id: "l6-q9",
@@ -669,48 +669,48 @@ export const quizQuestions: QuizQuestion[] = [
     choices: [
       "Elle en déduit que la chaleur Q est une fonction d'état.",
       "Elle définit S(B) − S(A) par l'intégrale de δQ_rev/T.",
-      "Elle définit l'entropie absolue de tout état par S = U/T.",
+      "Elle définit S(B) − S(A) par l'intégrale de δQ/T_ext sur n'importe quel chemin réel."
     ],
     explanations: [
       "Faux : c'est δQ_rev/T qui est une différentielle exacte. La chaleur échangée continue de dépendre du chemin.",
       "Exact : deux chemins localement réversibles, dont l'un est parcouru à l'envers, forment un cycle d'intégrale nulle. L'entropie est ainsi définie à une constante additive près sur chaque domaine réversiblement connexe, et s'exprime en J/K.",
-      "Faux : la construction définit des différences d'entropie et laisse une constante additive libre. Elle ne donne pas la formule générale S = U/T.",
+      "Faux : sur un chemin réel irréversible, l'intégrale de δQ/T_ext donne l'entropie échangée, pas nécessairement ΔS. La construction utilise δQ_rev/T sur un chemin localement réversible."
     ],
-    correctIndex: 1,
+    correctIndex: 1
   },
   {
     id: "l6-q2",
     lecon: 6,
     question: "Quelle affirmation décrit correctement la réversibilité locale ?",
     choices: [
-      "Elle demande que les états initial et final du système soient des états d'équilibre.",
+      "Il suffit que les états initial et final du système soient des états d'équilibre.",
       "Elle découle automatiquement de tout procédé qui restaure globalement le système et son extérieur.",
       "Elle demande d'inverser chaque étape d'une succession d'états d'équilibre par une modification infinitésimale des contraintes.",
-      "Elle permet de retracer le chemin du système, tout en conservant les mêmes signes pour les échanges de chaleur et de travail.",
+      "Elle permet de retracer le chemin du système, tout en conservant les mêmes signes pour les échanges de chaleur et de travail."
     ],
     explanations: [
       "Faux : les états intermédiaires et la possibilité d'inverser chaque étape sont essentiels à la définition locale.",
       "Faux : un retour global pourrait emprunter un autre chemin. Son existence ne prouve pas à elle seule que le chemin initial est localement réversible.",
       "Exact : on peut alors parcourir la même succession d'états en sens inverse, en restaurant aussi l'extérieur. La réversibilité locale implique donc la réversibilité globale.",
-      "Faux : lors du parcours inverse d'un chemin localement réversible, les échanges thermiques et mécaniques changent de signe à chaque étape.",
+      "Faux : lors du parcours inverse d'un chemin localement réversible, les échanges thermiques et mécaniques changent de signe à chaque étape."
     ],
-    correctIndex: 2,
+    correctIndex: 2
   },
   {
     id: "l6-q12",
     lecon: 6,
-    question: "Une transformation irréversible relie deux états d'équilibre A et B, mais ses états intermédiaires sont loin de l'équilibre.",
+    question: "Une transformation irréversible relie deux états d'équilibre A et B, mais ses états intermédiaires sont loin de l'équilibre. Quelle affirmation est correcte ?",
     choices: [
-      "La variation d'entropie vaut ΔS = Q_réel/T, avec une température T constante pendant tout le processus.",
+      "La variation d'entropie ΔS est l'intégrale de δQ_réel/T_ext sur le chemin réel.",
       "La variation d'entropie ΔS peut être calculée sur un chemin localement réversible entre A et B, tandis que S_e et S_i dépendent du processus réel.",
-      "Les états A et B déterminent à eux seuls l'entropie échangée S_e et l'entropie produite S_i.",
+      "Les états A et B déterminent à eux seuls l'entropie échangée S_e et l'entropie produite S_i."
     ],
     explanations: [
-      "Faux : rien ne garantit que T_A = T_B ; on ne peut donc pas supposer une température constante. Même si ces températures étaient égales, cela ne justifierait pas ΔS = Q_réel/T pour une transformation irréversible. On calcule ΔS sur un chemin localement réversible reliant les mêmes états.",
+      "Faux : cette intégrale donne S_e, l'entropie échangée. Le bilan est ΔS = S_e + S_i : la chaleur réellement échangée ne suffit pas à calculer ΔS sans tenir compte de l'entropie produite.",
       "Exact : S est une fonction d'état, donc ΔS = ∫ δQ_rev/T peut être calculée sur un chemin localement réversible reliant les mêmes états. On revient ensuite aux échanges réels pour déterminer S_e = ∫ δQ_réel/T_ext et S_i = ΔS − S_e.",
-      "Faux : les états A et B fixent ΔS, mais pas sa décomposition en entropie échangée et entropie produite. S_e dépend des chaleurs réellement échangées et des températures extérieures ; S_i se déduit alors du bilan ΔS = S_e + S_i.",
+      "Faux : les états A et B fixent ΔS, mais pas sa décomposition en entropie échangée et entropie produite. S_e dépend des chaleurs réellement échangées et des températures extérieures ; S_i se déduit alors du bilan ΔS = S_e + S_i."
     ],
-    correctIndex: 1,
+    correctIndex: 1
   },
   {
     id: "l6-q4",
@@ -720,54 +720,59 @@ export const quizQuestions: QuizQuestion[] = [
       "Convertir du travail reçu en chaleur au cours d'un cycle.",
       "Recevoir une chaleur Q > 0 et fournir un travail W = −Q pendant une détente isotherme non cyclique d'un gaz parfait.",
       "Fournir du travail sur un cycle en prélevant de la chaleur au thermostat chaud et en en cédant au thermostat froid.",
-      "Accomplir un cycle dont le seul effet est de prélever une chaleur Q > 0 à un thermostat unique et de fournir W = −Q à l'extérieur.",
+      "Accomplir un cycle dont le seul effet est de prélever une chaleur Q > 0 à un thermostat unique et de fournir W = −Q à l'extérieur."
     ],
     explanations: [
       "Faux : la conversion de travail en chaleur est permise. L'interdiction porte sur la conversion intégrale de chaleur en travail avec un thermostat unique et sans autre effet.",
       "Faux : cette détente ne ramène pas le gaz à son état initial. La condition cyclique de l'énoncé est essentielle.",
       "Faux : c'est le fonctionnement d'un moteur ditherme, possible si son rendement respecte la borne de Carnot.",
-      "Exact : le premier principe permettrait ce bilan Q + W = 0, mais le second principe interdit ce fonctionnement monotherme cyclique. Avec la convention du cours, fournir du travail correspond à W < 0.",
+      "Exact : le premier principe permettrait ce bilan Q + W = 0, mais le second principe interdit ce fonctionnement monotherme cyclique. Avec la convention du cours, fournir du travail correspond à W < 0."
     ],
-    correctIndex: 3,
+    correctIndex: 3
   },
   {
     id: "l6-vf1",
     lecon: 6,
     question: "Une compression quasi-statique est nécessairement localement réversible.",
-    choices: ["Vrai", "Faux"],
+    choices: [
+      "Vrai",
+      "Faux"
+    ],
     explanations: [
       "Faux : une compression quasi-statique peut, par exemple, s'effectuer avec des frottements. Ceux-ci dissipent de l'énergie et laissent une trace dans le gaz ou son extérieur, même si le gaz reste proche de l'équilibre.",
-      "Exact : le caractère quasi-statique ne suffit pas. Il faut aussi supprimer les dissipations et conduire les échanges avec des différences infinitésimales de pression, de température ou de potentiel chimique.",
+      "Exact : le caractère quasi-statique ne suffit pas. Il faut aussi supprimer les dissipations et conduire les échanges avec des différences infinitésimales de pression, de température ou de potentiel chimique."
     ],
-    correctIndex: 1,
+    correctIndex: 1
   },
   {
     id: "l6-q7",
     lecon: 6,
-    question: "Quelles transformations composent le cycle moteur de Carnot d'un gaz parfait présenté dans la leçon ?",
+    question: "Quelle succession décrit le cycle moteur de Carnot d'un gaz parfait, toutes ses branches étant localement réversibles ?",
     choices: [
       "Une détente isotherme à T_ch, une détente adiabatique réversible, une compression isotherme à T_fr, puis une compression adiabatique réversible.",
-      "Deux transformations isobares reliées par deux transformations isochores.",
-      "Deux détentes libres reliées par deux compressions isothermes.",
+      "Une détente isotherme à T_ch, un refroidissement isochore, une compression isotherme à T_fr, puis un chauffage isochore.",
+      "Une détente isotherme à T_fr, une compression adiabatique, une compression isotherme à T_ch, puis une détente adiabatique."
     ],
     explanations: [
       "Exact : les échanges de chaleur ont lieu sur les deux isothermes localement réversibles ; les adiabatiques relient les deux températures sans échange thermique. Le cycle moteur est parcouru dans le sens horaire dans le diagramme (V, P).",
-      "Faux : le cycle de Carnot comporte deux isothermes et deux adiabatiques réversibles, pas deux isobares et deux isochores.",
-      "Faux : les détentes libres sont irréversibles et ne constituent pas les adiabatiques réversibles du cycle de Carnot.",
+      "Faux : les liaisons entre les isothermes du cycle de Carnot sont adiabatiques, pas isochores. Des branches isochores modifieraient le cycle et ses échanges de chaleur.",
+      "Faux : cette succession décrit le cycle de Carnot parcouru en sens inverse. La machine reçoit alors du travail pour prélever de la chaleur au thermostat froid et en céder au thermostat chaud."
     ],
-    correctIndex: 0,
+    correctIndex: 0
   },
-
   {
     id: "l6-vf2",
     lecon: 6,
     question: "Le second principe fixe le sens thermodynamiquement admissible des évolutions, mais ne détermine pas à lui seul leur durée ni les coefficients de transport.",
-    choices: ["Vrai", "Faux"],
+    choices: [
+      "Vrai",
+      "Faux"
+    ],
     explanations: [
       "Exact : il contraint les transformations et caractérise les équilibres sous les hypothèses du cours. Il ne fournit ni temps de relaxation, ni conductivité thermique, ni viscosité, ni coefficient de diffusion.",
-      "Faux : le second principe n'est pas une équation complète de la dynamique. Des lois supplémentaires sont nécessaires pour décrire la vitesse d'évolution et les états intermédiaires d'une transformation violente.",
+      "Faux : le second principe n'est pas une équation complète de la dynamique. Des lois supplémentaires sont nécessaires pour décrire la vitesse d'évolution et les états intermédiaires d'une transformation violente."
     ],
-    correctIndex: 0,
+    correctIndex: 0
   },
 
   // ─── Leçon 7 : Relations fondamentales ───

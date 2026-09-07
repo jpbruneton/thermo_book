@@ -11,8 +11,8 @@ ce qui varie entre langues, c'est la profondeur du contenu réellement traduit
 | Code | Langue     | Statut       | Notes |
 |------|------------|--------------|-------|
 | fr   | Français   | ✅ en prod   | Langue source, contenu de référence, toutes sections |
-| en   | Anglais    | 🚧 partiel   | Chrome UI + leçons 1 à 6, exercices des chapitres 2, 4 et 5 et quiz 1 à 5 traduits |
-| de   | Allemand   | 🚧 partiel   | Accueil, à propos, métadonnées des leçons, glossaire, leçons 1 à 6, exercices des chapitres 2, 4 et 5 et quiz 1 à 5 traduits |
+| en   | Anglais    | 🚧 partiel   | Chrome UI + leçons 1 à 6, exercices des chapitres 2, 4 et 5 et quiz 1 à 6 traduits |
+| de   | Allemand   | 🚧 partiel   | Accueil, à propos, métadonnées des leçons, glossaire, leçons 1 à 6, exercices des chapitres 2, 4 et 5 et quiz 1 à 6 traduits |
 | es   | Espagnol   | 🚧 partiel   | Idem de |
 | pt   | Portugais  | 🚧 partiel   | Idem de |
 | it   | Italien    | 🚧 partiel   | Idem de |
@@ -24,12 +24,12 @@ ce qui varie entre langues, c'est la profondeur du contenu réellement traduit
 | hi   | Hindi      | 🚧 partiel   | Idem de |
 | vi   | Vietnamien | 🚧 partiel   | Idem de |
 | ar   | Arabe      | 🚧 partiel   | Idem de + RTL (`dir="rtl"` sur `<html>`, mise en page en miroir automatique via flex/grid) |
-| id   | Indonésien | 🚧 partiel   | Accueil, à propos, métadonnées des leçons, glossaire, leçons 1 à 6, exercices des chapitres 2, 4 et 5 et quiz 1 à 5 traduits |
+| id   | Indonésien | 🚧 partiel   | Accueil, à propos, métadonnées des leçons, glossaire, leçons 1 à 6, exercices des chapitres 2, 4 et 5 et quiz 1 à 6 traduits |
 | tr   | Turc       | 🚧 partiel   | Idem id |
-| bn   | Bengali    | 🚧 partiel   | Chrome + leçons 1 à 6, exercices des chapitres 2, 4 et 5 et quiz 1 à 5 traduits |
-| ur   | Ourdou     | 🚧 partiel   | Chrome + leçons 1 à 6, exercices des chapitres 2, 4 et 5 et quiz 1 à 5 traduits + RTL (`dir="rtl"` sur `<html>`, mise en page en miroir automatique via flex/grid) |
-| sw   | Swahili    | 🚧 partiel   | Chrome + leçons 1 à 6, exercices des chapitres 2, 4 et 5 et quiz 1 à 5 traduits |
-| fa   | Farsi      | 🚧 partiel   | Chrome + leçons 1, 3, 4, 5 et 6, exercices des chapitres 2, 4 et 5 et quiz 1 à 5 traduits + RTL (`dir="rtl"` sur `<html>`, mise en page en miroir automatique via flex/grid) |
+| bn   | Bengali    | 🚧 partiel   | Chrome + leçons 1 à 6, exercices des chapitres 2, 4 et 5 et quiz 1 à 6 traduits |
+| ur   | Ourdou     | 🚧 partiel   | Chrome + leçons 1 à 6, exercices des chapitres 2, 4 et 5 et quiz 1 à 6 traduits + RTL (`dir="rtl"` sur `<html>`, mise en page en miroir automatique via flex/grid) |
+| sw   | Swahili    | 🚧 partiel   | Chrome + leçons 1 à 6, exercices des chapitres 2, 4 et 5 et quiz 1 à 6 traduits |
+| fa   | Farsi      | 🚧 partiel   | Chrome + leçons 1, 3, 4, 5 et 6, exercices des chapitres 2, 4 et 5 et quiz 1 à 6 traduits + RTL (`dir="rtl"` sur `<html>`, mise en page en miroir automatique via flex/grid) |
 
 Légende : ✅ en prod (toutes sections) · 🚧 partiel (au moins une section a du
 contenu réel dans cette langue ; jamais de repli silencieux vers fr/en — les
@@ -87,14 +87,17 @@ pages sans contenu affichent un état explicite) · 📋 planifié / pas commenc
   `lib/quizTranslations.ts` (les 20 langues, même rôle que
   `exerciseTranslations`) et le contenu des questions de
   `lib/quizQuestionTranslations.ts`, indexé par identifiant de question.
+  La leçon 6 est dans `lib/quizLesson6Translations.ts` : 15 questions,
+  rédigées directement dans les 19 langues cibles, avec indices communs H/C
+  et isolation du sens de lecture des formules pour ar/fa/ur.
   `getLocalizedQuizQuestions(lecon, lang)` renvoie les questions traduites ou
   `null` : une leçon n'est servie dans une langue que si **toutes** ses
   questions y sont traduites, avec le même nombre de choix et d'explications
   qu'en français — sinon la page affiche `unavailableLesson`, jamais un quiz
   mi-traduit. Le hub ne liste que les leçons réellement disponibles, et les
   métadonnées (`hreflang`, `robots`) comme le sitemap sont calculés à partir de
-  cette même disponibilité. Les leçons 1 à 5 sont traduites dans les 20
-  langues. Les leçons 6 à 10 restent en français seulement. Pour ajouter une langue à une
+  cette même disponibilité. Les leçons 1 à 6 sont traduites dans les 20
+  langues. Les leçons 7 à 11 restent en français seulement. Pour ajouter une langue à une
   leçon : compléter `quizQuestionTranslations`, rien d'autre à changer.
   Les questions vrai/faux sont repérées sur la source française (champ
   `trueFalse`), pas en comparant le libellé traduit.
@@ -174,7 +177,7 @@ détecte automatiquement.
 Pour ajouter des exercices, déposer `exo_chpN.tex` dans le dossier
 `content/tex/exos_<code>` correspondant. Le chargeur les détecte sans changement
 de code. Pour les quiz, ajouter les questions traduites dans
-`lib/quizQuestionTranslations.ts` (voir plus haut) : les leçons 6 à 10 restent
+`lib/quizQuestionTranslations.ts` (voir plus haut) : les leçons 7 à 11 restent
 à faire dans toutes les langues hors français.
 
 Pour zh/ko/ja/ar en particulier : la typographie de `cleanLatexInline` (espaces

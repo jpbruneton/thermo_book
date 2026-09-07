@@ -1,5 +1,6 @@
 import type { Lang } from "@/lib/i18n";
 import { quizLesson5Translations } from "@/lib/quizLesson5Translations";
+import { quizLesson6Translations } from "@/lib/quizLesson6Translations";
 
 /**
  * Translated quiz question content, keyed by question id (`lib/quizzes.ts`).
@@ -12,7 +13,7 @@ import { quizLesson5Translations } from "@/lib/quizLesson5Translations";
  * (see docs/languages.md: never a silent fallback to French or English).
  *
  * Terminology is aligned on the already-translated lesson text
- * (`content/tex/chp{1,2,3,4,5}_<lang>/lesson1.tex`) so that each quiz reuses the
+ * (`content/tex/chp{1,2,3,4,5,6}_<lang>/lesson1.tex`) so that each quiz reuses the
  * same scientific vocabulary as its lesson.
  */
 export interface TranslatedQuizQuestion {
@@ -26,6 +27,7 @@ export const quizQuestionTranslations: Partial<
 > = {
   en: {
     ...quizLesson5Translations.en,
+    ...quizLesson6Translations.en,
     "l1-q1": {
       question: "What is a heat engine, in the thermodynamic sense?",
       choices: [
@@ -285,6 +287,7 @@ export const quizQuestionTranslations: Partial<
 
   de: {
     ...quizLesson5Translations.de,
+    ...quizLesson6Translations.de,
     "l1-q1": {
       question: "Was ist eine Wärmekraftmaschine im thermodynamischen Sinne?",
       choices: [
@@ -544,6 +547,7 @@ export const quizQuestionTranslations: Partial<
 
   es: {
     ...quizLesson5Translations.es,
+    ...quizLesson6Translations.es,
     "l1-q1": {
       question: "¿Qué es un motor térmico, en el sentido de la termodinámica?",
       choices: [
@@ -803,6 +807,7 @@ export const quizQuestionTranslations: Partial<
 
   pt: {
     ...quizLesson5Translations.pt,
+    ...quizLesson6Translations.pt,
     "l1-q1": {
       question: "O que é um motor térmico, no sentido da termodinâmica?",
       choices: [
@@ -1062,6 +1067,7 @@ export const quizQuestionTranslations: Partial<
 
   it: {
     ...quizLesson5Translations.it,
+    ...quizLesson6Translations.it,
     "l1-q1": {
       question: "Che cos'è un motore termico, nel senso della termodinamica?",
       choices: [
@@ -1316,6 +1322,7 @@ export const quizQuestionTranslations: Partial<
 
   pl: {
     ...quizLesson5Translations.pl,
+    ...quizLesson6Translations.pl,
     "l1-q1": {
       question: "Czym jest silnik cieplny w sensie termodynamicznym?",
       choices: [
@@ -1570,6 +1577,7 @@ export const quizQuestionTranslations: Partial<
 
   ru: {
     ...quizLesson5Translations.ru,
+    ...quizLesson6Translations.ru,
     "l1-q1": {
       question: "Что такое тепловой двигатель с точки зрения термодинамики?",
       choices: [
@@ -1824,6 +1832,7 @@ export const quizQuestionTranslations: Partial<
 
   zh: {
     ...quizLesson5Translations.zh,
+    ...quizLesson6Translations.zh,
     "l1-q1": {
       question: "在热力学意义上，什么是热机？",
       choices: [
@@ -2078,6 +2087,7 @@ export const quizQuestionTranslations: Partial<
 
   ja: {
     ...quizLesson5Translations.ja,
+    ...quizLesson6Translations.ja,
     "l1-q1": {
       question: "熱力学でいう熱機関とは何か。",
       choices: [
@@ -2332,6 +2342,7 @@ export const quizQuestionTranslations: Partial<
 
   ko: {
     ...quizLesson5Translations.ko,
+    ...quizLesson6Translations.ko,
     "l1-q1": {
       question: "열역학에서 말하는 열기관이란 무엇인가?",
       choices: [
@@ -2586,6 +2597,7 @@ export const quizQuestionTranslations: Partial<
 
   hi: {
     ...quizLesson5Translations.hi,
+    ...quizLesson6Translations.hi,
     "l1-q1": {
       question: "ऊष्मागतिकी के अर्थ में ऊष्मा इंजन क्या है?",
       choices: [
@@ -2840,6 +2852,7 @@ export const quizQuestionTranslations: Partial<
 
   vi: {
     ...quizLesson5Translations.vi,
+    ...quizLesson6Translations.vi,
     "l1-q1": {
       question: "Động cơ nhiệt là gì, theo nghĩa của nhiệt động lực học?",
       choices: [
@@ -3096,6 +3109,7 @@ export const quizQuestionTranslations: Partial<
   // out in words here, since a bare "→" flips visually inside an RTL paragraph.
   ar: {
     ...quizLesson5Translations.ar,
+    ...quizLesson6Translations.ar,
     "l1-q1": {
       question: "ما المحرك الحراري بالمعنى الترموديناميكي؟",
       choices: [
@@ -3350,6 +3364,7 @@ export const quizQuestionTranslations: Partial<
 
   id: {
     ...quizLesson5Translations.id,
+    ...quizLesson6Translations.id,
     "l1-q1": {
       question: "Apa itu mesin kalor dalam pengertian termodinamika?",
       choices: [
@@ -3604,6 +3619,7 @@ export const quizQuestionTranslations: Partial<
 
   tr: {
     ...quizLesson5Translations.tr,
+    ...quizLesson6Translations.tr,
     "l1-q1": {
       question: "Termodinamik anlamda ısı makinesi nedir?",
       choices: [
@@ -3857,6 +3873,7 @@ export const quizQuestionTranslations: Partial<
   },
   bn: {
     ...quizLesson5Translations.bn,
+    ...quizLesson6Translations.bn,
     "l1-q1": {
       question: "তাপগতিবিদ্যার অর্থে তাপ ইঞ্জিন কী?",
       choices: [
@@ -4110,6 +4127,7 @@ export const quizQuestionTranslations: Partial<
   },
   ur: {
     ...quizLesson5Translations.ur,
+    ...quizLesson6Translations.ur,
     "l1-q1": {
       question: "حرارتی حرکیات کے مفہوم میں حرارتی انجن کیا ہے؟",
       choices: [
@@ -4363,6 +4381,7 @@ export const quizQuestionTranslations: Partial<
   },
   sw: {
     ...quizLesson5Translations.sw,
+    ...quizLesson6Translations.sw,
     "l1-q1": {
       question: "Injini ya joto ni nini kwa maana ya thermodynamiki?",
       choices: [
@@ -4616,6 +4635,7 @@ export const quizQuestionTranslations: Partial<
   },
   fa: {
     ...quizLesson5Translations.fa,
+    ...quizLesson6Translations.fa,
     "l1-q1": {
       question: "موتور حرارتی در معنای ترمودینامیکی چیست؟",
       choices: [
