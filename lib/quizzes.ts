@@ -889,7 +889,7 @@ export const quizQuestions: QuizQuestion[] = [
     correctIndex: 0,
   },
 
-  // ─── Leçon 8 : Changements de variables, potentiels ───
+  // Leçon 8 : calcul sous contraintes. Les identifiants restent stables.
   {
     id: "l8-q1",
     lecon: 8,
@@ -908,7 +908,7 @@ export const quizQuestions: QuizQuestion[] = [
   },
   {
     id: "l8-q2",
-    lecon: 8,
+    lecon: 9,
     question: "Une transformée de Legendre, en thermodynamique, permet de :",
     choices: [
       "Calculer l'entropie d'un gaz parfait à partir de ses deux équations d'état, par intégration directe terme à terme.",
@@ -926,7 +926,7 @@ export const quizQuestions: QuizQuestion[] = [
   },
   {
     id: "l8-q3",
-    lecon: 8,
+    lecon: 9,
     question: "L'énergie libre F = U - TS a pour variables naturelles :",
     choices: ["S, V, N", "T, V, N", "T, P, N", "S, P, N"],
     explanations: [
@@ -939,7 +939,7 @@ export const quizQuestions: QuizQuestion[] = [
   },
   {
     id: "l8-q4",
-    lecon: 8,
+    lecon: 9,
     question: "Parmi les quatre potentiels usuels U, F, H, G, lequel a pour variables naturelles (S, P, N) ?",
     choices: ["U, l'énergie interne", "F, l'énergie libre", "H, l'enthalpie", "G, l'enthalpie libre"],
     explanations: [
@@ -952,7 +952,7 @@ export const quizQuestions: QuizQuestion[] = [
   },
   {
     id: "l8-q5",
-    lecon: 8,
+    lecon: 9,
     question: "La différentielle de l'enthalpie libre G s'écrit :",
     choices: [
       "dG = T dS + V dP + μ dN",
@@ -968,7 +968,7 @@ export const quizQuestions: QuizQuestion[] = [
   },
   {
     id: "l8-q6",
-    lecon: 8,
+    lecon: 9,
     question: "Pour un système fermé, la variation d'enthalpie ΔH est égale à la chaleur reçue Q lors d'une transformation :",
     choices: ["Isotherme", "Isochore", "Isobare", "Adiabatique"],
     explanations: [
@@ -980,10 +980,10 @@ export const quizQuestions: QuizQuestion[] = [
     correctIndex: 2,
   },
 
-  // ─── Leçon 9 : Coefficients calorimétriques et thermoélastiques ───
+  // Leçon 8 : coefficients calorimétriques et thermoélastiques.
   {
     id: "l9-q1",
-    lecon: 9,
+    lecon: 8,
     question: "La capacité thermique à volume constant c_V est définie par :",
     choices: [
       "c_V = T (∂S/∂T)_V",
@@ -1001,7 +1001,7 @@ export const quizQuestions: QuizQuestion[] = [
   },
   {
     id: "l9-q2",
-    lecon: 9,
+    lecon: 8,
     question: "Pour un gaz parfait quelconque, la relation de Mayer c_P - c_V (molaire) vaut :",
     choices: ["0", "γR", "3R/2", "R"],
     explanations: [
@@ -1014,7 +1014,7 @@ export const quizQuestions: QuizQuestion[] = [
   },
   {
     id: "l9-q3",
-    lecon: 9,
+    lecon: 8,
     question: "On chauffe l'air d'une pièce avec un radiateur. La pièce n'est pas hermétique : l'air dilaté s'échappe par les interstices, la pression restant atmosphérique. Quelle capacité thermique utiliser ?",
     choices: [
       "c_V, car le volume de la pièce est fixé par les murs",
@@ -1030,7 +1030,7 @@ export const quizQuestions: QuizQuestion[] = [
   },
   {
     id: "l9-q4",
-    lecon: 9,
+    lecon: 8,
     question: "La stabilité thermodynamique impose notamment :",
     choices: [
       "c_V ≥ 0 et χ_T ≥ 0",
@@ -1041,14 +1041,14 @@ export const quizQuestions: QuizQuestion[] = [
     explanations: [
       "Exact : ces critères découlent de la concavité de S (ou convexité de U) ; un système violant l'un d'eux serait instable.",
       "Faux : c_V négatif signifierait qu'apporter de la chaleur refroidit le corps, ce qui est instable.",
-      "Faux : la stabilité impose au contraire γ > 1.",
+      "Faux : dans une phase stable régulière, la stabilité impose γ ≥ 1 ; l'égalité est possible lorsque α = 0.",
       "Faux : α peut être négatif ; l'eau entre 0 et 4°C se contracte quand on la chauffe (anomalie dilatométrique), sans violer la stabilité.",
     ],
     correctIndex: 0,
   },
   {
     id: "l9-q5",
-    lecon: 9,
+    lecon: 8,
     question: "Pour un gaz parfait monoatomique, le coefficient de Laplace γ = c_P/c_V vaut :",
     choices: ["7/5", "5/3", "3/2", "1"],
     explanations: [
@@ -1061,7 +1061,7 @@ export const quizQuestions: QuizQuestion[] = [
   },
   {
     id: "l9-vf1",
-    lecon: 9,
+    lecon: 8,
     question: "Pour un gaz parfait, la capacité thermique à pression constante c_P est toujours strictement supérieure à c_V.",
     choices: ["Vrai", "Faux"],
     explanations: [
