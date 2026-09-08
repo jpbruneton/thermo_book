@@ -202,24 +202,6 @@ export default function HomePageClient() {
               transform: "translateY(-90px)",
             }}
           >
-            <button
-              disabled
-              style={{
-                background: "var(--accent-bg-md)",
-                border: "1px solid var(--accent-border-lg)",
-                color: "var(--amber)",
-                padding: "0.65rem 1rem",
-                borderRadius: "6px",
-                fontFamily: "var(--font-inter)",
-                fontSize: "0.8rem",
-                fontWeight: 600,
-                letterSpacing: "0.03em",
-                opacity: 0.8,
-                cursor: "not-allowed",
-              }}
-            >
-              {t.home.fullBookDownload}
-            </button>
             <div
               className="animate-fade-up stagger-3"
               style={{

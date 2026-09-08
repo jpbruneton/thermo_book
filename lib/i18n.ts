@@ -196,7 +196,6 @@ export const translations = {
       readTheme: "Open lesson →",
       readLesson: "Read lesson →",
       readChapter: "Read chapter →",
-      fullBookDownload: "Download the full edition (coming soon)",
       features: [
         {
           icon: "∫",
@@ -360,7 +359,6 @@ export const translations = {
       readTheme: "Ouvrir la leçon →",
       readLesson: "Lire la leçon →",
       readChapter: "Lire le chapitre →",
-      fullBookDownload: "Télécharger l'édition complète (bientôt)",
       features: [
         {
           icon: "∫",
@@ -597,7 +595,6 @@ const partialTranslations: Record<Exclude<Lang, "fr" | "en">, DeepPartial<Transl
       readTheme: "Lektion öffnen →",
       readLesson: "Lektion lesen →",
       readChapter: "Kapitel lesen →",
-      fullBookDownload: "Vollständige Ausgabe herunterladen (demnächst)",
       features: [
         {
           icon: "∫",
@@ -728,7 +725,6 @@ const partialTranslations: Record<Exclude<Lang, "fr" | "en">, DeepPartial<Transl
       readTheme: "Abrir lección →",
       readLesson: "Leer lección →",
       readChapter: "Leer capítulo →",
-      fullBookDownload: "Descargar la edición completa (próximamente)",
       features: [
         {
           icon: "∫",
@@ -859,7 +855,6 @@ const partialTranslations: Record<Exclude<Lang, "fr" | "en">, DeepPartial<Transl
       readTheme: "Abrir lição →",
       readLesson: "Ler lição →",
       readChapter: "Ler capítulo →",
-      fullBookDownload: "Baixar a edição completa (em breve)",
       features: [
         {
           icon: "∫",
@@ -990,7 +985,6 @@ const partialTranslations: Record<Exclude<Lang, "fr" | "en">, DeepPartial<Transl
       readTheme: "Apri lezione →",
       readLesson: "Leggi lezione →",
       readChapter: "Leggi capitolo →",
-      fullBookDownload: "Scarica l'edizione completa (a breve)",
       features: [
         {
           icon: "∫",
@@ -1121,7 +1115,6 @@ const partialTranslations: Record<Exclude<Lang, "fr" | "en">, DeepPartial<Transl
       readTheme: "Otwórz lekcję →",
       readLesson: "Czytaj lekcję →",
       readChapter: "Czytaj rozdział →",
-      fullBookDownload: "Pobierz pełne wydanie (wkrótce)",
       features: [
         {
           icon: "∫",
@@ -1252,7 +1245,6 @@ const partialTranslations: Record<Exclude<Lang, "fr" | "en">, DeepPartial<Transl
       readTheme: "Открыть урок →",
       readLesson: "Читать урок →",
       readChapter: "Читать главу →",
-      fullBookDownload: "Скачать полное издание (скоро)",
       features: [
         {
           icon: "∫",
@@ -1380,7 +1372,6 @@ const partialTranslations: Record<Exclude<Lang, "fr" | "en">, DeepPartial<Transl
       readTheme: "打开课程 →",
       readLesson: "阅读课程 →",
       readChapter: "阅读章节 →",
-      fullBookDownload: "下载完整版（即将推出）",
       features: [
         {
           icon: "∫",
@@ -1506,7 +1497,6 @@ const partialTranslations: Record<Exclude<Lang, "fr" | "en">, DeepPartial<Transl
       readTheme: "レッスンを開く →",
       readLesson: "レッスンを読む →",
       readChapter: "章を読む →",
-      fullBookDownload: "完全版をダウンロード（近日公開）",
       features: [
         {
           icon: "∫",
@@ -1634,7 +1624,6 @@ const partialTranslations: Record<Exclude<Lang, "fr" | "en">, DeepPartial<Transl
       readTheme: "강의 열기 →",
       readLesson: "강의 읽기 →",
       readChapter: "챕터 읽기 →",
-      fullBookDownload: "전체판 다운로드 (준비 중)",
       features: [
         {
           icon: "∫",
@@ -1761,7 +1750,6 @@ const partialTranslations: Record<Exclude<Lang, "fr" | "en">, DeepPartial<Transl
       readTheme: "पाठ खोलें →",
       readLesson: "पाठ पढ़ें →",
       readChapter: "अध्याय पढ़ें →",
-      fullBookDownload: "पूर्ण संस्करण डाउनलोड करें (जल्द आ रहा है)",
       features: [
         {
           icon: "∫",
@@ -1889,7 +1877,6 @@ const partialTranslations: Record<Exclude<Lang, "fr" | "en">, DeepPartial<Transl
       readTheme: "Mở bài học →",
       readLesson: "Đọc bài học →",
       readChapter: "Đọc chương →",
-      fullBookDownload: "Tải ấn bản đầy đủ (sắp ra mắt)",
       features: [
         {
           icon: "∫",
@@ -2018,7 +2005,6 @@ const partialTranslations: Record<Exclude<Lang, "fr" | "en">, DeepPartial<Transl
       readTheme: "فتح الدرس ←",
       readLesson: "قراءة الدرس ←",
       readChapter: "قراءة الفصل ←",
-      fullBookDownload: "تنزيل النسخة الكاملة (قريباً)",
       features: [
         {
           icon: "∫",
@@ -2146,7 +2132,6 @@ const partialTranslations: Record<Exclude<Lang, "fr" | "en">, DeepPartial<Transl
       readTheme: "Buka pelajaran →",
       readLesson: "Baca pelajaran →",
       readChapter: "Baca bab →",
-      fullBookDownload: "Unduh edisi lengkap (segera hadir)",
       features: [
         {
           icon: "∫",
@@ -2275,7 +2260,6 @@ const partialTranslations: Record<Exclude<Lang, "fr" | "en">, DeepPartial<Transl
       readTheme: "Dersi aç →",
       readLesson: "Dersi oku →",
       readChapter: "Bölümü oku →",
-      fullBookDownload: "Tam baskıyı indir (yakında)",
       features: [
         {
           icon: "∫",
@@ -2406,7 +2390,6 @@ const partialTranslations: Record<Exclude<Lang, "fr" | "en">, DeepPartial<Transl
       readTheme: "পাঠ খুলুন →",
       readLesson: "পাঠ পড়ুন →",
       readChapter: "অধ্যায় পড়ুন →",
-      fullBookDownload: "সম্পূর্ণ সংস্করণ ডাউনলোড করুন (শীঘ্রই)",
       features: [
         {
           icon: "∫",
@@ -2535,7 +2518,6 @@ const partialTranslations: Record<Exclude<Lang, "fr" | "en">, DeepPartial<Transl
       readTheme: "سبق کھولیں ←",
       readLesson: "سبق پڑھیں ←",
       readChapter: "باب پڑھیں ←",
-      fullBookDownload: "مکمل ایڈیشن ڈاؤن لوڈ کریں (جلد آ رہا ہے)",
       features: [
         {
           icon: "∫",
@@ -2663,7 +2645,6 @@ const partialTranslations: Record<Exclude<Lang, "fr" | "en">, DeepPartial<Transl
       readTheme: "Fungua somo →",
       readLesson: "Soma somo →",
       readChapter: "Soma sura →",
-      fullBookDownload: "Pakua toleo kamili (hivi karibuni)",
       features: [
         {
           icon: "∫",
@@ -2792,7 +2773,6 @@ const partialTranslations: Record<Exclude<Lang, "fr" | "en">, DeepPartial<Transl
       readTheme: "باز کردن درس ←",
       readLesson: "مطالعهٔ درس ←",
       readChapter: "مطالعهٔ فصل ←",
-      fullBookDownload: "دانلود نسخهٔ کامل (به‌زودی)",
       features: [
         {
           icon: "∫",
