@@ -170,7 +170,7 @@ export function NavBar() {
     { href: sectionHref(lang, "chapters"), label: t.nav.chapters },
     { href: sectionHref(lang, "exercises"), label: t.nav.exercises },
     { href: sectionHref(lang, "quiz"), label: t.nav.quiz },
-    { href: sectionHref(lang, "glossary"), label: t.nav.glossary },
+    { href: sectionHref(lang, "downloads"), label: t.nav.downloads },
     { href: sectionHref(lang, "about"), label: t.nav.about },
   ];
 

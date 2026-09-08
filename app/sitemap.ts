@@ -53,7 +53,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   );
 
   const sectionsConfig: Array<{
-    section: "chapters" | "about" | "glossary" | "exercises" | "quiz";
+    section: "chapters" | "about" | "downloads" | "exercises" | "quiz";
     priority: number;
     changeFrequency: MetadataRoute.Sitemap[number]["changeFrequency"];
     /** Which languages have real, indexable content for this section. */
@@ -62,7 +62,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   }> = [
     { section: "chapters", priority: 0.9, changeFrequency: "monthly", langs: SUPPORTED_LANGS, includeLang: () => true },
     { section: "about", priority: 0.6, changeFrequency: "yearly", langs: SUPPORTED_LANGS, includeLang: () => true },
-    { section: "glossary", priority: 0.5, changeFrequency: "monthly", langs: SUPPORTED_LANGS, includeLang: () => true },
+    { section: "downloads", priority: 0.5, changeFrequency: "monthly", langs: SUPPORTED_LANGS, includeLang: () => true },
     {
       section: "quiz",
       priority: 0.7,

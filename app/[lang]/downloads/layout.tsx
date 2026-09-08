@@ -10,14 +10,14 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { lang } = params;
   const t = getTranslations(lang);
-  const title = t.nav.glossary;
-  const description = t.glossary.subtitle;
-  const url = absoluteUrl(sectionHref(lang, "glossary"));
+  const title = t.nav.downloads;
+  const description = t.downloads.comingSoon;
+  const url = absoluteUrl(sectionHref(lang, "downloads"));
   const languages: Record<string, string> = {};
   for (const availableLang of SUPPORTED_LANGS) {
-    languages[availableLang] = absoluteUrl(sectionHref(availableLang, "glossary"));
+    languages[availableLang] = absoluteUrl(sectionHref(availableLang, "downloads"));
   }
-  languages["x-default"] = absoluteUrl(sectionHref("fr", "glossary"));
+  languages["x-default"] = absoluteUrl(sectionHref("fr", "downloads"));
   return {
     title,
     description,
@@ -33,6 +33,6 @@ export async function generateMetadata({
   };
 }
 
-export default function GlossaryLayout({ children }: { children: React.ReactNode }) {
+export default function DownloadsLayout({ children }: { children: React.ReactNode }) {
   return <>{children}</>;
 }

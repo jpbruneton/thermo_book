@@ -4,7 +4,6 @@ import type { ReactNode } from "react";
 import { useEffect, useMemo, useState } from "react";
 import type { LessonPresentation } from "@/lib/lessonPresentation";
 import { useLang } from "@/app/context/LangContext";
-import { sectionHref } from "@/lib/i18n";
 
 interface Props {
   lesson: LessonPresentation;
@@ -201,9 +200,8 @@ export function ChapterContent({ lesson, hideHeader = false, topNav }: Props) {
           }}
         >
           {lesson.topicsLang.map((topic) => (
-            <Link
+            <span
               key={topic}
-              href={`${sectionHref(lang, "glossary")}?q=${encodeURIComponent(topic)}`}
               style={{
                 background: "var(--accent-bg-sm)",
                 border: "1px solid var(--accent-border-sm)",
@@ -212,11 +210,10 @@ export function ChapterContent({ lesson, hideHeader = false, topNav }: Props) {
                 fontFamily: "var(--font-inter)",
                 fontSize: "0.74rem",
                 color: "var(--amber)",
-                textDecoration: "none",
               }}
             >
               {topic}
-            </Link>
+            </span>
           ))}
         </div>
       )}

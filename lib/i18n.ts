@@ -37,7 +37,7 @@ export function isRtlLang(lang: Lang): boolean {
   return (RTL_LANGS as readonly string[]).includes(lang);
 }
 
-export const SECTIONS = ["chapters", "exercises", "quiz", "glossary", "about"] as const;
+export const SECTIONS = ["chapters", "exercises", "quiz", "downloads", "about"] as const;
 export type Section = (typeof SECTIONS)[number];
 
 /** English section words, reused as-is for every language that has no translated public URL word. */
@@ -45,7 +45,7 @@ const IDENTITY_SECTION_SLUGS: Record<Section, string> = {
   chapters: "chapters",
   exercises: "exercises",
   quiz: "quiz",
-  glossary: "glossary",
+  downloads: "downloads",
   about: "about",
 };
 
@@ -65,42 +65,42 @@ export const sectionSlugs: Record<Lang, Record<Section, string>> = {
     chapters: "chapitres",
     exercises: "exercices",
     quiz: "quiz",
-    glossary: "glossaire",
+    downloads: "telechargements",
     about: "a-propos",
   },
   de: {
     chapters: "lektionen",
     exercises: "uebungen",
     quiz: "quiz",
-    glossary: "glossar",
+    downloads: "downloads",
     about: "ueber-das-buch",
   },
   es: {
     chapters: "lecciones",
     exercises: "ejercicios",
     quiz: "quiz",
-    glossary: "glosario",
+    downloads: "descargas",
     about: "sobre-el-libro",
   },
   pt: {
     chapters: "licoes",
     exercises: "exercicios",
     quiz: "quiz",
-    glossary: "glossario",
+    downloads: "downloads",
     about: "sobre-o-livro",
   },
   it: {
     chapters: "lezioni",
     exercises: "esercizi",
     quiz: "quiz",
-    glossary: "glossario",
+    downloads: "download",
     about: "il-libro",
   },
   pl: {
     chapters: "lekcje",
     exercises: "cwiczenia",
     quiz: "quiz",
-    glossary: "slowniczek",
+    downloads: "pobieranie",
     about: "o-ksiazce",
   },
   ru: IDENTITY_SECTION_SLUGS,
@@ -112,7 +112,7 @@ export const sectionSlugs: Record<Lang, Record<Section, string>> = {
     chapters: "bai-hoc",
     exercises: "bai-tap",
     quiz: "quiz",
-    glossary: "bang-thuat-ngu",
+    downloads: "tai-xuong",
     about: "gioi-thieu",
   },
   ar: IDENTITY_SECTION_SLUGS,
@@ -120,14 +120,14 @@ export const sectionSlugs: Record<Lang, Record<Section, string>> = {
     chapters: "pelajaran",
     exercises: "latihan",
     quiz: "kuis",
-    glossary: "glosarium",
+    downloads: "unduhan",
     about: "tentang-buku",
   },
   tr: {
     chapters: "dersler",
     exercises: "alistirmalar",
     quiz: "quiz",
-    glossary: "sozluk",
+    downloads: "indirmeler",
     about: "kitap-hakkinda",
   },
   bn: IDENTITY_SECTION_SLUGS,
@@ -136,7 +136,7 @@ export const sectionSlugs: Record<Lang, Record<Section, string>> = {
     chapters: "masomo",
     exercises: "mazoezi",
     quiz: "jaribio",
-    glossary: "kamusi",
+    downloads: "vipakuliwa",
     about: "kuhusu-kitabu",
   },
   fa: IDENTITY_SECTION_SLUGS,
@@ -176,7 +176,7 @@ export const translations = {
       chapters: "Lessons",
       exercises: "Exercises",
       quiz: "Quiz",
-      glossary: "Glossary",
+      downloads: "Downloads",
       about: "About",
     },
     home: {
@@ -322,13 +322,9 @@ export const translations = {
       copyright: (year: string, author: string) =>
         `© ${year} ${author}. All rights reserved.`,
     },
-    glossary: {
-      title: "Keyword Glossary",
-      subtitle: "Click a keyword to see every lesson that uses it.",
-      allKeywords: "All keywords",
-      relatedLessons: "Related lessons",
-      noResult: "No keyword found for this filter.",
-      lessonEntry: (n: number, title: string) => `Lesson ${n}: ${title}`,
+    downloads: {
+      title: "Downloads",
+      comingSoon: "Coming soon.",
     },
   },
   fr: {
@@ -344,7 +340,7 @@ export const translations = {
       chapters: "Leçons",
       exercises: "Exercices",
       quiz: "Quiz",
-      glossary: "Glossaire",
+      downloads: "Téléchargements",
       about: "À propos",
     },
     home: {
@@ -490,13 +486,9 @@ export const translations = {
       copyright: (year: string, author: string) =>
         `© ${year} ${author}. Tous droits réservés.`,
     },
-    glossary: {
-      title: "Glossaire des mots-clés",
-      subtitle: "Cliquez sur un mot-clé pour voir toutes les leçons qui l'utilisent.",
-      allKeywords: "Tous les mots-clés",
-      relatedLessons: "Leçons associées",
-      noResult: "Aucun mot-clé trouvé pour ce filtre.",
-      lessonEntry: (n: number, title: string) => `Leçon ${n} : ${title}`,
+    downloads: {
+      title: "Téléchargements",
+      comingSoon: "Bientôt disponible.",
     },
   },
 };
@@ -550,7 +542,7 @@ const partialTranslations: Record<Exclude<Lang, "fr" | "en">, DeepPartial<Transl
       chapters: "Lektionen",
       exercises: "Übungen",
       quiz: "Quiz",
-      glossary: "Glossar",
+      downloads: "Downloads",
       about: "Über das Buch",
     },
     chapters: {
@@ -633,13 +625,9 @@ const partialTranslations: Record<Exclude<Lang, "fr" | "en">, DeepPartial<Transl
       author: "Autor",
       copyright: (year: string, author: string) => `© ${year} ${author}. Alle Rechte vorbehalten.`,
     },
-    glossary: {
-      title: "Glossar der Schlüsselwörter",
-      subtitle: "Klicken Sie auf ein Schlüsselwort, um alle Lektionen zu sehen, die es verwenden.",
-      allKeywords: "Alle Schlüsselwörter",
-      relatedLessons: "Zugehörige Lektionen",
-      noResult: "Kein Schlüsselwort für diesen Filter gefunden.",
-      lessonEntry: (n: number, title: string) => `Lektion ${n}: ${title}`,
+    downloads: {
+      title: "Downloads",
+      comingSoon: "Demnächst verfügbar.",
     },
     about: {
       label: "ÜBER DAS BUCH",
@@ -685,7 +673,7 @@ const partialTranslations: Record<Exclude<Lang, "fr" | "en">, DeepPartial<Transl
       chapters: "Lecciones",
       exercises: "Ejercicios",
       quiz: "Quiz",
-      glossary: "Glosario",
+      downloads: "Descargas",
       about: "Acerca del libro",
     },
     chapters: {
@@ -768,13 +756,9 @@ const partialTranslations: Record<Exclude<Lang, "fr" | "en">, DeepPartial<Transl
       author: "Autor",
       copyright: (year: string, author: string) => `© ${year} ${author}. Todos los derechos reservados.`,
     },
-    glossary: {
-      title: "Glosario de palabras clave",
-      subtitle: "Haga clic en una palabra clave para ver todas las lecciones que la usan.",
-      allKeywords: "Todas las palabras clave",
-      relatedLessons: "Lecciones relacionadas",
-      noResult: "No se encontró ninguna palabra clave para este filtro.",
-      lessonEntry: (n: number, title: string) => `Lección ${n}: ${title}`,
+    downloads: {
+      title: "Descargas",
+      comingSoon: "Próximamente disponible.",
     },
     about: {
       label: "SOBRE EL LIBRO",
@@ -820,7 +804,7 @@ const partialTranslations: Record<Exclude<Lang, "fr" | "en">, DeepPartial<Transl
       chapters: "Lições",
       exercises: "Exercícios",
       quiz: "Quiz",
-      glossary: "Glossário",
+      downloads: "Downloads",
       about: "Sobre o livro",
     },
     chapters: {
@@ -903,13 +887,9 @@ const partialTranslations: Record<Exclude<Lang, "fr" | "en">, DeepPartial<Transl
       author: "Autor",
       copyright: (year: string, author: string) => `© ${year} ${author}. Todos os direitos reservados.`,
     },
-    glossary: {
-      title: "Glossário de palavras-chave",
-      subtitle: "Clique em uma palavra-chave para ver todas as lições que a utilizam.",
-      allKeywords: "Todas as palavras-chave",
-      relatedLessons: "Lições relacionadas",
-      noResult: "Nenhuma palavra-chave encontrada para este filtro.",
-      lessonEntry: (n: number, title: string) => `Lição ${n}: ${title}`,
+    downloads: {
+      title: "Downloads",
+      comingSoon: "Em breve disponível.",
     },
     about: {
       label: "SOBRE O LIVRO",
@@ -955,7 +935,7 @@ const partialTranslations: Record<Exclude<Lang, "fr" | "en">, DeepPartial<Transl
       chapters: "Lezioni",
       exercises: "Esercizi",
       quiz: "Quiz",
-      glossary: "Glossario",
+      downloads: "Download",
       about: "Il libro",
     },
     chapters: {
@@ -1038,13 +1018,9 @@ const partialTranslations: Record<Exclude<Lang, "fr" | "en">, DeepPartial<Transl
       author: "Autore",
       copyright: (year: string, author: string) => `© ${year} ${author}. Tutti i diritti riservati.`,
     },
-    glossary: {
-      title: "Glossario delle parole chiave",
-      subtitle: "Clicca su una parola chiave per vedere tutte le lezioni che la usano.",
-      allKeywords: "Tutte le parole chiave",
-      relatedLessons: "Lezioni correlate",
-      noResult: "Nessuna parola chiave trovata per questo filtro.",
-      lessonEntry: (n: number, title: string) => `Lezione ${n}: ${title}`,
+    downloads: {
+      title: "Download",
+      comingSoon: "Prossimamente disponibile.",
     },
     about: {
       label: "SUL LIBRO",
@@ -1090,7 +1066,7 @@ const partialTranslations: Record<Exclude<Lang, "fr" | "en">, DeepPartial<Transl
       chapters: "Lekcje",
       exercises: "Ćwiczenia",
       quiz: "Quiz",
-      glossary: "Słowniczek",
+      downloads: "Pobieranie",
       about: "O książce",
     },
     chapters: {
@@ -1173,13 +1149,9 @@ const partialTranslations: Record<Exclude<Lang, "fr" | "en">, DeepPartial<Transl
       author: "Autor",
       copyright: (year: string, author: string) => `© ${year} ${author}. Wszelkie prawa zastrzeżone.`,
     },
-    glossary: {
-      title: "Słowniczek słów kluczowych",
-      subtitle: "Kliknij słowo kluczowe, aby zobaczyć wszystkie lekcje, które go używają.",
-      allKeywords: "Wszystkie słowa kluczowe",
-      relatedLessons: "Powiązane lekcje",
-      noResult: "Nie znaleziono słowa kluczowego dla tego filtra.",
-      lessonEntry: (n: number, title: string) => `Lekcja ${n}: ${title}`,
+    downloads: {
+      title: "Pobieranie",
+      comingSoon: "Wkrótce dostępne.",
     },
     about: {
       label: "O KSIĄŻCE",
@@ -1225,7 +1197,7 @@ const partialTranslations: Record<Exclude<Lang, "fr" | "en">, DeepPartial<Transl
       chapters: "Уроки",
       exercises: "Упражнения",
       quiz: "Тест",
-      glossary: "Глоссарий",
+      downloads: "Загрузки",
       about: "О книге",
     },
     chapters: {
@@ -1308,13 +1280,9 @@ const partialTranslations: Record<Exclude<Lang, "fr" | "en">, DeepPartial<Transl
       author: "Автор",
       copyright: (year: string, author: string) => `© ${year} ${author}. Все права защищены.`,
     },
-    glossary: {
-      title: "Глоссарий ключевых слов",
-      subtitle: "Нажмите на ключевое слово, чтобы увидеть все уроки, где оно используется.",
-      allKeywords: "Все ключевые слова",
-      relatedLessons: "Связанные уроки",
-      noResult: "По этому фильтру ключевых слов не найдено.",
-      lessonEntry: (n: number, title: string) => `Урок ${n}: ${title}`,
+    downloads: {
+      title: "Загрузки",
+      comingSoon: "Скоро будет доступно.",
     },
     about: {
       label: "О КНИГЕ",
@@ -1360,7 +1328,7 @@ const partialTranslations: Record<Exclude<Lang, "fr" | "en">, DeepPartial<Transl
       chapters: "课程",
       exercises: "练习",
       quiz: "测验",
-      glossary: "词汇表",
+      downloads: "下载",
       about: "关于本书",
     },
     chapters: {
@@ -1440,13 +1408,9 @@ const partialTranslations: Record<Exclude<Lang, "fr" | "en">, DeepPartial<Transl
       author: "作者",
       copyright: (year: string, author: string) => `© ${year} ${author}。保留所有权利。`,
     },
-    glossary: {
-      title: "关键词词汇表",
-      subtitle: "点击关键词查看所有使用它的课程。",
-      allKeywords: "所有关键词",
-      relatedLessons: "相关课程",
-      noResult: "未找到符合该筛选条件的关键词。",
-      lessonEntry: (n: number, title: string) => `第${n}课：${title}`,
+    downloads: {
+      title: "下载",
+      comingSoon: "即将推出。",
     },
     about: {
       label: "关于本书",
@@ -1489,7 +1453,7 @@ const partialTranslations: Record<Exclude<Lang, "fr" | "en">, DeepPartial<Transl
       chapters: "レッスン",
       exercises: "演習",
       quiz: "クイズ",
-      glossary: "用語集",
+      downloads: "ダウンロード",
       about: "本書について",
     },
     chapters: {
@@ -1570,13 +1534,9 @@ const partialTranslations: Record<Exclude<Lang, "fr" | "en">, DeepPartial<Transl
       author: "著者",
       copyright: (year: string, author: string) => `© ${year} ${author}. 無断複写・転載を禁じます。`,
     },
-    glossary: {
-      title: "キーワード用語集",
-      subtitle: "キーワードをクリックすると、それを使用しているすべてのレッスンが表示されます。",
-      allKeywords: "すべてのキーワード",
-      relatedLessons: "関連レッスン",
-      noResult: "このフィルターに一致するキーワードは見つかりませんでした。",
-      lessonEntry: (n: number, title: string) => `レッスン${n}：${title}`,
+    downloads: {
+      title: "ダウンロード",
+      comingSoon: "近日公開予定です。",
     },
     about: {
       label: "本書について",
@@ -1621,7 +1581,7 @@ const partialTranslations: Record<Exclude<Lang, "fr" | "en">, DeepPartial<Transl
       chapters: "강의",
       exercises: "연습문제",
       quiz: "퀴즈",
-      glossary: "용어집",
+      downloads: "다운로드",
       about: "책 소개",
     },
     chapters: {
@@ -1702,13 +1662,9 @@ const partialTranslations: Record<Exclude<Lang, "fr" | "en">, DeepPartial<Transl
       author: "저자",
       copyright: (year: string, author: string) => `© ${year} ${author}. 모든 권리 보유.`,
     },
-    glossary: {
-      title: "키워드 용어집",
-      subtitle: "키워드를 클릭하면 이를 사용하는 모든 강의를 볼 수 있습니다.",
-      allKeywords: "모든 키워드",
-      relatedLessons: "관련 강의",
-      noResult: "이 필터에 해당하는 키워드를 찾을 수 없습니다.",
-      lessonEntry: (n: number, title: string) => `${n}강: ${title}`,
+    downloads: {
+      title: "다운로드",
+      comingSoon: "곧 제공될 예정입니다.",
     },
     about: {
       label: "책 소개",
@@ -1751,7 +1707,7 @@ const partialTranslations: Record<Exclude<Lang, "fr" | "en">, DeepPartial<Transl
       chapters: "पाठ",
       exercises: "अभ्यास",
       quiz: "क्विज़",
-      glossary: "शब्दावली",
+      downloads: "डाउनलोड",
       about: "पुस्तक के बारे में",
     },
     chapters: {
@@ -1833,13 +1789,9 @@ const partialTranslations: Record<Exclude<Lang, "fr" | "en">, DeepPartial<Transl
       author: "लेखक",
       copyright: (year: string, author: string) => `© ${year} ${author}. सर्वाधिकार सुरक्षित।`,
     },
-    glossary: {
-      title: "मुख्य शब्दों की शब्दावली",
-      subtitle: "किसी मुख्य शब्द पर क्लिक करें ताकि उसका उपयोग करने वाले सभी पाठ देख सकें।",
-      allKeywords: "सभी मुख्य शब्द",
-      relatedLessons: "संबंधित पाठ",
-      noResult: "इस फ़िल्टर के लिए कोई मुख्य शब्द नहीं मिला।",
-      lessonEntry: (n: number, title: string) => `पाठ ${n}: ${title}`,
+    downloads: {
+      title: "डाउनलोड",
+      comingSoon: "जल्द ही उपलब्ध होगा।",
     },
     about: {
       label: "पुस्तक के बारे में",
@@ -1884,7 +1836,7 @@ const partialTranslations: Record<Exclude<Lang, "fr" | "en">, DeepPartial<Transl
       chapters: "Bài học",
       exercises: "Bài tập",
       quiz: "Trắc nghiệm",
-      glossary: "Bảng thuật ngữ",
+      downloads: "Tải xuống",
       about: "Giới thiệu",
     },
     chapters: {
@@ -1965,13 +1917,9 @@ const partialTranslations: Record<Exclude<Lang, "fr" | "en">, DeepPartial<Transl
       author: "Tác giả",
       copyright: (year: string, author: string) => `© ${year} ${author}. Bảo lưu mọi quyền.`,
     },
-    glossary: {
-      title: "Bảng chú giải từ khóa",
-      subtitle: "Nhấp vào một từ khóa để xem tất cả các bài học sử dụng nó.",
-      allKeywords: "Tất cả từ khóa",
-      relatedLessons: "Bài học liên quan",
-      noResult: "Không tìm thấy từ khóa nào cho bộ lọc này.",
-      lessonEntry: (n: number, title: string) => `Bài ${n}: ${title}`,
+    downloads: {
+      title: "Tải xuống",
+      comingSoon: "Sắp ra mắt.",
     },
     about: {
       label: "GIỚI THIỆU SÁCH",
@@ -2017,7 +1965,7 @@ const partialTranslations: Record<Exclude<Lang, "fr" | "en">, DeepPartial<Transl
       chapters: "الدروس",
       exercises: "التمارين",
       quiz: "اختبار",
-      glossary: "المسرد",
+      downloads: "التنزيلات",
       about: "عن الكتاب",
     },
     chapters: {
@@ -2098,13 +2046,9 @@ const partialTranslations: Record<Exclude<Lang, "fr" | "en">, DeepPartial<Transl
       author: "المؤلف",
       copyright: (year: string, author: string) => `© ${year} ${author}. جميع الحقوق محفوظة.`,
     },
-    glossary: {
-      title: "قاموس الكلمات المفتاحية",
-      subtitle: "انقر على كلمة مفتاحية لعرض جميع الدروس التي تستخدمها.",
-      allKeywords: "جميع الكلمات المفتاحية",
-      relatedLessons: "الدروس ذات الصلة",
-      noResult: "لم يتم العثور على أي كلمة مفتاحية لهذا الفلتر.",
-      lessonEntry: (n: number, title: string) => `الدرس ${n}: ${title}`,
+    downloads: {
+      title: "التنزيلات",
+      comingSoon: "قريباً.",
     },
     about: {
       label: "عن الكتاب",
@@ -2149,7 +2093,7 @@ const partialTranslations: Record<Exclude<Lang, "fr" | "en">, DeepPartial<Transl
       chapters: "Pelajaran",
       exercises: "Latihan",
       quiz: "Kuis",
-      glossary: "Glosarium",
+      downloads: "Unduhan",
       about: "Tentang Buku",
     },
     chapters: {
@@ -2230,13 +2174,9 @@ const partialTranslations: Record<Exclude<Lang, "fr" | "en">, DeepPartial<Transl
       author: "Penulis",
       copyright: (year: string, author: string) => `© ${year} ${author}. Hak cipta dilindungi.`,
     },
-    glossary: {
-      title: "Glosarium Kata Kunci",
-      subtitle: "Klik kata kunci untuk melihat semua pelajaran yang menggunakannya.",
-      allKeywords: "Semua kata kunci",
-      relatedLessons: "Pelajaran terkait",
-      noResult: "Tidak ada kata kunci yang ditemukan untuk filter ini.",
-      lessonEntry: (n: number, title: string) => `Pelajaran ${n}: ${title}`,
+    downloads: {
+      title: "Unduhan",
+      comingSoon: "Segera hadir.",
     },
     about: {
       label: "TENTANG BUKU",
@@ -2282,7 +2222,7 @@ const partialTranslations: Record<Exclude<Lang, "fr" | "en">, DeepPartial<Transl
       chapters: "Dersler",
       exercises: "Alıştırmalar",
       quiz: "Test",
-      glossary: "Sözlük",
+      downloads: "İndirmeler",
       about: "Kitap Hakkında",
     },
     chapters: {
@@ -2363,13 +2303,9 @@ const partialTranslations: Record<Exclude<Lang, "fr" | "en">, DeepPartial<Transl
       author: "Yazar",
       copyright: (year: string, author: string) => `© ${year} ${author}. Tüm hakları saklıdır.`,
     },
-    glossary: {
-      title: "Anahtar Kavramlar Sözlüğü",
-      subtitle: "Bir anahtar kavrama tıklayarak kullanıldığı tüm dersleri görün.",
-      allKeywords: "Tüm anahtar kavramlar",
-      relatedLessons: "İlgili dersler",
-      noResult: "Bu filtreye uygun anahtar kavram bulunamadı.",
-      lessonEntry: (n: number, title: string) => `Ders ${n}: ${title}`,
+    downloads: {
+      title: "İndirmeler",
+      comingSoon: "Yakında geliyor.",
     },
     about: {
       label: "KİTAP HAKKINDA",
@@ -2415,7 +2351,7 @@ const partialTranslations: Record<Exclude<Lang, "fr" | "en">, DeepPartial<Transl
       chapters: "পাঠ",
       exercises: "অনুশীলনী",
       quiz: "কুইজ",
-      glossary: "শব্দকোষ",
+      downloads: "ডাউনলোড",
       about: "বইটি সম্পর্কে",
     },
     chapters: {
@@ -2498,13 +2434,9 @@ const partialTranslations: Record<Exclude<Lang, "fr" | "en">, DeepPartial<Transl
       author: "লেখক",
       copyright: (year: string, author: string) => `© ${year} ${author}. সর্বস্বত্ব সংরক্ষিত।`,
     },
-    glossary: {
-      title: "মূল শব্দকোষ",
-      subtitle: "কোনো মূল শব্দে ক্লিক করে সেটি ব্যবহারকারী সমস্ত পাঠ দেখুন।",
-      allKeywords: "সমস্ত মূল শব্দ",
-      relatedLessons: "সম্পর্কিত পাঠ",
-      noResult: "এই ফিল্টারের জন্য কোনো মূল শব্দ পাওয়া যায়নি।",
-      lessonEntry: (n: number, title: string) => `পাঠ ${n}: ${title}`,
+    downloads: {
+      title: "ডাউনলোড",
+      comingSoon: "শীঘ্রই আসছে।",
     },
     about: {
       label: "বইটি সম্পর্কে",
@@ -2550,7 +2482,7 @@ const partialTranslations: Record<Exclude<Lang, "fr" | "en">, DeepPartial<Transl
       chapters: "اسباق",
       exercises: "مشقیں",
       quiz: "کوئز",
-      glossary: "لغت",
+      downloads: "ڈاؤن لوڈز",
       about: "کتاب کے بارے میں",
     },
     chapters: {
@@ -2631,13 +2563,9 @@ const partialTranslations: Record<Exclude<Lang, "fr" | "en">, DeepPartial<Transl
       author: "مصنف",
       copyright: (year: string, author: string) => `© ${year} ${author}۔ جملہ حقوق محفوظ ہیں۔`,
     },
-    glossary: {
-      title: "کلیدی الفاظ کی لغت",
-      subtitle: "کسی کلیدی لفظ پر کلک کریں تاکہ وہ تمام اسباق دیکھ سکیں جو اسے استعمال کرتے ہیں۔",
-      allKeywords: "تمام کلیدی الفاظ",
-      relatedLessons: "متعلقہ اسباق",
-      noResult: "اس فلٹر کے لیے کوئی کلیدی لفظ نہیں ملا۔",
-      lessonEntry: (n: number, title: string) => `سبق ${n}: ${title}`,
+    downloads: {
+      title: "ڈاؤن لوڈز",
+      comingSoon: "جلد آ رہا ہے۔",
     },
     about: {
       label: "کتاب کے بارے میں",
@@ -2682,7 +2610,7 @@ const partialTranslations: Record<Exclude<Lang, "fr" | "en">, DeepPartial<Transl
       chapters: "Masomo",
       exercises: "Mazoezi",
       quiz: "Jaribio",
-      glossary: "Kamusi",
+      downloads: "Vipakuliwa",
       about: "Kuhusu Kitabu",
     },
     chapters: {
@@ -2763,13 +2691,9 @@ const partialTranslations: Record<Exclude<Lang, "fr" | "en">, DeepPartial<Transl
       author: "Mwandishi",
       copyright: (year: string, author: string) => `© ${year} ${author}. Haki zote zimehifadhiwa.`,
     },
-    glossary: {
-      title: "Kamusi ya Maneno Muhimu",
-      subtitle: "Bofya neno muhimu kuona masomo yote yanayolitumia.",
-      allKeywords: "Maneno Muhimu Yote",
-      relatedLessons: "Masomo Yanayohusiana",
-      noResult: "Hakuna neno muhimu lililopatikana kwa kichujio hiki.",
-      lessonEntry: (n: number, title: string) => `Somo ${n}: ${title}`,
+    downloads: {
+      title: "Vipakuliwa",
+      comingSoon: "Inakuja hivi karibuni.",
     },
     about: {
       label: "KUHUSU KITABU",
@@ -2815,7 +2739,7 @@ const partialTranslations: Record<Exclude<Lang, "fr" | "en">, DeepPartial<Transl
       chapters: "درس‌ها",
       exercises: "تمرین‌ها",
       quiz: "آزمون",
-      glossary: "واژه‌نامه",
+      downloads: "دانلودها",
       about: "دربارهٔ کتاب",
     },
     chapters: {
@@ -2896,13 +2820,9 @@ const partialTranslations: Record<Exclude<Lang, "fr" | "en">, DeepPartial<Transl
       author: "نویسنده",
       copyright: (year: string, author: string) => `© ${year} ${author}. تمامی حقوق محفوظ است.`,
     },
-    glossary: {
-      title: "واژه‌نامهٔ کلیدواژه‌ها",
-      subtitle: "روی یک کلیدواژه کلیک کنید تا همهٔ درس‌هایی که از آن استفاده می‌کنند را ببینید.",
-      allKeywords: "همهٔ کلیدواژه‌ها",
-      relatedLessons: "درس‌های مرتبط",
-      noResult: "هیچ کلیدواژه‌ای برای این فیلتر یافت نشد.",
-      lessonEntry: (n: number, title: string) => `درس ${n}: ${title}`,
+    downloads: {
+      title: "دانلودها",
+      comingSoon: "به‌زودی در دسترس خواهد بود.",
     },
     about: {
       label: "دربارهٔ کتاب",

@@ -11,7 +11,7 @@ import type { Lang } from "./i18n";
 interface ThemeTranslationEntry {
   title: string;
   description: string;
-  /** Keyword bubbles shown on the lesson page / used for the glossary. */
+  /** Keyword bubbles shown on the lesson page. */
   topics: string[];
   /** Only set for the three themes that open a new "Part" in the book. */
   partHeading?: string;

@@ -101,12 +101,11 @@ pages sans contenu affichent un état explicite) · 📋 planifié / pas commenc
   leçon : compléter `quizQuestionTranslations`, rien d'autre à changer.
   Les questions vrai/faux sont repérées sur la source française (champ
   `trueFalse`), pas en comparant le libellé traduit.
-- **Glossaire** : `app/[lang]/glossary/page.tsx` construit la liste des
-  mots-clés à partir de `getThemeTopics(themeSlug, lesson, lang)` (même
-  source que les bulles sous chaque leçon), et les libellés d'interface
-  (titre, sous-titre, "Tous les mots-clés", etc.) viennent de `t.glossary.*`
-  dans `lib/i18n.ts`, traduits pour les 20 langues — plus de ternaire
-  `lang === "fr" ? ... : ...` codé en dur dans ce fichier.
+- **Téléchargements** : `app/[lang]/downloads/page.tsx` affiche un état
+  « bientôt disponible » (`t.downloads.*` dans `lib/i18n.ts`, traduit pour
+  les 20 langues). Remplace l'ancien onglet glossaire ; les bulles de
+  mots-clés sous chaque leçon (`getThemeTopics`) restent affichées mais ne
+  sont plus cliquables.
 - `SUPPORTED_LANGS` (20 codes) pilote le routage (`isLang`, `generateStaticParams`
   de `app/[lang]/layout.tsx`, le header `x-site-lang` dans `middleware.ts`) —
   toutes ces routes existent et rendent quelque chose (contenu réel ou état
