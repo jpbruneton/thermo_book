@@ -14,6 +14,7 @@ import {
   loadExercises,
 } from "@/lib/exercisesLibrary.server";
 import { getExerciseTranslations } from "@/lib/exerciseTranslations";
+import { ExerciseViewBeacon } from "./ExerciseViewBeacon";
 import { processLatex } from "@/lib/latex";
 import { absoluteUrl } from "@/lib/siteUrl";
 import { getTranslations, isLang, sectionHref, SUPPORTED_LANGS, type Lang } from "@/lib/i18n";
@@ -252,6 +253,8 @@ export default function ExerciseDetailPage({ params }: Props) {
           />
         )
       )}
+
+      <ExerciseViewBeacon lang={lang} exerciseId={exercise.id} />
 
       <article
         className="exercise-detail-page"

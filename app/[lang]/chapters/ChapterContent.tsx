@@ -4,6 +4,7 @@ import type { ReactNode } from "react";
 import { useEffect, useMemo, useState } from "react";
 import type { LessonPresentation } from "@/lib/lessonPresentation";
 import { useLang } from "@/app/context/LangContext";
+import { usePageViewBeacon } from "@/app/hooks/usePageViewBeacon";
 
 interface Props {
   lesson: LessonPresentation;
@@ -34,6 +35,7 @@ export function ChapterContent({ lesson, hideHeader = false, topNav }: Props) {
   const [tocVisible, setTocVisible] = useState(true);
   const [showBackToTop, setShowBackToTop] = useState(false);
   const { t, lang } = useLang();
+  usePageViewBeacon("chapters", lang, lesson.slug);
   const englishReferences = lesson.references.filter((reference) => reference.language === "en");
   const frenchReferences = lesson.references.filter((reference) => reference.language === "fr");
   const currentReferences =
