@@ -12,7 +12,8 @@
     "lint": "next lint",
     "build:exo-pdf": "node scripts/build-exercises-pdf.mjs",
     "submit:indexnow": "node scripts/submit-indexnow.mjs",
-    "translate:lesson": "node --env-file=.env.local scripts/translate-lesson.mjs"
+    "translate:lesson": "node --env-file=.env.local scripts/translate-lesson.mjs",
+    "views:read": "node --env-file=.env.local scripts/read-page-views.mjs"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.115.0",
