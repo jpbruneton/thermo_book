@@ -182,6 +182,7 @@ export const translations = {
     share: {
       label: "Share this page",
       copied: "Link copied!",
+      copyLink: "Copy link",
     },
     home: {
       badge: "Free Online Edition",
@@ -349,6 +350,7 @@ export const translations = {
     share: {
       label: "Partager cette page",
       copied: "Lien copié !",
+      copyLink: "Copier le lien",
     },
     home: {
       badge: "Édition gratuite en ligne",
@@ -551,6 +553,11 @@ const partialTranslations: Record<Exclude<Lang, "fr" | "en">, DeepPartial<Transl
       downloads: "Downloads",
       about: "Über das Buch",
     },
+    share: {
+      label: "Diesen Inhalt teilen",
+      copied: "Link kopiert!",
+      copyLink: "Link kopieren",
+    },
     chapters: {
       label: "LEKTIONEN",
       title: "Alle Lektionen",
@@ -680,6 +687,11 @@ const partialTranslations: Record<Exclude<Lang, "fr" | "en">, DeepPartial<Transl
       quiz: "Quiz",
       downloads: "Descargas",
       about: "Acerca del libro",
+    },
+    share: {
+      label: "Compartir este contenido",
+      copied: "¡Enlace copiado!",
+      copyLink: "Copiar enlace",
     },
     chapters: {
       label: "LECCIONES",
@@ -811,6 +823,11 @@ const partialTranslations: Record<Exclude<Lang, "fr" | "en">, DeepPartial<Transl
       downloads: "Downloads",
       about: "Sobre o livro",
     },
+    share: {
+      label: "Partilhar este conteúdo",
+      copied: "Link copiado!",
+      copyLink: "Copiar link",
+    },
     chapters: {
       label: "LIÇÕES",
       title: "Todas as lições",
@@ -940,6 +957,11 @@ const partialTranslations: Record<Exclude<Lang, "fr" | "en">, DeepPartial<Transl
       quiz: "Quiz",
       downloads: "Download",
       about: "Il libro",
+    },
+    share: {
+      label: "Condividi questo contenuto",
+      copied: "Link copiato!",
+      copyLink: "Copia link",
     },
     chapters: {
       label: "LEZIONI",
@@ -1071,6 +1093,11 @@ const partialTranslations: Record<Exclude<Lang, "fr" | "en">, DeepPartial<Transl
       downloads: "Pobieranie",
       about: "O książce",
     },
+    share: {
+      label: "Udostępnij tę treść",
+      copied: "Link skopiowany!",
+      copyLink: "Kopiuj link",
+    },
     chapters: {
       label: "LEKCJE",
       title: "Wszystkie lekcje",
@@ -1200,6 +1227,11 @@ const partialTranslations: Record<Exclude<Lang, "fr" | "en">, DeepPartial<Transl
       quiz: "Тест",
       downloads: "Загрузки",
       about: "О книге",
+    },
+    share: {
+      label: "Поделиться этим материалом",
+      copied: "Ссылка скопирована!",
+      copyLink: "Скопировать ссылку",
     },
     chapters: {
       label: "УРОКИ",
@@ -1331,6 +1363,11 @@ const partialTranslations: Record<Exclude<Lang, "fr" | "en">, DeepPartial<Transl
       downloads: "下载",
       about: "关于本书",
     },
+    share: {
+      label: "分享此内容",
+      copied: "链接已复制！",
+      copyLink: "复制链接",
+    },
     chapters: {
       label: "课程",
       title: "所有课程",
@@ -1454,6 +1491,11 @@ const partialTranslations: Record<Exclude<Lang, "fr" | "en">, DeepPartial<Transl
       quiz: "クイズ",
       downloads: "ダウンロード",
       about: "本書について",
+    },
+    share: {
+      label: "このコンテンツを共有",
+      copied: "リンクをコピーしました！",
+      copyLink: "リンクをコピー",
     },
     chapters: {
       label: "レッスン",
@@ -1582,6 +1624,11 @@ const partialTranslations: Record<Exclude<Lang, "fr" | "en">, DeepPartial<Transl
       downloads: "다운로드",
       about: "책 소개",
     },
+    share: {
+      label: "이 콘텐츠 공유하기",
+      copied: "링크가 복사되었습니다!",
+      copyLink: "링크 복사",
+    },
     chapters: {
       label: "강의",
       title: "모든 강의",
@@ -1706,6 +1753,11 @@ const partialTranslations: Record<Exclude<Lang, "fr" | "en">, DeepPartial<Transl
       quiz: "क्विज़",
       downloads: "डाउनलोड",
       about: "पुस्तक के बारे में",
+    },
+    share: {
+      label: "यह सामग्री साझा करें",
+      copied: "लिंक कॉपी हो गया!",
+      copyLink: "लिंक कॉपी करें",
     },
     chapters: {
       label: "पाठ",
@@ -1835,6 +1887,11 @@ const partialTranslations: Record<Exclude<Lang, "fr" | "en">, DeepPartial<Transl
       downloads: "Tải xuống",
       about: "Giới thiệu",
     },
+    share: {
+      label: "Chia sẻ nội dung này",
+      copied: "Đã sao chép liên kết!",
+      copyLink: "Sao chép liên kết",
+    },
     chapters: {
       label: "BÀI HỌC",
       title: "Tất cả bài học",
@@ -1963,6 +2020,11 @@ const partialTranslations: Record<Exclude<Lang, "fr" | "en">, DeepPartial<Transl
       downloads: "التنزيلات",
       about: "عن الكتاب",
     },
+    share: {
+      label: "شارك هذا المحتوى",
+      copied: "تم نسخ الرابط!",
+      copyLink: "نسخ الرابط",
+    },
     chapters: {
       label: "الدروس",
       title: "جميع الدروس",
@@ -2089,6 +2151,11 @@ const partialTranslations: Record<Exclude<Lang, "fr" | "en">, DeepPartial<Transl
       quiz: "Kuis",
       downloads: "Unduhan",
       about: "Tentang Buku",
+    },
+    share: {
+      label: "Bagikan konten ini",
+      copied: "Tautan disalin!",
+      copyLink: "Salin tautan",
     },
     chapters: {
       label: "PELAJARAN",
@@ -2218,6 +2285,11 @@ const partialTranslations: Record<Exclude<Lang, "fr" | "en">, DeepPartial<Transl
       downloads: "İndirmeler",
       about: "Kitap Hakkında",
     },
+    share: {
+      label: "Bu içeriği paylaş",
+      copied: "Bağlantı kopyalandı!",
+      copyLink: "Bağlantıyı kopyala",
+    },
     chapters: {
       label: "DERSLER",
       title: "Tüm Dersler",
@@ -2345,6 +2417,11 @@ const partialTranslations: Record<Exclude<Lang, "fr" | "en">, DeepPartial<Transl
       quiz: "কুইজ",
       downloads: "ডাউনলোড",
       about: "বইটি সম্পর্কে",
+    },
+    share: {
+      label: "এই বিষয়বস্তু শেয়ার করুন",
+      copied: "লিঙ্ক কপি হয়েছে!",
+      copyLink: "লিঙ্ক কপি করুন",
     },
     chapters: {
       label: "পাঠ",
@@ -2476,6 +2553,11 @@ const partialTranslations: Record<Exclude<Lang, "fr" | "en">, DeepPartial<Transl
       downloads: "ڈاؤن لوڈز",
       about: "کتاب کے بارے میں",
     },
+    share: {
+      label: "یہ مواد شیئر کریں",
+      copied: "لنک کاپی ہو گیا!",
+      copyLink: "لنک کاپی کریں",
+    },
     chapters: {
       label: "اسباق",
       title: "تمام اسباق",
@@ -2602,6 +2684,11 @@ const partialTranslations: Record<Exclude<Lang, "fr" | "en">, DeepPartial<Transl
       quiz: "Jaribio",
       downloads: "Vipakuliwa",
       about: "Kuhusu Kitabu",
+    },
+    share: {
+      label: "Shiriki maudhui haya",
+      copied: "Kiungo kimenakiliwa!",
+      copyLink: "Nakili kiungo",
     },
     chapters: {
       label: "MASOMO",
@@ -2730,6 +2817,11 @@ const partialTranslations: Record<Exclude<Lang, "fr" | "en">, DeepPartial<Transl
       quiz: "آزمون",
       downloads: "دانلودها",
       about: "دربارهٔ کتاب",
+    },
+    share: {
+      label: "این محتوا را به اشتراک بگذارید",
+      copied: "پیوند کپی شد!",
+      copyLink: "کپی پیوند",
     },
     chapters: {
       label: "درس‌ها",

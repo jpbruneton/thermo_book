@@ -539,7 +539,7 @@ function LessonNavRow({
   if (!previousTitle && !nextTitle) return null;
 
   const grid = (
-    <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: compact ? "0.6rem" : "1rem" }}>
+    <div style={{ display: "grid", gridTemplateColumns: "minmax(0, 1fr) minmax(0, 1fr)", gap: compact ? "0.6rem" : "1rem" }}>
       {previousTitle ? (
         <NavCard
           label={previousLabel}

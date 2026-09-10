@@ -5,6 +5,7 @@ import { useEffect, useMemo, useState } from "react";
 import type { LessonPresentation } from "@/lib/lessonPresentation";
 import { useLang } from "@/app/context/LangContext";
 import { usePageViewBeacon } from "@/app/hooks/usePageViewBeacon";
+import { ShareButton } from "@/app/components/ShareButton";
 
 interface Props {
   lesson: LessonPresentation;
@@ -219,6 +220,11 @@ export function ChapterContent({ lesson, hideHeader = false, topNav }: Props) {
           ))}
         </div>
       )}
+
+      {/* Static share row — always visible, just below the keyword bubbles */}
+      <div style={{ maxWidth: "800px", margin: "0 auto", padding: "0.75rem 1.5rem 0" }}>
+        <ShareButton variant="inline" />
+      </div>
 
       <div style={{ maxWidth: "800px", margin: "0 auto", padding: "1rem 1.5rem 0", borderBottom: "1px solid var(--border-subtle)" }} />
 
