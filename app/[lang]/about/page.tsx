@@ -1,5 +1,5 @@
 "use client";
-import { bookMeta } from "@/lib/chapters";
+import { bookMeta, contactEmail } from "@/lib/chapters";
 import { useLang } from "@/app/context/LangContext";
 
 const AUTHOR_EXTERNAL_LINKS = [
@@ -15,10 +15,14 @@ const AUTHOR_EXTERNAL_LINKS = [
     href: "https://github.com/jpbruneton",
     labelKey: "github" as const,
   },
+  {
+    href: `mailto:${contactEmail}`,
+    labelKey: "contact" as const,
+  },
 ];
 
 export default function AboutPage() {
-  const { t, lang } = useLang();
+  const { t } = useLang();
   const at = t.about;
   const book = t.book;
   const detailItems = [
@@ -87,11 +91,6 @@ export default function AboutPage() {
         {/* Description */}
         <div style={sectionStyle}>
           <h2 style={h2Style}>{at.aboutBookTitle}</h2>
-          {lang !== "fr" ? (
-            <p style={{ ...bodyStyle, fontWeight: 700, color: "var(--text-heading)" }}>
-              {at.translationWarning}
-            </p>
-          ) : null}
           {book.description
             .split(/\n\n+/)
             .map((block) => block.trim())
@@ -198,13 +197,15 @@ export default function AboutPage() {
                   ? at.authorLinkLinkedIn
                   : item.labelKey === "scholar"
                     ? at.authorLinkGoogleScholar
-                    : at.authorLinkGitHub;
+                    : item.labelKey === "github"
+                      ? at.authorLinkGitHub
+                      : at.authorLinkContact;
+              const isMailto = item.href.startsWith("mailto:");
               return (
                 <li key={item.href}>
                   <a
                     href={item.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
+                    {...(isMailto ? {} : { target: "_blank", rel: "noopener noreferrer" })}
                     style={{ color: "var(--amber)", textDecoration: "underline" }}
                   >
                     {label}

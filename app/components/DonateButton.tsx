@@ -24,7 +24,7 @@ export function DonateButton({ compact = false, lang }: { compact?: boolean; lan
         display: "inline-flex",
         alignItems: "center",
         justifyContent: "center",
-        gap: compact ? "0.3rem" : "0.4rem",
+        gap: compact ? "0.3rem" : "0.45rem",
         background: "#FFDD00",
         color: "#000000",
         border: "1px solid #000000",
@@ -39,19 +39,11 @@ export function DonateButton({ compact = false, lang }: { compact?: boolean; lan
         flexShrink: 0,
       }}
     >
-      {compact ? (
-        <>
-          <span style={{ fontFamily: "var(--font-inter)", fontSize: "0.68rem", fontWeight: 600 }} aria-hidden="true">
-            Donate
-          </span>
-          <span aria-hidden="true">☕</span>
-        </>
-      ) : (
-        <>
-          <span aria-hidden="true">☕</span>
-          Buy me a coffee
-        </>
-      )}
+      <span style={{ fontFamily: "var(--font-inter)", fontSize: compact ? "0.68rem" : "0.75rem", fontWeight: 600 }} aria-hidden="true">
+        Donate
+      </span>
+      <span aria-hidden="true">☕</span>
+      {!compact && "Buy me a coffee"}
     </a>
   );
 }

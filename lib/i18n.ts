@@ -277,6 +277,7 @@ export const translations = {
       authorLinkLinkedIn: "LinkedIn",
       authorLinkGoogleScholar: "Google Scholar",
       authorLinkGitHub: "GitHub",
+      authorLinkContact: "Contact",
       aboutProjectTitle: "About the Project",
       aboutProjectLead:
         "This site and the book are under development. Lessons and exercises will be added gradually. The book is written in French by the author; content offered in other languages is produced through automated (AI) translation.",
@@ -284,11 +285,9 @@ export const translations = {
       aboutProjectOutlineBody:
         "A progressive course in thermodynamics, from the founding principles to more advanced developments.",
       aboutProjectStatusBody:
-        "Current status: lessons 1 through 6 are complete, with exercises and quizzes.",
+        "Current status: lessons 1 through 7 are complete, with exercises and quizzes.",
       aboutBookBody2:
         "The text develops thermodynamics from first principles. Proofs are given in full whenever they clarify the physics, and many worked examples complement the theoretical exposition.",
-      translationWarning:
-        "Warning: this book is primarily written in French; the English version is automatically translated using Claude Sonnet 4.6.",
       sameAuthorTitle: "By the Same Author",
       sameAuthorBody:
         "Quantum Mechanics — A Modern Introduction, a companion course on quantum mechanics.",
@@ -323,6 +322,7 @@ export const translations = {
       exercises: "Exercises",
       aboutBook: "About the Book",
       author: "Author",
+      contact: "Contact",
       copyright: (year: string, author: string) =>
         `© ${year} ${author}. All rights reserved.`,
     },
@@ -445,6 +445,7 @@ export const translations = {
       authorLinkLinkedIn: "LinkedIn",
       authorLinkGoogleScholar: "Google Scholar",
       authorLinkGitHub: "GitHub",
+      authorLinkContact: "Contact",
       aboutProjectTitle: "À propos du projet",
       aboutProjectLead:
         "Ce site et cet ouvrage sont en cours de développement. Les leçons et les exercices seront publiés progressivement. Le livre est rédigé en français par l'auteur ; les contenus proposés dans les autres langues sont produits par traduction automatique (IA).",
@@ -452,11 +453,9 @@ export const translations = {
       aboutProjectOutlineBody:
         "Un cours progressif de thermodynamique, des principes fondateurs jusqu'aux développements plus avancés.",
       aboutProjectStatusBody:
-        "Statut actuel : les leçons 1 à 6 incluses sont terminées, avec exercices et quiz.",
+        "Statut actuel : les leçons 1 à 7 incluses sont terminées, avec exercices et quiz.",
       aboutBookBody2:
         "Le texte développe la thermodynamique à partir des premiers principes. Les preuves sont données en entier lorsqu'elles éclairent la physique, et de nombreux exemples travaillés complètent l'exposition théorique.",
-      translationWarning:
-        "Note : ce livre est principalement rédigé en français ; la version anglaise est traduite automatiquement avec Claude Sonnet 4.6.",
       sameAuthorTitle: "Du même auteur",
       sameAuthorBody:
         "Mécanique Quantique — Une Introduction Moderne, un cours compagnon sur la mécanique quantique.",
@@ -491,6 +490,7 @@ export const translations = {
       exercises: "Exercices",
       aboutBook: "À propos du livre",
       author: "Auteur",
+      contact: "Contact",
       copyright: (year: string, author: string) =>
         `© ${year} ${author}. Tous droits réservés.`,
     },
@@ -635,6 +635,7 @@ const partialTranslations: Record<Exclude<Lang, "fr" | "en">, DeepPartial<Transl
       exercises: "Übungen",
       aboutBook: "Über das Buch",
       author: "Autor",
+      contact: "Kontakt",
       copyright: (year: string, author: string) => `© ${year} ${author}. Alle Rechte vorbehalten.`,
     },
     downloads: {
@@ -654,6 +655,7 @@ const partialTranslations: Record<Exclude<Lang, "fr" | "en">, DeepPartial<Transl
       authorLinkLinkedIn: "LinkedIn",
       authorLinkGoogleScholar: "Google Scholar",
       authorLinkGitHub: "GitHub",
+      authorLinkContact: "Kontakt",
       aboutProjectTitle: "Über das Projekt",
       aboutProjectLead:
         "Diese Website und das Buch befinden sich in Entwicklung. Lektionen und Übungen werden nach und nach hinzugefügt. Das Buch wird vom Autor auf Französisch verfasst; die Inhalte in den anderen Sprachen werden durch automatisierte (KI-)Übersetzung erstellt.",
@@ -661,11 +663,9 @@ const partialTranslations: Record<Exclude<Lang, "fr" | "en">, DeepPartial<Transl
       aboutProjectOutlineBody:
         "Ein aufbauender Kurs zur Thermodynamik, von den Grundprinzipien bis zu fortgeschritteneren Entwicklungen.",
       aboutProjectStatusBody:
-        "Aktueller Stand: Die Lektionen 1 bis einschließlich 6 sind fertiggestellt, mit Übungen und Quizfragen.",
+        "Aktueller Stand: Die Lektionen 1 bis einschließlich 7 sind fertiggestellt, mit Übungen und Quizfragen.",
       aboutBookBody2:
         "Der Text entwickelt die Thermodynamik ausgehend von den ersten Prinzipien. Beweise werden vollständig angegeben, wann immer sie die Physik verdeutlichen, und zahlreiche durchgerechnete Beispiele ergänzen die theoretische Darstellung.",
-      translationWarning:
-        "Hinweis: Dieses Buch ist ursprünglich auf Französisch verfasst; diese Fassung wird automatisch mit Claude Sonnet 4.6 übersetzt.",
       sameAuthorTitle: "Vom selben Autor",
       sameAuthorBody:
         "Quantenmechanik — Eine moderne Einführung, ein begleitender Kurs zur Quantenmechanik.",
@@ -770,6 +770,7 @@ const partialTranslations: Record<Exclude<Lang, "fr" | "en">, DeepPartial<Transl
       exercises: "Ejercicios",
       aboutBook: "Acerca del libro",
       author: "Autor",
+      contact: "Contacto",
       copyright: (year: string, author: string) => `© ${year} ${author}. Todos los derechos reservados.`,
     },
     downloads: {
@@ -789,6 +790,7 @@ const partialTranslations: Record<Exclude<Lang, "fr" | "en">, DeepPartial<Transl
       authorLinkLinkedIn: "LinkedIn",
       authorLinkGoogleScholar: "Google Scholar",
       authorLinkGitHub: "GitHub",
+      authorLinkContact: "Contacto",
       aboutProjectTitle: "Sobre el proyecto",
       aboutProjectLead:
         "Este sitio y el libro están en desarrollo. Las lecciones y los ejercicios se irán publicando progresivamente. El libro está escrito en francés por el autor; los contenidos ofrecidos en otros idiomas se producen mediante traducción automática (IA).",
@@ -796,11 +798,9 @@ const partialTranslations: Record<Exclude<Lang, "fr" | "en">, DeepPartial<Transl
       aboutProjectOutlineBody:
         "Un curso progresivo de termodinámica, desde los principios fundacionales hasta desarrollos más avanzados.",
       aboutProjectStatusBody:
-        "Estado actual: las lecciones de la 1 a la 6, ambas incluidas, están terminadas, con ejercicios y cuestionarios.",
+        "Estado actual: las lecciones de la 1 a la 7, ambas incluidas, están terminadas, con ejercicios y cuestionarios.",
       aboutBookBody2:
         "El texto desarrolla la termodinámica desde los primeros principios. Las demostraciones se presentan en su totalidad cuando aclaran la física, y numerosos ejemplos resueltos complementan la exposición teórica.",
-      translationWarning:
-        "Aviso: este libro está escrito originalmente en francés; esta versión se traduce automáticamente con Claude Sonnet 4.6.",
       sameAuthorTitle: "Del mismo autor",
       sameAuthorBody:
         "Mecánica Cuántica — Una Introducción Moderna, un curso complementario sobre mecánica cuántica.",
@@ -905,6 +905,7 @@ const partialTranslations: Record<Exclude<Lang, "fr" | "en">, DeepPartial<Transl
       exercises: "Exercícios",
       aboutBook: "Sobre o livro",
       author: "Autor",
+      contact: "Contato",
       copyright: (year: string, author: string) => `© ${year} ${author}. Todos os direitos reservados.`,
     },
     downloads: {
@@ -924,6 +925,7 @@ const partialTranslations: Record<Exclude<Lang, "fr" | "en">, DeepPartial<Transl
       authorLinkLinkedIn: "LinkedIn",
       authorLinkGoogleScholar: "Google Scholar",
       authorLinkGitHub: "GitHub",
+      authorLinkContact: "Contato",
       aboutProjectTitle: "Sobre o projeto",
       aboutProjectLead:
         "Este site e o livro estão em desenvolvimento. As lições e os exercícios serão publicados progressivamente. O livro é escrito em francês pelo autor; os conteúdos oferecidos em outros idiomas são produzidos por tradução automática (IA).",
@@ -931,11 +933,9 @@ const partialTranslations: Record<Exclude<Lang, "fr" | "en">, DeepPartial<Transl
       aboutProjectOutlineBody:
         "Um curso progressivo de termodinâmica, dos princípios fundadores a desenvolvimentos mais avançados.",
       aboutProjectStatusBody:
-        "Estado atual: as lições de 1 a 6 estão concluídas, com exercícios e quizzes.",
+        "Estado atual: as lições de 1 a 7 estão concluídas, com exercícios e quizzes.",
       aboutBookBody2:
         "O texto desenvolve a termodinâmica a partir dos primeiros princípios. As provas são apresentadas integralmente sempre que esclarecem a física, e numerosos exemplos resolvidos complementam a exposição teórica.",
-      translationWarning:
-        "Aviso: este livro é originalmente escrito em francês; esta versão é traduzida automaticamente com Claude Sonnet 4.6.",
       sameAuthorTitle: "Do mesmo autor",
       sameAuthorBody:
         "Mecânica Quântica — Uma Introdução Moderna, um curso complementar sobre mecânica quântica.",
@@ -1040,6 +1040,7 @@ const partialTranslations: Record<Exclude<Lang, "fr" | "en">, DeepPartial<Transl
       exercises: "Esercizi",
       aboutBook: "Il libro",
       author: "Autore",
+      contact: "Contatto",
       copyright: (year: string, author: string) => `© ${year} ${author}. Tutti i diritti riservati.`,
     },
     downloads: {
@@ -1059,6 +1060,7 @@ const partialTranslations: Record<Exclude<Lang, "fr" | "en">, DeepPartial<Transl
       authorLinkLinkedIn: "LinkedIn",
       authorLinkGoogleScholar: "Google Scholar",
       authorLinkGitHub: "GitHub",
+      authorLinkContact: "Contatto",
       aboutProjectTitle: "Sul progetto",
       aboutProjectLead:
         "Questo sito e il libro sono in fase di sviluppo. Lezioni ed esercizi saranno pubblicati progressivamente. Il libro è scritto in francese dall'autore; i contenuti proposti nelle altre lingue sono prodotti tramite traduzione automatica (IA).",
@@ -1066,11 +1068,9 @@ const partialTranslations: Record<Exclude<Lang, "fr" | "en">, DeepPartial<Transl
       aboutProjectOutlineBody:
         "Un corso progressivo di termodinamica, dai principi fondanti agli sviluppi più avanzati.",
       aboutProjectStatusBody:
-        "Stato attuale: le lezioni dalla 1 alla 6 inclusa sono complete, con esercizi e quiz.",
+        "Stato attuale: le lezioni dalla 1 alla 7 inclusa sono complete, con esercizi e quiz.",
       aboutBookBody2:
         "Il testo sviluppa la termodinamica a partire dai primi principi. Le dimostrazioni sono fornite per intero ogniqualvolta chiariscono la fisica, e numerosi esempi svolti completano l'esposizione teorica.",
-      translationWarning:
-        "Avviso: questo libro è scritto originariamente in francese; questa versione è tradotta automaticamente con Claude Sonnet 4.6.",
       sameAuthorTitle: "Dello stesso autore",
       sameAuthorBody:
         "Meccanica Quantistica — Un'Introduzione Moderna, un corso complementare sulla meccanica quantistica.",
@@ -1175,6 +1175,7 @@ const partialTranslations: Record<Exclude<Lang, "fr" | "en">, DeepPartial<Transl
       exercises: "Ćwiczenia",
       aboutBook: "O książce",
       author: "Autor",
+      contact: "Kontakt",
       copyright: (year: string, author: string) => `© ${year} ${author}. Wszelkie prawa zastrzeżone.`,
     },
     downloads: {
@@ -1194,6 +1195,7 @@ const partialTranslations: Record<Exclude<Lang, "fr" | "en">, DeepPartial<Transl
       authorLinkLinkedIn: "LinkedIn",
       authorLinkGoogleScholar: "Google Scholar",
       authorLinkGitHub: "GitHub",
+      authorLinkContact: "Kontakt",
       aboutProjectTitle: "O projekcie",
       aboutProjectLead:
         "Ta strona i książka są w trakcie tworzenia. Lekcje i ćwiczenia będą dodawane stopniowo. Książka jest napisana po francusku przez autora; treści oferowane w innych językach powstają w wyniku automatycznego (AI) tłumaczenia.",
@@ -1201,11 +1203,9 @@ const partialTranslations: Record<Exclude<Lang, "fr" | "en">, DeepPartial<Transl
       aboutProjectOutlineBody:
         "Stopniowy kurs termodynamiki, od podstawowych zasad po bardziej zaawansowane zagadnienia.",
       aboutProjectStatusBody:
-        "Aktualny stan: lekcje od 1 do 6 włącznie są ukończone, wraz z ćwiczeniami i quizami.",
+        "Aktualny stan: lekcje od 1 do 7 włącznie są ukończone, wraz z ćwiczeniami i quizami.",
       aboutBookBody2:
         "Tekst rozwija termodynamikę od podstawowych zasad. Dowody podane są w pełni, gdy tylko wyjaśniają fizykę, a liczne rozwiązane przykłady uzupełniają wykład teoretyczny.",
-      translationWarning:
-        "Uwaga: ta książka została pierwotnie napisana w języku francuskim; ta wersja jest tłumaczona automatycznie za pomocą Claude Sonnet 4.6.",
       sameAuthorTitle: "Tego samego autora",
       sameAuthorBody:
         "Mechanika kwantowa — nowoczesne wprowadzenie, kurs towarzyszący dotyczący mechaniki kwantowej.",
@@ -1310,6 +1310,7 @@ const partialTranslations: Record<Exclude<Lang, "fr" | "en">, DeepPartial<Transl
       exercises: "Упражнения",
       aboutBook: "О книге",
       author: "Автор",
+      contact: "Контакты",
       copyright: (year: string, author: string) => `© ${year} ${author}. Все права защищены.`,
     },
     downloads: {
@@ -1329,6 +1330,7 @@ const partialTranslations: Record<Exclude<Lang, "fr" | "en">, DeepPartial<Transl
       authorLinkLinkedIn: "LinkedIn",
       authorLinkGoogleScholar: "Google Scholar",
       authorLinkGitHub: "GitHub",
+      authorLinkContact: "Контакты",
       aboutProjectTitle: "О проекте",
       aboutProjectLead:
         "Этот сайт и книга находятся в разработке. Уроки и упражнения будут добавляться постепенно. Книга написана автором на французском языке; материалы на других языках подготовлены с помощью автоматического (ИИ) перевода.",
@@ -1336,11 +1338,9 @@ const partialTranslations: Record<Exclude<Lang, "fr" | "en">, DeepPartial<Transl
       aboutProjectOutlineBody:
         "Последовательный курс термодинамики — от основополагающих принципов до более сложных разделов.",
       aboutProjectStatusBody:
-        "Текущий статус: уроки с 1 по 6 включительно завершены, включая упражнения и тесты.",
+        "Текущий статус: уроки с 1 по 7 включительно завершены, включая упражнения и тесты.",
       aboutBookBody2:
         "Текст излагает термодинамику, начиная с первых принципов. Доказательства приводятся полностью всякий раз, когда они проясняют физику, а многочисленные разобранные примеры дополняют теоретическое изложение.",
-      translationWarning:
-        "Примечание: эта книга изначально написана на французском языке; данная версия переведена автоматически с помощью Claude Sonnet 4.6.",
       sameAuthorTitle: "От того же автора",
       sameAuthorBody:
         "Квантовая механика — современное введение, сопутствующий курс по квантовой механике.",
@@ -1442,6 +1442,7 @@ const partialTranslations: Record<Exclude<Lang, "fr" | "en">, DeepPartial<Transl
       exercises: "练习",
       aboutBook: "关于本书",
       author: "作者",
+      contact: "联系方式",
       copyright: (year: string, author: string) => `© ${year} ${author}。保留所有权利。`,
     },
     downloads: {
@@ -1461,16 +1462,15 @@ const partialTranslations: Record<Exclude<Lang, "fr" | "en">, DeepPartial<Transl
       authorLinkLinkedIn: "LinkedIn",
       authorLinkGoogleScholar: "谷歌学术",
       authorLinkGitHub: "GitHub",
+      authorLinkContact: "联系方式",
       aboutProjectTitle: "关于本项目",
       aboutProjectLead:
         "本网站和本书仍在建设中，课程和练习将陆续发布。本书由作者以法语撰写；其他语言版本的内容均通过自动化（人工智能）翻译生成。",
       aboutProjectOutlineLabel: "计划内容：",
       aboutProjectOutlineBody: "一门循序渐进的热力学课程，从基本原理到更深入的进阶内容。",
-      aboutProjectStatusBody: "当前状态：第1至第6课均已完成，配有练习和测验。",
+      aboutProjectStatusBody: "当前状态：第1至第7课均已完成，配有练习和测验。",
       aboutBookBody2:
         "正文从基本原理出发展开热力学论述。凡有助于澄清物理内涵之处均给出完整证明，并辅以大量已解答的例题来补充理论阐述。",
-      translationWarning:
-        "提示：本书最初以法语撰写；此版本由 Claude Sonnet 4.6 自动翻译生成。",
       sameAuthorTitle: "同一作者的其他作品",
       sameAuthorBody: "《量子力学——现代导论》，一门关于量子力学的配套课程。",
       sameAuthorLink: "在 quantumlectures.org 阅读",
@@ -1572,6 +1572,7 @@ const partialTranslations: Record<Exclude<Lang, "fr" | "en">, DeepPartial<Transl
       exercises: "演習",
       aboutBook: "本書について",
       author: "著者",
+      contact: "お問い合わせ",
       copyright: (year: string, author: string) => `© ${year} ${author}. 無断複写・転載を禁じます。`,
     },
     downloads: {
@@ -1591,6 +1592,7 @@ const partialTranslations: Record<Exclude<Lang, "fr" | "en">, DeepPartial<Transl
       authorLinkLinkedIn: "LinkedIn",
       authorLinkGoogleScholar: "Google Scholar",
       authorLinkGitHub: "GitHub",
+      authorLinkContact: "お問い合わせ",
       aboutProjectTitle: "プロジェクトについて",
       aboutProjectLead:
         "このサイトと本書は現在開発中です。レッスンと演習は順次追加されていきます。本書は著者によってフランス語で執筆されており、他の言語で提供されるコンテンツは自動（AI）翻訳によるものです。",
@@ -1598,11 +1600,9 @@ const partialTranslations: Record<Exclude<Lang, "fr" | "en">, DeepPartial<Transl
       aboutProjectOutlineBody:
         "基礎原理から、より高度な発展的内容までを扱う、段階的な熱力学のコースです。",
       aboutProjectStatusBody:
-        "現在の状況：レッスン1から6まで完成しており、演習問題とクイズも揃っています。",
+        "現在の状況：レッスン1から7まで完成しており、演習問題とクイズも揃っています。",
       aboutBookBody2:
         "本文は第一原理から熱力学を展開します。物理的な理解を助ける場合には証明を省略せずに示し、多数の解答付き例題が理論的な説明を補完します。",
-      translationWarning:
-        "注記：本書はもともとフランス語で書かれています。このバージョンは Claude Sonnet 4.6 によって自動的に翻訳されています。",
       sameAuthorTitle: "同じ著者による他の著作",
       sameAuthorBody: "『量子力学——現代的入門』、量子力学に関する姉妹コースです。",
       sameAuthorLink: "quantumlectures.org で読む",
@@ -1704,6 +1704,7 @@ const partialTranslations: Record<Exclude<Lang, "fr" | "en">, DeepPartial<Transl
       exercises: "연습문제",
       aboutBook: "책 소개",
       author: "저자",
+      contact: "연락처",
       copyright: (year: string, author: string) => `© ${year} ${author}. 모든 권리 보유.`,
     },
     downloads: {
@@ -1723,16 +1724,15 @@ const partialTranslations: Record<Exclude<Lang, "fr" | "en">, DeepPartial<Transl
       authorLinkLinkedIn: "LinkedIn",
       authorLinkGoogleScholar: "Google Scholar",
       authorLinkGitHub: "GitHub",
+      authorLinkContact: "연락처",
       aboutProjectTitle: "프로젝트 소개",
       aboutProjectLead:
         "이 사이트와 책은 현재 개발 중입니다. 강의와 연습문제는 점차적으로 추가될 예정입니다. 이 책은 저자가 프랑스어로 집필했으며, 다른 언어로 제공되는 콘텐츠는 자동(AI) 번역을 통해 제작됩니다.",
       aboutProjectOutlineLabel: "예정된 콘텐츠:",
       aboutProjectOutlineBody: "기초 원리에서부터 더 심화된 내용까지 다루는 단계적인 열역학 강의입니다.",
-      aboutProjectStatusBody: "현재 상태: 1강부터 6강까지 연습문제와 퀴즈를 포함하여 완성되었습니다.",
+      aboutProjectStatusBody: "현재 상태: 1강부터 7강까지 연습문제와 퀴즈를 포함하여 완성되었습니다.",
       aboutBookBody2:
         "본문은 제1원리에서 출발하여 열역학을 전개합니다. 물리적 이해에 도움이 될 때는 증명을 온전히 제시하며, 다수의 풀이 예제가 이론적 설명을 보완합니다.",
-      translationWarning:
-        "안내: 이 책은 원래 프랑스어로 작성되었습니다. 이 버전은 Claude Sonnet 4.6을 통해 자동으로 번역되었습니다.",
       sameAuthorTitle: "동일 저자의 다른 저서",
       sameAuthorBody: "《양자역학 — 현대적 입문》, 양자역학에 관한 자매 강의입니다.",
       sameAuthorLink: "quantumlectures.org 에서 읽기",
@@ -1835,6 +1835,7 @@ const partialTranslations: Record<Exclude<Lang, "fr" | "en">, DeepPartial<Transl
       exercises: "अभ्यास",
       aboutBook: "पुस्तक के बारे में",
       author: "लेखक",
+      contact: "संपर्क",
       copyright: (year: string, author: string) => `© ${year} ${author}. सर्वाधिकार सुरक्षित।`,
     },
     downloads: {
@@ -1854,6 +1855,7 @@ const partialTranslations: Record<Exclude<Lang, "fr" | "en">, DeepPartial<Transl
       authorLinkLinkedIn: "LinkedIn",
       authorLinkGoogleScholar: "Google Scholar",
       authorLinkGitHub: "GitHub",
+      authorLinkContact: "संपर्क",
       aboutProjectTitle: "परियोजना के बारे में",
       aboutProjectLead:
         "यह साइट और पुस्तक विकासाधीन हैं। पाठ और अभ्यास धीरे-धीरे जोड़े जाएंगे। यह पुस्तक लेखक द्वारा फ़्रेंच में लिखी गई है; अन्य भाषाओं में उपलब्ध सामग्री स्वचालित (AI) अनुवाद द्वारा तैयार की जाती है।",
@@ -1861,11 +1863,9 @@ const partialTranslations: Record<Exclude<Lang, "fr" | "en">, DeepPartial<Transl
       aboutProjectOutlineBody:
         "मूल सिद्धांतों से लेकर अधिक उन्नत विकासों तक, ऊष्मागतिकी का एक क्रमिक पाठ्यक्रम।",
       aboutProjectStatusBody:
-        "वर्तमान स्थिति: पाठ 1 से 6 तक अभ्यासों और प्रश्नोत्तरी सहित पूरे हो चुके हैं।",
+        "वर्तमान स्थिति: पाठ 1 से 7 तक अभ्यासों और प्रश्नोत्तरी सहित पूरे हो चुके हैं।",
       aboutBookBody2:
         "यह पाठ मूल सिद्धांतों से ऊष्मागतिकी को विकसित करता है। जहाँ भी भौतिकी को स्पष्ट करने के लिए आवश्यक हो, प्रमाण पूर्ण रूप से दिए गए हैं, और कई हल किए गए उदाहरण सैद्धांतिक विवरण को पूरक करते हैं।",
-      translationWarning:
-        "सूचना: यह पुस्तक मूल रूप से फ़्रेंच में लिखी गई है; यह संस्करण Claude Sonnet 4.6 द्वारा स्वचालित रूप से अनूदित है।",
       sameAuthorTitle: "इसी लेखक की अन्य पुस्तक",
       sameAuthorBody: "क्वांटम यांत्रिकी — एक आधुनिक परिचय, क्वांटम यांत्रिकी पर एक साथी पाठ्यक्रम।",
       sameAuthorLink: "quantumlectures.org पर पढ़ें",
@@ -1967,6 +1967,7 @@ const partialTranslations: Record<Exclude<Lang, "fr" | "en">, DeepPartial<Transl
       exercises: "Bài tập",
       aboutBook: "Giới thiệu về cuốn sách",
       author: "Tác giả",
+      contact: "Liên hệ",
       copyright: (year: string, author: string) => `© ${year} ${author}. Bảo lưu mọi quyền.`,
     },
     downloads: {
@@ -1986,6 +1987,7 @@ const partialTranslations: Record<Exclude<Lang, "fr" | "en">, DeepPartial<Transl
       authorLinkLinkedIn: "LinkedIn",
       authorLinkGoogleScholar: "Google Scholar",
       authorLinkGitHub: "GitHub",
+      authorLinkContact: "Liên hệ",
       aboutProjectTitle: "Về dự án",
       aboutProjectLead:
         "Trang web này và cuốn sách đang trong quá trình phát triển. Các bài học và bài tập sẽ được bổ sung dần dần. Cuốn sách được tác giả viết bằng tiếng Pháp; nội dung được cung cấp bằng các ngôn ngữ khác được tạo ra thông qua dịch thuật tự động (AI).",
@@ -1993,11 +1995,9 @@ const partialTranslations: Record<Exclude<Lang, "fr" | "en">, DeepPartial<Transl
       aboutProjectOutlineBody:
         "Một khóa học nhiệt động lực học theo trình tự, từ các nguyên lý nền tảng đến những phát triển nâng cao hơn.",
       aboutProjectStatusBody:
-        "Tình trạng hiện tại: các bài từ 1 đến 6 đã hoàn thiện, kèm bài tập và câu hỏi trắc nghiệm.",
+        "Tình trạng hiện tại: các bài từ 1 đến 7 đã hoàn thiện, kèm bài tập và câu hỏi trắc nghiệm.",
       aboutBookBody2:
         "Văn bản trình bày nhiệt động lực học xuất phát từ các nguyên lý đầu tiên. Các chứng minh được trình bày đầy đủ bất cứ khi nào chúng làm rõ vật lý, và nhiều ví dụ có lời giải bổ sung cho phần trình bày lý thuyết.",
-      translationWarning:
-        "Lưu ý: cuốn sách này ban đầu được viết bằng tiếng Pháp; phiên bản này được dịch tự động bằng Claude Sonnet 4.6.",
       sameAuthorTitle: "Cùng tác giả",
       sameAuthorBody:
         "Cơ học lượng tử — Một dẫn nhập hiện đại, một khóa học đồng hành về cơ học lượng tử.",
@@ -2100,6 +2100,7 @@ const partialTranslations: Record<Exclude<Lang, "fr" | "en">, DeepPartial<Transl
       exercises: "التمارين",
       aboutBook: "عن الكتاب",
       author: "المؤلف",
+      contact: "تواصل",
       copyright: (year: string, author: string) => `© ${year} ${author}. جميع الحقوق محفوظة.`,
     },
     downloads: {
@@ -2119,6 +2120,7 @@ const partialTranslations: Record<Exclude<Lang, "fr" | "en">, DeepPartial<Transl
       authorLinkLinkedIn: "LinkedIn",
       authorLinkGoogleScholar: "Google Scholar",
       authorLinkGitHub: "GitHub",
+      authorLinkContact: "تواصل",
       aboutProjectTitle: "عن المشروع",
       aboutProjectLead:
         "هذا الموقع وهذا الكتاب قيد التطوير. سيتم إضافة الدروس والتمارين تدريجياً. الكتاب مكتوب باللغة الفرنسية بقلم المؤلف؛ أما المحتويات المتاحة باللغات الأخرى فهي مُنتَجة عبر الترجمة الآلية (بالذكاء الاصطناعي).",
@@ -2126,11 +2128,9 @@ const partialTranslations: Record<Exclude<Lang, "fr" | "en">, DeepPartial<Transl
       aboutProjectOutlineBody:
         "مقرر تدريجي في الديناميكا الحرارية، من المبادئ التأسيسية إلى التطورات الأكثر تقدماً.",
       aboutProjectStatusBody:
-        "الوضع الحالي: اكتملت الدروس من 1 إلى 6، شاملةً التمارين والاختبارات القصيرة.",
+        "الوضع الحالي: اكتملت الدروس من 1 إلى 7، شاملةً التمارين والاختبارات القصيرة.",
       aboutBookBody2:
         "يطوّر النص الديناميكا الحرارية انطلاقاً من المبادئ الأولى. تُقدَّم البراهين كاملة كلما أوضحت الجانب الفيزيائي، وتُكمّل العديد من الأمثلة المحلولة العرض النظري.",
-      translationWarning:
-        "تنبيه: هذا الكتاب مكتوب أصلاً باللغة الفرنسية؛ وتُترجم هذه النسخة تلقائياً باستخدام Claude Sonnet 4.6.",
       sameAuthorTitle: "من نفس المؤلف",
       sameAuthorBody: "ميكانيكا الكم — مقدمة حديثة، مقرر مصاحب حول ميكانيكا الكم.",
       sameAuthorLink: "اقرأه على quantumlectures.org",
@@ -2232,6 +2232,7 @@ const partialTranslations: Record<Exclude<Lang, "fr" | "en">, DeepPartial<Transl
       exercises: "Latihan",
       aboutBook: "Tentang Buku",
       author: "Penulis",
+      contact: "Kontak",
       copyright: (year: string, author: string) => `© ${year} ${author}. Hak cipta dilindungi.`,
     },
     downloads: {
@@ -2251,6 +2252,7 @@ const partialTranslations: Record<Exclude<Lang, "fr" | "en">, DeepPartial<Transl
       authorLinkLinkedIn: "LinkedIn",
       authorLinkGoogleScholar: "Google Scholar",
       authorLinkGitHub: "GitHub",
+      authorLinkContact: "Kontak",
       aboutProjectTitle: "Tentang Proyek",
       aboutProjectLead:
         "Situs dan buku ini sedang dikembangkan. Pelajaran dan latihan akan ditambahkan secara bertahap. Buku ini ditulis dalam bahasa Prancis oleh penulis; konten dalam bahasa lain dihasilkan melalui penerjemahan otomatis (AI).",
@@ -2258,11 +2260,9 @@ const partialTranslations: Record<Exclude<Lang, "fr" | "en">, DeepPartial<Transl
       aboutProjectOutlineBody:
         "Kuliah termodinamika yang disusun bertahap, dari prinsip-prinsip dasar hingga perkembangan yang lebih lanjut.",
       aboutProjectStatusBody:
-        "Status saat ini: pelajaran 1 sampai 6 telah selesai, lengkap dengan latihan dan kuis.",
+        "Status saat ini: pelajaran 1 sampai 7 telah selesai, lengkap dengan latihan dan kuis.",
       aboutBookBody2:
         "Buku ini mengembangkan termodinamika dari prinsip-prinsip pertama. Pembuktian diberikan secara lengkap setiap kali dapat memperjelas fisikanya, dan banyak contoh dengan penyelesaian melengkapi uraian teoretis.",
-      translationWarning:
-        "Peringatan: buku ini pada awalnya ditulis dalam bahasa Prancis; versi ini diterjemahkan secara otomatis dengan bantuan kecerdasan buatan.",
       sameAuthorTitle: "Dari Penulis yang Sama",
       sameAuthorBody:
         "Mekanika Kuantum — Pengantar Modern, kuliah pendamping mengenai mekanika kuantum.",
@@ -2365,6 +2365,7 @@ const partialTranslations: Record<Exclude<Lang, "fr" | "en">, DeepPartial<Transl
       exercises: "Alıştırmalar",
       aboutBook: "Kitap Hakkında",
       author: "Yazar",
+      contact: "İletişim",
       copyright: (year: string, author: string) => `© ${year} ${author}. Tüm hakları saklıdır.`,
     },
     downloads: {
@@ -2384,6 +2385,7 @@ const partialTranslations: Record<Exclude<Lang, "fr" | "en">, DeepPartial<Transl
       authorLinkLinkedIn: "LinkedIn",
       authorLinkGoogleScholar: "Google Scholar",
       authorLinkGitHub: "GitHub",
+      authorLinkContact: "İletişim",
       aboutProjectTitle: "Proje Hakkında",
       aboutProjectLead:
         "Bu site ve kitap geliştirme aşamasındadır. Dersler ve alıştırmalar zaman içinde eklenecektir. Kitap yazar tarafından Fransızca kaleme alınmakta; diğer dillerde sunulan içerikler otomatik (yapay zekâ destekli) çeviriyle üretilmektedir.",
@@ -2391,11 +2393,9 @@ const partialTranslations: Record<Exclude<Lang, "fr" | "en">, DeepPartial<Transl
       aboutProjectOutlineBody:
         "Temel ilkelerden daha ileri gelişmelere uzanan aşamalı bir termodinamik dersi.",
       aboutProjectStatusBody:
-        "Güncel durum: 1’den 6’ya kadar tüm dersler, alıştırmalar ve kısa sınavlarla birlikte tamamlandı.",
+        "Güncel durum: 1’den 7’ye kadar tüm dersler, alıştırmalar ve kısa sınavlarla birlikte tamamlandı.",
       aboutBookBody2:
         "Metin, termodinamiği temel ilkelerden başlayarak geliştirir. Fiziği açıklığa kavuşturduğu durumlarda kanıtlar eksiksiz verilir; çok sayıda çözümlü örnek de kuramsal anlatımı tamamlar.",
-      translationWarning:
-        "Uyarı: Bu kitap aslında Fransızca yazılmıştır; bu sürüm yapay zekâ yardımıyla otomatik olarak çevrilmiştir.",
       sameAuthorTitle: "Aynı Yazardan",
       sameAuthorBody:
         "Kuantum Mekaniği — Modern Bir Giriş, kuantum mekaniği üzerine tamamlayıcı bir ders.",
@@ -2500,6 +2500,7 @@ const partialTranslations: Record<Exclude<Lang, "fr" | "en">, DeepPartial<Transl
       exercises: "অনুশীলনী",
       aboutBook: "বইটি সম্পর্কে",
       author: "লেখক",
+      contact: "যোগাযোগ",
       copyright: (year: string, author: string) => `© ${year} ${author}. সর্বস্বত্ব সংরক্ষিত।`,
     },
     downloads: {
@@ -2519,6 +2520,7 @@ const partialTranslations: Record<Exclude<Lang, "fr" | "en">, DeepPartial<Transl
       authorLinkLinkedIn: "LinkedIn",
       authorLinkGoogleScholar: "Google Scholar",
       authorLinkGitHub: "GitHub",
+      authorLinkContact: "যোগাযোগ",
       aboutProjectTitle: "প্রকল্প সম্পর্কে",
       aboutProjectLead:
         "এই ওয়েবসাইট এবং বইটি উন্নয়নাধীন। পাঠ ও অনুশীলনী ধীরে ধীরে যোগ করা হবে। বইটি লেখক দ্বারা ফরাসি ভাষায় রচিত; অন্যান্য ভাষায় প্রদত্ত বিষয়বস্তু স্বয়ংক্রিয় (AI) অনুবাদের মাধ্যমে তৈরি।",
@@ -2526,11 +2528,9 @@ const partialTranslations: Record<Exclude<Lang, "fr" | "en">, DeepPartial<Transl
       aboutProjectOutlineBody:
         "তাপগতিবিদ্যার একটি ক্রমবর্ধমান কোর্স, মৌলিক নীতি থেকে শুরু করে আরও উচ্চতর বিকাশ পর্যন্ত।",
       aboutProjectStatusBody:
-        "বর্তমান অবস্থা: ১ থেকে ৬ নম্বর পাঠ অনুশীলনী ও কুইজসহ সম্পূর্ণ হয়েছে।",
+        "বর্তমান অবস্থা: ১ থেকে ৭ নম্বর পাঠ অনুশীলনী ও কুইজসহ সম্পূর্ণ হয়েছে।",
       aboutBookBody2:
         "এই পাঠ্য প্রাথমিক নীতি থেকে তাপগতিবিদ্যা বিকশিত করে। প্রমাণগুলি সম্পূর্ণভাবে দেওয়া হয় যখনই তা পদার্থবিজ্ঞানকে স্পষ্ট করে, এবং বহু সমাধানকৃত উদাহরণ তাত্ত্বিক বিবরণের পরিপূরক।",
-      translationWarning:
-        "সতর্কতা: এই বইটি মূলত ফরাসি ভাষায় রচিত; এই সংস্করণটি কৃত্রিম বুদ্ধিমত্তার সহায়তায় স্বয়ংক্রিয়ভাবে অনূদিত।",
       sameAuthorTitle: "একই লেখকের অন্যান্য বই",
       sameAuthorBody:
         "Quantum Mechanics — A Modern Introduction, কোয়ান্টাম বলবিদ্যার উপর একটি সহযোগী কোর্স।",
@@ -2633,6 +2633,7 @@ const partialTranslations: Record<Exclude<Lang, "fr" | "en">, DeepPartial<Transl
       exercises: "مشقیں",
       aboutBook: "کتاب کے بارے میں",
       author: "مصنف",
+      contact: "رابطہ",
       copyright: (year: string, author: string) => `© ${year} ${author}۔ جملہ حقوق محفوظ ہیں۔`,
     },
     downloads: {
@@ -2652,6 +2653,7 @@ const partialTranslations: Record<Exclude<Lang, "fr" | "en">, DeepPartial<Transl
       authorLinkLinkedIn: "LinkedIn",
       authorLinkGoogleScholar: "Google Scholar",
       authorLinkGitHub: "GitHub",
+      authorLinkContact: "رابطہ",
       aboutProjectTitle: "پروجیکٹ کے بارے میں",
       aboutProjectLead:
         "یہ ویب سائٹ اور یہ کتاب زیرِ تکمیل ہیں۔ اسباق اور مشقیں بتدریج شامل کی جائیں گی۔ یہ کتاب مصنف نے فرانسیسی زبان میں لکھی ہے؛ دیگر زبانوں میں پیش کردہ مواد خودکار (AI) ترجمے کے ذریعے تیار کیا گیا ہے۔",
@@ -2659,11 +2661,9 @@ const partialTranslations: Record<Exclude<Lang, "fr" | "en">, DeepPartial<Transl
       aboutProjectOutlineBody:
         "حرارتی حرکیات کا ایک بتدریج کورس، بنیادی اصولوں سے لے کر مزید اعلیٰ پیش رفتوں تک۔",
       aboutProjectStatusBody:
-        "موجودہ حیثیت: اسباق 1 سے 6 تک مشقوں اور کوئز سمیت مکمل ہو چکے ہیں۔",
+        "موجودہ حیثیت: اسباق 1 سے 7 تک مشقوں اور کوئز سمیت مکمل ہو چکے ہیں۔",
       aboutBookBody2:
         "یہ متن حرارتی حرکیات کو بنیادی اصولوں سے شروع کرتے ہوئے آگے بڑھاتا ہے۔ ثبوت مکمل طور پر دیے جاتے ہیں جب بھی وہ طبیعیات کو واضح کرتے ہیں، اور بہت سی حل شدہ مثالیں نظری وضاحت کی تکمیل کرتی ہیں۔",
-      translationWarning:
-        "انتباہ: یہ کتاب بنیادی طور پر فرانسیسی زبان میں لکھی گئی ہے؛ یہ نسخہ مصنوعی ذہانت کی مدد سے خودکار طور پر ترجمہ کیا گیا ہے۔",
       sameAuthorTitle: "اسی مصنف کی دیگر تصانیف",
       sameAuthorBody: "Quantum Mechanics — A Modern Introduction، کوانٹم میکانکس پر ایک ہمراہ کورس۔",
       sameAuthorLink: "quantumlectures.org پر پڑھیں",
@@ -2765,6 +2765,7 @@ const partialTranslations: Record<Exclude<Lang, "fr" | "en">, DeepPartial<Transl
       exercises: "Mazoezi",
       aboutBook: "Kuhusu Kitabu",
       author: "Mwandishi",
+      contact: "Mawasiliano",
       copyright: (year: string, author: string) => `© ${year} ${author}. Haki zote zimehifadhiwa.`,
     },
     downloads: {
@@ -2784,6 +2785,7 @@ const partialTranslations: Record<Exclude<Lang, "fr" | "en">, DeepPartial<Transl
       authorLinkLinkedIn: "LinkedIn",
       authorLinkGoogleScholar: "Google Scholar",
       authorLinkGitHub: "GitHub",
+      authorLinkContact: "Mawasiliano",
       aboutProjectTitle: "Kuhusu Mradi",
       aboutProjectLead:
         "Tovuti hii na kitabu hiki bado vinaendelezwa. Masomo na mazoezi yataongezwa hatua kwa hatua. Kitabu kimeandikwa kwa Kifaransa na mwandishi; maudhui yanayotolewa katika lugha nyingine yametengenezwa kwa tafsiri ya kiotomatiki (AI).",
@@ -2791,11 +2793,9 @@ const partialTranslations: Record<Exclude<Lang, "fr" | "en">, DeepPartial<Transl
       aboutProjectOutlineBody:
         "Kozi inayoendelea ya thermodynamiki, kutoka kanuni za msingi hadi maendeleo ya kina zaidi.",
       aboutProjectStatusBody:
-        "Hali ya sasa: masomo ya 1 hadi 6 yamekamilika, pamoja na mazoezi na maswali ya kujipima.",
+        "Hali ya sasa: masomo ya 1 hadi 7 yamekamilika, pamoja na mazoezi na maswali ya kujipima.",
       aboutBookBody2:
         "Maandishi haya yanaendeleza thermodynamiki kutoka kanuni za kwanza. Uthibitisho hutolewa kikamilifu kila unapofafanua fizikia, na mifano mingi iliyofanyiwa kazi inakamilisha maelezo ya kinadharia.",
-      translationWarning:
-        "Onyo: kitabu hiki kiliandikwa awali kwa Kifaransa; toleo hili limetafsiriwa kiotomatiki kwa msaada wa akili bandia.",
       sameAuthorTitle: "Kutoka kwa Mwandishi Huyo Huyo",
       sameAuthorBody:
         "Quantum Mechanics — A Modern Introduction, kozi shirikishi kuhusu mekanika ya kwantamu.",
@@ -2898,6 +2898,7 @@ const partialTranslations: Record<Exclude<Lang, "fr" | "en">, DeepPartial<Transl
       exercises: "تمرین‌ها",
       aboutBook: "دربارهٔ کتاب",
       author: "نویسنده",
+      contact: "تماس",
       copyright: (year: string, author: string) => `© ${year} ${author}. تمامی حقوق محفوظ است.`,
     },
     downloads: {
@@ -2917,6 +2918,7 @@ const partialTranslations: Record<Exclude<Lang, "fr" | "en">, DeepPartial<Transl
       authorLinkLinkedIn: "LinkedIn",
       authorLinkGoogleScholar: "Google Scholar",
       authorLinkGitHub: "GitHub",
+      authorLinkContact: "تماس",
       aboutProjectTitle: "دربارهٔ پروژه",
       aboutProjectLead:
         "این وب‌سایت و این کتاب هنوز در حال توسعه هستند. درس‌ها و تمرین‌ها به‌تدریج افزوده خواهند شد. کتاب به زبان فرانسه توسط نویسنده نوشته شده است؛ محتوای ارائه‌شده به زبان‌های دیگر از طریق ترجمهٔ خودکار (هوش مصنوعی) تولید می‌شود.",
@@ -2924,11 +2926,9 @@ const partialTranslations: Record<Exclude<Lang, "fr" | "en">, DeepPartial<Transl
       aboutProjectOutlineBody:
         "دوره‌ای تدریجی در ترمودینامیک، از اصول بنیادین تا پیشرفت‌های پیشرفته‌تر.",
       aboutProjectStatusBody:
-        "وضعیت فعلی: درس‌های ۱ تا ۶، همراه با تمرین‌ها و آزمون‌های کوتاه، تکمیل شده‌اند.",
+        "وضعیت فعلی: درس‌های ۱ تا ۷، همراه با تمرین‌ها و آزمون‌های کوتاه، تکمیل شده‌اند.",
       aboutBookBody2:
         "این متن ترمودینامیک را از اصول نخستین بسط می‌دهد. اثبات‌ها هر جا که به روشن‌شدن فیزیک کمک کنند به‌طور کامل ارائه می‌شوند، و مثال‌های حل‌شدهٔ فراوان مکمل ارائهٔ نظری هستند.",
-      translationWarning:
-        "هشدار: این کتاب در اصل به زبان فرانسه نوشته شده است؛ این نسخه با کمک هوش مصنوعی به‌صورت خودکار ترجمه شده است.",
       sameAuthorTitle: "از همین نویسنده",
       sameAuthorBody:
         "Quantum Mechanics — A Modern Introduction، دوره‌ای همراه دربارهٔ مکانیک کوانتومی.",

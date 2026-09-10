@@ -1,6 +1,6 @@
 "use client";
 import Link from "next/link";
-import { bookMeta } from "@/lib/chapters";
+import { bookMeta, contactEmail } from "@/lib/chapters";
 import { useLang } from "@/app/context/LangContext";
 
 export function Footer() {
@@ -113,10 +113,34 @@ export function Footer() {
               color: "var(--text-dim)",
               fontSize: "0.85rem",
               fontFamily: "var(--font-crimson)",
+              marginBottom: "0.75rem",
             }}
           >
             {bookMeta.affiliation}
           </p>
+          <p
+            style={{
+              fontFamily: "var(--font-inter)",
+              fontSize: "0.75rem",
+              textTransform: "uppercase",
+              letterSpacing: "0.1em",
+              color: "var(--text-dim)",
+              marginBottom: "0.35rem",
+            }}
+          >
+            {t.footer.contact}
+          </p>
+          <a
+            href={`mailto:${contactEmail}`}
+            style={{
+              color: "var(--text-secondary)",
+              fontSize: "0.9rem",
+              fontFamily: "var(--font-crimson)",
+              textDecoration: "none",
+            }}
+          >
+            {contactEmail}
+          </a>
         </div>
       </div>
       <div

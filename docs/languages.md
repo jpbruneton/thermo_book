@@ -127,8 +127,7 @@ et les renvois à reprendre avec la suite.
   `/xx` au clic, puisque l'accueil y est réellement disponible.
 - La page « à propos » explique elle-même que le livre est écrit en français
   par l'auteur, et que le contenu dans les autres langues est produit par
-  traduction automatique (IA) — voir `about.aboutProjectLead` et
-  `about.translationWarning` (affiché pour toute langue ≠ fr).
+  traduction automatique (IA) — voir `about.aboutProjectLead`.
 - **Slugs d'URL localisés** (`lib/i18n.ts` `sectionSlugs` + `next.config.js`
   `LOCALIZED_SECTION_SLUGS`, à garder synchronisés) : pour les langues à
   alphabet latin (fr, de, es, pt, it, pl, vi, id, tr, sw), les mots de section dans l'URL sont

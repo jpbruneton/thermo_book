@@ -61,6 +61,8 @@ export const bookMeta = {
   keywords: ["thermodynamique", "thermodynamics", "entropie", "premier principe", "second principe", "Maxwell", "Onsager", "endoréversibilité"],
 };
 
+export const contactEmail = "contactlearnthermo@gmail.com";
+
 /** Title plus optional subtitle, for SEO and Open Graph (no trailing colon if subtitle empty). */
 export function bookMetaDisplayTitle(): string {
   const sub = bookMeta.subtitle.trim();
