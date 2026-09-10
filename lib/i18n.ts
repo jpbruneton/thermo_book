@@ -179,6 +179,10 @@ export const translations = {
       downloads: "Downloads",
       about: "About",
     },
+    share: {
+      label: "Share this page",
+      copied: "Link copied!",
+    },
     home: {
       badge: "Free Online Edition",
       readOnline: "Read Online →",
@@ -341,6 +345,10 @@ export const translations = {
       quiz: "Quiz",
       downloads: "Téléchargements",
       about: "À propos",
+    },
+    share: {
+      label: "Partager cette page",
+      copied: "Lien copié !",
     },
     home: {
       badge: "Édition gratuite en ligne",
