@@ -173,8 +173,8 @@ export const chapterTranslations: Record<Exclude<Lang, "fr" | "en">, ThemeTransl
       ],
     },
     "machines-thermiques": {
-      title: "Wärmekraftmaschinen",
-      description: "Zweispeicher-Kreisprozesse, der Carnot-Zyklus, Wirkungsgrade und Formulierungen des zweiten Hauptsatzes.",
+      title: "Wärmekraftmaschinen und Kühlschränke",
+      description: "Thermische Kreisprozesse, ihren Wirkungsgrad und die Leistungsfähigkeit von Kältemaschinen untersuchen.",
       topics: [
         "Wärmekraftmaschinen",
         "Dampfmaschine",
@@ -186,6 +186,11 @@ export const chapterTranslations: Record<Exclude<Lang, "fr" | "en">, ThemeTransl
         "TS-Diagramm",
         "Rankine-Zyklus",
       ],
+    },
+    "thermodynamique-du-rayonnement": {
+      title: "Thermodynamik der Strahlung",
+      description: "Wärmestrahlung und die Eigenschaften des schwarzen Körpers beschreiben.",
+      topics: [],
     },
     "geometrie-differentielle": {
       title: "Differentialgeometrie in der Thermodynamik",
@@ -377,8 +382,8 @@ export const chapterTranslations: Record<Exclude<Lang, "fr" | "en">, ThemeTransl
       ],
     },
     "machines-thermiques": {
-      title: "Máquinas térmicas",
-      description: "Ciclos ditérmicos, el ciclo de Carnot, rendimientos y enunciados del segundo principio.",
+      title: "Máquinas térmicas y frigoríficos",
+      description: "Estudiar los ciclos térmicos, su rendimiento y la eficiencia de las máquinas frigoríficas.",
       topics: [
         "Máquinas térmicas",
         "Máquina de vapor",
@@ -390,6 +395,11 @@ export const chapterTranslations: Record<Exclude<Lang, "fr" | "en">, ThemeTransl
         "Diagrama TS",
         "Ciclo de Rankine",
       ],
+    },
+    "thermodynamique-du-rayonnement": {
+      title: "Termodinámica de la radiación",
+      description: "Describir la radiación térmica y las propiedades del cuerpo negro.",
+      topics: [],
     },
     "geometrie-differentielle": {
       title: "Geometría diferencial en termodinámica",
@@ -581,8 +591,8 @@ export const chapterTranslations: Record<Exclude<Lang, "fr" | "en">, ThemeTransl
       ],
     },
     "machines-thermiques": {
-      title: "Máquinas térmicas",
-      description: "Ciclos ditérmicos, o ciclo de Carnot, rendimentos e enunciados do segundo princípio.",
+      title: "Máquinas térmicas e frigoríficos",
+      description: "Estudar os ciclos térmicos, o seu rendimento e a eficiência das máquinas frigoríficas.",
       topics: [
         "Máquinas térmicas",
         "Máquina a vapor",
@@ -594,6 +604,11 @@ export const chapterTranslations: Record<Exclude<Lang, "fr" | "en">, ThemeTransl
         "Diagrama TS",
         "Ciclo de Rankine",
       ],
+    },
+    "thermodynamique-du-rayonnement": {
+      title: "Termodinâmica da radiação",
+      description: "Descrever a radiação térmica e as propriedades do corpo negro.",
+      topics: [],
     },
     "geometrie-differentielle": {
       title: "Geometria diferencial em termodinâmica",
@@ -785,8 +800,8 @@ export const chapterTranslations: Record<Exclude<Lang, "fr" | "en">, ThemeTransl
       ],
     },
     "machines-thermiques": {
-      title: "Macchine termiche",
-      description: "Cicli ditermici, il ciclo di Carnot, rendimenti ed enunciati del secondo principio.",
+      title: "Macchine termiche e frigoriferi",
+      description: "Studiare i cicli termici, il loro rendimento e l’efficienza delle macchine frigorifere.",
       topics: [
         "Macchine termiche",
         "Macchina a vapore",
@@ -798,6 +813,11 @@ export const chapterTranslations: Record<Exclude<Lang, "fr" | "en">, ThemeTransl
         "Diagramma TS",
         "Ciclo di Rankine",
       ],
+    },
+    "thermodynamique-du-rayonnement": {
+      title: "Termodinamica della radiazione",
+      description: "Descrivere la radiazione termica e le proprietà del corpo nero.",
+      topics: [],
     },
     "geometrie-differentielle": {
       title: "Geometria differenziale in termodinamica",
@@ -989,8 +1009,8 @@ export const chapterTranslations: Record<Exclude<Lang, "fr" | "en">, ThemeTransl
       ],
     },
     "machines-thermiques": {
-      title: "Silniki cieplne",
-      description: "Cykle dwutermiczne, cykl Carnota, sprawności i sformułowania drugiej zasady.",
+      title: "Maszyny cieplne i lodówki",
+      description: "Badanie cykli cieplnych, ich sprawności i efektywności urządzeń chłodniczych.",
       topics: [
         "Silniki cieplne",
         "Maszyna parowa",
@@ -1002,6 +1022,11 @@ export const chapterTranslations: Record<Exclude<Lang, "fr" | "en">, ThemeTransl
         "Wykres TS",
         "Cykl Rankine'a",
       ],
+    },
+    "thermodynamique-du-rayonnement": {
+      title: "Termodynamika promieniowania",
+      description: "Opis promieniowania cieplnego i właściwości ciała doskonale czarnego.",
+      topics: [],
     },
     "geometrie-differentielle": {
       title: "Geometria różniczkowa w termodynamice",
@@ -1193,8 +1218,8 @@ export const chapterTranslations: Record<Exclude<Lang, "fr" | "en">, ThemeTransl
       ],
     },
     "machines-thermiques": {
-      title: "Тепловые машины",
-      description: "Двухрезервуарные циклы, цикл Карно, КПД и формулировки второго начала.",
+      title: "Тепловые машины и холодильники",
+      description: "Изучение термодинамических циклов, их КПД и эффективности холодильных машин.",
       topics: [
         "Тепловые машины",
         "Паровая машина",
@@ -1206,6 +1231,11 @@ export const chapterTranslations: Record<Exclude<Lang, "fr" | "en">, ThemeTransl
         "TS-диаграмма",
         "Цикл Ренкина",
       ],
+    },
+    "thermodynamique-du-rayonnement": {
+      title: "Термодинамика излучения",
+      description: "Описание теплового излучения и свойств абсолютно чёрного тела.",
+      topics: [],
     },
     "geometrie-differentielle": {
       title: "Дифференциальная геометрия в термодинамике",
@@ -1342,9 +1372,14 @@ export const chapterTranslations: Record<Exclude<Lang, "fr" | "en">, ThemeTransl
       topics: ["相变", "相图", "临界点", "不稳定性", "范德瓦尔斯气体", "等温线", "麦克斯韦等面积法则", "饱和曲线"],
     },
     "machines-thermiques": {
-      title: "热机",
-      description: "双热源循环、卡诺循环、效率与第二定律的表述。",
+      title: "热机与冰箱",
+      description: "研究热力循环、其效率以及制冷机的性能。",
       topics: ["热机", "蒸汽机", "双热源循环", "克劳修斯不等式", "卡诺循环", "效率", "性能系数 (COP)", "TS图", "朗肯循环"],
+    },
+    "thermodynamique-du-rayonnement": {
+      title: "辐射热力学",
+      description: "描述热辐射和黑体的性质。",
+      topics: [],
     },
     "geometrie-differentielle": {
       title: "热力学中的微分几何",
@@ -1494,9 +1529,14 @@ export const chapterTranslations: Record<Exclude<Lang, "fr" | "en">, ThemeTransl
       topics: ["相転移", "相図", "臨界点", "不安定性", "ファンデルワールス気体", "等温線", "マクスウェルの等面積則", "飽和曲線"],
     },
     "machines-thermiques": {
-      title: "熱機関",
-      description: "二熱源サイクル、カルノーサイクル、効率、そして第二法則の諸表現。",
+      title: "熱機関と冷蔵庫",
+      description: "熱力学サイクル、その効率、および冷凍機の性能を学ぶ。",
       topics: ["熱機関", "蒸気機関", "二熱源サイクル", "クラウジウスの不等式", "カルノーサイクル", "効率", "成績係数 (COP)", "TS線図", "ランキンサイクル"],
+    },
+    "thermodynamique-du-rayonnement": {
+      title: "放射の熱力学",
+      description: "熱放射と黒体の性質を記述する。",
+      topics: [],
     },
     "geometrie-differentielle": {
       title: "熱力学における微分幾何学",
@@ -1646,9 +1686,14 @@ export const chapterTranslations: Record<Exclude<Lang, "fr" | "en">, ThemeTransl
       topics: ["상전이", "상평형도", "임계점", "불안정성", "반데르발스 기체", "등온선", "맥스웰 등면적 법칙", "포화 곡선"],
     },
     "machines-thermiques": {
-      title: "열기관",
-      description: "이열원 사이클, 카르노 사이클, 효율, 그리고 제2법칙의 여러 표현.",
+      title: "열기관과 냉장고",
+      description: "열역학적 사이클과 그 효율, 냉동기의 성능을 살펴본다.",
       topics: ["열기관", "증기기관", "이열원 사이클", "클라우지우스 부등식", "카르노 사이클", "효율", "성능계수 (COP)", "TS 선도", "랭킨 사이클"],
+    },
+    "thermodynamique-du-rayonnement": {
+      title: "복사의 열역학",
+      description: "열복사와 흑체의 성질을 설명한다.",
+      topics: [],
     },
     "geometrie-differentielle": {
       title: "열역학의 미분기하학",
@@ -1826,8 +1871,8 @@ export const chapterTranslations: Record<Exclude<Lang, "fr" | "en">, ThemeTransl
       ],
     },
     "machines-thermiques": {
-      title: "ऊष्मा इंजन",
-      description: "द्वि-स्रोत चक्र, कार्नो चक्र, दक्षता और द्वितीय नियम के कथन।",
+      title: "ऊष्मा इंजन और रेफ्रिजरेटर",
+      description: "ऊष्मागतिक चक्रों, उनकी दक्षता और प्रशीतन मशीनों के प्रदर्शन का अध्ययन।",
       topics: [
         "ऊष्मा इंजन",
         "भाप इंजन",
@@ -1839,6 +1884,11 @@ export const chapterTranslations: Record<Exclude<Lang, "fr" | "en">, ThemeTransl
         "TS आरेख",
         "रैंकिन चक्र",
       ],
+    },
+    "thermodynamique-du-rayonnement": {
+      title: "विकिरण की ऊष्मागतिकी",
+      description: "ऊष्मीय विकिरण और कृष्णिका के गुणों का वर्णन।",
+      topics: [],
     },
     "geometrie-differentielle": {
       title: "ऊष्मागतिकी में अवकल ज्यामिति",
@@ -2016,8 +2066,8 @@ export const chapterTranslations: Record<Exclude<Lang, "fr" | "en">, ThemeTransl
       ],
     },
     "machines-thermiques": {
-      title: "Động cơ nhiệt",
-      description: "Chu trình hai nguồn nhiệt, chu trình Carnot, hiệu suất và các phát biểu của định luật thứ hai.",
+      title: "Động cơ nhiệt và tủ lạnh",
+      description: "Nghiên cứu các chu trình nhiệt động, hiệu suất của chúng và hiệu quả của máy lạnh.",
       topics: [
         "Động cơ nhiệt",
         "Máy hơi nước",
@@ -2029,6 +2079,11 @@ export const chapterTranslations: Record<Exclude<Lang, "fr" | "en">, ThemeTransl
         "Giản đồ TS",
         "Chu trình Rankine",
       ],
+    },
+    "thermodynamique-du-rayonnement": {
+      title: "Nhiệt động lực học bức xạ",
+      description: "Mô tả bức xạ nhiệt và các tính chất của vật đen.",
+      topics: [],
     },
     "geometrie-differentielle": {
       title: "Hình học vi phân trong nhiệt động lực học",
@@ -2206,8 +2261,8 @@ export const chapterTranslations: Record<Exclude<Lang, "fr" | "en">, ThemeTransl
       ],
     },
     "machines-thermiques": {
-      title: "المحركات الحرارية",
-      description: "الدورات ثنائية المصدر الحراري، دورة كارنو، الكفاءات، وصيغ المبدأ الثاني.",
+      title: "المحركات الحرارية والثلاجات",
+      description: "دراسة الدورات الحرارية وكفاءتها وأداء آلات التبريد.",
       topics: [
         "المحركات الحرارية",
         "الآلة البخارية",
@@ -2219,6 +2274,11 @@ export const chapterTranslations: Record<Exclude<Lang, "fr" | "en">, ThemeTransl
         "مخطط TS",
         "دورة رانكن",
       ],
+    },
+    "thermodynamique-du-rayonnement": {
+      title: "الديناميكا الحرارية للإشعاع",
+      description: "وصف الإشعاع الحراري وخصائص الجسم الأسود.",
+      topics: [],
     },
     "geometrie-differentielle": {
       title: "الهندسة التفاضلية في الديناميكا الحرارية",
@@ -2411,8 +2471,8 @@ export const chapterTranslations: Record<Exclude<Lang, "fr" | "en">, ThemeTransl
       ],
     },
     "machines-thermiques": {
-      title: "Mesin Kalor",
-      description: "Siklus dua reservoir, siklus Carnot, efisiensi, dan perumusan hukum kedua.",
+      title: "Mesin kalor dan lemari es",
+      description: "Mempelajari siklus termodinamika, efisiensinya, dan kinerja mesin pendingin.",
       topics: [
         "Mesin kalor",
         "Mesin uap",
@@ -2424,6 +2484,11 @@ export const chapterTranslations: Record<Exclude<Lang, "fr" | "en">, ThemeTransl
         "Diagram TS",
         "Siklus Rankine",
       ],
+    },
+    "thermodynamique-du-rayonnement": {
+      title: "Termodinamika radiasi",
+      description: "Menjelaskan radiasi termal dan sifat-sifat benda hitam.",
+      topics: [],
     },
     "geometrie-differentielle": {
       title: "Geometri Diferensial dalam Termodinamika",
@@ -2615,8 +2680,8 @@ export const chapterTranslations: Record<Exclude<Lang, "fr" | "en">, ThemeTransl
       ],
     },
     "machines-thermiques": {
-      title: "Isı Makineleri",
-      description: "İki rezervuarlı çevrimler, Carnot çevrimi, verimler ve ikinci yasanın ifadeleri.",
+      title: "Isı makineleri ve buzdolapları",
+      description: "Termodinamik çevrimleri, verimlerini ve soğutma makinelerinin performansını incelemek.",
       topics: [
         "Isı makineleri",
         "Buhar makinesi",
@@ -2628,6 +2693,11 @@ export const chapterTranslations: Record<Exclude<Lang, "fr" | "en">, ThemeTransl
         "TS diyagramı",
         "Rankine çevrimi",
       ],
+    },
+    "thermodynamique-du-rayonnement": {
+      title: "Işınım termodinamiği",
+      description: "Isıl ışınımı ve kara cismin özelliklerini açıklamak.",
+      topics: [],
     },
     "geometrie-differentielle": {
       title: "Termodinamikte Diferansiyel Geometri",
@@ -2743,9 +2813,14 @@ export const chapterTranslations: Record<Exclude<Lang, "fr" | "en">, ThemeTransl
       topics: ["দশা রূপান্তর", "দশা চিত্র", "সংকট বিন্দু", "অস্থিতিশীলতা", "ভ্যান ডার ওয়ালস গ্যাস", "সমোষ্ণ রেখা", "ম্যাক্সওয়েল নির্মাণ", "সম্পৃক্তি রেখা"],
     },
     "machines-thermiques": {
-      title: "তাপ ইঞ্জিন",
-      description: "দ্বি-রিজার্ভার চক্র, কার্নো চক্র, দক্ষতা এবং দ্বিতীয় সূত্রের বিবৃতি।",
+      title: "তাপ ইঞ্জিন ও রেফ্রিজারেটর",
+      description: "তাপগতীয় চক্র, তাদের দক্ষতা এবং হিমায়ন যন্ত্রের কার্যকারিতা অধ্যয়ন।",
       topics: ["তাপ ইঞ্জিন", "বাষ্প ইঞ্জিন", "দ্বি-রিজার্ভার চক্র", "ক্লসিয়ুস অসমতা", "কার্নো চক্র", "দক্ষতা", "কার্যক্ষমতা গুণাঙ্ক (COP)", "TS চিত্র", "র‍্যাঙ্কাইন চক্র"],
+    },
+    "thermodynamique-du-rayonnement": {
+      title: "বিকিরণের তাপগতিবিদ্যা",
+      description: "তাপীয় বিকিরণ ও কৃষ্ণবস্তুর বৈশিষ্ট্য বর্ণনা।",
+      topics: [],
     },
     "geometrie-differentielle": {
       title: "তাপগতিবিদ্যায় অন্তরক জ্যামিতি",
@@ -2861,9 +2936,14 @@ export const chapterTranslations: Record<Exclude<Lang, "fr" | "en">, ThemeTransl
       topics: ["مرحلاتی تبدیلیاں", "مرحلاتی خاکہ", "نازک نقطہ", "عدم استحکام", "وان ڈیر والز گیس", "ہم حرارت خطوط", "میکسویل تعمیر", "اشباع خط"],
     },
     "machines-thermiques": {
-      title: "حرارتی انجن",
-      description: "دو ذخیروں والے چکر، کارنو چکر، کارکردگی اور دوسرے اصول کے بیانات۔",
+      title: "حرارتی انجن اور ریفریجریٹر",
+      description: "حرارتی حرکیاتی چکروں، ان کی کارکردگی اور تبریدی مشینوں کی افادیت کا مطالعہ۔",
       topics: ["حرارتی انجن", "بھاپ کا انجن", "دو ذخیروں والے چکر", "کلازیئس عدم مساوات", "کارنو چکر", "کارکردگی", "کارکردگی کا ضریب (COP)", "TS خاکہ", "رینکائن چکر"],
+    },
+    "thermodynamique-du-rayonnement": {
+      title: "اشعاع کی حرارتی حرکیات",
+      description: "حرارتی اشعاع اور سیاہ جسم کی خصوصیات کی وضاحت۔",
+      topics: [],
     },
     "geometrie-differentielle": {
       title: "حرارتی حرکیات میں تفرقی جیومیٹری",
@@ -2979,9 +3059,14 @@ export const chapterTranslations: Record<Exclude<Lang, "fr" | "en">, ThemeTransl
       topics: ["Mabadiliko ya awamu", "Mchoro wa awamu", "Kiwango muhimu", "Kutokuwa thabiti", "Gesi ya Van der Waals", "Mistari ya isothermal", "Ujenzi wa Maxwell", "Mkondo wa kueneza"],
     },
     "machines-thermiques": {
-      title: "Injini za Joto",
-      description: "Mizunguko ya hifadhi mbili, mzunguko wa Carnot, ufanisi, na kauli za kanuni ya pili.",
+      title: "Injini za joto na majokofu",
+      description: "Kuchunguza mizunguko ya thermodinamiki, ufanisi wake na utendaji wa mashine za kupooza.",
       topics: ["Injini za joto", "Injini ya mvuke", "Mizunguko ya hifadhi mbili", "Ukosefu wa usawa wa Clausius", "Mzunguko wa Carnot", "Ufanisi", "Mgawo wa utendaji (COP)", "Mchoro wa TS", "Mzunguko wa Rankine"],
+    },
+    "thermodynamique-du-rayonnement": {
+      title: "Thermodinamiki ya mnururisho",
+      description: "Kueleza mnururisho wa joto na sifa za kiwiliwili cheusi.",
+      topics: [],
     },
     "geometrie-differentielle": {
       title: "Jiometri Tofautishi katika Thermodynamiki",
@@ -3097,9 +3182,14 @@ export const chapterTranslations: Record<Exclude<Lang, "fr" | "en">, ThemeTransl
       topics: ["گذارهای فاز", "نمودار فاز", "نقطهٔ بحرانی", "ناپایداری", "گاز ون‌در‌والس", "هم‌دماها", "ساخت ماکسول", "منحنی اشباع"],
     },
     "machines-thermiques": {
-      title: "موتورهای حرارتی",
-      description: "چرخه‌های دومخزنی، چرخهٔ کارنو، بازده‌ها و صورت‌بندی‌های قانون دوم.",
+      title: "موتورهای حرارتی و یخچال‌ها",
+      description: "بررسی چرخه‌های ترمودینامیکی، بازده آن‌ها و کارایی ماشین‌های تبرید.",
       topics: ["موتورهای حرارتی", "موتور بخار", "چرخه‌های دومخزنی", "نامساوی کلازیوس", "چرخهٔ کارنو", "بازده", "ضریب عملکرد (COP)", "نمودار TS", "چرخهٔ رانکین"],
+    },
+    "thermodynamique-du-rayonnement": {
+      title: "ترمودینامیک تابش",
+      description: "توصیف تابش گرمایی و ویژگی‌های جسم سیاه.",
+      topics: [],
     },
     "geometrie-differentielle": {
       title: "هندسهٔ دیفرانسیل در ترمودینامیک",

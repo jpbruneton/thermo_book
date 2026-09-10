@@ -453,11 +453,10 @@ export const themes: Theme[] = [
   makeLecon({
     number: 11,
     slug: "machines-thermiques",
-    titleFr: "Machines thermiques",
-    titleEn: "Heat Engines",
-    descriptionFr: "Cycles dithermes, cycle de Carnot, rendements et énoncés du second principe.",
-    descriptionEn: "Two-reservoir cycles, the Carnot cycle, efficiencies, and statements of the second law.",
-    readingTime: "20 min",
+    titleFr: "Machines thermiques et frigidaires",
+    titleEn: "Heat Engines and Refrigerators",
+    descriptionFr: "Étudier les cycles thermiques, leur rendement et l'efficacité des machines frigorifiques.",
+    descriptionEn: "Study thermodynamic cycles, their efficiency, and the performance of refrigeration machines.",
     topicsFr: [
       "Machines thermiques",
       "Machine à vapeur",
@@ -480,6 +479,14 @@ export const themes: Theme[] = [
       "TS diagram",
       "Rankine cycle",
     ],
+  }),
+  makeLecon({
+    number: 12,
+    slug: "thermodynamique-du-rayonnement",
+    titleFr: "Thermodynamique du rayonnement",
+    titleEn: "Thermodynamics of Radiation",
+    descriptionFr: "Décrire le rayonnement thermique et les propriétés du corps noir.",
+    descriptionEn: "Describe thermal radiation and the properties of a black body.",
   }),
   makeLecon({
     number: 9,
