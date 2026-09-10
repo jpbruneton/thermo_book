@@ -1024,6 +1024,11 @@ a.exercise-index-card-link:focus-visible {
   margin: 0;
 }
 
+.prose-content .latex-equation-math {
+  /* Let the grid cell shrink so KaTeX scrolls inside the available width. */
+  min-width: 0;
+}
+
 .prose-content .latex-equation-number {
   font-family: var(--font-inter);
   font-size: 0.9rem;
@@ -1046,7 +1051,7 @@ a.exercise-index-card-link:focus-visible {
   }
 
   .prose-content .latex-equation {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
     row-gap: 0.25rem;
   }
 

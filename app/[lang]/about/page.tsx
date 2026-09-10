@@ -8,6 +8,10 @@ const AUTHOR_EXTERNAL_LINKS = [
     labelKey: "linkedin" as const,
   },
   {
+    href: "https://x.com/_quantumphy_",
+    labelKey: "x" as const,
+  },
+  {
     href: "https://scholar.google.com/citations?user=_IWT-z0AAAAJ&hl=en&oi=sra",
     labelKey: "scholar" as const,
   },
@@ -72,12 +76,12 @@ export default function AboutPage() {
         {/* Project status */}
         <div style={sectionStyle}>
           <h2 style={h2Style}>{at.aboutProjectTitle}</h2>
-          <p style={{ ...bodyStyle, textAlign: "justify" }}>{at.aboutProjectLead}</p>
-          <p style={{ ...bodyStyle, textAlign: "justify" }}>
+          <p style={{ ...bodyStyle, textAlign: "left" }}>{at.aboutProjectLead}</p>
+          <p style={{ ...bodyStyle, textAlign: "left" }}>
             <strong style={{ fontWeight: 700 }}>{at.aboutProjectOutlineLabel}</strong>{" "}
             {at.aboutProjectOutlineBody}
           </p>
-          <p style={{ ...bodyStyle, marginBottom: 0, textAlign: "justify" }}>
+          <p style={{ ...bodyStyle, marginBottom: 0, textAlign: "left" }}>
             {at.aboutProjectStatusBody}
           </p>
         </div>
@@ -94,7 +98,7 @@ export default function AboutPage() {
                 key={index}
                 style={{
                   ...bodyStyle,
-                  textAlign: "justify",
+                  textAlign: "left",
                   marginBottom:
                     index < arr.length - 1 ? "0.4rem" : "0.65rem",
                 }}
@@ -102,7 +106,7 @@ export default function AboutPage() {
                 {paragraph}
               </p>
             ))}
-          <p style={{ ...bodyStyle, marginBottom: 0, textAlign: "justify" }}>{at.aboutBookBody2}</p>
+          <p style={{ ...bodyStyle, marginBottom: 0, textAlign: "left" }}>{at.aboutBookBody2}</p>
         </div>
 
         {/* Author bio */}
@@ -140,11 +144,13 @@ export default function AboutPage() {
               const label =
                 item.labelKey === "linkedin"
                   ? at.authorLinkLinkedIn
-                  : item.labelKey === "scholar"
-                    ? at.authorLinkGoogleScholar
-                    : item.labelKey === "github"
-                      ? at.authorLinkGitHub
-                      : at.authorLinkContact;
+                  : item.labelKey === "x"
+                    ? "X"
+                    : item.labelKey === "scholar"
+                      ? at.authorLinkGoogleScholar
+                      : item.labelKey === "github"
+                        ? at.authorLinkGitHub
+                        : at.authorLinkContact;
               const isMailto = item.href.startsWith("mailto:");
               return (
                 <li key={item.href}>

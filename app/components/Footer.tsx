@@ -18,16 +18,24 @@ export function Footer() {
         transition: "background 0.25s ease, border-color 0.25s ease",
       }}
     >
+      <style>{`
+        .footer-grid { grid-template-columns: 1fr 1fr 1fr; }
+        .footer-book-col { display: block; }
+        @media (max-width: 700px) {
+          .footer-grid { grid-template-columns: 1fr 1fr; }
+          .footer-book-col { display: none; }
+        }
+      `}</style>
       <div
+        className="footer-grid"
         style={{
           maxWidth: "1100px",
           margin: "0 auto",
           display: "grid",
-          gridTemplateColumns: "1fr 1fr 1fr",
           gap: "2rem",
         }}
       >
-        <div>
+        <div className="footer-book-col">
           <p
             style={{
               fontFamily: "var(--font-playfair)",
