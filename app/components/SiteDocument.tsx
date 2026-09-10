@@ -4,7 +4,7 @@ import "@/app/globals.css";
 import { fontVariables } from "@/app/fonts";
 import { NavBar } from "./NavBar";
 import { Footer } from "./Footer";
-import { MobileShareButton } from "./MobileShareButton";
+import { FloatingShareButton } from "./FloatingShareButton";
 import { Providers } from "@/app/providers";
 import { VercelInstrumentation } from "./VercelInstrumentation";
 import { bookMeta, bookMetaDisplayTitle, localizedSiteTitle } from "@/lib/chapters";
@@ -113,7 +113,7 @@ export function SiteDocument({
           <NavBar />
           <main>{children}</main>
           <Footer />
-          <MobileShareButton />
+          <FloatingShareButton />
           <VercelInstrumentation />
         </Providers>
       </body>

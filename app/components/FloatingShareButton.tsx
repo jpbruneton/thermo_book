@@ -4,7 +4,7 @@ import { ShareButton } from "./ShareButton";
 
 const SCROLL_THRESHOLD = 400;
 
-export function MobileShareButton() {
+export function FloatingShareButton() {
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
@@ -16,18 +16,24 @@ export function MobileShareButton() {
 
   return (
     <>
+      {/* Above 700px, the "back to top" arrow also occupies this corner
+          (at right/bottom 1.2rem, 42px tall) — sit clear above it there. */}
       <style>{`
-        .mobile-share-btn { display: none; }
-        @media (max-width: 700px) {
-          .mobile-share-btn { display: inline-flex; }
+        .floating-share-btn {
+          right: calc(1.25rem + env(safe-area-inset-right, 0px));
+          bottom: calc(1.75rem + env(safe-area-inset-bottom, 0px));
+        }
+        @media (min-width: 701px) {
+          .floating-share-btn {
+            right: 1.2rem;
+            bottom: 4.6rem;
+          }
         }
       `}</style>
       <ShareButton
         variant="fab"
-        className="mobile-share-btn"
+        className="floating-share-btn"
         style={{
-          right: "calc(1.25rem + env(safe-area-inset-right, 0px))",
-          bottom: "calc(1.75rem + env(safe-area-inset-bottom, 0px))",
           zIndex: 40,
           opacity: visible ? 1 : 0,
           transform: visible ? "scale(1)" : "scale(0.85)",
