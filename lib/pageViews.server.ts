@@ -14,7 +14,7 @@ const redis =
       })
     : null;
 
-export type PageViewSection = "chapters" | "exercises";
+export type PageViewSection = "chapters" | "exercises" | "quiz";
 
 function pageViewKey(section: PageViewSection, lang: string, slug: string): string {
   return `views:${section}:${lang}:${slug}`;

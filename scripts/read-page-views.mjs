@@ -1,5 +1,5 @@
 // Lists the silent view counters recorded by /api/views (see docs/page-views.md).
-// Usage: node --env-file=.env.local scripts/read-page-views.mjs [chapters|exercises]
+// Usage: node --env-file=.env.local scripts/read-page-views.mjs [chapters|exercises|quiz]
 import { Redis } from "@upstash/redis";
 
 const url = process.env.UPSTASH_REDIS_REST_URL;

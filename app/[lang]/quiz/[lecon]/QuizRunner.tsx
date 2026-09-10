@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useMemo, useState } from "react";
 import { useLang } from "@/app/context/LangContext";
+import { usePageViewBeacon } from "@/app/hooks/usePageViewBeacon";
 import { sectionHref } from "@/lib/i18n";
 import { getQuizTranslations } from "@/lib/quizTranslations";
 import type { QuizQuestion } from "@/lib/quizzes";
@@ -83,6 +84,7 @@ function QuizNavCard({
 
 export function QuizRunner({ lecon, title, questions }: Props) {
   const { lang } = useLang();
+  usePageViewBeacon("quiz", lang, String(lecon));
   const [index, setIndex] = useState(0);
   const [states, setStates] = useState<QuestionState[]>(
     () => questions.map(() => ({ firstClick: null, activeChoice: null }))
