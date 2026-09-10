@@ -27,6 +27,31 @@ function load(file) {
 
 const { getTexWebHtmlFromSource } = load('lib/chapterContent.server.ts');
 const render = source => getTexWebHtmlFromSource(source, 'fr', []);
+const { processLatex } = load('lib/latex.ts');
+
+test('boxed empheq renders the Maxwell relations inside a visible KaTeX frame', () => {
+  for (const lesson of [7, 9]) {
+    const source = fs.readFileSync(path.resolve(__dirname, `../content/tex/chp${lesson}_fr/lecon1.tex`), 'utf8');
+    const blocks = [...source.matchAll(/\\begin\{empheq\}[\s\S]*?\\end\{empheq\}/g)];
+    assert.ok(blocks.length > 0);
+    for (const [block] of blocks) {
+      const html = processLatex(render(block));
+      assert.doesNotMatch(html, /katex-error/);
+      assert.match(html, /class="[^"]*\bfbox\b/);
+      assert.match(html, /<mtable/);
+      assert.doesNotMatch(html, /\\begin\{empheq\}/);
+    }
+  }
+});
+
+test('empheq without a box option remains an unframed aligned display', () => {
+  const html = processLatex(render(String.raw`\begin{empheq}{align*}
+a&=b\\
+c&=d
+\end{empheq}`));
+  assert.doesNotMatch(html, /katex-error|class="[^"]*\bfbox\b/);
+  assert.match(html, /<mtable/);
+});
 
 test('equation references resolve in both directions and ref stays numeric', () => {
   const html = render(String.raw`

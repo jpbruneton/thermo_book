@@ -1503,12 +1503,15 @@ function normalizeLatexBlocks(
       return `\n\n$$\n\\begin{aligned}\n${collapsedOperators.trim()}\n\\end{aligned}\n$$\n\n`;
     }
   );
-  // \begin{empheq}[box=\fbox]{align*}...\end{empheq} (fancy boxed align from the
-  // Overleaf header) is not a real KaTeX environment; render its content as a
-  // plain aligned block instead of the PDF-only fbox styling.
+  // KaTeX has no empheq environment. Preserve its requested frame with
+  // \boxed around the aligned equations; leave unboxed displays unframed.
   result = result.replace(
-    /\\begin\{empheq\}(?:\[[^\]]*\])?\{[^}]*\}([\s\S]*?)\\end\{empheq\}/g,
-    (_m, body: string) => `\n\n$$\n\\begin{aligned}\n${body.trim()}\n\\end{aligned}\n$$\n\n`
+    /\\begin\{empheq\}(?:\[([^\]]*)\])?\{[^}]*\}([\s\S]*?)\\end\{empheq\}/g,
+    (_m, options: string | undefined, body: string) => {
+      const aligned = `\\begin{aligned}\n${body.trim()}\n\\end{aligned}`;
+      const boxed = /(?:^|,)\s*box\s*=\s*\\(?:fbox|boxed)\b/.test(options ?? "");
+      return `\n\n$$\n${boxed ? `\\boxed{${aligned}}` : aligned}\n$$\n\n`;
+    }
   );
   // Guard against matching inside an already-well-formed $$...$$ block (the two
   // regexes above already produce those): only touch a genuinely single-$-wrapped block.
