@@ -760,7 +760,9 @@ function collectReferenceMap(input: string): Record<string, string> {
       if (env === "figure") {
         figureIndex += 1;
         refText = `Figure ${figureIndex}`;
-      } else if (["equation", "align", "gather", "multline", "eqnarray"].includes(env)) {
+      } else if (beginMatch[1] === "equation") {
+        // Only equation receives a visible number in the web renderer below.
+        // Unnumbered displays must not shift subsequent equation references.
         equationIndex += 1;
         refText = `${equationIndex}`;
       } else if (env === "theorem") {
@@ -1523,17 +1525,18 @@ function normalizeLatexBlocks(
 
   // Render bibliography citations as numbered markers.
   result = replaceCitations(result, citationMaps);
-  result = result.replace(/\\ref\{([^{}]*)\}/g, (_m, label: string) => {
+  result = result.replace(/\\(eqref|ref)\{([^{}]*)\}/g, (_m, command: string, label: string) => {
     const resolved = references[label];
     if (!resolved) return `[${label}]`;
     // Keep \ref output numeric to avoid duplicating prefixes already present in prose
     // (e.g. "cf Figure \ref{magnet}" -> "cf Figure 1", not "cf Figure Figure 1").
-    return resolved
+    const number = resolved
       .replace(
         /^(Figure|Théorème|Theorem|Proposition|Définition|Definition|Lemme|Lemma|Corollaire|Corollary|Exemple|Example|Remarque|Remark)\s+/i,
         ""
       )
       .trim();
+    return command === "eqref" ? `(${number})` : number;
   });
   result = result.replace(/\\label\{[^{}]*\}/g, "");
 
