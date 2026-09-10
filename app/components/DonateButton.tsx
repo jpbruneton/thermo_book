@@ -19,19 +19,18 @@ export function DonateButton({ compact = false, lang }: { compact?: boolean; lan
       href={href}
       target="_blank"
       rel="noopener noreferrer nofollow"
-      aria-label={compact ? "Buy me a coffee" : undefined}
+      aria-label={compact ? "Donate — Buy me a coffee" : undefined}
       style={{
         display: "inline-flex",
         alignItems: "center",
         justifyContent: "center",
-        gap: "0.4rem",
+        gap: compact ? "0.3rem" : "0.4rem",
         background: "#FFDD00",
         color: "#000000",
         border: "1px solid #000000",
         borderRadius: "8px",
-        width: compact ? "34px" : undefined,
         height: compact ? "34px" : undefined,
-        padding: compact ? 0 : "0.4rem 0.9rem",
+        padding: compact ? "0 0.6rem" : "0.4rem 0.9rem",
         fontFamily: "var(--font-cookie)",
         fontSize: "1.15rem",
         lineHeight: 1,
@@ -40,8 +39,19 @@ export function DonateButton({ compact = false, lang }: { compact?: boolean; lan
         flexShrink: 0,
       }}
     >
-      <span aria-hidden="true">☕</span>
-      {!compact && "Buy me a coffee"}
+      {compact ? (
+        <>
+          <span style={{ fontFamily: "var(--font-inter)", fontSize: "0.68rem", fontWeight: 600 }} aria-hidden="true">
+            Donate
+          </span>
+          <span aria-hidden="true">☕</span>
+        </>
+      ) : (
+        <>
+          <span aria-hidden="true">☕</span>
+          Buy me a coffee
+        </>
+      )}
     </a>
   );
 }
