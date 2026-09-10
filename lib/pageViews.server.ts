@@ -33,3 +33,23 @@ export async function incrementPageView(
     // A visit counter must never break the page it's counting.
   }
 }
+
+export type ShareNetwork = "x" | "whatsapp" | "facebook" | "linkedin" | "email" | "copy" | "native";
+
+function shareClickKey(network: ShareNetwork, lang: string, page: string): string {
+  return `shares:${network}:${lang}:${page}`;
+}
+
+/** Same silent, no-op-when-unconfigured counter as incrementPageView, for share-menu clicks. */
+export async function incrementShareClick(
+  network: ShareNetwork,
+  lang: string,
+  page: string
+): Promise<void> {
+  if (!redis) return;
+  try {
+    await redis.incr(shareClickKey(network, lang, page));
+  } catch {
+    // A click counter must never break the share action it's counting.
+  }
+}

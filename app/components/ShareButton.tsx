@@ -1,7 +1,30 @@
 "use client";
 import { useEffect, useRef, useState, type CSSProperties, type ReactNode } from "react";
+import { usePathname } from "next/navigation";
 import { useLang } from "@/app/context/LangContext";
 import { ShareIcon } from "./ShareIcon";
+import type { ShareNetwork } from "@/lib/pageViews.server";
+
+/** Collapses the route into the same page-key shape used server-side (letters/digits/-/_ only). */
+function pageKeyFromPathname(pathname: string, lang: string): string {
+  const segments = pathname.split("/").filter(Boolean);
+  if (segments[0] === lang) segments.shift();
+  return segments.length > 0 ? segments.join("-") : "home";
+}
+
+/** Fire-and-forget silent counter for share-menu clicks — never surfaced in the UI, see docs/page-views.md. */
+function sendShareBeacon(network: ShareNetwork, lang: string, page: string) {
+  try {
+    const payload = JSON.stringify({ network, lang, page });
+    if (typeof navigator !== "undefined" && navigator.sendBeacon) {
+      navigator.sendBeacon("/api/shares", new Blob([payload], { type: "application/json" }));
+    } else {
+      fetch("/api/shares", { method: "POST", headers: { "Content-Type": "application/json" }, body: payload, keepalive: true }).catch(() => {});
+    }
+  } catch {
+    // A click counter must never break the share action it's counting.
+  }
+}
 
 interface ShareButtonProps {
   /** "fab" = round icon-only button (mobile floating button). "inline" = pill with label, used in page content. */
@@ -35,10 +58,13 @@ function Badge({ bg, children }: { bg: string; children: ReactNode }) {
 }
 
 export function ShareButton({ variant, style, className }: ShareButtonProps) {
-  const { t } = useLang();
+  const { t, lang } = useLang();
+  const pathname = usePathname();
   const [open, setOpen] = useState(false);
   const [justCopied, setJustCopied] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
+
+  const trackShareClick = (network: ShareNetwork) => sendShareBeacon(network, lang, pageKeyFromPathname(pathname, lang));
 
   useEffect(() => {
     if (!open) return;
@@ -53,6 +79,7 @@ export function ShareButton({ variant, style, className }: ShareButtonProps) {
   // back to our own menu where the Web Share API isn't available (desktop).
   const handleTriggerClick = async () => {
     if (typeof navigator !== "undefined" && navigator.share) {
+      trackShareClick("native");
       try {
         await navigator.share({ title: document.title, url: window.location.href });
       } catch {
@@ -66,6 +93,7 @@ export function ShareButton({ variant, style, className }: ShareButtonProps) {
   const copyLink = async () => {
     try {
       await navigator.clipboard.writeText(window.location.href);
+      trackShareClick("copy");
       setJustCopied(true);
       setOpen(false);
       setTimeout(() => setJustCopied(false), 1800);
@@ -79,12 +107,12 @@ export function ShareButton({ variant, style, className }: ShareButtonProps) {
   const encodedUrl = encodeURIComponent(url);
   const encodedTitle = encodeURIComponent(title);
 
-  const socialLinks = [
-    { name: "X", href: `https://twitter.com/intent/tweet?url=${encodedUrl}&text=${encodedTitle}`, badge: <Badge bg="#000000">X</Badge> },
-    { name: "WhatsApp", href: `https://wa.me/?text=${encodedTitle}%20${encodedUrl}`, badge: <Badge bg="#25D366">W</Badge> },
-    { name: "Facebook", href: `https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}`, badge: <Badge bg="#1877F2">f</Badge> },
-    { name: "LinkedIn", href: `https://www.linkedin.com/sharing/share-offsite/?url=${encodedUrl}`, badge: <Badge bg="#0A66C2">in</Badge> },
-    { name: "Email", href: `mailto:?subject=${encodedTitle}&body=${encodedUrl}`, badge: <Badge bg="var(--text-dim)">@</Badge> },
+  const socialLinks: { name: string; network: ShareNetwork; href: string; badge: ReactNode }[] = [
+    { name: "X", network: "x", href: `https://twitter.com/intent/tweet?url=${encodedUrl}&text=${encodedTitle}`, badge: <Badge bg="#000000">X</Badge> },
+    { name: "WhatsApp", network: "whatsapp", href: `https://wa.me/?text=${encodedTitle}%20${encodedUrl}`, badge: <Badge bg="#25D366">W</Badge> },
+    { name: "Facebook", network: "facebook", href: `https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}`, badge: <Badge bg="#1877F2">f</Badge> },
+    { name: "LinkedIn", network: "linkedin", href: `https://www.linkedin.com/sharing/share-offsite/?url=${encodedUrl}`, badge: <Badge bg="#0A66C2">in</Badge> },
+    { name: "Email", network: "email", href: `mailto:?subject=${encodedTitle}&body=${encodedUrl}`, badge: <Badge bg="var(--text-dim)">@</Badge> },
   ];
 
   const menuRowStyle: CSSProperties = {
@@ -122,7 +150,10 @@ export function ShareButton({ variant, style, className }: ShareButtonProps) {
           href={link.href}
           target="_blank"
           rel="noopener noreferrer"
-          onClick={() => setOpen(false)}
+          onClick={() => {
+            trackShareClick(link.network);
+            setOpen(false);
+          }}
           style={menuRowStyle}
         >
           {link.badge}

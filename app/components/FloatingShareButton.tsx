@@ -1,18 +1,33 @@
 "use client";
 import { useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
 import { ShareButton } from "./ShareButton";
+import { isLang } from "@/lib/i18n";
 
 const SCROLL_THRESHOLD = 400;
 
+/** Landing pages short enough that there's nothing to scroll past before sharing is relevant. */
+function isAlwaysVisiblePage(pathname: string): boolean {
+  const segments = pathname.split("/").filter(Boolean);
+  if (segments.length !== 2) return false;
+  const [lang, page] = segments;
+  return isLang(lang) && (page === "exercises" || page === "quiz" || page === "downloads");
+}
+
 export function FloatingShareButton() {
-  const [visible, setVisible] = useState(false);
+  const pathname = usePathname();
+  const alwaysVisible = isAlwaysVisiblePage(pathname);
+  const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
-    const onScroll = () => setVisible(window.scrollY > SCROLL_THRESHOLD);
+    if (alwaysVisible) return;
+    const onScroll = () => setScrolled(window.scrollY > SCROLL_THRESHOLD);
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+  }, [alwaysVisible]);
+
+  const visible = alwaysVisible || scrolled;
 
   return (
     <>

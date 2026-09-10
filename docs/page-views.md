@@ -1,9 +1,9 @@
-# Compteur de visites (leçons, exercices et quiz)
+# Compteurs de visites et de partages (leçons, exercices, quiz, bouton share)
 
-Compteur silencieux, non affiché sur le site, qui incrémente un compteur par
-page de leçon, d'exercice et de quiz, toutes langues confondues.
+Compteurs silencieux, non affichés sur le site, qui incrémentent un compteur
+par page (vues) et par réseau (clics de partage), toutes langues confondues.
 
-## Fonctionnement
+## Vues de page
 
 - `app/hooks/usePageViewBeacon.ts` : hook client, envoie un `POST /api/views`
   (via `navigator.sendBeacon`, ou `fetch` en repli) une fois par montage, avec
@@ -18,6 +18,23 @@ page de leçon, d'exercice et de quiz, toutes langues confondues.
 - `app/api/views/route.ts` valide `section`/`lang`/`slug` puis appelle
   `incrementPageView` dans `lib/pageViews.server.ts`, qui fait un `INCR` Redis
   sur la clé `views:{section}:{lang}:{slug}`.
+
+## Clics sur le bouton de partage
+
+- `app/components/ShareButton.tsx` envoie un `POST /api/shares` (même
+  mécanisme `sendBeacon`/`fetch`) à chaque clic effectif : ouverture de la
+  feuille de partage native (`network: "native"`), clic sur un réseau du menu
+  desktop (`"x" | "whatsapp" | "facebook" | "linkedin" | "email"`), ou copie
+  du lien réussie (`"copy"`). La page est dérivée de l'URL courante
+  (`usePathname()`), pas passée en props — ça couvre aussi bien le bouton
+  flottant global (`FloatingShareButton`, monté dans `SiteDocument.tsx` sans
+  contexte de page) que le bouton inline des leçons.
+- `app/api/shares/route.ts` valide `network`/`lang`/`page` puis appelle
+  `incrementShareClick` dans `lib/pageViews.server.ts`, qui fait un `INCR`
+  Redis sur la clé `shares:{network}:{lang}:{page}`.
+
+## Configuration commune
+
 - Si Redis n'est pas configuré (env vars absentes), l'incrément est un no-op
   silencieux — jamais d'erreur visible, en dev comme en prod.
 
@@ -41,6 +58,8 @@ redis-cli -u "$UPSTASH_REDIS_REST_URL" ... # via le CLI REST d'Upstash
 ```
 
 Le plus simple reste l'onglet **Data Browser** de la console Upstash : lister
-les clés préfixées par `views:chapters:`, `views:exercises:` ou `views:quiz:`,
-chacune contenant un entier (nombre de visites cumulées, toutes sessions
-confondues — pas de déduplication par visiteur).
+les clés préfixées par `views:chapters:`, `views:exercises:`, `views:quiz:`
+ou `shares:{réseau}:`, chacune contenant un entier (nombre cumulé, toutes
+sessions confondues — pas de déduplication par visiteur). En local, le script
+`node --env-file=.env.local scripts/read-page-views.mjs [chapters|exercises|quiz|shares]`
+liste tout (vues et partages) triés par nombre décroissant.

@@ -1,5 +1,6 @@
-// Lists the silent view counters recorded by /api/views (see docs/page-views.md).
-// Usage: node --env-file=.env.local scripts/read-page-views.mjs [chapters|exercises|quiz]
+// Lists the silent view/share counters recorded by /api/views and /api/shares
+// (see docs/page-views.md). Usage:
+//   node --env-file=.env.local scripts/read-page-views.mjs [chapters|exercises|quiz|shares]
 import { Redis } from "@upstash/redis";
 
 const url = process.env.UPSTASH_REDIS_REST_URL;
@@ -14,19 +15,21 @@ if (!url || !token) {
 }
 
 const redis = new Redis({ url, token });
-const filter = process.argv[2]; // optional: "chapters" or "exercises"
-const pattern = filter ? `views:${filter}:*` : "views:*";
+const filter = process.argv[2]; // optional: "chapters", "exercises", "quiz", or "shares"
+const patterns = filter === "shares" ? ["shares:*"] : filter ? [`views:${filter}:*`] : ["views:*", "shares:*"];
 
 const rows = [];
-let cursor = 0;
-do {
-  const [nextCursor, keys] = await redis.scan(cursor, { match: pattern, count: 200 });
-  cursor = Number(nextCursor);
-  if (keys.length > 0) {
-    const counts = await Promise.all(keys.map((key) => redis.get(key)));
-    keys.forEach((key, i) => rows.push({ key, count: Number(counts[i]) || 0 }));
-  }
-} while (cursor !== 0);
+for (const pattern of patterns) {
+  let cursor = 0;
+  do {
+    const [nextCursor, keys] = await redis.scan(cursor, { match: pattern, count: 200 });
+    cursor = Number(nextCursor);
+    if (keys.length > 0) {
+      const counts = await Promise.all(keys.map((key) => redis.get(key)));
+      keys.forEach((key, i) => rows.push({ key, count: Number(counts[i]) || 0 }));
+    }
+  } while (cursor !== 0);
+}
 
 rows.sort((a, b) => b.count - a.count);
 
