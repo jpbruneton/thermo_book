@@ -344,7 +344,7 @@ export const themes: Theme[] = [
     titleFr: "Structure mathématique : les relations fondamentales",
     titleEn: "Mathematical Structure: The Fundamental Relations",
     descriptionFr: "De l'équation fondamentale aux équations d'état et aux conditions d'équilibre.",
-    descriptionEn: "Fundamental relations and thermodynamic potentials.",
+    descriptionEn: "From the fundamental equation to equations of state and equilibrium conditions.",
     readingTime: "25 min",
     topicsFr: [
       "Systèmes ouverts",

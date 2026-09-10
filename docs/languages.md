@@ -35,6 +35,13 @@ Légende : ✅ en prod (toutes sections) · 🚧 partiel (au moins une section a
 contenu réel dans cette langue ; jamais de repli silencieux vers fr/en — les
 pages sans contenu affichent un état explicite) · 📋 planifié / pas commencé.
 
+La leçon 7 est également traduite dans les 19 langues cibles jusqu'à la
+ligne 611 de la source française du 10 septembre 2026, soit la fin de la
+section sur l'équilibre et la stationnarité de l'entropie. La stabilité et
+les sections suivantes restent à traduire. Voir le
+[suivi de la leçon 7](lesson7-translation-status.md) pour la limite exacte
+et les renvois à reprendre avec la suite.
+
 ## Comment ça marche
 
 - `lib/i18n.ts` : `translations.fr` et `translations.en` restent les objets

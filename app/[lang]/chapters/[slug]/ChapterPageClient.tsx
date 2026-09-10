@@ -101,7 +101,7 @@ function ChapterThemeHeadingBlock({ theme }: { theme: ThemeWithLocalizedLessonCo
       >
         {getThemeDescription(theme, lang)}
       </p>
-      {lang === "fr" && theme.number >= 7 && (
+      {lang === "fr" && theme.number >= 8 && (
         <p
           style={{
             marginTop: "1rem",
