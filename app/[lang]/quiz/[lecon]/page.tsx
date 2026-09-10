@@ -174,7 +174,14 @@ export default async function QuizLeconPage({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(block) }}
         />
       ))}
-      <QuizRunner lecon={lecon} title={title} questions={questions} />
+      <QuizRunner lecon={lecon} title={title} questions={questions} labels={{
+        back: t.back, backToList: t.backToList, controlLabel: t.controlLabel,
+        next: t.next, nextQuestion: t.nextQuestion, prevQuestion: t.prevQuestion,
+        recap: t.recap, restart: t.restart, scoreTitle: t.scoreTitle, seeScore: t.seeScore,
+        lessonLabel: t.lessonLabel(lecon),
+        questionOf: questions.map((_, index) => t.questionOf(index + 1, questions.length)),
+        scoreLine: Array.from({ length: questions.length + 1 }, (_, score) => t.scoreLine(score, questions.length)),
+      }} />
     </>
   );
 }

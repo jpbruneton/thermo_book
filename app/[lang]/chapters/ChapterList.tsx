@@ -1,18 +1,17 @@
 "use client";
 import Link from "next/link";
-import { getListedWebThemes, getThemeTitle, getThemeDescription, getThemePartHeading, getThemeUrlSlug } from "@/lib/chapters";
 import { useLang } from "@/app/context/LangContext";
-import { sectionHref } from "@/lib/i18n";
+import { sectionHref } from "@/lib/languages";
 
 export function ChapterList() {
-  const { t, lang } = useLang();
-  const webThemes = getListedWebThemes();
+  const { t, lang, chapters } = useLang();
+  const webThemes = Object.values(chapters).filter((theme) => theme.listed);
 
   return (
     <div style={{ display: "flex", flexDirection: "column", gap: "1px" }}>
       {webThemes.map((theme, i) => (
         <div key={theme.slug}>
-          {getThemePartHeading(theme, lang) && (
+          {theme.partHeading && (
             <div
               style={{
                 marginTop: i === 0 ? 0 : "3rem",
@@ -31,7 +30,7 @@ export function ChapterList() {
                   fontWeight: 600,
                 }}
               >
-                {getThemePartHeading(theme, lang)}
+                {theme.partHeading}
               </span>
             </div>
           )}
@@ -44,7 +43,7 @@ export function ChapterList() {
           }}
         >
           <Link
-            href={sectionHref(lang, "chapters", getThemeUrlSlug(theme, lang))}
+            href={sectionHref(lang, "chapters", theme.urlSlug)}
             style={{ textDecoration: "none", display: "block" }}
           >
             <div
@@ -104,7 +103,7 @@ export function ChapterList() {
                     marginBottom: "0.25rem",
                   }}
                 >
-                  {getThemeTitle(theme, lang)}
+                  {theme.title}
                 </h2>
                 <p
                   style={{
@@ -115,7 +114,7 @@ export function ChapterList() {
                     marginBottom: 0,
                   }}
                 >
-                  {getThemeDescription(theme, lang)}
+                  {theme.description}
                 </p>
               </div>
 

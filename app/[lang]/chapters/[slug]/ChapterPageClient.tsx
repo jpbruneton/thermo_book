@@ -5,17 +5,16 @@ import type { CSSProperties } from "react";
 import { Suspense, useMemo, useTransition } from "react";
 import type { Theme } from "@/lib/chapters";
 import type { LessonPresentation } from "@/lib/lessonPresentation";
-import { getThemeTitle, getThemeDescription, getThemeUrlSlug } from "@/lib/chapters";
 import { ChapterContent } from "../ChapterContent";
 import { useLang } from "@/app/context/LangContext";
-import { sectionHref } from "@/lib/i18n";
-import { getExerciseTranslations } from "@/lib/exerciseTranslations";
+import { sectionHref } from "@/lib/languages";
 
 type ThemeWithLocalizedLessonContent = Omit<Theme, "lessons"> & {
   lessons: LessonPresentation[];
 };
 
 interface Props {
+  localizedPaths: Record<string, string>;
   theme: ThemeWithLocalizedLessonContent;
   prev: Theme | null;
   next: Theme | null;
@@ -50,7 +49,7 @@ function getActiveLessonIndex(
 }
 
 function ChapterThemeHeadingBlock({ theme }: { theme: ThemeWithLocalizedLessonContent }) {
-  const { t, lang } = useLang();
+  const { t, lang, chapters } = useLang();
   return (
     <>
       <div
@@ -88,7 +87,7 @@ function ChapterThemeHeadingBlock({ theme }: { theme: ThemeWithLocalizedLessonCo
           lineHeight: 1.2,
         }}
       >
-        {getThemeTitle(theme, lang)}
+        {chapters[theme.slug].title}
       </h1>
       <p
         style={{
@@ -99,7 +98,7 @@ function ChapterThemeHeadingBlock({ theme }: { theme: ThemeWithLocalizedLessonCo
           marginBottom: 0,
         }}
       >
-        {getThemeDescription(theme, lang)}
+        {chapters[theme.slug].description}
       </p>
       {lang === "fr" && theme.number >= 8 && (
         <p
@@ -294,8 +293,7 @@ function ChapterContentAndPrevNext({
   activeLessonIndex?: number;
   navigateToLesson?: (lessonIndex: number) => void;
 }) {
-  const { t, lang } = useLang();
-  const exerciseT = getExerciseTranslations(lang);
+  const { t, lang, chapters, exercises: exerciseT } = useLang();
   const activeLesson = useMemo(
     () => theme.lessons[activeLessonIndex] || null,
     [theme.lessons, activeLessonIndex]
@@ -320,7 +318,7 @@ function ChapterContentAndPrevNext({
         ? `Leçon n°${previousLesson.number} : ${previousLesson.subtitleFr}`
         : `Lesson ${previousLesson.number}: ${previousLesson.subtitleEn}`
     : prev
-      ? getThemeTitle(prev, lang)
+      ? chapters[prev.slug].title
       : null;
   const nextTitle = nextLesson
     ? nextLesson.kind === "fiche"
@@ -331,13 +329,13 @@ function ChapterContentAndPrevNext({
         ? `Leçon n°${nextLesson.number} : ${nextLesson.subtitleFr}`
         : `Lesson ${nextLesson.number}: ${nextLesson.subtitleEn}`
     : next
-      ? getThemeTitle(next, lang)
+      ? chapters[next.slug].title
       : null;
   const previousHref = !previousLesson && prev
-    ? sectionHref(lang, "chapters", getThemeUrlSlug(prev, lang))
+    ? sectionHref(lang, "chapters", chapters[prev.slug].urlSlug)
     : undefined;
   const nextHref = !nextLesson && next
-    ? sectionHref(lang, "chapters", getThemeUrlSlug(next, lang))
+    ? sectionHref(lang, "chapters", chapters[next.slug].urlSlug)
     : undefined;
   const previousOnClick = previousLesson && navigateToLesson ? () => navigateToLesson(activeLessonIndex - 1) : undefined;
   const nextOnClick = nextLesson && navigateToLesson ? () => navigateToLesson(activeLessonIndex + 1) : undefined;
@@ -593,7 +591,7 @@ function ChapterPageView(props: Props) {
   const defaultContent = <ChapterContentAndPrevNext {...props} />;
 
   return (
-    <div style={{ position: "relative", zIndex: 1 }}>
+    <div data-localized-paths={JSON.stringify(props.localizedPaths)} style={{ position: "relative", zIndex: 1 }}>
       <div style={headerBoxStyle}>
         <div style={maxWStyle}>
           <ChapterThemeHeadingBlock theme={theme} />

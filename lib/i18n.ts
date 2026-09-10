@@ -1,160 +1,5 @@
-export type Lang =
-  | "fr"
-  | "en"
-  | "de"
-  | "es"
-  | "pt"
-  | "it"
-  | "pl"
-  | "ru"
-  | "zh"
-  | "ja"
-  | "ko"
-  | "hi"
-  | "vi"
-  | "ar"
-  | "id"
-  | "tr"
-  | "bn"
-  | "ur"
-  | "sw"
-  | "fa";
-
-/** Every routable language code — /{lang}/... resolves for all of these. */
-export const SUPPORTED_LANGS: readonly Lang[] = [
-  "fr", "en", "de", "es", "pt", "it", "pl", "ru", "zh", "ja", "ko", "hi", "vi", "ar", "id", "tr",
-  "bn", "ur", "sw", "fa",
-];
-
-export function isLang(value: string): value is Lang {
-  return (SUPPORTED_LANGS as readonly string[]).includes(value);
-}
-
-/** Right-to-left script languages — drives `dir="rtl"` on <html> and mirrored chrome layout. */
-const RTL_LANGS: readonly Lang[] = ["ar", "ur", "fa"];
-
-export function isRtlLang(lang: Lang): boolean {
-  return (RTL_LANGS as readonly string[]).includes(lang);
-}
-
-export const SECTIONS = ["chapters", "exercises", "quiz", "downloads", "about"] as const;
-export type Section = (typeof SECTIONS)[number];
-
-/** English section words, reused as-is for every language that has no translated public URL word. */
-const IDENTITY_SECTION_SLUGS: Record<Section, string> = {
-  chapters: "chapters",
-  exercises: "exercises",
-  quiz: "quiz",
-  downloads: "downloads",
-  about: "about",
-};
-
-/**
- * Public URL word for each section, per language (e.g. /fr/chapitres vs /en/chapters).
- * The internal route folders (app/[lang]/chapters, .../exercises, etc.) always use the
- * English word; `next.config.js` rewrites each language's public words to those internal
- * paths (keep the two files in sync). Languages with a non-Latin alphabet (ru, zh, ja, ko,
- * hi, ar, bn, ur, fa) deliberately reuse the English word instead of a localized one: URLs in
- * Cyrillic/CJK/Devanagari/Arabic/Bengali script get percent-encoded the moment they're copied or
- * shared (chat, social, email), which reads as broken — the content itself is translated,
- * only the slug stays in ASCII.
- */
-export const sectionSlugs: Record<Lang, Record<Section, string>> = {
-  en: IDENTITY_SECTION_SLUGS,
-  fr: {
-    chapters: "chapitres",
-    exercises: "exercices",
-    quiz: "quiz",
-    downloads: "telechargements",
-    about: "a-propos",
-  },
-  de: {
-    chapters: "lektionen",
-    exercises: "uebungen",
-    quiz: "quiz",
-    downloads: "downloads",
-    about: "ueber-das-buch",
-  },
-  es: {
-    chapters: "lecciones",
-    exercises: "ejercicios",
-    quiz: "quiz",
-    downloads: "descargas",
-    about: "sobre-el-libro",
-  },
-  pt: {
-    chapters: "licoes",
-    exercises: "exercicios",
-    quiz: "quiz",
-    downloads: "downloads",
-    about: "sobre-o-livro",
-  },
-  it: {
-    chapters: "lezioni",
-    exercises: "esercizi",
-    quiz: "quiz",
-    downloads: "download",
-    about: "il-libro",
-  },
-  pl: {
-    chapters: "lekcje",
-    exercises: "cwiczenia",
-    quiz: "quiz",
-    downloads: "pobieranie",
-    about: "o-ksiazce",
-  },
-  ru: IDENTITY_SECTION_SLUGS,
-  zh: IDENTITY_SECTION_SLUGS,
-  ja: IDENTITY_SECTION_SLUGS,
-  ko: IDENTITY_SECTION_SLUGS,
-  hi: IDENTITY_SECTION_SLUGS,
-  vi: {
-    chapters: "bai-hoc",
-    exercises: "bai-tap",
-    quiz: "quiz",
-    downloads: "tai-xuong",
-    about: "gioi-thieu",
-  },
-  ar: IDENTITY_SECTION_SLUGS,
-  id: {
-    chapters: "pelajaran",
-    exercises: "latihan",
-    quiz: "kuis",
-    downloads: "unduhan",
-    about: "tentang-buku",
-  },
-  tr: {
-    chapters: "dersler",
-    exercises: "alistirmalar",
-    quiz: "quiz",
-    downloads: "indirmeler",
-    about: "kitap-hakkinda",
-  },
-  bn: IDENTITY_SECTION_SLUGS,
-  ur: IDENTITY_SECTION_SLUGS,
-  sw: {
-    chapters: "masomo",
-    exercises: "mazoezi",
-    quiz: "jaribio",
-    downloads: "vipakuliwa",
-    about: "kuhusu-kitabu",
-  },
-  fa: IDENTITY_SECTION_SLUGS,
-};
-
-/** Builds the public href for a section, e.g. sectionHref("fr", "chapters", "introduction") -> "/fr/chapitres/introduction". */
-export function sectionHref(lang: Lang, section: Section, ...rest: string[]): string {
-  const base = `/${lang}/${sectionSlugs[lang][section]}`;
-  return rest.length > 0 ? `${base}/${rest.join("/")}` : base;
-}
-
-/** Reverse lookup: given a lang and a public URL segment, which section does it refer to (if any)? */
-export function sectionFromSlug(lang: Lang, slug: string): Section | null {
-  const entry = (Object.entries(sectionSlugs[lang]) as [Section, string][]).find(
-    ([, value]) => value === slug
-  );
-  return entry ? entry[0] : null;
-}
+import type { Lang } from "./languages";
+export * from "./languages";
 
 export type UpdateEntry = {
   date: string;
@@ -262,13 +107,6 @@ export const translations = {
     about: {
       label: "ABOUT THE BOOK",
       aboutBookTitle: "About This Book",
-      bookDetails: "Book Details",
-      detailLabels: {
-        author: "Author",
-        affiliation: "Affiliation",
-        edition: "Edition",
-        year: "Year",
-      },
       authorTitle: "About the Author",
       authorBioSuffix: "is a physicist at ",
       authorBioRest:
@@ -430,13 +268,6 @@ export const translations = {
     about: {
       label: "À PROPOS DU LIVRE",
       aboutBookTitle: "À propos de ce livre",
-      bookDetails: "Détails du livre",
-      detailLabels: {
-        author: "Auteur",
-        affiliation: "Établissement",
-        edition: "Édition",
-        year: "Année",
-      },
       authorTitle: "À propos de l'auteur",
       authorBioSuffix: "est physicien à l'",
       authorBioRest:
@@ -645,8 +476,6 @@ const partialTranslations: Record<Exclude<Lang, "fr" | "en">, DeepPartial<Transl
     about: {
       label: "ÜBER DAS BUCH",
       aboutBookTitle: "Über dieses Buch",
-      bookDetails: "Angaben zum Buch",
-      detailLabels: { author: "Autor", affiliation: "Institution", edition: "Ausgabe", year: "Jahr" },
       authorTitle: "Über den Autor",
       authorBioSuffix: "ist Physiker an der ",
       authorBioRest:
@@ -780,8 +609,6 @@ const partialTranslations: Record<Exclude<Lang, "fr" | "en">, DeepPartial<Transl
     about: {
       label: "SOBRE EL LIBRO",
       aboutBookTitle: "Sobre este libro",
-      bookDetails: "Detalles del libro",
-      detailLabels: { author: "Autor", affiliation: "Afiliación", edition: "Edición", year: "Año" },
       authorTitle: "Sobre el autor",
       authorBioSuffix: "es físico en la ",
       authorBioRest:
@@ -915,8 +742,6 @@ const partialTranslations: Record<Exclude<Lang, "fr" | "en">, DeepPartial<Transl
     about: {
       label: "SOBRE O LIVRO",
       aboutBookTitle: "Sobre este livro",
-      bookDetails: "Detalhes do livro",
-      detailLabels: { author: "Autor", affiliation: "Afiliação", edition: "Edição", year: "Ano" },
       authorTitle: "Sobre o autor",
       authorBioSuffix: "é físico na ",
       authorBioRest:
@@ -1050,8 +875,6 @@ const partialTranslations: Record<Exclude<Lang, "fr" | "en">, DeepPartial<Transl
     about: {
       label: "SUL LIBRO",
       aboutBookTitle: "Su questo libro",
-      bookDetails: "Dettagli del libro",
-      detailLabels: { author: "Autore", affiliation: "Affiliazione", edition: "Edizione", year: "Anno" },
       authorTitle: "Sull'autore",
       authorBioSuffix: "è fisico presso ",
       authorBioRest:
@@ -1185,8 +1008,6 @@ const partialTranslations: Record<Exclude<Lang, "fr" | "en">, DeepPartial<Transl
     about: {
       label: "O KSIĄŻCE",
       aboutBookTitle: "O tej książce",
-      bookDetails: "Szczegóły książki",
-      detailLabels: { author: "Autor", affiliation: "Afiliacja", edition: "Wydanie", year: "Rok" },
       authorTitle: "O autorze",
       authorBioSuffix: "jest fizykiem na ",
       authorBioRest:
@@ -1320,8 +1141,6 @@ const partialTranslations: Record<Exclude<Lang, "fr" | "en">, DeepPartial<Transl
     about: {
       label: "О КНИГЕ",
       aboutBookTitle: "Об этой книге",
-      bookDetails: "Сведения о книге",
-      detailLabels: { author: "Автор", affiliation: "Организация", edition: "Издание", year: "Год" },
       authorTitle: "Об авторе",
       authorBioSuffix: "физик в ",
       authorBioRest:
@@ -1452,8 +1271,6 @@ const partialTranslations: Record<Exclude<Lang, "fr" | "en">, DeepPartial<Transl
     about: {
       label: "关于本书",
       aboutBookTitle: "关于本书",
-      bookDetails: "书籍详情",
-      detailLabels: { author: "作者", affiliation: "所属机构", edition: "版本", year: "年份" },
       authorTitle: "关于作者",
       authorBioSuffix: "是一位物理学家，任职于",
       authorBioRest:
@@ -1582,8 +1399,6 @@ const partialTranslations: Record<Exclude<Lang, "fr" | "en">, DeepPartial<Transl
     about: {
       label: "本書について",
       aboutBookTitle: "本書について",
-      bookDetails: "書誌情報",
-      detailLabels: { author: "著者", affiliation: "所属", edition: "版", year: "年" },
       authorTitle: "著者について",
       authorBioSuffix: "の所属先は ",
       authorBioRest:
@@ -1714,8 +1529,6 @@ const partialTranslations: Record<Exclude<Lang, "fr" | "en">, DeepPartial<Transl
     about: {
       label: "책 소개",
       aboutBookTitle: "이 책에 대하여",
-      bookDetails: "책 정보",
-      detailLabels: { author: "저자", affiliation: "소속", edition: "판", year: "연도" },
       authorTitle: "저자 소개",
       authorBioSuffix: "의 소속: ",
       authorBioRest:
@@ -1845,8 +1658,6 @@ const partialTranslations: Record<Exclude<Lang, "fr" | "en">, DeepPartial<Transl
     about: {
       label: "पुस्तक के बारे में",
       aboutBookTitle: "इस पुस्तक के बारे में",
-      bookDetails: "पुस्तक विवरण",
-      detailLabels: { author: "लेखक", affiliation: "संबद्धता", edition: "संस्करण", year: "वर्ष" },
       authorTitle: "लेखक के बारे में",
       authorBioSuffix: "— संबद्धता: ",
       authorBioRest:
@@ -1977,8 +1788,6 @@ const partialTranslations: Record<Exclude<Lang, "fr" | "en">, DeepPartial<Transl
     about: {
       label: "GIỚI THIỆU SÁCH",
       aboutBookTitle: "Về cuốn sách này",
-      bookDetails: "Thông tin sách",
-      detailLabels: { author: "Tác giả", affiliation: "Đơn vị công tác", edition: "Ấn bản", year: "Năm" },
       authorTitle: "Về tác giả",
       authorBioSuffix: "là nhà vật lý tại ",
       authorBioRest:
@@ -2110,8 +1919,6 @@ const partialTranslations: Record<Exclude<Lang, "fr" | "en">, DeepPartial<Transl
     about: {
       label: "عن الكتاب",
       aboutBookTitle: "عن هذا الكتاب",
-      bookDetails: "تفاصيل الكتاب",
-      detailLabels: { author: "المؤلف", affiliation: "الانتماء المؤسسي", edition: "الطبعة", year: "السنة" },
       authorTitle: "عن المؤلف",
       authorBioSuffix: "فيزيائي في ",
       authorBioRest:
@@ -2242,8 +2049,6 @@ const partialTranslations: Record<Exclude<Lang, "fr" | "en">, DeepPartial<Transl
     about: {
       label: "TENTANG BUKU",
       aboutBookTitle: "Tentang Buku Ini",
-      bookDetails: "Detail Buku",
-      detailLabels: { author: "Penulis", affiliation: "Afiliasi", edition: "Edisi", year: "Tahun" },
       authorTitle: "Tentang Penulis",
       authorBioSuffix: "adalah fisikawan di ",
       authorBioRest:
@@ -2375,8 +2180,6 @@ const partialTranslations: Record<Exclude<Lang, "fr" | "en">, DeepPartial<Transl
     about: {
       label: "KİTAP HAKKINDA",
       aboutBookTitle: "Bu Kitap Hakkında",
-      bookDetails: "Kitap Bilgileri",
-      detailLabels: { author: "Yazar", affiliation: "Kurum", edition: "Baskı", year: "Yıl" },
       authorTitle: "Yazar Hakkında",
       authorBioSuffix: "şu kurumda fizikçidir: ",
       authorBioRest:
@@ -2510,8 +2313,6 @@ const partialTranslations: Record<Exclude<Lang, "fr" | "en">, DeepPartial<Transl
     about: {
       label: "বইটি সম্পর্কে",
       aboutBookTitle: "এই বই সম্পর্কে",
-      bookDetails: "বইয়ের বিবরণ",
-      detailLabels: { author: "লেখক", affiliation: "প্রতিষ্ঠান", edition: "সংস্করণ", year: "বছর" },
       authorTitle: "লেখক সম্পর্কে",
       authorBioSuffix: "একজন পদার্থবিদ, তিনি কর্মরত আছেন ",
       authorBioRest:
@@ -2643,8 +2444,6 @@ const partialTranslations: Record<Exclude<Lang, "fr" | "en">, DeepPartial<Transl
     about: {
       label: "کتاب کے بارے میں",
       aboutBookTitle: "اس کتاب کے بارے میں",
-      bookDetails: "کتاب کی تفصیلات",
-      detailLabels: { author: "مصنف", affiliation: "ادارہ", edition: "ایڈیشن", year: "سال" },
       authorTitle: "مصنف کے بارے میں",
       authorBioSuffix: "ایک طبیعیات دان ہیں، وہ کام کرتے ہیں ",
       authorBioRest:
@@ -2775,8 +2574,6 @@ const partialTranslations: Record<Exclude<Lang, "fr" | "en">, DeepPartial<Transl
     about: {
       label: "KUHUSU KITABU",
       aboutBookTitle: "Kuhusu Kitabu Hiki",
-      bookDetails: "Maelezo ya Kitabu",
-      detailLabels: { author: "Mwandishi", affiliation: "Taasisi", edition: "Toleo", year: "Mwaka" },
       authorTitle: "Kuhusu Mwandishi",
       authorBioSuffix: "ni mwanafizikia katika ",
       authorBioRest:
@@ -2908,8 +2705,6 @@ const partialTranslations: Record<Exclude<Lang, "fr" | "en">, DeepPartial<Transl
     about: {
       label: "دربارهٔ کتاب",
       aboutBookTitle: "دربارهٔ این کتاب",
-      bookDetails: "مشخصات کتاب",
-      detailLabels: { author: "نویسنده", affiliation: "وابستگی سازمانی", edition: "چاپ", year: "سال" },
       authorTitle: "دربارهٔ نویسنده",
       authorBioSuffix: "فیزیک‌دانی است که در ",
       authorBioRest:

@@ -4,8 +4,8 @@ import { useMemo, useState } from "react";
 import Link from "next/link";
 import { useLang } from "@/app/context/LangContext";
 import { exerciseMatchesQuery } from "@/lib/exerciseIndexUtils";
-import { getExerciseTranslations, type ExerciseTranslations } from "@/lib/exerciseTranslations";
-import { sectionHref, type Lang } from "@/lib/i18n";
+import type { ExerciseTranslations } from "@/lib/exerciseTranslations";
+import { sectionHref, type Lang } from "@/lib/languages";
 import type { ExerciseCard } from "./page";
 
 interface Props {
@@ -14,11 +14,10 @@ interface Props {
 }
 
 export function ExercisesClient({ cards, allPdfHref }: Props) {
-  const { lang } = useLang();
+  const { lang, exercises: t } = useLang();
   const [query, setQuery] = useState("");
   const [selectedLecon, setSelectedLecon] = useState<number | null>(null);
 
-  const t = getExerciseTranslations(lang);
 
   const filtered = useMemo(
     () => cards.filter((c) => exerciseMatchesQuery(c, query)),

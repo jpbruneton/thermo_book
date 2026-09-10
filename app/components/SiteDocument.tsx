@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "katex/dist/katex.min.css";
 import "@/app/globals.css";
 import { fontVariables } from "@/app/fonts";
+import { getReaderLanguage } from "@/lib/readerLanguage.server";
 import { NavBar } from "./NavBar";
 import { Footer } from "./Footer";
 import { FloatingShareButton } from "./FloatingShareButton";
@@ -109,7 +110,7 @@ export function SiteDocument({
         />
       </head>
       <body>
-        <Providers>
+        <Providers initialLanguage={getReaderLanguage(lang)}>
           <NavBar />
           <main>{children}</main>
           <Footer />

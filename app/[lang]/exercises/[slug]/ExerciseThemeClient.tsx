@@ -3,7 +3,7 @@
 import { useEffect, useMemo } from "react";
 import Link from "next/link";
 import { useLang } from "@/app/context/LangContext";
-import { sectionHref } from "@/lib/i18n";
+import { sectionHref } from "@/lib/languages";
 import { processLatex } from "@/lib/latex";
 
 interface Props {

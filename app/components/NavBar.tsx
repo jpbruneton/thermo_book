@@ -3,8 +3,7 @@ import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { useTheme } from "@/app/context/ThemeContext";
 import { useLang } from "@/app/context/LangContext";
-import { sectionFromSlug, sectionHref, SUPPORTED_LANGS, type Lang } from "@/lib/i18n";
-import { getThemeUrlSlug, getWebThemeFromUrlSlug } from "@/lib/chapters";
+import { sectionFromSlug, sectionHref, SUPPORTED_LANGS, type Lang } from "@/lib/languages";
 import { DonateButton } from "@/app/components/DonateButton";
 import { useEffect, useRef, useState } from "react";
 
@@ -200,15 +199,7 @@ export function NavBar() {
         return;
       }
       const section = sectionFromSlug(currentLang as Lang, sectionSlug);
-      let localizedRest = rest ?? "";
-      if (section === "chapters" && rest) {
-        const [currentThemeSlug, ...remainingSegments] = rest.slice(1).split("/");
-        const theme = getWebThemeFromUrlSlug(currentThemeSlug, currentLang as Lang);
-        if (theme) {
-          localizedRest = `/${getThemeUrlSlug(theme, l)}`;
-          if (remainingSegments.length > 0) localizedRest += `/${remainingSegments.join("/")}`;
-        }
-      }
+      const localizedRest = rest ?? "";
       const localizedPage = rest ? localizedPagePath(l) : undefined;
       const queryAndHash = typeof window === "undefined"
         ? ""

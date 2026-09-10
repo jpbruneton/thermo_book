@@ -6,7 +6,7 @@ import { Cookie, Crimson_Pro, Fraunces, Inter, JetBrains_Mono } from "next/font/
 const headings = Fraunces({
   subsets: ["latin"],
   style: ["normal", "italic"],
-  axes: ["opsz"],
+  // Keep variable weights and real italics at the default optical size.
   variable: "--font-playfair",
   display: "swap",
   preload: false,

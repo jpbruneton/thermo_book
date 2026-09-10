@@ -1,10 +1,11 @@
 "use client";
 import Link from "next/link";
-import { bookMeta, contactEmail } from "@/lib/chapters";
+import { sectionHref } from "@/lib/languages";
+import { bookMeta, contactEmail } from "@/lib/bookMetadata";
 import { useLang } from "@/app/context/LangContext";
 
 export function Footer() {
-  const { t } = useLang();
+  const { t, lang } = useLang();
   const book = t.book;
 
   return (
@@ -67,9 +68,9 @@ export function Footer() {
           </p>
           {[
             { href: "/", label: t.footer.home },
-            { href: "/chapters", label: t.footer.allChapters },
-            { href: "/exercises", label: t.footer.exercises },
-            { href: "/about", label: t.footer.aboutBook },
+            { href: sectionHref(lang, "chapters"), label: t.footer.allChapters },
+            { href: sectionHref(lang, "exercises"), label: t.footer.exercises },
+            { href: sectionHref(lang, "about"), label: t.footer.aboutBook },
           ].map((l) => (
             <div key={l.href} style={{ marginBottom: "0.4rem" }}>
               <Link
@@ -155,7 +156,7 @@ export function Footer() {
           fontFamily: "var(--font-inter)",
         }}
       >
-        {t.footer.copyright(bookMeta.year, bookMeta.author)}
+        {t.footer.copyright}
       </div>
     </footer>
   );

@@ -1,62 +1,77 @@
-"use client";
-import { createContext, useContext, useEffect, useState } from "react";
+﻿"use client";
+import { createContext, useContext, useEffect, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
-import { getTranslations, isLang, isRtlLang, type Lang, type Translations } from "@/lib/i18n";
+import { isLang, isRtlLang, type Lang } from "@/lib/languages";
+import type { ReaderLanguage } from "@/lib/readerLanguage";
 
-interface LangContextValue {
-  lang: Lang;
+interface LangContextValue extends ReaderLanguage {
   setLang: (lang: Lang) => void;
-  t: Translations;
 }
 
-const LangContext = createContext<LangContextValue>({
-  lang: "en",
-  setLang: () => {},
-  t: getTranslations("en"),
-});
+const LangContext = createContext<LangContextValue | null>(null);
 
-/** Lang segment at the start of the path, if the current route is under /en or /fr. */
-function langFromPathname(pathname: string): Lang | null {
-  const segment = pathname.split("/")[1];
-  return isLang(segment) ? segment : null;
-}
-
-export function LangProvider({ children }: { children: React.ReactNode }) {
+export function LangProvider({ children, initialLanguage }: {
+  children: React.ReactNode;
+  initialLanguage: ReaderLanguage;
+}) {
   const pathname = usePathname();
-  const [lang, setLangState] = useState<Lang>("en");
-  const urlLang = langFromPathname(pathname);
+  const segment = pathname.split("/")[1];
+  const urlLang = isLang(segment) ? segment : null;
+  const [savedLanguage, setSavedLanguage] = useState(initialLanguage);
+  const request = useRef<AbortController | null>(null);
+  const cache = useRef(new Map<Lang, ReaderLanguage>([[initialLanguage.lang, initialLanguage]]));
+  // Route data wins immediately, including during back/forward navigation.
+  const language = urlLang ? initialLanguage : savedLanguage;
 
-  useEffect(() => {
-    if (urlLang) {
-      setLangState(urlLang);
-      localStorage.setItem("lang", urlLang);
-      return;
+  const loadLanguage = async (lang: Lang) => {
+    request.current?.abort();
+    const controller = new AbortController();
+    request.current = controller;
+    try {
+      let data = cache.current.get(lang);
+      if (!data) {
+        const response = await fetch(`/api/language/${lang}`, { signal: controller.signal });
+        if (!response.ok) throw new Error("Language unavailable");
+        data = await response.json() as ReaderLanguage;
+        if (data.lang !== lang) throw new Error("Unexpected language");
+        cache.current.set(lang, data);
+      }
+      if (!controller.signal.aborted) setSavedLanguage(data);
+    } catch {
+      // Preserve the requested language if the optional JSON fetch fails.
+      if (!controller.signal.aborted) window.location.assign(`/${lang}`);
     }
-    const stored = localStorage.getItem("lang");
-    if (stored && isLang(stored)) {
-      setLangState(stored);
-    }
-  }, [urlLang]);
-
-  const activeLang = urlLang ?? lang;
-
-  useEffect(() => {
-    document.documentElement.lang = activeLang;
-    document.documentElement.dir = isRtlLang(activeLang) ? "rtl" : "ltr";
-  }, [activeLang]);
-
-  const setLang = (newLang: Lang) => {
-    setLangState(newLang);
-    localStorage.setItem("lang", newLang);
   };
 
-  return (
-    <LangContext.Provider value={{ lang: activeLang, setLang, t: getTranslations(activeLang) }}>
-      {children}
-    </LangContext.Provider>
-  );
+  useEffect(() => {
+    cache.current.set(initialLanguage.lang, initialLanguage);
+    if (urlLang) {
+      request.current?.abort();
+      setSavedLanguage(initialLanguage);
+      localStorage.setItem("lang", urlLang);
+    } else {
+      const stored = localStorage.getItem("lang");
+      if (stored && isLang(stored)) void loadLanguage(stored);
+    }
+    return () => request.current?.abort();
+  }, [urlLang, initialLanguage]);
+
+  useEffect(() => {
+    document.documentElement.lang = language.lang;
+    document.documentElement.dir = isRtlLang(language.lang) ? "rtl" : "ltr";
+  }, [language.lang]);
+
+  const setLang = (lang: Lang) => {
+    localStorage.setItem("lang", lang);
+    // NavBar navigates to the corresponding URL on localized routes.
+    if (!urlLang) void loadLanguage(lang);
+  };
+
+  return <LangContext.Provider value={{ ...language, setLang }}>{children}</LangContext.Provider>;
 }
 
 export function useLang() {
-  return useContext(LangContext);
+  const context = useContext(LangContext);
+  if (!context) throw new Error("useLang requires LangProvider");
+  return context;
 }

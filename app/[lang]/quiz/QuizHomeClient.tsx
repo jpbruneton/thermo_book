@@ -3,18 +3,18 @@
 import { useState } from "react";
 import Link from "next/link";
 import { useLang } from "@/app/context/LangContext";
-import { sectionHref, type Lang } from "@/lib/i18n";
-import { getQuizTranslations, type QuizTranslations } from "@/lib/quizTranslations";
+import { sectionHref, type Lang } from "@/lib/languages";
+import type { QuizTranslations } from "@/lib/quizTranslations";
 import { SectionUnavailable } from "@/app/components/SectionUnavailable";
 import type { QuizLessonCard } from "./page";
 
 interface Props {
   cards: QuizLessonCard[];
+  labels: Pick<QuizTranslations, "hubTitle" | "startQuiz">;
 }
 
-export function QuizHomeClient({ cards }: Props) {
+export function QuizHomeClient({ cards, labels: t }: Props) {
   const { lang } = useLang();
-  const t = getQuizTranslations(lang);
 
   // The server only sends lessons whose quiz is fully translated in this
   // language; none means the section has nothing to show here yet.
@@ -61,7 +61,7 @@ function QuizLessonCardView({
 }: {
   card: QuizLessonCard;
   lang: Lang;
-  t: QuizTranslations;
+  t: Props["labels"];
 }) {
   const [hovered, setHovered] = useState(false);
 
@@ -97,7 +97,7 @@ function QuizLessonCardView({
             marginBottom: "0.55rem",
           }}
         >
-          {t.lessonLabel(card.lecon)}
+          {card.lessonLabel}
         </span>
         <span
           style={{
@@ -119,7 +119,7 @@ function QuizLessonCardView({
             marginTop: "0.85rem",
           }}
         >
-          {t.questionCount(card.count)}
+          {card.questionCount}
         </span>
         <span
           style={{

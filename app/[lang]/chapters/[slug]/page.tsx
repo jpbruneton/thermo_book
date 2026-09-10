@@ -182,6 +182,7 @@ export default function ChapterPage({ params, searchParams }: Props) {
         />
       ))}
       <ChapterPageClient
+        localizedPaths={Object.fromEntries(SUPPORTED_LANGS.map((lang) => [lang, sectionHref(lang, "chapters", getThemeUrlSlug(theme, lang))]))}
         theme={themeWithRenderedContent}
         prev={prev}
         next={next}

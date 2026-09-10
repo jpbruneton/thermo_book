@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import { ShareButton } from "./ShareButton";
-import { isLang } from "@/lib/i18n";
+import { isLang } from "@/lib/languages";
 
 const SCROLL_THRESHOLD = 400;
 

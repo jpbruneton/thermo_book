@@ -4,11 +4,17 @@ import Link from "next/link";
 import { useMemo, useState } from "react";
 import { useLang } from "@/app/context/LangContext";
 import { usePageViewBeacon } from "@/app/hooks/usePageViewBeacon";
-import { sectionHref } from "@/lib/i18n";
-import { getQuizTranslations } from "@/lib/quizTranslations";
+import { sectionHref } from "@/lib/languages";
+import type { QuizTranslations } from "@/lib/quizTranslations";
 import type { QuizQuestion } from "@/lib/quizzes";
 
+export type QuizRunnerLabels = Pick<QuizTranslations,
+  "back" | "backToList" | "controlLabel" | "next" | "nextQuestion" |
+  "prevQuestion" | "recap" | "restart" | "scoreTitle" | "seeScore"
+> & { lessonLabel: string; questionOf: string[]; scoreLine: string[] };
+
 interface Props {
+  labels: QuizRunnerLabels;
   lecon: number;
   /** Lesson title, already resolved for the current language server-side. */
   title: string;
@@ -82,7 +88,7 @@ function QuizNavCard({
   );
 }
 
-export function QuizRunner({ lecon, title, questions }: Props) {
+export function QuizRunner({ lecon, title, questions, labels: t }: Props) {
   const { lang } = useLang();
   usePageViewBeacon("quiz", lang, String(lecon));
   const [index, setIndex] = useState(0);
@@ -91,7 +97,6 @@ export function QuizRunner({ lecon, title, questions }: Props) {
   );
   const [finished, setFinished] = useState(false);
 
-  const t = getQuizTranslations(lang);
 
   const score = useMemo(
     () =>
@@ -152,7 +157,7 @@ export function QuizRunner({ lecon, title, questions }: Props) {
             fontWeight: 700,
           }}
         >
-          {t.controlLabel} — {t.lessonLabel(lecon)}
+          {t.controlLabel} — {t.lessonLabel}
         </span>
         <h1
           style={{
@@ -205,7 +210,7 @@ export function QuizRunner({ lecon, title, questions }: Props) {
                 color: "var(--text-heading)",
               }}
             >
-              {t.scoreLine(score, questions.length)}
+              {t.scoreLine[score]}
             </p>
           </div>
 
@@ -317,7 +322,7 @@ export function QuizRunner({ lecon, title, questions }: Props) {
             marginBottom: "0.75rem",
           }}
         >
-          {t.questionOf(index + 1, questions.length)}
+          {t.questionOf[index]}
         </p>
 
         <div

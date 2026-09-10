@@ -1,9 +1,9 @@
 "use client";
 import Link from "next/link";
 import Image from "next/image";
-import { getListedWebThemes, getThemeTitle, getThemeDescription, getThemeUrlSlug, bookMeta } from "@/lib/chapters";
+import { bookMeta } from "@/lib/bookMetadata";
 import { useLang } from "@/app/context/LangContext";
-import { sectionHref } from "@/lib/i18n";
+import { sectionHref } from "@/lib/languages";
 
 function WaveBackground() {
   return (
@@ -30,9 +30,9 @@ function WaveBackground() {
 }
 
 export default function HomePageClient() {
-  const { t, lang } = useLang();
+  const { t, lang, chapters } = useLang();
   const book = t.book;
-  const webThemes = getListedWebThemes();
+  const webThemes = Object.values(chapters).filter((theme) => theme.listed);
 
   return (
     <div style={{ position: "relative", zIndex: 1 }}>
@@ -298,7 +298,7 @@ export default function HomePageClient() {
             {webThemes.map((theme) => (
               <Link
                 key={theme.slug}
-                href={sectionHref(lang, "chapters", getThemeUrlSlug(theme, lang))}
+                href={sectionHref(lang, "chapters", theme.urlSlug)}
                 style={{ textDecoration: "none" }}
               >
                 <div
@@ -342,7 +342,7 @@ export default function HomePageClient() {
                       lineHeight: 1.3,
                     }}
                   >
-                    {getThemeTitle(theme, lang)}
+                    {theme.title}
                   </h3>
                   <p
                     style={{
@@ -353,7 +353,7 @@ export default function HomePageClient() {
                       marginBottom: "0.875rem",
                     }}
                   >
-                    {getThemeDescription(theme, lang)}
+                    {theme.description}
                   </p>
                   <div
                     style={{

@@ -1,5 +1,5 @@
 "use client";
-import { bookMeta, contactEmail } from "@/lib/chapters";
+import { bookMeta, contactEmail } from "@/lib/bookMetadata";
 import { useLang } from "@/app/context/LangContext";
 
 const AUTHOR_EXTERNAL_LINKS = [
@@ -25,12 +25,6 @@ export default function AboutPage() {
   const { t } = useLang();
   const at = t.about;
   const book = t.book;
-  const detailItems = [
-    { label: at.detailLabels.author, value: bookMeta.author },
-    { label: at.detailLabels.affiliation, value: bookMeta.affiliation },
-    { label: at.detailLabels.edition, value: book.edition },
-    { label: at.detailLabels.year, value: bookMeta.year },
-  ];
 
   const sectionStyle = {
     marginBottom: "2.35rem",
@@ -109,55 +103,6 @@ export default function AboutPage() {
               </p>
             ))}
           <p style={{ ...bodyStyle, marginBottom: 0, textAlign: "justify" }}>{at.aboutBookBody2}</p>
-        </div>
-
-        {/* Book details */}
-        <div style={sectionStyle}>
-          <h2 style={{ ...h2Style, marginBottom: "0.85rem" }}>
-            {at.bookDetails}
-          </h2>
-          <div
-            style={{
-              display: "grid",
-              gridTemplateColumns: "1fr 1fr",
-              gap: "1rem",
-            }}
-          >
-            {detailItems.map((item) => (
-              <div
-                key={item.label}
-                style={{
-                  background: "var(--bg-card)",
-                  border: "1px solid var(--accent-border-sm)",
-                  borderRadius: "6px",
-                  padding: "1rem 1.25rem",
-                  transition: "background 0.25s ease",
-                }}
-              >
-                <div
-                  style={{
-                    fontFamily: "var(--font-inter)",
-                    fontSize: "0.7rem",
-                    textTransform: "uppercase",
-                    letterSpacing: "0.1em",
-                    color: "var(--text-dim)",
-                    marginBottom: "0.3rem",
-                  }}
-                >
-                  {item.label}
-                </div>
-                <div
-                  style={{
-                    fontFamily: "var(--font-crimson)",
-                    fontSize: "1rem",
-                    color: "var(--text-heading)",
-                  }}
-                >
-                  {item.value}
-                </div>
-              </div>
-            ))}
-          </div>
         </div>
 
         {/* Author bio */}

@@ -9,6 +9,8 @@ export interface QuizLessonCard {
   /** Lesson title, already resolved for the current language. */
   title: string;
   count: number;
+  lessonLabel: string;
+  questionCount: string;
 }
 
 export default async function QuizHomePage({
@@ -29,6 +31,8 @@ export default async function QuizHomePage({
       const lesson = lessons.find((theme) => theme.number === lecon);
       return {
         lecon,
+        lessonLabel: t.lessonLabel(lecon),
+        questionCount: t.questionCount(getLocalizedQuizQuestions(lecon, lang)?.length ?? 0),
         title:
           t.lessonCardTitles[lecon] ??
           (lesson ? getThemeTitle(lesson, lang) : t.lessonLabel(lecon)),
@@ -36,5 +40,5 @@ export default async function QuizHomePage({
       };
     });
 
-  return <QuizHomeClient cards={cards} />;
+  return <QuizHomeClient cards={cards} labels={{ hubTitle: t.hubTitle, startQuiz: t.startQuiz }} />;
 }
