@@ -138,7 +138,7 @@ export function ShareButton({ variant, style, className }: ShareButtonProps) {
 
   if (variant === "fab") {
     return (
-      <div ref={containerRef} className={className} style={{ position: "fixed", display: "inline-flex", ...style }}>
+      <div ref={containerRef} className={className} style={{ position: "fixed", ...style }}>
         {menu}
         <button
           type="button"
@@ -151,10 +151,11 @@ export function ShareButton({ variant, style, className }: ShareButtonProps) {
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
-            background: "var(--amber-soft)",
+            background: "color-mix(in srgb, var(--amber-soft) 55%, transparent)",
+            backdropFilter: "blur(6px)",
             color: "#0a0b0f",
             border: "none",
-            boxShadow: "0 4px 16px rgba(0,0,0,0.28)",
+            boxShadow: "0 4px 16px rgba(0,0,0,0.2)",
             cursor: "pointer",
           }}
         >

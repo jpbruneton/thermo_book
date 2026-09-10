@@ -329,29 +329,41 @@ export function ChapterContent({ lesson, hideHeader = false, topNav }: Props) {
       )}
 
 {showBackToTop && (
-        <button
-          onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-          aria-label={lang === "fr" ? "Revenir en haut" : "Back to top"}
-          title={lang === "fr" ? "Revenir en haut" : "Back to top"}
-          style={{
-            position: "fixed",
-            right: "1.2rem",
-            bottom: "1.2rem",
-            width: "42px",
-            height: "42px",
-            borderRadius: "999px",
-            border: "1px solid var(--accent-border-md)",
-            background: "var(--bg-card)",
-            color: "var(--amber)",
-            boxShadow: "0 10px 25px rgba(0,0,0,0.18)",
-            cursor: "pointer",
-            zIndex: 40,
-            fontSize: "1.1rem",
-            lineHeight: 1,
-          }}
-        >
-          ↑
-        </button>
+        <>
+          {/* Hidden below 700px — overlapped there by the floating mobile share button. */}
+          <style>{`
+            .back-to-top-btn { display: flex; }
+            @media (max-width: 700px) {
+              .back-to-top-btn { display: none; }
+            }
+          `}</style>
+          <button
+            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+            aria-label={lang === "fr" ? "Revenir en haut" : "Back to top"}
+            title={lang === "fr" ? "Revenir en haut" : "Back to top"}
+            className="back-to-top-btn"
+            style={{
+              position: "fixed",
+              right: "1.2rem",
+              bottom: "1.2rem",
+              width: "42px",
+              height: "42px",
+              borderRadius: "999px",
+              border: "1px solid var(--accent-border-md)",
+              background: "var(--bg-card)",
+              color: "var(--amber)",
+              boxShadow: "0 10px 25px rgba(0,0,0,0.18)",
+              cursor: "pointer",
+              zIndex: 40,
+              fontSize: "1.1rem",
+              lineHeight: 1,
+              alignItems: "center",
+              justifyContent: "center",
+            }}
+          >
+            ↑
+          </button>
+        </>
       )}
     </>
   );
