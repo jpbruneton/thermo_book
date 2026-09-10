@@ -396,6 +396,26 @@ body::before {
   text-justify: inter-word;
 }
 
+.prose-content a[href]:not(.latex-figure-zoom-link):not(.latex-figure-pdf-link) {
+  color: #2563eb;
+  text-decoration: underline;
+  text-underline-offset: 0.18em;
+  text-decoration-thickness: 1px;
+}
+
+.prose-content a[href]:not(.latex-figure-zoom-link):not(.latex-figure-pdf-link):hover {
+  text-decoration-thickness: 2px;
+}
+
+.prose-content a[href]:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 3px;
+}
+
+[data-theme="dark"] .prose-content a[href]:not(.latex-figure-zoom-link):not(.latex-figure-pdf-link) {
+  color: #93c5fd;
+}
+
 /* Keep closing parentheses and punctuation attached to the inline formula before them. */
 .latex-inline-math-punctuation {
   white-space: nowrap;

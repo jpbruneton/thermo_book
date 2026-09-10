@@ -343,7 +343,7 @@ export const themes: Theme[] = [
     slug: "relations-fondamentales",
     titleFr: "Structure mathématique : les relations fondamentales",
     titleEn: "Mathematical Structure: The Fundamental Relations",
-    descriptionFr: "Décrire l'espace des états et relier l'équilibre à la stabilité de l'entropie.",
+    descriptionFr: "De l'équation fondamentale aux équations d'état et aux conditions d'équilibre.",
     descriptionEn: "Fundamental relations and thermodynamic potentials.",
     readingTime: "25 min",
     topicsFr: [
