@@ -3,7 +3,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { bookMeta } from "@/lib/bookMetadata";
 import { useLang } from "@/app/context/LangContext";
-import { sectionHref } from "@/lib/languages";
+import { sectionHref, SUPPORTED_LANGS } from "@/lib/languages";
 
 function WaveBackground() {
   return (
@@ -64,6 +64,42 @@ export default function HomePageClient() {
             pointerEvents: "none",
           }}
         />
+
+        {/* English mobile copy for now; links follow the selected language. */}
+        <div className="home-mobile-intro" lang="en" dir="ltr">
+          <div className="home-mobile-heading">
+            <h1 className="home-mobile-title">Online Thermodynamics Course</h1>
+            <Image
+              className="home-mobile-cover"
+              src="/figs/fr/front.png"
+              alt="Thermodynamics book cover"
+              width={84}
+              height={112}
+              sizes="84px"
+            />
+          </div>
+          <p className="home-mobile-description">
+            Explore thermodynamics through <strong>~200 pages</strong> of rigorous
+            explanations and <strong>80+ solved exercises.</strong>
+          </p>
+          <p className="home-mobile-language-hint">
+            Choose from {SUPPORTED_LANGS.length} languages using the menu above.
+          </p>
+          <nav className="home-mobile-actions" aria-label="Start learning">
+            <Link
+              className="home-mobile-action home-mobile-action-primary"
+              href={sectionHref(lang, "chapters")}
+            >
+              <span>Go to lessons</span><span aria-hidden="true">→</span>
+            </Link>
+            <Link className="home-mobile-action" href={sectionHref(lang, "exercises")}>
+              <span>Go to exercises</span><span aria-hidden="true">→</span>
+            </Link>
+            <Link className="home-mobile-action" href={sectionHref(lang, "quiz")}>
+              <span>Go to quizzes</span><span aria-hidden="true">→</span>
+            </Link>
+          </nav>
+        </div>
 
         <div
           className="home-hero-grid"
@@ -255,6 +291,7 @@ export default function HomePageClient() {
 
       {/* ─── Chapters preview ─── */}
       <section
+        className="home-chapters-preview"
         style={{
           padding: "6rem 1.5rem",
           background: "var(--bg-secondary)",
@@ -289,6 +326,7 @@ export default function HomePageClient() {
           </div>
 
           <div
+            className="home-chapters-grid"
             style={{
               display: "grid",
               gridTemplateColumns: "repeat(auto-fill, minmax(300px, 1fr))",

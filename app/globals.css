@@ -1123,22 +1123,165 @@ a.exercise-index-card-link:focus-visible {
   }
 }
 
-/* ─── Mobile: keep the hero title clear of the sticky nav bar ─── */
-@media (max-width: 640px) {
+/* The alternate introduction is only displayed on phones. */
+.home-mobile-intro {
+  display: none;
+}
+
+/* Phone-sized touch screens in either orientation. The short side stays below
+   600 CSS px to leave standard tablet layouts unchanged. */
+@media (max-width: 599px) and (hover: none) and (pointer: coarse),
+       (max-height: 599px) and (orientation: landscape) and (hover: none) and (pointer: coarse) {
   .home-hero-section {
-    padding-top: 5.5rem !important;
+    min-height: auto !important;
+    padding: 1.75rem 1.25rem 2rem !important;
   }
 
-  .home-hero-text {
-    margin-top: 0 !important;
+  .home-hero-grid {
+    display: none !important;
   }
 
-  .home-main-title {
-    margin-top: 0 !important;
+  .home-mobile-intro {
+    display: block;
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    max-width: 480px;
+    margin: 0 auto;
   }
 
-  .home-hero-description {
-    text-align: left !important;
+  .home-mobile-heading {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 84px;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .home-mobile-title {
+    font-family: var(--font-playfair);
+    font-size: clamp(1.3rem, 5.4vw, 1.85rem);
+    font-weight: 800;
+    line-height: 1.2;
+    letter-spacing: -0.025em;
+    color: var(--text-bright);
+    overflow-wrap: anywhere;
+    margin: 0;
+  }
+
+  .home-mobile-cover {
+    display: block;
+    width: 84px;
+    height: 112px;
+    object-fit: cover;
+    border-radius: 3px;
+    box-shadow: 0 10px 24px rgba(40, 20, 5, 0.2);
+  }
+
+  .home-mobile-description {
+    font-family: var(--font-crimson);
+    font-size: 1.15rem;
+    line-height: 1.5;
+    color: var(--text-secondary);
+    margin: 0 0 0.85rem;
+  }
+
+  .home-mobile-description strong {
+    font-weight: 600;
+    color: var(--text-heading);
+  }
+
+  .home-mobile-language-hint {
+    font-family: var(--font-inter);
+    font-size: 0.78rem;
+    line-height: 1.5;
+    color: var(--text-secondary);
+    margin: 0 0 1.25rem;
+  }
+
+  .home-mobile-actions {
+    display: grid;
+    gap: 0.65rem;
+  }
+
+  .home-mobile-action {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    min-height: 52px;
+    padding: 0.8rem 1rem;
+    border: 1px solid var(--accent-border-lg);
+    border-radius: 8px;
+    background: var(--bg-card);
+    color: var(--amber);
+    font-family: var(--font-inter);
+    font-size: 0.9rem;
+    font-weight: 600;
+    line-height: 1.4;
+    text-decoration: none;
+  }
+
+  .home-mobile-action-primary {
+    background: var(--amber);
+    color: var(--bg-primary);
+    border-color: var(--amber);
+  }
+
+  .home-mobile-action:active {
+    opacity: 0.8;
+  }
+
+  .home-mobile-action:focus-visible {
+    outline: 2px solid var(--amber);
+    outline-offset: 3px;
+  }
+
+  .home-chapters-preview {
+    padding: 2.5rem 1.25rem !important;
+  }
+
+  .home-chapters-grid {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+}
+
+/* On landscape phones, keep the learning links alongside the introduction. */
+@media (min-width: 641px) and (max-height: 599px) and (orientation: landscape) and (hover: none) and (pointer: coarse) {
+  .home-hero-section {
+    padding: 1.25rem 1.5rem 1.5rem !important;
+  }
+
+  .home-mobile-intro {
+    display: grid;
+    grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+    column-gap: 2rem;
+    max-width: 900px;
+    align-items: start;
+  }
+
+  .home-mobile-heading,
+  .home-mobile-description,
+  .home-mobile-language-hint {
+    grid-column: 1;
+  }
+
+  .home-mobile-heading {
+    margin-bottom: 0.75rem;
+  }
+
+  .home-mobile-title {
+    font-size: 1.5rem;
+  }
+
+  .home-mobile-language-hint {
+    margin-bottom: 0;
+  }
+
+  .home-mobile-actions {
+    grid-column: 2;
+    grid-row: 1 / 4;
+    align-self: center;
   }
 }
 
