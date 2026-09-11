@@ -5,34 +5,8 @@ import { useTheme } from "@/app/context/ThemeContext";
 import { useLang } from "@/app/context/LangContext";
 import { sectionFromSlug, sectionHref, SUPPORTED_LANGS, type Lang } from "@/lib/languages";
 import { DonateButton } from "@/app/components/DonateButton";
-import { useEffect, useRef, useState } from "react";
-
-const MORE_LANGUAGES: { code: Exclude<Lang, "fr" | "en">; flag: string; nativeName: string }[] = [
-  { code: "de", flag: "🇩🇪", nativeName: "Deutsch" },
-  { code: "es", flag: "🇪🇸", nativeName: "Español" },
-  { code: "pt", flag: "🇵🇹", nativeName: "Português" },
-  { code: "it", flag: "🇮🇹", nativeName: "Italiano" },
-  { code: "pl", flag: "🇵🇱", nativeName: "Polski" },
-  { code: "ru", flag: "🇷🇺", nativeName: "Русский" },
-  { code: "zh", flag: "🇨🇳", nativeName: "中文" },
-  { code: "ja", flag: "🇯🇵", nativeName: "日本語" },
-  { code: "ko", flag: "🇰🇷", nativeName: "한국어" },
-  { code: "hi", flag: "🇮🇳", nativeName: "हिन्दी" },
-  { code: "vi", flag: "🇻🇳", nativeName: "Tiếng Việt" },
-  { code: "ar", flag: "🇸🇦", nativeName: "العربية" },
-  { code: "id", flag: "🇮🇩", nativeName: "Bahasa Indonesia" },
-  { code: "tr", flag: "🇹🇷", nativeName: "Türkçe" },
-  { code: "bn", flag: "🇧🇩", nativeName: "বাংলা" },
-  { code: "ur", flag: "🇵🇰", nativeName: "اردو" },
-  { code: "sw", flag: "🇹🇿", nativeName: "Kiswahili" },
-  { code: "fa", flag: "🇮🇷", nativeName: "فارسی" },
-];
-
-const MORE_LABELS: Partial<Record<Lang, string>> = {
-  fr: "Plus…",
-  id: "Lainnya…",
-  tr: "Daha fazla…",
-};
+import { useState } from "react";
+import { LanguageSelector } from "./LanguageSelector";
 
 function localizedPagePath(lang: Lang): string | null | undefined {
   if (typeof document === "undefined") return undefined;
@@ -46,115 +20,6 @@ function localizedPagePath(lang: Lang): string | null | undefined {
   } catch {
     return null;
   }
-}
-
-function MoreLanguagesMenu({
-  lang,
-  onSelect,
-  small,
-}: {
-  lang: Lang;
-  onSelect: (lang: Lang) => void;
-  small?: boolean;
-}) {
-  const [open, setOpen] = useState(false);
-  const containerRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    if (!open) return;
-    const onClickAway = (e: MouseEvent) => {
-      if (containerRef.current && !containerRef.current.contains(e.target as Node)) {
-        setOpen(false);
-      }
-    };
-    document.addEventListener("mousedown", onClickAway);
-    return () => document.removeEventListener("mousedown", onClickAway);
-  }, [open]);
-
-  const moreLabel = MORE_LABELS[lang] ?? "More…";
-
-  return (
-    <div ref={containerRef} style={{ position: "relative", flexShrink: 0 }}>
-      <button
-        type="button"
-        onClick={() => setOpen((o) => !o)}
-        aria-expanded={open}
-        aria-label={small ? moreLabel : undefined}
-        style={{
-          background: "transparent",
-          color: "var(--text-secondary)",
-          border: "1px solid var(--border)",
-          borderRadius: "4px",
-          padding: small ? "0.45rem 0" : "0.35rem 0.65rem",
-          width: small ? "42px" : undefined,
-          cursor: "pointer",
-          fontFamily: "var(--font-inter)",
-          fontSize: small ? "0.8rem" : "0.75rem",
-          fontWeight: 500,
-          letterSpacing: "0.02em",
-          whiteSpace: "nowrap",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          gap: "0.3rem",
-          lineHeight: 1,
-        }}
-      >
-        {small ? "+" : moreLabel}
-        {!small && <span style={{ fontSize: "0.65em" }}>{open ? "▲" : "▼"}</span>}
-      </button>
-
-      {open && (
-        <div
-          style={{
-            position: "absolute",
-            top: "calc(100% + 0.4rem)",
-            left: 0,
-            zIndex: 60,
-            background: "var(--bg-card)",
-            border: "1px solid var(--border)",
-            borderRadius: "6px",
-            boxShadow: "0 8px 24px rgba(0,0,0,0.18)",
-            padding: "0.4rem",
-            display: "grid",
-            gridTemplateColumns: "repeat(2, minmax(120px, 1fr))",
-            gap: "0.15rem",
-            minWidth: "260px",
-          }}
-        >
-          {MORE_LANGUAGES.map(({ code, flag, nativeName }) => (
-            <button
-              key={code}
-              type="button"
-              onClick={() => {
-                setOpen(false);
-                onSelect(code);
-              }}
-              style={{
-                display: "flex",
-                alignItems: "center",
-                gap: "0.5rem",
-                background: "transparent",
-                border: "none",
-                borderRadius: "4px",
-                padding: "0.4rem 0.5rem",
-                cursor: "pointer",
-                textAlign: "left",
-                fontFamily: "var(--font-inter)",
-                fontSize: "0.82rem",
-                color: "var(--text-secondary)",
-              }}
-              onMouseEnter={(e) => ((e.currentTarget as HTMLButtonElement).style.background = "var(--accent-bg-xs, rgba(200,150,60,0.08))")}
-              onMouseLeave={(e) => ((e.currentTarget as HTMLButtonElement).style.background = "transparent")}
-            >
-              <span style={{ fontSize: "1.1rem", lineHeight: 1 }}>{flag}</span>
-              <span dir="auto">{nativeName}</span>
-            </button>
-          ))}
-        </div>
-      )}
-    </div>
-  );
 }
 
 export function NavBar() {
@@ -174,16 +39,6 @@ export function NavBar() {
   ];
 
   const mobileLinks = desktopLinks;
-
-  const langLabels: Record<"en" | "fr", string> = {
-    fr: "Français",
-    en: "English",
-  };
-
-  const langLabelsShort: Record<"en" | "fr", string> = {
-    fr: "FR",
-    en: "EN",
-  };
 
   // Matches /{anyLang} or /{anyLang}/{section}[/...rest] — not just /en or /fr,
   // so switching language while browsing under /de, /zh, etc. still works.
@@ -215,45 +70,6 @@ export function NavBar() {
     }
     setLang(l);
   };
-
-  const LangToggle = ({ small }: { small?: boolean }) => (
-    <div
-      style={{
-        display: "flex",
-        alignItems: "center",
-        gap: "0",
-        border: "1px solid var(--border)",
-        borderRadius: "4px",
-        overflow: "hidden",
-        fontFamily: "var(--font-inter)",
-        fontSize: small ? "0.8rem" : "0.75rem",
-        fontWeight: 500,
-        flexShrink: 0,
-      }}
-    >
-      {(["fr", "en"] as const).map((l) => (
-        <button
-          key={l}
-          type="button"
-          onClick={() => switchLang(l)}
-          style={{
-            background: lang === l ? "var(--amber)" : "transparent",
-            color: lang === l ? (theme === "dark" ? "#0a0b0f" : "#ffffff") : "var(--text-secondary)",
-            border: "none",
-            width: small ? "42px" : undefined,
-            padding: small ? "0.45rem 0.75rem" : "0.35rem 0.65rem",
-            cursor: "pointer",
-            letterSpacing: "0.02em",
-            transition: "background 0.2s, color 0.2s",
-            lineHeight: 1,
-            whiteSpace: "nowrap",
-          }}
-        >
-          {small ? langLabelsShort[l] : langLabels[l]}
-        </button>
-      ))}
-    </div>
-  );
 
   return (
     <>
@@ -296,6 +112,7 @@ export function NavBar() {
         }}
       >
         <div
+          className="nav-bar-inner"
           style={{
             maxWidth: "1100px",
             margin: "0 auto",
@@ -317,11 +134,7 @@ export function NavBar() {
               minWidth: 0,
             }}
           >
-            {/* Language toggle + more-languages menu, stacked and flush */}
-            <div style={{ display: "flex", flexDirection: "column", gap: "0.3rem" }}>
-              <LangToggle />
-              <MoreLanguagesMenu lang={lang} onSelect={switchLang} />
-            </div>
+            <LanguageSelector lang={lang} onSelect={switchLang} />
 
             {desktopLinks.map((link) => (
               <Link
@@ -359,15 +172,11 @@ export function NavBar() {
           {/* Mobile: hamburger + theme toggle */}
           <div
             className="nav-mobile-btn"
-            style={{ alignItems: "center", gap: "0.75rem", flex: 1, justifyContent: "space-between" }}
+            style={{ alignItems: "center", gap: "0.5rem", flex: 1, minWidth: 0, justifyContent: "space-between" }}
           >
-            {/* Lang toggle visible on mobile bar */}
-            <div style={{ display: "flex", alignItems: "center", gap: "0.5rem", minWidth: 0 }}>
-              <LangToggle small />
-              <MoreLanguagesMenu lang={lang} onSelect={switchLang} small />
-            </div>
+            <LanguageSelector lang={lang} onSelect={switchLang} />
 
-            <div style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
+            <div style={{ display: "flex", alignItems: "center", gap: "0.5rem", flexShrink: 0 }}>
               {/* Donate */}
               <DonateButton compact lang={lang} />
 

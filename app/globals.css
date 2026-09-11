@@ -1107,6 +1107,105 @@ a.exercise-index-card-link:focus-visible {
   }
 }
 
+/* ─── Unified language selector ─── */
+.nav-language-selector {
+  position: relative;
+  min-width: 0;
+}
+
+.nav-language-trigger {
+  display: grid;
+  grid-template-columns: 16px minmax(0, 1fr) 8px;
+  align-items: center;
+  gap: 0.35rem;
+  max-width: 100%;
+  min-height: 44px;
+  padding: 0.4rem 0.5rem;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: transparent;
+  color: var(--text-secondary);
+  font-family: var(--font-inter);
+  font-size: 0.8rem;
+  font-weight: 500;
+  line-height: 1.25;
+  cursor: pointer;
+}
+
+.nav-language-name {
+  overflow-wrap: anywhere;
+  text-align: start;
+}
+
+.nav-language-chevron {
+  font-size: 0.75rem;
+}
+
+.nav-language-options {
+  position: absolute;
+  inset-inline-start: 0;
+  top: calc(100% + 0.4rem);
+  z-index: 60;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.2rem;
+  width: min(320px, calc(100vw - 2rem));
+  max-height: min(26rem, calc(100dvh - 6rem));
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: 0.4rem;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--bg-card);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
+}
+
+.nav-language-options[hidden] {
+  display: none;
+}
+
+.nav-language-option {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.35rem;
+  min-width: 0;
+  min-height: 44px;
+  padding: 0.5rem;
+  border: 0;
+  border-radius: 4px;
+  background: transparent;
+  color: var(--text-secondary);
+  font-family: var(--font-inter);
+  font-size: 0.8rem;
+  line-height: 1.35;
+  text-align: start;
+  overflow-wrap: anywhere;
+  cursor: pointer;
+}
+
+.nav-language-option:hover,
+.nav-language-option[aria-pressed="true"] {
+  background: var(--accent-bg-sm);
+  color: var(--amber);
+}
+
+.nav-language-trigger:focus-visible,
+.nav-language-option:focus-visible {
+  outline: 2px solid var(--amber);
+  outline-offset: 2px;
+}
+
+@media (max-width: 700px) {
+  .nav-bar-inner {
+    padding-inline: 1rem !important;
+  }
+
+  .nav-language-trigger {
+    font-size: 0.75rem;
+  }
+}
+
 /* ─── Home responsive fixes ─── */
 @media (max-width: 980px) {
   .home-hero-grid {
@@ -1235,6 +1334,21 @@ a.exercise-index-card-link:focus-visible {
   .home-mobile-action:focus-visible {
     outline: 2px solid var(--amber);
     outline-offset: 3px;
+  }
+
+  .home-mobile-details {
+    grid-column: 1 / -1;
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--accent-border-sm);
+    font-family: var(--font-crimson);
+    font-size: 1.05rem;
+    line-height: 1.6;
+    color: var(--text-secondary);
+  }
+
+  .home-mobile-details p + p {
+    margin-top: 1rem;
   }
 
   .home-chapters-preview {

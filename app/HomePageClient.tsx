@@ -3,7 +3,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { bookMeta } from "@/lib/bookMetadata";
 import { useLang } from "@/app/context/LangContext";
-import { sectionHref, SUPPORTED_LANGS } from "@/lib/languages";
+import { isRtlLang, sectionHref } from "@/lib/languages";
 
 function WaveBackground() {
   return (
@@ -33,6 +33,10 @@ export default function HomePageClient() {
   const { t, lang, chapters } = useLang();
   const book = t.book;
   const webThemes = Object.values(chapters).filter((theme) => theme.listed);
+  const introParagraphs = t.home.intro;
+  const mobile = t.home.mobile;
+  const direction = isRtlLang(lang) ? "rtl" : "ltr";
+  const arrow = direction === "rtl" ? "←" : "→";
 
   return (
     <div style={{ position: "relative", zIndex: 1 }}>
@@ -65,40 +69,47 @@ export default function HomePageClient() {
           }}
         />
 
-        {/* English mobile copy for now; links follow the selected language. */}
-        <div className="home-mobile-intro" lang="en" dir="ltr">
+        <div className="home-mobile-intro" lang={lang} dir={direction}>
           <div className="home-mobile-heading">
-            <h1 className="home-mobile-title">Online Thermodynamics Course</h1>
+            <h1 className="home-mobile-title">{mobile.title}</h1>
             <Image
               className="home-mobile-cover"
               src="/figs/fr/front.png"
-              alt="Thermodynamics book cover"
+              alt={book.title.replace(/\n/g, " ")}
               width={84}
               height={112}
               sizes="84px"
             />
           </div>
           <p className="home-mobile-description">
-            Explore thermodynamics through <strong>~200 pages</strong> of rigorous
-            explanations and <strong>80+ solved exercises.</strong>
+            {mobile.description.split(/(\*\*.*?\*\*)/g).map((part, index) =>
+              part.startsWith("**")
+                ? <strong key={index}>{part.slice(2, -2)}</strong>
+                : part
+            )}
           </p>
           <p className="home-mobile-language-hint">
-            Choose from {SUPPORTED_LANGS.length} languages using the menu above.
+            <em>{introParagraphs[1]}</em>
           </p>
-          <nav className="home-mobile-actions" aria-label="Start learning">
+          <nav className="home-mobile-actions" aria-label={mobile.title}>
             <Link
               className="home-mobile-action home-mobile-action-primary"
               href={sectionHref(lang, "chapters")}
             >
-              <span>Go to lessons</span><span aria-hidden="true">→</span>
+              <span>{mobile.lessons}</span><span aria-hidden="true">{arrow}</span>
             </Link>
             <Link className="home-mobile-action" href={sectionHref(lang, "exercises")}>
-              <span>Go to exercises</span><span aria-hidden="true">→</span>
+              <span>{mobile.exercises}</span><span aria-hidden="true">{arrow}</span>
             </Link>
             <Link className="home-mobile-action" href={sectionHref(lang, "quiz")}>
-              <span>Go to quizzes</span><span aria-hidden="true">→</span>
+              <span>{mobile.quizzes}</span><span aria-hidden="true">{arrow}</span>
             </Link>
           </nav>
+          <div className="home-mobile-details">
+            {introParagraphs.slice(2).map((paragraph, index) => (
+              <p key={index}>{paragraph}</p>
+            ))}
+          </div>
         </div>
 
         <div
@@ -151,11 +162,7 @@ export default function HomePageClient() {
             ) : null}
 
             <div className="animate-fade-up stagger-4">
-              {book.description
-                .split(/\n\n+/)
-                .map((block) => block.trim())
-                .filter(Boolean)
-                .map((paragraph, index, arr) => (
+              {introParagraphs.map((paragraph, index, arr) => (
                   <p
                     key={index}
                     className="home-hero-description"
@@ -169,7 +176,7 @@ export default function HomePageClient() {
                       textAlign: "justify",
                     }}
                   >
-                    {paragraph}
+                    {index === 1 ? <em>{paragraph}</em> : paragraph}
                   </p>
                 ))}
             </div>

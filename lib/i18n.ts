@@ -1,4 +1,6 @@
 import type { Lang } from "./languages";
+import { homeIntroTranslations } from "./homeIntroTranslations";
+import { mobileHomeTranslations } from "./mobileHomeTranslations";
 export * from "./languages";
 
 export type UpdateEntry = {
@@ -30,6 +32,8 @@ export const translations = {
       copyLink: "Copy link",
     },
     home: {
+      intro: homeIntroTranslations.en,
+      mobile: mobileHomeTranslations.en,
       badge: "Free Online Edition",
       readOnline: "Read Online →",
       aboutBook: "About the Book",
@@ -191,6 +195,8 @@ export const translations = {
       copyLink: "Copier le lien",
     },
     home: {
+      intro: homeIntroTranslations.fr,
+      mobile: mobileHomeTranslations.fr,
       badge: "Édition gratuite en ligne",
       readOnline: "Lire en ligne →",
       aboutBook: "À propos du livre",
@@ -430,6 +436,8 @@ const partialTranslations: Record<Exclude<Lang, "fr" | "en">, DeepPartial<Transl
         "Diese Lektion ist in der Struktur aufgeführt, aber ihr Inhalt wurde noch nicht veröffentlicht.",
     },
     home: {
+      intro: homeIntroTranslations.de,
+      mobile: mobileHomeTranslations.de,
       badge: "Kostenlose Online-Ausgabe",
       readOnline: "Online lesen →",
       aboutBook: "Über das Buch",
@@ -563,6 +571,8 @@ const partialTranslations: Record<Exclude<Lang, "fr" | "en">, DeepPartial<Transl
         "Esta lección figura en la estructura, pero su contenido aún no se ha publicado.",
     },
     home: {
+      intro: homeIntroTranslations.es,
+      mobile: mobileHomeTranslations.es,
       badge: "Edición gratuita en línea",
       readOnline: "Leer en línea →",
       aboutBook: "Acerca del libro",
@@ -696,6 +706,8 @@ const partialTranslations: Record<Exclude<Lang, "fr" | "en">, DeepPartial<Transl
         "Esta lição está presente na estrutura, mas seu conteúdo ainda não foi publicado.",
     },
     home: {
+      intro: homeIntroTranslations.pt,
+      mobile: mobileHomeTranslations.pt,
       badge: "Edição gratuita on-line",
       readOnline: "Ler on-line →",
       aboutBook: "Sobre o livro",
@@ -829,6 +841,8 @@ const partialTranslations: Record<Exclude<Lang, "fr" | "en">, DeepPartial<Transl
         "Questa lezione è presente nella struttura, ma il suo contenuto non è ancora stato pubblicato.",
     },
     home: {
+      intro: homeIntroTranslations.it,
+      mobile: mobileHomeTranslations.it,
       badge: "Edizione online gratuita",
       readOnline: "Leggi online →",
       aboutBook: "Il libro",
@@ -962,6 +976,8 @@ const partialTranslations: Record<Exclude<Lang, "fr" | "en">, DeepPartial<Transl
         "Ta lekcja znajduje się w strukturze, ale jej treść nie została jeszcze opublikowana.",
     },
     home: {
+      intro: homeIntroTranslations.pl,
+      mobile: mobileHomeTranslations.pl,
       badge: "Bezpłatne wydanie online",
       readOnline: "Czytaj online →",
       aboutBook: "O książce",
@@ -1095,6 +1111,8 @@ const partialTranslations: Record<Exclude<Lang, "fr" | "en">, DeepPartial<Transl
         "Этот урок присутствует в структуре, но его содержание ещё не опубликовано.",
     },
     home: {
+      intro: homeIntroTranslations.ru,
+      mobile: mobileHomeTranslations.ru,
       badge: "Бесплатное онлайн-издание",
       readOnline: "Читать онлайн →",
       aboutBook: "О книге",
@@ -1225,6 +1243,8 @@ const partialTranslations: Record<Exclude<Lang, "fr" | "en">, DeepPartial<Transl
       noLessonBody: "该课程已列入目录结构，但其内容尚未发布。",
     },
     home: {
+      intro: homeIntroTranslations.zh,
+      mobile: mobileHomeTranslations.zh,
       badge: "免费在线版",
       readOnline: "在线阅读 →",
       aboutBook: "关于本书",
@@ -1353,6 +1373,8 @@ const partialTranslations: Record<Exclude<Lang, "fr" | "en">, DeepPartial<Transl
       noLessonBody: "このレッスンは構成上存在しますが、内容はまだ公開されていません。",
     },
     home: {
+      intro: homeIntroTranslations.ja,
+      mobile: mobileHomeTranslations.ja,
       badge: "無料オンライン版",
       readOnline: "オンラインで読む →",
       aboutBook: "本書について",
@@ -1483,6 +1505,8 @@ const partialTranslations: Record<Exclude<Lang, "fr" | "en">, DeepPartial<Transl
       noLessonBody: "이 강의는 구조상 존재하지만 아직 내용이 게시되지 않았습니다.",
     },
     home: {
+      intro: homeIntroTranslations.ko,
+      mobile: mobileHomeTranslations.ko,
       badge: "무료 온라인판",
       readOnline: "온라인으로 읽기 →",
       aboutBook: "책 소개",
@@ -1612,6 +1636,8 @@ const partialTranslations: Record<Exclude<Lang, "fr" | "en">, DeepPartial<Transl
         "यह पाठ संरचना में सूचीबद्ध है, लेकिन इसकी सामग्री अभी प्रकाशित नहीं हुई है।",
     },
     home: {
+      intro: homeIntroTranslations.hi,
+      mobile: mobileHomeTranslations.hi,
       badge: "निःशुल्क ऑनलाइन संस्करण",
       readOnline: "ऑनलाइन पढ़ें →",
       aboutBook: "पुस्तक के बारे में",
@@ -1742,6 +1768,8 @@ const partialTranslations: Record<Exclude<Lang, "fr" | "en">, DeepPartial<Transl
       noLessonBody: "Bài học này có trong cấu trúc, nhưng nội dung chưa được xuất bản.",
     },
     home: {
+      intro: homeIntroTranslations.vi,
+      mobile: mobileHomeTranslations.vi,
       badge: "Ấn bản trực tuyến miễn phí",
       readOnline: "Đọc trực tuyến →",
       aboutBook: "Giới thiệu về cuốn sách",
@@ -1873,6 +1901,8 @@ const partialTranslations: Record<Exclude<Lang, "fr" | "en">, DeepPartial<Transl
       noLessonBody: "هذا الدرس مدرج في الهيكل، لكن محتواه لم يُنشر بعد.",
     },
     home: {
+      intro: homeIntroTranslations.ar,
+      mobile: mobileHomeTranslations.ar,
       badge: "نسخة إلكترونية مجانية",
       readOnline: "القراءة عبر الإنترنت ←",
       aboutBook: "عن الكتاب",
@@ -2003,6 +2033,8 @@ const partialTranslations: Record<Exclude<Lang, "fr" | "en">, DeepPartial<Transl
       noLessonBody: "Pelajaran ini terdaftar dalam struktur, tetapi kontennya belum dipublikasikan.",
     },
     home: {
+      intro: homeIntroTranslations.id,
+      mobile: mobileHomeTranslations.id,
       badge: "Edisi Daring Gratis",
       readOnline: "Baca Daring →",
       aboutBook: "Tentang Buku",
@@ -2134,6 +2166,8 @@ const partialTranslations: Record<Exclude<Lang, "fr" | "en">, DeepPartial<Transl
       noLessonBody: "Bu ders yapıda yer almaktadır, ancak içeriği henüz yayımlanmamıştır.",
     },
     home: {
+      intro: homeIntroTranslations.tr,
+      mobile: mobileHomeTranslations.tr,
       badge: "Ücretsiz Çevrimiçi Baskı",
       readOnline: "Çevrimiçi Oku →",
       aboutBook: "Kitap Hakkında",
@@ -2267,6 +2301,8 @@ const partialTranslations: Record<Exclude<Lang, "fr" | "en">, DeepPartial<Transl
         "এই পাঠটি কাঠামোতে তালিকাভুক্ত আছে, কিন্তু এর বিষয়বস্তু এখনও প্রকাশিত হয়নি।",
     },
     home: {
+      intro: homeIntroTranslations.bn,
+      mobile: mobileHomeTranslations.bn,
       badge: "বিনামূল্যে অনলাইন সংস্করণ",
       readOnline: "অনলাইনে পড়ুন →",
       aboutBook: "বইটি সম্পর্কে",
@@ -2398,6 +2434,8 @@ const partialTranslations: Record<Exclude<Lang, "fr" | "en">, DeepPartial<Transl
       noLessonBody: "یہ سبق ڈھانچے میں شامل ہے، لیکن اس کا مواد ابھی شائع نہیں ہوا۔",
     },
     home: {
+      intro: homeIntroTranslations.ur,
+      mobile: mobileHomeTranslations.ur,
       badge: "مفت آن لائن ایڈیشن",
       readOnline: "آن لائن پڑھیں ←",
       aboutBook: "کتاب کے بارے میں",
@@ -2528,6 +2566,8 @@ const partialTranslations: Record<Exclude<Lang, "fr" | "en">, DeepPartial<Transl
       noLessonBody: "Somo hili limeorodheshwa katika muundo, lakini maudhui yake bado hayajachapishwa.",
     },
     home: {
+      intro: homeIntroTranslations.sw,
+      mobile: mobileHomeTranslations.sw,
       badge: "Toleo Bure la Mtandaoni",
       readOnline: "Soma Mtandaoni →",
       aboutBook: "Kuhusu Kitabu",
@@ -2659,6 +2699,8 @@ const partialTranslations: Record<Exclude<Lang, "fr" | "en">, DeepPartial<Transl
       noLessonBody: "این درس در ساختار فهرست شده است، اما محتوای آن هنوز منتشر نشده است.",
     },
     home: {
+      intro: homeIntroTranslations.fa,
+      mobile: mobileHomeTranslations.fa,
       badge: "نسخهٔ آنلاین رایگان",
       readOnline: "مطالعهٔ آنلاین ←",
       aboutBook: "دربارهٔ کتاب",
