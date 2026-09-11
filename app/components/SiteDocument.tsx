@@ -10,6 +10,7 @@ import { Providers } from "@/app/providers";
 import { VercelInstrumentation } from "./VercelInstrumentation";
 import { bookMeta, bookMetaDisplayTitle, localizedSiteTitle } from "@/lib/chapters";
 import { getSiteUrl } from "@/lib/siteUrl";
+import { getBookCover } from "@/lib/bookCover";
 import { getTranslations, isRtlLang, SUPPORTED_LANGS, type Lang } from "@/lib/i18n";
 
 const SITE_URL = getSiteUrl();
@@ -33,7 +34,7 @@ function bookJsonLd(lang: Lang) {
     datePublished: bookMeta.year,
     inLanguage: [...SUPPORTED_LANGS],
     url: SITE_URL,
-    image: `${SITE_URL}/figs/fr/front.png`,
+    image: `${SITE_URL}${getBookCover(lang).src}`,
   };
 }
 

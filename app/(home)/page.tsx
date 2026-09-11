@@ -3,10 +3,12 @@ import HomePageClient from "@/app/HomePageClient";
 import { getSiteUrl } from "@/lib/siteUrl";
 import { getTranslations, SUPPORTED_LANGS } from "@/lib/i18n";
 import { bookMeta } from "@/lib/bookMetadata";
+import { getBookCover } from "@/lib/bookCover";
 
 const SITE_URL = getSiteUrl();
 const book = getTranslations("en").book;
 const title = book.title.replace(/\n/g, " ");
+const cover = getBookCover("en");
 
 const languages: Record<string, string> = { "x-default": SITE_URL };
 for (const lang of SUPPORTED_LANGS) languages[lang] = `${SITE_URL}/${lang}`;
@@ -22,13 +24,13 @@ export const metadata: Metadata = {
     title,
     description: book.description,
     authors: [bookMeta.author],
-    images: [{ url: "/figs/fr/front.png", width: 800, height: 1100, alt: title }],
+    images: [{ url: cover.src, width: cover.width, height: cover.height, alt: title }],
   },
   twitter: {
     card: "summary_large_image",
     title,
     description: book.description,
-    images: ["/figs/fr/front.png"],
+    images: [cover.src],
   },
 };
 

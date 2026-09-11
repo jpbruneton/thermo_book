@@ -2,6 +2,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { bookMeta } from "@/lib/bookMetadata";
+import { getBookCover } from "@/lib/bookCover";
 import { useLang } from "@/app/context/LangContext";
 import { isRtlLang, sectionHref } from "@/lib/languages";
 import { usePageViewBeacon } from "@/app/hooks/usePageViewBeacon";
@@ -34,6 +35,7 @@ export default function HomePageClient() {
   const { t, lang, chapters } = useLang();
   usePageViewBeacon("home", lang, "home");
   const book = t.book;
+  const cover = getBookCover(lang);
   const webThemes = Object.values(chapters).filter((theme) => theme.listed);
   const introParagraphs = t.home.intro;
   const mobile = t.home.mobile;
@@ -76,7 +78,7 @@ export default function HomePageClient() {
             <h1 className="home-mobile-title">{mobile.title}</h1>
             <Image
               className="home-mobile-cover"
-              src="/figs/fr/front.png"
+              src={cover.src}
               alt={book.title.replace(/\n/g, " ")}
               width={84}
               height={112}
@@ -254,7 +256,7 @@ export default function HomePageClient() {
               }}
             >
               <Image
-                src="/figs/fr/front.png"
+                src={cover.src}
                 alt={book.title}
                 fill
                 priority

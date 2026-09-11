@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import HomePageClient from "@/app/HomePageClient";
 import { getSiteUrl } from "@/lib/siteUrl";
 import { getTranslations, isLang, SUPPORTED_LANGS } from "@/lib/i18n";
+import { getBookCover } from "@/lib/bookCover";
 
 const SITE_URL = getSiteUrl();
 
@@ -16,6 +17,7 @@ export async function generateMetadata({
   const t = getTranslations(lang);
   const title = t.book.title.replace(/\n/g, " ");
   const url = `${SITE_URL}/${lang}`;
+  const cover = getBookCover(lang);
 
   const languages: Record<string, string> = { "x-default": SITE_URL };
   for (const l of SUPPORTED_LANGS) languages[l] = `${SITE_URL}/${l}`;
@@ -27,7 +29,16 @@ export async function generateMetadata({
     title: { absolute: title },
     description: t.book.description,
     alternates: { canonical: url, languages },
-    openGraph: { url, title, description: t.book.description },
+    openGraph: {
+      url, title, description: t.book.description,
+      images: [{ url: cover.src, width: cover.width, height: cover.height, alt: title }],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description: t.book.description,
+      images: [cover.src],
+    },
   };
 }
 

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { isLang, SUPPORTED_LANGS, type Lang } from "@/lib/i18n";
 import { localizedSiteTitle } from "@/lib/chapters";
+import { getBookCover } from "@/lib/bookCover";
 import { SiteDocument, siteMetadata } from "@/app/components/SiteDocument";
 
 export function generateStaticParams() {
@@ -17,6 +18,7 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const lang: Lang = isLang(params.lang) ? params.lang : "fr";
   const siteTitle = localizedSiteTitle(lang);
+  const cover = getBookCover(lang);
   return {
     ...siteMetadata,
     title: {
@@ -25,6 +27,11 @@ export async function generateMetadata({
     },
     openGraph: {
       siteName: siteTitle,
+      images: [{ url: cover.src, width: cover.width, height: cover.height, alt: siteTitle }],
+    },
+    twitter: {
+      ...siteMetadata.twitter,
+      images: [cover.src],
     },
   };
 }
