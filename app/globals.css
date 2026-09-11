@@ -1134,7 +1134,7 @@ a.exercise-index-card-link:focus-visible {
 
 .nav-language-name {
   overflow-wrap: anywhere;
-  text-align: start;
+  text-align: left;
 }
 
 .nav-language-chevron {
@@ -1184,8 +1184,16 @@ a.exercise-index-card-link:focus-visible {
 }
 
 .nav-language-flag {
-  font-size: 1.1rem;
-  line-height: 1;
+  display: block;
+  width: 20px;
+  height: 15px;
+  object-fit: contain;
+  border-radius: 2px;
+}
+
+.nav-language-option-name {
+  min-width: 0;
+  text-align: left;
 }
 
 .nav-language-option:hover,
@@ -1218,6 +1226,32 @@ a.exercise-index-card-link:focus-visible {
     max-height: min(26rem, calc(100dvh - 6rem));
     overflow-y: auto;
   }
+}
+
+.home-desktop-introduction .home-hero-description {
+  font-family: var(--font-crimson);
+  font-size: 1.15rem;
+  color: var(--text-secondary);
+  max-width: 520px;
+  line-height: 1.65;
+  margin-bottom: 0.65rem;
+  text-align: justify;
+}
+
+.home-desktop-introduction > .home-hero-description:last-child {
+  margin-bottom: 1.75rem;
+}
+
+.home-intro-highlight {
+  max-width: 520px;
+  padding: 0.9rem 1rem;
+  margin-bottom: 1rem;
+  border: 1px solid var(--accent-border-md);
+  border-radius: 6px;
+}
+
+.home-intro-highlight .home-hero-description:last-child {
+  margin-bottom: 0;
 }
 
 /* ─── Home responsive fixes ─── */

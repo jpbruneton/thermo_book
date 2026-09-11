@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useId, useRef, useState } from "react";
+import Image from "next/image";
 import type { Lang } from "@/lib/languages";
 
 const LANGUAGE_NAMES: Record<Lang, string> = {
@@ -27,10 +28,10 @@ const LANGUAGE_NAMES: Record<Lang, string> = {
 };
 
 const LANGUAGE_FLAGS: Record<Lang, string> = {
-  en: "🇬🇧", fr: "🇫🇷", de: "🇩🇪", es: "🇪🇸", pt: "🇵🇹",
-  it: "🇮🇹", pl: "🇵🇱", ru: "🇷🇺", zh: "🇨🇳", ja: "🇯🇵",
-  ko: "🇰🇷", hi: "🇮🇳", vi: "🇻🇳", ar: "🇸🇦", id: "🇮🇩",
-  tr: "🇹🇷", bn: "🇧🇩", ur: "🇵🇰", sw: "🇹🇿", fa: "🇮🇷",
+  en: "gb", fr: "fr", de: "de", es: "es", pt: "pt",
+  it: "it", pl: "pl", ru: "ru", zh: "cn", ja: "jp",
+  ko: "kr", hi: "in", vi: "vn", ar: "sa", id: "id",
+  tr: "tr", bn: "bd", ur: "pk", sw: "tz", fa: "ir",
 };
 
 // Main audience languages first; the active language moves to the end.
@@ -98,6 +99,7 @@ export function LanguageSelector({ lang, onSelect }: {
             key={code}
             type="button"
             className="nav-language-option"
+            dir="ltr"
             aria-pressed={lang === code}
             onClick={() => {
               setOpen(false);
@@ -105,8 +107,15 @@ export function LanguageSelector({ lang, onSelect }: {
               if (code !== lang) onSelect(code);
             }}
           >
-            <span className="nav-language-flag" aria-hidden="true">{LANGUAGE_FLAGS[code]}</span>
-            <span lang={code} dir="auto">{LANGUAGE_NAMES[code]}</span>
+            <Image
+              className="nav-language-flag"
+              src={`/flags/${LANGUAGE_FLAGS[code]}.svg`}
+              alt=""
+              width={20}
+              height={15}
+              unoptimized
+            />
+            <span className="nav-language-option-name" lang={code} dir="auto">{LANGUAGE_NAMES[code]}</span>
             <span aria-hidden="true">{lang === code ? "✓" : ""}</span>
           </button>
         ))}

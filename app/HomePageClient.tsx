@@ -163,22 +163,14 @@ export default function HomePageClient() {
               </p>
             ) : null}
 
-            <div className="animate-fade-up stagger-4">
-              {introParagraphs.map((paragraph, index, arr) => (
-                  <p
-                    key={index}
-                    className="home-hero-description"
-                    style={{
-                      fontFamily: "var(--font-crimson)",
-                      fontSize: "1.15rem",
-                      color: "var(--text-secondary)",
-                      maxWidth: "520px",
-                      lineHeight: 1.65,
-                      marginBottom: index < arr.length - 1 ? "0.65rem" : "1.75rem",
-                      textAlign: "justify",
-                    }}
-                  >
-                    {index === 1 ? <em>{paragraph}</em> : paragraph}
+            <div className="home-desktop-introduction animate-fade-up stagger-4">
+              <div className="home-intro-highlight">
+                <p className="home-hero-description">{introParagraphs[0]}</p>
+                <p className="home-hero-description"><em>{introParagraphs[1]}</em></p>
+              </div>
+              {introParagraphs.slice(2).map((paragraph, index) => (
+                  <p key={index} className="home-hero-description">
+                    {paragraph}
                   </p>
                 ))}
             </div>
