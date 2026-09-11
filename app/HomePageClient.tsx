@@ -4,6 +4,7 @@ import Image from "next/image";
 import { bookMeta } from "@/lib/bookMetadata";
 import { useLang } from "@/app/context/LangContext";
 import { isRtlLang, sectionHref } from "@/lib/languages";
+import { usePageViewBeacon } from "@/app/hooks/usePageViewBeacon";
 
 function WaveBackground() {
   return (
@@ -31,6 +32,7 @@ function WaveBackground() {
 
 export default function HomePageClient() {
   const { t, lang, chapters } = useLang();
+  usePageViewBeacon("home", lang, "home");
   const book = t.book;
   const webThemes = Object.values(chapters).filter((theme) => theme.listed);
   const introParagraphs = t.home.intro;

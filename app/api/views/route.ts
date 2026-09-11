@@ -5,7 +5,7 @@ import { incrementPageView, type PageViewSection } from "@/lib/pageViews.server"
 const SLUG_PATTERN = /^[a-zA-Z0-9_-]{1,150}$/;
 
 function isSection(value: unknown): value is PageViewSection {
-  return value === "chapters" || value === "exercises" || value === "quiz";
+  return value === "home" || value === "chapters" || value === "exercises" || value === "quiz";
 }
 
 // Silent counter endpoint: no response body is read by callers (sendBeacon

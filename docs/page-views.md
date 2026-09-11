@@ -7,8 +7,11 @@ par page (vues) et par réseau (clics de partage), toutes langues confondues.
 
 - `app/hooks/usePageViewBeacon.ts` : hook client, envoie un `POST /api/views`
   (via `navigator.sendBeacon`, ou `fetch` en repli) une fois par montage, avec
-  `{ section: "chapters" | "exercises" | "quiz", lang, slug }`.
-- Branché dans `app/[lang]/chapters/ChapterContent.tsx` (clé = `lesson.slug`,
+  `{ section: "home" | "chapters" | "exercises" | "quiz", lang, slug }`.
+- Branché dans `app/HomePageClient.tsx` (clé fixe `"home"`, partagée par les
+  deux routes `app/(home)/page.tsx` et `app/[lang]/page.tsx` puisque toutes
+  deux rendent ce composant — seul `lang` distingue la page d'accueil par
+  langue), dans `app/[lang]/chapters/ChapterContent.tsx` (clé = `lesson.slug`,
   stable même pour les thèmes multi-leçons), dans
   `app/[lang]/exercises/[slug]/ExerciseViewBeacon.tsx` (clé = `exercise.id`,
   stable entre langues pour un même exercice), et dans
@@ -58,8 +61,9 @@ redis-cli -u "$UPSTASH_REDIS_REST_URL" ... # via le CLI REST d'Upstash
 ```
 
 Le plus simple reste l'onglet **Data Browser** de la console Upstash : lister
-les clés préfixées par `views:chapters:`, `views:exercises:`, `views:quiz:`
-ou `shares:{réseau}:`, chacune contenant un entier (nombre cumulé, toutes
-sessions confondues — pas de déduplication par visiteur). En local, le script
-`node --env-file=.env.local scripts/read-page-views.mjs [chapters|exercises|quiz|shares]`
+les clés préfixées par `views:home:`, `views:chapters:`, `views:exercises:`,
+`views:quiz:` ou `shares:{réseau}:`, chacune contenant un entier (nombre
+cumulé, toutes sessions confondues — pas de déduplication par visiteur). En
+local, le script
+`node --env-file=.env.local scripts/read-page-views.mjs [home|chapters|exercises|quiz|shares]`
 liste tout (vues et partages) triés par nombre décroissant.
