@@ -1149,9 +1149,7 @@ a.exercise-index-card-link:focus-visible {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 0.2rem;
-  width: min(320px, calc(100vw - 2rem));
-  max-height: min(26rem, calc(100dvh - 6rem));
-  overflow-y: auto;
+  width: min(360px, calc(100vw - 2rem));
   overscroll-behavior: contain;
   padding: 0.4rem;
   border: 1px solid var(--border);
@@ -1165,7 +1163,8 @@ a.exercise-index-card-link:focus-visible {
 }
 
 .nav-language-option {
-  display: flex;
+  display: grid;
+  grid-template-columns: 20px minmax(0, 1fr) 12px;
   align-items: center;
   justify-content: space-between;
   gap: 0.35rem;
@@ -1182,6 +1181,11 @@ a.exercise-index-card-link:focus-visible {
   text-align: start;
   overflow-wrap: anywhere;
   cursor: pointer;
+}
+
+.nav-language-flag {
+  font-size: 1.1rem;
+  line-height: 1;
 }
 
 .nav-language-option:hover,
@@ -1203,6 +1207,16 @@ a.exercise-index-card-link:focus-visible {
 
   .nav-language-trigger {
     font-size: 0.75rem;
+  }
+}
+
+/* Keep the full list visible on desktop; constrain it on phones and narrow views. */
+@media (max-width: 700px),
+       (max-height: 599px) and (orientation: landscape) and (hover: none) and (pointer: coarse) {
+  .nav-language-options {
+    width: min(320px, calc(100vw - 2rem));
+    max-height: min(26rem, calc(100dvh - 6rem));
+    overflow-y: auto;
   }
 }
 

@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useId, useRef, useState } from "react";
-import { SUPPORTED_LANGS, type Lang } from "@/lib/languages";
+import type { Lang } from "@/lib/languages";
 
 const LANGUAGE_NAMES: Record<Lang, string> = {
   en: "English",
@@ -26,10 +26,18 @@ const LANGUAGE_NAMES: Record<Lang, string> = {
   fa: "فارسی",
 };
 
-// One list for every visitor, alphabetized by the languages' own names.
-const LANGUAGE_OPTIONS = [...SUPPORTED_LANGS].sort((a, b) =>
-  LANGUAGE_NAMES[a].localeCompare(LANGUAGE_NAMES[b], "en")
-);
+const LANGUAGE_FLAGS: Record<Lang, string> = {
+  en: "🇬🇧", fr: "🇫🇷", de: "🇩🇪", es: "🇪🇸", pt: "🇵🇹",
+  it: "🇮🇹", pl: "🇵🇱", ru: "🇷🇺", zh: "🇨🇳", ja: "🇯🇵",
+  ko: "🇰🇷", hi: "🇮🇳", vi: "🇻🇳", ar: "🇸🇦", id: "🇮🇩",
+  tr: "🇹🇷", bn: "🇧🇩", ur: "🇵🇰", sw: "🇹🇿", fa: "🇮🇷",
+};
+
+// Main audience languages first; the active language moves to the end.
+const LANGUAGE_PRIORITY: readonly Lang[] = [
+  "en", "zh", "es", "hi", "ar", "pt", "fr", "de", "ja", "ru",
+  "ko", "it", "id", "tr", "bn", "ur", "vi", "pl", "fa", "sw",
+];
 
 export function LanguageSelector({ lang, onSelect }: {
   lang: Lang;
@@ -39,6 +47,7 @@ export function LanguageSelector({ lang, onSelect }: {
   const containerRef = useRef<HTMLDivElement>(null);
   const triggerRef = useRef<HTMLButtonElement>(null);
   const menuId = useId();
+  const languageOptions = [...LANGUAGE_PRIORITY.filter((code) => code !== lang), lang];
 
   useEffect(() => {
     if (!open) return;
@@ -84,7 +93,7 @@ export function LanguageSelector({ lang, onSelect }: {
         <span aria-hidden="true" className="nav-language-chevron">{open ? "▴" : "▾"}</span>
       </button>
       <div id={menuId} className="nav-language-options" hidden={!open}>
-        {LANGUAGE_OPTIONS.map((code) => (
+        {languageOptions.map((code) => (
           <button
             key={code}
             type="button"
@@ -96,6 +105,7 @@ export function LanguageSelector({ lang, onSelect }: {
               if (code !== lang) onSelect(code);
             }}
           >
+            <span className="nav-language-flag" aria-hidden="true">{LANGUAGE_FLAGS[code]}</span>
             <span lang={code} dir="auto">{LANGUAGE_NAMES[code]}</span>
             <span aria-hidden="true">{lang === code ? "✓" : ""}</span>
           </button>
