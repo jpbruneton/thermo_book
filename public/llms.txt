@@ -1,0 +1,33 @@
+# LearnThermo
+
+> Free online thermodynamics textbook — first and second law, rigorous mathematical derivations, and 80+ fully solved exercises. Available in 20 languages.
+
+LearnThermo.org is a free, open educational resource covering elementary and advanced thermodynamics. It offers rigorous mathematical explanations of the core concepts (entropy, the first and second laws, Carnot cycles, phase transitions, thermodynamic potentials) together with more than 80 fully solved exercises. The textbook is translated into 20 languages; URLs below use the English version.
+
+## Chapters (Part I — Elementary Course)
+
+- [General Introduction](https://learnthermo.org/en/chapters/general-introduction): Heat engines, heat-to-work conversion, the second law, entropy, and the universality of thermodynamics.
+- [A History of Thermodynamics and Calorimetry](https://learnthermo.org/en/chapters/a-history-of-thermodynamics-and-calorimetry): From the caloric theory to Clausius's entropy.
+- [Fundamental Concepts](https://learnthermo.org/en/chapters/fundamental-concepts): Equilibrium, walls, state variables and functions, quasi-static transformations.
+- [The First Law of Thermodynamics](https://learnthermo.org/en/chapters/the-first-law-of-thermodynamics): Work, heat, internal energy, and the first law.
+- [Application to the Ideal Gas](https://learnthermo.org/en/chapters/application-to-the-ideal-gas): Isothermal, isochoric, isobaric, and adiabatic transformations of the ideal gas.
+- [The Second Law of Thermodynamics](https://learnthermo.org/en/chapters/the-second-law-of-thermodynamics): Reversibility, irreversibility, Carnot efficiency, and entropy production.
+- [Mathematical Structure: The Fundamental Relations](https://learnthermo.org/en/chapters/mathematical-structure-the-fundamental-relations): Maxwell relations, the Gibbs-Duhem relation, Euler's theorem, and thermodynamic stability.
+- [Calorimetric and Thermoelastic Coefficients](https://learnthermo.org/en/chapters/calorimetric-and-thermoelastic-coefficients): Heat capacities and expansion/compressibility coefficients.
+- [Thermodynamic Potentials](https://learnthermo.org/en/chapters/thermodynamic-potentials): Legendre transforms, Helmholtz free energy, enthalpy, and Gibbs free energy.
+- [Phase Transitions](https://learnthermo.org/en/chapters/phase-transitions): Phase diagrams, the critical point, the Van der Waals gas, and the Maxwell construction.
+- [Heat Engines and Refrigerators](https://learnthermo.org/en/chapters/heat-engines-and-refrigerators): Thermodynamic cycles, efficiency, coefficient of performance, and the Rankine cycle.
+- [Thermodynamics of Radiation](https://learnthermo.org/en/chapters/thermodynamics-of-radiation): Thermal radiation and black-body properties.
+
+## Other resources
+
+- [All chapters](https://learnthermo.org/en/chapters): Full list of lessons, including advanced/draft chapters not listed here.
+- [Solved exercises](https://learnthermo.org/en/exercises): 80+ worked thermodynamics problems with full solutions.
+- [Quiz](https://learnthermo.org/en/quiz): Self-check quizzes, one per chapter.
+- [About](https://learnthermo.org/en/about): About the book and its author.
+- [Downloads](https://learnthermo.org/en/downloads): PDF versions of the textbook and exercises.
+
+## Optional
+
+- [Version française](https://learnthermo.org/fr): Contenu original en français.
+- [Sitemap](https://learnthermo.org/sitemap.xml): Full list of indexed URLs across all 20 languages.

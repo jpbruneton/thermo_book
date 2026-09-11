@@ -48,3 +48,6 @@ thermosource/
 .env*
 
 .env*
+
+# personal notes, not for the repo
+/todo_wiki.md
