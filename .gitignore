@@ -51,3 +51,6 @@ thermosource/
 
 # personal notes, not for the repo
 /todo_wiki.md
+
+# local snapshot of Redis page-view counters (see scripts/page-views-checkpoint.mjs)
+/page-views-checkpoint.json
