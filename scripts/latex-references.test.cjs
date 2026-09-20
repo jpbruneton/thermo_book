@@ -20,7 +20,14 @@ function load(file) {
   }).outputText;
   new Function('require', 'module', 'exports', js)(id => {
     if (id === 'server-only') return {};
-    return id.startsWith('@/') ? load(id.slice(2) + '.ts') : require(id);
+    if (id.startsWith('@/')) return load(id.slice(2) + '.ts');
+    if (id.startsWith('.')) {
+      const relativeTarget = path.resolve(path.dirname(resolved), id);
+      for (const candidate of [relativeTarget, `${relativeTarget}.ts`, `${relativeTarget}.tsx`]) {
+        if (fs.existsSync(candidate)) return load(candidate);
+      }
+    }
+    return require(id);
   }, module, module.exports);
   return module.exports;
 }
@@ -79,6 +86,22 @@ See \eqref{eq:second}.
 `);
   assert.match(html, /See \(2\)\./);
   assert.deepEqual([...html.matchAll(/latex-equation-number">\((\d+)\)/g)].map(m => m[1]), ['1', '2']);
+});
+
+test('blank lines inside boxed environments preserve paragraph spacing', () => {
+  for (const environment of ['remark', 'definition', 'important']) {
+    const html = render(String.raw`\begin{${environment}}
+First paragraph.
+
+Second paragraph.
+\end{${environment}}`);
+    assert.match(html, new RegExp(`latex-block-${environment}`));
+    assert.match(
+      html,
+      /First paragraph\.\s*<div class="latex-block-paragraph-separator" aria-hidden="true"><\/div>\s*Second paragraph\./
+    );
+    assert.equal((html.match(/latex-block-paragraph-separator/g) ?? []).length, 1);
+  }
 });
 
 test('every lesson 7 eqref matches the number displayed for its equation', () => {

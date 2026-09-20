@@ -580,6 +580,13 @@ body::before {
   text-align: justify;
 }
 
+.prose-content .latex-block-body > .latex-block-paragraph-separator,
+.prose-content .latex-block-collapsible-body > .latex-block-paragraph-separator,
+.prose-content .latex-proof-body > .latex-block-paragraph-separator {
+  display: block;
+  height: 0.9rem;
+}
+
 .prose-content details.latex-block summary .latex-block-heading {
   flex: 1;
   min-width: 0;

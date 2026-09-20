@@ -1676,6 +1676,103 @@ function paragraphsToHtml(paragraphs: string[]): string {
     .join("\n\n");
 }
 
+const paragraphAwareBlockEnvironments = new Set([
+  "definition",
+  "theorem",
+  "proposition",
+  "lemma",
+  "propriete",
+  "property",
+  "corollaire",
+  "corollary",
+  "remark",
+  "principe",
+  "plusloin",
+  "exemple",
+  "example",
+  "resume",
+  "important",
+  "aretenir",
+  "indice",
+  "indication",
+  "hint",
+  "solution",
+  "proof",
+]);
+
+const blockParagraphSeparatorHtml =
+  '<div class="latex-block-paragraph-separator" aria-hidden="true"></div>';
+
+/**
+ * Blank lines normally delimit top-level paragraphs. Inside a boxed LaTeX
+ * environment, however, splitting on them would break the generated wrapper
+ * across several HTML chunks. Replace only direct prose paragraph breaks with
+ * an explicit separator that stays inside the block body. Nested lists and
+ * equation environments keep their own spacing rules.
+ */
+function preserveParagraphBreaksInsideBlocks(lines: string[]): string[] {
+  const output: string[] = [];
+  const environmentStack: string[] = [];
+  const environmentToken = /\\(begin|end)\{([^{}]+)\}/g;
+  const structuralLine = /^\\(?:begin|end)\{|^\\(?:\[|\])\s*$|^\\item\b/;
+
+  const updateEnvironmentStack = (line: string) => {
+    environmentToken.lastIndex = 0;
+    let match: RegExpExecArray | null;
+    while ((match = environmentToken.exec(line)) !== null) {
+      const [, action, environment] = match;
+      if (action === "begin") {
+        environmentStack.push(environment);
+        continue;
+      }
+      const matchingIndex = environmentStack.lastIndexOf(environment);
+      if (matchingIndex !== -1) environmentStack.splice(matchingIndex, 1);
+    }
+  };
+
+  for (let index = 0; index < lines.length; index += 1) {
+    const line = lines[index];
+    const trimmed = line.trim();
+
+    if (!trimmed) {
+      const currentEnvironment = environmentStack.at(-1);
+      if (currentEnvironment && paragraphAwareBlockEnvironments.has(currentEnvironment)) {
+        const previous = [...output].reverse().find((candidate) => candidate.trim())?.trim() ?? "";
+        let next = "";
+        for (let nextIndex = index + 1; nextIndex < lines.length; nextIndex += 1) {
+          if (lines[nextIndex].trim()) {
+            next = lines[nextIndex].trim();
+            break;
+          }
+        }
+
+        const previousStartsBlock = previous.startsWith(`\\begin{${currentEnvironment}}`);
+        const nextEndsBlock = next.startsWith(`\\end{${currentEnvironment}}`);
+        const touchesStructuredContent = structuralLine.test(previous) || structuralLine.test(next);
+        if (
+          previous &&
+          next &&
+          !previousStartsBlock &&
+          !nextEndsBlock &&
+          !touchesStructuredContent &&
+          output.at(-1) !== blockParagraphSeparatorHtml
+        ) {
+          output.push(blockParagraphSeparatorHtml);
+        }
+        continue;
+      }
+
+      output.push(line);
+      continue;
+    }
+
+    output.push(line);
+    updateEnvironmentStack(line);
+  }
+
+  return output;
+}
+
 function parseTexParagraphs(
   texSource: string,
   citationMaps: CitationNumberMaps,
@@ -1692,7 +1789,8 @@ function parseTexParagraphs(
     keptLines.push(line);
   }
 
-  const body = normalizeLatexBlocks(keptLines.join("\n"), citationMaps, contentLanguage).trim();
+  const paragraphAwareLines = preserveParagraphBreaksInsideBlocks(keptLines);
+  const body = normalizeLatexBlocks(paragraphAwareLines.join("\n"), citationMaps, contentLanguage).trim();
   if (!body) return [];
 
   const paragraphs = body
