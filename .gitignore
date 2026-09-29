@@ -52,5 +52,9 @@ thermosource/
 # personal notes, not for the repo
 /todo_wiki.md
 
+# copies locales des suivis versionnés dans le sous-module privé content/tex
+/todo_exos
+/todo_lecons
+
 # local snapshot of Redis page-view counters (see scripts/page-views-checkpoint.mjs)
 /page-views-checkpoint.json
