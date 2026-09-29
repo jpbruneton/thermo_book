@@ -221,7 +221,7 @@ function reservoirFigure(lang, data, impossible = false) {
   const name = impossible ? "machine-monotherme-impossible" : "moteur-ditherme-schema";
   const nodes = impossible
     ? `  \\node[reservoir] (hot) at (0,2.4) {\\Lang{${data.single}}, $T$};\n  \\node[machine] (M) at (0,0) {$M$};\n\n  \\draw[flow] (hot.south) -- node[right] {$Q$} (M.north);\n  \\draw[flow] (M.east) -- ++(2.4,0) node[right] {$W = Q$};`
-    : `  \\node[reservoir] (hot) at (0,3.2) {\\Lang{${data.hot}}, $T_c$};\n  \\node[reservoir] (cold) at (0,-3.2) {\\Lang{${data.cold}}, $T_f$};\n  \\node[machine] (M) at (0,0) {$M$};\n\n  \\draw[flow] (hot.south) -- node[right] {$Q_c$} (M.north);\n  \\draw[flow] (M.south) -- node[right] {$Q_f$} (cold.north);\n  \\draw[flow] (M.east) -- ++(2.4,0) node[right] {$W$};`;
+    : `  \\node[reservoir] (hot) at (0,3.2) {\\Lang{${data.hot}}, $T_{\\mathrm{ch}}$};\n  \\node[reservoir] (cold) at (0,-3.2) {\\Lang{${data.cold}}, $T_{\\mathrm{fr}}$};\n  \\node[machine] (M) at (0,0) {$M$};\n\n  \\draw[flow] (hot.south) -- node[right] {$Q_{\\mathrm{ch}}$} (M.north);\n  \\draw[flow] (M.south) -- node[right] {$Q_{\\mathrm{fr}}$} (cold.north);\n  \\draw[flow] (M.east) -- ++(2.4,0) node[right] {$W$};`;
   return `${preamble(lang, data, name)}
 \\begin{document}
 \\begin{tikzpicture}[

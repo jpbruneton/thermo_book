@@ -75,8 +75,8 @@ la langue cible ; les définitions doivent rester cohérentes avec les figures.
 
 | Notation française | Notation des traductions | Sens |
 |---|---|---|
-| `ch`, ou `c` sur `Q`/`T` en leçon 1 | `H` | chaud (*hot*) |
-| `fr`, ou `f` sur `Q`/`T` en leçon 1 | `C` | froid (*cold*) |
+| `ch` | `H` | chaud (*hot*) |
+| `fr` | `C` | froid (*cold*) |
 | `autres` | `other` | autres contributions |
 | `pression` | `press` | travail des forces de pression |
 | `élec` | `elec` | électrique |
@@ -90,7 +90,14 @@ Les libellés alphabétiques sont en caractères droits (`\mathrm{...}` ou
 `th`, `ad`, etc., ainsi que les indices symboliques : `c_V`, `C_P`, les
 sommets `A`, `B`, `C`, `D`, les indices de sommation et les noms propres.
 Ne jamais remplacer globalement `_c` : il n'a pas le même sens dans `Q_c`
-et `E_c`. Ne pas modifier les identifiants LaTeX, citations et chemins de fichiers.
+et `E_c`.
+
+Les exercices suivent la même notation que les leçons, dans chaque langue :
+`T_{\mathrm{ch}}`, `Q_{\mathrm{fr}}`, etc. en français, `T_{\mathrm{H}}`,
+`Q_{\mathrm{C}}`, etc. dans les traductions. L'entropie produite se note
+`S_{\mathrm{i}}` et l'entropie échangée `S_{\mathrm{e}}` dans toutes les langues
+(« entropie produite », jamais « entropie créée » ni `S_c`). Les indices `c` et `f`
+restent réservés à d'autres sens : `T_c` température critique, `T_f` température finale. Ne pas modifier les identifiants LaTeX, citations et chemins de fichiers.
 
 La règle est implémentée dans
 [`scripts/lib/translation-notation.mjs`](../scripts/lib/translation-notation.mjs)
