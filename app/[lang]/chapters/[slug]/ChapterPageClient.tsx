@@ -100,7 +100,14 @@ function ChapterThemeHeadingBlock({ theme }: { theme: ThemeWithLocalizedLessonCo
       >
         {chapters[theme.slug].description}
       </p>
-      {lang === "fr" && theme.number >= 8 && (
+      {lang === "fr" &&
+        [
+          "coefficients",
+          "changements-de-variables",
+          "transitions-de-phases",
+          "machines-thermiques",
+          "thermodynamique-du-rayonnement",
+        ].includes(theme.slug) && (
         <p
           style={{
             marginTop: "1rem",
