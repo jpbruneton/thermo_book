@@ -36,6 +36,24 @@ const { getTexWebHtmlFromSource } = load('lib/chapterContent.server.ts');
 const render = source => getTexWebHtmlFromSource(source, 'fr', []);
 const { processLatex } = load('lib/latex.ts');
 
+test('percent signs render in prose while math escapes and comments stay intact', () => {
+  const html = render(String.raw`Efficiency: 100~\%, 50\%, and $25\%$. % hidden comment
+Still visible. A note\footnote{At 75~\%.}.
+
+\url{https://example.com/a\%20b}
+\href{https://example.com/c\%20d}{90\%}`);
+  assert.match(html, /100\s+%/);
+  assert.ok(html.includes('50%'));
+  assert.ok(html.includes('75 %'));
+  assert.ok(html.includes('90%'));
+  assert.ok(html.includes('$25\\%$'));
+  assert.doesNotMatch(html, /hidden comment/);
+  assert.ok(html.includes('Still visible.'));
+  assert.ok(html.includes('href="https://example.com/a%20b"'));
+  assert.ok(html.includes('href="https://example.com/c%20d"'));
+  assert.doesNotMatch(processLatex(html), /katex-error/);
+});
+
 test('boxed empheq renders the Maxwell relations inside a visible KaTeX frame', () => {
   for (const lesson of [7, 9]) {
     const source = fs.readFileSync(path.resolve(__dirname, `../content/tex/chp${lesson}_fr/lecon1.tex`), 'utf8');

@@ -233,6 +233,8 @@ function cleanLatexInline(text: string): string {
   // \, is a thin space in plain text (e.g. "0\,°C"); leave math ($...$) alone
   // since KaTeX interprets \, as its own spacing command there.
   result = replaceOutsideMath(result, (segment) => segment.replace(/\\,/g, nbsp));
+  // Escaped percent signs are literal text; keep math escapes for KaTeX.
+  result = replaceOutsideMath(result, (segment) => segment.replace(/\\%/g, "%"));
   // Convert TeX opening/closing double quotes to typographic quotes.
   result = result.replace(/``/g, "“").replace(/''/g, "”");
   result = result.replace(/\\ldots/g, "...");
