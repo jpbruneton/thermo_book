@@ -358,7 +358,7 @@ function ChapterContentAndPrevNext({
         <ChapterContent
           lesson={activeLesson}
           hideHeader={theme.lessons.length <= 1}
-          isFinalVersion={theme.slug === "introduction"}
+          isFinalVersion={["introduction", "historique"].includes(theme.slug)}
           topNav={compactNavRow}
         />
       ) : (
