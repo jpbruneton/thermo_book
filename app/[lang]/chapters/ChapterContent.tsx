@@ -157,76 +157,78 @@ export function ChapterContent({ lesson, hideHeader = false, topNav }: Props) {
 
   return (
     <>
-      {!hideHeader && (
-        <div
-          style={{
-            maxWidth: "800px",
-            margin: "0 auto",
-            padding: "1.25rem 1.5rem 0",
-          }}
-        >
-          <h2
-            style={{
-              fontFamily: "var(--font-playfair)",
-              fontSize: "1.45rem",
-              color: "var(--text-heading)",
-              marginBottom: "0.5rem",
-              lineHeight: 1.3,
-            }}
-          >
-            {lessonHeading}
-          </h2>
-          <p
-            style={{
-              fontFamily: "var(--font-crimson)",
-              fontSize: "1rem",
-              color: "var(--text-secondary)",
-              lineHeight: 1.7,
-              marginBottom: "0.5rem",
-            }}
-          >
-            {lang === "fr" ? lesson.descriptionFr : lesson.descriptionEn}
-          </p>
-        </div>
-      )}
+      <div style={{ maxWidth: "1320px", margin: "0 auto", padding: "0 1.5rem" }}>
+        <div className="lesson-web-layout">
+          <div className="lesson-web-main">
+            {!hideHeader && (
+              <div
+                style={{
+                  padding: "1.25rem 0 0",
+                }}
+              >
+                <h2
+                  style={{
+                    fontFamily: "var(--font-playfair)",
+                    fontSize: "1.45rem",
+                    color: "var(--text-heading)",
+                    marginBottom: "0.5rem",
+                    lineHeight: 1.3,
+                  }}
+                >
+                  {lessonHeading}
+                </h2>
+                <p
+                  style={{
+                    fontFamily: "var(--font-crimson)",
+                    fontSize: "1rem",
+                    color: "var(--text-secondary)",
+                    lineHeight: 1.7,
+                    marginBottom: "0.5rem",
+                  }}
+                >
+                  {lang === "fr" ? lesson.descriptionFr : lesson.descriptionEn}
+                </p>
+              </div>
+            )}
 
-      {/* Keywords bubbles — always visible */}
-      {lesson.topicsLang.length > 0 && (
-        <div
-          style={{
-            maxWidth: "800px",
-            margin: "0 auto",
-            padding: hideHeader ? "1rem 1.5rem 0" : "0.5rem 1.5rem 0",
-            display: "flex",
-            flexWrap: "wrap",
-            gap: "0.5rem",
-          }}
-        >
-          {lesson.topicsLang.map((topic) => (
-            <span
-              key={topic}
-              style={{
-                background: "var(--accent-bg-sm)",
-                border: "1px solid var(--accent-border-sm)",
-                borderRadius: "100px",
-                padding: "0.2rem 0.75rem",
-                fontFamily: "var(--font-inter)",
-                fontSize: "0.74rem",
-                color: "var(--amber)",
-              }}
-            >
-              {topic}
-            </span>
-          ))}
-        </div>
-      )}
+            {/* Keywords bubbles — always visible */}
+            {lesson.topicsLang.length > 0 && (
+              <div
+                style={{
+                  padding: hideHeader ? "1rem 0 0" : "0.5rem 0 0",
+                  display: "flex",
+                  flexWrap: "wrap",
+                  gap: "0.5rem",
+                }}
+              >
+                {lesson.topicsLang.map((topic) => (
+                  <span
+                    key={topic}
+                    style={{
+                      background: "var(--accent-bg-sm)",
+                      border: "1px solid var(--accent-border-sm)",
+                      borderRadius: "100px",
+                      padding: "0.2rem 0.75rem",
+                      fontFamily: "var(--font-inter)",
+                      fontSize: "0.74rem",
+                      color: "var(--amber)",
+                    }}
+                  >
+                    {topic}
+                  </span>
+                ))}
+              </div>
+            )}
 
-      {/* Static share row — always visible, just below the keyword bubbles */}
-      <div style={{ maxWidth: "800px", margin: "0 auto", padding: "0.75rem 1.5rem 0" }}>
-        <ShareButton variant="inline" />
+            {/* Static share row — always visible, just below the keyword bubbles */}
+            <div style={{ padding: "0.75rem 0 0" }}>
+              <ShareButton variant="inline" />
+            </div>
+
+            <div style={{ padding: "1rem 0 0", borderBottom: "1px solid var(--border-subtle)" }} />
+          </div>
+        </div>
       </div>
-
-      <div style={{ maxWidth: "800px", margin: "0 auto", padding: "1rem 1.5rem 0", borderBottom: "1px solid var(--border-subtle)" }} />
 
       {/* ─── Web Content ─── */}
       {tab === "web" && (

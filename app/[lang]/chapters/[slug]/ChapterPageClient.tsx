@@ -23,14 +23,15 @@ interface Props {
 
 const headerBoxStyle: CSSProperties = {
   borderBottom: "1px solid var(--border)",
-  padding: "2.5rem 1.5rem 1.5rem",
+  padding: "2.5rem 0 1.5rem",
   background: "var(--bg-secondary)",
   transition: "background 0.25s ease",
 };
 
 const maxWStyle: CSSProperties = {
-  maxWidth: "800px",
+  maxWidth: "1320px",
   margin: "0 auto",
+  padding: "0 1.5rem",
 };
 
 function getActiveLessonIndex(
@@ -100,6 +101,22 @@ function ChapterThemeHeadingBlock({ theme }: { theme: ThemeWithLocalizedLessonCo
       >
         {chapters[theme.slug].description}
       </p>
+      {theme.slug === "introduction" && (
+        <p
+          style={{
+            marginTop: "1rem",
+            marginBottom: 0,
+            padding: "0.65rem 1rem",
+            borderInlineStart: "3px solid #15803d",
+            background: "#dcfce7",
+            color: "#166534",
+            fontFamily: "var(--font-inter)",
+            fontSize: "0.9rem",
+          }}
+        >
+          {t.chapter.finalVersion}
+        </p>
+      )}
       {lang === "fr" &&
         [
           "coefficients",
@@ -601,12 +618,16 @@ function ChapterPageView(props: Props) {
     <div data-localized-paths={JSON.stringify(props.localizedPaths)} style={{ position: "relative", zIndex: 1 }}>
       <div style={headerBoxStyle}>
         <div style={maxWStyle}>
-          <ChapterThemeHeadingBlock theme={theme} />
-          {theme.lessons.length > 1 && (
-            <Suspense fallback={null}>
-              <ChapterLessonTabButtons theme={theme} />
-            </Suspense>
-          )}
+          <div className="lesson-web-layout">
+            <div className="lesson-web-main">
+              <ChapterThemeHeadingBlock theme={theme} />
+              {theme.lessons.length > 1 && (
+                <Suspense fallback={null}>
+                  <ChapterLessonTabButtons theme={theme} />
+                </Suspense>
+              )}
+            </div>
+          </div>
         </div>
       </div>
 

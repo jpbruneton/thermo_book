@@ -74,6 +74,7 @@ export const translations = {
       description: "",
     },
     chapter: {
+      finalVersion: "Final version",
       chapterLabel: "LESSON",
       themeLabel: "LESSON",
       lessonLabel: "LESSON",
@@ -237,6 +238,7 @@ export const translations = {
       description: "",
     },
     chapter: {
+      finalVersion: "Version définitive",
       chapterLabel: "LEÇON",
       themeLabel: "LEÇON",
       lessonLabel: "LEÇON",
@@ -401,6 +403,7 @@ const partialTranslations: Record<Exclude<Lang, "fr" | "en">, DeepPartial<Transl
       description: "",
     },
     chapter: {
+      finalVersion: "Endgültige Fassung",
       chapterLabel: "LEKTION",
       themeLabel: "LEKTION",
       lessonLabel: "LEKTION",
@@ -536,6 +539,7 @@ const partialTranslations: Record<Exclude<Lang, "fr" | "en">, DeepPartial<Transl
       description: "",
     },
     chapter: {
+      finalVersion: "Versión definitiva",
       chapterLabel: "LECCIÓN",
       themeLabel: "LECCIÓN",
       lessonLabel: "LECCIÓN",
@@ -671,6 +675,7 @@ const partialTranslations: Record<Exclude<Lang, "fr" | "en">, DeepPartial<Transl
       description: "",
     },
     chapter: {
+      finalVersion: "Versão definitiva",
       chapterLabel: "LIÇÃO",
       themeLabel: "LIÇÃO",
       lessonLabel: "LIÇÃO",
@@ -806,6 +811,7 @@ const partialTranslations: Record<Exclude<Lang, "fr" | "en">, DeepPartial<Transl
       description: "",
     },
     chapter: {
+      finalVersion: "Versione definitiva",
       chapterLabel: "LEZIONE",
       themeLabel: "LEZIONE",
       lessonLabel: "LEZIONE",
@@ -941,6 +947,7 @@ const partialTranslations: Record<Exclude<Lang, "fr" | "en">, DeepPartial<Transl
       description: "",
     },
     chapter: {
+      finalVersion: "Wersja ostateczna",
       chapterLabel: "LEKCJA",
       themeLabel: "LEKCJA",
       lessonLabel: "LEKCJA",
@@ -1076,6 +1083,7 @@ const partialTranslations: Record<Exclude<Lang, "fr" | "en">, DeepPartial<Transl
       description: "",
     },
     chapter: {
+      finalVersion: "Окончательная версия",
       chapterLabel: "УРОК",
       themeLabel: "УРОК",
       lessonLabel: "УРОК",
@@ -1211,6 +1219,7 @@ const partialTranslations: Record<Exclude<Lang, "fr" | "en">, DeepPartial<Transl
       description: "",
     },
     chapter: {
+      finalVersion: "最终版",
       chapterLabel: "课程",
       themeLabel: "课程",
       lessonLabel: "课程",
@@ -1340,6 +1349,7 @@ const partialTranslations: Record<Exclude<Lang, "fr" | "en">, DeepPartial<Transl
       description: "",
     },
     chapter: {
+      finalVersion: "確定版",
       chapterLabel: "レッスン",
       themeLabel: "レッスン",
       lessonLabel: "レッスン",
@@ -1472,6 +1482,7 @@ const partialTranslations: Record<Exclude<Lang, "fr" | "en">, DeepPartial<Transl
       description: "",
     },
     chapter: {
+      finalVersion: "최종 버전",
       chapterLabel: "강의",
       themeLabel: "강의",
       lessonLabel: "강의",
@@ -1602,6 +1613,7 @@ const partialTranslations: Record<Exclude<Lang, "fr" | "en">, DeepPartial<Transl
       description: "",
     },
     chapter: {
+      finalVersion: "अंतिम संस्करण",
       chapterLabel: "पाठ",
       themeLabel: "पाठ",
       lessonLabel: "पाठ",
@@ -1735,6 +1747,7 @@ const partialTranslations: Record<Exclude<Lang, "fr" | "en">, DeepPartial<Transl
       description: "",
     },
     chapter: {
+      finalVersion: "Phiên bản chính thức",
       chapterLabel: "BÀI HỌC",
       themeLabel: "BÀI HỌC",
       lessonLabel: "BÀI HỌC",
@@ -1868,6 +1881,7 @@ const partialTranslations: Record<Exclude<Lang, "fr" | "en">, DeepPartial<Transl
       description: "",
     },
     chapter: {
+      finalVersion: "النسخة النهائية",
       chapterLabel: "درس",
       themeLabel: "درس",
       lessonLabel: "درس",
@@ -2000,6 +2014,7 @@ const partialTranslations: Record<Exclude<Lang, "fr" | "en">, DeepPartial<Transl
       description: "",
     },
     chapter: {
+      finalVersion: "Versi final",
       chapterLabel: "PELAJARAN",
       themeLabel: "PELAJARAN",
       lessonLabel: "PELAJARAN",
@@ -2133,6 +2148,7 @@ const partialTranslations: Record<Exclude<Lang, "fr" | "en">, DeepPartial<Transl
       description: "",
     },
     chapter: {
+      finalVersion: "Nihai sürüm",
       chapterLabel: "DERS",
       themeLabel: "DERS",
       lessonLabel: "DERS",
@@ -2266,6 +2282,7 @@ const partialTranslations: Record<Exclude<Lang, "fr" | "en">, DeepPartial<Transl
       description: "",
     },
     chapter: {
+      finalVersion: "চূড়ান্ত সংস্করণ",
       chapterLabel: "পাঠ",
       themeLabel: "পাঠ",
       lessonLabel: "পাঠ",
@@ -2401,6 +2418,7 @@ const partialTranslations: Record<Exclude<Lang, "fr" | "en">, DeepPartial<Transl
       description: "",
     },
     chapter: {
+      finalVersion: "حتمی نسخہ",
       chapterLabel: "سبق",
       themeLabel: "سبق",
       lessonLabel: "سبق",
@@ -2533,6 +2551,7 @@ const partialTranslations: Record<Exclude<Lang, "fr" | "en">, DeepPartial<Transl
       description: "",
     },
     chapter: {
+      finalVersion: "Toleo la mwisho",
       chapterLabel: "SOMO",
       themeLabel: "SOMO",
       lessonLabel: "SOMO",
@@ -2666,6 +2685,7 @@ const partialTranslations: Record<Exclude<Lang, "fr" | "en">, DeepPartial<Transl
       description: "",
     },
     chapter: {
+      finalVersion: "نسخهٔ نهایی",
       chapterLabel: "درس",
       themeLabel: "درس",
       lessonLabel: "درس",
