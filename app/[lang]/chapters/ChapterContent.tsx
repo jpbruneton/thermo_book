@@ -10,6 +10,7 @@ import { ShareButton } from "@/app/components/ShareButton";
 interface Props {
   lesson: LessonPresentation;
   hideHeader?: boolean;
+  isFinalVersion?: boolean;
   /** Rendered after the keyword bubbles, just above the lesson's first section. */
   topNav?: ReactNode;
 }
@@ -30,7 +31,7 @@ function getLessonPdfRelativePath(lesson: LessonPresentation, lang: "fr" | "en")
   return `${directory}/${fileName}`;
 }
 
-export function ChapterContent({ lesson, hideHeader = false, topNav }: Props) {
+export function ChapterContent({ lesson, hideHeader = false, isFinalVersion = false, topNav }: Props) {
   const [tab, setTab] = useState<"web" | "refs" | "pdf">("web");
   const [activeTocId, setActiveTocId] = useState("");
   const [tocVisible, setTocVisible] = useState(true);
@@ -177,17 +178,6 @@ export function ChapterContent({ lesson, hideHeader = false, topNav }: Props) {
                 >
                   {lessonHeading}
                 </h2>
-                <p
-                  style={{
-                    fontFamily: "var(--font-crimson)",
-                    fontSize: "1rem",
-                    color: "var(--text-secondary)",
-                    lineHeight: 1.7,
-                    marginBottom: "0.5rem",
-                  }}
-                >
-                  {lang === "fr" ? lesson.descriptionFr : lesson.descriptionEn}
-                </p>
               </div>
             )}
 
@@ -221,7 +211,22 @@ export function ChapterContent({ lesson, hideHeader = false, topNav }: Props) {
             )}
 
             {/* Static share row — always visible, just below the keyword bubbles */}
-            <div style={{ padding: "0.75rem 0 0" }}>
+            <div style={{ padding: "0.75rem 0 0", display: "flex", alignItems: "center", flexWrap: "wrap", gap: "0.5rem" }}>
+              {isFinalVersion && (
+                <span
+                  style={{
+                    background: "var(--accent-bg-sm)",
+                    border: "1px solid var(--accent-border-sm)",
+                    borderRadius: "100px",
+                    padding: "0.3rem 0.9rem",
+                    color: "var(--amber)",
+                    fontFamily: "var(--font-inter)",
+                    fontSize: "0.78rem",
+                  }}
+                >
+                  {t.chapter.finalVersion}
+                </span>
+              )}
               <ShareButton variant="inline" />
             </div>
 

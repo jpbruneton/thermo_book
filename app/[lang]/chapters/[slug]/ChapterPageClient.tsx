@@ -90,33 +90,6 @@ function ChapterThemeHeadingBlock({ theme }: { theme: ThemeWithLocalizedLessonCo
       >
         {chapters[theme.slug].title}
       </h1>
-      <p
-        style={{
-          fontFamily: "var(--font-playfair)",
-          fontStyle: "italic",
-          fontSize: "1.2rem",
-          color: "var(--amber-soft)",
-          marginBottom: 0,
-        }}
-      >
-        {chapters[theme.slug].description}
-      </p>
-      {theme.slug === "introduction" && (
-        <p
-          style={{
-            marginTop: "1rem",
-            marginBottom: 0,
-            padding: "0.65rem 1rem",
-            borderInlineStart: "3px solid #6b7280",
-            background: "#9ca3af",
-            color: "#111827",
-            fontFamily: "var(--font-inter)",
-            fontSize: "0.9rem",
-          }}
-        >
-          {t.chapter.finalVersion}
-        </p>
-      )}
       {lang === "fr" &&
         [
           "coefficients",
@@ -385,6 +358,7 @@ function ChapterContentAndPrevNext({
         <ChapterContent
           lesson={activeLesson}
           hideHeader={theme.lessons.length <= 1}
+          isFinalVersion={theme.slug === "introduction"}
           topNav={compactNavRow}
         />
       ) : (
