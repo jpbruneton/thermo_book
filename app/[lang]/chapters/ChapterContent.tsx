@@ -215,7 +215,7 @@ export function ChapterContent({ lesson, hideHeader = false, isFinalVersion = fa
               {isFinalVersion && (
                 <span
                   style={{
-                    background: "var(--accent-bg-sm)",
+                    background: "transparent",
                     border: "1px solid var(--accent-border-sm)",
                     borderRadius: "100px",
                     padding: "0.3rem 0.9rem",
