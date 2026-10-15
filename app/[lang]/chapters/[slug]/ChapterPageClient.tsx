@@ -24,7 +24,7 @@ interface Props {
 const headerBoxStyle: CSSProperties = {
   borderBottom: "1px solid var(--border)",
   padding: "2.5rem 0 1.5rem",
-  background: "var(--bg-secondary)",
+  background: "var(--accent-bg-xs)",
   transition: "background 0.25s ease",
 };
 
@@ -107,9 +107,9 @@ function ChapterThemeHeadingBlock({ theme }: { theme: ThemeWithLocalizedLessonCo
             marginTop: "1rem",
             marginBottom: 0,
             padding: "0.65rem 1rem",
-            borderInlineStart: "3px solid #15803d",
-            background: "#dcfce7",
-            color: "#166534",
+            borderInlineStart: "3px solid #6b7280",
+            background: "#9ca3af",
+            color: "#111827",
             fontFamily: "var(--font-inter)",
             fontSize: "0.9rem",
           }}
