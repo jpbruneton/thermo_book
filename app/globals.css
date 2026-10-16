@@ -33,6 +33,9 @@
   --accent-border-lg: rgba(176, 58, 26, 0.30);
   --accent-border-hover: rgba(176, 58, 26, 0.35);
   --accent-glow:      rgba(176, 58, 26, 0.06);
+
+  /* Badge « Version définitive » : turquoise pastel */
+  --final-badge-bg:   #d6f3ef;
   --accent-shadow:    rgba(176, 58, 26, 0.05);
 
   /* Borders */
@@ -78,6 +81,9 @@
   --accent-border-md: rgba(240, 134, 46, 0.20);
   --accent-border-lg: rgba(240, 134, 46, 0.30);
   --accent-border-hover: rgba(240, 134, 46, 0.35);
+
+  /* Badge « Version définitive » : turquoise pastel, atténué en sombre */
+  --final-badge-bg:   rgba(110, 214, 200, 0.16);
   --accent-glow:      rgba(240, 134, 46, 0.06);
   --accent-shadow:    rgba(240, 134, 46, 0.05);
 
