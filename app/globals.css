@@ -1778,3 +1778,13 @@ a.exercise-index-card-link:focus-visible {
     grid-template-columns: 1fr;
   }
 }
+
+/* Titre des pages de leçon : un peu plus petit sur mobile */
+.lesson-page-title {
+  font-size: clamp(2rem, 5vw, 3rem);
+}
+@media (max-width: 700px) {
+  .lesson-page-title {
+    font-size: 1.7rem;
+  }
+}

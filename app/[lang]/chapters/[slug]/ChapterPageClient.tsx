@@ -80,9 +80,9 @@ function ChapterThemeHeadingBlock({ theme }: { theme: ThemeWithLocalizedLessonCo
       </div>
 
       <h1
+        className="lesson-page-title"
         style={{
           fontFamily: "var(--font-playfair)",
-          fontSize: "clamp(2rem, 5vw, 3rem)",
           fontWeight: 700,
           color: "var(--text-heading)",
           marginBottom: "0.4rem",
