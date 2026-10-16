@@ -6,6 +6,12 @@ import type { LessonPresentation } from "@/lib/lessonPresentation";
 import { useLang } from "@/app/context/LangContext";
 import { usePageViewBeacon } from "@/app/hooks/usePageViewBeacon";
 import { ShareButton } from "@/app/components/ShareButton";
+import { getExerciseTranslations } from "@/lib/exerciseTranslations";
+import type { Lang } from "@/lib/i18n";
+
+// Typographie native de la ligne « Mots-clés : … »
+const KEYWORD_COLON: Partial<Record<Lang, string>> = { fr: "\u00a0: ", zh: "：", ja: "：" };
+const KEYWORD_SEPARATOR: Partial<Record<Lang, string>> = { zh: "、", ja: "、", ar: "، ", fa: "، ", ur: "، " };
 
 interface Props {
   lesson: LessonPresentation;
@@ -181,33 +187,24 @@ export function ChapterContent({ lesson, hideHeader = false, isFinalVersion = fa
               </div>
             )}
 
-            {/* Keywords bubbles — always visible */}
+            {/* Keywords line — always visible */}
             {lesson.topicsLang.length > 0 && (
-              <div
+              <p
                 style={{
                   padding: hideHeader ? "1rem 0 0" : "0.5rem 0 0",
-                  display: "flex",
-                  flexWrap: "wrap",
-                  gap: "0.5rem",
+                  margin: 0,
+                  fontFamily: "var(--font-inter)",
+                  fontSize: "0.78rem",
+                  lineHeight: 1.5,
+                  color: "var(--text-heading)",
                 }}
               >
-                {lesson.topicsLang.map((topic) => (
-                  <span
-                    key={topic}
-                    style={{
-                      background: "var(--accent-bg-sm)",
-                      border: "1px solid var(--accent-border-sm)",
-                      borderRadius: "100px",
-                      padding: "0.2rem 0.75rem",
-                      fontFamily: "var(--font-inter)",
-                      fontSize: "0.74rem",
-                      color: "var(--amber)",
-                    }}
-                  >
-                    {topic}
-                  </span>
-                ))}
-              </div>
+                <span style={{ fontWeight: 600 }}>
+                  {getExerciseTranslations(lang).keywords}
+                  {KEYWORD_COLON[lang] ?? ": "}
+                </span>
+                {lesson.topicsLang.join(KEYWORD_SEPARATOR[lang] ?? ", ")}
+              </p>
             )}
 
             {/* Static share row — always visible, just below the keyword bubbles */}

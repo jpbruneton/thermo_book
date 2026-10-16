@@ -235,24 +235,29 @@ function cleanLatexInline(text: string): string {
   result = replaceOutsideMath(result, (segment) => segment.replace(/\\,/g, nbsp));
   // Escaped percent signs are literal text; keep math escapes for KaTeX.
   result = replaceOutsideMath(result, (segment) => segment.replace(/\\%/g, "%"));
-  // Convert TeX opening/closing double quotes to typographic quotes.
-  result = result.replace(/``/g, "“").replace(/''/g, "”");
-  result = result.replace(/\\ldots/g, "...");
-  result = result.replace(/\\og(?:\{\})?\s*/g, "« ");
-  result = result.replace(/\s*\\fg(?:\{\})?/g, " »");
-  result = result.replace(/---/g, "—");
-  result = result.replace(/--/g, "—");
-  // Keep French typography groups unbreakable around guillemets and high punctuation.
-  result = result.replace(/«\s+/g, `«${nbsp}`);
-  result = result.replace(/\s+»/g, `${nbsp}»`);
-  // Keep English typographic quotes unbreakable at boundaries as well.
-  result = result.replace(/“\s+/g, `“${nbsp}`);
-  result = result.replace(/\s+”/g, `${nbsp}”`);
-  result = result.replace(/\s+:/g, `${nbsp}:`);
-  result = result.replace(/\s+;/g, `${nbsp};`);
-  result = result.replace(/\s+\?/g, `${nbsp}?`);
-  result = result.replace(/\s+!/g, `${nbsp}!`);
-  result = result.replace(/~+/g, " ");
+  // Typography (quotes, dashes, non-breaking spaces, ~) applies to text only:
+  // inside math, '' is a double prime (B'') and ~ / -- keep their TeX meaning.
+  result = replaceOutsideMath(result, (segment) =>
+    segment
+      // Convert TeX opening/closing double quotes to typographic quotes.
+      .replace(/``/g, "“").replace(/''/g, "”")
+      .replace(/\\ldots/g, "...")
+      .replace(/\\og(?:\{\})?\s*/g, "« ")
+      .replace(/\s*\\fg(?:\{\})?/g, " »")
+      .replace(/---/g, "—")
+      .replace(/--/g, "—")
+      // Keep French typography groups unbreakable around guillemets and high punctuation.
+      .replace(/«\s+/g, `«${nbsp}`)
+      .replace(/\s+»/g, `${nbsp}»`)
+      // Keep English typographic quotes unbreakable at boundaries as well.
+      .replace(/“\s+/g, `“${nbsp}`)
+      .replace(/\s+”/g, `${nbsp}”`)
+      .replace(/\s+:/g, `${nbsp}:`)
+      .replace(/\s+;/g, `${nbsp};`)
+      .replace(/\s+\?/g, `${nbsp}?`)
+      .replace(/\s+!/g, `${nbsp}!`)
+      .replace(/~+/g, " ")
+  );
   // \href{url}{text}: links in the body/footnotes, not just the figure-source
   // line. Run alongside \url below, after the punctuation/typography passes.
   result = replaceHref(result);
