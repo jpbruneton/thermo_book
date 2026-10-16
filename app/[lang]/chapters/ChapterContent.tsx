@@ -219,7 +219,7 @@ export function ChapterContent({ lesson, hideHeader = false, isFinalVersion = fa
                     border: "1px solid var(--accent-border-sm)",
                     borderRadius: "100px",
                     padding: "0.3rem 0.9rem",
-                    color: "var(--amber)",
+                    color: "var(--text-heading)",
                     fontFamily: "var(--font-inter)",
                     fontSize: "0.78rem",
                   }}
