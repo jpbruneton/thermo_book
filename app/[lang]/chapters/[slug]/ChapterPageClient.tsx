@@ -362,7 +362,7 @@ function ChapterContentAndPrevNext({
         <ChapterContent
           lesson={activeLesson}
           hideHeader={theme.lessons.length <= 1}
-          isFinalVersion={["introduction", "historique", "notions-fondamentales", "premier-principe"].includes(theme.slug)}
+          isFinalVersion={["introduction", "historique", "notions-fondamentales", "premier-principe", "application-gaz-parfait"].includes(theme.slug)}
           topNav={compactNavRow}
         />
       ) : (
