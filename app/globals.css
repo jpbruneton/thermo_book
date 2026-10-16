@@ -26,6 +26,8 @@
 
   /* Accent backgrounds / borders — CSS-variable-friendly */
   --accent-bg-xs:     rgba(176, 58, 26, 0.03);
+  /* Fond du bandeau de titre et de la table des matières des leçons */
+  --title-band-bg:    rgba(176, 58, 26, 0.07);
   --accent-bg-sm:     rgba(176, 58, 26, 0.07);
   --accent-bg-md:     rgba(176, 58, 26, 0.10);
   --accent-border-sm: rgba(176, 58, 26, 0.12);
@@ -75,6 +77,7 @@
 
   /* Accent backgrounds / borders */
   --accent-bg-xs:     rgba(240, 134, 46, 0.03);
+  --title-band-bg:    rgba(240, 134, 46, 0.07);
   --accent-bg-sm:     rgba(240, 134, 46, 0.07);
   --accent-bg-md:     rgba(240, 134, 46, 0.10);
   --accent-border-sm: rgba(240, 134, 46, 0.12);
@@ -255,7 +258,7 @@ body::before {
   padding: 1rem 1.1rem;
   border: 1px solid var(--accent-border-sm);
   border-radius: 8px;
-  background: var(--accent-bg-xs);
+  background: var(--title-band-bg);
 }
 
 .lesson-web-layout {

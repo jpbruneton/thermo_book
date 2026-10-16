@@ -25,7 +25,7 @@ interface Props {
 const headerBoxStyle: CSSProperties = {
   borderBottom: "1px solid var(--border)",
   padding: "2.5rem 0 1.5rem",
-  background: "var(--accent-bg-xs)",
+  background: "var(--title-band-bg)",
   transition: "background 0.25s ease",
 };
 
