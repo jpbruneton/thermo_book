@@ -223,6 +223,8 @@ function cleanLatexInline(text: string): string {
   result = result.replace(/\\oe(?![A-Za-z])\s?/g, "oe");
   result = result.replace(/\\OE(?![A-Za-z])\s?/g, "OE");
 
+  // « a priori » is a Latin locution, not a highlighted term: render it as plain text.
+  result = result.replace(/\\(?:emph|textit)\{\s*([Aa])[~\s]priori\s*\}/g, "$1 priori");
   result = replaceInlineCommand(result, "emph", (content) => `<span class="latex-inline-blue-strong">${content}</span>`);
   result = replaceInlineCommand(result, "textit", (content) => `<span class="latex-inline-blue-strong">${content}</span>`);
   result = replaceInlineCommand(result, "textbf", (content) => `<span class="latex-inline-blue-strong">${content}</span>`);
