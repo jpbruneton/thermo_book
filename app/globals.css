@@ -1791,3 +1791,15 @@ a.exercise-index-card-link:focus-visible {
     font-size: 1.7rem;
   }
 }
+
+/* Ligne « Mots-clés » des leçons : un peu plus grande et légèrement
+   indentée sur grand écran ; inchangée sur mobile. */
+.lesson-keywords {
+  font-size: 0.8rem;
+}
+@media (min-width: 701px) {
+  .lesson-keywords {
+    font-size: 0.9rem;
+    padding-left: 1.25rem;
+  }
+}

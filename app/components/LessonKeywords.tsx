@@ -24,10 +24,10 @@ export function LessonKeywords({ topics, style }: { topics: string[]; style?: CS
   if (topics.length === 0) return null;
   return (
     <p
+      className="lesson-keywords"
       style={{
         margin: 0,
         fontFamily: "var(--font-inter)",
-        fontSize: "0.8rem",
         lineHeight: 1.5,
         color: "var(--text-heading)",
         ...style,
