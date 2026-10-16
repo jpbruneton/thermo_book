@@ -214,6 +214,7 @@ export function ChapterContent({ lesson, hideHeader = false, isFinalVersion = fa
       {/* ─── Web Content ─── */}
       {tab === "web" && (
         <div
+          className="lesson-web-content"
           style={{
             maxWidth: "1320px",
             margin: "0 auto",

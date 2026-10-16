@@ -1792,14 +1792,25 @@ a.exercise-index-card-link:focus-visible {
   }
 }
 
-/* Ligne « Mots-clés » des leçons : un peu plus grande et légèrement
-   indentée sur grand écran ; inchangée sur mobile. */
+/* Ligne « Mots-clés » des leçons : un peu plus grande et décalée de 2 mm
+   sur grand écran ; inchangée sur mobile. */
 .lesson-keywords {
   font-size: 0.8rem;
 }
 @media (min-width: 701px) {
   .lesson-keywords {
     font-size: 0.9rem;
-    padding-left: 1.25rem;
+    padding-left: 2mm;
+  }
+}
+
+/* Mobile : moins d'espace au-dessus du fil d'Ariane du bandeau de titre,
+   et entre le trait de séparation et les boutons précédent/suivant. */
+@media (max-width: 700px) {
+  .lesson-title-band {
+    padding-top: 1.25rem !important;
+  }
+  .lesson-web-content {
+    padding-top: 1.25rem !important;
   }
 }

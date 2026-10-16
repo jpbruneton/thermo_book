@@ -594,7 +594,7 @@ function ChapterPageView(props: Props) {
 
   return (
     <div data-localized-paths={JSON.stringify(props.localizedPaths)} style={{ position: "relative", zIndex: 1 }}>
-      <div style={headerBoxStyle}>
+      <div className="lesson-title-band" style={headerBoxStyle}>
         <div style={maxWStyle}>
           <div className="lesson-web-layout">
             <div className="lesson-web-main">
