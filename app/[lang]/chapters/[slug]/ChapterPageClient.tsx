@@ -6,6 +6,7 @@ import { Suspense, useMemo, useTransition } from "react";
 import type { Theme } from "@/lib/chapters";
 import type { LessonPresentation } from "@/lib/lessonPresentation";
 import { ChapterContent } from "../ChapterContent";
+import { LessonKeywords } from "@/app/components/LessonKeywords";
 import { useLang } from "@/app/context/LangContext";
 import { sectionHref } from "@/lib/languages";
 
@@ -90,6 +91,9 @@ function ChapterThemeHeadingBlock({ theme }: { theme: ThemeWithLocalizedLessonCo
       >
         {chapters[theme.slug].title}
       </h1>
+      {theme.lessons.length === 1 && (
+        <LessonKeywords topics={theme.lessons[0].topicsLang} style={{ marginTop: "0.75rem" }} />
+      )}
       {lang === "fr" &&
         [
           "coefficients",

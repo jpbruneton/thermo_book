@@ -6,18 +6,13 @@ import type { LessonPresentation } from "@/lib/lessonPresentation";
 import { useLang } from "@/app/context/LangContext";
 import { usePageViewBeacon } from "@/app/hooks/usePageViewBeacon";
 import { ShareButton } from "@/app/components/ShareButton";
-import { getExerciseTranslations } from "@/lib/exerciseTranslations";
-import type { Lang } from "@/lib/i18n";
-
-// Typographie native de la ligne « Mots-clés : … »
-const KEYWORD_COLON: Partial<Record<Lang, string>> = { fr: "\u00a0: ", zh: "：", ja: "：" };
-const KEYWORD_SEPARATOR: Partial<Record<Lang, string>> = { zh: "、", ja: "、", ar: "، ", fa: "، ", ur: "، " };
+import { LessonKeywords } from "@/app/components/LessonKeywords";
 
 interface Props {
   lesson: LessonPresentation;
   hideHeader?: boolean;
   isFinalVersion?: boolean;
-  /** Rendered after the keyword bubbles, just above the lesson's first section. */
+  /** Rendered after the keywords and share row, just above the lesson's first section. */
   topNav?: ReactNode;
 }
 
@@ -187,27 +182,11 @@ export function ChapterContent({ lesson, hideHeader = false, isFinalVersion = fa
               </div>
             )}
 
-            {/* Keywords line — always visible */}
-            {lesson.topicsLang.length > 0 && (
-              <p
-                style={{
-                  padding: hideHeader ? "1rem 0 0" : "0.5rem 0 0",
-                  margin: 0,
-                  fontFamily: "var(--font-inter)",
-                  fontSize: "0.78rem",
-                  lineHeight: 1.5,
-                  color: "var(--text-heading)",
-                }}
-              >
-                <span style={{ fontWeight: 600 }}>
-                  {getExerciseTranslations(lang).keywords}
-                  {KEYWORD_COLON[lang] ?? ": "}
-                </span>
-                {lesson.topicsLang.join(KEYWORD_SEPARATOR[lang] ?? ", ")}
-              </p>
-            )}
+            {/* Keywords: shown in the title banner for single-lesson pages,
+                under the lesson heading when a page holds several lessons. */}
+            {!hideHeader && <LessonKeywords topics={lesson.topicsLang} style={{ padding: "0.5rem 0 0" }} />}
 
-            {/* Static share row — always visible, just below the keyword bubbles */}
+            {/* Static share row — always visible */}
             <div style={{ padding: "0.75rem 0 0", display: "flex", alignItems: "center", flexWrap: "wrap", gap: "0.5rem" }}>
               {isFinalVersion && (
                 <span
