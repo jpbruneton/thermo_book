@@ -7,6 +7,7 @@ import { useLang } from "@/app/context/LangContext";
 import { isRtlLang, sectionHref } from "@/lib/languages";
 import { usePageViewBeacon } from "@/app/hooks/usePageViewBeacon";
 import { legalTranslations } from "@/lib/legalTranslations";
+import type { ExerciseLessonCounts } from "@/lib/homeExercises.server";
 
 function WaveBackground() {
   return (
@@ -32,12 +33,13 @@ function WaveBackground() {
   );
 }
 
-export default function HomePageClient() {
-  const { t, lang, chapters } = useLang();
+export default function HomePageClient({ exerciseCounts }: { exerciseCounts?: ExerciseLessonCounts }) {
+  const { t, lang, chapters, exercises: exerciseLabels } = useLang();
   usePageViewBeacon("home", lang, "home");
   const book = t.book;
   const cover = getBookCover(lang);
   const webThemes = Object.values(chapters).filter((theme) => theme.listed);
+  const exerciseThemes = webThemes.filter((theme) => (exerciseCounts?.[lang]?.[theme.number] ?? 0) > 0);
   const introParagraphs = t.home.intro;
   const legal = legalTranslations[lang];
   const mobile = t.home.mobile;
@@ -304,7 +306,7 @@ export default function HomePageClient() {
         }}
       >
         <div style={{ maxWidth: "1100px", margin: "0 auto" }}>
-          <div style={{ marginBottom: "3.5rem" }}>
+          <div style={{ marginBottom: "1.75rem" }}>
             <p
               style={{
                 fontFamily: "var(--font-inter)",
@@ -330,91 +332,44 @@ export default function HomePageClient() {
             </h2>
           </div>
 
-          <div
-            className="home-chapters-grid"
-            style={{
-              display: "grid",
-              gridTemplateColumns: "repeat(auto-fill, minmax(300px, 1fr))",
-              gap: "1.25rem",
-            }}
-          >
+          <div className="home-chapters-grid">
             {webThemes.map((theme) => (
               <Link
                 key={theme.slug}
+                className="home-theme-tile"
                 href={sectionHref(lang, "chapters", theme.urlSlug)}
-                style={{ textDecoration: "none" }}
               >
-                <div
-                  className="chapter-card"
-                  style={{
-                    background: "var(--bg-card)",
-                    border: "1px solid var(--accent-border-sm)",
-                    borderRadius: "8px",
-                    padding: "1.75rem",
-                    cursor: "pointer",
-                    height: "100%",
-                    transition: "background 0.25s ease",
-                  }}
-                >
-                  <div
-                    style={{
-                      display: "flex",
-                      justifyContent: "space-between",
-                      alignItems: "flex-start",
-                      marginBottom: "1rem",
-                    }}
-                  >
-                    <span
-                      style={{
-                        fontFamily: "var(--font-jetbrains)",
-                        fontSize: "0.75rem",
-                        color: "var(--amber)",
-                        letterSpacing: "0.05em",
-                      }}
-                    >
-                      {t.home.themePrefix} {String(theme.number).padStart(2, "0")}
-                    </span>
-                  </div>
-                  <h3
-                    style={{
-                      fontFamily: "var(--font-playfair)",
-                      fontSize: "1.15rem",
-                      fontWeight: 600,
-                      color: "var(--text-heading)",
-                      marginBottom: "0.4rem",
-                      lineHeight: 1.3,
-                    }}
-                  >
-                    {theme.title}
-                  </h3>
-                  <p
-                    style={{
-                      fontFamily: "var(--font-playfair)",
-                      fontStyle: "italic",
-                      fontSize: "0.875rem",
-                      color: "var(--amber-soft)",
-                      marginBottom: "0.875rem",
-                    }}
-                  >
-                    {theme.description}
-                  </p>
-                  <div
-                    style={{
-                      marginTop: "1.25rem",
-                      display: "flex",
-                      alignItems: "center",
-                      gap: "0.5rem",
-                      fontFamily: "var(--font-inter)",
-                      fontSize: "0.775rem",
-                      color: "var(--amber)",
-                    }}
-                  >
-                    {t.home.readTheme}
-                  </div>
-                </div>
+                <span className="home-theme-tile-number">
+                  {t.home.themePrefix} {String(theme.number).padStart(2, "0")}
+                </span>
+                <span className="home-theme-tile-title">{theme.title}</span>
               </Link>
             ))}
           </div>
+
+          {exerciseThemes.length > 0 && (
+            <>
+              <h2 className="home-explore-subtitle">{t.home.exploreExercisesTitle}</h2>
+              <div className="home-chapters-grid">
+                {exerciseThemes.map((theme) => {
+                  const count = exerciseCounts?.[lang]?.[theme.number] ?? 0;
+                  return (
+                    <Link
+                      key={theme.slug}
+                      className="home-theme-tile"
+                      href={`${sectionHref(lang, "exercises")}?lecon=${theme.number}`}
+                    >
+                      <span className="home-theme-tile-number">
+                        {t.home.themePrefix} {String(theme.number).padStart(2, "0")} · {count}{" "}
+                        {count > 1 ? exerciseLabels.exercises : exerciseLabels.exercise}
+                      </span>
+                      <span className="home-theme-tile-title">{theme.title}</span>
+                    </Link>
+                  );
+                })}
+              </div>
+            </>
+          )}
         </div>
       </section>
 

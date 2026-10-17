@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 import { useLang } from "@/app/context/LangContext";
 import { exerciseMatchesQuery } from "@/lib/exerciseIndexUtils";
@@ -18,6 +18,20 @@ export function ExercisesClient({ cards, allPdfHref }: Props) {
   const [query, setQuery] = useState("");
   const [selectedLecon, setSelectedLecon] = useState<number | null>(null);
 
+  // Deep link from the homepage: /exercises?lecon=N opens that lesson's exercises.
+  useEffect(() => {
+    const lecon = Number(new URLSearchParams(window.location.search).get("lecon"));
+    if (Number.isInteger(lecon) && cards.some((c) => c.lecon === lecon)) setSelectedLecon(lecon);
+  }, [cards]);
+
+  // Keep ?lecon in sync so a reload or a shared link reopens the same lesson.
+  const selectLecon = (lecon: number | null) => {
+    setSelectedLecon(lecon);
+    const url = new URL(window.location.href);
+    if (lecon === null) url.searchParams.delete("lecon");
+    else url.searchParams.set("lecon", String(lecon));
+    window.history.replaceState(window.history.state, "", url);
+  };
 
   const filtered = useMemo(
     () => cards.filter((c) => exerciseMatchesQuery(c, query)),
@@ -80,7 +94,7 @@ export function ExercisesClient({ cards, allPdfHref }: Props) {
           id="exo-search"
           type="search"
           value={query}
-          onChange={(e) => { setQuery(e.target.value); setSelectedLecon(null); }}
+          onChange={(e) => { setQuery(e.target.value); selectLecon(null); }}
           placeholder={t.searchPlaceholder}
           autoComplete="off"
           style={{ width: "100%", maxWidth: "500px", padding: "0.6rem 1rem", borderRadius: "6px", border: "1px solid var(--border)", background: "var(--bg-secondary)", color: "var(--text-heading)", fontFamily: "var(--font-crimson)", fontSize: "1rem", marginBottom: "2.5rem" }}
@@ -109,14 +123,14 @@ export function ExercisesClient({ cards, allPdfHref }: Props) {
             groupCards={selectedGroup[1]}
             lang={lang}
             t={t}
-            onBack={() => setSelectedLecon(null)}
+            onBack={() => selectLecon(null)}
           />
         ) : (
           <LessonGrid
             groups={groups}
             lang={lang}
             t={t}
-            onSelect={setSelectedLecon}
+            onSelect={selectLecon}
           />
         )}
       </div>

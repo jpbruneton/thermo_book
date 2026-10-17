@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import HomePageClient from "@/app/HomePageClient";
+import { getExerciseLessonCounts } from "@/lib/homeExercises.server";
 import { getSiteUrl } from "@/lib/siteUrl";
 import { getTranslations, isLang, SUPPORTED_LANGS } from "@/lib/i18n";
 import { getBookCover } from "@/lib/bookCover";
@@ -43,5 +44,5 @@ export async function generateMetadata({
 }
 
 export default function LangHomePage() {
-  return <HomePageClient />;
+  return <HomePageClient exerciseCounts={getExerciseLessonCounts()} />;
 }

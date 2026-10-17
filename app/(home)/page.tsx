@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import HomePageClient from "@/app/HomePageClient";
+import { getExerciseLessonCounts } from "@/lib/homeExercises.server";
 import { getSiteUrl } from "@/lib/siteUrl";
 import { getTranslations, SUPPORTED_LANGS } from "@/lib/i18n";
 import { bookMeta } from "@/lib/bookMetadata";
@@ -35,5 +36,5 @@ export const metadata: Metadata = {
 };
 
 export default function HomePage() {
-  return <HomePageClient />;
+  return <HomePageClient exerciseCounts={getExerciseLessonCounts()} />;
 }
