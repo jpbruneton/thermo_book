@@ -51,7 +51,6 @@ export default function HomePageClient() {
         className="home-hero-section"
         style={{
           position: "relative",
-          minHeight: "100vh",
           display: "flex",
           alignItems: "flex-start",
           overflow: "hidden",
@@ -299,7 +298,7 @@ export default function HomePageClient() {
       <section
         className="home-chapters-preview"
         style={{
-          padding: "6rem 1.5rem",
+          padding: "3.5rem 1.5rem 6rem",
           background: "var(--bg-secondary)",
           transition: "background 0.25s ease",
         }}
