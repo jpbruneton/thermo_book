@@ -20,15 +20,17 @@ const patterns = filter === "shares" ? ["shares:*"] : filter ? [`views:${filter}
 
 const rows = [];
 for (const pattern of patterns) {
-  let cursor = 0;
+  // Upstash cursors are 64-bit integers returned as strings: keep them as strings,
+  // since Number() would round them and silently skip pages of keys.
+  let cursor = "0";
   do {
     const [nextCursor, keys] = await redis.scan(cursor, { match: pattern, count: 200 });
-    cursor = Number(nextCursor);
+    cursor = String(nextCursor);
     if (keys.length > 0) {
       const counts = await Promise.all(keys.map((key) => redis.get(key)));
       keys.forEach((key, i) => rows.push({ key, count: Number(counts[i]) || 0 }));
     }
-  } while (cursor !== 0);
+  } while (cursor !== "0");
 }
 
 rows.sort((a, b) => b.count - a.count);
