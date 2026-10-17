@@ -1,12 +1,20 @@
 "use client";
 import Link from "next/link";
-import { sectionHref } from "@/lib/languages";
+import { usePathname } from "next/navigation";
+import { isLang, sectionHref } from "@/lib/languages";
 import { bookMeta, contactEmail } from "@/lib/bookMetadata";
 import { useLang } from "@/app/context/LangContext";
+import { legalColon, legalHost, legalPublisher, legalTranslations } from "@/lib/legalTranslations";
 
 export function Footer() {
   const { t, lang } = useLang();
   const book = t.book;
+  const pathname = usePathname();
+  // The legal notice is only shown on the homepage ("/" or "/{lang}").
+  const segments = pathname.split("/").filter(Boolean);
+  const isHome = segments.length === 0 || (segments.length === 1 && isLang(segments[0]));
+  const legal = legalTranslations[lang];
+  const colon = legalColon(lang);
 
   return (
     <footer
@@ -166,6 +174,24 @@ export function Footer() {
       >
         {t.footer.copyright}
       </div>
+      {isHome && (
+        <p
+          style={{
+            maxWidth: "1100px",
+            margin: "0.75rem auto 0",
+            textAlign: "center",
+            color: "var(--text-dim)",
+            fontSize: "0.7rem",
+            lineHeight: 1.6,
+            fontFamily: "var(--font-inter)",
+          }}
+        >
+          {legal.legalTitle} · {legal.publisher}{colon}{legalPublisher} · {legal.host}{colon}{legalHost} ·{" "}
+          <Link href={`${sectionHref(lang, "about")}#privacy`} style={{ color: "inherit" }}>
+            {legal.privacyLink}
+          </Link>
+        </p>
+      )}
     </footer>
   );
 }

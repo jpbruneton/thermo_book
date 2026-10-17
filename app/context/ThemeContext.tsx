@@ -25,10 +25,14 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
 
   useEffect(() => {
     document.documentElement.setAttribute("data-theme", theme);
-    localStorage.setItem("theme", theme);
   }, [theme]);
 
-  const toggleTheme = () => setTheme((t) => (t === "dark" ? "light" : "dark"));
+  // Persist only on an explicit click, so visitors who never pick a theme get nothing stored.
+  const toggleTheme = () => {
+    const next = theme === "dark" ? "light" : "dark";
+    localStorage.setItem("theme", next);
+    setTheme(next);
+  };
 
   return (
     <ThemeContext.Provider value={{ theme, toggleTheme }}>

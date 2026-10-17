@@ -6,6 +6,7 @@ import { getBookCover } from "@/lib/bookCover";
 import { useLang } from "@/app/context/LangContext";
 import { isRtlLang, sectionHref } from "@/lib/languages";
 import { usePageViewBeacon } from "@/app/hooks/usePageViewBeacon";
+import { legalTranslations } from "@/lib/legalTranslations";
 
 function WaveBackground() {
   return (
@@ -38,6 +39,7 @@ export default function HomePageClient() {
   const cover = getBookCover(lang);
   const webThemes = Object.values(chapters).filter((theme) => theme.listed);
   const introParagraphs = t.home.intro;
+  const legal = legalTranslations[lang];
   const mobile = t.home.mobile;
   const direction = isRtlLang(lang) ? "rtl" : "ltr";
   const arrow = direction === "rtl" ? "←" : "→";
@@ -91,6 +93,7 @@ export default function HomePageClient() {
                 ? <strong key={index}>{part.slice(2, -2)}</strong>
                 : part
             )}
+            {legal.cookieFree}
           </p>
           <p className="home-mobile-language-hint">
             <em>{introParagraphs[1]}</em>
@@ -167,7 +170,7 @@ export default function HomePageClient() {
 
             <div className="home-desktop-introduction animate-fade-up stagger-4">
               <div className="home-intro-highlight">
-                <p className="home-hero-description">{introParagraphs[0]}</p>
+                <p className="home-hero-description">{introParagraphs[0]}{legal.cookieFree}</p>
                 <p className="home-hero-description"><em>{introParagraphs[1]}</em></p>
               </div>
               {introParagraphs.slice(2).map((paragraph, index) => (

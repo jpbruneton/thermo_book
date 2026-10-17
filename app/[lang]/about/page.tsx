@@ -1,6 +1,7 @@
 "use client";
 import { bookMeta, contactEmail } from "@/lib/bookMetadata";
 import { useLang } from "@/app/context/LangContext";
+import { legalColon, legalTranslations } from "@/lib/legalTranslations";
 
 const AUTHOR_EXTERNAL_LINKS = [
   {
@@ -26,7 +27,8 @@ const AUTHOR_EXTERNAL_LINKS = [
 ];
 
 export default function AboutPage() {
-  const { t } = useLang();
+  const { t, lang } = useLang();
+  const legal = legalTranslations[lang];
   const at = t.about;
   const book = t.book;
 
@@ -168,7 +170,7 @@ export default function AboutPage() {
         </div>
 
         {/* Same author */}
-        <div style={{ ...sectionStyle, borderBottom: "none", marginBottom: 0, paddingBottom: 0 }}>
+        <div style={sectionStyle}>
           <h2 style={h2Style}>{at.sameAuthorTitle}</h2>
           <p style={{ ...bodyStyle, marginBottom: "0.65rem" }}>{at.sameAuthorBody}</p>
           <a
@@ -184,6 +186,21 @@ export default function AboutPage() {
           >
             {at.sameAuthorLink} →
           </a>
+        </div>
+
+        {/* Privacy */}
+        <div id="privacy" style={{ ...sectionStyle, borderBottom: "none", marginBottom: 0, paddingBottom: 0, scrollMarginTop: "5rem" }}>
+          <h2 style={h2Style}>{legal.privacyTitle}</h2>
+          <p style={{ ...bodyStyle, textAlign: "start" }}>{legal.privacyIntro}</p>
+          {legal.privacyItems.map((item, index, arr) => (
+            <p
+              key={item.label}
+              style={{ ...bodyStyle, textAlign: "start", marginBottom: index < arr.length - 1 ? "0.65rem" : 0 }}
+            >
+              <strong style={{ fontWeight: 700 }}>{item.label}</strong>{legalColon(lang)}
+              {item.body.replace("{email}", contactEmail)}
+            </p>
+          ))}
         </div>
       </div>
     </div>

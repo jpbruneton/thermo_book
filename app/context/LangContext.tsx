@@ -48,7 +48,6 @@ export function LangProvider({ children, initialLanguage }: {
     if (urlLang) {
       request.current?.abort();
       setSavedLanguage(initialLanguage);
-      localStorage.setItem("lang", urlLang);
     } else {
       const stored = localStorage.getItem("lang");
       if (stored && isLang(stored)) void loadLanguage(stored);
