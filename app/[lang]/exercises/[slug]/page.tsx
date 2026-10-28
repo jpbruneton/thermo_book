@@ -262,13 +262,13 @@ export default function ExerciseDetailPage({ params }: Props) {
       >
         <div className="exercise-detail-inner">
           <nav className="exercise-back-nav exercise-back-nav-top" aria-label={t.exercises}>
-            <Link href={sectionHref(lang, "exercises")}>{t.back}</Link>
+            <Link prefetch={false} href={sectionHref(lang, "exercises")}>{t.back}</Link>
           </nav>
 
           <nav className="exercise-breadcrumb" aria-label={t.breadcrumbLabel}>
-            <Link href={`/${lang}`}>{siteT.nav.home}</Link>
+            <Link prefetch={false} href={`/${lang}`}>{siteT.nav.home}</Link>
             <span aria-hidden="true">/</span>
-            <Link href={sectionHref(lang, "exercises")}>{siteT.nav.exercises}</Link>
+            <Link prefetch={false} href={sectionHref(lang, "exercises")}>{siteT.nav.exercises}</Link>
             <span aria-hidden="true">/</span>
             <span>{exerciseLabel} {exercise.number}</span>
           </nav>
@@ -314,7 +314,7 @@ export default function ExerciseDetailPage({ params }: Props) {
           <aside className="exercise-related-lesson" aria-label={t.relatedLessonLabel}>
             <span>{t.reviewBefore}</span>
             {theme ? (
-              <Link href={sectionHref(lang, "chapters", getThemeUrlSlug(theme, lang))}>
+              <Link prefetch={false} href={sectionHref(lang, "chapters", getThemeUrlSlug(theme, lang))}>
                 {lessonLabel} {theme.number} — {lessonTitle} →
               </Link>
             ) : (
@@ -324,13 +324,13 @@ export default function ExerciseDetailPage({ params }: Props) {
 
           <nav className="exercise-prev-next" aria-label={t.exercises}>
             {previousExercise ? (
-              <Link href={sectionHref(lang, "exercises", getExerciseUrlSlug(lang, previousExercise))}>
+              <Link prefetch={false} href={sectionHref(lang, "exercises", getExerciseUrlSlug(lang, previousExercise))}>
                 <span>{t.previousExercise}</span>
                 {exerciseTitleToPlainText(previousExercise.titleTex)}
               </Link>
             ) : <span />}
             {nextExercise ? (
-              <Link href={sectionHref(lang, "exercises", getExerciseUrlSlug(lang, nextExercise))}>
+              <Link prefetch={false} href={sectionHref(lang, "exercises", getExerciseUrlSlug(lang, nextExercise))}>
                 <span>{t.nextExercise}</span>
                 {exerciseTitleToPlainText(nextExercise.titleTex)}
               </Link>
@@ -338,7 +338,7 @@ export default function ExerciseDetailPage({ params }: Props) {
           </nav>
 
           <nav className="exercise-back-nav exercise-back-nav-bottom" aria-label={t.exercises}>
-            <Link href={sectionHref(lang, "exercises")}>{t.back}</Link>
+            <Link prefetch={false} href={sectionHref(lang, "exercises")}>{t.back}</Link>
           </nav>
         </div>
       </article>

@@ -100,16 +100,16 @@ export default function HomePageClient({ exerciseCounts }: { exerciseCounts?: Ex
             <em>{introParagraphs[1]}</em>
           </p>
           <nav className="home-mobile-actions" aria-label={mobile.title}>
-            <Link
+            <Link prefetch={false}
               className="home-mobile-action home-mobile-action-primary"
               href={sectionHref(lang, "chapters")}
             >
               <span>{mobile.lessons}</span><span aria-hidden="true">{arrow}</span>
             </Link>
-            <Link className="home-mobile-action" href={sectionHref(lang, "exercises")}>
+            <Link prefetch={false} className="home-mobile-action" href={sectionHref(lang, "exercises")}>
               <span>{mobile.exercises}</span><span aria-hidden="true">{arrow}</span>
             </Link>
-            <Link className="home-mobile-action" href={sectionHref(lang, "quiz")}>
+            <Link prefetch={false} className="home-mobile-action" href={sectionHref(lang, "quiz")}>
               <span>{mobile.quizzes}</span><span aria-hidden="true">{arrow}</span>
             </Link>
           </nav>
@@ -190,7 +190,7 @@ export default function HomePageClient({ exerciseCounts }: { exerciseCounts?: Ex
                 marginTop: "calc(-0.4cm)",
               }}
             >
-              <Link
+              <Link prefetch={false}
                 href={sectionHref(lang, "chapters")}
                 style={{
                   background: "var(--amber)",
@@ -209,7 +209,7 @@ export default function HomePageClient({ exerciseCounts }: { exerciseCounts?: Ex
               >
                 {t.home.readOnline}
               </Link>
-              <Link
+              <Link prefetch={false}
                 href={sectionHref(lang, "about")}
                 style={{
                   border: "1px solid var(--accent-border-lg)",
@@ -334,7 +334,7 @@ export default function HomePageClient({ exerciseCounts }: { exerciseCounts?: Ex
 
           <div className="home-chapters-grid">
             {webThemes.map((theme) => (
-              <Link
+              <Link prefetch={false}
                 key={theme.slug}
                 className="home-theme-tile"
                 href={sectionHref(lang, "chapters", theme.urlSlug)}
@@ -354,7 +354,7 @@ export default function HomePageClient({ exerciseCounts }: { exerciseCounts?: Ex
                 {exerciseThemes.map((theme) => {
                   const count = exerciseCounts?.[lang]?.[theme.number] ?? 0;
                   return (
-                    <Link
+                    <Link prefetch={false}
                       key={theme.slug}
                       className="home-theme-tile"
                       href={`${sectionHref(lang, "exercises")}?lecon=${theme.number}`}

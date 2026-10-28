@@ -14,7 +14,7 @@ export function SectionUnavailable() {
   return (
     <div style={{ position: "relative", zIndex: 1, padding: "5rem 1.5rem 6rem" }}>
       <div style={{ maxWidth: "760px", margin: "0 auto" }}>
-        <Link
+        <Link prefetch={false}
           href="/"
           style={{
             fontFamily: "var(--font-inter)",

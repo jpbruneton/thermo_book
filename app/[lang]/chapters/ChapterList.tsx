@@ -42,7 +42,7 @@ export function ChapterList() {
                 : "none",
           }}
         >
-          <Link
+          <Link prefetch={false}
             href={sectionHref(lang, "chapters", theme.urlSlug)}
             style={{ textDecoration: "none", display: "block" }}
           >

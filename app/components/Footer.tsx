@@ -89,7 +89,7 @@ export function Footer() {
             { href: sectionHref(lang, "about"), label: t.footer.aboutBook },
           ].map((l) => (
             <div key={l.href} style={{ marginBottom: "0.4rem" }}>
-              <Link
+              <Link prefetch={false}
                 href={l.href}
                 style={{
                   color: "var(--text-secondary)",
@@ -187,7 +187,7 @@ export function Footer() {
           }}
         >
           {legal.legalTitle} · {legal.publisher}{colon}{legalPublisher} · {legal.host}{colon}{legalHost} ·{" "}
-          <Link href={`${sectionHref(lang, "about")}#privacy`} style={{ color: "inherit" }}>
+          <Link prefetch={false} href={`${sectionHref(lang, "about")}#privacy`} style={{ color: "inherit" }}>
             {legal.privacyLink}
           </Link>
         </p>

@@ -65,11 +65,11 @@ function ChapterThemeHeadingBlock({ theme }: { theme: ThemeWithLocalizedLessonCo
           color: "var(--text-dim)",
         }}
       >
-        <Link href="/" style={{ color: "var(--text-dim)", textDecoration: "none" }}>
+        <Link prefetch={false} href="/" style={{ color: "var(--text-dim)", textDecoration: "none" }}>
           {t.chapter.breadcrumbHome}
         </Link>
         <span>/</span>
-        <Link href={sectionHref(lang, "chapters")} style={{ color: "var(--text-dim)", textDecoration: "none" }}>
+        <Link prefetch={false} href={sectionHref(lang, "chapters")} style={{ color: "var(--text-dim)", textDecoration: "none" }}>
           {t.chapter.breadcrumbThemes}
         </Link>
         <span>/</span>
@@ -408,14 +408,14 @@ function ChapterContentAndPrevNext({
                 <ul>
                   {relatedExercises.map((exercise) => (
                     <li key={exercise.id}>
-                      <Link href={sectionHref(lang, "exercises", exercise.urlSlug)}>
+                      <Link prefetch={false} href={sectionHref(lang, "exercises", exercise.urlSlug)}>
                         <span>{exerciseT.exercise} {exercise.number}</span>
                         {exercise.title}
                       </Link>
                     </li>
                   ))}
                 </ul>
-                <Link className="lesson-related-exercises-all" href={sectionHref(lang, "exercises")}>
+                <Link prefetch={false} className="lesson-related-exercises-all" href={sectionHref(lang, "exercises")}>
                   {exerciseT.hubTitle} →
                 </Link>
               </aside>
@@ -500,7 +500,7 @@ function NavCard({ label, title, align, href, onClick, compact }: NavCardProps) 
   }
   if (href) {
     return (
-      <Link href={href} style={{ textDecoration: "none" }}>
+      <Link prefetch={false} href={href} style={{ textDecoration: "none" }}>
         {card}
       </Link>
     );

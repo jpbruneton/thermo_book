@@ -296,7 +296,7 @@ function ExoCard({ card, t, lang }: {
           {card.keywords.join(" · ")}
         </div>
       )}
-      <Link
+      <Link prefetch={false}
         className="exercise-card-detail-link"
         href={sectionHref(lang, "exercises", card.urlSlug)}
       >

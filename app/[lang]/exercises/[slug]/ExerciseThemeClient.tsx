@@ -48,7 +48,7 @@ export function ExerciseThemeClient({ number, titleFr, titleEn, contentFr, conte
     <div style={{ position: "relative", zIndex: 1, padding: "5rem 1.5rem" }}>
       <div style={{ maxWidth: "860px", margin: "0 auto" }}>
         <div style={{ marginBottom: "2rem" }}>
-          <Link
+          <Link prefetch={false}
             href={sectionHref(lang, "exercises")}
             style={{
               fontFamily: "var(--font-crimson)",

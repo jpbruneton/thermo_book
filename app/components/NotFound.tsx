@@ -46,7 +46,7 @@ export default function NotFound() {
       >
         This page has reached equilibrium with the void. It does not exist.
       </p>
-      <Link
+      <Link prefetch={false}
         href="/"
         style={{
           background: "var(--amber)",

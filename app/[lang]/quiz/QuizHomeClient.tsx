@@ -66,7 +66,7 @@ function QuizLessonCardView({
   const [hovered, setHovered] = useState(false);
 
   return (
-    <Link href={sectionHref(lang, "quiz", String(card.lecon))} style={{ textDecoration: "none" }}>
+    <Link prefetch={false} href={sectionHref(lang, "quiz", String(card.lecon))} style={{ textDecoration: "none" }}>
       <div
         onMouseEnter={() => setHovered(true)}
         onMouseLeave={() => setHovered(false)}

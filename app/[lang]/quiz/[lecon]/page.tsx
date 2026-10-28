@@ -24,7 +24,7 @@ function QuizUnavailable({ lang, title, lecon }: { lang: Lang; title: string; le
   return (
     <div style={{ position: "relative", zIndex: 1, padding: "4rem 1.5rem 5rem" }}>
       <div style={{ maxWidth: "760px", margin: "0 auto" }}>
-        <Link
+        <Link prefetch={false}
           href={sectionHref(lang, "quiz")}
           style={{ fontFamily: "var(--font-inter)", fontSize: "0.85rem", color: "var(--amber)", textDecoration: "none" }}
         >
