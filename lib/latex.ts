@@ -96,6 +96,7 @@ export function processLatex(html: string): string {
       return katex.renderToString(safeMath, {
         displayMode: true,
         throwOnError: false,
+        output: "html",
         trust: false,
         macros: KATEX_MACROS,
       });
@@ -115,6 +116,7 @@ export function processLatex(html: string): string {
       const renderedMath = katex.renderToString(sanitizeMathCommon(body), {
         displayMode: false,
         throwOnError: false,
+        output: "html",
         trust: false,
         macros: KATEX_MACROS,
       });
