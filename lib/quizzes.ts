@@ -889,10 +889,10 @@ export const quizQuestions: QuizQuestion[] = [
     correctIndex: 0,
   },
 
-  // Leçon 8 : calcul sous contraintes. Les identifiants restent stables.
+  // Leçon 9 : calcul sous contraintes. Les identifiants restent stables.
   {
     id: "l8-q1",
-    lecon: 8,
+    lecon: 9,
     question: "Pourquoi faut-il toujours préciser les variables tenues constantes dans une dérivée partielle thermodynamique ?",
     choices: [
       "Parce que les variables ne sont pas indépendantes : la même dérivée prend des valeurs différentes selon ce qu'on fixe.",
@@ -908,7 +908,7 @@ export const quizQuestions: QuizQuestion[] = [
   },
   {
     id: "l8-q2",
-    lecon: 9,
+    lecon: 10,
     question: "Une transformée de Legendre, en thermodynamique, permet de :",
     choices: [
       "Calculer l'entropie d'un gaz parfait à partir de ses deux équations d'état, par intégration directe terme à terme.",
@@ -926,7 +926,7 @@ export const quizQuestions: QuizQuestion[] = [
   },
   {
     id: "l8-q3",
-    lecon: 9,
+    lecon: 10,
     question: "L'énergie libre F = U - TS a pour variables naturelles :",
     choices: ["S, V, N", "T, V, N", "T, P, N", "S, P, N"],
     explanations: [
@@ -939,7 +939,7 @@ export const quizQuestions: QuizQuestion[] = [
   },
   {
     id: "l8-q4",
-    lecon: 9,
+    lecon: 10,
     question: "Parmi les quatre potentiels usuels U, F, H, G, lequel a pour variables naturelles (S, P, N) ?",
     choices: ["U, l'énergie interne", "F, l'énergie libre", "H, l'enthalpie", "G, l'enthalpie libre"],
     explanations: [
@@ -952,7 +952,7 @@ export const quizQuestions: QuizQuestion[] = [
   },
   {
     id: "l8-q5",
-    lecon: 9,
+    lecon: 10,
     question: "La différentielle de l'enthalpie libre G s'écrit :",
     choices: [
       "dG = T dS + V dP + μ dN",
@@ -968,7 +968,7 @@ export const quizQuestions: QuizQuestion[] = [
   },
   {
     id: "l8-q6",
-    lecon: 9,
+    lecon: 10,
     question: "Pour un système fermé, la variation d'enthalpie ΔH est égale à la chaleur reçue Q lors d'une transformation :",
     choices: ["Isotherme", "Isochore", "Isobare", "Adiabatique"],
     explanations: [
@@ -980,10 +980,10 @@ export const quizQuestions: QuizQuestion[] = [
     correctIndex: 2,
   },
 
-  // Leçon 8 : coefficients calorimétriques et thermoélastiques.
+  // Leçon 9 : coefficients calorimétriques et thermoélastiques.
   {
     id: "l9-q1",
-    lecon: 8,
+    lecon: 9,
     question: "La capacité thermique à volume constant c_V est définie par :",
     choices: [
       "c_V = T (∂S/∂T)_V",
@@ -1001,7 +1001,7 @@ export const quizQuestions: QuizQuestion[] = [
   },
   {
     id: "l9-q2",
-    lecon: 8,
+    lecon: 9,
     question: "Pour un gaz parfait quelconque, la relation de Mayer c_P - c_V (molaire) vaut :",
     choices: ["0", "γR", "3R/2", "R"],
     explanations: [
@@ -1014,7 +1014,7 @@ export const quizQuestions: QuizQuestion[] = [
   },
   {
     id: "l9-q3",
-    lecon: 8,
+    lecon: 9,
     question: "On chauffe l'air d'une pièce avec un radiateur. La pièce n'est pas hermétique : l'air dilaté s'échappe par les interstices, la pression restant atmosphérique. Quelle capacité thermique utiliser ?",
     choices: [
       "c_V, car le volume de la pièce est fixé par les murs",
@@ -1030,7 +1030,7 @@ export const quizQuestions: QuizQuestion[] = [
   },
   {
     id: "l9-q4",
-    lecon: 8,
+    lecon: 9,
     question: "La stabilité thermodynamique impose notamment :",
     choices: [
       "c_V ≥ 0 et χ_T ≥ 0",
@@ -1048,7 +1048,7 @@ export const quizQuestions: QuizQuestion[] = [
   },
   {
     id: "l9-q5",
-    lecon: 8,
+    lecon: 9,
     question: "Pour un gaz parfait monoatomique, le coefficient de Laplace γ = c_P/c_V vaut :",
     choices: ["7/5", "5/3", "3/2", "1"],
     explanations: [
@@ -1061,7 +1061,7 @@ export const quizQuestions: QuizQuestion[] = [
   },
   {
     id: "l9-vf1",
-    lecon: 8,
+    lecon: 9,
     question: "Pour un gaz parfait, la capacité thermique à pression constante c_P est toujours strictement supérieure à c_V.",
     choices: ["Vrai", "Faux"],
     explanations: [
@@ -1074,7 +1074,7 @@ export const quizQuestions: QuizQuestion[] = [
   // ─── Leçon 10 : Transitions de phase ───
   {
     id: "l10-q1",
-    lecon: 10,
+    lecon: 11,
     question: "Au cours d'une transition de phase à pression constante (par exemple la fusion), tant que les deux phases coexistent, la température :",
     choices: ["Augmente continûment", "Devient indéfinie", "Diminue continûment", "Reste constante"],
     explanations: [
@@ -1087,7 +1087,7 @@ export const quizQuestions: QuizQuestion[] = [
   },
   {
     id: "l10-q2",
-    lecon: 10,
+    lecon: 11,
     question: "Dans le diagramme (P,V) du gaz de Van der Waals, à quoi sert la règle des paliers de Maxwell ?",
     choices: [
       "À fixer la position du palier liquide-vapeur, par égalité des aires au-dessus et au-dessous du segment.",
@@ -1103,7 +1103,7 @@ export const quizQuestions: QuizQuestion[] = [
   },
   {
     id: "l10-q3",
-    lecon: 10,
+    lecon: 11,
     question: "Des gouttes de pluie verglaçante restent liquides en dessous de 0°C (surfusion) jusqu'à toucher le sol. Que peut-on dire de cet état ?",
     choices: [
       "C'est un état d'équilibre stable, aussi stable que la glace à cette température, les deux phases étant simplement séparées par une barrière de tension superficielle.",
@@ -1119,7 +1119,7 @@ export const quizQuestions: QuizQuestion[] = [
   },
   {
     id: "l10-q4",
-    lecon: 10,
+    lecon: 11,
     question: "La formule de Clapeyron, (dP/dT) = Δs/Δv le long d'une courbe de coexistence, cesse d'être applicable :",
     choices: [
       "Dès que l'on s'éloigne du point triple, car la chaleur latente varie trop vite avec la température pour que la dérivée garde un sens.",
@@ -1135,7 +1135,7 @@ export const quizQuestions: QuizQuestion[] = [
   },
   {
     id: "l10-q5",
-    lecon: 10,
+    lecon: 11,
     question: "Sur un palier de coexistence liquide-vapeur en diagramme (P,V), le système est au point M, entre les extrémités A (liquide) et B (vapeur). Le titre en vapeur x_v vaut :",
     choices: ["AM / AB", "MB / AB", "AM / MB"],
     explanations: [
@@ -1147,7 +1147,7 @@ export const quizQuestions: QuizQuestion[] = [
   },
   {
     id: "l10-q6",
-    lecon: 10,
+    lecon: 11,
     question: "Sur la courbe de saturation d'un diagramme (P,V), comment s'appellent la branche montante (côté liquide) et la branche descendante (côté vapeur) ?",
     choices: [
       "Courbe d'ébullition (liquide) et courbe de rosée (vapeur)",
@@ -1163,7 +1163,7 @@ export const quizQuestions: QuizQuestion[] = [
   },
   {
     id: "l10-q7",
-    lecon: 10,
+    lecon: 11,
     question: "Un taux d'humidité relative de 100 % signifie que :",
     choices: [
       "L'air est entièrement constitué de vapeur d'eau, l'azote et l'oxygène ayant été chassés par évaporation.",
@@ -1179,7 +1179,7 @@ export const quizQuestions: QuizQuestion[] = [
   },
   {
     id: "l10-vf1",
-    lecon: 10,
+    lecon: 11,
     question: "Il est possible de faire coexister à l'équilibre quatre phases distinctes d'un même corps pur.",
     choices: ["Vrai", "Faux"],
     explanations: [
@@ -1192,7 +1192,7 @@ export const quizQuestions: QuizQuestion[] = [
   // ─── Leçon 11 : Machines thermiques ───
   {
     id: "l11-q1",
-    lecon: 11,
+    lecon: 12,
     question: "Le rendement maximal d'un moteur ditherme entre une source chaude T_c et une source froide T_f vaut :",
     choices: [
       "η = 1 - T_f/T_c",
@@ -1210,7 +1210,7 @@ export const quizQuestions: QuizQuestion[] = [
   },
   {
     id: "l11-q2",
-    lecon: 11,
+    lecon: 12,
     question: "L'efficacité d'une pompe à chaleur ou d'un réfrigérateur peut-elle dépasser 1 ?",
     choices: [
       "Non : comme le rendement d'un moteur, elle est bornée par 1 en vertu de la conservation de l'énergie, qui interdit de restituer plus que ce que l'on fournit.",
@@ -1226,7 +1226,7 @@ export const quizQuestions: QuizQuestion[] = [
   },
   {
     id: "l11-q3",
-    lecon: 11,
+    lecon: 12,
     question: "L'efficacité maximale d'une pompe à chaleur fonctionnant entre T_f et T_c vaut :",
     choices: [
       "T_c / (T_c - T_f)",
@@ -1244,7 +1244,7 @@ export const quizQuestions: QuizQuestion[] = [
   },
   {
     id: "l11-q4",
-    lecon: 11,
+    lecon: 12,
     question: "L'énoncé de Kelvin du second principe affirme que :",
     choices: [
       "La chaleur ne peut pas passer spontanément d'un corps froid vers un corps plus chaud, sans compensation par un apport extérieur de travail.",
@@ -1260,7 +1260,7 @@ export const quizQuestions: QuizQuestion[] = [
   },
   {
     id: "l11-q5",
-    lecon: 11,
+    lecon: 12,
     question: "L'inégalité de Clausius pour un cycle quelconque s'écrit :",
     choices: [
       "∮ δQ/T ≥ 0",
@@ -1278,7 +1278,7 @@ export const quizQuestions: QuizQuestion[] = [
   },
   {
     id: "l11-q6",
-    lecon: 11,
+    lecon: 12,
     question: "Dans un diagramme (T,S), un cycle de Carnot a la forme :",
     choices: ["D'un rectangle", "D'une ellipse", "D'un triangle rectangle"],
     explanations: [
@@ -1290,7 +1290,7 @@ export const quizQuestions: QuizQuestion[] = [
   },
   {
     id: "l11-q7",
-    lecon: 11,
+    lecon: 12,
     question: "Dans un diagramme (T,S), l'aire enclose par un cycle réversible parcouru en sens horaire représente :",
     choices: [
       "La chaleur totale reçue sur le cycle, égale au travail fourni.",
@@ -1306,7 +1306,7 @@ export const quizQuestions: QuizQuestion[] = [
   },
   {
     id: "l11-vf1",
-    lecon: 11,
+    lecon: 12,
     question: "Dans un diagramme (T,S), une adiabatique réversible est représentée par un segment vertical.",
     choices: ["Vrai", "Faux"],
     explanations: [

@@ -114,8 +114,6 @@ export const chapterTranslations: Record<Exclude<Lang, "fr" | "en">, ThemeTransl
         "Entropie",
         "Entropiebilanz",
         "Entropieerzeugung",
-        "Spontane Entwicklung",
-        "Gleichgewicht",
       ],
     },
     "relations-fondamentales": {
@@ -129,9 +127,17 @@ export const chapterTranslations: Record<Exclude<Lang, "fr" | "en">, ThemeTransl
         "Maxwell-Beziehungen",
         "Gibbs-Duhem-Beziehung",
         "Euler-Theorem",
-        "Dritter Hauptsatz",
+      ],
+    },
+    "evolution-equilibre-stabilite": {
+      title: "Entwicklungsrichtung, Gleichgewicht und Stabilität",
+      description: "Richtung spontaner Übertragungen, Gleichgewichtsbedingungen, Entropiemaximum und Stabilität.",
+      topics: [
+        "Spontane Entwicklung",
+        "Gleichgewicht",
         "Thermodynamische Stabilität",
         "Konvexität",
+        "Dritter Hauptsatz",
       ],
     },
     "changements-de-variables": {
@@ -323,8 +329,6 @@ export const chapterTranslations: Record<Exclude<Lang, "fr" | "en">, ThemeTransl
         "Entropía",
         "Balance de entropía",
         "Producción de entropía",
-        "Evolución espontánea",
-        "Equilibrio",
       ],
     },
     "relations-fondamentales": {
@@ -338,9 +342,17 @@ export const chapterTranslations: Record<Exclude<Lang, "fr" | "en">, ThemeTransl
         "Relaciones de Maxwell",
         "Relación de Gibbs-Duhem",
         "Teorema de Euler",
-        "Tercer principio",
+      ],
+    },
+    "evolution-equilibre-stabilite": {
+      title: "Sentido de las evoluciones, equilibrio y estabilidad",
+      description: "Sentido de las transferencias espontáneas, condiciones de equilibrio, máximo de entropía y estabilidad.",
+      topics: [
+        "Evolución espontánea",
+        "Equilibrio",
         "Estabilidad termodinámica",
         "Convexidad",
+        "Tercer principio",
       ],
     },
     "changements-de-variables": {
@@ -532,8 +544,6 @@ export const chapterTranslations: Record<Exclude<Lang, "fr" | "en">, ThemeTransl
         "Entropia",
         "Balanço de entropia",
         "Produção de entropia",
-        "Evolução espontânea",
-        "Equilíbrio",
       ],
     },
     "relations-fondamentales": {
@@ -547,9 +557,17 @@ export const chapterTranslations: Record<Exclude<Lang, "fr" | "en">, ThemeTransl
         "Relações de Maxwell",
         "Relação de Gibbs-Duhem",
         "Teorema de Euler",
-        "Terceiro princípio",
+      ],
+    },
+    "evolution-equilibre-stabilite": {
+      title: "Sentido das evoluções, equilíbrio e estabilidade",
+      description: "Sentido das transferências espontâneas, condições de equilíbrio, máximo de entropia e estabilidade.",
+      topics: [
+        "Evolução espontânea",
+        "Equilíbrio",
         "Estabilidade termodinâmica",
         "Convexidade",
+        "Terceiro princípio",
       ],
     },
     "changements-de-variables": {
@@ -741,8 +759,6 @@ export const chapterTranslations: Record<Exclude<Lang, "fr" | "en">, ThemeTransl
         "Entropia",
         "Bilancio entropico",
         "Produzione di entropia",
-        "Evoluzione spontanea",
-        "Equilibrio",
       ],
     },
     "relations-fondamentales": {
@@ -756,9 +772,17 @@ export const chapterTranslations: Record<Exclude<Lang, "fr" | "en">, ThemeTransl
         "Relazioni di Maxwell",
         "Relazione di Gibbs-Duhem",
         "Teorema di Eulero",
-        "Terzo principio",
+      ],
+    },
+    "evolution-equilibre-stabilite": {
+      title: "Verso delle evoluzioni, equilibrio e stabilità",
+      description: "Verso dei trasferimenti spontanei, condizioni di equilibrio, massimo di entropia e stabilità.",
+      topics: [
+        "Evoluzione spontanea",
+        "Equilibrio",
         "Stabilità termodinamica",
         "Convessità",
+        "Terzo principio",
       ],
     },
     "changements-de-variables": {
@@ -950,8 +974,6 @@ export const chapterTranslations: Record<Exclude<Lang, "fr" | "en">, ThemeTransl
         "Entropia",
         "Bilans entropii",
         "Produkcja entropii",
-        "Ewolucja spontaniczna",
-        "Równowaga",
       ],
     },
     "relations-fondamentales": {
@@ -965,9 +987,17 @@ export const chapterTranslations: Record<Exclude<Lang, "fr" | "en">, ThemeTransl
         "Relacje Maxwella",
         "Relacja Gibbsa-Duhema",
         "Twierdzenie Eulera",
-        "Trzecia zasada",
+      ],
+    },
+    "evolution-equilibre-stabilite": {
+      title: "Kierunek przemian, równowaga i stabilność",
+      description: "Kierunek samorzutnych przepływów, warunki równowagi, maksimum entropii i stabilność.",
+      topics: [
+        "Ewolucja spontaniczna",
+        "Równowaga",
         "Stabilność termodynamiczna",
         "Wypukłość",
+        "Trzecia zasada",
       ],
     },
     "changements-de-variables": {
@@ -1159,8 +1189,6 @@ export const chapterTranslations: Record<Exclude<Lang, "fr" | "en">, ThemeTransl
         "Энтропия",
         "Баланс энтропии",
         "Производство энтропии",
-        "Самопроизвольная эволюция",
-        "Равновесие",
       ],
     },
     "relations-fondamentales": {
@@ -1174,9 +1202,17 @@ export const chapterTranslations: Record<Exclude<Lang, "fr" | "en">, ThemeTransl
         "Соотношения Максвелла",
         "Соотношение Гиббса-Дюгема",
         "Теорема Эйлера",
-        "Третье начало",
+      ],
+    },
+    "evolution-equilibre-stabilite": {
+      title: "Направление процессов, равновесие и устойчивость",
+      description: "Направление самопроизвольных переносов, условия равновесия, максимум энтропии и устойчивость.",
+      topics: [
+        "Самопроизвольная эволюция",
+        "Равновесие",
         "Термодинамическая устойчивость",
         "Выпуклость",
+        "Третье начало",
       ],
     },
     "changements-de-variables": {
@@ -1349,8 +1385,6 @@ export const chapterTranslations: Record<Exclude<Lang, "fr" | "en">, ThemeTransl
         "熵",
         "熵平衡",
         "熵产生",
-        "自发演化",
-        "平衡态",
       ],
     },
     "relations-fondamentales": {
@@ -1364,9 +1398,17 @@ export const chapterTranslations: Record<Exclude<Lang, "fr" | "en">, ThemeTransl
         "麦克斯韦关系式",
         "吉布斯-杜安关系式",
         "欧拉定理",
-        "第三定律",
+      ],
+    },
+    "evolution-equilibre-stabilite": {
+      title: "演化方向、平衡与稳定性",
+      description: "自发传递的方向、平衡条件、熵极大与稳定性。",
+      topics: [
+        "自发演化",
+        "平衡态",
         "热力学稳定性",
         "凸性",
+        "第三定律",
       ],
     },
     "changements-de-variables": {
@@ -1506,8 +1548,6 @@ export const chapterTranslations: Record<Exclude<Lang, "fr" | "en">, ThemeTransl
         "エントロピー",
         "エントロピー収支",
         "エントロピー生成",
-        "自発的な変化",
-        "平衡",
       ],
     },
     "relations-fondamentales": {
@@ -1521,9 +1561,17 @@ export const chapterTranslations: Record<Exclude<Lang, "fr" | "en">, ThemeTransl
         "マクスウェルの関係式",
         "ギブス-デュエムの関係式",
         "オイラーの定理",
-        "熱力学第三法則",
+      ],
+    },
+    "evolution-equilibre-stabilite": {
+      title: "変化の方向、平衡、安定性",
+      description: "自発的な移動の向き、平衡条件、エントロピー最大と安定性。",
+      topics: [
+        "自発的な変化",
+        "平衡",
         "熱力学的安定性",
         "凸性",
+        "熱力学第三法則",
       ],
     },
     "changements-de-variables": {
@@ -1663,8 +1711,6 @@ export const chapterTranslations: Record<Exclude<Lang, "fr" | "en">, ThemeTransl
         "엔트로피",
         "엔트로피 수지",
         "엔트로피 생성",
-        "자발적 변화",
-        "평형",
       ],
     },
     "relations-fondamentales": {
@@ -1678,9 +1724,17 @@ export const chapterTranslations: Record<Exclude<Lang, "fr" | "en">, ThemeTransl
         "맥스웰 관계식",
         "깁스-듀헴 관계식",
         "오일러 정리",
-        "열역학 제3법칙",
+      ],
+    },
+    "evolution-equilibre-stabilite": {
+      title: "변화의 방향, 평형과 안정성",
+      description: "자발적 전달의 방향, 평형 조건, 엔트로피 최대와 안정성.",
+      topics: [
+        "자발적 변화",
+        "평형",
         "열역학적 안정성",
         "볼록성",
+        "열역학 제3법칙",
       ],
     },
     "changements-de-variables": {
@@ -1839,8 +1893,6 @@ export const chapterTranslations: Record<Exclude<Lang, "fr" | "en">, ThemeTransl
         "एंट्रॉपी",
         "एंट्रॉपी संतुलन",
         "एंट्रॉपी उत्पादन",
-        "स्वतःस्फूर्त विकास",
-        "साम्यावस्था",
       ],
     },
     "relations-fondamentales": {
@@ -1854,9 +1906,17 @@ export const chapterTranslations: Record<Exclude<Lang, "fr" | "en">, ThemeTransl
         "मैक्सवेल संबंध",
         "गिब्स-डुहेम संबंध",
         "यूलर प्रमेय",
-        "तृतीय नियम",
+      ],
+    },
+    "evolution-equilibre-stabilite": {
+      title: "विकास की दिशा, साम्य और स्थायित्व",
+      description: "स्वतःस्फूर्त स्थानांतरण की दिशा, साम्यावस्था की शर्तें, अधिकतम एंट्रॉपी और स्थिरता।",
+      topics: [
+        "स्वतःस्फूर्त विकास",
+        "साम्यावस्था",
         "ऊष्मागतिक स्थिरता",
         "उत्तलता",
+        "तृतीय नियम",
       ],
     },
     "changements-de-variables": {
@@ -2034,8 +2094,6 @@ export const chapterTranslations: Record<Exclude<Lang, "fr" | "en">, ThemeTransl
         "Entropy",
         "Cân bằng entropy",
         "Sự sinh entropy",
-        "Sự tiến triển tự phát",
-        "Cân bằng",
       ],
     },
     "relations-fondamentales": {
@@ -2049,9 +2107,17 @@ export const chapterTranslations: Record<Exclude<Lang, "fr" | "en">, ThemeTransl
         "Hệ thức Maxwell",
         "Hệ thức Gibbs-Duhem",
         "Định lý Euler",
-        "Định luật thứ ba",
+      ],
+    },
+    "evolution-equilibre-stabilite": {
+      title: "Chiều diễn biến, cân bằng và tính ổn định",
+      description: "Chiều của các quá trình truyền tự phát, điều kiện cân bằng, cực đại entropy và tính ổn định.",
+      topics: [
+        "Sự tiến triển tự phát",
+        "Cân bằng",
         "Tính ổn định nhiệt động",
         "Tính lồi",
+        "Định luật thứ ba",
       ],
     },
     "changements-de-variables": {
@@ -2229,8 +2295,6 @@ export const chapterTranslations: Record<Exclude<Lang, "fr" | "en">, ThemeTransl
         "الإنتروبيا",
         "ميزان الإنتروبيا",
         "إنتاج الإنتروبيا",
-        "التطور التلقائي",
-        "التوازن",
       ],
     },
     "relations-fondamentales": {
@@ -2244,9 +2308,17 @@ export const chapterTranslations: Record<Exclude<Lang, "fr" | "en">, ThemeTransl
         "علاقات ماكسويل",
         "علاقة غيبس-دوهيم",
         "مبرهنة أويلر",
-        "المبدأ الثالث",
+      ],
+    },
+    "evolution-equilibre-stabilite": {
+      title: "اتجاه التطور والتوازن والاستقرار",
+      description: "اتجاه الانتقالات التلقائية، وشروط التوازن، والقيمة العظمى للإنتروبيا، والاستقرار.",
+      topics: [
+        "التطور التلقائي",
+        "التوازن",
         "الاستقرار الحراري الديناميكي",
         "التحدب",
+        "المبدأ الثالث",
       ],
     },
     "changements-de-variables": {
@@ -2425,8 +2497,6 @@ export const chapterTranslations: Record<Exclude<Lang, "fr" | "en">, ThemeTransl
         "Entropi",
         "Neraca entropi",
         "Produksi entropi",
-        "Evolusi spontan",
-        "Kesetimbangan",
       ],
     },
     "relations-fondamentales": {
@@ -2440,9 +2510,17 @@ export const chapterTranslations: Record<Exclude<Lang, "fr" | "en">, ThemeTransl
         "Hubungan Maxwell",
         "Hubungan Gibbs-Duhem",
         "Teorema Euler",
-        "Hukum ketiga",
+      ],
+    },
+    "evolution-equilibre-stabilite": {
+      title: "Arah evolusi, kesetimbangan, dan kestabilan",
+      description: "Arah perpindahan spontan, syarat kesetimbangan, maksimum entropi, dan kestabilan.",
+      topics: [
+        "Evolusi spontan",
+        "Kesetimbangan",
         "Kestabilan termodinamika",
         "Konveksitas",
+        "Hukum ketiga",
       ],
     },
     "changements-de-variables": {
@@ -2634,8 +2712,6 @@ export const chapterTranslations: Record<Exclude<Lang, "fr" | "en">, ThemeTransl
         "Entropi",
         "Entropi bilançosu",
         "Entropi üretimi",
-        "Kendiliğinden gelişim",
-        "Denge",
       ],
     },
     "relations-fondamentales": {
@@ -2649,9 +2725,17 @@ export const chapterTranslations: Record<Exclude<Lang, "fr" | "en">, ThemeTransl
         "Maxwell bağıntıları",
         "Gibbs-Duhem bağıntısı",
         "Euler teoremi",
-        "Üçüncü yasa",
+      ],
+    },
+    "evolution-equilibre-stabilite": {
+      title: "Süreçlerin yönü, denge ve kararlılık",
+      description: "Kendiliğinden aktarımların yönü, denge koşulları, entropi maksimumu ve kararlılık.",
+      topics: [
+        "Kendiliğinden gelişim",
+        "Denge",
         "Termodinamik kararlılık",
         "Dışbükeylik",
+        "Üçüncü yasa",
       ],
     },
     "changements-de-variables": {
@@ -2814,14 +2898,17 @@ export const chapterTranslations: Record<Exclude<Lang, "fr" | "en">, ThemeTransl
         "এনট্রপি",
         "এনট্রপি ভারসাম্য",
         "এনট্রপি সৃষ্টি",
-        "স্বতঃস্ফূর্ত বিবর্তন",
-        "সাম্যাবস্থা",
       ],
     },
     "relations-fondamentales": {
       title: "গাণিতিক গঠন: মৌলিক সম্পর্কসমূহ",
       description: "মৌলিক সম্পর্ক ও তাপগতিবিদ্যাগত বিভবসমূহ।",
-      topics: ["মুক্ত তন্ত্র", "মৌলিক সম্পর্ক", "শক্তি উপস্থাপনা", "এনট্রপি উপস্থাপনা", "ম্যাক্সওয়েল সম্পর্ক", "গিবস-ডুহেম সম্পর্ক", "অয়লারের উপপাদ্য", "তৃতীয় সূত্র", "তাপগতিবিদ্যাগত স্থিতিশীলতা", "উত্তলতা"],
+      topics: ["মুক্ত তন্ত্র", "মৌলিক সম্পর্ক", "শক্তি উপস্থাপনা", "এনট্রপি উপস্থাপনা", "ম্যাক্সওয়েল সম্পর্ক", "গিবস-ডুহেম সম্পর্ক", "অয়লারের উপপাদ্য"],
+    },
+    "evolution-equilibre-stabilite": {
+      title: "বিবর্তনের দিক, সাম্য ও স্থিতিশীলতা",
+      description: "স্বতঃস্ফূর্ত স্থানান্তরের দিক, সাম্যাবস্থার শর্ত, সর্বোচ্চ এনট্রপি ও স্থিতিশীলতা।",
+      topics: ["স্বতঃস্ফূর্ত বিবর্তন", "সাম্যাবস্থা", "তাপগতিবিদ্যাগত স্থিতিশীলতা", "উত্তলতা", "তৃতীয় সূত্র"],
     },
     "changements-de-variables": {
       title: "আকারভঙ্গি: চলক পরিবর্তন",
@@ -2950,14 +3037,17 @@ export const chapterTranslations: Record<Exclude<Lang, "fr" | "en">, ThemeTransl
         "اینٹروپی",
         "اینٹروپی کا توازن",
         "اینٹروپی کی پیداوار",
-        "خودبخود ارتقاء",
-        "توازن",
       ],
     },
     "relations-fondamentales": {
       title: "ریاضیاتی ساخت: بنیادی تعلقات",
       description: "بنیادی تعلقات اور حرارتی حرکیاتی صلاحیتیں۔",
-      topics: ["کھلے نظام", "بنیادی تعلقات", "توانائی کی نمائندگی", "اینٹروپی کی نمائندگی", "میکسویل تعلقات", "گبس-ڈوہیم تعلق", "یولر کا نظریہ", "تیسرا اصول", "حرارتی حرکیاتی استحکام", "محدبیت"],
+      topics: ["کھلے نظام", "بنیادی تعلقات", "توانائی کی نمائندگی", "اینٹروپی کی نمائندگی", "میکسویل تعلقات", "گبس-ڈوہیم تعلق", "یولر کا نظریہ"],
+    },
+    "evolution-equilibre-stabilite": {
+      title: "ارتقا کی سمت، توازن اور استحکام",
+      description: "خودبخود منتقلی کی سمت، توازن کی شرائط، زیادہ سے زیادہ اینٹروپی اور استحکام۔",
+      topics: ["خودبخود ارتقاء", "توازن", "حرارتی حرکیاتی استحکام", "محدبیت", "تیسرا اصول"],
     },
     "changements-de-variables": {
       title: "ہیئتی ساخت: متغیرات کی تبدیلی",
@@ -3086,14 +3176,17 @@ export const chapterTranslations: Record<Exclude<Lang, "fr" | "en">, ThemeTransl
         "Entropy",
         "Mizania ya entropy",
         "Uzalishaji wa entropy",
-        "Mabadiliko ya hiari",
-        "Usawa",
       ],
     },
     "relations-fondamentales": {
       title: "Muundo wa Kihisabati: Uhusiano wa Msingi",
       description: "Uhusiano wa msingi na uwezo wa thermodynamiki.",
-      topics: ["Mifumo huria", "Uhusiano wa msingi", "Uwakilishi wa nishati", "Uwakilishi wa entropy", "Uhusiano wa Maxwell", "Uhusiano wa Gibbs-Duhem", "Nadharia ya Euler", "Kanuni ya tatu", "Uthabiti wa thermodynamiki", "Ugeuzo (convexity)"],
+      topics: ["Mifumo huria", "Uhusiano wa msingi", "Uwakilishi wa nishati", "Uwakilishi wa entropy", "Uhusiano wa Maxwell", "Uhusiano wa Gibbs-Duhem", "Nadharia ya Euler"],
+    },
+    "evolution-equilibre-stabilite": {
+      title: "Mwelekeo wa mabadiliko, usawa na uthabiti",
+      description: "Mwelekeo wa uhamisho wa hiari, masharti ya usawa, entropy ya juu kabisa na uthabiti.",
+      topics: ["Mabadiliko ya hiari", "Usawa", "Uthabiti wa thermodynamiki", "Ugeuzo (convexity)", "Kanuni ya tatu"],
     },
     "changements-de-variables": {
       title: "Muundo wa Kiufundi: Mabadiliko ya Vigezo",
@@ -3222,14 +3315,17 @@ export const chapterTranslations: Record<Exclude<Lang, "fr" | "en">, ThemeTransl
         "آنتروپی",
         "موازنهٔ آنتروپی",
         "تولید آنتروپی",
-        "تحول خودبه‌خودی",
-        "تعادل",
       ],
     },
     "relations-fondamentales": {
       title: "ساختار ریاضی: روابط بنیادین",
       description: "روابط بنیادین و پتانسیل‌های ترمودینامیکی.",
-      topics: ["سامانه‌های باز", "روابط بنیادین", "نمایش انرژی", "نمایش آنتروپی", "روابط ماکسول", "رابطهٔ گیبس-دوهم", "قضیهٔ اویلر", "قانون سوم", "پایداری ترمودینامیکی", "تحدب"],
+      topics: ["سامانه‌های باز", "روابط بنیادین", "نمایش انرژی", "نمایش آنتروپی", "روابط ماکسول", "رابطهٔ گیبس-دوهم", "قضیهٔ اویلر"],
+    },
+    "evolution-equilibre-stabilite": {
+      title: "جهت تحول، تعادل و پایداری",
+      description: "جهت انتقال‌های خودبه‌خودی، شرایط تعادل، بیشینهٔ آنتروپی و پایداری.",
+      topics: ["تحول خودبه‌خودی", "تعادل", "پایداری ترمودینامیکی", "تحدب", "قانون سوم"],
     },
     "changements-de-variables": {
       title: "ساختار صوری: تغییر متغیرها",

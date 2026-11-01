@@ -313,8 +313,6 @@ export const themes: Theme[] = [
       "Entropie",
       "Bilan entropique",
       "Création d'entropie",
-      "Évolution spontanée",
-      "Équilibre",
     ],
     topicsEn: [
       "Second law",
@@ -326,8 +324,6 @@ export const themes: Theme[] = [
       "Entropy",
       "Entropy balance",
       "Entropy production",
-      "Spontaneous evolution",
-      "Equilibrium",
     ],
   }),
   makeLecon({
@@ -335,8 +331,8 @@ export const themes: Theme[] = [
     slug: "relations-fondamentales",
     titleFr: "Structure mathématique : les relations fondamentales",
     titleEn: "Mathematical Structure: The Fundamental Relations",
-    descriptionFr: "De l'équation fondamentale aux équations d'état et aux conditions d'équilibre.",
-    descriptionEn: "From the fundamental equation to equations of state and equilibrium conditions.",
+    descriptionFr: "De la relation fondamentale aux équations d'état, à l'extensivité et à l'entropie du gaz parfait.",
+    descriptionEn: "From the fundamental relation to equations of state, extensivity, and the entropy of the ideal gas.",
     readingTime: "25 min",
     topicsFr: [
       "Systèmes ouverts",
@@ -346,9 +342,6 @@ export const themes: Theme[] = [
       "Relations de Maxwell",
       "Relation de Gibbs-Duhem",
       "Théorème d'Euler",
-      "Troisième principe",
-      "Stabilité thermodynamique",
-      "Convexité",
     ],
     topicsEn: [
       "Open systems",
@@ -358,13 +351,33 @@ export const themes: Theme[] = [
       "Maxwell relations",
       "Gibbs-Duhem relation",
       "Euler's theorem",
-      "Third law",
-      "Thermodynamic stability",
-      "Convexity",
     ],
   }),
   makeLecon({
     number: 8,
+    slug: "evolution-equilibre-stabilite",
+    titleFr: "Sens des évolutions, équilibre et stabilité",
+    titleEn: "Direction of Evolution, Equilibrium and Stability",
+    descriptionFr: "Sens des transferts spontanés, conditions d'équilibre, maximum d'entropie et stabilité.",
+    descriptionEn: "Direction of spontaneous transfers, equilibrium conditions, maximum entropy, and stability.",
+    readingTime: "30 min",
+    topicsFr: [
+      "Évolution spontanée",
+      "Équilibre",
+      "Stabilité thermodynamique",
+      "Convexité",
+      "Troisième principe",
+    ],
+    topicsEn: [
+      "Spontaneous evolution",
+      "Equilibrium",
+      "Thermodynamic stability",
+      "Convexity",
+      "Third law",
+    ],
+  }),
+  makeLecon({
+    number: 9,
     slug: "coefficients",
     titleFr: "Coefficients calorimétriques et thermoélastiques",
     titleEn: "Calorimetric and Thermoelastic Coefficients",
@@ -387,7 +400,7 @@ export const themes: Theme[] = [
     ],
   }),
   makeLecon({
-    number: 9,
+    number: 10,
     slug: "changements-de-variables",
     titleFr: "Les potentiels thermodynamiques",
     titleEn: "Thermodynamic Potentials",
@@ -414,7 +427,7 @@ export const themes: Theme[] = [
     ],
   }),
   makeLecon({
-    number: 10,
+    number: 11,
     slug: "transitions-de-phases",
     titleFr: "Transition de phases",
     titleEn: "Phase Transitions",
@@ -443,7 +456,7 @@ export const themes: Theme[] = [
     ],
   }),
   makeLecon({
-    number: 11,
+    number: 12,
     slug: "machines-thermiques",
     titleFr: "Machines thermiques et frigidaires",
     titleEn: "Heat Engines and Refrigerators",
@@ -474,7 +487,7 @@ export const themes: Theme[] = [
     ],
   }),
   makeLecon({
-    number: 12,
+    number: 13,
     slug: "thermodynamique-du-rayonnement",
     titleFr: "Thermodynamique du rayonnement",
     titleEn: "Thermodynamics of Radiation",
@@ -505,7 +518,7 @@ export const themes: Theme[] = [
     ],
   }),
   makeLecon({
-    number: 9,
+    number: 14,
     slug: "geometrie-differentielle",
     partHeadingFr: "Partie II — Thermodynamique avancée",
     partHeadingEn: "Part II — Advanced Thermodynamics",
@@ -518,7 +531,7 @@ export const themes: Theme[] = [
     listed: false,
   }),
   makeLecon({
-    number: 10,
+    number: 15,
     slug: "demon-de-maxwell",
     titleFr: "Le démon de Maxwell",
     titleEn: "Maxwell's Demon",
@@ -529,7 +542,7 @@ export const themes: Theme[] = [
     listed: false,
   }),
   makeLecon({
-    number: 11,
+    number: 16,
     slug: "endoreversibilite",
     titleFr: "Cycles endoréversibles",
     titleEn: "Endoreversible Cycles",
@@ -540,7 +553,7 @@ export const themes: Theme[] = [
     listed: false,
   }),
   makeLecon({
-    number: 12,
+    number: 17,
     slug: "thermoelectricite",
     titleFr: "Thermoélectricité",
     titleEn: "Thermoelectricity",
@@ -551,7 +564,7 @@ export const themes: Theme[] = [
     listed: false,
   }),
   makeLecon({
-    number: 13,
+    number: 18,
     slug: "thermodynamique-hors-equilibre",
     titleFr: "Thermodynamique hors équilibre",
     titleEn: "Non-Equilibrium Thermodynamics",
@@ -562,7 +575,7 @@ export const themes: Theme[] = [
     listed: false,
   }),
   makeLecon({
-    number: 14,
+    number: 19,
     slug: "climat",
     titleFr: "Climatologie et thermodynamique",
     titleEn: "Climate and Thermodynamics",
@@ -573,7 +586,7 @@ export const themes: Theme[] = [
     listed: false,
   }),
   makeLecon({
-    number: 15,
+    number: 20,
     slug: "thermodynamique-quantique",
     partHeadingFr: "Partie III — Thermodynamique quantique",
     partHeadingEn: "Part III — Quantum Thermodynamics",
