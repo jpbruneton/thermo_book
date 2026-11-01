@@ -118,7 +118,7 @@ export const chapterTranslations: Record<Exclude<Lang, "fr" | "en">, ThemeTransl
     },
     "relations-fondamentales": {
       title: "Mathematische Struktur: die fundamentalen Beziehungen",
-      description: "Fundamentale Beziehungen und thermodynamische Potentiale.",
+      description: "Von der Fundamentalgleichung zu den Zustandsgleichungen, der Extensivität und der Entropie des idealen Gases.",
       topics: [
         "Offene Systeme",
         "Fundamentale Beziehungen",
@@ -141,8 +141,8 @@ export const chapterTranslations: Record<Exclude<Lang, "fr" | "en">, ThemeTransl
       ],
     },
     "changements-de-variables": {
-      title: "Formale Struktur: Variablenwechsel",
-      description: "Differentialrechnung, Legendre-Transformation und thermodynamische Potentiale.",
+      title: "Die thermodynamischen Potentiale",
+      description: "Das an die Nebenbedingungen angepasste Potential wählen, um Gleichgewicht und verfügbare Arbeit zu bestimmen.",
       topics: [
         "Multivariate Differentialrechnung",
         "Legendre-Transformation",
@@ -333,7 +333,7 @@ export const chapterTranslations: Record<Exclude<Lang, "fr" | "en">, ThemeTransl
     },
     "relations-fondamentales": {
       title: "Estructura matemática: las relaciones fundamentales",
-      description: "Relaciones fundamentales y potenciales termodinámicos.",
+      description: "De la relación fundamental a las ecuaciones de estado, la extensividad y la entropía del gas ideal.",
       topics: [
         "Sistemas abiertos",
         "Relaciones fundamentales",
@@ -356,8 +356,8 @@ export const chapterTranslations: Record<Exclude<Lang, "fr" | "en">, ThemeTransl
       ],
     },
     "changements-de-variables": {
-      title: "Estructura formal: cambios de variables",
-      description: "Cálculo diferencial, la transformada de Legendre y los potenciales termodinámicos.",
+      title: "Los potenciales termodinámicos",
+      description: "Elegir el potencial adaptado a las restricciones para determinar el equilibrio y el trabajo disponible.",
       topics: [
         "Cálculo diferencial multivariable",
         "Transformada de Legendre",
@@ -1389,7 +1389,7 @@ export const chapterTranslations: Record<Exclude<Lang, "fr" | "en">, ThemeTransl
     },
     "relations-fondamentales": {
       title: "数学结构：基本关系式",
-      description: "基本关系式与热力学势。",
+      description: "从基本关系到状态方程、广延性与理想气体的熵。",
       topics: [
         "开放系统",
         "基本关系式",
@@ -1412,8 +1412,8 @@ export const chapterTranslations: Record<Exclude<Lang, "fr" | "en">, ThemeTransl
       ],
     },
     "changements-de-variables": {
-      title: "形式结构：变量变换",
-      description: "微分计算、勒让德变换与热力学势。",
+      title: "热力学势",
+      description: "根据约束条件选择合适的热力学势，以确定平衡态和可用功。",
       topics: ["多元微分学", "勒让德变换", "热力学势", "亥姆霍兹自由能", "焓", "吉布斯自由能"],
     },
     coefficients: {
