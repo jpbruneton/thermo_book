@@ -632,6 +632,52 @@ body::before {
   max-height: none;
 }
 
+/* Text and figure side by side (\begin{cotecote}); stacked on narrow screens. */
+.prose-content .latex-figure-sidebyside {
+  flex-direction: row;
+  align-items: center;
+  gap: 2rem;
+  text-align: left;
+}
+
+.prose-content .latex-sidebyside-text {
+  flex: 1 1 42%;
+  min-width: 0;
+}
+
+.prose-content .latex-sidebyside-text,
+.prose-content .latex-sidebyside-text p,
+.prose-content .latex-sidebyside-text .latex-list li {
+  text-align: left;
+  hyphens: manual;
+}
+
+.prose-content .latex-sidebyside-figure {
+  flex: 1 1 58%;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.prose-content .latex-sidebyside-figure .latex-figure-zoom-link {
+  width: 100%;
+}
+
+.prose-content .latex-sidebyside-figure img {
+  width: 100%;
+  max-width: 100%;
+  max-height: none;
+}
+
+@media (max-width: 760px) {
+  .prose-content .latex-figure-sidebyside {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
+
 .prose-content .latex-figure figcaption {
   margin-top: 0.65rem;
   font-family: var(--font-inter);

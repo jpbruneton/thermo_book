@@ -448,8 +448,42 @@ function extractFigureSourceHtml(figureBlock: string, lang: Lang): string {
   return `<br /><span class="latex-figure-source"><small><em>${prefix}</em>${plain}</small></span>`;
 }
 
+/** Left column of a \begin{cotecote} block: plain paragraphs and itemize lists. */
+function renderSideBySideText(tex: string): string {
+  const parts = tex.split(/(\\begin\{itemize\}[\s\S]*?\\end\{itemize\})/);
+  return parts
+    .map((part) => {
+      const list = part.match(/^\\begin\{itemize\}([\s\S]*?)\\end\{itemize\}$/);
+      if (list) {
+        const items = list[1]
+          .split(/\\item\b/)
+          .map((item) => item.trim())
+          .filter(Boolean)
+          .map((item) => `<li>${cleanLatexInline(item)}</li>`)
+          .join("");
+        return `<ul class="latex-list">${items}</ul>`;
+      }
+      return part
+        .split(/\n\s*\n/)
+        .map((paragraph) => paragraph.trim())
+        .filter(Boolean)
+        .map((paragraph) => `<p>${cleanLatexInline(paragraph)}</p>`)
+        .join("");
+    })
+    .join("");
+}
+
 function extractFigureHtml(figureBlock: string, figureNumber: number, lang: Lang): string {
   const labels = blockLabelsByLang[lang];
+  let sideBySideHtml = "";
+  const sideTextIndex = figureBlock.indexOf("\\cotecotetexte{");
+  if (sideTextIndex !== -1) {
+    const sideText = readBalancedBraces(figureBlock, sideTextIndex + "\\cotecotetexte".length);
+    if (sideText) {
+      sideBySideHtml = renderSideBySideText(sideText.content);
+      figureBlock = figureBlock.slice(0, sideTextIndex) + figureBlock.slice(sideText.endIndex);
+    }
+  }
   const includeGraphicsMatch = figureBlock.match(/\\includegraphics(?:\[[^\]]*\])?\{([^}]+)\}/);
   if (!includeGraphicsMatch) return "";
 
@@ -485,7 +519,11 @@ function extractFigureHtml(figureBlock: string, figureNumber: number, lang: Lang
     return `<figure class="${figureClass}"><object class="latex-figure-pdf" data="${imagePath}" type="application/pdf"><a class="latex-figure-pdf-link" href="${imagePath}" target="_blank" rel="noreferrer">${labels.openFigurePdf}</a></object>${figCaption}</figure>`;
   }
 
-  return `<figure class="${figureClass}"><a class="latex-figure-zoom-link" href="${imagePath}" target="_blank" rel="noreferrer"><img src="${imagePath}" alt="${altText}" loading="lazy" /></a>${figCaption}</figure>`;
+  const imageHtml = `<a class="latex-figure-zoom-link" href="${imagePath}" target="_blank" rel="noreferrer"><img src="${imagePath}" alt="${altText}" loading="lazy" /></a>`;
+  if (sideBySideHtml) {
+    return `<figure class="latex-figure latex-figure-sidebyside"><div class="latex-sidebyside-text">${sideBySideHtml}</div><div class="latex-sidebyside-figure">${imageHtml}${figCaption}</div></figure>`;
+  }
+  return `<figure class="${figureClass}">${imageHtml}${figCaption}</figure>`;
 }
 
 /**
@@ -534,7 +572,14 @@ function wrapLooseIncludeGraphics(input: string): string {
  * usual numbering, caption, label and zoom handling.
  */
 function normalizeCaptionOfFigures(input: string): string {
-  let result = input.replace(/\\captionof\s*\{\s*figure\s*\}\s*/g, "\\caption");
+  // Text and figure side by side: the text column travels with the figure so
+  // that numbering, caption and zoom keep working.
+  let result = input.replace(
+    /\\begin\{cotecote\}([\s\S]*?)\\cotecotefigure\b([\s\S]*?)\\end\{cotecote\}/g,
+    (_block: string, text: string, figure: string) =>
+      `\n\n\\begin{figure}\n\\cotecotetexte{${text.trim()}}\n${figure.trim()}\n\\end{figure}\n\n`
+  );
+  result = result.replace(/\\captionof\s*\{\s*figure\s*\}\s*/g, "\\caption");
 
   result = result.replace(
     /\\begin\{center\}([\s\S]*?)\\end\{center\}/g,
