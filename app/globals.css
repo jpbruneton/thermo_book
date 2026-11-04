@@ -335,6 +335,22 @@ body::before {
   color: var(--text-primary);
 }
 
+/* Long lessons: let the browser skip layout and paint of below-fold blocks
+   until the reader scrolls near them. The full HTML stays in the document
+   (search engines and find-in-page still see everything); only the rendering
+   work is deferred. `auto 150px` reserves an estimated height per block until
+   it has been rendered once, after which the real size is remembered. */
+.lesson-web-content .prose-content > * {
+  content-visibility: auto;
+  contain-intrinsic-block-size: auto 150px;
+}
+
+@media print {
+  .lesson-web-content .prose-content > * {
+    content-visibility: visible;
+  }
+}
+
 .lesson-toc {
   padding: 1rem 1.1rem;
   border: 1px solid var(--accent-border-sm);

@@ -121,28 +121,43 @@ export function ChapterContent({ lesson, hideHeader = false, isFinalVersion = fa
     if (tab !== "web" || lesson.toc.length === 0) return;
 
     const orderedIds = lesson.toc.map((entry) => entry.id);
-    const activateFromViewport = () => {
-      const offset = 120;
-      let current = orderedIds[0];
+    const headings = orderedIds
+      .map((id) => document.getElementById(id))
+      .filter((element): element is HTMLElement => element !== null);
+    if (headings.length === 0) return;
 
-      for (const id of orderedIds) {
-        const element = document.getElementById(id);
-        if (!element) continue;
-        const top = element.getBoundingClientRect().top;
-        if (top - offset <= 0) current = id;
-        else break;
-      }
+    // One pass at mount sets the initial entry (e.g. after an anchor load).
+    const offset = 120;
+    let initial = orderedIds[0];
+    for (const element of headings) {
+      if (element.getBoundingClientRect().top - offset <= 0) initial = element.id;
+      else break;
+    }
+    setActiveTocId(initial);
 
-      setActiveTocId(current);
-    };
-
-    activateFromViewport();
-    window.addEventListener("scroll", activateFromViewport, { passive: true });
-    window.addEventListener("resize", activateFromViewport);
+    // Afterwards, an IntersectionObserver tracks the heading band instead of
+    // re-measuring every heading on each scroll event: a heading entering the
+    // band (just below the fixed header) becomes active; a heading leaving it
+    // downwards hands the highlight back to the previous section.
+    const bandObserver = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          const id = (entry.target as HTMLElement).id;
+          if (entry.isIntersecting) {
+            setActiveTocId(id);
+          } else if (entry.boundingClientRect.top > offset) {
+            const index = orderedIds.indexOf(id);
+            if (index > 0) setActiveTocId(orderedIds[index - 1]);
+          }
+        }
+      },
+      // Band from the header offset down to 25% of the viewport height.
+      { rootMargin: `-${offset}px 0px -75% 0px`, threshold: 0 }
+    );
+    headings.forEach((element) => bandObserver.observe(element));
 
     return () => {
-      window.removeEventListener("scroll", activateFromViewport);
-      window.removeEventListener("resize", activateFromViewport);
+      bandObserver.disconnect();
     };
   }, [tab, lesson.toc]);
 

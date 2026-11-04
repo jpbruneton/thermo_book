@@ -1,11 +1,23 @@
 "use client";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { useRef } from "react";
 import { useLang } from "@/app/context/LangContext";
 import { sectionHref } from "@/lib/languages";
 
 export function ChapterList() {
   const { t, lang, chapters } = useLang();
   const webThemes = Object.values(chapters).filter((theme) => theme.listed);
+  const router = useRouter();
+  // Viewport prefetch of every visible lesson payload was too heavy (~200 KB
+  // per index visit); prefetch on intent instead: only the row the reader is
+  // about to click, a few tens of milliseconds ahead of the navigation.
+  const prefetchedHrefs = useRef<Set<string>>(new Set());
+  const prefetchOnIntent = (href: string) => {
+    if (prefetchedHrefs.current.has(href)) return;
+    prefetchedHrefs.current.add(href);
+    router.prefetch(href);
+  };
 
   return (
     <div style={{ display: "flex", flexDirection: "column", gap: "1px" }}>
@@ -45,6 +57,9 @@ export function ChapterList() {
           <Link prefetch={false}
             href={sectionHref(lang, "chapters", theme.urlSlug)}
             style={{ textDecoration: "none", display: "block" }}
+            onMouseEnter={() => prefetchOnIntent(sectionHref(lang, "chapters", theme.urlSlug))}
+            onTouchStart={() => prefetchOnIntent(sectionHref(lang, "chapters", theme.urlSlug))}
+            onFocus={() => prefetchOnIntent(sectionHref(lang, "chapters", theme.urlSlug))}
           >
             <div
               className="chapter-list-row"
