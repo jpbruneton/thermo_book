@@ -247,7 +247,9 @@ function cleanLatexInline(text: string): string {
       .replace(/\\og(?:\{\})?\s*/g, "« ")
       .replace(/\s*\\fg(?:\{\})?/g, " »")
       .replace(/---/g, "—")
-      .replace(/--/g, "—")
+      // LaTeX "--" is an en dash (shorter than the em dash of "---"):
+      // Joule--Gay-Lussac, Kelvin--Planck, page ranges 777--785.
+      .replace(/--/g, "–")
       // Keep French typography groups unbreakable around guillemets and high punctuation.
       .replace(/«\s+/g, `«${nbsp}`)
       .replace(/\s+»/g, `${nbsp}»`)
