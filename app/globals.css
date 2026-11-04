@@ -349,6 +349,15 @@ body::before {
   contain-intrinsic-block-size: auto 150px;
 }
 
+/* Lists stay out of deferred rendering: content-visibility implies paint
+   containment, which clips the bullets and numbers drawn outside the list
+   box. Lists are short, so nothing is lost for performance. */
+.lesson-web-content .prose-content > ul,
+.lesson-web-content .prose-content > ol {
+  content-visibility: visible;
+  contain-intrinsic-block-size: none;
+}
+
 @media print {
   .lesson-web-content .prose-content > * {
     content-visibility: visible;
