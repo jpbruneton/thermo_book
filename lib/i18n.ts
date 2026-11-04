@@ -76,6 +76,7 @@ export const translations = {
     },
     chapter: {
       finalVersion: "Final version",
+      rewriteInProgress: "Revision in progress",
       chapterLabel: "LESSON",
       themeLabel: "LESSON",
       lessonLabel: "LESSON",
@@ -241,6 +242,7 @@ export const translations = {
     },
     chapter: {
       finalVersion: "Version définitive",
+      rewriteInProgress: "Version en cours de réécriture",
       chapterLabel: "LEÇON",
       themeLabel: "LEÇON",
       lessonLabel: "LEÇON",
@@ -406,6 +408,7 @@ const partialTranslations: Record<Exclude<Lang, "fr" | "en">, DeepPartial<Transl
     },
     chapter: {
       finalVersion: "Endgültige Fassung",
+      rewriteInProgress: "Fassung in Überarbeitung",
       chapterLabel: "LEKTION",
       themeLabel: "LEKTION",
       lessonLabel: "LEKTION",
@@ -543,6 +546,7 @@ const partialTranslations: Record<Exclude<Lang, "fr" | "en">, DeepPartial<Transl
     },
     chapter: {
       finalVersion: "Versión definitiva",
+      rewriteInProgress: "Versión en proceso de reescritura",
       chapterLabel: "LECCIÓN",
       themeLabel: "LECCIÓN",
       lessonLabel: "LECCIÓN",
@@ -680,6 +684,7 @@ const partialTranslations: Record<Exclude<Lang, "fr" | "en">, DeepPartial<Transl
     },
     chapter: {
       finalVersion: "Versão definitiva",
+      rewriteInProgress: "Versão em reescrita",
       chapterLabel: "LIÇÃO",
       themeLabel: "LIÇÃO",
       lessonLabel: "LIÇÃO",
@@ -817,6 +822,7 @@ const partialTranslations: Record<Exclude<Lang, "fr" | "en">, DeepPartial<Transl
     },
     chapter: {
       finalVersion: "Versione definitiva",
+      rewriteInProgress: "Versione in fase di riscrittura",
       chapterLabel: "LEZIONE",
       themeLabel: "LEZIONE",
       lessonLabel: "LEZIONE",
@@ -954,6 +960,7 @@ const partialTranslations: Record<Exclude<Lang, "fr" | "en">, DeepPartial<Transl
     },
     chapter: {
       finalVersion: "Wersja ostateczna",
+      rewriteInProgress: "Wersja w trakcie przepisywania",
       chapterLabel: "LEKCJA",
       themeLabel: "LEKCJA",
       lessonLabel: "LEKCJA",
@@ -1091,6 +1098,7 @@ const partialTranslations: Record<Exclude<Lang, "fr" | "en">, DeepPartial<Transl
     },
     chapter: {
       finalVersion: "Окончательная версия",
+      rewriteInProgress: "Версия в процессе переработки",
       chapterLabel: "УРОК",
       themeLabel: "УРОК",
       lessonLabel: "УРОК",
@@ -1228,6 +1236,7 @@ const partialTranslations: Record<Exclude<Lang, "fr" | "en">, DeepPartial<Transl
     },
     chapter: {
       finalVersion: "最终版",
+      rewriteInProgress: "修订中的版本",
       chapterLabel: "课程",
       themeLabel: "课程",
       lessonLabel: "课程",
@@ -1359,6 +1368,7 @@ const partialTranslations: Record<Exclude<Lang, "fr" | "en">, DeepPartial<Transl
     },
     chapter: {
       finalVersion: "確定版",
+      rewriteInProgress: "改訂中の版",
       chapterLabel: "レッスン",
       themeLabel: "レッスン",
       lessonLabel: "レッスン",
@@ -1493,6 +1503,7 @@ const partialTranslations: Record<Exclude<Lang, "fr" | "en">, DeepPartial<Transl
     },
     chapter: {
       finalVersion: "최종 버전",
+      rewriteInProgress: "개정 중인 버전",
       chapterLabel: "강의",
       themeLabel: "강의",
       lessonLabel: "강의",
@@ -1625,6 +1636,7 @@ const partialTranslations: Record<Exclude<Lang, "fr" | "en">, DeepPartial<Transl
     },
     chapter: {
       finalVersion: "अंतिम संस्करण",
+      rewriteInProgress: "पुनर्लेखनाधीन संस्करण",
       chapterLabel: "पाठ",
       themeLabel: "पाठ",
       lessonLabel: "पाठ",
@@ -1760,6 +1772,7 @@ const partialTranslations: Record<Exclude<Lang, "fr" | "en">, DeepPartial<Transl
     },
     chapter: {
       finalVersion: "Phiên bản chính thức",
+      rewriteInProgress: "Phiên bản đang được viết lại",
       chapterLabel: "BÀI HỌC",
       themeLabel: "BÀI HỌC",
       lessonLabel: "BÀI HỌC",
@@ -1895,6 +1908,7 @@ const partialTranslations: Record<Exclude<Lang, "fr" | "en">, DeepPartial<Transl
     },
     chapter: {
       finalVersion: "النسخة النهائية",
+      rewriteInProgress: "نسخة قيد إعادة الكتابة",
       chapterLabel: "درس",
       themeLabel: "درس",
       lessonLabel: "درس",
@@ -2029,6 +2043,7 @@ const partialTranslations: Record<Exclude<Lang, "fr" | "en">, DeepPartial<Transl
     },
     chapter: {
       finalVersion: "Versi final",
+      rewriteInProgress: "Versi sedang ditulis ulang",
       chapterLabel: "PELAJARAN",
       themeLabel: "PELAJARAN",
       lessonLabel: "PELAJARAN",
@@ -2164,6 +2179,7 @@ const partialTranslations: Record<Exclude<Lang, "fr" | "en">, DeepPartial<Transl
     },
     chapter: {
       finalVersion: "Nihai sürüm",
+      rewriteInProgress: "Yeniden yazılmakta olan sürüm",
       chapterLabel: "DERS",
       themeLabel: "DERS",
       lessonLabel: "DERS",
@@ -2299,6 +2315,7 @@ const partialTranslations: Record<Exclude<Lang, "fr" | "en">, DeepPartial<Transl
     },
     chapter: {
       finalVersion: "চূড়ান্ত সংস্করণ",
+      rewriteInProgress: "পুনর্লিখনাধীন সংস্করণ",
       chapterLabel: "পাঠ",
       themeLabel: "পাঠ",
       lessonLabel: "পাঠ",
@@ -2436,6 +2453,7 @@ const partialTranslations: Record<Exclude<Lang, "fr" | "en">, DeepPartial<Transl
     },
     chapter: {
       finalVersion: "حتمی نسخہ",
+      rewriteInProgress: "زیرِ ترمیم نسخہ",
       chapterLabel: "سبق",
       themeLabel: "سبق",
       lessonLabel: "سبق",
@@ -2570,6 +2588,7 @@ const partialTranslations: Record<Exclude<Lang, "fr" | "en">, DeepPartial<Transl
     },
     chapter: {
       finalVersion: "Toleo la mwisho",
+      rewriteInProgress: "Toleo linaloandikwa upya",
       chapterLabel: "SOMO",
       themeLabel: "SOMO",
       lessonLabel: "SOMO",
@@ -2705,6 +2724,7 @@ const partialTranslations: Record<Exclude<Lang, "fr" | "en">, DeepPartial<Transl
     },
     chapter: {
       finalVersion: "نسخهٔ نهایی",
+      rewriteInProgress: "نسخهٔ در دست بازنویسی",
       chapterLabel: "درس",
       themeLabel: "درس",
       lessonLabel: "درس",

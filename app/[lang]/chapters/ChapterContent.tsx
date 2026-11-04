@@ -12,6 +12,8 @@ interface Props {
   lesson: LessonPresentation;
   hideHeader?: boolean;
   isFinalVersion?: boolean;
+  /** Lessons still being rewritten show a badge to the right of the share button. */
+  isRewriteInProgress?: boolean;
   /** Rendered after the keywords and share row, just above the lesson's first section. */
   topNav?: ReactNode;
 }
@@ -32,7 +34,7 @@ function getLessonPdfRelativePath(lesson: LessonPresentation, lang: "fr" | "en")
   return `${directory}/${fileName}`;
 }
 
-export function ChapterContent({ lesson, hideHeader = false, isFinalVersion = false, topNav }: Props) {
+export function ChapterContent({ lesson, hideHeader = false, isFinalVersion = false, isRewriteInProgress = false, topNav }: Props) {
   const [tab, setTab] = useState<"web" | "refs" | "pdf">("web");
   const [activeTocId, setActiveTocId] = useState("");
   const [tocVisible, setTocVisible] = useState(true);
@@ -219,6 +221,21 @@ export function ChapterContent({ lesson, hideHeader = false, isFinalVersion = fa
                 </span>
               )}
               <ShareButton variant="inline" />
+              {isRewriteInProgress && (
+                <span
+                  style={{
+                    background: "var(--accent-bg-xs)",
+                    border: "1px solid var(--accent-border-md)",
+                    borderRadius: "100px",
+                    padding: "0.3rem 0.9rem",
+                    color: "var(--amber)",
+                    fontFamily: "var(--font-inter)",
+                    fontSize: "0.78rem",
+                  }}
+                >
+                  {t.chapter.rewriteInProgress}
+                </span>
+              )}
             </div>
 
             <div style={{ padding: "1rem 0 0", borderBottom: "1px solid var(--border-subtle)" }} />

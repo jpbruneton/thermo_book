@@ -94,29 +94,6 @@ function ChapterThemeHeadingBlock({ theme }: { theme: ThemeWithLocalizedLessonCo
       {theme.lessons.length === 1 && (
         <LessonKeywords topics={theme.lessons[0].topicsLang} style={{ marginTop: "0.75rem" }} />
       )}
-      {lang === "fr" &&
-        [
-          "coefficients",
-          "changements-de-variables",
-          "transitions-de-phases",
-          "machines-thermiques",
-          "thermodynamique-du-rayonnement",
-        ].includes(theme.slug) && (
-        <p
-          style={{
-            marginTop: "1rem",
-            marginBottom: 0,
-            padding: "0.65rem 1rem",
-            borderLeft: "3px solid var(--amber)",
-            background: "var(--accent-bg-xs)",
-            color: "var(--text-heading)",
-            fontFamily: "var(--font-inter)",
-            fontSize: "0.9rem",
-          }}
-        >
-          Leçon en cours de réécriture
-        </p>
-      )}
     </>
   );
 }
@@ -363,6 +340,7 @@ function ChapterContentAndPrevNext({
           lesson={activeLesson}
           hideHeader={theme.lessons.length <= 1}
           isFinalVersion={["introduction", "historique", "notions-fondamentales", "premier-principe", "application-gaz-parfait"].includes(theme.slug)}
+          isRewriteInProgress={theme.number >= 6}
           topNav={compactNavRow}
         />
       ) : (
