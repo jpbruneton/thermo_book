@@ -46,6 +46,19 @@ export function mapLatexMath(source, transform) {
   );
 }
 
+/** French sources write reservoir subscripts as C (chaud) and F (froid); the
+ * translation pipeline expects the legacy French tokens ch/fr, which it maps to
+ * the shared H/C labels. Apply only to raw French input, never to a
+ * translation: there C already means cold. Celsius (^\circ\mathrm{C}) is not a
+ * subscript and is left alone. */
+export function frenchToLegacyReservoirIndices(source) {
+  return mapLatexMath(source, math => math
+    .replace(/(_\{\{?)\\rm\s+([CF])(?=[},])/g,
+      (_, before, letter) => `${before}\\rm ${letter === 'C' ? 'ch' : 'fr'}`)
+    .replace(/(_\{\{?)\\mathrm\{([CF])\}/g,
+      (_, before, letter) => `${before}\\mathrm{${letter === 'C' ? 'ch' : 'fr'}}`));
+}
+
 export function normalizeTranslatedNotation(source, lang, options) {
   if (lang === 'fr') return source;
   return mapLatexMath(source, math => normalizeMathNotation(math, options));

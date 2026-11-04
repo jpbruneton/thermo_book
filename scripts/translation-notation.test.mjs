@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { normalizeTranslatedNotation } from './lib/translation-notation.mjs';
+import { frenchToLegacyReservoirIndices, normalizeTranslatedNotation } from './lib/translation-notation.mjs';
 
 test('distinguishes hot/cold, kinetic energy, heat capacities and vertices', () => {
   const source = String.raw`$Q_c+Q_{f}, T_c>T_{f}, E_c=E_{c}^{\mathrm{macro}}, c_V, C_V, Q_{C\to D}$`;
@@ -41,4 +41,12 @@ test('uses the same compact constant label in non-Latin translations', () => {
   for(const word of ['constant','一定','常数','상수','ثابت','नियतांक','hằng số']) {
     assert.equal(normalizeTranslatedNotation(`$TV^{\\gamma-1}=\\text{${word}}$`,'ja'),String.raw`$TV^{\gamma-1}=\mathrm{const}$`);
   }
+});
+
+test('maps French C/F reservoir subscripts to the shared H/C labels without touching Celsius or vertices', () => {
+  const source = String.raw`$Q_{\rm C}+Q_{{\rm F},\mathcal M}, T_{\mathrm{C}}>T_{\mathrm{F}}, 25\ ^{\circ}\mathrm{C}, V_C, Q_{C\to D}$`;
+  const legacy = frenchToLegacyReservoirIndices(source);
+  assert.equal(legacy, String.raw`$Q_{\rm ch}+Q_{{\rm fr},\mathcal M}, T_{\mathrm{ch}}>T_{\mathrm{fr}}, 25\ ^{\circ}\mathrm{C}, V_C, Q_{C\to D}$`);
+  assert.equal(normalizeTranslatedNotation(legacy, 'en'),
+    String.raw`$Q_{\rm H}+Q_{{\rm C},\mathcal M}, T_{\mathrm{H}}>T_{\mathrm{C}}, 25\ ^{\circ}\mathrm{C}, V_C, Q_{C\to D}$`);
 });

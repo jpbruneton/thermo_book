@@ -219,9 +219,12 @@ function preamble(lang, data, name) {
 
 function reservoirFigure(lang, data, impossible = false) {
   const name = impossible ? "machine-monotherme-impossible" : "moteur-ditherme-schema";
+  // French writes C/F (chaud/froid); other languages start from the legacy
+  // ch/fr tokens, which the notation normalizer maps to H/C.
+  const [hotIndex, coldIndex] = lang === "fr" ? ["C", "F"] : ["ch", "fr"];
   const nodes = impossible
     ? `  \\node[reservoir] (hot) at (0,2.4) {\\Lang{${data.single}}, $T$};\n  \\node[machine] (M) at (0,0) {$M$};\n\n  \\draw[flow] (hot.south) -- node[right] {$Q$} (M.north);\n  \\draw[flow] (M.east) -- ++(2.4,0) node[right] {$W = Q$};`
-    : `  \\node[reservoir] (hot) at (0,3.2) {\\Lang{${data.hot}}, $T_{\\mathrm{ch}}$};\n  \\node[reservoir] (cold) at (0,-3.2) {\\Lang{${data.cold}}, $T_{\\mathrm{fr}}$};\n  \\node[machine] (M) at (0,0) {$M$};\n\n  \\draw[flow] (hot.south) -- node[right] {$Q_{\\mathrm{ch}}$} (M.north);\n  \\draw[flow] (M.south) -- node[right] {$Q_{\\mathrm{fr}}$} (cold.north);\n  \\draw[flow] (M.east) -- ++(2.4,0) node[right] {$W$};`;
+    : `  \\node[reservoir] (hot) at (0,3.2) {\\Lang{${data.hot}}, $T_{\\mathrm{${hotIndex}}}$};\n  \\node[reservoir] (cold) at (0,-3.2) {\\Lang{${data.cold}}, $T_{\\mathrm{${coldIndex}}}$};\n  \\node[machine] (M) at (0,0) {$M$};\n\n  \\draw[flow] (hot.south) -- node[right] {$Q_{\\mathrm{${hotIndex}}}$} (M.north);\n  \\draw[flow] (M.south) -- node[right] {$Q_{\\mathrm{${coldIndex}}}$} (cold.north);\n  \\draw[flow] (M.east) -- ++(2.4,0) node[right] {$W$};`;
   return `${preamble(lang, data, name)}
 \\begin{document}
 \\begin{tikzpicture}[

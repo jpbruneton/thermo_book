@@ -1,7 +1,7 @@
 import { execFileSync } from "node:child_process";
 import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { join, resolve } from "node:path";
-import { normalizeTranslatedNotation } from "./lib/translation-notation.mjs";
+import { frenchToLegacyReservoirIndices, normalizeTranslatedNotation } from "./lib/translation-notation.mjs";
 
 // These translations were written directly, without a translation service/API.
 // French diagrams remain the geometry reference; mnemonic indices are normalized.
@@ -64,7 +64,7 @@ function translate(source, lang, name) {
 for (const lang of languages) {
   mkdirSync(join(sourceRoot, lang), { recursive: true });
   for (const name of names) {
-    const source = readFileSync(join(sourceRoot, "fr", `${name}.tex`), "utf8");
+    const source = frenchToLegacyReservoirIndices(readFileSync(join(sourceRoot, "fr", `${name}.tex`), "utf8"));
     writeFileSync(join(sourceRoot, lang, `${name}.tex`), translate(source, lang, name), "utf8");
   }
   console.log(`Translated ${names.length} TikZ sources into ${lang}`);

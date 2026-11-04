@@ -19,7 +19,7 @@
  */
 
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
-import { normalizeTranslatedNotation } from "./lib/translation-notation.mjs";
+import { frenchToLegacyReservoirIndices, normalizeTranslatedNotation } from "./lib/translation-notation.mjs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 import Anthropic from "@anthropic-ai/sdk";
@@ -142,7 +142,7 @@ async function main() {
     console.error(`Fichier source introuvable : ${srcPath}`);
     process.exit(1);
   }
-  const sourceText = readFileSync(srcPath, "utf-8");
+  const sourceText = frenchToLegacyReservoirIndices(readFileSync(srcPath, "utf-8"));
 
   console.log(`Chapitre ${chapterNumber} — source : ${srcPath}`);
   console.log(`Langues cibles : ${requestedLangs.join(", ")}`);
