@@ -141,7 +141,8 @@ function parseExoBlock(rawBlock: string, counter: number, chapter: number): Exer
   const lecon = chapter;
 
   const kwRaw = extractCmd(body, "keywords");
-  const keywords = kwRaw ? kwRaw.split(",").map((k) => k.trim()).filter(Boolean) : [];
+  // Arabic, Persian and Urdu sources may separate keywords with the Arabic comma.
+  const keywords = kwRaw ? kwRaw.split(/[,\u060C]/).map((k) => k.trim()).filter(Boolean) : [];
 
   // Draft-safe by default: a new exercise is never added to search surfaces
   // until the author explicitly opts it in from the TeX source.
