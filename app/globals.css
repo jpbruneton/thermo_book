@@ -119,7 +119,11 @@
 
 html {
   scroll-behavior: smooth;
-  overflow-x: hidden;
+  /* `clip` cuts horizontal overflow like `hidden` but without turning the
+     element into a scroll container; with `hidden` here and on body, the
+     body becomes the scroller and every position: sticky descendant (the
+     lesson TOC) silently stops sticking. */
+  overflow-x: clip;
 }
 
 body {
@@ -130,7 +134,7 @@ body {
   line-height: 1.7;
   -webkit-font-smoothing: antialiased;
   transition: background-color 0.25s ease, color 0.25s ease;
-  overflow-x: hidden;
+  overflow-x: clip;
 }
 
 /* Noise texture overlay */
