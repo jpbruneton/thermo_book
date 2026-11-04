@@ -22,6 +22,17 @@ interface Props {
   relatedExercises: Array<{ id: string; urlSlug: string; number: number; title: string }>;
 }
 
+// Lessons whose text is final: they show the "final version" badge instead of
+// the "rewrite in progress" one.
+const FINAL_VERSION_SLUGS = [
+  "introduction",
+  "historique",
+  "notions-fondamentales",
+  "premier-principe",
+  "application-gaz-parfait",
+  "second-principe",
+];
+
 const headerBoxStyle: CSSProperties = {
   borderBottom: "1px solid var(--border)",
   padding: "2.5rem 0 1.5rem",
@@ -339,8 +350,8 @@ function ChapterContentAndPrevNext({
         <ChapterContent
           lesson={activeLesson}
           hideHeader={theme.lessons.length <= 1}
-          isFinalVersion={["introduction", "historique", "notions-fondamentales", "premier-principe", "application-gaz-parfait"].includes(theme.slug)}
-          isRewriteInProgress={theme.number >= 6}
+          isFinalVersion={FINAL_VERSION_SLUGS.includes(theme.slug)}
+          isRewriteInProgress={theme.number >= 6 && !FINAL_VERSION_SLUGS.includes(theme.slug)}
           topNav={compactNavRow}
         />
       ) : (
