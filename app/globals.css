@@ -657,6 +657,15 @@ body::before {
   text-align: center;
 }
 
+/* Display math beside a figure: match the size of the surrounding text. */
+.prose-content .latex-sidebyside-math .katex {
+  font-size: 0.9em;
+}
+
+.prose-content .latex-sidebyside-math .katex-display {
+  margin: 0.5rem 0;
+}
+
 .prose-content .latex-sidebyside-text {
   flex: 1 1 42%;
   min-width: 0;
