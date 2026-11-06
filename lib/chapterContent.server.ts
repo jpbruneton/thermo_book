@@ -448,11 +448,34 @@ function extractFigureSourceHtml(figureBlock: string, lang: Lang): string {
   return `<br /><span class="latex-figure-source"><small><em>${prefix}</em>${plain}</small></span>`;
 }
 
-/** Left column of a \begin{cotecote} block: plain paragraphs and itemize lists. */
+/**
+ * Display math in the left column of a \begin{cotecote} block. By the time the
+ * column is rendered, align*, gather* and \[...\] have usually been turned into
+ * $$...$$ already; the body must bypass cleanLatexInline(), which would flatten
+ * its "\\" line breaks. Multi-line bodies are wrapped in aligned for KaTeX.
+ */
+function renderSideBySideDisplayMath(part: string): string | null {
+  const match =
+    part.match(/^\$\$([\s\S]*?)\$\$$/) ??
+    part.match(/^\\\[([\s\S]*?)\\\]$/) ??
+    part.match(/^\\begin\{(?:align|gather|equation)\*?\}([\s\S]*?)\\end\{(?:align|gather|equation)\*?\}$/);
+  if (!match) return null;
+  let body = match[1].trim();
+  if (/\\\\|&/.test(body) && !/\\begin\{(?:aligned|gathered|array)\}/.test(body)) {
+    body = `\\begin{aligned}\n${body}\n\\end{aligned}`;
+  }
+  return `<div class="latex-sidebyside-math">$$\n${body}\n$$</div>`;
+}
+
+/** Left column of a \begin{cotecote} block: paragraphs, itemize lists and display math. */
 function renderSideBySideText(tex: string): string {
-  const parts = tex.split(/(\\begin\{itemize\}[\s\S]*?\\end\{itemize\})/);
+  const parts = tex.split(
+    /(\\begin\{itemize\}[\s\S]*?\\end\{itemize\}|\$\$[\s\S]*?\$\$|\\\[[\s\S]*?\\\]|\\begin\{(?:align|gather|equation)\*?\}[\s\S]*?\\end\{(?:align|gather|equation)\*?\})/
+  );
   return parts
     .map((part) => {
+      const displayMath = renderSideBySideDisplayMath(part.trim());
+      if (displayMath) return displayMath;
       const list = part.match(/^\\begin\{itemize\}([\s\S]*?)\\end\{itemize\}$/);
       if (list) {
         const items = list[1]
@@ -521,7 +544,8 @@ function extractFigureHtml(figureBlock: string, figureNumber: number, lang: Lang
 
   const imageHtml = `<a class="latex-figure-zoom-link" href="${imagePath}" target="_blank" rel="noreferrer"><img src="${imagePath}" alt="${altText}" loading="lazy" /></a>`;
   if (sideBySideHtml) {
-    return `<figure class="latex-figure latex-figure-sidebyside"><div class="latex-sidebyside-text">${sideBySideHtml}</div><div class="latex-sidebyside-figure">${imageHtml}${figCaption}</div></figure>`;
+    // The caption sits below both columns, centred under the whole block.
+    return `<figure class="latex-figure latex-figure-sidebyside"><div class="latex-sidebyside-row"><div class="latex-sidebyside-text">${sideBySideHtml}</div><div class="latex-sidebyside-figure">${imageHtml}</div></div>${figCaption}</figure>`;
   }
   return `<figure class="${figureClass}">${imageHtml}${figCaption}</figure>`;
 }

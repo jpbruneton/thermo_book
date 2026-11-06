@@ -641,12 +641,20 @@ body::before {
   max-height: none;
 }
 
-/* Text and figure side by side (\begin{cotecote}); stacked on narrow screens. */
-.prose-content .latex-figure-sidebyside {
+/* Text and figure side by side (\begin{cotecote}); stacked on narrow screens.
+   The caption sits below the row, centred under both columns. */
+.prose-content .latex-sidebyside-row {
+  display: flex;
   flex-direction: row;
   align-items: center;
   gap: 2rem;
+  width: 100%;
   text-align: left;
+}
+
+.prose-content .latex-sidebyside-math {
+  overflow-x: auto;
+  text-align: center;
 }
 
 .prose-content .latex-sidebyside-text {
@@ -681,7 +689,7 @@ body::before {
 }
 
 @media (max-width: 760px) {
-  .prose-content .latex-figure-sidebyside {
+  .prose-content .latex-sidebyside-row {
     flex-direction: column;
     align-items: stretch;
   }
