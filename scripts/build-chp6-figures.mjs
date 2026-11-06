@@ -1,12 +1,13 @@
+import { fileURLToPath } from "node:url";
 import { execFileSync } from "node:child_process";
 import { copyFileSync, mkdirSync, mkdtempSync, readFileSync, rmSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { dirname, join, resolve } from "node:path";
 
 // Compile existing lesson 6 TikZ sources locally (French by default).
-const root = resolve(import.meta.dirname, "..");
+const root = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const lesson = readFileSync(join(root, "content/tex/chp6_fr/lecon1.tex"), "utf8");
-const names = [...new Set([...lesson.matchAll(/\\includegraphics(?:\[[^\]]*\])?\{figs\/fr\/(fig_[\w-]+)\.png\}/g)].map((match) => match[1]))];
+const names = [...new Set([...lesson.matchAll(/\\includegraphics(?:\[[^\]]*\])?\{figs\/fr\/((?:fig_|moteur-ditherme-thermostats)[\w-]*)\.png\}/g)].map((match) => match[1]))];
 if (!names.length) throw new Error("No lesson 6 figures found.");
 const selected = process.argv.slice(2);
 const languages = selected.length ? selected : ["fr"];

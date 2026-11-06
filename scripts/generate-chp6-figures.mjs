@@ -1,11 +1,13 @@
+import { fileURLToPath } from "node:url";
 import { execFileSync } from "node:child_process";
 import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
-import { join, resolve } from "node:path";
+import { join, resolve, dirname } from "node:path";
+import { resolveFont } from "./lib/font-fallback.mjs";
 import { frenchToLegacyReservoirIndices, normalizeTranslatedNotation } from "./lib/translation-notation.mjs";
 
 // These translations were written directly, without a translation service/API.
 // French diagrams remain the geometry reference; mnemonic indices are normalized.
-const root = resolve(import.meta.dirname, "..");
+const root = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const sourceRoot = join(root, "content/tex/figs-src");
 const translations = JSON.parse(readFileSync(join(sourceRoot, "chp6-translations.json"), "utf8"));
 const args = process.argv.slice(2);
@@ -16,8 +18,9 @@ for (const lang of languages) {
   if (!Object.hasOwn(translations, lang)) throw new Error(`Unknown target language: ${lang}`);
 }
 const lesson = readFileSync(join(root, "content/tex/chp6_fr/lecon1.tex"), "utf8");
-const names = [...new Set([...lesson.matchAll(/\\includegraphics(?:\[[^\]]*\])?\{figs\/fr\/(fig_[\w-]+)\.png\}/g)].map((match) => match[1]))];
-if (names.length !== 7) throw new Error("Review translations: the lesson 6 figure inventory has changed.");
+// Figures « fig_* » de la leçon, plus le moteur ditherme propre à la leçon 6.
+const names = [...new Set([...lesson.matchAll(/\\includegraphics(?:\[[^\]]*\])?\{figs\/fr\/((?:fig_|moteur-ditherme-thermostats)[\w-]*)\.png\}/g)].map((match) => match[1]))];
+if (names.length !== 8) throw new Error("Review translations: the lesson 6 figure inventory has changed.");
 
 const fonts = {
   ar: ["Noto Naskh Arabic", "Arabic"], fa: ["Noto Naskh Arabic", "Arabic"], ur: ["Noto Naskh Arabic", "Arabic"],
@@ -28,13 +31,14 @@ const fonts = {
 function translate(source, lang, name) {
   const t = translations[lang];
   const rtl = ["ar", "fa", "ur"].includes(lang);
-  const [font, script] = fonts[lang] ?? ["Noto Serif"];
+  const [baseFont, script] = fonts[lang] ?? ["Noto Serif"];
+  const font = resolveFont(baseFont, script);
   const fontOptions = [rtl ? null : "Renderer=HarfBuzz", script ? `Script=${script}` : null].filter(Boolean).join(",");
   const wrap = (text) => `\\Lang{${text}}`;
   const lines = (items) => items.map(wrap).join("\\\\\n     ");
   let result = source.replace(/^[ \t]*%.*\r?\n/gm, "");
   result = `% Lesson 6 TikZ (${lang}): ${name}.\n% Regenerate: node scripts/generate-chp6-figures.mjs ${lang}\n` + result;
-  result = result.replace("\\setmainfont{Noto Serif}", `\\setmainfont{${font}}${fontOptions ? `[${fontOptions}]` : ""}`);
+  result = result.replace("\\setmainfont{Noto Serif}", `\\setmainfont{${font}}${fontOptions ? `[${fontOptions}]` : ""}${font === "Noto Serif" ? "" : "\n\\setmathrm{Noto Serif}"}`);
   result = result.replace("\\begin{document}", `${rtl ? "\\usepackage{bidi}\n\\newcommand{\\Lang}[1]{\\RL{#1}}" : "\\newcommand{\\Lang}[1]{#1}"}\n\\begin{document}`);
 
   const replacements = [

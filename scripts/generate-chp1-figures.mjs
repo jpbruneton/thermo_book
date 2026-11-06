@@ -1,8 +1,10 @@
+import { fileURLToPath } from "node:url";
 import { execFileSync } from "node:child_process";
 import { mkdtempSync, mkdirSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
-import { join, resolve } from "node:path";
+import { join, resolve, dirname } from "node:path";
 import { normalizeTranslatedNotation } from "./lib/translation-notation.mjs";
+import { resolveFont } from "./lib/font-fallback.mjs";
 
 const translations = {
   ar: {
@@ -207,14 +209,16 @@ const translations = {
   },
 };
 
-const root = resolve(import.meta.dirname, "..");
-const selected = process.argv.slice(2);
+const root = resolve(dirname(fileURLToPath(import.meta.url)), "..");
+const figureArg = process.argv.find((arg) => arg.startsWith("--figures="));
+const onlyFigures = figureArg ? figureArg.slice("--figures=".length).split(",") : null;
+const selected = process.argv.slice(2).filter((arg) => !arg.startsWith("--"));
 const languages = selected.length ? selected : Object.keys(translations);
 
 function preamble(lang, data, name) {
   const bidi = data.rtl ? "\\usepackage{bidi}\n\\newcommand{\\Lang}[1]{\\RL{#1}}" : "\\newcommand{\\Lang}[1]{#1}";
   const script = data.script ? `,Script=${data.script}` : "";
-  return `% Source TikZ (${lang}) de « ${name} ».\n% Génération : node scripts/generate-chp1-figures.mjs ${lang}\n\\documentclass[border=4pt]{standalone}\n\\usepackage{fontspec}\n\\setmainfont{${data.font}}[Renderer=HarfBuzz${script}]\n\\usepackage{amsmath}\n\\usepackage{tikz}\n\\usetikzlibrary{arrows.meta,positioning}\n${bidi}\n`;
+  return `% Source TikZ (${lang}) de « ${name} ».\n% Génération : node scripts/generate-chp1-figures.mjs ${lang}\n\\documentclass[border=4pt]{standalone}\n\\usepackage{fontspec}\n\\setmainfont{${resolveFont(data.font, data.script)}}[Renderer=HarfBuzz${script}]\n${data.font === "Noto Serif" ? "" : "\\setmathrm{Noto Serif}\n"}\\usepackage{amsmath}\n\\usepackage{tikz}\n\\usetikzlibrary{arrows.meta,positioning}\n${bidi}\n`;
 }
 
 function reservoirFigure(lang, data, impossible = false) {
@@ -223,8 +227,8 @@ function reservoirFigure(lang, data, impossible = false) {
   // ch/fr tokens, which the notation normalizer maps to H/C.
   const [hotIndex, coldIndex] = lang === "fr" ? ["C", "F"] : ["ch", "fr"];
   const nodes = impossible
-    ? `  \\node[reservoir] (hot) at (0,2.4) {\\Lang{${data.single}}, $T$};\n  \\node[machine] (M) at (0,0) {$M$};\n\n  \\draw[flow] (hot.south) -- node[right] {$Q$} (M.north);\n  \\draw[flow] (M.east) -- ++(2.4,0) node[right] {$W = Q$};`
-    : `  \\node[reservoir] (hot) at (0,3.2) {\\Lang{${data.hot}}, $T_{\\mathrm{${hotIndex}}}$};\n  \\node[reservoir] (cold) at (0,-3.2) {\\Lang{${data.cold}}, $T_{\\mathrm{${coldIndex}}}$};\n  \\node[machine] (M) at (0,0) {$M$};\n\n  \\draw[flow] (hot.south) -- node[right] {$Q_{\\mathrm{${hotIndex}}}$} (M.north);\n  \\draw[flow] (M.south) -- node[right] {$Q_{\\mathrm{${coldIndex}}}$} (cold.north);\n  \\draw[flow] (M.east) -- ++(2.4,0) node[right] {$W$};`;
+    ? `  \\node[reservoir] (hot) at (0,2.4) {\\Lang{${data.single}}, $T$};\n  \\node[machine] (M) at (0,0) {$\\mathcal M$};\n\n  \\draw[flow] (hot.south) -- node[right] {$Q$} (M.north);\n  \\draw[flow] (M.east) -- ++(2.4,0) node[right] {$W = Q$};`
+    : `  \\node[reservoir] (hot) at (0,3.2) {\\Lang{${data.hot}}, $T_{\\mathrm{${hotIndex}}}$};\n  \\node[reservoir] (cold) at (0,-3.2) {\\Lang{${data.cold}}, $T_{\\mathrm{${coldIndex}}}$};\n  \\node[machine] (M) at (0,0) {$\\mathcal M$};\n\n  \\draw[flow] (hot.south) -- node[right] {$Q_{\\mathrm{${hotIndex}}}$} (M.north);\n  \\draw[flow] (M.south) -- node[right] {$Q_{\\mathrm{${coldIndex}}}$} (cold.north);\n  \\draw[flow] (M.east) -- ++(2.4,0) node[right] {$W$};`;
   return `${preamble(lang, data, name)}
 \\begin{document}
 \\begin{tikzpicture}[
@@ -275,9 +279,9 @@ for (const lang of languages) {
   const data = translations[lang];
   if (!data) throw new Error(`Unknown language: ${lang}`);
   const sourceDir = join(root, "content", "tex", "figs-src", lang);
-  const outputDir = join(root, "public", "figs", lang);
+  const outputDirs = [join(root, "content", "tex", "site-assets", "figs", lang), join(root, "public", "figs", lang)];
   mkdirSync(sourceDir, { recursive: true });
-  mkdirSync(outputDir, { recursive: true });
+  for (const dir of outputDirs) mkdirSync(dir, { recursive: true });
 
   const figures = {
     "moteur-ditherme-schema": reservoirFigure(lang, data),
@@ -286,6 +290,7 @@ for (const lang of languages) {
   };
 
   for (const [name, rawSource] of Object.entries(figures)) {
+    if (onlyFigures && !onlyFigures.includes(name)) continue;
     const source = normalizeTranslatedNotation(rawSource, lang, { legacyReservoirIndices: true });
     const sourcePath = join(sourceDir, `${name}.tex`);
     writeFileSync(sourcePath, source, "utf8");
@@ -293,10 +298,14 @@ for (const lang of languages) {
     try {
       const engine = data.rtl ? "xelatex" : "lualatex";
       execFileSync(engine, ["-interaction=nonstopmode", "-halt-on-error", `-output-directory=${buildDir}`, sourcePath], { stdio: "pipe" });
+      const log = readFileSync(join(buildDir, `${name}.log`), "utf8");
+      if (/Missing character:/.test(log)) {
+        throw new Error(`Missing glyphs:\n${log.split("\n").filter((line) => /Missing character:/.test(line)).join("\n")}`);
+      }
       const pdf = join(buildDir, `${name}.pdf`);
       const stem = join(buildDir, name);
       execFileSync("pdftoppm", ["-png", "-r", "600", "-singlefile", pdf, stem], { stdio: "pipe" });
-      writeFileSync(join(outputDir, `${name}.png`), readFileSync(`${stem}.png`));
+      for (const dir of outputDirs) writeFileSync(join(dir, `${name}.png`), readFileSync(`${stem}.png`));
     } catch (error) {
       const details = [error.stdout?.toString(), error.stderr?.toString(), error.message].filter(Boolean).join("\n");
       throw new Error(`Failed to build ${lang}/${name}:\n${details}`);
