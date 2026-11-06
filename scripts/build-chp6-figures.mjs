@@ -6,8 +6,12 @@ import { dirname, join, resolve } from "node:path";
 
 // Compile existing lesson 6 TikZ sources locally (French by default).
 const root = resolve(dirname(fileURLToPath(import.meta.url)), "..");
-const lesson = readFileSync(join(root, "content/tex/chp6_fr/lecon1.tex"), "utf8");
-const names = [...new Set([...lesson.matchAll(/\\includegraphics(?:\[[^\]]*\])?\{figs\/fr\/((?:fig_|moteur-ditherme-thermostats)[\w-]*)\.png\}/g)].map((match) => match[1]))];
+// Figures « fig_* » de la leçon 6 et de ses exercices (certaines preuves y ont été déplacées),
+// plus le moteur ditherme propre à la leçon.
+const lesson = ["content/tex/chp6_fr/lecon1.tex", "content/tex/exos_fr/exo_chp6.tex"]
+  .map((path) => readFileSync(join(root, path), "utf8"))
+  .join("\n");
+const names = [...new Set([...lesson.matchAll(/\\includegraphics(?:\[[^\]]*\])?\{(?:figs\/)?fr\/((?:fig_|moteur-ditherme-thermostats)[\w-]*)\.png\}/g)].map((match) => match[1]))];
 if (!names.length) throw new Error("No lesson 6 figures found.");
 const selected = process.argv.slice(2);
 const languages = selected.length ? selected : ["fr"];

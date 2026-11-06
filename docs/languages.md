@@ -42,6 +42,12 @@ les sections suivantes restent à traduire. Voir le
 [suivi de la leçon 7](lesson7-translation-status.md) pour la limite exacte
 et les renvois à reprendre avec la suite.
 
+La leçon 6 est resynchronisée le 6 novembre 2026 dans les 19 langues cibles,
+sections 1 à 7 de la source française. La section 8 (« Pour aller plus loin »)
+reste à traduire : en, de, es et zh conservent provisoirement leur ancienne
+section 8, les autres langues s'arrêtent à la section 7, et la note du premier
+théorème de Carnot y omet le renvoi à la température thermodynamique.
+
 ## Comment ça marche
 
 - `lib/i18n.ts` : `translations.fr` et `translations.en` restent les objets

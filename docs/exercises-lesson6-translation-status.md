@@ -1,7 +1,10 @@
 # Traduction des exercices de la leçon 6
 
-État au 7 septembre 2026 : les dix exercices sont traduits dans les dix-neuf
-langues cibles, énoncés, indications et solutions compris.
+État au 6 novembre 2026 : les dix exercices sont traduits dans les dix-neuf
+langues cibles, énoncés, indications et solutions compris. Les deux exercices
+issus des anciennes annexes de la leçon (`equivalence-clausius-kelvin`,
+`inegalite-clausius-n-thermostats`) et la nouvelle version de
+`rendement-cop-bornes-carnot` y sont inclus.
 
 Source : `content/tex/exos_fr/exo_chp6.tex`, dix exercices. Référence pour
 le vocabulaire et les notations : `content/tex/chp6_<lang>/lesson1.tex`
