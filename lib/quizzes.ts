@@ -523,18 +523,18 @@ export const quizQuestions: QuizQuestion[] = [
   {
     id: "l6-q1",
     lecon: 6,
-    question: "Dans cette leçon, que demande la réversibilité globale d'une transformation ?",
+    question: "Dans cette leçon, qu'est-ce qu'une transformation réversible ?",
     choices: [
-      "Que le système seul puisse retrouver son état initial, quels que soient les changements de son extérieur.",
-      "Qu'un retour puisse restaurer le système et tout son extérieur, sans laisser aucun autre changement.",
-      "Que le retour parcoure obligatoirement le même chemin en sens inverse.",
-      "Que la transformation soit quasi-statique et que le système reste proche de l'équilibre à chaque étape."
+      "Une transformation après laquelle le système seul peut retrouver son état initial, quels que soient les changements de l'extérieur.",
+      "Une transformation qui peut être parcourue exactement en sens inverse, échanges avec l'extérieur compris, par une modification infinitésimale des contraintes.",
+      "Une transformation suffisamment lente.",
+      "Une transformation dont les états initial et final sont des états d'équilibre."
     ],
     explanations: [
-      "Faux : restaurer le système seul peut laisser une trace dans un thermostat ou une source de travail. Il faut aussi restaurer tout l'extérieur.",
-      "Exact : il suffit qu'au moins un procédé de retour efface toutes les modifications du système et de son extérieur. La définition globale n'impose pas le chemin de ce retour.",
-      "Faux : retracer le chemin relève de la réversibilité locale. La définition globale autorise un autre chemin de retour.",
-      "Faux : le caractère quasi-statique ne suffit pas. Des frottements peuvent subsister et empêcher la restauration complète du système et de son extérieur."
+      "Faux : ramener le système seul est toujours possible, par exemple en recomprimant le gaz après une détente de Joule–Gay-Lussac, mais l'extérieur garde alors une trace de l'opération.",
+      "Exact : c'est « le film passé à l'envers ». Chaque échange change de signe au retour, si bien que le système et son extérieur retrouvent leurs états initiaux sans laisser de trace.",
+      "Faux : la lenteur ne suffit pas. Un transfert thermique ralenti par une paroi peu conductrice reste irréversible tant que les températures diffèrent d'une quantité finie.",
+      "Faux : la définition porte sur toute la succession d'états et sur la possibilité d'inverser chaque étape. Une détente de Joule–Gay-Lussac relie deux états d'équilibre, et elle est irréversible."
     ],
     correctIndex: 1
   },
@@ -575,6 +575,24 @@ export const quizQuestions: QuizQuestion[] = [
     correctIndex: 0
   },
   {
+    id: "l6-q19",
+    lecon: 6,
+    question: "Un thermostat à 400 K reçoit la chaleur Q = 800 J. Quelle est sa variation d'entropie ?",
+    choices: [
+      "+2 J/K.",
+      "0 J/K, car sa température ne varie pas.",
+      "−2 J/K.",
+      "Elle dépend de la transformation qui lui a fourni cette chaleur."
+    ],
+    explanations: [
+      "Exact : l'état final du thermostat ne dépend que de Q, et l'on peut lui apporter cette chaleur de façon réversible à sa propre température. Le deuxième postulat donne ΔS = Q/T_0 = 800/400 = +2 J/K.",
+      "Faux : une température constante n'implique pas une entropie constante. Le thermostat reçoit de la chaleur, et dS = δQ_rev/T_0 n'est pas nul.",
+      "Faux : le thermostat reçoit la chaleur, Q > 0 : son entropie augmente.",
+      "Faux : S est une fonction d'état. Seul compte l'état final du thermostat, qui ne dépend que de Q, quelle que soit la manière dont la chaleur lui a été fournie."
+    ],
+    correctIndex: 0
+  },
+  {
     id: "l6-q3",
     lecon: 6,
     question: "Pourquoi un réfrigérateur ordinaire ne contredit-il pas l'énoncé de Clausius ?",
@@ -611,90 +629,56 @@ export const quizQuestions: QuizQuestion[] = [
   {
     id: "l6-q6",
     lecon: 6,
-    question: "Un moteur ditherme fonctionne entre 600 K et 300 K et reçoit Q_ch = 1 000 J par cycle. Quelle est la valeur maximale du travail fourni |W| ?",
+    question: "Un moteur ditherme fonctionne entre 600 K et 300 K et reçoit Q_C = 1 000 J par cycle. Quelle est la valeur maximale du travail fourni |W| ?",
     choices: [
       "1 000 J.",
-      "Environ 667 J.",
+      "Environ 917 J.",
       "500 J.",
       "Impossible à déterminer sans connaître le fluide de travail."
     ],
     explanations: [
       "Faux : on ne peut pas convertir toute la chaleur reçue du thermostat chaud en travail sur un cycle. Le second principe impose d'en céder une partie au thermostat froid, même si ΔU = 0.",
-      "Faux : 667 J correspond environ à Q_ch T_ch/(T_ch + T_fr). Or le rendement de Carnot vaut 1 − T_fr/T_ch, et non T_ch/(T_ch + T_fr).",
-      "Exact : le rendement maximal est celui de Carnot, η_max = 1 − T_fr/T_ch = 1 − 300/600 = 1/2. Ainsi, |W|_max = η_max Q_ch = 500 J. Cette valeur est atteinte par une machine ditherme localement réversible.",
-      "Faux : les températures des deux thermostats et la chaleur reçue suffisent pour calculer le travail maximal : |W|_max = Q_ch (1 − T_fr/T_ch). Il n'est pas nécessaire de connaître le fluide ni les détails du moteur."
+      "Faux : ce calcul utilise les températures en degrés Celsius, 327 °C et 27 °C. Le rendement de Carnot s'exprime avec les températures absolues : 1 − 300/600 = 1/2.",
+      "Exact : le rendement maximal est celui de Carnot, η_max = 1 − T_F/T_C = 1 − 300/600 = 1/2. Ainsi, |W|_max = η_max Q_C = 500 J. Cette valeur est atteinte par une machine ditherme réversible.",
+      "Faux : les températures des deux thermostats et la chaleur reçue suffisent pour calculer le travail maximal : |W|_max = Q_C (1 − T_F/T_C). Il n'est pas nécessaire de connaître le fluide ni les détails du moteur."
     ],
     correctIndex: 2
-  },
-  {
-    id: "l6-q18",
-    lecon: 6,
-    question: "Deux sous-systèmes de composition fixée peuvent échanger indépendamment de l'énergie et du volume dans un ensemble isolé. Que peut-on dire de leur état d'équilibre ?",
-    choices: [
-      "U_1 = U_2 et V_1 = V_2, quelles que soient les tailles des sous-systèmes.",
-      "P_1/T_1 = P_2/T_2, sans égalité nécessaire des températures.",
-      "T_1 = T_2, mais les pressions ne sont pas nécessairement égales.",
-      "T_1 = T_2 et P_1 = P_2."
-    ],
-    explanations: [
-      "Faux : l'équilibre n'impose pas l'égalité des grandeurs extensives. Deux sous-systèmes de tailles différentes peuvent avoir des énergies et des volumes différents à l'équilibre.",
-      "Faux : cette égalité annule seulement le coefficient de dV_1. L'énergie pouvant aussi être redistribuée indépendamment, le coefficient de dU_1 doit s'annuler : T_1 = T_2. Le critère utilisé est la stationnarité de l'entropie totale.",
-      "Faux : puisque les échanges de volume sont aussi autorisés, l'équilibre doit être mécanique autant que thermique. Les pressions doivent donc également être égales.",
-      "Exact : à l'équilibre, l'entropie totale est stationnaire pour toutes les redistributions autorisées : dS_tot = (1/T_1 − 1/T_2) dU_1 + (P_1/T_1 − P_2/T_2) dV_1 = 0. Les échanges d'énergie et de volume étant indépendants, les deux coefficients s'annulent : T_1 = T_2 et P_1 = P_2."
-    ],
-    correctIndex: 3
   },
   {
     id: "l6-q8",
     lecon: 6,
-    question: "Une machine cyclique reçoit les chaleurs algébriques Q_k de thermostats à T_k > 0 et échange du travail avec une source idéale. Quelle affirmation respecte l'inégalité de Clausius et les définitions de la leçon ?",
+    question: "Un moteur ditherme reçoit Q_C = 1 000 J d'un thermostat à 500 K et cède 700 J à un thermostat à 300 K au cours de chaque cycle. Que dit le second principe ?",
     choices: [
-      "Σ_k Q_k/T_k ≥ 0, avec une valeur strictement positive pour un cycle globalement irréversible.",
-      "Σ_k Q_k/T_k = 0 pour tout cycle, puisque l'entropie de la machine retrouve sa valeur initiale.",
-      "Σ_k Q_k/T_k ≤ 0, et l'égalité prouve à elle seule que le chemin initial est localement réversible.",
-      "Σ_k Q_k/T_k ≤ 0 ; l'égalité caractérise la réversibilité globale, sans prouver la réversibilité locale."
+      "Ce moteur est permis et irréversible : ΔS_tot ≈ +0,33 J/K par cycle.",
+      "Ce moteur est impossible, car il cède de la chaleur au thermostat froid.",
+      "Ce moteur est réversible, car son fluide retrouve son état initial à chaque cycle.",
+      "Ce moteur est impossible, car Q_C/T_C + Q_F/T_F > 0."
     ],
     explanations: [
-      "Faux : les Q_k sont comptés positivement lorsqu'ils sont reçus par la machine. Avec cette convention, la somme est négative ou nulle.",
-      "Faux : ΔS_machine = 0 sur un cycle, mais l'entropie échangée peut être négative et compensée par une production positive d'entropie.",
-      "Faux : le signe est correct, mais le cas d'égalité construit un retour global à l'aide de machines auxiliaires. Il ne montre pas que la machine initiale peut retracer son propre chemin.",
-      "Exact : un cycle localement réversible réalise l'égalité. Réciproquement, une somme nulle permet de restaurer les sources par des machines auxiliaires ; une somme strictement négative signale un cycle globalement irréversible."
+      "Exact : sur un cycle, l'entropie du fluide ne varie pas. Les thermostats reçoivent −1 000 J et +700 J, d'où ΔS_tot = −1 000/500 + 700/300 ≈ +0,33 J/K > 0. Le rendement 0,30 reste inférieur à la borne de Carnot 1 − 300/500 = 0,40.",
+      "Faux : céder de la chaleur au thermostat froid est au contraire indispensable à un moteur ditherme. C'est l'énoncé de Kelvin qui interdit de s'en passer.",
+      "Faux : le retour du fluide à son état initial annule seulement sa propre variation d'entropie. L'entropie des thermostats augmente au total : le cycle est irréversible.",
+      "Faux : avec les conventions du cours, Q_C = +1 000 J et Q_F = −700 J, d'où Q_C/T_C + Q_F/T_F ≈ −0,33 J/K ≤ 0. L'inégalité de Clausius est respectée."
     ],
-    correctIndex: 3
+    correctIndex: 0
   },
   {
     id: "l6-q9",
     lecon: 6,
-    question: "Comment la leçon construit-elle l'entropie à partir de l'égalité ∮ δQ_rev/T = 0 sur les cycles localement réversibles ?",
+    question: "Deux corps de même capacité thermique C = 100 J/K, aux températures 400 K et 200 K, sont mis en contact dans une enceinte isolée, à volume fixé. Quelle est la variation d'entropie totale ?",
     choices: [
-      "Elle en déduit que la chaleur Q est une fonction d'état.",
-      "Elle définit S(B) − S(A) par l'intégrale de δQ_rev/T.",
-      "Elle définit S(B) − S(A) par l'intégrale de δQ/T_ext sur n'importe quel chemin réel."
+      "Environ +11,8 J/K.",
+      "0 J/K, car la chaleur cédée par le corps chaud est égale à la chaleur reçue par le corps froid.",
+      "Environ −28,8 J/K, car le corps chaud se refroidit.",
+      "Environ +25 J/K, soit Q/(200 K) − Q/(400 K) avec Q = 10 000 J."
     ],
     explanations: [
-      "Faux : c'est δQ_rev/T qui est une différentielle exacte. La chaleur échangée continue de dépendre du chemin.",
-      "Exact : deux chemins localement réversibles, dont l'un est parcouru à l'envers, forment un cycle d'intégrale nulle. L'entropie est ainsi définie à une constante additive près sur chaque domaine réversiblement connexe, et s'exprime en J/K.",
-      "Faux : sur un chemin réel irréversible, l'intégrale de δQ/T_ext donne l'entropie échangée, pas nécessairement ΔS. La construction utilise δQ_rev/T sur un chemin localement réversible."
+      "Exact : la température finale est T_f = 300 K. Sur des chemins réversibles fictifs, ΔS_1 = C ln(300/400) ≈ −28,8 J/K et ΔS_2 = C ln(300/200) ≈ +40,5 J/K, d'où ΔS_tot ≈ +11,8 J/K > 0 : le contact est irréversible.",
+      "Faux : l'énergie est conservée, mais les variations d'entropie ne se compensent pas, car la chaleur est échangée à des températures différentes.",
+      "Faux : c'est seulement la variation d'entropie du corps chaud. Le corps froid gagne davantage d'entropie que le corps chaud n'en perd.",
+      "Faux : ce calcul suppose que les deux températures restent fixes, comme pour deux thermostats. Ici, chaque température varie pendant l'échange : il faut intégrer C dT/T pour chaque corps."
     ],
-    correctIndex: 1
-  },
-  {
-    id: "l6-q2",
-    lecon: 6,
-    question: "Quelle affirmation décrit correctement la réversibilité locale ?",
-    choices: [
-      "Il suffit que les états initial et final du système soient des états d'équilibre.",
-      "Elle découle automatiquement de tout procédé qui restaure globalement le système et son extérieur.",
-      "Elle demande d'inverser chaque étape d'une succession d'états d'équilibre par une modification infinitésimale des contraintes.",
-      "Elle permet de retracer le chemin du système, tout en conservant les mêmes signes pour les échanges de chaleur et de travail."
-    ],
-    explanations: [
-      "Faux : les états intermédiaires et la possibilité d'inverser chaque étape sont essentiels à la définition locale.",
-      "Faux : un retour global pourrait emprunter un autre chemin. Son existence ne prouve pas à elle seule que le chemin initial est localement réversible.",
-      "Exact : on peut alors parcourir la même succession d'états en sens inverse, en restaurant aussi l'extérieur. La réversibilité locale implique donc la réversibilité globale.",
-      "Faux : lors du parcours inverse d'un chemin localement réversible, les échanges thermiques et mécaniques changent de signe à chaque étape."
-    ],
-    correctIndex: 2
+    correctIndex: 0
   },
   {
     id: "l6-q12",
@@ -702,20 +686,36 @@ export const quizQuestions: QuizQuestion[] = [
     question: "Une transformation irréversible relie deux états d'équilibre A et B, mais ses états intermédiaires sont loin de l'équilibre. Quelle affirmation est correcte ?",
     choices: [
       "La variation d'entropie ΔS est l'intégrale de δQ_réel/T_ext sur le chemin réel.",
-      "La variation d'entropie ΔS peut être calculée sur un chemin localement réversible entre A et B, tandis que S_e et S_i dépendent du processus réel.",
+      "La variation d'entropie ΔS peut être calculée sur un chemin réversible entre A et B, tandis que S_e et S_i dépendent du processus réel.",
       "Les états A et B déterminent à eux seuls l'entropie échangée S_e et l'entropie produite S_i."
     ],
     explanations: [
       "Faux : cette intégrale donne S_e, l'entropie échangée. Le bilan est ΔS = S_e + S_i : la chaleur réellement échangée ne suffit pas à calculer ΔS sans tenir compte de l'entropie produite.",
-      "Exact : S est une fonction d'état, donc ΔS = ∫ δQ_rev/T peut être calculée sur un chemin localement réversible reliant les mêmes états. On revient ensuite aux échanges réels pour déterminer S_e = ∫ δQ_réel/T_ext et S_i = ΔS − S_e.",
+      "Exact : S est une fonction d'état, donc ΔS = ∫ δQ_rev/T peut être calculée sur un chemin réversible reliant les mêmes états. On revient ensuite aux échanges réels pour déterminer S_e = ∫ δQ_réel/T_ext et S_i = ΔS − S_e.",
       "Faux : les états A et B fixent ΔS, mais pas sa décomposition en entropie échangée et entropie produite. S_e dépend des chaleurs réellement échangées et des températures extérieures ; S_i se déduit alors du bilan ΔS = S_e + S_i."
     ],
     correctIndex: 1
   },
   {
+    id: "l6-q20",
+    lecon: 6,
+    question: "Une résistance parcourue par un courant est maintenue à température constante par un thermostat. En régime permanent, quel est le bilan d'entropie de la résistance ?",
+    choices: [
+      "ΔS = 0, S_i > 0 et S_e = −S_i < 0.",
+      "ΔS = 0, donc la transformation est réversible.",
+      "ΔS > 0, car l'effet Joule produit de l'entropie."
+    ],
+    explanations: [
+      "Exact : l'état de la résistance ne change pas, donc ΔS = 0. L'effet Joule produit de l'entropie, que la résistance cède au thermostat avec la chaleur : la transformation est isentropique, mais irréversible.",
+      "Faux : isentropique ne signifie pas réversible. L'entropie produite est compensée par l'entropie cédée au thermostat, et l'entropie totale augmente.",
+      "Faux : l'entropie produite quitte la résistance avec la chaleur cédée au thermostat. L'état de la résistance, et donc son entropie, reste inchangé."
+    ],
+    correctIndex: 0
+  },
+  {
     id: "l6-q4",
     lecon: 6,
-    question: "Quel fonctionnement est précisément interdit par l'énoncé de Kelvin–Planck ?",
+    question: "Quel fonctionnement est précisément interdit par l'énoncé de Kelvin ?",
     choices: [
       "Convertir du travail reçu en chaleur au cours d'un cycle.",
       "Recevoir une chaleur Q > 0 et fournir un travail W = −Q pendant une détente isotherme non cyclique d'un gaz parfait.",
@@ -733,7 +733,7 @@ export const quizQuestions: QuizQuestion[] = [
   {
     id: "l6-vf1",
     lecon: 6,
-    question: "Une compression quasi-statique est nécessairement localement réversible.",
+    question: "Une compression quasi-statique est nécessairement réversible.",
     choices: [
       "Vrai",
       "Faux"
@@ -745,18 +745,50 @@ export const quizQuestions: QuizQuestion[] = [
     correctIndex: 1
   },
   {
-    id: "l6-q7",
+    id: "l6-vf3",
     lecon: 6,
-    question: "Quelle succession décrit le cycle moteur de Carnot d'un gaz parfait, toutes ses branches étant localement réversibles ?",
+    question: "L'entropie d'un système fermé ne peut jamais diminuer.",
     choices: [
-      "Une détente isotherme à T_ch, une détente adiabatique réversible, une compression isotherme à T_fr, puis une compression adiabatique réversible.",
-      "Une détente isotherme à T_ch, un refroidissement isochore, une compression isotherme à T_fr, puis un chauffage isochore.",
-      "Une détente isotherme à T_fr, une compression adiabatique, une compression isotherme à T_ch, puis une détente adiabatique."
+      "Vrai",
+      "Faux"
     ],
     explanations: [
-      "Exact : les échanges de chaleur ont lieu sur les deux isothermes localement réversibles ; les adiabatiques relient les deux températures sans échange thermique. Le cycle moteur est parcouru dans le sens horaire dans le diagramme (V, P).",
+      "Faux : le second principe n'impose ΔS ≥ 0 qu'à un système isolé. Un système fermé qui cède de la chaleur peut voir son entropie décroître, si l'entropie cédée dépasse celle qu'il produit.",
+      "Exact : un corps chaud qui se refroidit au contact d'un thermostat perd de l'entropie, par exemple. C'est l'entropie totale du système et de son extérieur qui ne peut pas diminuer."
+    ],
+    correctIndex: 1
+  },
+  {
+    id: "l6-q7",
+    lecon: 6,
+    question: "Quelle succession décrit le cycle moteur de Carnot d'un gaz parfait, toutes ses branches étant réversibles ?",
+    choices: [
+      "Une détente isotherme à T_C, une détente adiabatique réversible, une compression isotherme à T_F, puis une compression adiabatique réversible.",
+      "Une détente isotherme à T_C, un refroidissement isochore, une compression isotherme à T_F, puis un chauffage isochore.",
+      "Une détente isotherme à T_F, une compression adiabatique, une compression isotherme à T_C, puis une détente adiabatique."
+    ],
+    explanations: [
+      "Exact : les échanges de chaleur ont lieu sur les deux isothermes réversibles ; les adiabatiques relient les deux températures sans échange thermique. Le cycle moteur est parcouru dans le sens horaire dans le diagramme (V, P).",
       "Faux : les liaisons entre les isothermes du cycle de Carnot sont adiabatiques, pas isochores. Des branches isochores modifieraient le cycle et ses échanges de chaleur.",
       "Faux : cette succession décrit le cycle de Carnot parcouru en sens inverse. La machine reçoit alors du travail pour prélever de la chaleur au thermostat froid et en céder au thermostat chaud."
+    ],
+    correctIndex: 0
+  },
+  {
+    id: "l6-q21",
+    lecon: 6,
+    question: "Un gaz parfait de N particules est à l'équilibre dans une enceinte. Quelle est la probabilité de trouver, à un instant donné, toutes les particules dans la moitié gauche ?",
+    choices: [
+      "2^(−N).",
+      "1/2.",
+      "1/N.",
+      "Exactement 0, car le second principe l'interdit."
+    ],
+    explanations: [
+      "Exact : chaque particule a une probabilité 1/2 de se trouver à gauche, et les particules d'un gaz parfait sont indépendantes. Pour une mole, 2^(−N) ≈ 10^(−1,8×10^23) : l'événement est possible, mais si improbable qu'on ne l'observe jamais.",
+      "Faux : 1/2 est la probabilité pour une seule particule. Pour N particules indépendantes, les probabilités se multiplient.",
+      "Faux : la probabilité décroît exponentiellement avec N, et non comme 1/N.",
+      "Faux : la mécanique autorise cette configuration. Son extrême rareté explique l'irréversibilité observée, qui est de nature probabiliste."
     ],
     correctIndex: 0
   },
