@@ -2,7 +2,7 @@ import { notFound, permanentRedirect } from "next/navigation";
 import { getWebThemeFromUrlSlug, getWebThemes, getThemeTitle, getThemeDescription, getThemeTopics, getThemeUrlSlug, bookMeta, localizedSiteTitle } from "@/lib/chapters";
 import { ChapterPageClient } from "./ChapterPageClient";
 import type { Metadata } from "next";
-import { getLessonReferences, getLessonWebContent, getTexFilePathForLang, hasLessonWebContent } from "@/lib/chapterContent.server";
+import { getLessonReferences, getLessonWebContent, getSimplifiedTexFilePath, getTexFilePathForLang, hasLessonWebContent } from "@/lib/chapterContent.server";
 import { prepareLessonPresentation } from "@/lib/lessonPresentation.server";
 import { absoluteUrl, getSiteUrl } from "@/lib/siteUrl";
 import { getTranslations, sectionHref, SUPPORTED_LANGS, type Lang } from "@/lib/i18n";
@@ -141,9 +141,21 @@ export default function ChapterPage({ params, searchParams }: Props) {
       const resolvedReferences = getLessonReferences(theme.number, lesson.number, lesson.references);
       const langTexFile = getTexFilePathForLang(lesson.texFile, params.lang);
       const langContent = getLessonWebContent(langTexFile, -1, resolvedReferences) || (params.lang === "fr" ? fallbackContent : "");
+      const fullPresentation = prepareLessonPresentation(langContent, params.lang);
+      // A lesson with a simplified version serves it by default; the full
+      // text stays one click away (see LessonVersionSwitch).
+      const simplifiedTexFile = getSimplifiedTexFilePath(langTexFile);
+      const simplifiedContent = simplifiedTexFile
+        ? getLessonWebContent(simplifiedTexFile, -1, resolvedReferences)
+        : "";
       return {
         ...lessonMetadata,
-        ...prepareLessonPresentation(langContent, params.lang),
+        ...(simplifiedContent
+          ? {
+              ...prepareLessonPresentation(simplifiedContent, params.lang),
+              fullVersion: fullPresentation,
+            }
+          : fullPresentation),
         topicsLang: getThemeTopics(theme.slug, lesson, params.lang),
         references: resolvedReferences,
       };

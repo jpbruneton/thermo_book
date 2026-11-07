@@ -2055,6 +2055,23 @@ export function getTexFilePathForLang(frTexFile: string, lang: Lang): string {
   return frTexFile.replace(/_fr\/(fiche\d+)\.tex$/, `_${lang}/$1.tex`);
 }
 
+/**
+ * Simplified version of a lesson, stored next to it with a `_simplf` suffix
+ * (chp6_fr/lecon1.tex -> chp6_fr/lecon1_simplf.tex). Returns the path only
+ * when that file exists and is non-empty, null otherwise.
+ */
+export function getSimplifiedTexFilePath(langTexFile: string): string | null {
+  const simplified = langTexFile.replace(/\.tex$/, "_simplf.tex");
+  if (simplified === langTexFile) return null;
+  const path = getTexPathByFileName(simplified);
+  if (!path || !existsSync(path)) return null;
+  try {
+    return readFileSync(path, "utf-8").trim().length > 0 ? simplified : null;
+  } catch {
+    return null;
+  }
+}
+
 /** True only when the requested language has an authored lesson body on disk. */
 export function hasLessonWebContent(frTexFile: string, lang: Lang): boolean {
   const localizedFile = getTexFilePathForLang(frTexFile, lang);

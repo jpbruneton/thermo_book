@@ -61,6 +61,67 @@ function getActiveLessonIndex(
   return requestedLessonIndex;
 }
 
+// Lessons that also exist in a simplified version serve it by default;
+// ?version=complete shows the full text.
+const FULL_VERSION_PARAM = "version";
+const FULL_VERSION_VALUE = "complete";
+
+function isFullVersionRequested(searchParams: ReturnType<typeof useSearchParams>): boolean {
+  return searchParams.get(FULL_VERSION_PARAM) === FULL_VERSION_VALUE;
+}
+
+function hasSimplifiedVersion(theme: ThemeWithLocalizedLessonContent): boolean {
+  return theme.lessons.length === 1 && Boolean(theme.lessons[0].fullVersion);
+}
+
+function LessonVersionButtons({
+  showFull,
+  onSelect,
+}: {
+  showFull: boolean;
+  onSelect?: (full: boolean) => void;
+}) {
+  const { lang } = useLang();
+  const labels =
+    lang === "fr"
+      ? { simplified: "Version simplifiée", full: "Version complète" }
+      : { simplified: "Simplified version", full: "Full version" };
+  return (
+    <div className="lesson-version-switch" role="group" aria-label={lang === "fr" ? "Version de la leçon" : "Lesson version"}>
+      {([false, true] as const).map((full) => (
+        <button
+          key={String(full)}
+          type="button"
+          className={`lesson-version-btn${showFull === full ? " is-active" : ""}`}
+          aria-pressed={showFull === full}
+          onClick={onSelect ? () => onSelect(full) : undefined}
+        >
+          {full ? labels.full : labels.simplified}
+        </button>
+      ))}
+    </div>
+  );
+}
+
+function LessonVersionSwitch() {
+  const pathname = usePathname();
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  const [, startTransition] = useTransition();
+  const showFull = isFullVersionRequested(searchParams);
+  const select = (full: boolean) => {
+    if (full === showFull) return;
+    const params = new URLSearchParams(searchParams.toString());
+    if (full) params.set(FULL_VERSION_PARAM, FULL_VERSION_VALUE);
+    else params.delete(FULL_VERSION_PARAM);
+    const query = params.toString();
+    startTransition(() => {
+      router.replace(query ? `${pathname}?${query}` : pathname, { scroll: false });
+    });
+  };
+  return <LessonVersionButtons showFull={showFull} onSelect={select} />;
+}
+
 function ChapterThemeHeadingBlock({ theme }: { theme: ThemeWithLocalizedLessonContent }) {
   const { t, lang, chapters } = useLang();
   return (
@@ -104,6 +165,11 @@ function ChapterThemeHeadingBlock({ theme }: { theme: ThemeWithLocalizedLessonCo
       </h1>
       {theme.lessons.length === 1 && (
         <LessonKeywords topics={theme.lessons[0].topicsLang} style={{ marginTop: "0.75rem" }} />
+      )}
+      {hasSimplifiedVersion(theme) && (
+        <Suspense fallback={<LessonVersionButtons showFull={false} />}>
+          <LessonVersionSwitch />
+        </Suspense>
       )}
     </>
   );
@@ -577,6 +643,20 @@ function LessonNavRow({
   );
 }
 
+function ChapterContentWithVersion(props: Props) {
+  const searchParams = useSearchParams();
+  const showFull = isFullVersionRequested(searchParams);
+  const theme = useMemo(() => {
+    const lesson = props.theme.lessons[0];
+    if (!showFull || !lesson?.fullVersion) return props.theme;
+    return {
+      ...props.theme,
+      lessons: [{ ...lesson, ...lesson.fullVersion }],
+    };
+  }, [props.theme, showFull]);
+  return <ChapterContentAndPrevNext {...props} theme={theme} />;
+}
+
 function ChapterPageView(props: Props) {
   const { theme } = props;
   const defaultContent = <ChapterContentAndPrevNext {...props} />;
@@ -603,6 +683,10 @@ function ChapterPageView(props: Props) {
       {theme.lessons.length > 1 ? (
         <Suspense fallback={defaultContent}>
           <ChapterContentWithSearchParams {...props} />
+        </Suspense>
+      ) : hasSimplifiedVersion(theme) ? (
+        <Suspense fallback={defaultContent}>
+          <ChapterContentWithVersion {...props} />
         </Suspense>
       ) : defaultContent}
     </div>

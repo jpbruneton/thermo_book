@@ -1987,3 +1987,50 @@ a.exercise-index-card-link:focus-visible {
     padding-top: 1.25rem !important;
   }
 }
+
+/* Simplified / full version switch, shown only for lessons that exist in a
+   simplified version (lecon1_simplf.tex). Colours follow the principle box. */
+.lesson-version-switch {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-top: 1rem;
+}
+
+.lesson-version-btn {
+  background: #b9472712;
+  border: 1px solid #b94727;
+  border-radius: 6px;
+  padding: 0.5rem 1.1rem;
+  font-family: var(--font-inter);
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #b94727;
+  cursor: pointer;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.lesson-version-btn:hover {
+  background: #b9472726;
+}
+
+.lesson-version-btn.is-active {
+  background: #b94727;
+  color: #fff;
+  cursor: default;
+}
+
+[data-theme="dark"] .lesson-version-btn {
+  background: #e0714d14;
+  border-color: #e0714d;
+  color: #e0714d;
+}
+
+[data-theme="dark"] .lesson-version-btn:hover {
+  background: #e0714d2e;
+}
+
+[data-theme="dark"] .lesson-version-btn.is-active {
+  background: #e0714d;
+  color: #1a1a1a;
+}
