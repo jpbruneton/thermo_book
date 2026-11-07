@@ -383,6 +383,25 @@ body::before {
   min-width: 0;
 }
 
+/* On wide screens the TOC column grows to the right so that headings fit on
+   one line. The text column keeps exactly the position it has with the
+   default 300px TOC (same left margin as the centered grid), so the title
+   band, the lesson text and the nav rows stay aligned. Breakpoints leave
+   room for the wider column inside the viewport. */
+@media (min-width: 1440px) {
+  .lesson-web-layout {
+    grid-template-columns: 860px 380px;
+    justify-content: start;
+    margin-left: calc((100% - 860px - 3.6rem - 300px) / 2);
+  }
+}
+
+@media (min-width: 1600px) {
+  .lesson-web-layout {
+    grid-template-columns: 860px 460px;
+  }
+}
+
 .lesson-toc-toggle {
   background: var(--accent-bg-xs);
   border: 1px solid var(--accent-border-sm);

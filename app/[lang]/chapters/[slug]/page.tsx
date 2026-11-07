@@ -14,7 +14,7 @@ import {
 
 interface Props {
   params: { slug: string; lang: Lang };
-  searchParams?: { lesson?: string | string[] };
+  searchParams?: { lesson?: string | string[]; version?: string | string[] };
 }
 
 export async function generateStaticParams({ params }: { params: { lang: Lang } }) {
@@ -129,9 +129,15 @@ export default function ChapterPage({ params, searchParams }: Props) {
 
   const canonicalSlug = getThemeUrlSlug(theme, params.lang);
   if (params.slug !== canonicalSlug) {
-    const lesson = Array.isArray(searchParams?.lesson) ? searchParams.lesson[0] : searchParams?.lesson;
+    // Keep the query params the page understands (lesson tab, simplified/full version).
+    const query = new URLSearchParams();
+    for (const key of ["lesson", "version"] as const) {
+      const raw = searchParams?.[key];
+      const value = Array.isArray(raw) ? raw[0] : raw;
+      if (value) query.set(key, value);
+    }
     const destination = sectionHref(params.lang, "chapters", canonicalSlug);
-    permanentRedirect(lesson ? `${destination}?lesson=${encodeURIComponent(lesson)}` : destination);
+    permanentRedirect(query.size > 0 ? `${destination}?${query.toString()}` : destination);
   }
 
   const themeWithRenderedContent = {
