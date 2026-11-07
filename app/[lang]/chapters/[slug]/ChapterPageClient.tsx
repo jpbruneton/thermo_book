@@ -74,6 +74,30 @@ function hasSimplifiedVersion(theme: ThemeWithLocalizedLessonContent): boolean {
   return theme.lessons.length === 1 && Boolean(theme.lessons[0].fullVersion);
 }
 
+// Same expressions as the opening sentence of each lesson1_simplf.tex / lesson1.tex.
+const LESSON_VERSION_LABELS: Record<string, { simplified: string; full: string }> = {
+  fr: { simplified: "Version simplifiée", full: "Version complète" },
+  en: { simplified: "Simplified version", full: "Full version" },
+  de: { simplified: "Vereinfachte Version", full: "Vollständige Version" },
+  es: { simplified: "Versión simplificada", full: "Versión completa" },
+  pt: { simplified: "Versão simplificada", full: "Versão completa" },
+  it: { simplified: "Versione semplificata", full: "Versione completa" },
+  zh: { simplified: "简化版", full: "完整版" },
+  ja: { simplified: "簡易版", full: "完全版" },
+  ko: { simplified: "간소화 버전", full: "전체 버전" },
+  ru: { simplified: "Упрощённая версия", full: "Полная версия" },
+  pl: { simplified: "Wersja uproszczona", full: "Wersja pełna" },
+  tr: { simplified: "Basitleştirilmiş sürüm", full: "Tam sürüm" },
+  hi: { simplified: "सरलीकृत संस्करण", full: "पूर्ण संस्करण" },
+  ur: { simplified: "آسان نسخہ", full: "مکمل نسخہ" },
+  bn: { simplified: "সরলীকৃত সংস্করণ", full: "পূর্ণ সংস্করণ" },
+  ar: { simplified: "النسخة المبسطة", full: "النسخة الكاملة" },
+  fa: { simplified: "نسخهٔ ساده‌شده", full: "نسخهٔ کامل" },
+  id: { simplified: "Versi sederhana", full: "Versi lengkap" },
+  vi: { simplified: "Phiên bản đơn giản", full: "Phiên bản đầy đủ" },
+  sw: { simplified: "Toleo rahisi", full: "Toleo kamili" },
+};
+
 function LessonVersionButtons({
   showFull,
   onSelect,
@@ -82,10 +106,7 @@ function LessonVersionButtons({
   onSelect?: (full: boolean) => void;
 }) {
   const { lang } = useLang();
-  const labels =
-    lang === "fr"
-      ? { simplified: "Version simplifiée", full: "Version complète" }
-      : { simplified: "Simplified version", full: "Full version" };
+  const labels = LESSON_VERSION_LABELS[lang] ?? LESSON_VERSION_LABELS.en;
   return (
     <div className="lesson-version-switch" role="group" aria-label={lang === "fr" ? "Version de la leçon" : "Lesson version"}>
       {([false, true] as const).map((full) => (
