@@ -128,39 +128,68 @@ export function ChapterContent({ lesson, hideHeader = false, isFinalVersion = fa
       .filter((element): element is HTMLElement => element !== null);
     if (headings.length === 0) return;
 
-    // One pass at mount sets the initial entry (e.g. after an anchor load).
+    // The active entry is the last heading that has scrolled past the fixed
+    // header (headings land at scroll-margin-top = 96px, hence the 120px
+    // margin), or the last one once the page bottom is reached. Measuring the
+    // few dozen headings is cheap; it runs at most once per animation frame.
+    // (An IntersectionObserver was used before, but its initial notification
+    // for every heading left the highlight on the wrong entry.)
     const offset = 120;
-    let initial = orderedIds[0];
-    for (const element of headings) {
-      if (element.getBoundingClientRect().top - offset <= 0) initial = element.id;
-      else break;
-    }
-    setActiveTocId(initial);
-
-    // Afterwards, an IntersectionObserver tracks the heading band instead of
-    // re-measuring every heading on each scroll event: a heading entering the
-    // band (just below the fixed header) becomes active; a heading leaving it
-    // downwards hands the highlight back to the previous section.
-    const bandObserver = new IntersectionObserver(
-      (entries) => {
-        for (const entry of entries) {
-          const id = (entry.target as HTMLElement).id;
-          if (entry.isIntersecting) {
-            setActiveTocId(id);
-          } else if (entry.boundingClientRect.top > offset) {
-            const index = orderedIds.indexOf(id);
-            if (index > 0) setActiveTocId(orderedIds[index - 1]);
-          }
-        }
-      },
-      // Band from the header offset down to 25% of the viewport height.
-      { rootMargin: `-${offset}px 0px -75% 0px`, threshold: 0 }
-    );
-    headings.forEach((element) => bandObserver.observe(element));
+    let frame = 0;
+    const update = () => {
+      frame = 0;
+      let current = orderedIds[0];
+      for (const element of headings) {
+        if (element.getBoundingClientRect().top - offset <= 0) current = element.id;
+        else break;
+      }
+      const atBottom =
+        window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 2;
+      if (atBottom && window.scrollY > 0) current = orderedIds[orderedIds.length - 1];
+      setActiveTocId(current);
+    };
+    const schedule = () => {
+      if (!frame) frame = window.requestAnimationFrame(update);
+    };
+    update();
+    window.addEventListener("scroll", schedule, { passive: true });
+    window.addEventListener("resize", schedule);
 
     return () => {
-      bandObserver.disconnect();
+      if (frame) window.cancelAnimationFrame(frame);
+      window.removeEventListener("scroll", schedule);
+      window.removeEventListener("resize", schedule);
     };
+  }, [tab, lesson.toc]);
+
+  // Jump to a heading reliably. Blocks below the fold use content-visibility
+  // with a 150px placeholder height, so a plain anchor jump (smooth or not)
+  // targets an estimated position that moves as the blocks above it render.
+  // Jump instantly, then re-align until the heading stops moving.
+  const scrollToHeading = (id: string) => {
+    const element = document.getElementById(id);
+    if (!element) return;
+    let attempts = 0;
+    let lastTop = Number.NaN;
+    const align = () => {
+      element.scrollIntoView({ behavior: "instant" as ScrollBehavior, block: "start" });
+      const top = element.getBoundingClientRect().top;
+      attempts += 1;
+      if (attempts < 12 && Math.abs(top - lastTop) > 1) {
+        lastTop = top;
+        window.requestAnimationFrame(align);
+      }
+    };
+    align();
+    window.history.replaceState(null, "", `#${id}`);
+  };
+
+  // Same correction when the page is opened on an anchor (#heading-id).
+  useEffect(() => {
+    if (tab !== "web") return;
+    const id = decodeURIComponent(window.location.hash.slice(1));
+    if (id && lesson.toc.some((entry) => entry.id === id)) scrollToHeading(id);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [tab, lesson.toc]);
 
   useEffect(() => {
@@ -317,7 +346,12 @@ export function ChapterContent({ lesson, hideHeader = false, isFinalVersion = fa
                           <a
                             href={`#${entry.id}`}
                             className={`lesson-toc-link ${activeTocId === entry.id ? "lesson-toc-link-active" : ""}`}
-                            onClick={() => setActiveTocId(entry.id)}
+                            onClick={(event) => {
+                              if (event.metaKey || event.ctrlKey || event.shiftKey || event.button !== 0) return;
+                              event.preventDefault();
+                              setActiveTocId(entry.id);
+                              scrollToHeading(entry.id);
+                            }}
                           >
                             {entry.text}
                           </a>
