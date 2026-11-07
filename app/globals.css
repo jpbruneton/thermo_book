@@ -390,15 +390,10 @@ body::before {
    room for the wider column inside the viewport. */
 @media (min-width: 1440px) {
   .lesson-web-layout {
-    grid-template-columns: 860px 380px;
+    /* About 50 characters per TOC line. */
+    grid-template-columns: 860px 390px;
     justify-content: start;
     margin-left: calc((100% - 860px - 3.6rem - 300px) / 2);
-  }
-}
-
-@media (min-width: 1600px) {
-  .lesson-web-layout {
-    grid-template-columns: 860px 460px;
   }
 }
 
