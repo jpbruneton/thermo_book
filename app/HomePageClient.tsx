@@ -78,7 +78,11 @@ export default function HomePageClient({ exerciseCounts }: { exerciseCounts?: Ex
 
         <div className="home-mobile-intro" lang={lang} dir={direction}>
           <div className="home-mobile-heading">
-            <h1 className="home-mobile-title">{mobile.title}</h1>
+            {/* Only one <h1> per page (the desktop hero title below, always in
+                the HTML). This mobile title is visible only on small screens,
+                where the hero is hidden; role="heading" keeps it a level-1
+                heading for screen readers there. */}
+            <p className="home-mobile-title" role="heading" aria-level={1}>{mobile.title}</p>
             <Image
               className="home-mobile-cover"
               src={cover.src}
